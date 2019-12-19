@@ -1,0 +1,473 @@
+/*
+Theme Name:     Cyclando
+Theme URI:
+Description:    Tema figlio per Cyclando (Impreza)
+Author:         Webmapp (Pedram Katanchi)
+Author URI:     webmapp.it
+Template:       Impreza
+Version:        0.1.0
+Text Domain:    wm-child-verdenatura
+*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,500,600,700&display=swap');
+
+:root {
+    --color-primary: #9AC250;
+    --color-primary-title: #749D27;
+    --color-primary-paragraph: #4D6E0E;
+    --color-white: white;
+    --color-secondary: #F18E08;
+    --color-secondary-hover: #e0870a;
+    --color-primary-background: #EEF3E4;
+    --color-link-inactive: #969688;
+    --color-text-p: #4e4e4e;
+    --color-text-strong: #333;
+    --font-family-primary: "Montserrat";
+    --font-family-primary-alternate: "Montserrat Alternates";
+    --modal-duration: 1s;
+    --modal-color: #428bca;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* main menu */
+ul.w-nav-list.level_1.hover_simple li a {
+    padding-left: 0 !important;
+}
+
+ul.w-nav-list.level_1.hover_simple li:nth-child(3) a {
+    padding-right: 0 !important;
+}
+
+.l-subheader-cell.at_center {
+    justify-content: center;
+    display: none;
+}
+
+/* CSS homepage Cyclando */
+
+/* CSS homepage banner intro  */
+.Home-intro-banner {
+    display: grid;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
+body.home .Home-intro-banner .home-banner-content {
+    padding: 5rem 0 0rem;
+}
+
+body.home .Home-intro-banner .home-banner-content h2:first-child {
+    font-weight: 600;
+    font-size: 49px;
+    margin: 0;
+}
+
+body.home .Home-intro-banner .home-banner-content h2:last-child {
+    font-size: 60px;
+    padding: 0;
+    font-weight: bold;
+}
+
+.home-banner-content-p p {
+    font-size: 18px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.71);
+}
+
+.home-banner-content-p {
+    margin-bottom: 100px;
+}
+
+.home-banner-content-h h2 {
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.71);
+}
+
+@media screen and (min-width: 1137px) and (max-width: 1350px) {
+    body .webmapp-anypost-template-cy_route .webmapp_post_meta .prezzo-tab p {
+        font-size: 26px;
+    }
+
+    body .w-person-name {
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-width: 991px) and (max-width: 1136px) {
+    body .webmapp-anypost-template-cy_route .webmapp_post_meta .prezzo-tab p {
+        font-size: 22px;
+    }
+
+    body .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info {
+        min-height: 85px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .cy-modal-content {
+        width: 100%;
+    }
+
+    #cy-search-lente {
+        display: none;
+    }
+}
+
+.home-anypost-section h2 {
+    color: var(--color-primary-title);
+    font-family: var(--font-family-primary-alternate);
+}
+
+.webmapp-anypost-template-cy_route .webmapp_post_image {
+    display: grid;
+    align-items: end;
+}
+
+.webmapp-anypost-template-cy_route .webmapp_post-title {
+    background-color: #1010108a;
+    padding: 10px;
+}
+
+.webmapp-anypost-template-cy_route .webmapp_post-title h3 {
+    color: var(--color-white);
+    font-weight: 900;
+    font-weight: 900;
+    font-family: var(--font-family-primary-alternate);
+    font-size: 29px;
+}
+
+.webmapp-anypost-template-cy_route .webmapp_post_image {
+    height: 366px !important;
+}
+
+.webmapp-anypost-template-cy_route .webmapp_post_meta {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+}
+
+.webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info {
+    background-color: var(--color-primary-title);
+    font-family: var(--font-family-primary);
+    color: var(--color-white);
+    font-weight: 900;
+    padding: 15px 10px;
+    border-right: 1px solid white;
+    height: 100%;
+    display: grid;
+    align-items: center;
+}
+
+.webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 19px;
+}
+
+.webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info .meta_info_data {
+    font-weight: 700;
+}
+
+.webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info .meta-bar-txt-light {
+    font-weight: 700;
+}
+
+.webmapp-anypost-template-cy_route .webmapp_post_meta .prezzo-tab {
+    background-color: var(--color-primary);
+    text-align: center;
+    height: 100%;
+    color: var(--color-white);
+    font-weight: 900;
+    align-items: center;
+    padding: 15px 10px;
+    display: grid;
+}
+
+.webmapp-anypost-template-cy_route .webmapp_post_meta .prezzo-tab p {
+    font-size: 32px;
+}
+
+.webmapp-anypost-template-cy_route .row {
+    margin-bottom: 30px;
+}
+
+/* archive taxonomy */
+.archive-taxonomy {
+    padding: 3rem 2rem;
+}
+
+.archive-taxonomy h2 {
+    font-family: var(--font-family-primary-alternate);
+    color: var(--color-primary-paragraph);
+}
+
+.archive-taxonomy h3 {
+    color: var(--color-primary-paragraph);
+    font-family: var(--font-family-primary-alternate);
+}
+
+.archive-taxonomy-featured-image .webmapp-featured-image-img .container {
+    display: grid;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    align-items: center;
+    height: 100%;
+}
+
+.archive-taxonomy-featured-image .webmapp-featured-image-img .container span {
+    background-color: #f0f8ff00;
+    font-family: var(--font-family-primary-alternate);
+    color: var(--color-white);
+    font-weight: 900;
+    font-size: 46px;
+}
+
+/* taxonomy page */
+.archive #webmapp-layer-1 .container {
+    display: grid;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    align-items: center;
+    height: 100%;
+}
+
+.archive #webmapp-layer-1 .webmapp-featured-image-img .container span {
+    background-color: #f0f8ff00;
+    font-family: var(--font-family-primary-alternate);
+    color: var(--color-white);
+    font-weight: 900;
+    font-size: 46px;
+}
+
+.archive #webmapp-layer-2 .webmapp-featured-image-img .container span {
+    background-color: #f0f8ff00;
+    font-family: var(--font-family-primary-alternate);
+    color: var(--color-primary-title);
+    font-weight: 900;
+    font-size: 46px;
+}
+
+.archive #webmapp-layer-2 {
+    padding: 50px 100px 0;
+}
+
+.archive #main-content>.container {
+    padding: 0 50px 50px;
+}
+
+.archive #webmapp-layer-1 .webmapp-featured-image-img .container i {
+    display: none;
+}
+
+/* CSS footer */
+/* menu footer */
+.footer-menu-cyclando ul li:before {
+    display: none;
+}
+
+.footer-menu-cyclando ul li a {
+    font-family: var(--font-family-primary-alternate);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 30px;
+}
+
+.footer-copyright-address p {
+    font-family: var(--font-family-primary-alternate);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.footer-copyright-info p {
+    font-family: var(--font-family-primary-alternate);
+    font-size: 18px;
+}
+
+/* info footer*/
+
+
+/* Privacy page CSS */
+body #iubenda_policy .iub_container.iub_base_container {
+    margin-top: 0;
+}
+
+body #iubenda_policy .iub_content.legal_pp {
+    padding-top: 0;
+}
+
+body #iubenda_policy .iub_content.legal_pp h1 {
+    font-family: var(--font-family-primary-alternate);
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+body #iubenda_policy .iub_content.legal_pp h2 {
+    font-family: var(--font-family-primary-alternate);
+    font-size: 22px;
+}
+
+body #iubenda_policy .iub_content.legal_pp h3 {
+    font-family: var(--font-family-primary-alternate);
+    font-size: 15px;
+}
+
+body #iubenda_policy .iub_content.legal_pp p {
+    font-family: var(--font-family-primary);
+    font-size: 14px;
+}
+
+/* contact form button */
+#page-content .contact-page-button,
+#page-footer .contact-page-button {
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: none;
+    letter-spacing: 0em;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background: white;
+    border-color: var(--color-primary);
+    color: var(--color-primary) !important;
+}
+
+#page-content .contact-page-button:hover,
+#page-footer .contact-page-button:hover {
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: none;
+    letter-spacing: 0em;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white !important;
+}
+
+/* general contact form modal */
+#cy-general-contact {
+    display: none;
+}
+
+.generalContactForm:hover {
+    color: var(--color-primary);
+    cursor: pointer;
+    transition-property: background, box-shadow, border, color, opacity, transform;
+    transition-duration: 0.3s
+}
+
+.generalContactForm {
+    transition-property: background, box-shadow, border, color, opacity, transform;
+    transition-duration: 0.3s
+}
+
+/* cerca page search page */
+.cerca-result-container .facetwp-template {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 3%;
+}
+
+.facetwp-facet.facetwp-facet-search_route.facetwp-type-fselect {
+    color: #333;
+}
+
+#cy-search-element-container h3 {
+    display: none;
+}
+
+#cy-search-element-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+#cy-search-element-container .facetwp-facet {
+    margin-bottom: 0px;
+    line-height: 14px;
+}
+
+#cy-search-element-container .fs-label-wrap .fs-label {
+    padding: 20px 22px 20px 8px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#cy-search-element-container .facetwp-type-fselect .fs-wrap,
+#cy-search-element-container .facetwp-type-fselect .fs-dropdown {
+    width: 250px;
+}
+
+#cy-search-element-container #cy-search-lente {
+    width: 250px;
+    padding: 16px 15px;
+    background-color: var(--color-secondary);
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#cy-search-element-container #cy-search-lente i {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+#cy-search-element-container .fs-arrow {
+    display: none;
+}
+
+#cy-search-element-container .fs-label-wrap {
+    background-color: #fffc;
+}
+
+#cy-search-template-container {
+    display: none;
+}
+
+.highlight {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.arrow-down-container {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+
+.arrow-down-container a:hover i {
+    color: white;
+}
+
+.icon-arrow-down1 {
+    animation: MoveUpDown 2s infinite alternate;
+    position: absolute;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+@keyframes MoveUpDown {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+.wpcf7 input[type="checkbox"] {
+    margin-top: 6px;
+}
+
+.wpcf7 input[type="checkbox"]:focus {
+    box-shadow: 0 0 0 0px !important;
+}
+
+.grecaptcha-badge {
+    z-index: 1001;
+}

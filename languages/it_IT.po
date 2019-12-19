@@ -1,0 +1,190 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WEBMAPP - VERDENATURA\n"
+"POT-Creation-Date: 2019-02-21 22:44+0100\n"
+"PO-Revision-Date: 2019-02-21 22:45+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: style.css\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: archive-route.php:97 shortcodes/vn_route_tabs.php:82 single-route.php:162
+#: webmapp_anypost-vn_route_sb.php:32
+msgid "Duration"
+msgstr "Durata: "
+
+#: archive-route.php:97 shortcodes/vn_route_tabs.php:82 single-route.php:162
+#: webmapp_anypost-vn_route_sb.php:32
+msgid "days"
+msgstr "giorni"
+
+#: archive-route.php:97 shortcodes/vn_route_tabs.php:82 single-route.php:162
+#: webmapp_anypost-vn_route_sb.php:32
+msgid "nights"
+msgstr "notti"
+
+#: archive-route.php:112 shortcodes/vn_route_tabs.php:97 single-route.php:179
+msgid "Departures: "
+msgstr "Partenze: "
+
+#: archive-route.php:145
+msgid "Made by us"
+msgstr "Fatti da noi"
+
+#: archive-route.php:155 single-route.php:215
+msgid "Self guided"
+msgstr "Viaggio individuale"
+
+#: archive-route.php:165 single-route.php:225
+msgid "Guided"
+msgstr "Viaggio con guida"
+
+#: archive-route.php:182 single-route.php:240
+msgid "Level"
+msgstr "Livello"
+
+#: archive-route.php:195 single-route.php:265
+msgid "From"
+msgstr "Da"
+
+#: archive-route.php:209
+msgid "DETAILS"
+msgstr "DETTAGLI"
+
+#: functions.php:66
+msgid "Cerca:"
+msgstr ""
+
+#: functions.php:68
+msgid "Cerca"
+msgstr ""
+
+#: functions.php:95
+msgid "Subscribe to our newsletter"
+msgstr "Scarica Gratis l’Ebook"
+
+#: functions.php:101
+msgid ""
+"Subscribe to our newsletter to stay updated on new tours and all promotional "
+"offers. Verde Natura monthly newsletter also includes latest news from our "
+"blog, comments and tips."
+msgstr ""
+"Scarica GRATIS l'Ebook \"La Bicicletta, il vademecum di VERDE NATURA\". "
+"Iscriviti e Ricevi SUBITO il nostro Ebook in regalo, con tanti consigli "
+"pratici per le tue uscite in bicicletta! Riceverai inoltre la nostra "
+"NEWSLETTER con le ultime news dal blog e le nostre offerte."
+
+#: functions.php:105
+msgid "First name"
+msgstr "Nome"
+
+#: functions.php:106
+msgid "Last name"
+msgstr "Cognome"
+
+#: functions.php:110
+msgid "*I accept to receive promotionals e-mails as written in our"
+msgstr ""
+"*Accetto di ricevere la newsletter settimanale così come descritto nella "
+"nostra "
+
+#: functions.php:114
+msgid "Subscribe"
+msgstr "Iscriviti e ricevi l’ebook"
+
+#: functions.php:225
+msgid "Journey from"
+msgstr "Viaggio del"
+
+#: includes/social_icons-header.php:21
+msgid "Google"
+msgstr ""
+
+#: includes/social_icons-header.php:28
+msgid "Facebook"
+msgstr ""
+
+#: includes/social_icons-header.php:35
+msgid "Twitter"
+msgstr ""
+
+#: shortcodes/vn_route_tabs.php:17
+msgid "HIGHLIGHTS"
+msgstr "DESCRIZIONE"
+
+#: shortcodes/vn_route_tabs.php:20
+msgid "ITINERARY"
+msgstr "PROGRAMMA"
+
+#: shortcodes/vn_route_tabs.php:23
+msgid "TRIP INFO"
+msgstr "CARATTERISTICHE"
+
+#: shortcodes/vn_route_tabs.php:26
+msgid "DATES AND PRICES"
+msgstr "PARTENZE E QUOTE"
+
+#: shortcodes/vn_route_tabs.php:29
+msgid "HOW TO GET THERE"
+msgstr "COME ARRIVARE"
+
+#: single-route.php:84 single-route.php:279
+msgid "ASK FOR A QUOTE"
+msgstr "RICHIEDI PREVENTIVO"
+
+#: single-route.php:90
+msgid "Your experiences"
+msgstr "Racconti di viaggio"
+
+#: single-route.php:93
+msgid ""
+"Share your experience with us or read the stories of those who traveled with "
+"us.\n"
+"\n"
+msgstr ""
+"Condividi la tua esperienza o leggi quella di coloro che hanno già viaggiato "
+"con noi.\n"
+
+#: single-route.php:98
+msgid "SHARE YOUR EXPERIENCE"
+msgstr "RACCONTACI LA TUA ESPERIENZA"
+
+#: single-route.php:137
+msgid "Reference code: "
+msgstr "Codice viaggio: "
+
+#: single-route.php:318
+msgid "You might be interested in..."
+msgstr "Può interessarti…"
+
+#: webmapp_anypost-vnhome.php:75
+msgid "Prices from"
+msgstr "A partire da"
+
+#. Theme Name of the plugin/theme
+msgid "WEBMAPP - VERDENATURA"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Tema figlio per VERDENATURA"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Webmapp (Silvia Eufemi, MArco Baroncini)"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "webmapp.it"
+msgstr ""

@@ -1,0 +1,1024 @@
+/*
+Theme Name:     Cyclando
+Theme URI:
+Description:    Template single route post per Cyclando
+Author:         Webmapp (Pedram Katanchi)
+Author URI:     webmapp.it
+Template:       Impreza
+Version:        0.1.0
+Text Domain: wm-child-verdenatura
+*/
+@font-face {
+    font-family: 'cyclando';
+    src: url('fonts/cyclando.eot?ovpb4k');
+    src: url('fonts/cyclando.eot?ovpb4k#iefix') format('embedded-opentype'),
+        url('fonts/cyclando.ttf?ovpb4k') format('truetype'),
+        url('fonts/cyclando.woff?ovpb4k') format('woff'),
+        url('fonts/cyclando.svg?ovpb4k#cyclando') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+i.cy-icons {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'cyclando' !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-map-marker-alt1:before {
+    content: "\f28b";
+}
+
+.icon-user:before {
+    content: "\eeae";
+}
+
+.icon-users:before {
+    content: "\eec5";
+}
+
+.icon-calendar:before {
+    content: "\e9cf";
+}
+
+.icon-arrow-from-left:before {
+    content: "\e93b";
+}
+
+.icon-route1:before {
+    content: "\f36b";
+}
+
+.icon-tachometer-slow1:before {
+    content: "\f447";
+}
+
+.icon-plane-departure1:before {
+    content: "\f31e";
+}
+
+.icon-angle-down:before {
+    content: "\e917";
+}
+
+/* .fa-angle-down:before {
+    content: "\e917"!important;
+  } */
+.icon-search1:before {
+    content: "\f391";
+}
+
+.icon-arrow-down1:before {
+    content: "\f042";
+}
+
+/* main menu items */
+body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
+    font-weight: bold;
+}
+
+.w-nav-title {
+    vertical-align: text-top;
+}
+
+@media (min-width: 1100px) {
+    .logo-main-menu {
+        height: 65px;
+    }
+}
+
+@media only screen and (min-width: 1080px) and (max-width: 1250px) {
+    .logo-main-menu {
+        height: 60px !important;
+    }
+}
+
+@media (min-width: 900px) {
+    body .l-subheader.width_full {
+        padding-left: 3.5rem;
+        padding-right: 3.5rem;
+    }
+}
+
+.txt-font-light {
+    font-weight: 400;
+}
+
+/* Breadcrumb yoast menu */
+.breadcrumb-yoast a,
+.breadcrumb-yoast span {
+    font-size: 12px;
+}
+
+.breadcrumb-yoast .breadcrumb_last {
+    color: var(--color-primary);
+}
+
+/* menu layer 1 featured image*/
+i {
+    padding-right: 5px;
+    vertical-align: middle;
+}
+
+.header-txt-layer-1 i {
+    font-size: 25.5px;
+}
+
+.header-txt-layer-1 i:not(:first-child) {
+    padding-left: 15px;
+}
+
+.webmapp-featured-image {
+    z-index: 100;
+}
+
+.webmapp-featured-image-img {
+    height: 400px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.archive .webmapp-featured-image-img {
+    height: 600px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.archive .webmapp-featured-image-img h2 {
+    padding-top: 80px !important;
+}
+
+.webmapp-featured-image-img .container {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-items: center;
+    height: 100%;
+}
+
+.webmapp-featured-image-img .container h1 {
+    color: white;
+    align-self: end;
+    font-weight: 900;
+    text-align: center;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.71);
+}
+
+/* add css webmapp-layer-container ardalan */
+.webmapp-container {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1000;
+}
+
+.webmapp-container.container-sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* animation */
+    -webkit-animation: down 1s 1;
+    -moz-animation: down 1s 1;
+    -o-animation: down 1s 1;
+    animation: down 1s 1;
+    /* //box-shadow */
+    -webkit-box-shadow: 0 1px 6px 0px #a6a7a6;
+    -moz-box-shadow: 0 1px 6px 0px #a6a7a6;
+    box-shadow: 0 1px 6px 0px #a6a7a6;
+    /* //transition */
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+
+}
+
+.webmapp-featured-image-img {
+    /* height: 400px; */
+    /* //transition */
+    -webkit-transition: height 0.5s;
+    -moz-transition: height 0.5s;
+    -o-transition: height 0.5s;
+    transition: height 0.5s;
+}
+
+.webmapp-container.container-sticky .webmapp-featured-image-img {
+    height: 100px;
+    /* //transition */
+    -webkit-transition: height 0.5s;
+    -moz-transition: height 0.5s;
+    -o-transition: height 0.5s;
+    transition: height 0.5s;
+}
+
+/* Begin animation */
+@-o-keyframes down {
+    from {
+        top: -160px;
+    }
+
+    to {
+        top: 0;
+    }
+}
+
+@-moz-keyframes down {
+    from {
+        top: -160px;
+    }
+
+    to {
+        top: 0;
+    }
+}
+
+@-webkit-keyframes down {
+    from {
+        top: -160px;
+    }
+
+    to {
+        top: 0;
+    }
+}
+
+@keyframes down {
+    from {
+        top: -160px;
+    }
+
+    to {
+        top: 0;
+    }
+}
+
+/* end animation */
+/* END css webmapp-layer-container ardalan */
+
+.webmapp-container.container-sticky .webmapp-featured-image-img .container h1 {
+    font-size: 2em;
+    font-family: var(--font-family-primary-alternate);
+    /* transition: all 0.3s ease; */
+}
+
+.webmapp-featured-image-img .container .header-txt-layer-1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.webmapp-featured-image-img .container .route-duration span {
+    display: inline-block;
+    color: white;
+    background-color: var(--color-primary);
+    padding: 15px 20px;
+}
+
+.webmapp-featured-image-img .container .tax-targets {
+    justify-self: left;
+}
+
+.webmapp-featured-image-img .container .tax-targets span {
+    display: inline-block;
+    color: white;
+    background-color: var(--color-primary);
+    padding: 15px 20px;
+}
+
+/* .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+} */
+.cy-modal-header.price-header-sticky {
+    position: sticky;
+    top: 0;
+    box-shadow: -2px 2px 7px -5px rgba(0, 0, 0, 0.65);
+    padding: 0 0 !important;
+    transition: 500ms all ease;
+    border-top-right-radius: 0px !important;
+}
+
+.webmapp-container.container-sticky .webmapp-featured-image-img .tax-targets {
+    display: none;
+}
+
+/* .webmapp-featured-image.sticky .webmapp-featured-image-img {
+    height: 100px;
+    transition: height 0.3s ease;
+} */
+.webmapp-container.container-sticky .webmapp-featured-image-img .container {
+    display: grid;
+    grid-template-rows: none;
+    grid-template-columns: 3fr 1fr;
+    justify-items: center;
+    height: 100%;
+}
+
+.webmapp-container.container-sticky .container .route-duration {
+    align-self: center;
+}
+
+/* menu layer 2 meta info */
+.meta-bar i {
+    padding-right: 10px;
+    float: left;
+}
+
+.meta-bar>div {
+    float: left;
+}
+
+.meta-bar-txt-light {
+    margin: 0;
+}
+
+.meta-bar-txt-bold {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.webmapp-featured-meta-info i {
+    font-size: 28px;
+    vertical-align: super;
+}
+
+.webmapp-featured-meta-info .wm-icon-fu_bike {
+    font-size: 46px;
+    vertical-align: super;
+}
+
+.webmapp-featured-meta-info {
+    height: 100px;
+    z-index: 100;
+}
+
+.webmapp-featured-meta-info .container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    color: white;
+    justify-items: center;
+    align-items: center;
+    height: 100%;
+}
+
+.webmapp-featured-meta-info .container .prezzo-container .prezzo .meta-bar-txt-light {
+    font-size: 16px;
+    height: 30px;
+}
+
+.webmapp-featured-meta-info .container .prezzo-container .prezzo .cifra {
+    font-size: 38px;
+    height: 30px;
+}
+
+.webmapp-featured-meta-info .container .prezzo-container .prezzo-text {
+    float: left;
+    font-size: 18px;
+    padding-bottom: 10px;
+}
+
+.webmapp-featured-meta-info .container .prezzo-container>span {
+    float: left;
+    font-size: 18px;
+    padding-bottom: 10px;
+}
+
+.webmapp-featured-meta {
+    z-index: 100;
+}
+
+.meta-bar.show-prices .fa-angle-down:before {
+    font-size: 25px;
+    font-weight: 400;
+    background-color: var(--color-secondary);
+    padding: 2px 7px;
+    border-radius: 26px;
+    border: 2px solid #fff;
+}
+
+.meta-bar.show-prices .fa-angle-down {
+    margin-right: 0;
+    padding-right: 0;
+}
+
+.meta-bar.show-prices a {
+    display: flex;
+    padding: 0;
+}
+
+.meta-bar.show-prices .w-btn-label {
+    background-color: var(--color-secondary);
+    padding: 5px 7px;
+    border-radius: 26px;
+    border: 2px solid #fff;
+    line-height: 32px;
+}
+
+.meta-bar.show-prices:hover .w-btn-label,
+.meta-bar.show-prices:hover i::before {
+    background-color: var(--color-secondary-hover);
+}
+
+/* .sticky2 {
+    position: fixed;
+    top: 100px;
+    width: 100%;
+    transition: all 0.5s ease;
+} */
+.wm-book {
+    background: var(--color-secondary);
+    position: relative;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+#cy-prices-modal .wm-book {
+    padding: 35px;
+}
+
+.wm-book:hover {
+    cursor: pointer;
+    background: var(--color-secondary-hover);
+}
+
+.wm-book:hover:before {
+    cursor: pointer;
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 50%;
+    right: 100%;
+    top: 0;
+    background: linear-gradient(to left bottom, var(--color-secondary-hover) 50%, transparent 50%);
+}
+
+.wm-book:hover:after {
+    cursor: pointer;
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 50%;
+    right: 100%;
+    bottom: 0;
+    background: linear-gradient(to left top, var(--color-secondary-hover) 50%, transparent 50%);
+}
+
+.wm-book:after,
+.wm-book:before {
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 50%;
+    right: 100%;
+}
+
+.wm-book:after {
+    bottom: 0;
+    background: linear-gradient(to left top, #F18E08 50%, transparent 50%);
+}
+
+.wm-book:before {
+    top: 0;
+    background: linear-gradient(to left bottom, #F18E08 50%, transparent 50%);
+}
+
+/* fixed ancor section */
+#fixed-ancor-section {
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+}
+
+#fixed-ancor-section .l-section-h {
+    padding: 0;
+}
+
+#fixed-ancor-section .fixed-ancor-col-9 {
+    background-color: #fff;
+    padding: 1.5rem;
+}
+
+.webmapp-container.container-sticky #fixed-ancor-section .fixed-ancor-col-9 {
+    -webkit-box-shadow: -2px 2px 7px -5px rgba(0, 0, 0, 0.65);
+    -moz-box-shadow: -2px 2px 7px -5px rgba(0, 0, 0, 0.65);
+    box-shadow: -2px 2px 7px -5px rgba(0, 0, 0, 0.65);
+}
+
+#fixed-ancor-section .l-sidebar {
+    background-color: var(--color-primary-background);
+    padding: 1.5rem 0 0 0;
+}
+
+#fixed-ancor-section .vc_column-inner {
+    flex-grow: 0;
+}
+
+#fixed-ancor-section ul {
+    list-style: none;
+    margin: 0;
+}
+
+#fixed-ancor-section ul li {
+    padding: 0 10px;
+}
+
+#fixed-ancor-section ul li {
+    padding: 0;
+    width: 25%;
+    margin: 0 auto;
+    float: left;
+}
+
+#fixed-ancor-section ul li a:hover {
+    transition: all 0.2s ease;
+    padding-bottom: 3px;
+    box-shadow: inset 0 0px 0 white, inset 0 -2px 0 var(--color-primary);
+}
+
+/* #fixed-ancor-section ul li a:focus{
+    transition: all 0.2s ease;
+    padding-bottom: 3px;
+    box-shadow: inset 0 0px 0 white, inset 0 -2px 0 var(--color-primary);
+} */
+
+
+/* main_content */
+.with_padding {
+    padding-top: 188px;
+}
+
+body .l-header.pos_fixed~.l-main>.l-section:first-of-type {
+    padding-top: 0;
+}
+
+.route-template-default .intro-section .l-sidebar .vc_column-inner {
+    /* background-color: var(--color-primary-background); */
+    padding: 0;
+    position: relative;
+}
+
+.sidebar-departures {
+    background-color: var(--color-primary-background);
+    padding: 57px 15px 30px;
+    position: absolute;
+    width: 100%;
+    top: -64px;
+}
+
+#introduction .l-section-h {
+    padding: 5rem 0 4rem 0;
+}
+
+/* side bar singe route departures */
+.grid-container-period-aside {
+    display: grid;
+    grid-template-columns: 3fr 2fr 2fr;
+    padding-bottom: 40px;
+    align-items: center;
+}
+
+.grid-container-period-aside .departure_start {
+    display: flex;
+    align-items: center;
+}
+
+.grid-container-period-aside .departure_start p {
+    padding-bottom: 0;
+}
+
+.grid-container-period-aside .departure_stop {
+    display: flex;
+    align-items: center;
+}
+
+.grid-container-period-aside .departure_stop p {
+    padding-bottom: 0;
+}
+
+.grid-container-single {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.departure-preventivo-aside .tab-section {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--color-primary-title);
+    font-family: var(--font-family-primary-alternate);
+    padding-bottom: 20px;
+}
+
+.departure-preventivo-aside p {
+    margin: 0;
+    color: var(--color-primary-paragraph);
+    padding-bottom: 20px;
+}
+
+.grid-container-period-aside p {
+    color: var(--color-primary-paragraph);
+    font-size: 16px;
+    float: left;
+}
+
+.grid-container-period-aside i {
+    color: var(--color-primary-paragraph);
+    float: left;
+    vertical-align: middle;
+}
+
+.grid-container-period-aside ul {
+    color: var(--color-primary-paragraph);
+    margin-left: 0;
+}
+
+.height_600 .royalSlider,
+.height_600 .rsOverflow {
+    height: 600px !important;
+}
+
+#program .l-section-h.i-cf {
+    padding-right: 10px;
+}
+
+#program .vc_column-inner {
+    padding: 0;
+}
+
+#caratteristiche .vc_column-inner {
+    padding: 0;
+}
+
+#touroperator .vc_column-inner {
+    padding: 0;
+}
+
+.single-route section h2 {
+    color: var(--color-primary-title);
+    font-size: 32;
+    font-weight: bold;
+    font-family: var(--font-family-primary-alternate);
+    padding-top: 10px;
+}
+
+.route-excerpt {
+    color: var(--color-primary-paragraph);
+    font-family: var(--font-family-primary-alternate);
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: 0.17px;
+    padding-bottom: 30px;
+}
+
+#cy-prices-modal .tab-section {
+    font-size: 22px;
+    color: var(--color-primary);
+    font-weight: bold;
+    letter-spacing: 0.22px;
+    font-family: var(--font-family-primary-alternate);
+}
+
+#cy-prices-modal .departures-quotes .tab-section {
+    padding-left: 13px;
+}
+
+#cy-prices-modal .durata-preventivo {
+    margin-bottom: 25px;
+    padding-left: 30px;
+}
+
+#cy-prices-modal .durata-preventivo p {
+    float: left;
+    padding-right: 10px;
+}
+
+#cy-prices-modal .durata-preventivo span {
+    color: var(--color-primary-paragraph);
+    font-size: 15px;
+    letter-spacing: 0.15px;
+    font-weight: bold;
+}
+
+#cy-prices-modal .quotes-preventivo,
+#cy-prices-modal .extra-quotes {
+    margin-bottom: 25px
+}
+
+#cy-prices-modal .extra-quotes .tab-section {
+    margin-bottom: 10px;
+    padding-left: 30px;
+}
+
+#cy-prices-modal .tab-section-quotes {
+    color: var(--color-primary-paragraph);
+    font-size: 18px;
+    font-weight: 600;
+    font-family: var(--font-family-primary-alternate);
+}
+
+#cy-prices-modal tbody tr {
+    color: var(--color-primary-paragraph);
+    font-size: 15px;
+    font-family: var(--font-family-primary);
+}
+
+#cy-prices-modal tbody th {
+    color: var(--color-primary-paragraph);
+    font-size: 15px;
+    font-weight: 600;
+    font-family: var(--font-family-primary);
+}
+
+#cy-prices-modal tbody tr:nth-child(odd) {
+    background-color: var(--color-primary-background);
+}
+
+.grid-container-period-seasonal {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.grid-container-period-seasonal .departure_start_stop {
+    border-right: 2px solid var(--color-primary-paragraph);
+    margin: 2px 20px 2px 0;
+}
+
+.grid-container-period-seasonal .departure_start_stop:nth-child(3n) {
+    border-right: 0px solid var(--color-primary-paragraph);
+}
+
+.grid-container-period-seasonal .departure_start_stop:last-child {
+    border-right: 0px solid var(--color-primary-paragraph);
+}
+
+.grid-container-period-seasonal .departure_start_stop p {
+    margin: 0;
+    float: left;
+    letter-spacing: 0.17px;
+    font-size: 17px;
+    font-family: var(--font-family-primary);
+    color: var(--color-primary-paragraph);
+    line-height: 20px;
+    height: 20px;
+}
+
+.grid-container-period-seasonal .departure_start_stop p:first-child {
+    padding-right: 5px;
+}
+
+body #tab-stagioni {
+    border: 0px;
+}
+
+body #tab-stagioni .ui-widget-header {
+    border-bottom: 1px solid var(--color-primary);
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    background: none;
+    padding: 0;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+body #tab-stagioni a {
+    font-family: var(--font-family-primary-alternate);
+    color: var(--color-link-inactive);
+    font-weight: bold;
+}
+
+body #tab-stagioni li {
+    border-color: white;
+    background: none;
+}
+
+body #tab-stagioni .container-stagione {
+    padding: 1rem 0;
+}
+
+body #tab-stagioni li.ui-tabs-active {
+    border-top: 1px solid var(--color-primary);
+    border-left: 1px solid var(--color-primary);
+    border-right: 1px solid var(--color-primary);
+    border-bottom: 1px solid white;
+}
+
+body #tab-stagioni li.ui-tabs-active a {
+    color: var(--color-primary);
+}
+
+body #tab-stagioni a:hover {
+    color: var(--color-primary);
+}
+
+@media screen and (max-width: 1460px) {
+    .meta-bar.wm-where .meta-bar-txt-light {
+        font-size: 15px;
+    }
+}
+
+/* modal prices css */
+.cy-prices-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#cy-prices-modal .cy-close {
+    text-align: right;
+    font-size: 30px;
+    color: #fff;
+    background-color: var(--color-primary-paragraph);
+    height: 50px;
+    width: 100%;
+    margin-right: 20px;
+    line-height: 50px;
+    padding-right: 20px;
+    border-bottom-right-radius: 25px;
+    border-top-right-radius: 25px;
+    font-size: 45px;
+    font-family: var(--font-family-primary-alternate);
+}
+
+#cy-prices-modal .meta-bar.wm-activity {
+    display: flex;
+    align-items: center;
+}
+
+#cy-prices-modal .meta-bar.wm-activity .wm-icon-touring-bike {
+    text-align: right;
+    font-size: 30px;
+    color: var(--color-primary);
+    height: 50px;
+    width: 100%;
+    margin-right: 20px;
+    line-height: 50px;
+    padding-right: 20px;
+    font-size: 40px;
+}
+
+#cy-prices-modal .close-button-container {
+    display: flex;
+    align-items: center;
+}
+
+.cy-route-contact {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.cy-route-contact h2 {
+    color: var(--color-primary-paragraph);
+}
+
+.cy-modal-content {
+    margin: 100px auto;
+    width: 65%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+}
+
+.cy-modal-header h2,
+.cy-modal-footer h3 {
+    margin: 0;
+}
+
+.cy-modal-header h2 {
+    height: 29px;
+    width: 150px;
+    color: var(--color-primary-title) !important;
+    font-family: var(--font-family-primary);
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 50px;
+    display: inline;
+}
+
+#cy-prices-modal .cy-modal-header h2 {
+    height: 29px;
+    width: 150px;
+    color: var(--color-primary-title);
+    font-family: var(--font-family-primary);
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 50px;
+}
+
+.cy-modal-header {
+    background: white;
+    padding: 10px 28px;
+    color: #fff;
+    border-top-right-radius: 10px;
+    border: 1px solid var(--color-primary-paragraph);
+    border-bottom: 0px;
+}
+
+#cy-prices-modal .cy-modal-header {
+    background: white;
+    padding: 10px 0px;
+    color: #fff;
+    border-top-right-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 5fr 2fr 1fr;
+    border: 1px solid var(--color-primary-paragraph);
+    border-bottom: 0px;
+    transition: 500ms all ease;
+    z-index: 2;
+}
+
+.cy-modal-body {
+    padding: 2% 3% 4% 3% !important;
+    background: #fff;
+    border: 1px solid var(--color-primary-paragraph);
+    border-top: 0px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.cy-modal-footer {
+    background: var(--modal-color);
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.cy-close {
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+    color: #fff;
+}
+
+.cy-close-contact {
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+    color: black;
+}
+
+.cy-close-contact:hover {
+    cursor: pointer;
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+    color: black;
+}
+
+.cy-close:hover,
+.cy-close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes modalopen {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.single .l-section-h.i-cf p {
+    color: var(--color-text-p);
+}
+
+.single .l-section-h.i-cf strong {
+    color: var(--color-text-strong);
+}
