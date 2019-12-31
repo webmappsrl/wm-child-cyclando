@@ -603,15 +603,16 @@ i {
 }
 
 .webmapp-featured-meta-info .container .prezzo-container .prezzo .cifra {
-    font-size: 40px;
+    text-align: center;
+    font-size: 30px;
     height: 40px;
-    line-height: 40px;
+    line-height: 30px;
 }
 
 .webmapp-featured-meta-info .container .show-price-btn i{
     transform: rotate(-135deg);
     line-height: 50px;
-    padding: 0px 6px 12px 15px;
+    padding: 0px 6px 12px 6px;
     margin-right: 0;
 }
 
@@ -638,8 +639,11 @@ i {
 .first-departure .first-departure-date spam4{
     font-weight: 100;
 }
+.first-departure .first-departure-date span{
+    font-weight: 100;
+}
 .first-departure {
-    padding: 0 10px;
+    padding: 0 20px 0 0;
 }
 .meta-bar.show-prices .fa-angle-down:before {
     font-size: 19px;
@@ -664,7 +668,7 @@ i {
     border: 2px solid #fff;
 }
 .popup-show-prices .prezzo{
-    padding: 0 10px;
+    padding: 0 10px 0 20px;
     width: 190px;
 }
 

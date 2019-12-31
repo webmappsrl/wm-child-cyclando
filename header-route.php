@@ -53,7 +53,7 @@
 
 		return $dateTimestamp1 < $dateTimestamp2 ? -1 : 1;
 	});
-
+	$first_departure_date = explode('.',date_i18n('d.m.Y', strtotime($start_array[0])));
 	?>
 	<!DOCTYPE HTML>
 	<html class="<?php echo $us_layout->html_classes() ?>" <?php language_attributes('html') ?>>
@@ -227,7 +227,7 @@
 											</div>
 											<div class="first-departure">
 												<span class='meta-bar-txt-light'><?php echo "Parti il"; ?></span>
-												<div class="first-departure-date"><?php echo date_i18n('d.m.<\span>Y</span>', strtotime($start_array[0])); ?></div>
+												<div class="first-departure-date"><?php echo $first_departure_date[0].".".$first_departure_date[1].".<span>".$first_departure_date[2]."</span>" ?></div>
 											</div>
 											<!--.prezzo  end-->
 											<div class="show-price-btn"><i class="fas fa-angle-down"></i></div>
