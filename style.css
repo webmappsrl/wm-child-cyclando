@@ -9,6 +9,7 @@ Version:        0.1.0
 Text Domain:    wm-child-verdenatura
 */
 @import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,500,600,700&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates|Montserrat:400,500,600,700,800&display=swap'); */
 
 :root {
     --color-primary: #9AC250;
@@ -40,10 +41,6 @@ ul.w-nav-list.level_1.hover_simple li:nth-child(3) a {
     padding-right: 0 !important;
 }
 
-.l-subheader-cell.at_center {
-    justify-content: center;
-    display: none;
-}
 
 /* CSS homepage Cyclando */
 
@@ -92,6 +89,10 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     body .w-person-name {
         font-size: 22px;
     }
+    .l-subheader-cell.at_center {
+        justify-content: center;
+        display: none;
+    }
 }
 
 @media screen and (min-width: 991px) and (max-width: 1136px) {
@@ -101,6 +102,10 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
 
     body .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info {
         min-height: 85px;
+    }
+    .l-subheader-cell.at_center {
+        justify-content: center;
+        display: none;
     }
 }
 
@@ -163,6 +168,7 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     margin: 0;
     font-size: 14px;
     line-height: 19px;
+    min-height: 19px;
 }
 
 .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info .meta_info_data {
@@ -248,12 +254,8 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     font-size: 46px;
 }
 
-.archive #webmapp-layer-2 {
-    padding: 50px 100px 0;
-}
-
 .archive #main-content>.container {
-    padding: 0 50px 50px;
+    padding: 0 20px 50px;
 }
 
 .archive #webmapp-layer-1 .webmapp-featured-image-img .container i {
@@ -470,4 +472,8 @@ body #iubenda_policy .iub_content.legal_pp p {
 
 .grecaptcha-badge {
     z-index: 1001;
+}
+
+.col-sm-12.col-md-4.webmapp_shortcode_any_post.post_type_route:not(:last-child){
+    margin-bottom: 30px;
 }

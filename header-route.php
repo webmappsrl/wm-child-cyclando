@@ -7,7 +7,7 @@
 	$us_layout = US_Layout::instance();
 
 	// variable and queries
-	$days = get_field('vn_durata');
+	$days = (int)get_field('vn_durata');
 	$distance = get_field('distance');
 	$difficulty = get_field('vn_diff');
 	$difficulty = str_replace('.', ',', $difficulty);
@@ -19,6 +19,7 @@
 	$scheda_tecnica = get_field('vn_scheda_tecnica');
 	$program = get_field('vn_prog');
 	$touroperator_id_array = get_field('tour_operator');
+	$featured_map = '/wp-content/themes/wm-child-cyclando/images/map-logo-osm.jpg';
 	// get terms targets
 	$tax_targets = get_the_terms($post_id, $target);
 	$tax_places_to_go = get_the_terms($post_id, $places_to_go);
@@ -28,6 +29,30 @@
 	$term_activity = 'term_' . $get_term_activity->term_id;
 	$iconimage_activity = get_field('wm_taxonomy_icon', $term_activity);
 
+	//get the first departure date
+	$start_array = array();
+	if (have_rows('departures_periods')) {
+		while (have_rows('departures_periods')) : the_row();
+			$start = get_sub_field('start');
+			$start = str_replace("/", "-", $start);
+			array_push($start_array, $start);
+		endwhile;
+	}
+	if (have_rows('departure_dates')) {
+		$dates = get_field('departure_dates');
+		foreach ($dates as $date) {
+			foreach ($date as $single_date) {
+				$start = str_replace("/", "-", $single_date);
+				array_push($start_array, $start);
+			}
+		}
+	}
+	usort($start_array, function ($a, $b) {
+		$dateTimestamp1 = strtotime($a);
+		$dateTimestamp2 = strtotime($b);
+
+		return $dateTimestamp1 < $dateTimestamp2 ? -1 : 1;
+	});
 
 	?>
 	<!DOCTYPE HTML>
@@ -124,7 +149,7 @@
 				?>
 
 				<div id="webmapp-layer-container" class="webmapp-container">
-					<div id='webmapp-layer-1' class="webmapp-featured-image">
+					<div id='webmapp-layer-1-title' class="webmapp-featured-image">
 						<div class="webmapp-featured-image-img" style="background-image: url('<?php echo $featured_image; ?>')">
 							<div class="container">
 								<?php
@@ -143,13 +168,20 @@
 									</div>
 								<?php } ?>
 								<h1 class=""><?php the_title() ?></h1>
+							</div>
+						</div>
+					</div>
+					<div id='webmapp-layer-1-map' class="webmapp-map-container">
+						<div class="webmapp-featured-map" style="background-image: url('<?php echo $featured_map; ?>')">
+							<div class="container">
 								<?php
 								if ($days) {
 
 									?>
 									<div class="route-duration">
 										<?php
-										echo "<span class='header-txt-layer-1 dur-txt'><i class='cy-icons icon-calendar'></i>" .  " $days " . __('days', 'wm-child-cyclando') . " / $nights " . __('nights', 'wm-child-cyclando') . "</span>";
+										echo "<span class='header-txt-layer-1 expand-map'><i class='cy-icons icon-expand-alt1'></i></span>";
+										echo "<span class='header-txt-layer-1 dur-txt'>" .  " $days " . __('days', 'wm-child-cyclando') . " / $nights " . __('nights', 'wm-child-cyclando') . " " . $distance . "<span style='font-weight:100;'> km</span></span>";
 										?>
 									</div>
 								<?php } ?>
@@ -158,18 +190,16 @@
 					</div>
 
 					<div id='webmapp-layer-2' class="webmapp-featured-meta">
-						<div class="webmapp-featured-meta-info" style="background-image: url('/cyclandolocal/wp-content/themes/wm-child-cyclando/images/background_menu_route_verde.png')">
+						<div class="webmapp-featured-meta-info" style="background-image: url('/wp-content/themes/wm-child-cyclando/images/background_menu_route_verde.png')">
 							<div class="container">
-								<!-- <div class="meta-bar price-from"> -->
-								<div class="prezzo-container">
-									<!-- prezzo start-->
-									<!-- <span class=""><?php
-														?></span> -->
-									<div class="prezzo">
-										<p class='meta-bar-txt-light'><?php echo __('Prices from', 'wm-child-verdenatura'); ?></p>
-										<p class="cifra <?php if ($in_promotion) {
-															echo 'old-price';
-														} ?>"><?php
+								<div class="meta-bar show-prices">
+									<div id="popup-show-prices" class="popup-show-prices">
+											<!-- <div class="meta-bar price-from"> -->
+											<div class="prezzo-container">
+												<!-- prezzo start-->
+												<div class="prezzo">
+													<span class='meta-bar-txt-light'><?php echo __('From', 'wm-child-verdenatura'); ?></span>
+													<p class="cifra <?php if ($in_promotion) { echo 'old-price'; } ?>"><?php
 																	$vn_prezzo = get_field('wm_route_price');
 																	$lowest_price = explode('€', $vn_prezzo);
 																	if ($lowest_price) {
@@ -178,32 +208,29 @@
 																		echo $vn_prezzo;
 																	}
 																	?>
-											€ </span>
-											<?php if ($in_promotion) : ?>
-												<span class="new-price">
-													<?php
-													while (have_rows('model_promotion')) : the_row();
-														$discount = get_sub_field('wm_route_quote_model_promotion_discount');
-														if ($lowest_price) {
-															echo $lowest_price[0] - $discount;
-														} else {
-															echo $vn_prezzo - $discount;
-														}
-													endwhile;
-													?>
-													€ </p>
-										<?php endif; ?>
-										<?php echo '<br>'; ?>
-									</div>
-								</div>
-								<!--.prezzo  end-->
-								<!-- </div> -->
-								<!-- <div class="meta-bar show-prices"><?php
-																		?></div> -->
-
-								<div class="meta-bar show-prices">
-									<div id="popup-show-prices" class="popup-show-prices">
-										<div class="w-btn-wrapper"><span class=""><i class="fas fa-angle-down"></i><span class="w-btn-label">vedi i prezzi</span></span></div>
+														€ </span>
+														<?php if ($in_promotion) : ?>
+															<span class="new-price">
+																<?php
+																while (have_rows('model_promotion')) : the_row();
+																	$discount = get_sub_field('wm_route_quote_model_promotion_discount');
+																	if ($lowest_price) {
+																		echo $lowest_price[0] - $discount;
+																	} else {
+																		echo $vn_prezzo - $discount;
+																	}
+																endwhile;
+																?>
+																€ </p>
+													<?php endif; ?>
+												</div>
+											</div>
+											<div class="first-departure">
+												<span class='meta-bar-txt-light'><?php echo "Parti il"; ?></span>
+												<div class="first-departure-date"><?php echo date_i18n('d.m.<\span>Y</span>', strtotime($start_array[0])); ?></div>
+											</div>
+											<!--.prezzo  end-->
+											<div class="show-price-btn"><i class="fas fa-angle-down"></i></div>
 									</div>
 								</div>
 
@@ -220,29 +247,18 @@
 										<p class='meta-bar-txt-bold'>
 											<?php
 											$places_count = 1;
+											$tax_places_to_go_names = array();
 											foreach ($tax_places_to_go as $tax_place_to_go) {
-												if ($places_count == 1) {
-													echo $tax_places_to_go[0]->name;
-												} elseif ($places_count == 2) {
-													echo "<span class='show-more-places'> ...</span>";
-												}
+												array_push($tax_places_to_go_names, $tax_place_to_go->name );
 												$places_count++;
 											}
-											?>
-										</p>
-									</div>
-								</div>
-								<div class="meta-bar wm-distance">
-									<i class="cy-icons icon-route1"></i>
-									<div class="meta-bar-container">
-										<p class='meta-bar-txt-light'>
-											<?php
-											echo __('Distance', 'wm-child-verdenatura')
-											?>
-										</p>
-										<p class='meta-bar-txt-bold'>
-											<?php
-											echo $distance . "<span class='txt-font-light'> km</span>";
+											echo $tax_places_to_go[0]->name;
+											if ($places_count > 1) {
+												echo "<a class='show-more-places tooltips' href='#'> ... <span>";
+												foreach ($tax_places_to_go_names as $name) { echo $name.'<br>'; }
+												// foreach (array_slice($tax_places_to_go_names,1) as $name) { echo $name; }
+												echo "</span></a>";
+											}
 											?>
 										</p>
 									</div>
@@ -273,13 +289,17 @@
 										<p class='meta-bar-txt-bold'>
 											<?php
 											$places_count = 1;
-											foreach ($tax_activities as $tax_place_to_goo) {
-												if ($places_count == 1) {
-													echo $tax_activities[0]->name;
-												} elseif ($places_count == 2) {
-													echo "<span class='show-more-places'> ...</span>";
-												}
+											$tax_activities_names = array();
+											foreach ($tax_activities as $tax_activity) {
+												array_push($tax_activities_names, $tax_activity->name );
 												$places_count++;
+											}
+											echo $tax_activities[0]->name;
+											if ($places_count > 1) {
+												echo "<a class='show-more-places tooltips' href='#'> ... <span>";
+												foreach ($tax_activities_names as $name) { echo $name.'<br>'; }
+												// foreach (array_slice($tax_places_to_go_names,1) as $name) { echo $name; }
+												echo "</span></a>";
 											}
 											?>
 										</p>
@@ -290,27 +310,6 @@
 								</div>
 							</div>
 						</div>
-						<div id="fixed-ancor-section" class="webmapp-fixed-ancor">
-							<!--- first section -->
-							<div class="l-section-h">
-								<div class="g-cols type_default valign_top">
-									<div class="vc_col-sm-9 vc_column_container l-content fixed-ancor-col-9">
-										<div class="vc_column-inner">
-											<div class="wpb_wrapper">
-												<ul class="fixed-ancor">
-													<li><a class="fixed-ancor-menu" href="#introduction">Introduzione</a></li>
-													<?php if ($program) : ?><li><a class="fixed-ancor-menu" href="#program">Programma</a></li><?php endif; ?>
-													<?php if ($scheda_tecnica) : ?><li><a class="fixed-ancor-menu" href="#caratteristiche">Caratteristiche</a></li><?php endif; ?>
-													<?php if ($touroperator_id_array) : ?><li><a class="fixed-ancor-menu" href="#touroperator">Fatto da</a></li><?php endif; ?>
-													<!-- <li><a class="fixed-ancor-menu" href="#organizzazione">Organizzazione e costi</a></li> -->
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!--- END fixed ancor section -->
 
 						<!-- HTML modal for prices -->
 						<div id="cy-prices-modal" class="cy-prices-modal">
@@ -327,8 +326,8 @@
 									<?php echo do_shortcode('[route_table_price]'); ?>
 								</div>
 								<!-- <div class="cy-modal-footer">
-												<h3>Modal Footer</h3>
-											</div> -->
+															<h3>Modal Footer</h3>
+														</div> -->
 							</div>
 						</div>
 						<!-- END HTML modal for prices -->
@@ -344,7 +343,7 @@
 
 						// Get contact elements
 						const contactModal = document.querySelector('#cy-route-contact');
-						const contactModalBtn = document.querySelector('#wm-book');
+						const contactModalBtn = document.querySelectorAll('#wm-book');
 						const closeContactBtn = document.querySelector('.cy-close-contact');
 
 						// Get button element inside prices modal
@@ -357,7 +356,9 @@
 						// fixedAncor.addEventListener('click', scrollOffset);
 
 						// Events contactModal
-						contactModalBtn.addEventListener('click', openContactModal);
+						contactModalBtn.forEach((button) => {
+							button.addEventListener('click', openContactModal);
+						});
 						closeContactBtn.addEventListener('click', closeContactModal);
 						contactInsideModal.addEventListener('click', closeModalOpenContact);
 

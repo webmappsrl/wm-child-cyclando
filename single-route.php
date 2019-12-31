@@ -85,7 +85,6 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 								<section class="l-section">
 									<div class="l-section-h i-cf">
 										<?php
-										echo "<h2>Un viaggio per ...</h2>";
 										echo "<p class='route-excerpt'>" . get_the_excerpt() . "</p>";
 										echo get_the_content();
 										?>
@@ -97,118 +96,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 					<div class="vc_col-sm-3 vc_column_container l-sidebar">
 						<div class="vc_column-inner">
 							<div class="wpb_wrapper sidebar-departures">
-								<div class="departure-preventivo-aside">
-									<!------------ Departure / Partenze -->
-									<span class='durata-txt'>
-										<p class="tab-section">
-											<?php
-											if (have_rows('departures_periods')) {
-												echo __('Dates:', 'wm-child-verdenatura');
-											} ?>
-										</p>
-									</span>
-
-									<?php
-									if (have_rows('departures_periods')) : ?>
-										<div class="departure_name">
-										</div>
-										<div class="grid-container-period-aside">
-
-											<?php while (have_rows('departures_periods')) : the_row();
-
-												// vars
-												$name = get_sub_field('name');
-												$start = get_sub_field('start');
-												$stop = get_sub_field('stop');
-												$week_days = get_sub_field('week_days');
-												$dateformatstring = "l";
-
-												?>
-
-												<div class="departure_start">
-													<?php if ($start) : ?>
-														<i class="cy-icons icon-plane-departure1"></i>
-														<p><?php echo __('From:', 'wm-child-verdenatura') . ' ' . $start; ?></p>
-													<?php endif; ?>
-												</div>
-												<div class="departure_stop">
-													<?php if ($stop) : ?>
-														<p><?php echo __('To:', 'wm-child-verdenatura') . ' ' . $stop; ?></p>
-													<?php endif; ?>
-												</div>
-												<div class="departure_week_days">
-													<?php if ($week_days) : ?>
-														<ul>
-															<?php if (count($week_days) == 7) { ?>
-																<li style="display: inline;"><?php echo __('Every day', 'wm-child-verdenatura'); ?></li>
-															<?php } else { ?>
-																<span><?php echo __('Each', 'wm-child-verdenatura') . ' '; ?></span>
-																<?php
-																$i = 0;
-																$len = count($week_days);
-																foreach ($week_days as $week_day) :
-																	if ($i == 0) { ?>
-																		<li style="display: inline;"><?php echo date_i18n($dateformatstring, strtotime($week_day)); ?></li>
-																	<?php } elseif ($i == $len - 1) { ?>
-																		<?php echo __('and', 'wm-child-verdenatura') . ' '; ?><li style="display: inline;"><?php echo date_i18n($dateformatstring, strtotime($week_day)); ?></li>
-																	<?php } else { ?>
-																		<span><?php echo __(',', 'wm-child-verdenatura') . ' '; ?></span>
-																		<li style="display: inline;"><?php echo date_i18n($dateformatstring, strtotime($week_day)); ?></li>
-																	<?php }
-																$i++; ?>
-																<?php endforeach;
-														} ?>
-														</ul>
-													<?php endif; ?>
-												</div>
-
-											<?php endwhile; ?>
-
-										</div>
-
-									<?php endif; ?>
-
-									<?php // ---------- single departures ----------------//
-									while (have_rows('departure_dates')) : the_row();
-										$date = get_sub_field('date');
-									endwhile;
-									if (have_rows('departure_dates') && $date) : ?>
-										<div class="single-departure">
-											<p class="tab-section"><?php if (have_rows('departures_periods') && !empty($start) && have_rows('departure_dates')) {
-																		echo __('Other dates:', 'wm-child-verdenatura');
-																	} else {
-																		echo __('Dates:', 'wm-child-verdenatura');
-																	} ?></p>
-										</div>
-										<div class="grid-container-single">
-
-											<?php while (have_rows('departure_dates')) : the_row();
-
-												// vars
-												$date = get_sub_field('date');
-												?>
-
-												<div class="departure_name">
-													<?php if ($date) : ?>
-														<p><?php echo $date; ?></p>
-													<?php endif; ?>
-												</div>
-
-											<?php endwhile; ?>
-										</div>
-									<?php endif; ?>
-									<!-- End ---------- single departures -->
-									<!-- <p class="tab-section"> -->
-									<?php
-									// if( $how_to_arrive ){
-									// echo __('Arrive:' ,'wm-child-verdenatura');
-									// echo $how_to_arrive;
-									
-									?>
-									<!-- </p> -->
-
-								</div>
-
+							<?php echo do_shortcode('[us_image_slider ids="' . implode(',', $gallery_ids) . '" fullscreen="1" img_size="large" img_fit="cover"]'); ?>
 							</div>
 						</div>
 					</div>
@@ -216,44 +104,11 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 			</div>
 		</section>
 		<!--- END first section -->
-		<?php echo do_shortcode('[vc_row height="600" width="full"][vc_column][us_image_slider ids="' . implode(',', $gallery_ids) . '" fullscreen="1" img_size="large" img_fit="cover"][/vc_column][/vc_row]'); ?>
-		<?php if ($program) : ?>
-			<section id="program" class="l-section height_auto for_sidebar at_right">
-				<!--- third section  program-->
-				<div class="l-section-h">
-					<div class="g-cols type_default valign_top">
-						<div class="vc_col-sm-9 vc_column_container l-content">
-							<div class="vc_column-inner">
-								<div class="wpb_wrapper">
-									<section class="l-section">
-										<div class="l-section-h i-cf">
-											<?php
-											echo "<h2>Programma</h2>";
-											echo $program;
-											?>
-									</section>
-								</div>
-							</div>
-						</div>
-						<!-- <div class="vc_col-sm-3 vc_column_container l-sidebar">
-								<div class="vc_column-inner">
-									<div class="wpb_wrapper sidebar-departures">
-										<div class="route-map">
-											<img src="/wp-content/uploads/2019/10/map-route-cyclando.jpg" alt="">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div> -->
-					</div>
-			</section>
-			<!--- END third section -->
-		<?php endif; ?>
 		<?php if ($scheda_tecnica) : ?>
 			<section id="caratteristiche" class="l-section height_auto for_sidebar at_right">
 				<!--- forth section  Caratteristiche-->
 				<div class="l-section-h">
-					<div class="g-cols type_default valign_top">
+					<div class="type_default valign_top">
 						<div class="vc_col-sm-9 vc_column_container l-content">
 							<div class="vc_column-inner">
 								<div class="wpb_wrapper">
@@ -277,7 +132,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 			<!--- forth section  touroperator-->
 			<section id="touroperator" class="l-section height_auto for_sidebar at_right">
 				<div class="l-section-h">
-					<div class="g-cols type_default valign_top">
+					<div class="type_default valign_top">
 						<div class="vc_col-sm-9 vc_column_container l-content">
 							<div class="vc_column-inner">
 								<div class="wpb_wrapper">

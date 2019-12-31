@@ -70,9 +70,6 @@ i.cy-icons {
     content: "\e917";
 }
 
-/* .fa-angle-down:before {
-    content: "\e917"!important;
-  } */
 .icon-search1:before {
     content: "\f391";
 }
@@ -80,6 +77,10 @@ i.cy-icons {
 .icon-arrow-down1:before {
     content: "\f042";
 }
+
+.icon-expand-alt1:before {
+    content: "\f11d";
+  }
 
 /* main menu items */
 body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
@@ -101,11 +102,198 @@ body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
         height: 60px !important;
     }
 }
+@media only screen and (min-width: 900px) and (max-width: 1203px) {
+    body .popup-show-prices .prezzo {
+        padding: 0px 5px;
+        width: 136px;
+    }
+    body .webmapp-featured-meta-info .container .prezzo-container .prezzo .meta-bar-txt-light {
+        font-size: 14px;
+        height: 30px;
+        float: left;
+        padding: 0 5px 0px 10px;
+    }
+    body .webmapp-featured-meta-info .container .prezzo-container .prezzo .cifra {
+        font-size: 26px;
+        height: 60px;
+        line-height: 76px;
+    }
+    body .first-departure {
+        padding: 0 5px 0 0;
+    }
+    body .first-departure .first-departure-date {
+        font-size: 16px;
+        font-weight: bold;
+    }
+}
 
-@media (min-width: 900px) {
+@media (min-width: 901px) {
     body .l-subheader.width_full {
         padding-left: 3.5rem;
         padding-right: 3.5rem;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    body  #cy-prices-modal .wm-book {
+        padding: 35px 1px;
+    }
+    html body #tab-stagioni li {
+        width: 100%;
+    }
+    html body #tab-stagioni a {
+        width: 100%;
+        text-align: center;
+    }
+    html body #tab-stagioni .ui-widget-header {
+        border-bottom: 0px solid var(--color-primary);
+    }
+    html body #tab-stagioni li.ui-tabs-active {
+        border-bottom: 1px solid var(--color-primary);
+    }
+    body .webmapp-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "title title"
+            "meta meta"
+            "map map";
+    }
+    body .webmapp-featured-image {
+        grid-area: title;
+    }
+    body .webmapp-map-container {
+        grid-area: map;
+        height: 400px;
+    }
+    body .webmapp-featured-meta {
+        grid-area: meta;
+    }
+    body .webmapp-featured-meta-info {
+        height: 170px;
+        background-size: cover;
+        background-position: center;
+    }
+    body .webmapp-featured-meta-info .container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "price price"
+            "country difficulty";
+    }
+    body .meta-bar.show-prices {
+        grid-area: price;
+    }
+    body .popup-show-prices .prezzo {
+        width: 150px;
+    }
+    body .webmapp-featured-meta-info .container .prezzo-container .prezzo .meta-bar-txt-light {
+        font-size: 14px;
+    }
+    body .webmapp-featured-meta-info .container .prezzo-container .prezzo .cifra {
+        font-size: 24px;
+        height: 37px;
+    }
+    body .webmapp-featured-meta-info .container .prezzo-container .prezzo .cifra {
+        line-height: 30px;
+    }
+    body .first-departure .first-departure-date {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    body .meta-bar.wm-where {
+        grid-area: country;
+    }
+    body .meta-bar.wm-difficulty {
+        grid-area: difficulty;
+    }
+    body .meta-bar.wm-activity {
+        display: none;
+    }
+    body .webmapp-featured-meta-info .meta-bar.wm-book {
+        display: none;
+    }
+    body .webmapp-featured-map .container .route-duration {
+        margin-top: 10px;
+    }
+    body #cy-prices-modal .cy-modal-header h2 {
+        line-height: 76px;
+    }
+    body #cy-prices-modal .meta-bar.wm-activity .wm-icon-touring-bike {
+        padding-right: 0px;
+        margin-right: 0px;
+    }
+    body #cy-prices-modal .cy-modal-header {
+        grid-template-columns: 1fr 5fr 2fr 3fr;
+    }
+    .container-sticky div#webmapp-layer-1-map {
+        display: none;
+    }
+    .single-route #page-content {
+        padding-top: 950px!important;
+    }
+    .webmapp-container.container-sticky .webmapp-featured-image-img .container h1 {
+        font-size: 23px!important;
+        padding: 0 7% 0px;
+        align-self: center;
+    }
+    .webmapp-container.container-sticky .webmapp-featured-image-img {
+        background-image: none!important;
+    }
+    .webmapp-container.container-sticky .webmapp-featured-image-img .container {
+        background: none!important;
+    }
+    .webmapp-container.container-sticky .meta-bar.wm-where {
+        display: none;
+    }
+    .webmapp-container.container-sticky .meta-bar.wm-difficulty {
+        display: none;
+    }
+    .webmapp-container.container-sticky .webmapp-featured-meta-info .container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "price price"
+    }
+    .webmapp-container.container-sticky .webmapp-featured-meta-info {
+        height: 100px;
+        background-image: none!important;
+    }
+    .single-route .l-subheader.at_bottom.width_full {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: var(--color-primary);
+    }
+    .w-toplink.pos_left.active {
+        display: none;
+    }
+    .webmapp-container.container-sticky {
+        background-color: var(--color-primary);
+    }
+    .route-sticky-menu-bottom .w-nav-list.level_1.hover_simple {
+        bottom: 100%!important;
+        background-color: var(--color-primary)!important;
+        color: white!important;
+        top: auto!important;
+        box-shadow: 0 -3px 8px rgba(0,0,0,0.1)!important;
+    }
+    .single-route .l-subheader.at_bottom {
+            line-height: 60px;
+    }
+    .single-route .meta-bar-txt-bold {
+        color: white;
+    }
+    .single-route .l-subheader-cell.at_right .w-html {
+        line-height: 60px;
+    }
+    .single-route .l-subheader-cell.at_left .route-sticky-menu-bottom .w-nav-icon {
+        color: white;
+    }
+    #wm-book {
+        left: 16px;
+        padding: 0 15px;
+    }
+    .archive #webmapp-layer-1 .webmapp-featured-image-img {
+        height: 400px!important;
     }
 }
 
@@ -139,6 +327,7 @@ i {
 
 .webmapp-featured-image {
     z-index: 100;
+    grid-area: title;
 }
 
 .webmapp-featured-image-img {
@@ -155,32 +344,51 @@ i {
     background-size: cover;
 }
 
-.archive .webmapp-featured-image-img h2 {
+.archive #webmapp-layer-2 .webmapp-featured-image-img h2 {
     padding-top: 80px !important;
 }
 
 .webmapp-featured-image-img .container {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 2fr;
     justify-items: center;
     height: 100%;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,0) 40%, rgba(0, 0, 0, 0.5) 100%);
 }
 
 .webmapp-featured-image-img .container h1 {
     color: white;
     align-self: end;
     font-weight: 900;
-    text-align: center;
+    text-align: left;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.71);
+    padding: 0 7% 20px;
+    font-size: 36px;
 }
 
+.webmapp-featured-map {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.webmapp-map-container {
+    grid-area: map;
+}
 /* add css webmapp-layer-container ardalan */
 .webmapp-container {
-    position: relative;
-    top: 0;
+    position: absolute;
     width: 100%;
     height: auto;
     z-index: 1000;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "title map"
+        "meta meta";
 }
 
 .webmapp-container.container-sticky {
@@ -198,35 +406,34 @@ i {
     -moz-box-shadow: 0 1px 6px 0px #a6a7a6;
     box-shadow: 0 1px 6px 0px #a6a7a6;
     /* //transition */
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    transition: all 0.5s;
-
+    -webkit-transition: height 1s;
+    -moz-transition: height 1s;
+    -o-transition: height 1s;
+    transition: height 1s;
 }
 
 .webmapp-featured-image-img {
     /* height: 400px; */
     /* //transition */
-    -webkit-transition: height 0.5s;
-    -moz-transition: height 0.5s;
-    -o-transition: height 0.5s;
-    transition: height 0.5s;
+    /* -webkit-transition: height 1s;
+    -moz-transition: height 1s;
+    -o-transition: height 1s;
+    transition: height 1s; */
 }
 
 .webmapp-container.container-sticky .webmapp-featured-image-img {
     height: 100px;
     /* //transition */
-    -webkit-transition: height 0.5s;
-    -moz-transition: height 0.5s;
-    -o-transition: height 0.5s;
-    transition: height 0.5s;
+    -webkit-transition: height 1s;
+    -moz-transition: height 1s;
+    -o-transition: height 1s;
+    transition: height 1s;
 }
 
 /* Begin animation */
 @-o-keyframes down {
     from {
-        top: -160px;
+        top: -460px;
     }
 
     to {
@@ -236,7 +443,7 @@ i {
 
 @-moz-keyframes down {
     from {
-        top: -160px;
+        top: -460px;
     }
 
     to {
@@ -246,7 +453,7 @@ i {
 
 @-webkit-keyframes down {
     from {
-        top: -160px;
+        top: -460px;
     }
 
     to {
@@ -256,7 +463,7 @@ i {
 
 @keyframes down {
     from {
-        top: -160px;
+        top: -460px;
     }
 
     to {
@@ -268,7 +475,7 @@ i {
 /* END css webmapp-layer-container ardalan */
 
 .webmapp-container.container-sticky .webmapp-featured-image-img .container h1 {
-    font-size: 2em;
+    font-size: 28px;
     font-family: var(--font-family-primary-alternate);
     /* transition: all 0.3s ease; */
 }
@@ -278,11 +485,19 @@ i {
     font-weight: bold;
 }
 
-.webmapp-featured-image-img .container .route-duration span {
+.webmapp-featured-map .container .route-duration > span {
     display: inline-block;
     color: white;
     background-color: var(--color-primary);
     padding: 15px 20px;
+}
+.webmapp-featured-map .container .route-duration span.expand-map {
+    margin-right: 15px;
+    display: none;
+}
+.webmapp-featured-map .container .route-duration {
+    float: right;
+    font-weight: bold;
 }
 
 .webmapp-featured-image-img .container .tax-targets {
@@ -321,13 +536,14 @@ i {
 .webmapp-container.container-sticky .webmapp-featured-image-img .container {
     display: grid;
     grid-template-rows: none;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 1fr;
     justify-items: center;
     height: 100%;
 }
 
 .webmapp-container.container-sticky .container .route-duration {
     align-self: center;
+    padding-top: 20px;
 }
 
 /* menu layer 2 meta info */
@@ -366,7 +582,7 @@ i {
 
 .webmapp-featured-meta-info .container {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     color: white;
     justify-items: center;
     align-items: center;
@@ -379,8 +595,16 @@ i {
 }
 
 .webmapp-featured-meta-info .container .prezzo-container .prezzo .cifra {
-    font-size: 38px;
-    height: 30px;
+    font-size: 40px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.webmapp-featured-meta-info .container .show-price-btn i{
+    transform: rotate(-135deg);
+    line-height: 50px;
+    padding: 0px 6px 12px 15px;
+    margin-right: 0;
 }
 
 .webmapp-featured-meta-info .container .prezzo-container .prezzo-text {
@@ -397,20 +621,27 @@ i {
 
 .webmapp-featured-meta {
     z-index: 100;
+    grid-area: meta;
 }
-
+.first-departure .first-departure-date {
+    font-size: 22px;
+    font-weight: bold;
+}
+.first-departure .first-departure-date spam4{
+    font-weight: 100;
+}
+.first-departure {
+    padding: 0 10px;
+}
 .meta-bar.show-prices .fa-angle-down:before {
-    font-size: 25px;
+    font-size: 19px;
     font-weight: 400;
-    background-color: var(--color-secondary);
-    padding: 2px 7px;
+    padding: 3px 7px;
     border-radius: 26px;
     border: 2px solid #fff;
 }
-
-.meta-bar.show-prices .fa-angle-down {
-    margin-right: 0;
-    padding-right: 0;
+.meta-bar.show-prices {
+    grid-column: 1 / 3;
 }
 
 .meta-bar.show-prices a {
@@ -418,25 +649,23 @@ i {
     padding: 0;
 }
 
-.meta-bar.show-prices .w-btn-label {
+.popup-show-prices {
     background-color: var(--color-secondary);
     padding: 5px 7px;
-    border-radius: 26px;
+    border-radius: 50px;
     border: 2px solid #fff;
-    line-height: 32px;
+}
+.popup-show-prices .prezzo{
+    padding: 0 10px;
+    width: 190px;
 }
 
-.meta-bar.show-prices:hover .w-btn-label,
-.meta-bar.show-prices:hover i::before {
+.popup-show-prices:hover {
     background-color: var(--color-secondary-hover);
 }
-
-/* .sticky2 {
-    position: fixed;
-    top: 100px;
-    width: 100%;
-    transition: all 0.5s ease;
-} */
+div#popup-show-prices>div {
+    float: left;
+}
 .wm-book {
     background: var(--color-secondary);
     position: relative;
@@ -446,6 +675,10 @@ i {
     display: flex;
     align-items: center;
     height: 100%;
+}
+
+.wm-book p{
+    font-size: 28px;
 }
 
 #cy-prices-modal .wm-book {
@@ -560,8 +793,18 @@ i {
 
 
 /* main_content */
-.with_padding {
-    padding-top: 188px;
+/* .with_padding {
+    padding-top: 500px;
+    -webkit-transition: height 1s;
+    -moz-transition: height 1s;
+    -o-transition: height 1s;
+    transition: height 1s;
+} */
+.single-rout .l-canvas {
+    position: relative;
+}
+.single-route #page-content {
+    padding-top: 500px;
 }
 
 body .l-header.pos_fixed~.l-main>.l-section:first-of-type {
@@ -575,11 +818,7 @@ body .l-header.pos_fixed~.l-main>.l-section:first-of-type {
 }
 
 .sidebar-departures {
-    background-color: var(--color-primary-background);
-    padding: 57px 15px 30px;
-    position: absolute;
-    width: 100%;
-    top: -64px;
+    padding: 0px 15px 30px;
 }
 
 #introduction .l-section-h {
@@ -662,6 +901,9 @@ body .l-header.pos_fixed~.l-main>.l-section:first-of-type {
 }
 
 #caratteristiche .vc_column-inner {
+    padding: 0;
+}
+#caratteristiche .l-section-h.i-cf {
     padding: 0;
 }
 
@@ -1021,4 +1263,59 @@ body #tab-stagioni a:hover {
 
 .single .l-section-h.i-cf strong {
     color: var(--color-text-strong);
+}
+
+/* taxonomy and archive page */
+#webmapp-layer-2 .webmapp-featured-image-img {
+    height: auto;
+}
+.archive #webmapp-layer-2 {
+    padding: 0px 20px 0;
+    height: auto;
+}
+.archive #webmapp-layer-2 .webmapp-featured-image-img .container {
+    background: none;
+    grid-template-rows: 1fr;
+}
+
+/* route country tooltip */
+a.tooltips {
+    position: relative;
+    display: inline;
+    color: white;
+}
+a.tooltips:hover {
+    color: white!important;
+}
+a.tooltips span {
+    position: absolute;
+    padding: 10px;
+    width: auto;
+    color: #FFFFFF;
+    background: var(--color-secondary);
+    height: auto;
+    line-height: 30px;
+    text-align: center;
+    visibility: hidden;
+    border-radius: 6px;
+    min-width: 140px;
+}
+a.tooltips span:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -8px;
+    width: 0; height: 0;
+    border-top: 8px solid var(--color-secondary);
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+}
+a:hover.tooltips span {
+    visibility: visible;
+    opacity: 1;
+    bottom: 30px;
+    left: 100%;
+    margin-left: -76px;
+    z-index: 9990;
 }

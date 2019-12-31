@@ -41,7 +41,7 @@ if (isset($_GET['fwp_tipologia'])){
 			
             if ( have_posts() ) :
                 while ( have_posts() ) : the_post();
-                    $post_format = et_pb_post_format(); 
+                    // $post_format = et_pb_post_format(); 
                     $post_id = get_the_ID();
                     ?>
                     <article id="post-<?php the_ID(); ?>" <?php post_class( 'et_pb_post' ); ?>>
@@ -54,7 +54,7 @@ if (isset($_GET['fwp_tipologia'])){
 					$height = (int) apply_filters( 'et_pb_index_blog_image_height', 675 );
 					$classtext = 'et_pb_post_main_image';
 					$titletext = get_the_title();
-					$thumbnail = get_thumbnail( $width, $height, $classtext, $titletext, $titletext, true, 'Blogimage' );
+					// $thumbnail = get_thumbnail( $width, $height, $classtext, $titletext, $titletext, true, 'Blogimage' );
 					$thumb = $thumbnail["thumb"];
 
 					et_divi_post_format_content();

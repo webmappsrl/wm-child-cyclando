@@ -94,13 +94,25 @@
 		jQuery(document).on("scroll", function () {
 			var page_content = document.getElementById("page-content");
 
-			if (jQuery(document).scrollTop() > 180) {
-				jQuery("#webmapp-layer-container").addClass("container-sticky");
-				page_content.classList.add("with_padding");
+			if (jQuery(window).width() <= 900 ) {
+				if (jQuery(document).scrollTop() >= 1100) {
+					jQuery("#webmapp-layer-container").addClass("container-sticky");
+					page_content.classList.add("with_padding");
+				} else {
+					jQuery("#webmapp-layer-container").removeClass("container-sticky");
+					page_content.classList.remove("with_padding");
+				}
 			} else {
-				jQuery("#webmapp-layer-container").removeClass("container-sticky");
-				page_content.classList.remove("with_padding");
+				if (jQuery(document).scrollTop() >= 680) {
+					jQuery("#webmapp-layer-container").addClass("container-sticky");
+					// page_content.classList.add("with_padding");
+				} else {
+					jQuery("#webmapp-layer-container").removeClass("container-sticky");
+					// page_content.classList.remove("with_padding");
+				
+				}
 			}
+			
 
 		});
 
