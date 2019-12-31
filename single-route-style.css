@@ -288,6 +288,9 @@ body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
     .single-route .l-subheader-cell.at_left .route-sticky-menu-bottom .w-nav-icon {
         color: white;
     }
+    .single-route .l-subheader-cell.at_left .route-sticky-menu-bottom a:hover {
+        color: white;
+    }
     #wm-book {
         left: 16px;
         padding: 0 15px;
