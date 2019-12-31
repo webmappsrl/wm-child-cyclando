@@ -220,7 +220,6 @@ body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
     }
     body #cy-prices-modal .meta-bar.wm-activity .wm-icon-touring-bike {
         padding-right: 0px;
-        margin-right: 0px;
     }
     body #cy-prices-modal .cy-modal-header {
         grid-template-columns: 1fr 5fr 2fr 3fr;
@@ -297,6 +296,12 @@ body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
     }
     .archive #webmapp-layer-1 .webmapp-featured-image-img {
         height: 400px!important;
+    }
+    #webmapp-layer-2 .meta-bar-txt-bold {
+        font-size: 15px;
+    }
+    #cy-prices-modal .cy-modal-header h2 {
+        padding-top: 10px;
     }
 }
 
