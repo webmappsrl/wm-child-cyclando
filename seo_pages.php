@@ -17,7 +17,7 @@ get_header();
 	if ( us_get_option( 'enable_sidebar_titlebar', 0 ) ) {
 
 		// Titlebar, if it is enabled in Theme Options
-		// us_load_template( 'templates/titlebar' );
+		us_load_template( 'templates/titlebar' );
 
 		// START wrapper for Sidebar
 		// us_load_template( 'templates/sidebar', array( 'place' => 'before' ) );
@@ -26,6 +26,7 @@ get_header();
 	while ( have_posts() ) {
 		the_post();
 
+		$taxonomy_where = get_field('taxonomy_where',get_the_ID());
 		$content_area_id = us_get_page_area_id( 'content' );
 
 		if ( $content_area_id != '' AND get_post_status( $content_area_id ) != FALSE ) {
@@ -45,6 +46,10 @@ get_header();
 			}
 
 			echo $the_content;
+
+			echo '<section class="l-section"><div class="l-section-h i-cf">' ;
+			echo do_shortcode('[webmapp_anypost post_type="route" template="cy_route" term_id="'.$taxonomy_where[0].'" posts_count=9 rows=3 posts_per_page=9 orderby="rand"]');
+			echo '</div></section>';
 
 			// Post comments
 			if ( comments_open() OR get_comments_number() != '0' ) {
