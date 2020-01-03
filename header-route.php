@@ -181,7 +181,11 @@
 									<div class="route-duration">
 										<?php
 										echo "<span class='header-txt-layer-1 expand-map'><i class='cy-icons icon-expand-alt1'></i></span>";
-										echo "<span class='header-txt-layer-1 dur-txt'>" .  " $days " . __('days', 'wm-child-cyclando') . " / $nights " . __('nights', 'wm-child-cyclando') . " " . $distance . "<span style='font-weight:100;'> km</span></span>";
+										echo "<span class='header-txt-layer-1 dur-txt'>" .  " $days " . __('days', 'wm-child-cyclando') . " / $nights " . __('nights', 'wm-child-cyclando') . " ";
+										if ($distance) {
+											echo $distance . "<span style='font-weight:100;'> km</span>";
+										}
+										echo "</span>";
 										?>
 									</div>
 								<?php } ?>
@@ -248,16 +252,18 @@
 											<?php
 											$places_count = 1;
 											$tax_places_to_go_names = array();
-											foreach ($tax_places_to_go as $tax_place_to_go) {
-												array_push($tax_places_to_go_names, $tax_place_to_go->name );
-												$places_count++;
-											}
-											echo $tax_places_to_go[0]->name;
-											if ($places_count > 1) {
-												echo "<a class='show-more-places tooltips' href='#'> ... <span>";
-												foreach ($tax_places_to_go_names as $name) { echo $name.'<br>'; }
-												// foreach (array_slice($tax_places_to_go_names,1) as $name) { echo $name; }
-												echo "</span></a>";
+											if ($tax_places_to_go){
+												foreach ($tax_places_to_go as $tax_place_to_go) {
+													array_push($tax_places_to_go_names, $tax_place_to_go->name );
+													$places_count++;
+												}
+												echo $tax_places_to_go[0]->name;
+												if ($places_count > 1) {
+													echo "<a class='show-more-places tooltips' href='#!'> ... <span>";
+													foreach ($tax_places_to_go_names as $name) { echo $name.'<br>'; }
+													// foreach (array_slice($tax_places_to_go_names,1) as $name) { echo $name; }
+													echo "</span></a>";
+												}
 											}
 											?>
 										</p>
@@ -290,17 +296,19 @@
 											<?php
 											$places_count = 1;
 											$tax_activities_names = array();
-											foreach ($tax_activities as $tax_activity) {
-												array_push($tax_activities_names, $tax_activity->name );
-												$places_count++;
-											}
-											echo $tax_activities[0]->name;
-											if ($places_count > 1) {
-												echo "<a class='show-more-places tooltips' href='#'> ... <span>";
-												foreach ($tax_activities_names as $name) { echo $name.'<br>'; }
-												// foreach (array_slice($tax_places_to_go_names,1) as $name) { echo $name; }
-												echo "</span></a>";
-											}
+											if ($tax_activities){
+												foreach ($tax_activities as $tax_activity) {
+													array_push($tax_activities_names, $tax_activity->name );
+													$places_count++;
+												}
+												echo $tax_activities[0]->name;
+												if ($places_count > 1) {
+													echo "<a class='show-more-places tooltips' href='#!'> ... <span>";
+													foreach ($tax_activities_names as $name) { echo $name.'<br>'; }
+													// foreach (array_slice($tax_places_to_go_names,1) as $name) { echo $name; }
+													echo "</span></a>";
+												}
+											}	
 											?>
 										</p>
 									</div>
@@ -316,7 +324,7 @@
 							<div class="cy-modal-content">
 								<div class="cy-modal-header">
 									<div class="close-button-container"><span class="cy-close">&times;</span></div>
-									<h2>Vedi i prezzi</h2>
+									<div class="vedi-prezzi"><h2>Vedi i prezzi</h2></div>
 									<div class="meta-bar wm-activity"><i class="<?php echo $iconimage_activity; ?>"></i></div>
 									<div class="meta-bar wm-book">
 										<p class="meta-bar-txt-bold"><?php echo __('Book now', 'wm-child-verdenatura'); ?></p>

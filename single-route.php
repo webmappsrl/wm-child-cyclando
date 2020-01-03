@@ -157,7 +157,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 			<div class="cy-modal-content">
 				<div class="cy-modal-header">
 					<span class="cy-close-contact">&times;</span>
-					<h2>Richiedi informazioni per questo viaggio</h2>
+					<h2>Prenota questo viaggio</h2>
 					<!-- <div class="meta-bar wm-book"><p class="meta-bar-txt-bold">chiedi informazione</p></div> -->
 				</div>
 				<div class="cy-modal-body">

@@ -215,9 +215,6 @@ body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
     body .webmapp-featured-map .container .route-duration {
         margin-top: 10px;
     }
-    body #cy-prices-modal .cy-modal-header h2 {
-        line-height: 76px;
-    }
     body #cy-prices-modal .meta-bar.wm-activity .wm-icon-touring-bike {
         padding-right: 0px;
     }
@@ -300,8 +297,10 @@ body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
     #webmapp-layer-2 .meta-bar-txt-bold {
         font-size: 15px;
     }
-    #cy-prices-modal .cy-modal-header h2 {
-        padding-top: 10px;
+}
+@media screen and (max-width: 768px) {
+    .grid-container-period-seasonal {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -674,6 +673,11 @@ i {
 
 .popup-show-prices:hover {
     background-color: var(--color-secondary-hover);
+    cursor: pointer;
+}
+.vedi-prezzi {
+    align-items: center;
+    display: flex;
 }
 div#popup-show-prices>div {
     float: left;
@@ -973,7 +977,9 @@ body .l-header.pos_fixed~.l-main>.l-section:first-of-type {
 #cy-prices-modal .extra-quotes {
     margin-bottom: 25px
 }
-
+#cy-prices-modal .quotes-preventivo {
+    overflow: auto;
+}
 #cy-prices-modal .extra-quotes .tab-section {
     margin-bottom: 10px;
     padding-left: 30px;
@@ -1187,7 +1193,7 @@ body #tab-stagioni a:hover {
     font-family: var(--font-family-primary);
     font-size: 24px;
     font-weight: bold;
-    line-height: 50px;
+    line-height: 30px;
 }
 
 .cy-modal-header {

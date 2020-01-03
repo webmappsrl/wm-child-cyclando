@@ -477,3 +477,13 @@ body #iubenda_policy .iub_content.legal_pp p {
 .col-sm-12.col-md-4.webmapp_shortcode_any_post.post_type_route:not(:last-child){
     margin-bottom: 30px;
 }
+/* Template seo pages css */
+.page-template-seo_pages h2 {
+    font-size: 34px;
+}
+
+@media screen and (max-width: 600px) {
+    .webmapp_shortcode_any_post.post_type_route {
+        padding: 0 0;
+    }
+}
