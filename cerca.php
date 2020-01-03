@@ -58,8 +58,8 @@ if (isset($_GET['_cosa_vuoi_fare'])) {
     </section>
     <section class="l-section height_auto for_sidebar at_right">
         <div class="l-section-h">
-            <div class="g-cols type_default valign_top">
-                <div class="vc_col-sm-9 vc_column_container l-content">
+            <div class="g-cols type_default valign_top cerca-grid-container">
+                <div class="vc_col-sm-9 vc_column_container l-content result">
                     <div class="vc_column-inner">
                         <div class="wpb_wrapper">
                             <section class="l-section wpb_row height_medium cerca-result-container">
@@ -95,7 +95,7 @@ if (isset($_GET['_cosa_vuoi_fare'])) {
                         </div>
                     </div>
                 </div>
-                <div class="vc_col-sm-3 vc_column_container l-sidebar">
+                <div class="vc_col-sm-3 vc_column_container l-sidebar search">
                     <div class="vc_column-inner">
                         <div class="wpb_wrapper">
                             <div id="custom_html-4" class="widget_text widget widget_custom_html">
