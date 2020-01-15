@@ -80,7 +80,12 @@ i.cy-icons {
 
 .icon-expand-alt1:before {
     content: "\f11d";
-  }
+}
+
+.icon-calendar-alt1:before {
+    content: "\e9d0";
+}
+
 
 /* main menu items */
 body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
@@ -602,17 +607,33 @@ i {
 }
 
 .webmapp-featured-meta-info .container .prezzo-container .prezzo .cifra {
-    text-align: center;
+    text-align: left;
     font-size: 30px;
     height: 40px;
     line-height: 30px;
 }
 
 .webmapp-featured-meta-info .container .show-price-btn i{
-    transform: rotate(-135deg);
-    line-height: 50px;
-    padding: 0px 6px 12px 6px;
-    margin-right: 0;
+    padding: 7px;
+    border: 2px solid;
+    font-size: 22px;
+    border-radius: 50px; 
+    animation-name: pulse;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+@keyframes pulse {
+    from { transform: scale(1); }
+    50% { transform: scale(0.85); }
+    to { transform: scale(1); }
+}
+
+.webmapp-featured-meta-info .container .show-price-btn {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    height: 66px;
+    margin-right: 5px;
 }
 
 .webmapp-featured-meta-info .container .prezzo-container .prezzo-text {
@@ -668,7 +689,7 @@ i {
 }
 .popup-show-prices .prezzo{
     padding: 0 10px 0 20px;
-    width: 190px;
+    width: 150px;
 }
 
 .popup-show-prices:hover {

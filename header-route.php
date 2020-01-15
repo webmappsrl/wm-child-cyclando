@@ -230,11 +230,11 @@
 												</div>
 											</div>
 											<div class="first-departure">
-												<span class='meta-bar-txt-light'><?php echo "Parti il"; ?></span>
-												<div class="first-departure-date"><?php echo $first_departure_date[0].".".$first_departure_date[1].".<span>".$first_departure_date[2]."</span>" ?></div>
+												<span class='meta-bar-txt-light'><?php echo __('Next departures', 'wm-child-verdenatura'); ?></span>
+												<div class="first-departure-date"><?php echo date_i18n('d F', strtotime($start_array[0])); //echo $first_departure_date[0].".".$first_departure_date[1].".<span>".$first_departure_date[2]."</span>" ?></div>
 											</div>
 											<!--.prezzo  end-->
-											<div class="show-price-btn"><i class="fas fa-angle-down"></i></div>
+											<div class="show-price-btn"><i class="cy-icons icon-calendar-alt1"></i></div>
 									</div>
 								</div>
 
