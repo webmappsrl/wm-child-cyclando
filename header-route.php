@@ -180,7 +180,9 @@
 									?>
 									<div class="route-duration">
 										<?php
-										echo "<span class='header-txt-layer-1 expand-map'><i class='cy-icons icon-expand-alt1'></i></span>";
+										if ($program){
+											echo "<span id='expand-map' class='header-txt-layer-1 expand-map'><i class='cy-icons icon-expand-alt1'></i></span>";
+										}
 										echo "<span class='header-txt-layer-1 dur-txt'>" .  " $days " . __('days', 'wm-child-cyclando') . " / $nights " . __('nights', 'wm-child-cyclando') . " ";
 										if ($distance) {
 											echo $distance . "<span style='font-weight:100;'> km</span>";
@@ -334,11 +336,34 @@
 									<?php echo do_shortcode('[route_table_price]'); ?>
 								</div>
 								<!-- <div class="cy-modal-footer">
-															<h3>Modal Footer</h3>
-														</div> -->
+									<h3>Modal Footer</h3>
+								</div> -->
 							</div>
 						</div>
 						<!-- END HTML modal for prices -->
+
+						<!-- HTML modal for expand map program -->
+						<div id="cy-route-program" class="cy-prices-modal">
+							<div class="cy-modal-content">
+								<div class="cy-modal-header">
+									<span class="cy-close-map">&times;</span>
+									<h2><?php echo __('Program', 'wm-child-verdenatura'); ?></h2>
+								</div>
+								<div class="cy-modal-body">
+								<?php if ($program) : ?>
+									<div class="">
+										<?php
+										//echo "<h2>Programma</h2>";
+										echo $program;
+										?>
+									</div>
+								<?php endif; ?>
+								</div>
+							</div>
+						</div>
+						<!-- END HTML modal for expand map program -->
+
+
 					</div>
 				</div> <!-- END div webmapp-layer-container -->
 				<script>
@@ -356,6 +381,17 @@
 
 						// Get button element inside prices modal
 						const contactInsideModal = document.querySelector('#cy-prices-modal .wm-book');
+
+						// Get MAP elements
+						const programModal = document.querySelector('#cy-route-program');
+						const expandMapBtn = document.querySelectorAll('#expand-map');
+						const closeMapBtn = document.querySelector('.cy-close-map');
+
+						// Events expand map program Modal
+						expandMapBtn.forEach((button) => {
+							button.addEventListener('click', openProgramModal);
+						});
+						closeMapBtn.addEventListener('click', closeProgramModal);
 
 						// Events modal prices
 						modalBtn.addEventListener('click', openModal);
@@ -379,6 +415,11 @@
 							contactModal.style.display = 'block';
 						}
 
+						// Open program modal
+						function openProgramModal() {
+							programModal.style.display = 'block';
+						}
+
 						// Close modal prices
 						function closeModal() {
 							modal.style.display = 'none';
@@ -389,6 +430,11 @@
 							contactModal.style.display = 'none';
 						}
 
+						// Close program modal
+						function closeProgramModal() {
+							programModal.style.display = 'none';
+						}
+
 						// Close If Outside Click
 						function outsideClick(e) {
 							if (e.target == modal) {
@@ -396,6 +442,9 @@
 							}
 							if (e.target == contactModal) {
 								contactModal.style.display = 'none';
+							}
+							if (e.target == programModal) {
+								programModal.style.display = 'none';
 							}
 						}
 

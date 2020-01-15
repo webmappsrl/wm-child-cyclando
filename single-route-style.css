@@ -110,24 +110,26 @@ body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
 @media only screen and (min-width: 900px) and (max-width: 1203px) {
     body .popup-show-prices .prezzo {
         padding: 0px 5px;
-        width: 136px;
+        width: 120px;
     }
     body .webmapp-featured-meta-info .container .prezzo-container .prezzo .meta-bar-txt-light {
         font-size: 14px;
         height: 30px;
-        float: left;
         padding: 0 5px 0px 10px;
     }
     body .webmapp-featured-meta-info .container .prezzo-container .prezzo .cifra {
         font-size: 26px;
-        height: 60px;
-        line-height: 76px;
+        padding-left: 10px;
     }
     body .first-departure {
-        padding: 0 5px 0 0;
+        padding: 0 16px 0 0;
+    }
+    
+    body .first-departure .meta-bar-txt-light{
+        font-size: 14px;
     }
     body .first-departure .first-departure-date {
-        font-size: 16px;
+        font-size: 20px;
         font-weight: bold;
     }
 }
@@ -155,6 +157,7 @@ body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
     }
     html body #tab-stagioni li.ui-tabs-active {
         border-bottom: 1px solid var(--color-primary);
+        border-radius: 5px;
     }
     body .webmapp-container {
         display: grid;
@@ -189,7 +192,7 @@ body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
         grid-area: price;
     }
     body .popup-show-prices .prezzo {
-        width: 150px;
+        width: 130px;
     }
     body .webmapp-featured-meta-info .container .prezzo-container .prezzo .meta-bar-txt-light {
         font-size: 14px;
@@ -505,8 +508,13 @@ i {
 }
 .webmapp-featured-map .container .route-duration span.expand-map {
     margin-right: 15px;
-    display: none;
 }
+
+.webmapp-featured-map .container .route-duration span.expand-map:hover {
+    cursor: pointer;
+    background-color: var(--color-primary-title);
+}
+
 .webmapp-featured-map .container .route-duration {
     float: right;
     font-weight: bold;
@@ -653,7 +661,7 @@ i {
     grid-area: meta;
 }
 .first-departure .first-departure-date {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: bold;
 }
 .first-departure .first-departure-date spam4{
@@ -866,7 +874,7 @@ body .l-header.pos_fixed~.l-main>.l-section:first-of-type {
 .grid-container-period-aside {
     display: grid;
     grid-template-columns: 3fr 2fr 2fr;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
     align-items: center;
 }
 
@@ -891,6 +899,13 @@ body .l-header.pos_fixed~.l-main>.l-section:first-of-type {
 .grid-container-single {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+
+}
+.grid-container-single .departure_name p{
+    padding-bottom: 0;
+}
+.departure-preventivo-aside {
+    margin-bottom: 25px;
 }
 
 .departure-preventivo-aside .tab-section {
@@ -979,7 +994,6 @@ body .l-header.pos_fixed~.l-main>.l-section:first-of-type {
 
 #cy-prices-modal .durata-preventivo {
     margin-bottom: 25px;
-    padding-left: 30px;
 }
 
 #cy-prices-modal .durata-preventivo p {
@@ -1115,6 +1129,7 @@ body #tab-stagioni a:hover {
         font-size: 15px;
     }
 }
+
 
 /* modal prices css */
 .cy-prices-modal {
@@ -1272,6 +1287,21 @@ body #tab-stagioni a:hover {
 }
 
 .cy-close-contact:hover {
+    cursor: pointer;
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+    color: black;
+}
+
+.cy-close-map {
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+    color: black;
+}
+
+.cy-close-map:hover {
     cursor: pointer;
     color: #ccc;
     float: right;
