@@ -110,6 +110,11 @@
 			var page_content = document.getElementById("page-content");
 			var recaptchaBadge = document.querySelector('.grecaptcha-badge');
 
+			if (jQuery(document).scrollTop() >= 200 ) {
+				jQuery(".l-subheader.at_bottom.width_full").addClass("l-subheader-sticky-mobile");
+			} else {
+				jQuery(".l-subheader.at_bottom.width_full").removeClass("l-subheader-sticky-mobile");
+			}
 			if (jQuery(window).width() <= 900 ) {
 				
 				if (jQuery(document).scrollTop() >= 1100) {

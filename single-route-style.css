@@ -133,7 +133,7 @@ body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
         font-weight: bold;
     }
     .webmapp-featured-meta-info .container {
-        grid-template-columns: 1.1fr 1.1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1.2fr 1.2fr 1fr 1fr 1fr 1fr!important;
     }
 }
 
@@ -269,12 +269,7 @@ body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
         height: 100px;
         background-image: none!important;
     }
-    .single-route .l-subheader.at_bottom.width_full {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background-color: var(--color-primary);
-    }
+    
     .webmapp-container.container-sticky {
         background-color: var(--color-primary);
     }
@@ -293,12 +288,6 @@ body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
     }
     .single-route .l-subheader-cell.at_right .w-html {
         line-height: 60px;
-    }
-    .single-route .l-subheader-cell.at_left .route-sticky-menu-bottom .w-nav-icon {
-        color: white;
-    }
-    .single-route .l-subheader-cell.at_left .route-sticky-menu-bottom a:hover {
-        color: white;
     }
     #wm-book {
         left: 16px;

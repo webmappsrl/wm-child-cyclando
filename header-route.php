@@ -204,7 +204,7 @@
 											<div class="prezzo-container">
 												<!-- prezzo start-->
 												<div class="prezzo">
-													<span class='meta-bar-txt-light'><?php echo __('From', 'wm-child-verdenatura'); ?></span>
+													<span class='meta-bar-txt-light'><?php echo __('From', 'wm-child-cyclando'); ?></span>
 													<p class="cifra <?php if ($in_promotion) { echo 'old-price'; } ?>"><?php
 																	$vn_prezzo = get_field('wm_route_price');
 																	$lowest_price = explode('€', $vn_prezzo);
