@@ -132,6 +132,9 @@ body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
         font-size: 20px;
         font-weight: bold;
     }
+    .webmapp-featured-meta-info .container {
+        grid-template-columns: 1.1fr 1.1fr 1fr 1fr 1fr 1fr;
+    }
 }
 
 @media (min-width: 901px) {
@@ -141,6 +144,11 @@ body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
     }
 }
 
+@media screen and (max-width: 1024px) { 
+    .w-toplink.pos_left.active {
+        display: none;
+    }
+}
 @media screen and (max-width: 900px) {
     body  #cy-prices-modal .wm-book {
         padding: 35px 1px;
@@ -266,9 +274,6 @@ body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
         bottom: 0;
         width: 100%;
         background-color: var(--color-primary);
-    }
-    .w-toplink.pos_left.active {
-        display: none;
     }
     .webmapp-container.container-sticky {
         background-color: var(--color-primary);
@@ -1387,4 +1392,9 @@ a:hover.tooltips span {
     left: 100%;
     margin-left: -76px;
     z-index: 9990;
+}
+
+/* share buttom social sharing */
+.move {
+    bottom: 60px!important;
 }
