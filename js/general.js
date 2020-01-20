@@ -149,6 +149,10 @@
 			
 		});
 
+		//Studio samo add class to Contact form success email message
+		document.addEventListener( 'wpcf7mailsent', function( event ) {
+			jQuery('.wpcf7-response-output').attr('id', 'richiesta-informazioni');
+		}, false );
 
 		// window.onscroll = function() {myFunction()};
 
