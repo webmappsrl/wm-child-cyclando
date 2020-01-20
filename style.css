@@ -189,8 +189,10 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
         display: flex;
         align-items: center;
         height: 100%;
-        padding: 18px 5px;
         left: 16px;
+    }
+    .l-subheader-sticky-mobile .sticky-mobile-menu-phone a{
+        padding: 18px 5px;
     }
     .l-subheader-sticky-mobile .sticky-mobile-menu-phone:after,
     .l-subheader-sticky-mobile .sticky-mobile-menu-phone:before {
@@ -263,7 +265,10 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     color: var(--color-primary-title);
     font-family: var(--font-family-primary-alternate);
 }
-
+.home-anypost-section h1 span{
+    color: var(--color-primary-title);
+    font-family: var(--font-family-primary-alternate);
+}
 .webmapp-anypost-template-cy_route .webmapp_post_image {
     display: grid;
     align-items: end;
