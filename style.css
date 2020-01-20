@@ -110,6 +110,9 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
 }
 
 @media screen and (max-width: 900px) {
+    .Home-intro-banner {
+        min-height: 75vh;
+    }
     .cy-modal-content {
         width: 100%;
     }
