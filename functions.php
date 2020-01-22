@@ -77,7 +77,7 @@ add_filter( 'acp/filtering/cache/enable', function( $c_enabled , $column){
 /** create a template for child-pages plugin for SEO pages */
 function custom_ccchildpage_inner_template($template) {
 
-    $template = '<div class="ccchildpage-wm"><div class="ccchildpagethumbs">{{thumbnail}}</div><div class="ccchildpageinfo"><h3{{title_class}}>{{title}}</h3>{{excerpt}}</div></div>';
+    $template = '<div class="ccchildpage-wm"><div class="ccchildpagethumbs" style="background-image:url({{thumbnail_url}});"><div class="ccchildpageinfo"><h3{{title_class}}>{{title}}</h3>{{excerpt}}</div></div><a class="child-page-link" href="{{link}}"></a></div>';
     return $template;
 }
 add_filter( 'ccchildpages_inner_template' ,'custom_ccchildpage_inner_template' );
