@@ -74,7 +74,13 @@ add_filter( 'acp/filtering/cache/enable', function( $c_enabled , $column){
 
 
 
+/** create a template for child-pages plugin for SEO pages */
+function custom_ccchildpage_inner_template($template) {
 
+    $template = '<div class="ccchildpage-wm"><div class="ccchildpagethumbs">{{thumbnail}}</div><div class="ccchildpageinfo"><h3{{title_class}}>{{title}}</h3>{{excerpt}}</div></div>';
+    return $template;
+}
+add_filter( 'ccchildpages_inner_template' ,'custom_ccchildpage_inner_template' );
 
 
 /**
@@ -346,42 +352,42 @@ function the_term_image_with_name( $post_id , $taxonomy )
  * Comments in single route
  */
 
-add_filter( 'comment_text' , 'filtra_commento' , 10 , 3 );
+// add_filter( 'comment_text' , 'filtra_commento' , 10 , 3 );
 
-function filtra_commento( $comment_text, $comment , $args )
-{
-    $date_html = '';
-    $date = get_field('wm_comment_journey_date', $comment);
-    if ( $date )
-    {
-        $date_html = "<div class='journey-comment'>" . __('Journey from' , 'wm_comment_journey_date' ) . " $date</div>";
-    }
+// function filtra_commento( $comment_text, $comment , $args )
+// {
+//     $date_html = '';
+//     $date = get_field('wm_comment_journey_date', $comment);
+//     if ( $date )
+//     {
+//         $date_html = "<div class='journey-comment'>" . __('Journey from' , 'wm_comment_journey_date' ) . " $date</div>";
+//     }
 
-    $gallery = '';
+//     $gallery = '';
 
-    $vn_gallery = get_field ('wm_comment_gallery' , $comment );
-    if ( is_array( $vn_gallery) && ! empty( $vn_gallery ) )
-    {
-        $vn_gallery_ids =  array_map(
-            function ($i) {
-                return $i ['ID'];
-            },
-            $vn_gallery );
+//     $vn_gallery = get_field ('wm_comment_gallery' , $comment );
+//     if ( is_array( $vn_gallery) && ! empty( $vn_gallery ) )
+//     {
+//         $vn_gallery_ids =  array_map(
+//             function ($i) {
+//                 return $i ['ID'];
+//             },
+//             $vn_gallery );
 
-        $gallery = "<div class='wm-comment-images'>";
-        foreach ( $vn_gallery_ids  as $id)
-        {
-            $gallery .= '<span class="wm-comment-image">';
-            $gallery .= wp_get_attachment_image( $id, 'thumbnail');
-            $gallery .= '</span>';
-        }
-        $gallery = "</div>";
+//         $gallery = "<div class='wm-comment-images'>";
+//         foreach ( $vn_gallery_ids  as $id)
+//         {
+//             $gallery .= '<span class="wm-comment-image">';
+//             $gallery .= wp_get_attachment_image( $id, 'thumbnail');
+//             $gallery .= '</span>';
+//         }
+//         $gallery = "</div>";
 
-    }
+//     }
 
 
-    return "$date_html<div class='my_comment_text'>$comment_text</div>$gallery";
-}
+//     return "$date_html<div class='my_comment_text'>$comment_text</div>$gallery";
+// }
 
 /**
  * Adds meta for social sharing
