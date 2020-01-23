@@ -252,7 +252,7 @@
 										</p>
 										<p class='meta-bar-txt-bold'>
 											<?php
-											$places_count = 1;
+											$places_count = 0;
 											$tax_places_to_go_names = array();
 											if ($tax_places_to_go){
 												foreach ($tax_places_to_go as $tax_place_to_go) {

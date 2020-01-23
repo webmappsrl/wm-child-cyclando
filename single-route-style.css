@@ -304,6 +304,12 @@ body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
     .grid-container-period-seasonal {
         grid-template-columns: repeat(2, 1fr);
     }
+    .single-route section h2 {
+        font-size: 32px!important;
+    }
+    .intro-section .l-sidebar {
+        padding: 0!important;
+    }
 }
 
 @media screen and (max-width: 414px) {
@@ -1027,7 +1033,7 @@ body .l-header.pos_fixed~.l-main>.l-section:first-of-type {
 
 .single-route section h2 {
     color: var(--color-primary-title);
-    font-size: 32;
+    font-size: 3em;
     font-weight: bold;
     font-family: var(--font-family-primary-alternate);
     padding-top: 10px;

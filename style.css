@@ -688,3 +688,5 @@ a.ccpage_title_link {
     right: 0;
     z-index: 999;
 }
+/* hide recaptcha v3 of google */
+.grecaptcha-badge { visibility: hidden; }
