@@ -326,14 +326,51 @@ body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
         font-size: 14px;
     }
     .webmapp-container.container-sticky .webmapp-featured-meta-info {
-        height: 90px;
-    }
-    .webmapp-container.container-sticky .webmapp-featured-image-img {
         height: 80px;
     }
+    .webmapp-container.container-sticky .webmapp-featured-image-img {
+        height: 80px!important;
+    }
     .webmapp-container.container-sticky .webmapp-featured-image-img .container h1 {
-        font-size: 20px!important;
+        font-size: 19px!important;
         padding: 0 4% 0px;
+    }
+    .popup-show-prices {
+        padding: 0px;
+    }
+    #cy-prices-modal .cy-modal-header h2 {
+        width: 100%!important;
+        font-size: 18px!important;
+    }
+    .vedi-prezzi {
+        align-items: center;
+        display: inline-grid;
+    }
+    #cy-prices-modal .meta-bar.wm-activity .wm-icon-touring-bike {
+        font-size: 33px!important;
+    }
+    body #cy-prices-modal .cy-modal-header {
+        grid-template-columns: 1fr 3fr 1fr 2fr!important;
+    }
+}
+@media screen and (max-width: 370px) {
+    .webmapp-featured-meta-info .container .show-price-btn i {
+        font-size: 20px;
+    }
+    body .first-departure .first-departure-date {
+        font-size: 18px;
+    }
+    .first-departure .meta-bar-txt-light {
+        font-size: 13px;
+    }
+    body .webmapp-featured-meta-info .container .prezzo-container .prezzo .cifra {
+        font-size: 19px;
+    }
+    body .webmapp-featured-meta-info .container .prezzo-container .prezzo .meta-bar-txt-light {
+        font-size: 13px;
+    }
+    body .popup-show-prices .prezzo {
+        width: 110px;
     }
 }
 
@@ -1171,7 +1208,6 @@ body #tab-stagioni a:hover {
 
 #cy-prices-modal .cy-close {
     text-align: right;
-    font-size: 30px;
     color: #fff;
     background-color: var(--color-primary-paragraph);
     height: 50px;
