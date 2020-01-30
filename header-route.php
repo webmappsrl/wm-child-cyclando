@@ -181,7 +181,8 @@
 									<div class="route-duration">
 										<?php
 										if ($program){
-											echo "<span id='expand-map' class='header-txt-layer-1 expand-map'><i class='cy-icons icon-expand-alt1'></i></span>";
+											//echo "<span id='expand-map' class='header-txt-layer-1 expand-map'><i class='cy-icons icon-expand-alt1'></i></span>";
+											echo "<span id='expand-map' class='header-txt-layer-1 expand-map'>". __('Program','wm-child-cyclando')."</span>";
 										}
 										echo "<span class='header-txt-layer-1 dur-txt'>" .  " $days " . __('days', 'wm-child-cyclando') . " / $nights " . __('nights', 'wm-child-cyclando') . " ";
 										if ($distance) {
@@ -296,7 +297,7 @@
 										</p>
 										<p class='meta-bar-txt-bold'>
 											<?php
-											$places_count = 1;
+											$places_count = 0;
 											$tax_activities_names = array();
 											if ($tax_activities){
 												foreach ($tax_activities as $tax_activity) {
