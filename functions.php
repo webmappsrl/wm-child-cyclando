@@ -297,6 +297,25 @@ add_filter( 'facetwp_facet_dropdown_show_counts', function( $return, $params ) {
     return $return;
 }, 10, 2 );
 
+
+/**changes the breadcrumb link of POI in yoast */
+add_filter( 'wpseo_breadcrumb_links', 'yoast_seo_breadcrumb_append_link' );
+function yoast_seo_breadcrumb_append_link( $links ) {
+	
+    if ( is_singular( 'route' ) ) {
+        $breadcrumb[] = array(
+            'url' => site_url( '/cerca/' ),
+            'text' => __('Routes', 'wm-child-cyclando'),
+        );
+        array_splice( $links, 1,1, $breadcrumb );
+	}
+	
+
+    return $links;
+	
+}
+
+
 // //  order wpfacet Duration and Seasosn months in archive route page
 // add_filter( 'facetwp_facet_orderby', function( $orderby, $facet ) {
 //     if ( 'durata' == $facet['name'] ) {
