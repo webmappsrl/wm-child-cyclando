@@ -322,8 +322,13 @@
 							</div>
 						</div>
 
-						<!-- HTML modal for prices -->
-						<div id="cy-prices-modal" class="cy-prices-modal">
+						
+
+
+					</div>
+				</div> <!-- END div webmapp-layer-container -->
+				<!-- HTML modal for prices -->
+				<div id="cy-prices-modal" class="cy-prices-modal">
 							<div class="cy-modal-content">
 								<div class="cy-modal-header">
 									<div class="close-button-container"><span class="cy-close">&times;</span></div>
@@ -363,10 +368,6 @@
 							</div>
 						</div>
 						<!-- END HTML modal for expand map program -->
-
-
-					</div>
-				</div> <!-- END div webmapp-layer-container -->
 				<script>
 					jQuery(document).ready(function() {
 						// Get DOM Elements

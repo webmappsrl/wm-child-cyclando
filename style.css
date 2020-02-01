@@ -40,6 +40,16 @@ ul.w-nav-list.level_1.hover_simple li a {
 ul.w-nav-list.level_1.hover_simple li:nth-child(3) a {
     padding-right: 0 !important;
 }
+.l-subheader-cell .w-nav-list.level_2 {
+    padding: 0 15px;
+}
+.l-subheader-sticky-mobile .w-nav-list.level_2 {
+    background-color: var(--color-primary)!important;
+    color: white;
+}
+.l-subheader-sticky-mobile .w-nav-list.level_2 a:hover,.l-subheader-sticky-mobile .w-nav-list.level_2 a:visited,.l-subheader-sticky-mobile .w-nav-list.level_2 a:focus{
+    color: white;
+}
 
 
 /* CSS homepage Cyclando */
