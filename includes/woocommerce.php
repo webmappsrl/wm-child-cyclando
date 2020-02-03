@@ -139,7 +139,7 @@ function woocommerce_add_multiple_products_to_cart( $url = false ) {
 
 		function custom_add_to_cart_redirect() { 
 			if( isset( $_REQUEST['add-to-cart'] ) && $_GET['lang'] == 'en') {
-			return 'https://vnpreprod.webmapp.it/your-order/?lang=en'; 
+			return 'https://cyclando.com/your-order/?lang=en'; 
 			}
 		}
 		add_filter( 'woocommerce_add_to_cart_redirect', 'custom_add_to_cart_redirect' );
@@ -192,7 +192,7 @@ function woocommerce_custom_surcharge() {
 
     if( WC()->session->__isset('wp_quote_insurance') ) {
        $insurance = WC()->session->get('wp_quote_insurance');
-       WC()->cart->add_fee( __('Insurance' ,'wm-child-verdenatura'), $insurance);
+       WC()->cart->add_fee( __('Cancellation insurance' ,'wm-child-verdenatura'), $insurance);
     }
 	
 }
@@ -381,7 +381,7 @@ function bbloomer_add_checkout_privacy_policy() {
 	'label_class'   => array('woocommerce-form__label woocommerce-form__label-for-checkbox checkbox'),
 	'input_class'   => array('woocommerce-form__input woocommerce-form__input-checkbox input-checkbox'),
 	'required'      => true,
-	'label'         => 'I\'ve read and accept the <a href="/privacy-policy">Privacy Policy</a>',
+	'label'         => 'I\'ve read and accept the <a href="/privacy/?lang=en">Privacy Policy</a>',
 	)); 
 
 	woocommerce_form_field( 'terms_conditions', array(
@@ -390,7 +390,7 @@ function bbloomer_add_checkout_privacy_policy() {
 	'label_class'   => array('woocommerce-form__label woocommerce-form__label-for-checkbox checkbox'),
 	'input_class'   => array('woocommerce-form__input woocommerce-form__input-checkbox input-checkbox'),
 	'required'      => true,
-	'label'         => 'I\'ve read and accept the <a href="/terms-conditions">terms & conditions</a>',
+	'label'         => 'I\'ve read and accept the <a href="/general-terms-and-conditions-of-travel-packages-sale-contract/?lang=en">terms & conditions</a>',
 	)); 
    
 }
@@ -510,7 +510,7 @@ function vn_order_admin_metabox_callback( $post ) {
             }
             if ( $insurance_name ) { 
                 echo '<p><strong>';
-                echo __('Insurance:' ,'wm-child-verdenatura').' </strong>';
+                echo __('Cancellation insurance:' ,'wm-child-verdenatura').' </strong>';
                 echo $insurance_name.' ('.$insurance_price.'%)</p>';
             }
             if ( $club_name ) {
@@ -674,12 +674,15 @@ function vn_order_admin_metabox_callback( $post ) {
 
 add_action( 'woocommerce_email_before_order_table', 'ts_email_before_order_table', 10, 4 );
 function ts_email_before_order_table( $order, $sent_to_admin, $plain_text, $email ) {
-	$coupon = $order->get_used_coupons();
-	$coupon_name = $coupon['0'];
-	$post = get_posts( array( 
-		'name' => $coupon_name, 
-		'post_type' => 'shop_coupon'
-	) );
+	
+	$coupon_id = WC()->cart->get_coupons();
+    foreach ($coupon_id as $val ){
+        $json =  $val;
+    }   
+    $json_output = json_decode($json, JSON_PRETTY_PRINT); 
+    $description = $json_output['description'];
+	$desc = json_decode($description, JSON_PRETTY_PRINT);
+	
 	$departure_date = '';
     $nightsBefore = '';
     $insurance_name = '';
@@ -687,10 +690,6 @@ function ts_email_before_order_table( $order, $sent_to_admin, $plain_text, $emai
 	$place = '';
     $place_s = '';
 
-	foreach ( $post as $info) {
-		$description = $info->post_excerpt;
-	}
-	$desc = json_decode($description, JSON_PRETTY_PRINT);
 	foreach ($desc as $val => $key){
 		if ($val == 'boat_trip') { //check if the route is in boat or not
 			$place = __('cabin','wm-child-verdenatura'); 
@@ -732,7 +731,7 @@ function ts_email_before_order_table( $order, $sent_to_admin, $plain_text, $emai
             }
             if ( $insurance_name ) { 
                 echo '<p><strong>';
-                echo __('Insurance:' ,'wm-child-verdenatura').' </strong>';
+                echo __('Cancellation insurance:' ,'wm-child-verdenatura').' </strong>';
                 echo $insurance_name.'</p>';
             }
             if ( $club_name ) {
@@ -885,7 +884,7 @@ function ts_email_before_order_table( $order, $sent_to_admin, $plain_text, $emai
     ?>
     </div><!-- END rooms composition  --> 
 	<?php if ($club_name) { ?>
-	<div style="margin: 20px 0;font-weight: bold;background-color: #e8e8e8;padding: 10px;"><?php echo sprintf(__('Remember to send to <a href="mailto:info@verde-natura.it">info@verde-natura.it</a> the photocopy of the %s association card that gives you the right to the discount' ,'wm-child-verdenatura'),$club_name); ?></div>
+	<div style="margin: 20px 0;font-weight: bold;background-color: #e8e8e8;padding: 10px;"><?php echo sprintf(__('Remember to send to <a href="mailto:info@cyclando.com">info@cyclando.com</a> the photocopy of the %s association card that gives you the right to the discount' ,'wm-child-verdenatura'),$club_name); ?></div>
     <?php
 	}
 }
@@ -915,6 +914,7 @@ function custom_cart_items_prices( $cart ) {
 
 	$desc = json_decode($description, JSON_PRETTY_PRINT);
 	$kid1_max_range = '';
+	$kid1_min_range = '';
 	$kid2_max_range = '';
 	$kid3_max_range = '';
 	$kid4_max_range = '';
@@ -936,6 +936,11 @@ function custom_cart_items_prices( $cart ) {
         }
 		if ($val == 'hotel') {
 			$kid1_max_range = $key['kidTiers'][1]['maxAge'];
+			if ($key['kidTiers'][1]['minAge']) {
+				$kid1_min_range = $key['kidTiers'][1]['minAge'];
+			} else {
+				$kid1_min_range = 0;
+			}
 			$kid2_max_range = $key['kidTiers'][2]['maxAge'];
 			$kid3_max_range = $key['kidTiers'][3]['maxAge'];
 			$kid4_max_range = $key['kid4']['maxAge'];
@@ -972,7 +977,7 @@ function custom_cart_items_prices( $cart ) {
 			$new_name = __('Basic price in 3rd bed adult' ,'wm-child-verdenatura');
 		}
 		elseif ( preg_match("/kid1_/",$original_last)){
-			$new_name = sprintf(__('3rd/4th bed child price 0/%s yo' ,'wm-child-verdenatura'),$kid1_max_range);
+			$new_name = sprintf(__('3rd/4th bed child price %s/%s yo' ,'wm-child-verdenatura'),$kid1_min_range,$kid1_max_range);
 		}
 		elseif ( preg_match("/kid2_/",$original_last)){
 			$new_name = sprintf(__('3rd/4th bed child price %d/%s yo' ,'wm-child-verdenatura'), $kid1_max_range+1, $kid2_max_range);
@@ -987,7 +992,7 @@ function custom_cart_items_prices( $cart ) {
 			$new_name = __('Supplement for half board' ,'wm-child-verdenatura');
 		}
 		elseif ( $original_last == 'halfboard_kid1'){
-			$new_name = sprintf(__('Supplement for half board child 0/%s yo' ,'wm-child-verdenatura'),$kid1_max_range);
+			$new_name = sprintf(__('Supplement for half board child %s/%s yo' ,'wm-child-verdenatura'),$kid1_min_range,$kid1_max_range);
 		}
 		elseif ( $original_last == 'halfboard_kid2'){
 			$new_name = sprintf(__('Supplement for half board child %d/%s yo' ,'wm-child-verdenatura'),$kid1_max_range+1, $kid2_max_range);
@@ -1005,7 +1010,7 @@ function custom_cart_items_prices( $cart ) {
 			$new_name = sprintf(__('Extra night in %s (extra bed)' ,'wm-child-verdenatura'),$from);
 		}
 		elseif ( $original_last == 'nightsBefore_kid1'){
-			$new_name = sprintf(__('Extra night in %s (child 0/%s yo)' ,'wm-child-verdenatura'),$from,$kid1_max_range);
+			$new_name = sprintf(__('Extra night in %s (child %s/%s yo)' ,'wm-child-verdenatura'),$from,$kid1_min_range,$kid1_max_range);
 		}
 		elseif ( $original_last == 'nightsBefore_kid2'){
 			$new_name = sprintf(__('Extra night in %s (child %s/%s yo)' ,'wm-child-verdenatura'),$from,$kid1_max_range+1,$kid2_max_range);
@@ -1026,7 +1031,7 @@ function custom_cart_items_prices( $cart ) {
 			$new_name = sprintf(__('Extra night in %s (extra bed)' ,'wm-child-verdenatura'),$to);
 		}
 		elseif ( $original_last == 'nightsAfter_kid1'){
-			$new_name = sprintf(__('Extra night in %s (child 0/%s yo)' ,'wm-child-verdenatura'),$to,$kid1_max_range);
+			$new_name = sprintf(__('Extra night in %s (child %s/%s yo)' ,'wm-child-verdenatura'),$to,$kid1_min_range,$kid1_max_range);
 		}
 		elseif ( $original_last == 'nightsAfter_kid2'){
 			$new_name = sprintf(__('Extra night in %s (child %s/%s yo)' ,'wm-child-verdenatura'),$to,$kid1_max_range+1,$kid2_max_range);
@@ -1130,6 +1135,50 @@ function product_type_selector_filter_callback() {
     endif;
 }
 
+// add return to form preventivi (calcolatore) button on cart page
+add_action('woocommerce_proceed_to_checkout','add_back_to_form_quotes');
+function add_back_to_form_quotes(){
+	if (isset($_GET['lang'])){
+		$page_langauge = $_GET['lang'];
+	} else {
+		$page_langauge = 'it';
+	}
+	$coupon_id = WC()->cart->get_coupons();
+	$coupon_ids_applied = WC()->cart->get_applied_coupons();
+	$coupon_id_applied = wc_get_coupon_id_by_code($coupon_ids_applied[0]);
+	
+	$route_id = '';
+    foreach ($coupon_id as $val ){
+		$json =  $val;
+	}  
+    $json_output = json_decode($json, JSON_PRETTY_PRINT); 
+    $description = $json_output['description'];
+    $desc = json_decode($description, JSON_PRETTY_PRINT);
+    foreach ($desc as $val => $key){
+        if ($val == 'routeId') { //check if the route is in boat or not
+			$route_id = $key;
+		} 
+	}
+	?>
+	<div class="wc-proceed-to-checkout">
+		
+		<a id="modifica-ordine" href="http://vnquote.webmapp.it/#/<?php echo $route_id;?>/<?php echo $coupon_id_applied;?>?lang=<?php echo $page_langauge; ?>" class="checkout-button button alt wc-forward">
+			<?php echo __('Modify your quote', 'wm-child-verdenatura') ?></a>
+	</div>
+	<?php
+}
+
+// add ID to proceed to checkout in cart page 
+function woocommerce_button_proceed_to_checkout() {
+	$checkout_url = WC()->cart->get_checkout_url(); ?>
+	<a id="concludi-ordine" href="<?php echo esc_url( wc_get_checkout_url() );?>" class="checkout-button button alt wc-forward">
+	<?php esc_html_e( 'Proceed to checkout', 'woocommerce' ); ?>
+	</a>
+	<?php
+}
+
+
+
 // DEFINIZIONE DEL DATAMODEL x ROUTE ------------------------------------------------------------------------------------------------
 if( function_exists('acf_add_local_field_group') ):
 
@@ -1159,25 +1208,6 @@ acf_add_local_field_group(array(
 			),
 			'message' => 'Non vendibile',
 			'default_value' => 1,
-			'ui' => 0,
-			'ui_on_text' => '',
-			'ui_off_text' => '',
-		),
-		array(
-			'key' => 'wm_route_in_promotion',
-			'label' => 'Route in promozione',
-			'name' => 'promotion',
-			'type' => 'true_false',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'message' => 'Applica promozione',
-			'default_value' => 0,
 			'ui' => 0,
 			'ui_on_text' => '',
 			'ui_off_text' => '',
@@ -1284,125 +1314,6 @@ acf_add_local_field_group(array(
 					'min' => 0,
 					'max' => 10,
 					'return_format' => 'id',
-				),
-			),
-		),
-		array(
-			'key' => 'wm_route_quote_tab_model_promotion',
-			'label' => 'Promozioni',
-			'type' => 'tab',
-			'placement' => 'top',
-			'endpoint' => 0,
-			'conditional_logic' => array(
-				array(
-					array(
-						'field' => 'wm_route_in_promotion',
-						'operator' => '==',
-						'value' => '1',
-					),
-				),
-			),
-		),
-		array(
-			'key' => 'wm_route_quote_promotion_repeater',
-			'label' => 'Periodi di promozione',
-			'name' => 'model_promotion',
-			'type' => 'repeater',
-			'layout' => 'row',
-			'sub_fields' => array(
-				array(
-					'key' => 'wm_route_quote_model_promotion_name',
-					'label' => 'Nome promozione',
-					'name' => 'promotion_name',
-					'type' => 'text',
-				),
-				array(
-					'key' => 'wm_route_quote_model_promotion_discount',
-					'label' => 'Sconto',
-					'name' => 'promotion_value',
-					'type' => 'number',
-					'instructions' => 'Inserisci il prezzo dello sconto in Euro',
-				),
-				array(
-					'key' => 'wm_route_quote_model_promotion_dates_periods_repeater',
-					'label' => 'Periodi di partenza',
-					'name' => 'periods',
-					'type' => 'repeater',
-					'layout' => 'table',
-					'sub_fields' => array(
-						array(
-							'key' => 'wm_route_quote_model_promotion_dates_periods_start',
-							'label' => 'Inizio',
-							'name' => 'start',
-							'type' => 'date_picker',
-							'instructions' => '',
-							'required' => 0,
-							'conditional_logic' => 0,
-							'wrapper' => array(
-								'width' => '',
-								'class' => '',
-								'id' => '',
-							),
-							'display_format' => 'd/m/Y',
-							'return_format' => 'd/m/Y',
-							'first_day' => 1,
-						),
-						array(
-							'key' => 'wm_route_quote_model_promotion_dates_periods_stop',
-							'label' => 'Fine periodo',
-							'name' => 'stop',
-							'type' => 'date_picker',
-							'instructions' => '',
-							'required' => 0,
-							'conditional_logic' => 0,
-							'wrapper' => array(
-								'width' => '',
-								'class' => '',
-								'id' => '',
-							),
-							'display_format' => 'd/m/Y',
-							'return_format' => 'd/m/Y',
-							'first_day' => 1,
-						),
-					),
-				),
-				array(
-					'key' => 'wm_route_quote_model_promotion_dates_specific_repeater',
-					'label' => 'Date specifiche di partenza',
-					'name' => 'departure_dates',
-					'type' => 'repeater',
-					'instructions' => 'Inserisci una o più date per la partenza',
-					'required' => 0,
-					'conditional_logic' => 0,
-					'wrapper' => array(
-						'width' => '',
-						'class' => '',
-						'id' => '',
-					),
-					'collapsed' => 'field_model_promotion_dates_specific',
-					'min' => 0,
-					'max' => 0,
-					'layout' => 'table',
-					'button_label' => 'Aggiuni data',
-					'sub_fields' => array(
-						array(
-							'key' => 'wm_route_quote_model_promotion_dates_specific',
-							'label' => 'Data',
-							'name' => 'date',
-							'type' => 'date_picker',
-							'instructions' => 'Inserisci una data',
-							'required' => 0,
-							'conditional_logic' => 0,
-							'wrapper' => array(
-								'width' => '',
-								'class' => '',
-								'id' => '',
-							),
-							'display_format' => 'd/m/Y',
-							'return_format' => 'd/m/Y',
-							'first_day' => 1,
-						),
-					),
 				),
 			),
 		),

@@ -794,6 +794,9 @@ div#popup-show-prices>div {
     font-size: 28px;
     margin-bottom: 0;
 }
+.wm-book.long-txt p {
+    font-size: 25px;
+}
 .wm-book a{
     position: absolute;
     top: 0;

@@ -798,7 +798,7 @@ body .woocommerce .return-to-shop {
     display: none;
 }
 .no-touch .woocommerce .button.alt:hover, .no-touch .woocommerce .button.checkout:hover, .no-touch .woocommerce .button.add_to_cart_button:hover, .no-touch .us-btn-style_1:hover {
-    background:  var(--color-primary);
+    background:  var(--color-primary)!important;
     color: white!important;
     border-radius: 4px;
 }

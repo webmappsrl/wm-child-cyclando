@@ -87,7 +87,7 @@ function preventivi_json_to_text(){
             }
             if ( $insurance_name ) { 
                 echo '<p><strong>';
-                echo __('Insurance:' ,'wm-child-verdenatura').' </strong>';
+                echo __('Cancellation insurance:' ,'wm-child-verdenatura').' </strong>';
                 echo $insurance_name.'</p>';
             }
             if ( $club_name ) {
@@ -122,13 +122,18 @@ function preventivi_json_to_text(){
                     foreach ($room as $val3 => $pax){
                         $firsName = $pax['firstName'];
                         $lastName = $pax['lastName'];
-                        $price = $pax['price'];
+                        $price = number_format((float)$pax['price'], 2, ',', '.');
                         $rentBike = '';
                         $babyseat = '';
                         $tagalong = '';
                         $trail = '';
                         $trailgator = '';
                         $bikeWarranty = '';
+                        $normalWarranti = '';
+                        $eWarranti = '';
+                        $kidbikeWarranti = '';
+                        $tandemWarranti = '';
+                        $roadbikeWarranti = '';
                         $helmet = '';
                         $kidhelmet = '';
                         $roadbook = '';
@@ -203,18 +208,23 @@ function preventivi_json_to_text(){
                         <td><?php if($rentBike): switch ($rentBike) {
                             case 'bike':
                                 echo __('Supplement for bike rental' ,'wm-child-verdenatura');
+                                $normalWarranti = true; 
                                 break;
                             case 'eBike':
                                 echo __('Supplement for e-bike rental' ,'wm-child-verdenatura');
+                                $eWarranti = true; 
                                 break;
                             case 'kidBike':
                                 echo __('Supplement for children bike' ,'wm-child-verdenatura');
+                                $kidbikeWarranti = true; 
                                 break;
                             case 'tandem':
                                 echo __('Supplement for tandem rental' ,'wm-child-verdenatura');
+                                $tandemWarranti = true; 
                                 break;
                             case 'roadbike':
                                 echo __('Supplement for road bike rental' ,'wm-child-verdenatura');
+                                $roadbikeWarranti = true;
                                 break;
                                 
                         } endif;?></td>
@@ -225,7 +235,23 @@ function preventivi_json_to_text(){
                             <?php if($trailgator): echo __('Supplement for children trailgator' ,'wm-child-verdenatura').'<br>';?><?php endif;?>
                         </td>
                         <td>
-                            <?php if($bikeWarranty):?><?php echo __('Bike Coverage' ,'wm-child-verdenatura');?><?php endif;?>
+                            <?php if($bikeWarranty):?>
+                                <?php if($normalWarranti):?>
+                                    <?php echo __('Bike Coverage' ,'wm-child-verdenatura');?>
+                                <?php endif;?>
+                                <?php if($eWarranti):?>
+                                    <?php echo __('E-bike Coverage' ,'wm-child-verdenatura');?>
+                                <?php endif;?>
+                                <?php if($kidbikeWarranti):?>
+                                    <?php echo __('kid bike Coverage' ,'wm-child-verdenatura');?>
+                                <?php endif;?>
+                                <?php if($tandemWarranti):?>
+                                    <?php echo __('Tandem bike Coverage' ,'wm-child-verdenatura');?>
+                                <?php endif;?>
+                                <?php if($roadbikeWarranti):?>
+                                    <?php echo __('Road bike Coverage' ,'wm-child-verdenatura');?>
+                                <?php endif;?>
+                            <?php endif;?>
                         </td>
                         <td>
                             <?php if($helmet): echo __('Supplement for adult helmet rental' ,'wm-child-verdenatura').'<br>';?><?php endif;?>
@@ -252,7 +278,7 @@ function preventivi_json_to_text(){
     }
     ?>
     </div><!-- END rooms composition  --> 
-    <h2 class="cart-detail"><?php echo __('Cart detail: ' ,'wm-child-verdenatura');?></h2>
+    <h2><?php echo __('Cart detail: ' ,'wm-child-verdenatura');?></h2>
     <?php
     
 }
