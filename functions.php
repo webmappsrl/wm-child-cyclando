@@ -361,4 +361,20 @@ function yoast_seo_breadcrumb_append_link( $links ) {
 //     return $size;
 // }
 // add_filter( 'upload_size_limit', 'filter_site_upload_size_limit', 20 );
+
+
+add_action( 'woocommerce_after_checkout_validation', 'misha_validate_fname_lname', 10, 2);
+ 
+function misha_validate_fname_lname( $fields, $errors ){
+ 
+    // if ( preg_match( '/\\d/', $fields[ 'billing_last_name' ] )  ){
+    //     $errors->add( 'validation', 'Your first or last name contains a number. Really?' );
+    // }
+    if ($fields['azienda_privato'] == 'privato') {
+        if ( preg_match( '/[A-Za-z]{6}[0-9LMNPQRSTUV]{2}[A-Za-z]{1}[0-9LMNPQRSTUV]{2}[A-Za-z]{1}[0-9LMNPQRSTUV]{3}[A-Za-z]{1}/', $fields[ 'billing_codice_fiscale' ] ) !== 1 ){
+            $errors->add( 'validation', __('Your Tax code is incorrect!','wm-child-verdnatura') );
+        }
+    }
+    
+}
 ?>
