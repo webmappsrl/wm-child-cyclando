@@ -7,9 +7,9 @@ require ('shortcodes/vn_blog_tabs.php');
 require ('shortcodes/calendar_departures_home.php');
 require ('shortcodes/calendar_departures_all.php');
 require ('shortcodes/wm_gallery.php');
-require ('includes/woocommerce.php');
-require ('includes/preventivi-json.php');
-require('url_filters.php');
+// require ('includes/woocommerce.php');
+// require ('includes/preventivi-json.php');
+require ('url_filters.php');
 
 
 // Uncomment to disable GUTHENBERG
@@ -370,11 +370,11 @@ function misha_validate_fname_lname( $fields, $errors ){
     // if ( preg_match( '/\\d/', $fields[ 'billing_last_name' ] )  ){
     //     $errors->add( 'validation', 'Your first or last name contains a number. Really?' );
     // }
-    if ($fields['azienda_privato'] == 'privato') {
+    // if ($fields['billing_codice_fiscale'] == 'privato') {
         if ( preg_match( '/[A-Za-z]{6}[0-9LMNPQRSTUV]{2}[A-Za-z]{1}[0-9LMNPQRSTUV]{2}[A-Za-z]{1}[0-9LMNPQRSTUV]{3}[A-Za-z]{1}/', $fields[ 'billing_codice_fiscale' ] ) !== 1 ){
             $errors->add( 'validation', __('Your Tax code is incorrect!','wm-child-verdnatura') );
         }
-    }
+    // }
     
 }
 ?>
