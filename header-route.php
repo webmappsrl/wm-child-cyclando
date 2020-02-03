@@ -20,6 +20,12 @@
 	$program = get_field('vn_prog');
 	$touroperator_id_array = get_field('tour_operator');
 	$featured_map = '/wp-content/themes/wm-child-cyclando/images/map-logo-osm.jpg';
+	if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
+		$language = ICL_LANGUAGE_CODE;
+	} else {
+		$language = 'it';
+	}
+	
 	// get terms targets
 	$tax_targets = get_the_terms($post_id, $target);
 	$tax_places_to_go = get_the_terms($post_id, $places_to_go);
@@ -316,9 +322,17 @@
 										</p>
 									</div>
 								</div>
-								<div id="wm-book" class="meta-bar wm-book">
-									<p class='meta-bar-txt-bold'><?php echo __('Book now', 'wm-child-verdenatura'); ?></p>
-								</div>
+								<?php if(current_user_can('administrator')) { ?>
+									<div id="wm-book-quote" class="meta-bar wm-book long-txt">
+										<p class='meta-bar-txt-bold'><?php echo __('Make a quote', 'wm-child-verdenatura'); ?></p>
+										<a  target="_blank" href="http://quote.cyclando.com/#/<?php echo $post_id.'?lang='.$language;?>">
+										</a>
+									</div>
+								<?php } else { ?>
+									<div id="wm-book" class="meta-bar wm-book">
+										<p class='meta-bar-txt-bold'><?php echo __('Book now', 'wm-child-verdenatura'); ?></p>
+									</div>
+								<?php } ?>
 							</div>
 						</div>
 
@@ -334,9 +348,17 @@
 									<div class="close-button-container"><span class="cy-close">&times;</span></div>
 									<div class="vedi-prezzi"><h2>Vedi i prezzi</h2></div>
 									<div class="meta-bar wm-activity"><i class="<?php echo $iconimage_activity; ?>"></i></div>
-									<div class="meta-bar wm-book">
-										<p class="meta-bar-txt-bold"><?php echo __('Book now', 'wm-child-verdenatura'); ?></p>
+									<?php if(current_user_can('administrator')) { ?>
+									<div id="wm-book-quote" class="meta-bar wm-book long-txt">
+										<p class='meta-bar-txt-bold'><?php echo __('Make a quote', 'wm-child-verdenatura'); ?></p>
+										<a  target="_blank" href="http://quote.cyclando.com/#/<?php echo $post_id.'?lang='.$language;?>">
+										</a>
 									</div>
+									<?php } else { ?>
+										<div id="wm-book" class="meta-bar wm-book">
+											<p class='meta-bar-txt-bold'><?php echo __('Book now', 'wm-child-verdenatura'); ?></p>
+										</div>
+									<?php } ?>
 								</div>
 								<div class="cy-modal-body">
 									<?php echo do_shortcode('[route_table_price]'); ?>
@@ -382,7 +404,7 @@
 						const closeContactBtn = document.querySelector('.cy-close-contact');
 
 						// Get button element inside prices modal
-						const contactInsideModal = document.querySelector('#cy-prices-modal .wm-book');
+						const contactInsideModal = document.querySelector('#cy-prices-modal #wm-book');
 
 						// Get MAP elements
 						const programModal = document.querySelector('#cy-route-program');

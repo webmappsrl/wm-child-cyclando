@@ -252,7 +252,7 @@ function preventivi_json_to_text(){
     }
     ?>
     </div><!-- END rooms composition  --> 
-    <h2><?php echo __('Cart detail: ' ,'wm-child-verdenatura');?></h2>
+    <h2 class="cart-detail"><?php echo __('Cart detail: ' ,'wm-child-verdenatura');?></h2>
     <?php
     
 }

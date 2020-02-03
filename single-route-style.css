@@ -792,6 +792,15 @@ div#popup-show-prices>div {
 
 .wm-book p{
     font-size: 28px;
+    margin-bottom: 0;
+}
+.wm-book a{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
 }
 
 #cy-prices-modal .wm-book {
