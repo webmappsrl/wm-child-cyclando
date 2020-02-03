@@ -802,3 +802,6 @@ body .checkout-button.button.alt.wc-forward,body .woocommerce .button.alt {
     color: white!important;
     border-radius: 4px;
 }
+.us-woo-cart_compact .woocommerce .shop_table.cart td, .us-woo-cart_compact .woocommerce .shop_table.cart th {
+    padding: 8px 0;
+}

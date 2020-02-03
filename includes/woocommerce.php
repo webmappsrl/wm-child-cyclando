@@ -692,21 +692,32 @@ function ts_email_before_order_table( $order, $sent_to_admin, $plain_text, $emai
 	// 	'name' => $coupon_name, 
 	// 	'post_type' => 'shop_coupon'
 	// ) );
-	$object = WC()->cart;
-	if ($object instanceof WC_Cart )
-		$coupons = $object->get_coupons();
-	else {
-		$coupons_names = $order->get_used_coupons();
-		$coupons = [];
-		foreach( $coupons_names as $code )
-			$coupons[$code] = new WC_Coupon($code);
-		
-	}
 
-    foreach ($coupons as $val ){
-        $json =  $val;
-    }   
-    $json_output = json_decode($json, JSON_PRETTY_PRINT); 
+	// marco touch
+	// $object = WC()->cart;
+	// if ($object instanceof WC_Cart )
+	// 	$coupons = $object->get_coupons();
+	// else {
+	// 	$coupons_names = $order->get_used_coupons();
+	// 	$coupons = [];
+	// 	foreach( $coupons_names as $code )
+	// 		$coupons[$code] = new WC_Coupon($code);
+		
+	// }
+    // foreach ($coupons as $val ){
+    //     $json =  $val;
+    // }   
+	$order = new WC_Order($post->ID);
+	$coupon = $order->get_used_coupons();
+	$coupon_name = $coupon['0'];
+	$post = get_posts( array( 
+		'name' => $coupon_name, 
+		'post_type' => 'shop_coupon'
+	) );
+	foreach ( $post as $info) {
+		$description = $info->post_excerpt;
+	}
+	$json_output = json_decode($json, JSON_PRETTY_PRINT); 
     $description = $json_output['description'];
 	$desc = json_decode($description, JSON_PRETTY_PRINT);
 	
