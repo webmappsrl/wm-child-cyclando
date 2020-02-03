@@ -375,6 +375,5 @@ function misha_validate_fname_lname( $fields, $errors ){
             $errors->add( 'validation', __('Your Tax code is incorrect!','wm-child-verdnatura') );
         }
     // }
-    
 }
 ?>
