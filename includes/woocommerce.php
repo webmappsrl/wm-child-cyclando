@@ -317,13 +317,13 @@ add_filter( 'woocommerce_cart_totals_coupon_html', 'change_remove', 10, 3);
 
 
 // adds the deposit amount to cart page after total number
-add_action( 'woocommerce_cart_totals_after_order_total','show_deposit_amount' );
+add_action( 'woocommerce_cart_totals_before_order_total','show_deposit_amount' );
 function show_deposit_amount() {
-	$deposit_to_pay = WC()->cart->total * 0.25 ;
+	$deposit_to_pay = WC()->session->get('vn_deposit_amount') ;
 	$deposit_to_pay_formated = number_format($deposit_to_pay, 2);
 	?>
 	<tr class="order_deposit">
-		<th><?php _e( '25% Deposit', 'woocommerce' ); ?></th>
+		<th><?php _e( '25% Deposit + Cancellation insurance', 'woocommerce' ); ?></th>
 		<td data-title="<?php esc_attr_e( '25% Deposit', 'woocommerce' ); ?>"><?php echo $deposit_to_pay_formated  ?>€</td>
 	</tr><?php
     
@@ -465,6 +465,9 @@ function vn_order_admin_metabox_callback( $post ) {
 	$club_name = '';
 	$place = '';
 	$place_s = '';
+	$routeid = '';
+	$routCode = '';
+	$routePermalink = '';
 	foreach ( $post as $info) {
 		$description = $info->post_excerpt;
 	}
@@ -474,6 +477,11 @@ function vn_order_admin_metabox_callback( $post ) {
     <?php
     
     foreach ($desc as $val => $key){
+		if ($val == 'routeId') { 
+			$routeid = $key;
+			$routCode = get_field('n7webmapp_route_cod',$routeid);
+			$routePermalink = get_permalink($routeid);
+		} 
 		if ($val == 'boat_trip') { //check if the route is in boat or not
 			$place = __('cabin','wm-child-verdenatura'); 
 			$place_s = __('cabins','wm-child-verdenatura'); 
@@ -502,7 +510,8 @@ function vn_order_admin_metabox_callback( $post ) {
             <?php 
                 echo '<div class="tour-general-info"><p><strong>';
                 echo __('Departure date:' ,'wm-child-verdenatura').' </strong>';
-                echo $departure_date.'</p>';
+				echo $departure_date.'</p>';
+				echo '<strong><p>'.__('Route code:','wm-child-verdenatura').'</strong> <a target="_blank" href="'.$routePermalink.'">'.$routCode.'</p></a>';
             if ( $nightsBefore ) {
                 echo '<p><strong>';
                 echo __('Nights Before:' ,'wm-child-verdenatura').' </strong>';
@@ -541,6 +550,7 @@ function vn_order_admin_metabox_callback( $post ) {
                         $firsName = $pax['firstName'];
                         $lastName = $pax['lastName'];
                         $birth_date = $pax['date'];
+                        $person_height = $pax['height'];
                         $price = $pax['price'];
                         $rentBike = '';
                         $babyseat = '';
@@ -563,6 +573,7 @@ function vn_order_admin_metabox_callback( $post ) {
                         <td>
 							<?php echo $firsName.' '.$lastName; ?>
 							<?php if ( $birth_date ) { echo '<br>'.date("Y-m-d", strtotime($birth_date)); } ?>
+							<?php if ( $person_height ) { echo '<br>Altezza: '.$person_height.'cm'; } ?>
 						</td>
                         
                         <?php
@@ -674,9 +685,25 @@ function vn_order_admin_metabox_callback( $post ) {
 
 add_action( 'woocommerce_email_before_order_table', 'ts_email_before_order_table', 10, 4 );
 function ts_email_before_order_table( $order, $sent_to_admin, $plain_text, $email ) {
+	// $coupon = $order->get_used_coupons();
+	// $coupon_name = $coupon['0'];
 	
-	$coupon_id = WC()->cart->get_coupons();
-    foreach ($coupon_id as $val ){
+	// $post = get_posts( array( 
+	// 	'name' => $coupon_name, 
+	// 	'post_type' => 'shop_coupon'
+	// ) );
+	$object = WC()->cart;
+	if ($object instanceof WC_Cart )
+		$coupons = $object->get_coupons();
+	else {
+		$coupons_names = $order->get_used_coupons();
+		$coupons = [];
+		foreach( $coupons_names as $code )
+			$coupons[$code] = new WC_Coupon($code);
+		
+	}
+
+    foreach ($coupons as $val ){
         $json =  $val;
     }   
     $json_output = json_decode($json, JSON_PRETTY_PRINT); 
@@ -689,8 +716,16 @@ function ts_email_before_order_table( $order, $sent_to_admin, $plain_text, $emai
 	$club_name = '';
 	$place = '';
     $place_s = '';
+	$routeid = '';
+	$routCode = '';
+	$routePermalink = '';
 
 	foreach ($desc as $val => $key){
+		if ($val == 'routeId') { 
+			$routeid = $key;
+			$routCode = get_field('n7webmapp_route_cod',$routeid);
+			$routePermalink = get_permalink($routeid);
+		}
 		if ($val == 'boat_trip') { //check if the route is in boat or not
 			$place = __('cabin','wm-child-verdenatura'); 
 			$place_s = __('cabins','wm-child-verdenatura'); 
@@ -723,7 +758,8 @@ function ts_email_before_order_table( $order, $sent_to_admin, $plain_text, $emai
             <?php 
                 echo '<div class="tour-general-info"><p><strong>';
                 echo __('Departure date:' ,'wm-child-verdenatura').' </strong>';
-                echo $departure_date.'</p>';
+				echo $departure_date.'</p>';
+				echo '<strong>'.__('Route code:','wm-child-verdenatura').'</strong> <a target="_blank" href="'.$routePermalink.'">'.$routCode.'</a>';
             if ( $nightsBefore ) {
                 echo '<p><strong>';
                 echo __('Nights Before:' ,'wm-child-verdenatura').' </strong>';
@@ -908,9 +944,9 @@ function custom_cart_items_prices( $cart ) {
     $description = $json_output['description'];
     $desc = json_decode($description, JSON_PRETTY_PRINT);
 
-	foreach ( $post as $info) {
-		$description = $info->post_excerpt;
-	}
+	// foreach ( $post as $info) {
+	// 	$description = $info->post_excerpt;
+	// }
 
 	$desc = json_decode($description, JSON_PRETTY_PRINT);
 	$kid1_max_range = '';

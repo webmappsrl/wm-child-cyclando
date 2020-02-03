@@ -782,7 +782,7 @@ body .woocommerce .return-to-shop {
 .us-woo-cart_compact .woocommerce .cart-collaterals {
     width: 40%;
 }
-.checkout-button.button.alt.wc-forward,.woocommerce .button.alt {
+body .checkout-button.button.alt.wc-forward,body .woocommerce .button.alt {
     color:var(--color-primary)!important;
 }
 .us-woo-cart_compact .woocommerce .shop_table.cart {
