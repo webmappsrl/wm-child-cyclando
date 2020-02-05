@@ -289,72 +289,75 @@ foreach ( $variations_name_price as $var ) {
                     <?php endforeach;?>
                 </div>
                 <div class="quotes-preventivo">
-                    <span class='durata-txt'> <!------------ quote ---------------------->
-                    <p class="tab-section"> 
                         <?php 
-                        if( $season_products ){
-                        echo __('Individual rates:' ,'wm-child-verdenatura');}?>
-                    </p>
-                    </span>
-                    <?php 
-                    if ($season_products){  //----------- start hotel product table
-                        $attributes_name_hotel_seasonal = array();
-                        $variations_name_price_seasonal = array();
-                        $list_all_variations_name_seasonal = array();
-                            foreach( $season_products as $p ){ // variables of each product
-                            $product = wc_get_product($p); 
-                                if($product->is_type('variable')){
-                                    $product = wc_get_product( $p );
-                                    $category = $product->get_categories();
-                                    $attributes_list = $product->get_variation_attributes();
-                                    foreach ($attributes_list as $value => $key ) {
-                                        $product_attribute_name = $value;
-                                    }
-                                    if(strip_tags($category) == 'hotel'){
-                                        array_push($attributes_name_hotel_seasonal,$product_attribute_name);
-                                        $product_variation_name_price = array();
-                                        foreach($product->get_available_variations() as $variation ){
-
-                                            // hotel Name
-                                            $attributes = $variation['attributes'];
-                                            $variation_name = '';
-                                            foreach($attributes as $name_var){
-                                                $variation_name = $name_var;
-                                            }
-                                            // Prices
-                                            if (!empty($variation['price_html'])){
-                                                $price = $variation['price_html'];
-                                            } else {
-                                                $price = $variation['display_price'].'€';
-                                            }
-                                            $variation_name_price = array($variation_name => $price);
-                                            $list_all_variations_name_seasonal += array($variation_name => $variation['price_html']);
-                                            $product_variation_name_price += $variation_name_price;
+                        if ($season_products){  //----------- start hotel product table
+                            $attributes_name_hotel_seasonal = array();
+                            $variations_name_price_seasonal = array();
+                            $list_all_variations_name_seasonal = array();
+                                foreach( $season_products as $p ){ // variables of each product
+                                $product = wc_get_product($p); 
+                                    if($product->is_type('variable')){
+                                        $product = wc_get_product( $p );
+                                        $category = $product->get_categories();
+                                        $attributes_list = $product->get_variation_attributes();
+                                        foreach ($attributes_list as $value => $key ) {
+                                            $product_attribute_name = $value;
                                         }
-                                        array_push($variations_name_price_seasonal,$product_variation_name_price);
+                                        if(strip_tags($category) == 'hotel'){
+                                            array_push($attributes_name_hotel_seasonal,$product_attribute_name);
+                                            $product_variation_name_price = array();
+                                            foreach($product->get_available_variations() as $variation ){
+    
+                                                // hotel Name
+                                                $attributes = $variation['attributes'];
+                                                $variation_name = '';
+                                                foreach($attributes as $name_var){
+                                                    $variation_name = $name_var;
+                                                }
+                                                // Prices
+                                                if (!empty($variation['price_html'])){
+                                                    $price = $variation['price_html'];
+                                                } else {
+                                                    $price = $variation['display_price'].'€';
+                                                }
+                                                $variation_name_price = array($variation_name => $price);
+                                                $list_all_variations_name_seasonal += array($variation_name => $variation['price_html']);
+                                                $product_variation_name_price += $variation_name_price;
+                                            }
+                                            array_push($variations_name_price_seasonal,$product_variation_name_price);
+                                        }
                                     }
                                 }
+                                
+                                foreach ( $variations_name_price_seasonal as $var ) {
+                                    $price = preg_replace('/&.*?;/', '', $var['adult']);
+                                    $price = preg_replace('/€/', '', $price);
+                                    $price = strip_tags($price);
+                                    $price_e = explode(',',$price);
+                                    $price_e = str_replace('.', '', $price_e[0]);
+                                    array_push($lowest_price_list , $price_e);
+                                }
                             }
-                            
-                            foreach ( $variations_name_price_seasonal as $var ) {
-                                $price = preg_replace('/&.*?;/', '', $var['adult']);
-                                $price = preg_replace('/€/', '', $price);
-                                $price = strip_tags($price);
-                                $price_e = explode(',',$price);
-                                $price_e = str_replace('.', '', $price_e[0]);
-                                array_push($lowest_price_list , $price_e);
-                            }
-                        }
-                    ?>
+                        ?>
+                    <span class='durata-txt'> <!------------ quote ---------------------->
+                    </span>
                     <table class="departures-quotes">
                         <thead>
                             <tr>
-                                <th></th>
+                                <th>
+                                    <p class="tab-section"> 
+                                        <?php 
+                                        if( $season_products ){
+                                            echo __('Individual rates:' ,'wm-child-verdenatura');}?>
+                                    </p>
+                                </th>
                                 <?php
-                                foreach ($attributes_name_hotel_seasonal as $hotel){
+                                if (count($attributes_name_hotel_seasonal) > 1) {
+                                    foreach ($attributes_name_hotel_seasonal as $hotel){
                                 ?>
                                 <th class="tab-section-quotes"><?php echo $hotel;?></th>
                                 <?php
+                                    }
                                 }
                                 ?>
                             </tr>
@@ -384,10 +387,12 @@ foreach ( $variations_name_price as $var ) {
                                 </p>
                             </th>
                             <?php
-                            foreach ($attributes_name_hotel as $hotel){
+                            if (count($attributes_name_hotel) > 1) {
+                                foreach ($attributes_name_hotel as $hotel){
                             ?>
                             <th class="tab-section-quotes"><?php echo $hotel;?></th>
                             <?php
+                                }
                             }
                             ?>
                         </tr>
@@ -839,8 +844,10 @@ foreach ( $variations_name_price as $var ) {
             <?php
             }  //----------- END hotel product table
             //  add the lowest price to vn_prezzp ACF : price from... 
-            $lowest_price = min($lowest_price_list);
-            update_field('wm_route_price', $lowest_price);
+            if ($lowest_price_list) {
+                $lowest_price = min($lowest_price_list);
+                update_field('wm_route_price', $lowest_price);
+            }
             ?>
         </div><!---- END  -------- quote extra -->
         <div class="prezzi-description">

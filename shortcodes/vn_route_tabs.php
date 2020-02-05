@@ -406,7 +406,7 @@ foreach ( $variations_name_price as $var ) {
                             </tr>
                         </thead>
                         <tbody>
-                        <?php vn_route_tabs_body ($list_all_variations_name_seasonal,$variations_name_price_seasonal,$place)?>
+                        <?php vn_route_tabs_body($list_all_variations_name_seasonal,$variations_name_price_seasonal,$place,$from,$to);?>
                         </tbody>       
                     </table>
                 </div> <!---- END  -------- quote hotel alberghi -->
@@ -442,7 +442,7 @@ foreach ( $variations_name_price as $var ) {
                         </tr>
                     </thead>
                     <tbody>
-                    <?php vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$place)?>
+                    <?php vn_route_tabs_body($list_all_variations_name,$variations_name_price,$place,$from,$to)?>
                     </tbody>       
                 </table>
                 <?php
