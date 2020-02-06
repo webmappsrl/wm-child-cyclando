@@ -23,22 +23,6 @@ add_action('woocommerce_before_checkout_form', 'preventivi_json_to_text',15);
 add_action('after_setup_theme', 'vn_theme_setup');
 
 
-/** FIX AMOUNT OF CART **/
-add_filter('woocommerce_deposits_cart_deposit_amount', function($deposit_amount, $cart_total){
-   
-    $deposit_percentage = get_option('wc_deposits_checkout_mode_deposit_amount');
-    $insurance = WC()->session->get('wp_quote_insurance');
-    if ( $deposit_percentage && $insurance )
-    {
-        $insurance_percentage = $insurance * ($deposit_percentage/100);
-        $deposit_amount = $deposit_amount - $insurance_percentage;
-        $deposit_amount = $deposit_amount + $insurance;
-
-        WC()->session->set('vn_deposit_amount',$deposit_amount);
-    }
-return $deposit_amount;
-
-}, 99 ,2);
 
 /**
  * Filter activities in admin columns pro dropdown
