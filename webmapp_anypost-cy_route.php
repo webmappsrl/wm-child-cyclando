@@ -94,7 +94,7 @@ if ($coming_soon) {
                     endif; ?>
                 </p>
                 <?php } else { ?>
-                <p class="route_first_date"><span class="route_duration"><?php echo $nights . ' ' . __('nights', 'wm-child-cyclando') ?></span></p>
+                <p class="route_first_date"><span class="route_duration"><?php echo (!empty($duration))?$nights . ' ' . __('nights', 'wm-child-cyclando'):'' ?></span></p>
                 <p class='meta-bar-txt-light'>
                     <?php echo $tax_places_to_go[0]->name;
                     if ($parent) : echo ', <strong>' . $parent . '</strong>';
