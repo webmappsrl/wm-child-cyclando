@@ -316,6 +316,10 @@ body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
     body .popup-show-prices .prezzo {
         width: 120px;
     }
+    .popup-show-prices .coming-soon{
+        height: auto;
+        padding: 0 50px;
+    }
     body .webmapp-featured-meta-info .container .prezzo-container .prezzo .cifra {
         font-size: 21px;
     }
@@ -768,6 +772,18 @@ i {
     width: 150px;
 }
 
+.popup-show-prices .coming-soon{
+    display: flex;
+    height: 60px;
+    text-align: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 0px 60px;
+}
+.coming-soon-button {
+    pointer-events: none;
+}
 .popup-show-prices:hover {
     background-color: var(--color-secondary-hover);
     cursor: pointer;

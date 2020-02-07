@@ -354,9 +354,18 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     padding: 15px 10px;
     display: grid;
 }
+.webmapp-anypost-template-cy_route .webmapp_post_meta .prezzo-tab.coming-soon-button {
+    background-color: var(--color-secondary);
+    line-height: 20px;
+    padding: 10px 10px;
+}
 
 .webmapp-anypost-template-cy_route .webmapp_post_meta .prezzo-tab p {
     font-size: 32px;
+}
+
+.webmapp-anypost-template-cy_route .webmapp_post_meta .prezzo-tab.coming-soon-button p {
+    font-size: 20px;
 }
 
 .webmapp-anypost-template-cy_route .row {

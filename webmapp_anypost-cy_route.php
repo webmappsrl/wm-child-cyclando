@@ -54,6 +54,11 @@ if (get_the_post_thumbnail_url()) {
     $get_the_post_thumbanil = $verde_natura_image[0];
 }
 
+$coming_soon = get_field('not_salable',$post_id);
+if ($coming_soon) {
+    $coming_soon_class = 'coming-soon-button';
+}
+
 ?>
 
 <div class="col-sm-12 col-md-<?php echo $wm_anypost_bootstrap_col_type ?> webmapp_shortcode_any_post post_type_<?php echo $wm_anypost_post_type ?>">
@@ -81,29 +86,35 @@ if (get_the_post_thumbnail_url()) {
         </div>
         <div class="webmapp_post_meta">
             <div class="post_meta_info">
+                <?php if (!$coming_soon) { ?>
                 <p class="route_first_date"><?php echo __('From', 'wm-child-verdenatura') . ' <span class="meta_info_data">' . date_i18n('d F Y', strtotime($start_array[0])); ?></span><span class="route_duration"><?php echo ' - ' . $nights . ' ' . __('nights', 'wm-child-cyclando') ?></span></p>
                 <p class='meta-bar-txt-light'>
                     <?php echo $tax_places_to_go[0]->name;
                     if ($parent) : echo ', <strong>' . $parent . '</strong>';
                     endif; ?>
                 </p>
+                <?php } else { ?>
+                <p class="route_first_date"><span class="route_duration"><?php echo $nights . ' ' . __('nights', 'wm-child-cyclando') ?></span></p>
+                <p class='meta-bar-txt-light'>
+                    <?php echo $tax_places_to_go[0]->name;
+                    if ($parent) : echo ', <strong>' . $parent . '</strong>';
+                    endif; ?>
+                </p>
+                <?php } ?>
             </div>
             <?php
+            if (!$coming_soon) {
             $price = get_field('wm_route_price');
-            // if ( $price )
-            // {
-            //$price = number_format( $price, 0, ',', '.');
             $price = (float)$price;
             $sale_price_p = '';
             $sale_price = get_field('vn_prezzo_sc');
             if ($sale_price > 0)
                 $sale_price_p = number_format($sale_price, 0, ',', '.') . ' € ';
 
-
             echo "<div class='prezzo-tab'><p><span class='cifra'>$price €</span></p></div>";
-            // }
-
-
+            } else {
+                ?> <div class='prezzo-tab <?php echo $coming_soon_class?>'><p><span><?php echo __('Coming soon!', 'wm-child-cyclando'); ?></span></p></div> <?php
+            }
             ?>
         </div>
 

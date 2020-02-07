@@ -19,6 +19,10 @@
 	$scheda_tecnica = get_field('vn_scheda_tecnica');
 	$program = get_field('vn_prog');
 	$touroperator_id_array = get_field('tour_operator');
+	$coming_soon = get_field('not_salable');
+	if ($coming_soon) {
+		$coming_soon_class = 'coming-soon-button';
+	}
 	$featured_map = '/wp-content/themes/wm-child-cyclando/images/map-logo-osm.jpg';
 	if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
 		$language = ICL_LANGUAGE_CODE;
@@ -206,8 +210,9 @@
 						<div class="webmapp-featured-meta-info" style="background-image: url('/wp-content/themes/wm-child-cyclando/images/background_menu_route_verde.png')">
 							<div class="container">
 								<div class="meta-bar show-prices">
-									<div id="popup-show-prices" class="popup-show-prices">
+									<div id="popup-show-prices" class="popup-show-prices <?php echo $coming_soon_class?>">
 											<!-- <div class="meta-bar price-from"> -->
+											<?php if (!$coming_soon) {?>
 											<div class="prezzo-container">
 												<!-- prezzo start-->
 												<div class="prezzo">
@@ -244,6 +249,11 @@
 											</div>
 											<!--.prezzo  end-->
 											<div class="show-price-btn"><i class="cy-icons icon-calendar-alt1"></i></div>
+											<?php } else {?>
+											<div class="coming-soon">
+												<span class='meta-bar-txt-light'><?php echo __('Coming soon!', 'wm-child-cyclando'); ?></span>
+											</div>
+											<?php } ?>
 									</div>
 								</div>
 
@@ -322,7 +332,7 @@
 										</p>
 									</div>
 								</div>
-								<?php if(current_user_can('administrator')) { ?>
+								<?php if(current_user_can('administrator') or !$coming_soon) { ?>
 									<div id="wm-book-quote" class="meta-bar wm-book long-txt">
 										<p class='meta-bar-txt-bold'><?php echo __('Make a quote', 'wm-child-verdenatura'); ?></p>
 										<a  target="_blank" href="http://quote.cyclando.com/#/<?php echo $post_id.'?lang='.$language;?>">
@@ -348,7 +358,7 @@
 									<div class="close-button-container"><span class="cy-close">&times;</span></div>
 									<div class="vedi-prezzi"><h2>Vedi i prezzi</h2></div>
 									<div class="meta-bar wm-activity"><i class="<?php echo $iconimage_activity; ?>"></i></div>
-									<?php if(current_user_can('administrator')) { ?>
+									<?php if(current_user_can('administrator') or !$coming_soon ) { ?>
 									<div id="wm-book-quote" class="meta-bar wm-book long-txt">
 										<p class='meta-bar-txt-bold'><?php echo __('Make a quote', 'wm-child-verdenatura'); ?></p>
 										<a  target="_blank" href="http://quote.cyclando.com/#/<?php echo $post_id.'?lang='.$language;?>">
