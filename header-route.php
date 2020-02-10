@@ -332,7 +332,7 @@
 										</p>
 									</div>
 								</div>
-								<?php if(current_user_can('administrator') or !$coming_soon) { ?>
+								<?php if(current_user_can('administrator')) { ?>
 									<div id="wm-book-quote" class="meta-bar wm-book long-txt">
 										<p class='meta-bar-txt-bold'><?php echo __('Make a quote', 'wm-child-verdenatura'); ?></p>
 										<a  target="_blank" href="http://quote.cyclando.com/#/<?php echo $post_id.'?lang='.$language;?>">
@@ -358,7 +358,7 @@
 									<div class="close-button-container"><span class="cy-close">&times;</span></div>
 									<div class="vedi-prezzi"><h2>Vedi i prezzi</h2></div>
 									<div class="meta-bar wm-activity"><i class="<?php echo $iconimage_activity; ?>"></i></div>
-									<?php if(current_user_can('administrator') or !$coming_soon ) { ?>
+									<?php if(current_user_can('administrator') ) { ?>
 									<div id="wm-book-quote" class="meta-bar wm-book long-txt">
 										<p class='meta-bar-txt-bold'><?php echo __('Make a quote', 'wm-child-verdenatura'); ?></p>
 										<a  target="_blank" href="http://quote.cyclando.com/#/<?php echo $post_id.'?lang='.$language;?>">
@@ -438,7 +438,7 @@
 							button.addEventListener('click', openContactModal);
 						});
 						closeContactBtn.addEventListener('click', closeContactModal);
-						contactInsideModal.addEventListener('click', closeModalOpenContact);
+						// contactInsideModal.addEventListener('click', closeModalOpenContact);
 
 						// Open modal prices
 						function openModal() {
@@ -446,6 +446,7 @@
 						}
 						// Open contact modal
 						function openContactModal() {
+							modal.style.display = 'none';
 							contactModal.style.display = 'block';
 						}
 

@@ -23,7 +23,7 @@ function wizard_button() {
                 closeOnEscape: false,
                 modal: true,
                 width: "auto",
-                height: "auto",
+                height: "100%",
             });
 
             // add the onclick handler
