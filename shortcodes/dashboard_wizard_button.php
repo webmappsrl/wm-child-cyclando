@@ -22,8 +22,8 @@ function wizard_button() {
                 autoOpen: false, //FALSE if you open the dialog with, for example, a button click
                 closeOnEscape: false,
                 modal: true,
-                width: "auto",
-                height: "100%",
+                width: "100vw",
+                height: "100vh"
             });
 
             // add the onclick handler
