@@ -10,7 +10,7 @@ wp_add_dashboard_widget('custom_help_widget', 'Webmapp wizard', 'wizard_button',
  
 function wizard_button() {
     echo '<p>Crea una nuova route:</p>';
-    echo '<button  id="dialogButton">Nuova route</button >';
+    echo '<button class="button button-primary button-hero load-customize hide-if-no-customize" id="dialogButton">Nuova route</button >';
     echo '<div id="dialog" title="Basic dialog">';
     echo do_shortcode("[testAngular]");
     echo '</div>';
