@@ -16,16 +16,16 @@ function wizard_button() {
     echo '</div>';
     ?> 
     <script>
-        $( function() {
-            $( "#dialog" ).dialog({
+        jQuery( function() {
+            jQuery( "#dialog" ).dialog({
                 autoOpen: false, //FALSE if you open the dialog with, for example, a button click
                 title: 'Nuova route',
                 modal: true
             });
 
             // add the onclick handler
-            $("#dialogButton").click(function() {
-                $("#dialog").dialog("open");
+            jQuery("#dialogButton").click(function() {
+                jQuery("#dialog").dialog("open");
                 return false;
             });
         } );
