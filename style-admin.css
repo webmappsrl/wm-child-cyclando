@@ -32,7 +32,9 @@ table.shop_table {
     padding: 9px 12px;
     line-height: 1.5em;
 }
-
+.ui-widget .ui-dialog-titlebar {
+    display: none;
+}
 /* ----------------------------------------------------------------------------------------------------------------------------*/
 @font-face {
     font-family: 'fontello';
