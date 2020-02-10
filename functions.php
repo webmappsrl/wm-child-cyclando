@@ -324,7 +324,7 @@ function yoast_seo_breadcrumb_append_link( $links ) {
             'url' => site_url( '/blog/' ),
             'text' => __('Blog', 'wm-child-cyclando'),
         );
-        array_splice( $links, 1,1, $breadcrumb );
+        array_splice( $links, 1,0, $breadcrumb );
 	}
 	
 
