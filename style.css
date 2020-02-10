@@ -818,3 +818,27 @@ body .checkout-button.button.alt.wc-forward,body .woocommerce .button.alt {
     background: #749D27;
     background: linear-gradient(94deg, #9ac250 0%, #749D27 100%)!important;
 }
+/* blog page css */
+body .blog-grid  #us_grid_1 .usg_hwrapper_1 {
+    margin-left: 10%;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+@media (max-width: 479px) {
+    body .blog-grid  #us_grid_1 .usg_post_image_1 {
+        display: block !important;
+        margin-left: 0;
+    }
+    body .blog-grid  #us_grid_1 .usg_hwrapper_1 {
+        margin-left: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        display: grid;
+    }
+    .blog-grid #us_grid_1 .usg_post_image_1 {
+        width: 100%;
+    }
+    .blog-grid #us_grid_1 .usg_vwrapper_1 {
+        width: 90%;
+    }
+}

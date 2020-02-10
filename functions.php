@@ -317,6 +317,14 @@ function yoast_seo_breadcrumb_append_link( $links ) {
             'text' => __('Routes', 'wm-child-cyclando'),
         );
         array_splice( $links, 1,1, $breadcrumb );
+    }
+    
+    if ( is_singular( 'post' ) ) {
+        $breadcrumb[] = array(
+            'url' => site_url( '/blog/' ),
+            'text' => __('Blog', 'wm-child-cyclando'),
+        );
+        array_splice( $links, 1,1, $breadcrumb );
 	}
 	
 
