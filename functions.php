@@ -7,6 +7,7 @@ require ('shortcodes/vn_blog_tabs.php');
 require ('shortcodes/calendar_departures_home.php');
 require ('shortcodes/calendar_departures_all.php');
 require ('shortcodes/wm_gallery.php');
+require ('shortcodes/dashboard_wizard_button.php');
 // require ('includes/woocommerce.php');
 // require ('includes/preventivi-json.php');
 require ('url_filters.php');
@@ -165,6 +166,8 @@ add_action( 'wp_enqueue_scripts', 'Divi_parent_theme_enqueue_styles' );
 function Divi_parent_theme_enqueue_styles() {
     // wp_enqueue_style( 'divi-style', get_template_directory_uri() . '/style.css' );
     wp_enqueue_style('route-single-post-style', get_stylesheet_directory_uri() . '/single-route-style.css');
+    wp_enqueue_script( 'dialogJquery', get_stylesheet_directory_uri() . 'https://code.jquery.com/jquery-1.12.4.js');
+    wp_enqueue_script( 'dialogUIJquery', get_stylesheet_directory_uri() . 'https://code.jquery.com/ui/1.12.1/jquery-ui.js');
     wp_enqueue_script( 'hightlight', get_stylesheet_directory_uri() . '/js/home_highlight.js');
     wp_enqueue_script( 'general_javascript', get_stylesheet_directory_uri() . '/js/general.js', array ('jquery') );
     
@@ -265,7 +268,12 @@ add_filter( 'get_search_form', 'my_search_form' );
 //     return "$date_html<div class='my_comment_text'>$comment_text</div>$gallery";
 // }
 
+// remove comments in Barche custom post type
+add_action( 'init', 'remove_custom_post_comment' );
 
+function remove_custom_post_comment() {
+    remove_post_type_support( 'barche', 'comments' );
+}
 
 
 function fwp_add_facet_labels() {

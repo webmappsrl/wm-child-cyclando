@@ -70,8 +70,9 @@ if (isset($_GET['_cosa_vuoi_fare'])) {
                                                 <div class="wpb_wrapper">
                                                     <div class="wpb_text_column ">
                                                         <div class="wpb_wrapper">
-                                                            <div class="facetwp-template" data-name="routes">
+                                                            <div class="facetwp-template">
                                                                 <?php
+                                                                // data-name="routes"
                                                                 while ($loop->have_posts()) :
                                                                     $loop->the_post();
                                                                     $post_id = get_the_ID();
@@ -137,7 +138,7 @@ if (isset($_GET['_cosa_vuoi_fare'])) {
                                                     console.log(searchResult[0]);
                                                     const pageTitle = document.querySelector('#cerca-title');
                                                     $.ajax({
-                                                        url: '/wp-content/themes/wm-child-verdenatura/cerca-function.php',
+                                                        url: '/wp-content/themes/wm-child-cyclando/cerca-function.php',
                                                         data: {
                                                             action: searchResult[0]
                                                         },
@@ -153,11 +154,11 @@ if (isset($_GET['_cosa_vuoi_fare'])) {
 
                                                 });
 
-                                                $(".showmore").hide();
-                                                $(".ng-hide").click(function() {
-                                                    $(this).hide();
-                                                    $(".showmore").show();
-                                                });
+                                                // $(".showmore").hide();
+                                                // $(".ng-hide").click(function() {
+                                                //     $(this).hide();
+                                                //     $(".showmore").show();
+                                                // });
                                             })(jQuery);
                                         </script>
                                     </div>
