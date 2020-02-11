@@ -48,7 +48,7 @@
 			$sto = get_sub_field('stop');
 			$w_d = get_sub_field('week_days');
 			$d_o_w = new DaysOfWeek( $sta , $sto );
-			$w_d_int = dw_weekDayToWeekNumber($w_d);
+			$w_d_int = wm_weekDayToWeekNumber($w_d);
 			$dates = array_merge($dates,$d_o_w->query_byDayOfWeek( $w_d_int , 'none' ));
 		endwhile;
 		$dates = array_unique( $dates , SORT_REGULAR );

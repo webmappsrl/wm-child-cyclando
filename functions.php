@@ -394,7 +394,7 @@ function misha_validate_fname_lname( $fields, $errors ){
 add_action( 'wp', 'update_route_not_salable' );
 function update_route_not_salable()
 {
-    function dw_weekDayToWeekNumber( $days_of_week ){
+    function wm_weekDayToWeekNumber( $days_of_week ){
         $r = array();
         $map = array('sun','mon', 'tue', 'wed', 'thu', 'fri', 'sat');
         foreach( $days_of_week as $i => $day_name )
@@ -416,7 +416,7 @@ function update_route_not_salable()
                 $sto = get_sub_field('stop');
                 $w_d = get_sub_field('week_days');
                 $d_o_w = new DaysOfWeek( $sta , $sto );
-                $w_d_int = dw_weekDayToWeekNumber($w_d);
+                $w_d_int = wm_weekDayToWeekNumber($w_d);
                 $dates = array_merge($dates,$d_o_w->query_byDayOfWeek( $w_d_int , 'none' ));
             endwhile;
             $dates = array_unique( $dates , SORT_REGULAR );
