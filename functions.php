@@ -389,77 +389,16 @@ function misha_validate_fname_lname( $fields, $errors ){
 }
 
 
-// add a control before single-route, that checks the next departure existance, if not turns on "not_salable"
-// and turns "Not_salable" off by adding a valid departure date
-add_action( 'wp', 'update_route_not_salable' );
-function update_route_not_salable()
-{
-    function wm_weekDayToWeekNumber( $days_of_week ){
-        $r = array();
-        $map = array('sun','mon', 'tue', 'wed', 'thu', 'fri', 'sat');
-        foreach( $days_of_week as $i => $day_name )
-        {
-            if ( ( $j = array_search( $day_name , $map ) ) != -1  )
-                $r[] = $j;
-        }
-        return $r;
+function wm_weekDayToWeekNumber( $days_of_week ){
+    $r = array();
+    $map = array('sun','mon', 'tue', 'wed', 'thu', 'fri', 'sat');
+    foreach( $days_of_week as $i => $day_name )
+    {
+        if ( ( $j = array_search( $day_name , $map ) ) != -1  )
+            $r[] = $j;
     }
-    
-    
-    if ( 'route' === get_post_type() AND is_singular() ) {
-        //get the first departure date
-        $start_array = array();
-        if (have_rows('departures_periods',get_the_ID())) {
-            $dates = array();
-            while (have_rows('departures_periods')) : the_row();
-                $sta = get_sub_field('start');
-                $sto = get_sub_field('stop');
-                $w_d = get_sub_field('week_days');
-                $d_o_w = new DaysOfWeek( $sta , $sto );
-                $w_d_int = wm_weekDayToWeekNumber($w_d);
-                $dates = array_merge($dates,$d_o_w->query_byDayOfWeek( $w_d_int , 'none' ));
-            endwhile;
-            $dates = array_unique( $dates , SORT_REGULAR );
-            foreach ($dates as $date) {
-                $d = $date->format('d-m-Y');
-                array_push($start_array, $d);
-            }
-        }
-        
-        if (have_rows('departure_dates',get_the_ID())) {
-            $dates = get_field('departure_dates');
-            foreach ($dates as $date) {
-                foreach ($date as $single_date) {
-                    $start = str_replace("/", "-", $single_date);
-                    array_push($start_array, $start);
-                }
-            }
-        }
-        usort($start_array, function ($a, $b) {
-            $dateTimestamp1 = strtotime($a);
-            $dateTimestamp2 = strtotime($b);
-
-            return $dateTimestamp1 < $dateTimestamp2 ? -1 : 1;
-        });
-        
-        $count = 0;
-        foreach ($start_array as $date) {
-            if ( date('d-m-Y', strtotime('+4 day')) <= $date ) {
-                // update_field('not_salable',false,get_the_ID()); 
-                break;
-            } else {
-                $count += 1;
-            }
-        }
-        if ($count == count($start_array)){
-            update_field('not_salable',true,get_the_ID());
-        }
-    } 
-
-    
-
+    return $r;
 }
-
 
 
 class DaysOfWeek
@@ -619,4 +558,67 @@ class DaysOfWeek
 
 
 }
+// add a control before single-route, that checks the next departure existance, if not turns on "not_salable"
+// and turns "Not_salable" off by adding a valid departure date
+add_action( 'wp', 'update_route_not_salable' );
+function update_route_not_salable()
+{
+    
+    
+    
+    if ( 'route' === get_post_type() AND is_singular() ) {
+        //get the first departure date
+        $start_array = array();
+        if (have_rows('departures_periods',get_the_ID())) {
+            $dates = array();
+            while (have_rows('departures_periods')) : the_row();
+                $sta = get_sub_field('start');
+                $sto = get_sub_field('stop');
+                $w_d = get_sub_field('week_days');
+                $d_o_w = new DaysOfWeek( $sta , $sto );
+                $w_d_int = wm_weekDayToWeekNumber($w_d);
+                $dates = array_merge($dates,$d_o_w->query_byDayOfWeek( $w_d_int , 'none' ));
+            endwhile;
+            $dates = array_unique( $dates , SORT_REGULAR );
+            foreach ($dates as $date) {
+                $d = $date->format('d-m-Y');
+                array_push($start_array, $d);
+            }
+        }
+        
+        if (have_rows('departure_dates',get_the_ID())) {
+            $dates = get_field('departure_dates');
+            foreach ($dates as $date) {
+                foreach ($date as $single_date) {
+                    $start = str_replace("/", "-", $single_date);
+                    array_push($start_array, $start);
+                }
+            }
+        }
+        usort($start_array, function ($a, $b) {
+            $dateTimestamp1 = strtotime($a);
+            $dateTimestamp2 = strtotime($b);
+
+            return $dateTimestamp1 < $dateTimestamp2 ? -1 : 1;
+        });
+        
+        $count = 0;
+        foreach ($start_array as $date) {
+            if ( date('d-m-Y', strtotime('+4 day')) <= $date ) {
+                // update_field('not_salable',false,get_the_ID()); 
+                break;
+            } else {
+                $count += 1;
+            }
+        }
+        if ($count == count($start_array)){
+            update_field('not_salable',true,get_the_ID());
+        }
+    } 
+
+    
+
+}
+
+
 ?>
