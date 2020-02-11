@@ -45,7 +45,7 @@ usort($start_array, function ($a, $b) {
     return $dateTimestamp1 < $dateTimestamp2 ? -1 : 1;
 });
 foreach ($start_array as $date) {
-    if ( date('d-m-Y', strtotime('+4 day')) <= $date ) {
+    if ( date('Y-m-d', strtotime('+4 day')) <= date('Y-m-d', strtotime($date)) ){
         $first_departure_date = date_i18n('d F', strtotime($date));
         break;
     } 

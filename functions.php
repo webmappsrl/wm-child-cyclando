@@ -602,7 +602,7 @@ function update_route_not_salable()
         
         $count = 0;
         foreach ($start_array as $date) {
-            if ( date('d-m-Y', strtotime('+4 day')) <= $date ) {
+            if ( date('Y-m-d', strtotime('+4 day')) <= date('Y-m-d', strtotime($date)) ){
                 // update_field('not_salable',false,get_the_ID()); 
                 break;
             } else {
