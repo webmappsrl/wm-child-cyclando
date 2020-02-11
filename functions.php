@@ -564,8 +564,6 @@ add_action( 'wp', 'update_route_not_salable' );
 function update_route_not_salable()
 {
     
-    
-    
     if ( 'route' === get_post_type() AND is_singular() ) {
         //get the first departure date
         $start_array = array();
@@ -615,8 +613,6 @@ function update_route_not_salable()
             update_field('not_salable',true,get_the_ID());
         }
     } 
-
-    
 
 }
 
