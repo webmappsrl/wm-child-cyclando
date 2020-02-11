@@ -39,7 +39,7 @@ foreach ($start_array as $date) {
     if ( date('d-m-Y', strtotime('+4 day')) <= $date ) {
         $first_departure_date = date_i18n('d F', strtotime($date));
         break;
-    }
+    } 
 }
 
 // route duration 

@@ -419,13 +419,17 @@ function update_route_not_salable()
 
             return $dateTimestamp1 < $dateTimestamp2 ? -1 : 1;
         });
+        $count = 0;
         foreach ($start_array as $date) {
             if ( date('d-m-Y', strtotime('+4 day')) <= $date ) {
-                update_field('not_salable',false,get_the_ID());
+                // update_field('not_salable',false,get_the_ID()); 
                 break;
             } else {
-                update_field('not_salable',true,get_the_ID());
+                $count += 1;
             }
+        }
+        if ($count == count($start_array)){
+            update_field('not_salable',true,get_the_ID());
         }
     } 
 }
