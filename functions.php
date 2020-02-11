@@ -1,15 +1,8 @@
 <?php
 
 require ('import_data.php');
-require ('shortcodes/vn_home_tabs.php');
 require ('shortcodes/route_table_price.php');
-require ('shortcodes/vn_blog_tabs.php');
-require ('shortcodes/calendar_departures_home.php');
-require ('shortcodes/calendar_departures_all.php');
-require ('shortcodes/wm_gallery.php');
 require ('shortcodes/dashboard_wizard_button.php');
-// require ('includes/woocommerce.php');
-// require ('includes/preventivi-json.php');
 require ('url_filters.php');
 
 

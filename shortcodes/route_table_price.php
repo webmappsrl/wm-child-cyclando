@@ -254,21 +254,26 @@ foreach ( $variations_name_price as $var ) {
             <ul> 
                 <?php while( have_rows('model_season') ): the_row();
                 $season_name = get_sub_field('season_name');
+                $season_disactive = get_sub_field('season_disactive');
                 $season_name_id = preg_replace('/\s*/', '', $season_name);
-                ?>
-                <li><a href="#tab-<?php echo $season_name_id; ?>" ><?php
-                        echo __($season_name ,'wm-child-verdenatura');?>
-                            
-                    </a>
-                </li>
-                <?php endwhile; ?>
+                    if (!$season_disactive):
+                    ?>
+                    <li><a href="#tab-<?php echo $season_name_id; ?>" ><?php
+                            echo __($season_name ,'wm-child-verdenatura');?>
+                                
+                        </a>
+                    </li>
+                    <?php endif; 
+                endwhile; ?>
             </ul>
             <?php while( have_rows('model_season') ): the_row(); ?> <!-- starti TABS stagionalita -->
             <?php
             $season_name = get_sub_field('season_name');
+            $season_disactive = get_sub_field('season_disactive');
             $season_name_id = preg_replace('/\s*/', '', $season_name); 
             $season_products = get_sub_field('wm_route_quote_model_season_product'); 
             $season_periods = get_sub_field('periods');
+            if (!$season_disactive):
             ?>
             <div id="tab-<?php echo $season_name_id; ?>" class="container-stagione"><!---- start  -------- TAB stagione --------->
                 <div class="grid-container-period-seasonal"> 
@@ -315,7 +320,10 @@ foreach ( $variations_name_price as $var ) {
                                                     $variation_name = $name_var;
                                                 }
                                                 // Prices
-                                                if (!empty($variation['price_html'])){
+                                                if ($variation['display_price'] == 0){
+                                                    $price = __('Free' ,'wm-child-verdenatura');
+                                                } 
+                                                elseif (!empty($variation['price_html'])){
                                                     $price = $variation['price_html'];
                                                 } else {
                                                     $price = $variation['display_price'].'€';
@@ -367,7 +375,7 @@ foreach ( $variations_name_price as $var ) {
                         </tbody>       
                     </table>
                 </div> <!---- END  -------- quote hotel alberghi -->
-            </div> <!---- END  -------- TAB stagione -->
+            </div> <?php endif; ?><!---- END  -------- TAB stagione -->
             <?php endwhile; ?>  <!---- END  -------- TAB stagionalita -->
         </div> <!---- END  -------- TAB Stagionalita --------->
 
