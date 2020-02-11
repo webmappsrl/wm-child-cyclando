@@ -10,7 +10,8 @@ $title_link = get_the_permalink();
 $current_post_type = get_post_type();
 $post_id = get_the_ID();
 
-$first_departure = '';
+//get the first departure date
+$first_departure_date = '';
 $start_array = array();
 if (have_rows('departures_periods')) {
     while (have_rows('departures_periods')) : the_row();
@@ -34,6 +35,12 @@ usort($start_array, function ($a, $b) {
 
     return $dateTimestamp1 < $dateTimestamp2 ? -1 : 1;
 });
+foreach ($start_array as $date) {
+    if ( date('d-m-Y', strtotime('+4 day')) <= $date ) {
+        $first_departure_date = date_i18n('d F', strtotime($date));
+        break;
+    }
+}
 
 // route duration 
 $duration = get_field('vn_durata');
@@ -87,7 +94,7 @@ if ($coming_soon) {
         <div class="webmapp_post_meta">
             <div class="post_meta_info">
                 <?php if (!$coming_soon) { ?>
-                <p class="route_first_date"><?php echo __('From', 'wm-child-verdenatura') . ' <span class="meta_info_data">' . date_i18n('d F Y', strtotime($start_array[0])); ?></span><span class="route_duration"><?php echo ' - ' . $nights . ' ' . __('nights', 'wm-child-cyclando') ?></span></p>
+                <p class="route_first_date"><?php echo __('From', 'wm-child-verdenatura') . ' <span class="meta_info_data">' . $first_departure_date; ?></span><span class="route_duration"><?php echo ' - ' . $nights . ' ' . __('nights', 'wm-child-cyclando') ?></span></p>
                 <p class='meta-bar-txt-light'>
                     <?php echo $tax_places_to_go[0]->name;
                     if ($parent) : echo ', <strong>' . $parent . '</strong>';

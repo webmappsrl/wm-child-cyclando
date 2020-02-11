@@ -29,7 +29,7 @@
 	} else {
 		$language = 'it';
 	}
-	
+	$first_departure_date = '';
 	// get terms targets
 	$tax_targets = get_the_terms($post_id, $target);
 	$tax_places_to_go = get_the_terms($post_id, $places_to_go);
@@ -63,7 +63,12 @@
 
 		return $dateTimestamp1 < $dateTimestamp2 ? -1 : 1;
 	});
-	$first_departure_date = explode('.',date_i18n('d.m.Y', strtotime($start_array[0])));
+	foreach ($start_array as $date) {
+		if ( date('d-m-Y', strtotime('+4 day')) <= $date ) {
+			$first_departure_date = date_i18n('d F', strtotime($date));
+			break;
+		}
+	}
 	?>
 	<!DOCTYPE HTML>
 	<html class="<?php echo $us_layout->html_classes() ?>" <?php language_attributes('html') ?>>
@@ -245,7 +250,7 @@
 											</div>
 											<div class="first-departure">
 												<span class='meta-bar-txt-light'><?php echo __('Next departures', 'wm-child-verdenatura'); ?></span>
-												<div class="first-departure-date"><?php echo date_i18n('d F', strtotime($start_array[0])); //echo $first_departure_date[0].".".$first_departure_date[1].".<span>".$first_departure_date[2]."</span>" ?></div>
+												<div class="first-departure-date"><?php echo $first_departure_date; ?></div>
 											</div>
 											<!--.prezzo  end-->
 											<div class="show-price-btn"><i class="cy-icons icon-calendar-alt1"></i></div>
