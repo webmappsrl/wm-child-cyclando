@@ -73,7 +73,6 @@
 
 		return $dateTimestamp1 < $dateTimestamp2 ? -1 : 1;
 	});
-	echo date('Y-m-d', strtotime('+4 day'));
 	foreach ($start_array as $date) {
 		if ( date('Y-m-d', strtotime('+4 day')) <= date('Y-m-d', strtotime($date)) ){
 			$first_departure_date = date_i18n('d F', strtotime($date));
