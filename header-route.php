@@ -41,14 +41,24 @@
 
 	//get the first departure date
 	$start_array = array();
-	if (have_rows('departures_periods')) {
+	if (have_rows('departures_periods',get_the_ID())) {
+		$dates = array();
 		while (have_rows('departures_periods')) : the_row();
-			$start = get_sub_field('start');
-			$start = str_replace("/", "-", $start);
-			array_push($start_array, $start);
+			$sta = get_sub_field('start');
+			$sto = get_sub_field('stop');
+			$w_d = get_sub_field('week_days');
+			$d_o_w = new DaysOfWeek( $sta , $sto );
+			$w_d_int = dw_weekDayToWeekNumber($w_d);
+			$dates = array_merge($dates,$d_o_w->query_byDayOfWeek( $w_d_int , 'none' ));
 		endwhile;
+		$dates = array_unique( $dates , SORT_REGULAR );
+		foreach ($dates as $date) {
+			$d = $date->format('d-m-Y');
+			array_push($start_array, $d);
+		}
 	}
-	if (have_rows('departure_dates')) {
+	
+	if (have_rows('departure_dates',get_the_ID())) {
 		$dates = get_field('departure_dates');
 		foreach ($dates as $date) {
 			foreach ($date as $single_date) {
