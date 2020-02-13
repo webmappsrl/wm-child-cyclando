@@ -53,7 +53,9 @@ ul.w-nav-list.level_1.hover_simple li:nth-child(3) a {
 
 
 /* CSS homepage Cyclando */
-
+body {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
 /* CSS homepage banner intro  */
 .Home-intro-banner {
     display: grid;
