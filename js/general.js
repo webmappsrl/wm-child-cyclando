@@ -92,6 +92,16 @@
 
 		});
 
+		jQuery("#cy-route-program").on("scroll", function () {
+
+			if (jQuery("#cy-route-program").scrollTop() > 100) {
+				jQuery("#cy-route-program .cy-modal-header").addClass("price-header-sticky");
+			} else {
+				jQuery("#cy-route-program .cy-modal-header").removeClass("price-header-sticky");
+			}
+
+		});
+
 
 		if (jQuery(window).width() <= 1024 ) {
 			// on document load shrinks the social share bar to the left side of the screen

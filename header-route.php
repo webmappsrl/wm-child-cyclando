@@ -406,8 +406,8 @@ do_action('us_before_canvas') ?>
 					<div id="cy-route-program" class="cy-prices-modal">
 						<div class="cy-modal-content">
 							<div class="cy-modal-header">
-								<span class="cy-close-map">&times;</span>
-								<h2><?php echo __('Program', 'wm-child-verdenatura'); ?></h2>
+								<div class="close-button-container"><span class="cy-close-map">&times;</span></div>
+								<div class="route-program"><h2><?php echo __('Program', 'wm-child-verdenatura'); ?></h2></div>
 							</div>
 							<div class="cy-modal-body">
 							<?php if ($program) : ?>
