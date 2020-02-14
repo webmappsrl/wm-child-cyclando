@@ -79,6 +79,9 @@ foreach ($start_array as $date) {
 		break;
 	}
 }
+
+// check if user is logged in then show quote form (calcolatore) instead of table of prices
+$user_logged = is_user_logged_in();
 ?>
 <!DOCTYPE HTML>
 <html class="<?php echo $us_layout->html_classes() ?>" <?php language_attributes('html') ?>>
@@ -270,6 +273,10 @@ do_action('us_before_canvas') ?>
 										</div>
 										<?php } ?>
 								</div>
+								<?php if ($user_logged) { ?>
+								<a  target="_blank" href="http://quote.cyclando.com/#/<?php echo $post_id.'?lang='.$language;?>">
+								</a>
+								<?php } ?>
 							</div>
 
 							<div class="meta-bar wm-where">
@@ -313,7 +320,7 @@ do_action('us_before_canvas') ?>
 									</p>
 									<p class='meta-bar-txt-bold'>
 										<?php
-										echo $difficulty;
+										echo $difficulty." ". __('from 5', 'wm-child-verdenatura');
 										?>
 									</p>
 								</div>
@@ -347,7 +354,7 @@ do_action('us_before_canvas') ?>
 									</p>
 								</div>
 							</div>
-							<?php if(current_user_can('administrator') || current_user_can('shop_manager')) { ?>
+							<?php if($user_logged) { ?>
 								<div id="wm-book-quote" class="meta-bar wm-book long-txt">
 									<p class='meta-bar-txt-bold'><?php echo __('Make a quote', 'wm-child-verdenatura'); ?></p>
 									<a  target="_blank" href="http://quote.cyclando.com/#/<?php echo $post_id.'?lang='.$language;?>">
@@ -373,7 +380,7 @@ do_action('us_before_canvas') ?>
 								<div class="close-button-container"><span class="cy-close">&times;</span></div>
 								<div class="vedi-prezzi"><h2>Vedi i prezzi</h2></div>
 								<div class="meta-bar wm-activity"><i class="<?php echo $iconimage_activity; ?>"></i></div>
-								<?php if(current_user_can('administrator') || current_user_can('shop_manager')) { ?>
+								<?php if($user_logged) { ?>
 								<div id="wm-book-quote" class="meta-bar wm-book long-txt">
 									<p class='meta-bar-txt-bold'><?php echo __('Make a quote', 'wm-child-verdenatura'); ?></p>
 									<a  target="_blank" href="http://quote.cyclando.com/#/<?php echo $post_id.'?lang='.$language;?>">

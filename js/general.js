@@ -108,7 +108,7 @@
 
 		jQuery(document).on("scroll", function () {
 			var page_content = document.getElementById("page-content");
-			var recaptchaBadge = document.querySelector('.grecaptcha-badge');
+			// var recaptchaBadge = document.querySelector('.grecaptcha-badge');
 
 			if (jQuery(document).scrollTop() >= 200 ) {
 				jQuery(".l-subheader.at_bottom.width_full").addClass("l-subheader-sticky-mobile");
@@ -125,15 +125,15 @@
 					page_content.classList.remove("with_padding");
 				}
 
-				if (jQuery(document).scrollTop() >= 500) {
-					recaptchaBadge.style.display = 'none';
-					jQuery('.et_social_mobile_button').addClass('move');
+				// if (jQuery(document).scrollTop() >= 500) {
+				// 	recaptchaBadge.style.display = 'none';
+				// 	jQuery('.et_social_mobile_button').addClass('move');
 
-				} else {
-					recaptchaBadge.style.display = 'block';
-					jQuery('.et_social_mobile_button').removeClass('move');
+				// } else {
+				// 	recaptchaBadge.style.display = 'block';
+				// 	jQuery('.et_social_mobile_button').removeClass('move');
 
-				}
+				// }
 
 			} else {
 				jQuery('.et_social_mobile_button').removeClass('move');

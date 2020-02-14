@@ -3,6 +3,7 @@
 require ('import_data.php');
 require ('shortcodes/route_table_price.php');
 require ('shortcodes/dashboard_wizard_button.php');
+require ('shortcodes/mobile_menu_quote_form.php');
 require ('url_filters.php');
 
 

@@ -760,7 +760,18 @@ i {
     display: flex;
     padding: 0;
 }
+.meta-bar.show-prices {
+    position: relative;
+}
 
+.meta-bar.show-prices > a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
 .popup-show-prices {
     background-color: var(--color-secondary);
     padding: 5px 7px;
