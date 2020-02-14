@@ -1,4 +1,3 @@
-
 <?php
 
 add_shortcode( 'vn_calendar_all', 'calendar_departures_all_shortcode' );

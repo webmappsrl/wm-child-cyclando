@@ -186,4 +186,3 @@ if ( class_exists('WebMapp_RegisterFieldsGroup') )
     );
     new WebMapp_RegisterFieldsGroup('route' ,$args );
 }
-

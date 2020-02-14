@@ -615,6 +615,4 @@ function update_route_not_salable()
     } 
 
 }
-
-
 ?>

@@ -1,7 +1,5 @@
 <?php
 
-
-
 add_shortcode( 'vn_blog_tabs', 'vn_render_blog_tabs_shortcode' );
 function vn_render_blog_tabs_shortcode( $atts ) {
 

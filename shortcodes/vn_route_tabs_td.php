@@ -1,4 +1,3 @@
-
 <?php
 function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$place,$from,$to){
 
