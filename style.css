@@ -37,7 +37,7 @@ ul.w-nav-list.level_1.hover_simple li a {
     padding-left: 0 !important;
 }
 
-ul.w-nav-list.level_1.hover_simple li:nth-child(3) a {
+ul.w-nav-list.level_1.hover_simple li:nth-child(4) a {
     padding-right: 0 !important;
 }
 .l-subheader-cell .w-nav-list.level_2 {
@@ -50,7 +50,9 @@ ul.w-nav-list.level_1.hover_simple li:nth-child(3) a {
 .l-subheader-sticky-mobile .w-nav-list.level_2 a:hover,.l-subheader-sticky-mobile .w-nav-list.level_2 a:visited,.l-subheader-sticky-mobile .w-nav-list.level_2 a:focus{
     color: white;
 }
+.cy-menu-search-icon {
 
+}
 
 /* CSS homepage Cyclando */
 body {
