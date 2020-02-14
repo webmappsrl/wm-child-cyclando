@@ -130,6 +130,29 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 		<?php endif; ?>
 		<?php if ($touroperator) : ?>
 			<!--- forth section  touroperator-->
+			<section id="program-button" class="l-section height_auto for_sidebar at_right">
+				<div class="l-section-h">
+					<div class="type_default valign_top">
+						<div class="vc_col-sm-9 vc_column_container l-content">
+							<div class="vc_column-inner">
+								<div class="wpb_wrapper">
+									<section class="l-section">
+										<div class="l-section-h i-cf">
+											<?php
+											echo "<span id='expand-map' class='header-txt-layer-1 expand-map-content'>". __('Program','wm-child-cyclando')."</span>";
+											?>
+										</div>
+									</section>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		<?php endif; ?>
+		<!--- END forth section touroperator-->
+		<?php if ($touroperator) : ?>
+			<!--- forth section  touroperator-->
 			<section id="touroperator" class="l-section height_auto for_sidebar at_right">
 				<div class="l-section-h">
 					<div class="type_default valign_top">

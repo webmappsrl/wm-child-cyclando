@@ -95,7 +95,9 @@ body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
 .w-nav-title {
     vertical-align: text-top;
 }
-
+body {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
 @media (min-width: 1100px) {
     .logo-main-menu {
         height: 65px;
@@ -309,6 +311,10 @@ body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
     }
     .intro-section .l-sidebar {
         padding: 0!important;
+    }
+    .expand-map-content {
+        width: 270px!important;
+        margin: auto;
     }
 }
 
@@ -1540,4 +1546,25 @@ a:hover.tooltips span {
 /* share buttom social sharing */
 .move {
     bottom: 60px!important;
+}
+
+.expand-map-content {
+    background: var(--color-secondary);
+    position: relative;
+    width: 300px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: white;
+    font-size: 25px;
+    font-weight: 600;
+    padding: 30px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.expand-map-content:hover {
+    background: var(--color-secondary-hover);
 }
