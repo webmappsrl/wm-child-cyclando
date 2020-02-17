@@ -722,7 +722,7 @@ a.ccpage_title_link {
 /* woocommerce css */
 /* Campi nascosti per per il calcolatore Friendly - start */
 .woocommerce-order-overview__payment-method.method {
-    display: none;
+    display: none!important;
 }
 .woocommerce-order-received .wc_payment_method.payment_method_bacs {
     display: none;
