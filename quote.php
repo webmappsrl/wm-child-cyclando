@@ -1,4 +1,4 @@
-<?php /* Template Name: quote */ ?>
+<?php /* Template Name: quote-wc */ ?>
 
 
 

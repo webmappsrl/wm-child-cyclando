@@ -315,6 +315,7 @@ body {
     .expand-map-content {
         width: 270px!important;
         margin: auto;
+        padding: 25px!important;
     }
 }
 
