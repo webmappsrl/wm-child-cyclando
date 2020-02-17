@@ -724,7 +724,7 @@ a.ccpage_title_link {
 .woocommerce-order-overview__payment-method.method {
     display: none!important;
 }
-.woocommerce-order-received .wc_payment_method.payment_method_bacs {
+.wc_payment_method.payment_method_bacs {
     display: none;
 }
 .woocommerce-order-received .woocommerce-table.woocommerce-table--custom-fields.shop_table.custom-fields{
@@ -736,7 +736,9 @@ a.ccpage_title_link {
 .woocommerce-order-received .woocommerce-order-details {
     display: none;
 }
-
+.woocommerce-checkout .shop_table.woocommerce-checkout-review-order-table{
+    display: none;
+}
 /* Campi nascosti per per il calcolatore Friendly - end */
 html:lang(en) .fee {
     display: none;
