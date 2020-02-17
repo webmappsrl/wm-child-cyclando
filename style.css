@@ -739,7 +739,7 @@ a.ccpage_title_link {
 .woocommerce-checkout .shop_table.woocommerce-checkout-review-order-table{
     display: none!important;
 }
-.woocommerce-checkout .order_review_heading{
+.woocommerce-checkout #order_review_heading{
     display: none!important;
 }
 /* Campi nascosti per per il calcolatore Friendly - end */
