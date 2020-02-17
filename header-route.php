@@ -274,7 +274,7 @@ do_action('us_before_canvas') ?>
 										<?php } ?>
 								</div>
 								<?php if ($user_logged) { ?>
-								<a  target="_blank" href="http://quote.cyclando.com/#/<?php echo $post_id.'?lang='.$language;?>">
+								<a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>">
 								</a>
 								<?php } ?>
 							</div>
@@ -357,7 +357,7 @@ do_action('us_before_canvas') ?>
 							<?php if($user_logged) { ?>
 								<div id="wm-book-quote" class="meta-bar wm-book long-txt">
 									<p class='meta-bar-txt-bold'><?php echo __('Make a quote', 'wm-child-verdenatura'); ?></p>
-									<a  target="_blank" href="http://quote.cyclando.com/#/<?php echo $post_id.'?lang='.$language;?>">
+									<a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>">
 									</a>
 								</div>
 							<?php } else { ?>
@@ -383,7 +383,7 @@ do_action('us_before_canvas') ?>
 								<?php if($user_logged) { ?>
 								<div id="wm-book-quote" class="meta-bar wm-book long-txt">
 									<p class='meta-bar-txt-bold'><?php echo __('Make a quote', 'wm-child-verdenatura'); ?></p>
-									<a  target="_blank" href="http://quote.cyclando.com/#/<?php echo $post_id.'?lang='.$language;?>">
+									<a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>">
 									</a>
 								</div>
 								<?php } else { ?>
