@@ -720,6 +720,20 @@ a.ccpage_title_link {
 .grecaptcha-badge { visibility: hidden; }
 
 /* woocommerce css */
+/* Campi nascosti per per il calcolatore Friendly - start */
+.woocommerce-order-overview__payment-method.method {
+    display: none;
+}
+.woocommerce-order-received .wc_payment_method.payment_method_bacs {
+    display: none;
+}
+.woocommerce-order-received .woocommerce-table.woocommerce-table--custom-fields.shop_table.custom-fields{
+    display: none;
+}
+.woocommerce-order-received .woocommerce-customer-details {
+    display: none;
+}
+/* Campi nascosti per per il calcolatore Friendly - end */
 html:lang(en) .fee {
     display: none;
 }
