@@ -375,19 +375,20 @@ function yoast_seo_breadcrumb_append_link( $links ) {
 // add_filter( 'upload_size_limit', 'filter_site_upload_size_limit', 20 );
 
 
-add_action( 'woocommerce_after_checkout_validation', 'misha_validate_fname_lname', 10, 2);
+// validation on codice fiscale for a correct format
+// add_action( 'woocommerce_after_checkout_validation', 'misha_validate_fname_lname', 10, 2);
  
-function misha_validate_fname_lname( $fields, $errors ){
+// function misha_validate_fname_lname( $fields, $errors ){
  
-    // if ( preg_match( '/\\d/', $fields[ 'billing_last_name' ] )  ){
-    //     $errors->add( 'validation', 'Your first or last name contains a number. Really?' );
-    // }
-    // if ($fields['billing_codice_fiscale'] == 'privato') {
-        if ( preg_match( '/[A-Za-z]{6}[0-9LMNPQRSTUV]{2}[A-Za-z]{1}[0-9LMNPQRSTUV]{2}[A-Za-z]{1}[0-9LMNPQRSTUV]{3}[A-Za-z]{1}/', $fields[ 'billing_codice_fiscale' ] ) !== 1 ){
-            $errors->add( 'validation', __('Your Tax code is incorrect!','wm-child-verdnatura') );
-        }
-    // }
-}
+//     // if ( preg_match( '/\\d/', $fields[ 'billing_last_name' ] )  ){
+//     //     $errors->add( 'validation', 'Your first or last name contains a number. Really?' );
+//     // }
+//     // if ($fields['billing_codice_fiscale'] == 'privato') {
+//         if ( preg_match( '/[A-Za-z]{6}[0-9LMNPQRSTUV]{2}[A-Za-z]{1}[0-9LMNPQRSTUV]{2}[A-Za-z]{1}[0-9LMNPQRSTUV]{3}[A-Za-z]{1}/', $fields[ 'billing_codice_fiscale' ] ) !== 1 ){
+//             $errors->add( 'validation', __('Your Tax code is incorrect!','wm-child-verdnatura') );
+//         }
+//     // }
+// }
 
 
 function wm_weekDayToWeekNumber( $days_of_week ){
