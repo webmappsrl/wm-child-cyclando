@@ -733,6 +733,10 @@ a.ccpage_title_link {
 .woocommerce-order-received .woocommerce-customer-details {
     display: none;
 }
+.woocommerce-order-received .woocommerce-order-details {
+    display: none;
+}
+
 /* Campi nascosti per per il calcolatore Friendly - end */
 html:lang(en) .fee {
     display: none;
