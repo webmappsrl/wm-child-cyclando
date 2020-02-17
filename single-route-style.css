@@ -313,7 +313,7 @@ body {
         padding: 0!important;
     }
     .expand-map-content {
-        width: 270px!important;
+        width: 315px!important;
         margin: auto;
         padding: 25px!important;
     }
@@ -388,6 +388,11 @@ body {
     }
     body .popup-show-prices .prezzo {
         width: 110px;
+    }
+    .expand-map-content {
+        width: 270px!important;
+        margin: auto;
+        padding: 25px!important;
     }
 }
 
@@ -787,6 +792,10 @@ i {
     left: 0;
     right: 0;
     z-index: 999;
+}
+
+.meta-bar.show-prices > a:hover + .popup-show-prices {
+    background-color: var(--color-secondary-hover);
 }
 .popup-show-prices {
     background-color: var(--color-secondary);
@@ -1552,7 +1561,7 @@ a:hover.tooltips span {
 .expand-map-content {
     background: var(--color-secondary);
     position: relative;
-    width: 300px;
+    width: 360px;
     text-align: center;
     justify-content: center;
     display: flex;

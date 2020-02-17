@@ -228,6 +228,10 @@ do_action('us_before_canvas') ?>
 					<div class="webmapp-featured-meta-info" style="background-image: url('/wp-content/themes/wm-child-cyclando/images/background_menu_route_verde.png')">
 						<div class="container">
 							<div class="meta-bar show-prices">
+								<?php if ($user_logged) { ?>
+								<a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>">
+								</a>
+								<?php } ?>
 								<div id="popup-show-prices" class="popup-show-prices <?php echo $coming_soon_class?>">
 										<!-- <div class="meta-bar price-from"> -->
 										<?php if (!$coming_soon) {?>
@@ -273,10 +277,6 @@ do_action('us_before_canvas') ?>
 										</div>
 										<?php } ?>
 								</div>
-								<?php if ($user_logged) { ?>
-								<a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>">
-								</a>
-								<?php } ?>
 							</div>
 
 							<div class="meta-bar wm-where">
@@ -356,7 +356,7 @@ do_action('us_before_canvas') ?>
 							</div>
 							<?php if($user_logged) { ?>
 								<div id="wm-book-quote" class="meta-bar wm-book long-txt">
-									<p class='meta-bar-txt-bold'><?php echo __('Make a quote', 'wm-child-verdenatura'); ?></p>
+									<p class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-verdenatura'); ?></p>
 									<a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>">
 									</a>
 								</div>
@@ -382,7 +382,7 @@ do_action('us_before_canvas') ?>
 								<div class="meta-bar wm-activity"><i class="<?php echo $iconimage_activity; ?>"></i></div>
 								<?php if($user_logged) { ?>
 								<div id="wm-book-quote" class="meta-bar wm-book long-txt">
-									<p class='meta-bar-txt-bold'><?php echo __('Make a quote', 'wm-child-verdenatura'); ?></p>
+									<p class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-verdenatura'); ?></p>
 									<a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>">
 									</a>
 								</div>
