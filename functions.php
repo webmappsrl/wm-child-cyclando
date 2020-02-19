@@ -169,7 +169,8 @@ function Divi_parent_theme_enqueue_styles() {
 }
 
 function admin_css_load() {
-    wp_enqueue_style('style-admin-css', get_stylesheet_directory_uri().'/style-admin.css');
+	wp_enqueue_style('style-admin-css', get_stylesheet_directory_uri().'/style-admin.css');
+	wp_enqueue_script('cyclando-admin', get_stylesheet_directory_uri().'/js/admin.js', array('jquery'));
 }
 add_action('admin_enqueue_scripts', 'admin_css_load');
 
