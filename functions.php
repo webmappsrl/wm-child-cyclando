@@ -18,7 +18,6 @@ add_action('woocommerce_before_checkout_form', 'preventivi_json_to_text',15);
 add_action('after_setup_theme', 'vn_theme_setup');
 
 
-
 /**
  * Filter activities in admin columns pro dropdown
  * IMPORTANT -> temporary fix!!

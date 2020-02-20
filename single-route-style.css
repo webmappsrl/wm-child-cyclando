@@ -842,6 +842,19 @@ div#popup-show-prices>div {
     height: 100%;
 }
 
+#wm-book-quote-mobile.wm-book {
+    background: var(--color-secondary);
+    position: relative;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 15px;
+    left: 15px;
+}
+
 .wm-book p{
     font-size: 28px;
     margin-bottom: 0;
