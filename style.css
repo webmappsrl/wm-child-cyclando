@@ -22,6 +22,8 @@ Text Domain:    wm-child-verdenatura
     --color-link-inactive: #969688;
     --color-text-p: #4e4e4e;
     --color-text-strong: #333;
+    --color-discount: #f55442;;
+    --color-promotion: white;
     --font-family-primary: "Montserrat";
     --font-family-primary-alternate: "Montserrat Alternates";
     --modal-duration: 1s;
@@ -317,7 +319,8 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
 
 .webmapp-anypost-template-cy_route .webmapp_post_meta {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    /* grid-template-columns: 2fr 1fr; */
+    grid-template-columns: 3fr 2fr;
     align-items: center;
 }
 
@@ -868,4 +871,40 @@ body .blog-grid  #us_grid_1 .usg_hwrapper_1 {
     .blog-grid #us_grid_1 .usg_vwrapper_1 {
         width: 90%;
     }
+    .webmapp_post_meta .new-price {
+        float: left;
+    }
+    .webmapp_post_meta .old-price {
+        float: left;
+        font-size: 19px;
+    }
+}
+/* old and new price on promotions css */
+.single .l-section-h.i-cf .webmapp_post_meta p {
+    color: white;
+}
+.single .l-section-h.i-cf .webmapp_post_meta strong {
+    color: white;
+}
+.new-price {
+    font-size: 24px;
+}
+.old-price {
+    padding-right: 5px;
+    color: white;
+    text-decoration: none;
+    position: relative;
+    font-size: 17px;
+    vertical-align: super;
+}
+.old-price::before {
+    content: " ";
+    display: block;
+    width: 87%;
+    border-top: 2px solid var(--color-discount);
+    height: 46%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: rotate(-27deg);
 }

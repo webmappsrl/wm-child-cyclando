@@ -53,7 +53,7 @@ foreach ($start_array as $date) {
 
 // route duration 
 $duration = get_field('vn_durata');
-$nights = $duration - 1;
+$nights = intval($duration) - 1;
 
 // places to go where 
 $places_to_go = 'where';
@@ -64,10 +64,10 @@ $parent  = get_term($parent_id)->name;
 
 $get_the_post_thumbanil = '';
 if (get_the_post_thumbnail_url()) {
-    $get_the_post_thumbanil = get_the_post_thumbnail_url(get_the_ID(), 'large');
+    $get_the_post_thumbanil = get_the_post_thumbnail_url(get_the_ID(), 'medium');
 } else {
-    $verde_natura_image = wp_get_attachment_image_src(40702, array(300, 201));
-    $get_the_post_thumbanil = $verde_natura_image[0];
+    $cyclando_image = wp_get_attachment_image_src(40702, array(300, 201));
+    $get_the_post_thumbanil = $cyclando_image[0];
 }
 
 $coming_soon = get_field('not_salable',$post_id);
@@ -75,6 +75,16 @@ if ($coming_soon) {
     $coming_soon_class = 'coming-soon-button';
 }
 
+// get the route price
+$price = get_field('wm_route_price');
+$price = (float)$price;
+
+// get the post promotion name and value
+$promotion_name = get_field('promotion_name',$post_id);
+$promotion_value = get_field('promotion_value',$post_id);
+if ($promotion_value) {
+    $promotion_price = intval($price) - intval($promotion_value); 
+}
 ?>
 
 <div class="col-sm-12 col-md-<?php echo $wm_anypost_bootstrap_col_type ?> webmapp_shortcode_any_post post_type_<?php echo $wm_anypost_post_type ?>">
@@ -120,14 +130,21 @@ if ($coming_soon) {
             </div>
             <?php
             if (!$coming_soon) {
-            $price = get_field('wm_route_price');
-            $price = (float)$price;
-            $sale_price_p = '';
-            $sale_price = get_field('vn_prezzo_sc');
-            if ($sale_price > 0)
-                $sale_price_p = number_format($sale_price, 0, ',', '.') . ' € ';
+                ?>
+                    <div class='prezzo-tab'>
+                        <p>
+                            <span class="cifra <?php if ( $promotion_value){ echo 'old-price';}?>">
+                            <?php  echo $price. ' €'; ?>
+                            </span>
+                            <?php if ( $promotion_value):?>
+                            <span class="new-price">
+                                <?php  echo $promotion_price. ' €'; ?>
+                            </span>
+                            <?php endif; ?>
+                        </p>
+                    </div>
+                <?php 
 
-            echo "<div class='prezzo-tab'><p><span class='cifra'>$price €</span></p></div>";
             } else {
                 ?> <div class='prezzo-tab <?php echo $coming_soon_class?>'><p><span><?php echo __('Coming soon!', 'wm-child-cyclando'); ?></span></p></div> <?php
             }
