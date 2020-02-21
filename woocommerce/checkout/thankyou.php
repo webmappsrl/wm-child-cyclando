@@ -17,33 +17,6 @@
 
 defined( 'ABSPATH' ) || exit;
 
-    $coupon = $order->get_used_coupons();
-	$coupon_name = $coupon['0'];
-	$post = get_posts( array( 
-		'name' => $coupon_name, 
-		'post_type' => 'shop_coupon'
-	) );
-	$departure_date = '';
-	$routeid = '';
-	$routCode = '';
-	$routName = '';
-	$routePermalink = '';
-	foreach ( $post as $info) {
-		$description = $info->post_excerpt;
-	}
-    $desc = json_decode($description, JSON_PRETTY_PRINT);
-    foreach ($desc as $val => $key){
-		if ($val == 'routeId') { 
-			$routeid = $key;
-			// $routCode = get_field('n7webmapp_route_cod',$routeid);
-			$routName = get_the_title($routeid);
-			$routePermalink = get_permalink($routeid);
-		}
-        if ($val == 'departureDate') {
-            $date = $key;
-            $departure_date = date("d-m-Y", strtotime($date));
-        }
-    }
 ?>
 
 <div class="woocommerce-order">
@@ -63,8 +36,36 @@ defined( 'ABSPATH' ) || exit;
 				<?php endif; ?>
 			</p>
 
-		<?php else : ?>
-
+        <?php else : ?>
+            <?php
+            $coupon = $order->get_used_coupons();
+            $coupon_name = $coupon['0'];
+            $post = get_posts( array( 
+                'name' => $coupon_name, 
+                'post_type' => 'shop_coupon'
+            ) );
+            $departure_date = '';
+            $routeid = '';
+            $routCode = '';
+            $routName = '';
+            $routePermalink = '';
+            foreach ( $post as $info) {
+                $description = $info->post_excerpt;
+            }
+            $desc = json_decode($description, JSON_PRETTY_PRINT);
+            foreach ($desc as $val => $key){
+                if ($val == 'routeId') { 
+                    $routeid = $key;
+                    // $routCode = get_field('n7webmapp_route_cod',$routeid);
+                    $routName = get_the_title($routeid);
+                    $routePermalink = get_permalink($routeid);
+                }
+                if ($val == 'departureDate') {
+                    $date = $key;
+                    $departure_date = date("d-m-Y", strtotime($date));
+                }
+            }
+            ?>
             <p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received"><?php echo apply_filters( 'woocommerce_thankyou_order_received_text', esc_html__( 'Thanks for choosing us. Your request was successfully received. You will be contacted by our team as soon as possible.', 'wm-child-cyclando' ), $order ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
             
             <?php
