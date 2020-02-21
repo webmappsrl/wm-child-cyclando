@@ -111,7 +111,7 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     }
 }
 
-@media screen and (min-width: 993px) and (max-width: 1205px) { 
+@media screen and (min-width: 993px) and (max-width: 1305px) { 
     .webmapp_post_meta .new-price {
         float: left;
     }
