@@ -24,12 +24,6 @@ defined( 'ABSPATH' ) || exit;
 		'post_type' => 'shop_coupon'
 	) );
 	$departure_date = '';
-    $nightsBefore = '';
-    $insurance_name = '';
-    $insurance_price = '';
-	$club_name = '';
-	$place = '';
-	$place_s = '';
 	$routeid = '';
 	$routCode = '';
 	$routName = '';
@@ -44,27 +38,10 @@ defined( 'ABSPATH' ) || exit;
 			// $routCode = get_field('n7webmapp_route_cod',$routeid);
 			$routName = get_the_title($routeid);
 			$routePermalink = get_permalink($routeid);
-		} 
-		if ($val == 'boat_trip') { //check if the route is in boat or not
-			$place = __('cabin','wm-child-verdenatura'); 
-			$place_s = __('cabins','wm-child-verdenatura'); 
-		} else {
-			$place = __('room','wm-child-verdenatura');
-			$place_s = __('rooms','wm-child-verdenatura');
 		}
         if ($val == 'departureDate') {
             $date = $key;
             $departure_date = date("d-m-Y", strtotime($date));
-        }
-        if ($val == 'nightsBefore') {
-            $nightsBefore = $key;
-        }
-        if ($val == 'insurance') {
-			$insurance_name = $key['name'];
-			$insurance_price = $key['price'];
-        }
-        if ($val == 'club') {
-            $club_name = $key['name'];
         }
     }
 ?>
@@ -88,15 +65,15 @@ defined( 'ABSPATH' ) || exit;
 
 		<?php else : ?>
 
-        <?php
-            echo '<div class="tour-general-info"><p><strong>';
+            <p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received"><?php echo apply_filters( 'woocommerce_thankyou_order_received_text', esc_html__( 'Thanks for choosing us. Your request was successfully received. You will be contacted by our team as soon as possible.', 'wm-child-cyclando' ), $order ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+            
+            <?php
+                echo '<div class="tour-general-info" style="display: inline-block;"><p><strong>';
                 echo __('Departure date:' ,'wm-child-verdenatura').' </strong>';
                 echo '<span id="data-partenza">'.$departure_date.'</span></p>';
 				echo '<p id="route-name"><strong>'.__('Route name:','wm-child-verdenatura').'</strong> <a target="_blank" href="'.$routePermalink.'">'.$routName.'</a></p>';
-            echo '</div>';
+                echo '</div>';
             ?>
-
-			<p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received"><?php echo apply_filters( 'woocommerce_thankyou_order_received_text', esc_html__( 'Thanks for choosing us. Your request was successfully received. You will be contacted by our team as soon as possible.', 'wm-child-cyclando' ), $order ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 
 			<ul class="woocommerce-order-overview woocommerce-thankyou-order-details order_details">
 
