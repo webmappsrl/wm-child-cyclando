@@ -17,23 +17,54 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$coupon_id = WC()->cart->get_coupons();
-    foreach ($coupon_id as $val ){
-        $json =  $val;
-    }   
-    $json_output = json_decode($json, JSON_PRETTY_PRINT); 
-    $description = $json_output['description'];
+    $coupon = $order->get_used_coupons();
+	$coupon_name = $coupon['0'];
+	$post = get_posts( array( 
+		'name' => $coupon_name, 
+		'post_type' => 'shop_coupon'
+	) );
+	$departure_date = '';
+    $nightsBefore = '';
+    $insurance_name = '';
+    $insurance_price = '';
+	$club_name = '';
+	$place = '';
+	$place_s = '';
+	$routeid = '';
+	$routCode = '';
+	$routName = '';
+	$routePermalink = '';
+	foreach ( $post as $info) {
+		$description = $info->post_excerpt;
+	}
     $desc = json_decode($description, JSON_PRETTY_PRINT);
     foreach ($desc as $val => $key){
-        if ($val == 'routeId') { 
+		if ($val == 'routeId') { 
 			$routeid = $key;
 			// $routCode = get_field('n7webmapp_route_cod',$routeid);
 			$routName = get_the_title($routeid);
 			$routePermalink = get_permalink($routeid);
+		} 
+		if ($val == 'boat_trip') { //check if the route is in boat or not
+			$place = __('cabin','wm-child-verdenatura'); 
+			$place_s = __('cabins','wm-child-verdenatura'); 
+		} else {
+			$place = __('room','wm-child-verdenatura');
+			$place_s = __('rooms','wm-child-verdenatura');
 		}
         if ($val == 'departureDate') {
             $date = $key;
             $departure_date = date("d-m-Y", strtotime($date));
+        }
+        if ($val == 'nightsBefore') {
+            $nightsBefore = $key;
+        }
+        if ($val == 'insurance') {
+			$insurance_name = $key['name'];
+			$insurance_price = $key['price'];
+        }
+        if ($val == 'club') {
+            $club_name = $key['name'];
         }
     }
 ?>
