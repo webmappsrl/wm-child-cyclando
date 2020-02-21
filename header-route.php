@@ -80,6 +80,17 @@ foreach ($start_array as $date) {
 	}
 }
 
+// get the route price
+$price = get_field('wm_route_price');
+$price = (float)$price;
+
+// get the post promotion name and value
+$promotion_name = get_field('promotion_name',$post_id);
+$promotion_value = get_field('promotion_value',$post_id);
+if ($promotion_value) {
+    $promotion_price = intval($price) - intval($promotion_value); 
+}
+
 // check if user is logged in then show quote form (calcolatore) instead of table of prices
 $user_logged = is_user_logged_in();
 ?>
@@ -238,31 +249,19 @@ do_action('us_before_canvas') ?>
 										<div class="prezzo-container">
 											<!-- prezzo start-->
 											<div class="prezzo">
-												<span class='meta-bar-txt-light'><?php echo __('From', 'wm-child-cyclando'); ?></span>
-												<p class="cifra <?php if ($in_promotion) { echo 'old-price'; } ?>"><?php
-																$vn_prezzo = get_field('wm_route_price');
-																$lowest_price = explode('€', $vn_prezzo);
-																if ($lowest_price) {
-																	echo $lowest_price[0];
-																} else {
-																	echo $vn_prezzo;
-																}
-																?>
-													€ </span>
-													<?php if ($in_promotion) : ?>
-														<span class="new-price">
-															<?php
-															while (have_rows('model_promotion')) : the_row();
-																$discount = get_sub_field('wm_route_quote_model_promotion_discount');
-																if ($lowest_price) {
-																	echo $lowest_price[0] - $discount;
-																} else {
-																	echo $vn_prezzo - $discount;
-																}
-															endwhile;
-															?>
-															€ </p>
-												<?php endif; ?>
+												<?php if ($promotion_value) {?>
+													<p class='meta-bar-txt-light'><span class='old-price'><?php echo $price. ' €'; ?></span></p>
+												<?php } else { ?>
+												<p class='meta-bar-txt-light'><?php echo __('From', 'wm-child-cyclando'); ?></p>
+												<?php } ?>
+												<p class="cifra"><?php
+													if ($promotion_value) {
+														echo $promotion_price. ' €';
+													} else {
+														echo $price. ' €';
+													}
+													?>
+												</p>
 											</div>
 										</div>
 										<div class="first-departure">

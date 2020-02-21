@@ -64,7 +64,7 @@ $parent  = get_term($parent_id)->name;
 
 $get_the_post_thumbanil = '';
 if (get_the_post_thumbnail_url()) {
-    $get_the_post_thumbanil = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+    $get_the_post_thumbanil = get_the_post_thumbnail_url(get_the_ID(), 'large');
 } else {
     $cyclando_image = wp_get_attachment_image_src(40702, array(300, 201));
     $get_the_post_thumbanil = $cyclando_image[0];
@@ -76,7 +76,7 @@ if ($coming_soon) {
 }
 
 // get the route price
-$price = get_field('wm_route_price');
+$price = get_field('wm_route_price',$post_id);
 $price = (float)$price;
 
 // get the post promotion name and value
