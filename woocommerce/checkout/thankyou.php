@@ -38,7 +38,7 @@ defined( 'ABSPATH' ) || exit;
 
         <?php else : ?>
             <?php
-            $order = new WC_Order($post->ID);
+            $order = new WC_Order($order->get_id());
             $coupon = $order->get_used_coupons();
             $coupon_name = $coupon['0'];
             $post = get_posts( array( 
