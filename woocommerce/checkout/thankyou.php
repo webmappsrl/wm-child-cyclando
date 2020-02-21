@@ -38,9 +38,15 @@ defined( 'ABSPATH' ) || exit;
 
         <?php else : ?>
             <?php
+            
             $order_parent_id = $order->get_parent_id();
-            $order_parent = new WC_Order($order_parent_id);
-            $coupon = $order_parent->get_used_coupons();
+            if ($order_parent_id){
+                $order_detail = new WC_Order($order_parent_id);
+                $coupon = $order_detail->get_used_coupons();
+            } else {
+                $order_detail = new WC_Order($order->get_id());
+                $coupon = $order_detail->get_used_coupons();
+            }
             $coupon_name = $coupon['0'];
             $post = get_posts( array( 
                 'name' => $coupon_name, 
