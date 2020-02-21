@@ -38,7 +38,7 @@ defined( 'ABSPATH' ) || exit;
 
         <?php else : ?>
             <?php
-            $order = new WC_Order($order->get_id());
+            
             $coupon = $order->get_used_coupons();
             $coupon_name = $coupon['0'];
             $post = get_posts( array( 
@@ -71,6 +71,8 @@ defined( 'ABSPATH' ) || exit;
             
             <?php
             if( current_user_can('administrator') ) { 
+                echo $order->get_id().'<br>';
+                print_r($coupon);
                 echo '<div class="tour-general-info" style="display: inline-block;"><p><strong>';
                 echo __('Departure date:' ,'wm-child-verdenatura').' </strong>';
                 echo '<span id="thankyou-data-partenza">'.$departure_date.'</span></p>';
