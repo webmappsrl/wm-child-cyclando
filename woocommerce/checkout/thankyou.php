@@ -71,16 +71,11 @@ defined( 'ABSPATH' ) || exit;
             <p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received"><?php echo apply_filters( 'woocommerce_thankyou_order_received_text', esc_html__( 'Thanks for choosing us. Your request was successfully received. You will be contacted by our team as soon as possible.', 'wm-child-cyclando' ), $order ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
             
             <?php
-            if( current_user_can('administrator') ) { 
-                print_r($order_parent_id);
-                echo $order->get_id().'<br>';
-                print_r($coupon);
                 echo '<div class="tour-general-info" style="display: inline-block;"><p><strong>';
                 echo __('Departure date:' ,'wm-child-verdenatura').' </strong>';
                 echo '<span id="thankyou-data-partenza">'.$departure_date.'</span></p>';
 				echo '<p id="thankyou-route-name"><strong>'.__('Route name:','wm-child-verdenatura').'</strong> <a target="_blank" href="'.$routePermalink.'">'.$routName.'</a></p>';
                 echo '</div>';
-            }
             ?>
 
 			<ul class="woocommerce-order-overview woocommerce-thankyou-order-details order_details">
