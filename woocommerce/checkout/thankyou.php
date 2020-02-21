@@ -38,8 +38,9 @@ defined( 'ABSPATH' ) || exit;
 
         <?php else : ?>
             <?php
-            
-            $coupon = $order->get_used_coupons();
+            $order_parent_id = $order->get_parent_id();
+            $order_parent = new WC_Order($order_parent_id);
+            $coupon = $order_parent->get_used_coupons();
             $coupon_name = $coupon['0'];
             $post = get_posts( array( 
                 'name' => $coupon_name, 
@@ -71,6 +72,7 @@ defined( 'ABSPATH' ) || exit;
             
             <?php
             if( current_user_can('administrator') ) { 
+                print_r($order_parent_id);
                 echo $order->get_id().'<br>';
                 print_r($coupon);
                 echo '<div class="tour-general-info" style="display: inline-block;"><p><strong>';
