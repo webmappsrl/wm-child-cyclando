@@ -47,7 +47,7 @@ get_header();
 			
 			// display the routes in promotion with anypost
             $post_id = get_the_ID();
-            $route_list = get_field('routes',$post_id);
+			$route_list = get_field('routes',$post_id);
             $routes_count = count($route_list);
             $routes_rows = $routes_count/3;
 			?>
