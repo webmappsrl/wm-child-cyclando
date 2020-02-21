@@ -70,7 +70,7 @@ do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plai
 					<tr>
 						<th class="td" scope="row" colspan="2" style="text-align:<?php echo esc_attr( $text_align ); ?>; <?php echo ( 1 === $i ) ? 'border-top-width: 4px;' : ''; ?>"><?php echo wp_kses_post( $total['label'] ); ?></th>
                         <td class="td" style="text-align:<?php echo esc_attr( $text_align ); ?>; <?php echo ( 1 === $i ) ? 'border-top-width: 4px;' : ''; ?>"><?php 
-                            if ($order->has_status('pending') && $i === 2) {
+                            if ($order->has_status( 'on-hold' ) && $i === 2) {
                                 $order_parent_id = $order->get_parent_id();
                                 $order_parent = new WC_Order($order_parent_id);
                                 echo wp_kses_post($order_parent->get_total());
