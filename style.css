@@ -111,6 +111,15 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     }
 }
 
+@media screen and (min-width: 993px) and (max-width: 1205px) { 
+    .webmapp_post_meta .new-price {
+        float: left;
+    }
+    .webmapp_post_meta .old-price {
+        float: left;
+        font-size: 19px;
+    }
+}
 @media screen and (min-width: 991px) and (max-width: 1136px) {
     body .webmapp-anypost-template-cy_route .webmapp_post_meta .prezzo-tab p {
         font-size: 22px;
