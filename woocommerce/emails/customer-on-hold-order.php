@@ -24,7 +24,7 @@ do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
 <?php /* translators: %s: Customer first name */ ?>
 <p><?php printf( esc_html__( 'Hi %s,', 'woocommerce' ), esc_html( $order->get_billing_first_name() ) ); ?></p>
-<p><?php esc_html_e( 'Thanks for the quote request, to confirm the trip you need to pay.', 'woocommerce' ); ?></p>
+<p><?php esc_html_e( 'Thanks for the quote request, to confirm the trip you need to pay.', 'wm-child-cyclando' ); ?></p>
 
 <?php
 
