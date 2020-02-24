@@ -70,7 +70,7 @@ do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plai
 					<tr>
 						<th class="td" scope="row" colspan="2" style="text-align:<?php echo esc_attr( $text_align ); ?>; <?php echo ( 1 === $i ) ? 'border-top-width: 4px;' : ''; ?>">
 						<?php if ($order->has_status( 'on-hold' ) && $i === 1) {
-                                echo esc_attr_e( '25% Deposit', 'woocommerce' );
+                                echo esc_attr_e( '25% Deposit', 'woocommerce' ).':';
                             } else {
                                 echo wp_kses_post( $total['label'] ); 
                             }
