@@ -38,6 +38,9 @@ table.shop_table {
 .ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-front.ui-draggable.ui-resizable {
     min-width: 50%;
 }
+.ui-dialog {
+    position: fixed;
+}
 /* ----------------------------------------------------------------------------------------------------------------------------*/
 @font-face {
     font-family: 'fontello';
