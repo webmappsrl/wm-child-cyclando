@@ -104,32 +104,8 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 			</div>
 		</section>
 		<!--- END first section -->
-		<?php if ($scheda_tecnica) : ?>
-			<section id="caratteristiche" class="l-section height_auto for_sidebar at_right">
-				<!--- forth section  Caratteristiche-->
-				<div class="l-section-h">
-					<div class="type_default valign_top">
-						<div class="vc_col-sm-9 vc_column_container l-content">
-							<div class="vc_column-inner">
-								<div class="wpb_wrapper">
-									<section class="l-section">
-										<div class="l-section-h i-cf">
-											<?php
-											echo "<h2>Caratteristiche</h2>";
-											echo $scheda_tecnica;
-											?>
-										</div>
-									</section>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!--- END forth section Caratteristiche-->
-		<?php endif; ?>
-		<?php if ($touroperator) : ?>
-			<!--- forth section  touroperator-->
+		<?php if ($program) : ?>
+			<!--- second section  program-->
 			<section id="program-button" class="l-section height_auto for_sidebar at_right">
 				<div class="l-section-h">
 					<div class="type_default valign_top">
@@ -150,7 +126,31 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 				</div>
 			</section>
 		<?php endif; ?>
-		<!--- END forth section touroperator-->
+		<!--- END Second section program-->
+		<?php if ($scheda_tecnica) : ?>
+			<section id="caratteristiche" class="l-section height_auto for_sidebar at_right">
+				<!--- Third section  Caratteristiche-->
+				<div class="l-section-h">
+					<div class="type_default valign_top">
+						<div class="vc_col-sm-9 vc_column_container l-content">
+							<div class="vc_column-inner">
+								<div class="wpb_wrapper">
+									<section class="l-section">
+										<div class="l-section-h i-cf">
+											<?php
+											echo "<h2>".__('Features','wm-child-cyclando')."</h2>";
+											echo $scheda_tecnica;
+											?>
+										</div>
+									</section>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--- END third section Caratteristiche-->
+		<?php endif; ?>
 		<?php if ($touroperator) : ?>
 			<!--- forth section  touroperator-->
 			<section id="touroperator" class="l-section height_auto for_sidebar at_right">
