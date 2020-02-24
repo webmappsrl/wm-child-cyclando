@@ -68,12 +68,21 @@ do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plai
 					$i++;
 					?>
 					<tr>
-						<th class="td" scope="row" colspan="2" style="text-align:<?php echo esc_attr( $text_align ); ?>; <?php echo ( 1 === $i ) ? 'border-top-width: 4px;' : ''; ?>"><?php echo wp_kses_post( $total['label'] ); ?></th>
+						<th class="td" scope="row" colspan="2" style="text-align:<?php echo esc_attr( $text_align ); ?>; <?php echo ( 1 === $i ) ? 'border-top-width: 4px;' : ''; ?>">
+						<?php if ($order->has_status( 'on-hold' ) && $i === 1) {
+                                echo esc_attr_e( '25% Deposit', 'woocommerce' );
+                            } else {
+                                echo wp_kses_post( $total['value'] ); 
+                            }
+						echo wp_kses_post( $total['label'] ); 
+						?>
+						</th>
                         <td class="td" style="text-align:<?php echo esc_attr( $text_align ); ?>; <?php echo ( 1 === $i ) ? 'border-top-width: 4px;' : ''; ?>"><?php 
                             if ($order->has_status( 'on-hold' ) && $i === 2) {
                                 $order_parent_id = $order->get_parent_id();
-                                $order_parent = new WC_Order($order_parent_id);
-                                echo wp_kses_post($order_parent->get_total());
+								$order_parent = new WC_Order($order_parent_id);
+								$orderTotal = $order_parent->get_total();
+                                echo wp_kses_post(number_format($orderTotal, 2, '.', ',')).'€';
                             } else {
                                 echo wp_kses_post( $total['value'] ); 
                             }
