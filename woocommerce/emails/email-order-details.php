@@ -30,8 +30,8 @@ do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plai
 		$before = '';
 		$after  = '';
 	}
-	/* translators: %s: Order ID. */
-	echo wp_kses_post( $before . sprintf( __( '[Order #%s]', 'woocommerce' ) . $after . ' (<time datetime="%s">%s</time>)', $order->get_order_number(), $order->get_date_created()->format( 'c' ), wc_format_datetime( $order->get_date_created() ) ) );
+	/* translators: %s: Order ID.  removed () from time tag*/
+	echo wp_kses_post( $before . sprintf( __( '[Order #%s]', 'woocommerce' ) . $after . ' <time datetime="%s">%s</time>', $order->get_order_number(), $order->get_date_created()->format( 'c' ), wc_format_datetime( $order->get_date_created() ) ) );
 	?>
 </h2>
 
