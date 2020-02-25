@@ -17,7 +17,7 @@
 		if (lang) {
 			main_url = window.location.protocol + "//" + window.location.host + "/" + "cerca/?lang=en&";
 		} else {
-			main_url = window.location.protocol + "//" + window.location.host + "/" + "cerca?";
+			main_url = window.location.protocol + "//" + window.location.host + "/" + "cerca/";
 		}
 		jQuery('#cy-search-lente').click(function () {
 			location.href = main_url + "?_dove_vuoi_andare=" + filter;
