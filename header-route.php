@@ -237,11 +237,10 @@ do_action('us_before_canvas') ?>
 					<div class="webmapp-featured-meta-info" style="background-image: url('/wp-content/themes/wm-child-cyclando/images/background_menu_route_verde.png')">
 						<div class="container">
 							<div class="meta-bar show-prices">
-								<a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>">
-								</a>
 								<div id="popup-show-prices" class="popup-show-prices <?php echo $coming_soon_class?>">
 										<!-- <div class="meta-bar price-from"> -->
 										<?php if (!$coming_soon) {?>
+										<a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>"></a>
 										<div class="prezzo-container">
 											<!-- prezzo start-->
 											<div class="prezzo">
@@ -409,7 +408,7 @@ do_action('us_before_canvas') ?>
 				jQuery(document).ready(function() {
 					// Get DOM Elements
 					const modal = document.querySelector('#cy-prices-modal');
-					const modalBtn = document.querySelector('#popup-show-prices');
+					// const modalBtn = document.querySelector('#popup-show-prices');
 					const closeBtn = document.querySelector('.cy-close');
 					const fixedAncor = document.querySelectorAll('.fixed-ancor-menu');
 
@@ -433,7 +432,7 @@ do_action('us_before_canvas') ?>
 					closeMapBtn.addEventListener('click', closeProgramModal);
 
 					// Events modal prices
-					modalBtn.addEventListener('click', openModal);
+					// modalBtn.addEventListener('click', openModal);
 					closeBtn.addEventListener('click', closeModal);
 					window.addEventListener('click', outsideClick);
 					// fixedAncor.addEventListener('click', scrollOffset);
