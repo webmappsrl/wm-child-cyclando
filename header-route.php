@@ -91,8 +91,6 @@ if ($promotion_value) {
     $promotion_price = intval($price) - intval($promotion_value); 
 }
 
-// check if user is logged in then show quote form (calcolatore) instead of table of prices
-$user_logged = is_user_logged_in();
 ?>
 <!DOCTYPE HTML>
 <html class="<?php echo $us_layout->html_classes() ?>" <?php language_attributes('html') ?>>
@@ -239,10 +237,8 @@ do_action('us_before_canvas') ?>
 					<div class="webmapp-featured-meta-info" style="background-image: url('/wp-content/themes/wm-child-cyclando/images/background_menu_route_verde.png')">
 						<div class="container">
 							<div class="meta-bar show-prices">
-								<?php if ($user_logged) { ?>
 								<a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>">
 								</a>
-								<?php } ?>
 								<div id="popup-show-prices" class="popup-show-prices <?php echo $coming_soon_class?>">
 										<!-- <div class="meta-bar price-from"> -->
 										<?php if (!$coming_soon) {?>
@@ -353,17 +349,11 @@ do_action('us_before_canvas') ?>
 									</p>
 								</div>
 							</div>
-							<?php if($user_logged) { ?>
 								<div id="wm-book-quote" class="meta-bar wm-book long-txt">
 									<p class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-verdenatura'); ?></p>
 									<a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>">
 									</a>
 								</div>
-							<?php } else { ?>
-								<div id="wm-book" class="meta-bar wm-book">
-									<p class='meta-bar-txt-bold'><?php echo __('Book now', 'wm-child-verdenatura'); ?></p>
-								</div>
-							<?php } ?>
 						</div>
 					</div>
 
@@ -379,17 +369,11 @@ do_action('us_before_canvas') ?>
 								<div class="close-button-container"><span class="cy-close">&times;</span></div>
 								<div class="vedi-prezzi"><h2>Vedi i prezzi</h2></div>
 								<div class="meta-bar wm-activity"><i class="<?php echo $iconimage_activity; ?>"></i></div>
-								<?php if($user_logged) { ?>
 								<div id="wm-book-quote" class="meta-bar wm-book long-txt">
 									<p class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-verdenatura'); ?></p>
 									<a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>">
 									</a>
 								</div>
-								<?php } else { ?>
-									<div id="wm-book" class="meta-bar wm-book">
-										<p class='meta-bar-txt-bold'><?php echo __('Book now', 'wm-child-verdenatura'); ?></p>
-									</div>
-								<?php } ?>
 							</div>
 							<div class="cy-modal-body">
 								<?php echo do_shortcode('[route_table_price]'); ?>
