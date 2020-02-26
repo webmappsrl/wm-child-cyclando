@@ -256,6 +256,14 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
         font-size: 26px!important;
     }
 }
+
+@media screen and (min-width: 1600px) {
+    .Home-intro-banner .l-section-h.i-cf {
+        padding-bottom: 200px;
+    }
+}
+
+
 /* Begin animation */
 @-o-keyframes slideup {
     from {
