@@ -72,6 +72,11 @@ body.home .Home-intro-banner .home-banner-content {
     padding: 5rem 0 0rem;
 }
 
+
+.Home-intro-banner .l-section-h.i-cf {
+    padding: 15rem 0 4rem;
+}
+
 body.home .Home-intro-banner .home-banner-content h2:first-child {
     font-weight: 600;
     font-size: 49px;
@@ -255,11 +260,8 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     h2 {
         font-size: 26px!important;
     }
-}
-
-@media screen and (min-width: 1700px) {
     .Home-intro-banner .l-section-h.i-cf {
-        padding-bottom: 200px;
+        padding: 8rem 0 4rem;
     }
 }
 
