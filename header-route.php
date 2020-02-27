@@ -361,10 +361,6 @@ do_action('us_before_canvas') ?>
 							<?php } ?>
 						</div>
 					</div>
-
-					
-
-
 				</div>
 			</div> <!-- END div webmapp-layer-container -->
 			<!-- HTML modal for prices -->

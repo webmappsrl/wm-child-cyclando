@@ -621,7 +621,7 @@ i {
     width: 100%;
 } */
 
-#cy-route-program .price-header-sticky {
+#cy-route-program .price-header-sticky, #cy-route-contact .price-header-sticky {
     position: sticky;
     top: 0;
     box-shadow: -2px 2px 7px -5px rgba(0, 0, 0, 0.65);
@@ -1376,7 +1376,7 @@ body #tab-stagioni a:hover {
     line-height: 30px;
 }
 
-#cy-route-program .cy-modal-header {
+#cy-route-program .cy-modal-header, #cy-route-contact .cy-modal-header {
     background: white;
     padding: 30px 0px;
     color: #fff;
@@ -1389,12 +1389,12 @@ body #tab-stagioni a:hover {
     z-index: 2;
 }
 
-#cy-route-program .close-button-container {
+#cy-route-program .close-button-container, #cy-route-contact .close-button-container {
     display: flex;
     align-items: center;
 }
 
-#cy-route-program .cy-close-map {
+#cy-route-program .cy-close-map, #cy-route-contact .cy-close-contact {
     text-align: right;
     color: #fff;
     background-color: var(--color-primary-paragraph);
