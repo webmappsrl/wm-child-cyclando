@@ -16,8 +16,8 @@ function wizard_button() {
     <div id="wm-wizards-dialog-container" title="Basic dialog" style="display:none">
         <?php 
         $conf = array(
-            WebMapp_getWizardConfiguration() ,
-            WebMapp_getWizardConfiguration('singleFieldRouteWizard')
+            'routeWizard' =>  WebMapp_getWizardConfiguration() ,
+            'singleFieldRouteWizard' =>  WebMapp_getWizardConfiguration('singleFieldRouteWizard')
         );
         echo do_shortcode("[wmWizards conf='" . json_encode($conf) . "']"); 
         ?>
