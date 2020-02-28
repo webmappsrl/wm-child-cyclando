@@ -19,18 +19,28 @@ function wizard_button() {
     <?php } ?>
 
     <script>
-        jQuery(document).ready(function () {
-            jQuery( "#wm-wizards-dialog-container" ).dialog({
+        jQuery(document).ready(function ($) {
+            $( "#wm-wizards-dialog-container" ).dialog({
                 autoOpen: false, //FALSE if you open the dialog with, for example, a button click
                 closeOnEscape: false,
                 modal: true,
                 width: "auto",
-                height: 600
+                height: "auto",
+                create: function( event, ui ) {
+                    // Set maxWidth
+                    $(this).css({
+                            "min-width" : (window.innerWidth / 100 * 90) + 'px',
+                    });
+
+                    $(this).parents('.ui-dialog').css({
+                        "min-height" : (window.innerHeight / 100 * 90) + 'px',
+                    });
+                }
             });
 
             // add the onclick handler
-            jQuery("#dialogButton").click(function() {
-                jQuery("#wm-wizards-dialog-container").dialog("open");
+            $("#dialogButton").click(function() {
+                $("#wm-wizards-dialog-container").dialog("open");
                 return false;
             });
         } );
