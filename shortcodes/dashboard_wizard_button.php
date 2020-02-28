@@ -11,11 +11,15 @@ function wizard_button() {
     ob_start();
     ?>
     <p>Crea una nuova route:</p>
+    <button class="button button-primary button-hero load-customize hide-if-no-customize" id="dialogNuovaRouteTF">Nuova Route TF</button>
     <button class="button button-primary button-hero load-customize hide-if-no-customize" id="dialogButton">Nuova route</button>
     <?php if ($_SERVER['SERVER_NAME'] !== 'cyclando.com') {?>
-    <div id="wm-wizards-dialog-container" title="Basic dialog">
+    <div id="wm-wizards-dialog-container" title="Basic dialog" style="display:none">
         <?php echo do_shortcode("[wmWizards conf='". WebMapp_getWizardConfiguration() ."']"); ?>
     </div> 
+    <div id="wm-wizards-dialogNuovaRouteTF" title="Basic dialog" style="display:none">
+        <?php echo do_shortcode("[wmWizards conf='". WebMapp_getWizardConfiguration('singleFieldRouteWizard') ."']"); ?>
+    </div>
     <?php } ?>
 
     <script>
@@ -43,6 +47,33 @@ function wizard_button() {
                 $("#wm-wizards-dialog-container").dialog("open");
                 return false;
             });
+
+            $( "#wm-wizards-dialogNuovaRouteTF" ).dialog({
+                autoOpen: false, //FALSE if you open the dialog with, for example, a button click
+                closeOnEscape: false,
+                modal: true,
+                width: "auto",
+                height: "auto",
+                create: function( event, ui ) {
+                    // Set maxWidth
+                    $(this).css({
+                            "min-width" : (window.innerWidth / 100 * 90) + 'px',
+                    });
+
+                    $(this).parents('.ui-dialog').css({
+                        "min-height" : (window.innerHeight / 100 * 90) + 'px',
+                    });
+                }
+            });
+
+            // add the onclick handler
+            $("#dialogNuovaRouteTF").click(function() {
+                $("#wm-wizards-dialogNuovaRouteTF").dialog("open");
+                return false;
+            });
+
+
+
         } );
     </script>
     <?php
