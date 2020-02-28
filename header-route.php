@@ -240,7 +240,7 @@ do_action('us_before_canvas') ?>
 								<div id="popup-show-prices" class="popup-show-prices <?php echo $coming_soon_class?>">
 										<!-- <div class="meta-bar price-from"> -->
 										<?php if (!$coming_soon) {?>
-										<a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>"></a>
+										<!-- <a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>"></a> -->
 										<div class="prezzo-container">
 											<!-- prezzo start-->
 											<div class="prezzo">
@@ -350,7 +350,7 @@ do_action('us_before_canvas') ?>
 							</div>
 							<?php if (!$coming_soon) {?>
 								<div id="wm-book-quote" class="meta-bar wm-book long-txt">
-									<p class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-verdenatura'); ?></p>
+									<p class='meta-bar-txt-bold'><?php echo __('Quote', 'wm-child-verdenatura'); ?></p>
 									<a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>">
 									</a>
 								</div>
@@ -371,7 +371,7 @@ do_action('us_before_canvas') ?>
 								<div class="vedi-prezzi"><h2>Vedi i prezzi</h2></div>
 								<div class="meta-bar wm-activity"><i class="<?php echo $iconimage_activity; ?>"></i></div>
 								<div id="wm-book-quote" class="meta-bar wm-book long-txt">
-									<p class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-verdenatura'); ?></p>
+									<p class='meta-bar-txt-bold'><?php echo __('Quote', 'wm-child-verdenatura'); ?></p>
 									<a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>">
 									</a>
 								</div>
@@ -410,7 +410,7 @@ do_action('us_before_canvas') ?>
 				jQuery(document).ready(function() {
 					// Get DOM Elements
 					const modal = document.querySelector('#cy-prices-modal');
-					// const modalBtn = document.querySelector('#popup-show-prices');
+					const modalBtn = document.querySelector('#popup-show-prices');
 					const closeBtn = document.querySelector('.cy-close');
 					const fixedAncor = document.querySelectorAll('.fixed-ancor-menu');
 
@@ -434,7 +434,7 @@ do_action('us_before_canvas') ?>
 					closeMapBtn.addEventListener('click', closeProgramModal);
 
 					// Events modal prices
-					// modalBtn.addEventListener('click', openModal);
+					modalBtn.addEventListener('click', openModal);
 					closeBtn.addEventListener('click', closeModal);
 					window.addEventListener('click', outsideClick);
 					// fixedAncor.addEventListener('click', scrollOffset);

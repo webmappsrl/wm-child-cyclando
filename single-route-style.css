@@ -137,6 +137,10 @@ body {
     .webmapp-featured-meta-info .container {
         grid-template-columns: 1.2fr 1.2fr 1fr 1fr 1fr 1fr!important;
     }
+    .expand-map-content {
+        width: 300px!important;
+        transition: 500ms all ease;
+    }
 }
 
 @media (min-width: 901px) {
@@ -291,7 +295,7 @@ body {
     .single-route .l-subheader-cell.at_right .w-html {
         line-height: 60px;
     }
-    #wm-book {
+    #wm-book.wm-book {
         left: 16px;
         padding: 0 15px;
     }
@@ -316,6 +320,14 @@ body {
         width: 315px!important;
         margin: auto;
         padding: 25px!important;
+    }
+    .cy-section-route-buttons {
+        display: grid;
+        grid-template-columns: 1fr!important;
+    }
+    .cy-route-body-button.cy-route-body-programbutton {
+        padding-right: 0!important;
+
     }
 }
 
@@ -599,6 +611,18 @@ i {
     background-color: var(--color-primary-title);
 }
 
+.cy-route-body-button.cy-route-body-contactus.expand-map-content p {
+    font-size: 25px;
+}
+.cy-section-route-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 30px;
+    padding-bottom: 30px;
+}
+.cy-route-body-button.cy-route-body-programbutton {
+    padding-right: 1%;
+}
 .webmapp-featured-map .container .route-duration {
     float: right;
     font-weight: bold;
@@ -1586,6 +1610,7 @@ a:hover.tooltips span {
     padding: 30px;
     border-radius: 50px;
     cursor: pointer;
+    transition: 500ms all ease;
 }
 
 .expand-map-content:hover {

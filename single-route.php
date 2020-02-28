@@ -105,18 +105,23 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 		</section>
 		<!--- END first section -->
 		<?php if ($program) : ?>
-			<!--- second section  program-->
+			<!--- second section  program and contact us-->
 			<section id="program-button" class="l-section height_auto for_sidebar at_right">
 				<div class="l-section-h">
 					<div class="type_default valign_top">
 						<div class="vc_col-sm-9 vc_column_container l-content">
 							<div class="vc_column-inner">
 								<div class="wpb_wrapper">
-									<section class="l-section">
-										<div class="l-section-h i-cf">
+									<section class="l-section cy-section-route-buttons">
+										<div class="cy-route-body-button cy-route-body-programbutton">
 											<?php
 											echo "<span id='expand-map' class='header-txt-layer-1 expand-map-content'>". __('Program','wm-child-cyclando')."</span>";
 											?>
+										</div>
+										<div id="wm-book" class="cy-route-body-button cy-route-body-contactus expand-map-content">
+											<div class="meta-bar long-txt">
+												<p class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-verdenatura'); ?></p>
+											</div>
 										</div>
 									</section>
 								</div>
@@ -126,7 +131,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 				</div>
 			</section>
 		<?php endif; ?>
-		<!--- END Second section program-->
+		<!--- END Second section program and contact us-->
 		<?php if ($scheda_tecnica) : ?>
 			<section id="caratteristiche" class="l-section height_auto for_sidebar at_right">
 				<!--- Third section  Caratteristiche-->
