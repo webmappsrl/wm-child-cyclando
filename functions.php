@@ -623,9 +623,15 @@ add_filter( 'facetwp_indexer_row_data', function( $rows, $params ) {
     if ( 'dove_vuoi_andare2' == $params['facet']['name'] ) {
         $post_id = $params['defaults']['post_id'];   
         $post = get_post( $post_id );
+        //TITLE
         $new_row = $params['defaults'];
         $new_row['facet_value'] = $post->post_name;
         $new_row['facet_display_value'] = $post->post_title;
+        $rows[] = $new_row;
+        //EXCERPT
+        $new_row = $params['defaults'];
+        $new_row['facet_value'] = $post->post_name;
+        $new_row['facet_display_value'] = $post->post_excerpt;
         $rows[] = $new_row;
     }
     return $rows;
