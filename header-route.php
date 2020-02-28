@@ -350,7 +350,7 @@ do_action('us_before_canvas') ?>
 							</div>
 							<?php if (!$coming_soon) {?>
 								<div id="wm-book-quote" class="meta-bar wm-book long-txt">
-									<p class='meta-bar-txt-bold'><?php echo __('Quote', 'wm-child-verdenatura'); ?></p>
+									<p class='meta-bar-txt-bold'><?php echo __('Quote', 'wm-child-cyclando'); ?></p>
 									<a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>">
 									</a>
 								</div>
@@ -371,7 +371,7 @@ do_action('us_before_canvas') ?>
 								<div class="vedi-prezzi"><h2>Vedi i prezzi</h2></div>
 								<div class="meta-bar wm-activity"><i class="<?php echo $iconimage_activity; ?>"></i></div>
 								<div id="wm-book-quote" class="meta-bar wm-book long-txt">
-									<p class='meta-bar-txt-bold'><?php echo __('Quote', 'wm-child-verdenatura'); ?></p>
+									<p class='meta-bar-txt-bold'><?php echo __('Quote', 'wm-child-cyclando'); ?></p>
 									<a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>">
 									</a>
 								</div>
