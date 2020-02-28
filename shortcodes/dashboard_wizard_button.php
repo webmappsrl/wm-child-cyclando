@@ -14,7 +14,13 @@ function wizard_button() {
     <button class="button button-primary button-hero load-customize hide-if-no-customize" id="dialogButton">Nuova route</button>
     <?php if ($_SERVER['SERVER_NAME'] !== 'cyclando.com') {?>
     <div id="wm-wizards-dialog-container" title="Basic dialog" style="display:none">
-        <?php echo do_shortcode("[wmWizards conf='[". WebMapp_getWizardConfiguration() ."," . WebMapp_getWizardConfiguration('singleFieldRouteWizard') . "]']"); ?>
+        <?php 
+        $conf = array(
+            WebMapp_getWizardConfiguration() ,
+            WebMapp_getWizardConfiguration('singleFieldRouteWizard')
+        );
+        echo do_shortcode("[wmWizards conf='" . json_encode($conf) . "']"); 
+        ?>
     </div> 
     
     <?php } ?>
