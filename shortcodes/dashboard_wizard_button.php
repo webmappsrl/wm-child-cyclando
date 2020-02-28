@@ -19,7 +19,7 @@ function wizard_button() {
             'routeWizard' =>  WebMapp_getWizardConfiguration() ,
             'singleFieldRouteWizard' =>  WebMapp_getWizardConfiguration('singleFieldRouteWizard')
         );
-        echo do_shortcode("[wmWizards conf='" . json_encode($conf) . "']"); 
+        echo do_shortcode('[wmWizards conf="' . json_encode($conf) . '"]'); 
         ?>
     </div> 
     
