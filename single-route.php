@@ -185,7 +185,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 			<div class="cy-modal-content">
 				<div class="cy-modal-header">
 					<div class="close-button-container"><span class="cy-close-contact">&times;</span></div>
-					<div class="route-contact"><h2><?php echo __('Book this trip', 'wm-child-verdenatura'); ?></h2></div>
+					<div class="route-contact"><h2><?php echo __('Contact us', 'wm-child-verdenatura'); ?></h2></div>
 					<!-- <div class="meta-bar wm-book"><p class="meta-bar-txt-bold">chiedi informazione</p></div> -->
 				</div>
 				<div class="cy-modal-body">
