@@ -49,7 +49,7 @@ function wizard_button()
                 $.post(ajaxurl, {
                     action: 'getAngularApp',
                     name: 'wmWizards',
-                    conf: JSON.stringify(<?= json_encode(WebMapp_getWizardConfiguration(), JSON_FORCE_OBJECT) ?>)
+                    conf: ''
                 }, function(response) {
                     $routeWizard.html(response);
                 });
@@ -86,7 +86,7 @@ function wizard_button()
                 $.post(ajaxurl, {
                     action: 'getAngularApp',
                     name: 'wmWizards',
-                    conf: JSON.stringify(<?= json_encode(WebMapp_getWizardConfiguration('singleFieldRouteWizard'), JSON_FORCE_OBJECT) ?>)
+                    conf: 'singleFieldRouteWizard'
                 }, function(response) {
                     $tfRouteWizard.html(response);
                 });
