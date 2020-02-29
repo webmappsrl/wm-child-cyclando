@@ -634,5 +634,81 @@ add_filter( 'facetwp_indexer_row_data', function( $rows, $params ) {
         $new_row['facet_display_value'] = $post->post_excerpt;
         $rows[] = $new_row;
     }
+
     return $rows;
 }, 10, 2 );
+
+
+add_action( 'save_post' , function( $post_id, $post, $update )
+{
+    if ( $post->post_type != 'route' )
+        return;
+
+    require_once __DIR__ . '/includes/class_cyDaysOfWeek.php' ;
+    
+    $departure_dates = get_field( 'departure_dates' , $post_id);
+    $departure_periods = get_field( 'departures_periods' , $post_id);
+
+    $dateTimes = [];
+
+
+    if ( is_array( $departure_dates ) )
+    {
+        foreach ( $departure_dates as $date )
+        {
+            $dateTime = DateTime::createFromFormat('d/m/Y', $date['date']);
+            $dateTimes[] = $dateTime;
+        }
+    }
+   
+
+    if ( is_array( $departure_periods ) )
+    {
+        foreach ( $departure_periods as $period )
+        {
+            $start = $period['start'];
+            $end = $period['stop'];
+            $week_days = isset( $period['week_days'] ) ? $period['week_days'] : FALSE;
+            $dayOfWeek = new CyDaysOfWeek( $start , $end );
+            if ( $week_days )
+                $days = $dayOfWeek->query_byDayOfWeek($week_days);
+            else
+                $days = $dayOfWeek->get_allDays();  
+
+            foreach ( $days as $day )
+                $dateTimes = array_merge( $dateTimes , $day );
+        }
+    }
+
+    $toRegister = [];
+    $today = new DateTime();
+    if ( is_array( $dateTimes ) )
+    {
+        foreach( $dateTimes as $dateTime )
+        {
+            if ( $dateTime instanceof DateTime )
+            {
+                $dateString = $dateTime->format("F Y");
+                if ( $today <= $dateTime && ! in_array( $dateString, $toRegister) )
+                {
+                    $term = get_term_by('name', $dateString, 'when');
+                    if ( $term == FALSE )
+                    {
+                        $term = wp_insert_term( $dateString , 'when' );
+                    }
+                    $toRegister[] = $term->term_id;
+                }
+            }   
+        }
+    }
+    
+
+    if ( count( $toRegister ) > 0 )
+    {
+        wp_set_post_terms( $post_id , $toRegister , 'when');
+    }
+        
+
+    
+
+} , 10 , 3);
