@@ -634,6 +634,18 @@ add_filter( 'facetwp_indexer_row_data', function( $rows, $params ) {
         $new_row['facet_display_value'] = $post->post_excerpt;
         $rows[] = $new_row;
     }
+    elseif ( 'quando_vuoi_partire' == $params['facet']['name'] )
+    {
+        if ( isset( $params['defaults']['term_id'] ) && $params['defaults']['term_id'] )
+        {
+            $term = get_term($params['defaults']['term_id']);
+            $new_row = $params['defaults'];
+            $new_row['facet_value'] = $term->slug;
+            $new_row['facet_display_value'] = $term->name;
+            $rows = [ $new_row ];
+        }
+           
+    }
 
     return $rows;
 }, 10, 2 );
@@ -675,8 +687,16 @@ add_action( 'save_post' , function( $post_id, $post, $update )
             else
                 $days = $dayOfWeek->get_allDays();  
 
-            foreach ( $days as $day )
-                $dateTimes = array_merge( $dateTimes , $day );
+            foreach ( $days as $daysOfWeekDay )
+            {
+                if ( is_array($daysOfWeekDay) ) 
+                {
+                    $merge = array_merge( $dateTimes , $daysOfWeekDay );
+                    if ( is_array( $merge ) )
+                        $dateTimes = $merge;
+                }
+            }
+                
         }
     }
 
