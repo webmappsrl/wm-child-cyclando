@@ -716,7 +716,8 @@ add_action( 'save_post' , function( $post_id, $post, $update )
                     {
                         $term = wp_insert_term( $dateString , 'when' );
                     }
-                    $toRegister[] = $term->term_id;
+                    if ( $term instanceof WP_Term )
+                        $toRegister[] = $term->term_id;
                 }
             }   
         }
