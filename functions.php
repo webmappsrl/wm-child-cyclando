@@ -308,7 +308,7 @@ add_filter( 'facetwp_facet_dropdown_show_counts', function( $return, $params ) {
 function the_calcola_url( $num )
 {
 
-    $numero_arrotondato = str_replace($num , "p",".");
+    $numero_arrotondato = str_replace("p",".",$num);
     echo "wm-icon-cy-difficulty-$numero_arrotondato";
 }
 /**

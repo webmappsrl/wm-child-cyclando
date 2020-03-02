@@ -1,3 +1,5 @@
+<?php while ( have_posts() ) : the_post(); $post_id = get_the_ID();?>
+<div class="webmapp_posts_controller webmapp-grid-system webmapp-anypost-template-cy_route">
 <?php
 
 $title_link = get_the_permalink();
@@ -113,7 +115,7 @@ if ($promotion_value) {
             <figure class="webmapp_post_image" style="background-image: url('<?php echo $get_the_post_thumbanil; ?>')">
                 <div class="webmapp_post-title">
                     <div class="post_meta_with_icons">
-                        <?php if ($icon_activities) {
+                        <?php if (isset($icon_activities)) {
                             ?><div class="icon_holder"><?php
                                 foreach ($icon_activities as $icon) {
                                     echo '<i class="'.$icon.'"></i>'.' ';
@@ -121,13 +123,13 @@ if ($promotion_value) {
                             ?></div> <?php
                             echo '<div class="icons_separator"> | </div>';
                         } ?>
-                        <?php if ($shape) {
+                        <?php if (isset($shape)) {
                             ?><div class="icon_holder"><?php
                                 ?><i class="<?php echo the_shape_icon($shape); ?>"></i><?php
                             ?></div> <?php
                             echo '<div class="icons_separator"> | </div>';
                         } ?>
-                        <?php if ($icon_targets) {
+                        <?php if (isset($icon_targets)) {
                             ?><div class="icon_holder"><?php
                                 foreach ($icon_targets as $icon) {
                                     echo '<i class="'.$icon.'"></i>'.' ';
@@ -135,7 +137,7 @@ if ($promotion_value) {
                             ?></div> <?php
                             echo '<div class="icons_separator"> | </div>';
                         } ?>
-                        <?php if ($diff_numero) {
+                        <?php if (isset($diff_numero)) {
                             ?><div class="icon_holder"><?php
                             ?><i class="<?php echo the_calcola_url( $diff_numero ); ?>"></i><?php ?>
                             </div> <?php
@@ -200,3 +202,5 @@ if ($promotion_value) {
             echo "</a>";
             ?>
 </div>
+</div>
+<?php endwhile; ?>
