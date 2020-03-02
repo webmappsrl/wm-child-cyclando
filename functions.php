@@ -302,6 +302,33 @@ add_filter( 'facetwp_facet_dropdown_show_counts', function( $return, $params ) {
     return $return;
 }, 10, 2 );
 
+/**
+ * Icons for Single Route post type difficutly
+ */
+function the_calcola_url( $num )
+{
+
+    $numero_arrotondato = str_replace($num , "p",".");
+    echo "wm-icon-cy-difficulty-$numero_arrotondato";
+}
+/**
+ * Icons for Single Route post type shape
+ */
+function the_shape_icon( $shape )
+{
+    switch ($shape) {
+        case "linear":
+            echo 'wm-icon-cy-shape-linear';
+            break;
+        case "roundtrip":
+            echo 'wm-icon-cy-shape-roundtrip';
+            break;
+        case "daisy":
+            echo 'wm-icon-cy-shape-daisy';
+            break;
+    }
+    
+}
 
 /**changes the breadcrumb link of POI in yoast */
 add_filter( 'wpseo_breadcrumb_links', 'yoast_seo_breadcrumb_append_link' );

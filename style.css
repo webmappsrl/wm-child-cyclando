@@ -568,6 +568,42 @@ body #iubenda_policy .iub_content.legal_pp p {
 }
 
 /* cerca page search page */
+.page-id-52815 .facetwp-template {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 20px;
+}
+.page-id-52815 .facetwp-template .post_meta_info p{
+    font-size: 22px;
+    line-height: 24px;
+    min-height: 19px;
+    overflow: hidden;
+    display: -webkit-inline-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.page-id-52815 .post_meta_where_duration {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.page-id-52815 .post_meta_where_duration p {
+    margin-bottom: 0;
+    color: white;
+}
+.page-id-52815 .webmapp_post-title {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+.page-id-52815 .post_meta_with_icons {
+    font-size: 18px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
 .cerca-result-container .facetwp-template {
     display: grid;
     grid-template-columns: 1fr 1fr;
