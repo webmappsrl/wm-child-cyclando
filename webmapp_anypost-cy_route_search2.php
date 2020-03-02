@@ -113,6 +113,11 @@ if ($promotion_value) {
         <div class="webmapp_post-featured-img">
 
             <figure class="webmapp_post_image" style="background-image: url('<?php echo $get_the_post_thumbanil; ?>')">
+                <div class="title-holder">
+                    <?php
+                    echo  '<h3>'.get_the_title().'</h3>' ;
+                    ?>
+                </div>
                 <div class="webmapp_post-title">
                     <div class="post_meta_with_icons">
                         <?php if ($icon_activities) {
@@ -144,25 +149,6 @@ if ($promotion_value) {
                             </div> <?php
                         } ?>
                     </div>
-                    <div class="post_meta_where_duration">
-                        <?php if (!$coming_soon) { ?>
-                        <p class="route_first_date"><?php echo __('From', 'wm-child-verdenatura') . ' <span class="meta_info_data">' . $first_departure_date; ?></span><span class="route_duration"><?php echo ' - ' . $nights . ' ' . __('nights', 'wm-child-cyclando') ?></span></p>
-                        <p class='meta-bar-txt-light'>
-                            <?php 
-                            if ($tax_places_to_go[0] or $parent) { echo ' | ';}
-                            if ($tax_places_to_go[0]) {echo $tax_places_to_go[0]->name;}
-                            if ($parent) : echo ', <strong>' . $parent . '</strong>';
-                            endif; ?>
-                        </p>
-                        <?php } else { ?>
-                        <p class="route_first_date"><span class="route_duration"><?php echo (!empty($duration))?$nights . ' ' . __('nights', 'wm-child-cyclando'):'' ?></span></p>
-                        <p class='meta-bar-txt-light'>
-                            <?php echo $tax_places_to_go[0]->name;
-                            if ($parent) : echo ', <strong>' . $parent . '</strong>';
-                            endif; ?>
-                        </p>
-                        <?php } ?>
-                    </div>
                 </div>
             </figure>
 
@@ -170,9 +156,21 @@ if ($promotion_value) {
         </div>
         <div class="webmapp_post_meta">
             <div class="post_meta_info">
-                <p>
-                    <?php the_title() ?>
+                <?php if (!$coming_soon) { ?>
+                <p class="route_first_date"><?php echo __('From', 'wm-child-verdenatura') . ' <span class="meta_info_data">' . $first_departure_date; ?></span><span class="route_duration"><?php echo ' - ' . $nights . ' ' . __('nights', 'wm-child-cyclando') ?></span></p>
+                <p class='meta-bar-txt-light'>
+                    <?php echo $tax_places_to_go[0]->name;
+                    if ($parent) : echo ', <strong>' . $parent . '</strong>';
+                    endif; ?>
                 </p>
+                <?php } else { ?>
+                <p class="route_first_date"><span class="route_duration"><?php echo (!empty($duration))?$nights . ' ' . __('nights', 'wm-child-cyclando'):'' ?></span></p>
+                <p class='meta-bar-txt-light'>
+                    <?php echo $tax_places_to_go[0]->name;
+                    if ($parent) : echo ', <strong>' . $parent . '</strong>';
+                    endif; ?>
+                </p>
+                <?php } ?>
             </div>
             <?php
             if (!$coming_soon) {

@@ -393,6 +393,19 @@ add_filter( 'facetwp_facet_html', function( $output, $params ) {
         }
     }
 
+    // if ( 'in_promozione' == $params['facet']['name'] ) {
+    //     $output = '';
+    //     $values = (array) $params['values'];
+    //     $selected_values = (array) $params['selected_values'];
+    //     foreach ( $selected_values as $val) {}
+    //     $selected = in_array( $result['facet_value'], $selected_values ) ? ' checked' : '';
+    //     $selected .= ( 0 == $result['counter'] && '' == $selected ) ? ' disabled' : '';
+    //     $output .= '<div class="facetwp-checkbox' . $selected . '" data-value="' . esc_attr( $result['facet_value'] ) . '">';
+    //     $output .= '<i class="'. $shape_name.'"></i> '. esc_html( $result['facet_display_value'] ) . ' (' .$result['counter'].')';
+    //     $output .= '</div>';
+    //     }
+    // }
+
     if ( 'quanto_impegno_vorresti_mettere' == $params['facet']['name'] ) {
         $output = '<div class="facetwp-slider-wrap">';
         $output .= '<div class="facetwp-slider"></div>';

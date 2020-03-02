@@ -593,18 +593,36 @@ body #iubenda_policy .iub_content.legal_pp p {
 }
 .advancedsearch-container .webmapp_post-title {
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr; */
+    grid-template-columns: 1fr;
+
 }
 .advancedsearch-container .post_meta_with_icons {
     font-size: 22px;
     color: white;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     flex-wrap: wrap;
+}
+.advancedsearch-container .icon_holder {
+    padding-right: 10px;
 }
 .advancedsearch-container .icons_separator:last-child {
     display: none;
+}
+.advancedsearch-container .title-holder {
+    background-color: #1010108a;
+    padding: 10px;
+    display: flex;
+    align-self: flex-start;
+}
+.advancedsearch-container .title-holder h3{
+    color: white;
+    font-weight: 900;
+    font-family: var(--font-family-primary-alternate);
+    font-size: 29px;
+
 }
 .facetwp-slider-icon-container {
     padding-top: 10px;
