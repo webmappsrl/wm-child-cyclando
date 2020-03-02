@@ -115,7 +115,7 @@ if ($promotion_value) {
             <figure class="webmapp_post_image" style="background-image: url('<?php echo $get_the_post_thumbanil; ?>')">
                 <div class="webmapp_post-title">
                     <div class="post_meta_with_icons">
-                        <?php if (isset($icon_activities)) {
+                        <?php if ($icon_activities) {
                             ?><div class="icon_holder"><?php
                                 foreach ($icon_activities as $icon) {
                                     echo '<i class="'.$icon.'"></i>'.' ';
@@ -123,13 +123,13 @@ if ($promotion_value) {
                             ?></div> <?php
                             echo '<div class="icons_separator"> | </div>';
                         } ?>
-                        <?php if (isset($shape)) {
+                        <?php if ($shape) {
                             ?><div class="icon_holder"><?php
                                 ?><i class="<?php echo the_shape_icon($shape); ?>"></i><?php
                             ?></div> <?php
                             echo '<div class="icons_separator"> | </div>';
                         } ?>
-                        <?php if (isset($icon_targets)) {
+                        <?php if ($icon_targets) {
                             ?><div class="icon_holder"><?php
                                 foreach ($icon_targets as $icon) {
                                     echo '<i class="'.$icon.'"></i>'.' ';
@@ -137,7 +137,7 @@ if ($promotion_value) {
                             ?></div> <?php
                             echo '<div class="icons_separator"> | </div>';
                         } ?>
-                        <?php if (isset($diff_numero)) {
+                        <?php if ($diff_numero) {
                             ?><div class="icon_holder"><?php
                             ?><i class="<?php echo the_calcola_url( $diff_numero ); ?>"></i><?php ?>
                             </div> <?php

@@ -603,6 +603,9 @@ body #iubenda_policy .iub_content.legal_pp p {
     justify-content: space-between;
     flex-wrap: wrap;
 }
+.advancedsearch-container .icons_separator:last-child {
+    display: none;
+}
 
 .cerca-result-container .facetwp-template {
     display: grid;
