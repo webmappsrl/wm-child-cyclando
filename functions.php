@@ -392,6 +392,15 @@ add_filter( 'facetwp_facet_html', function( $output, $params ) {
             $output .= '</div>';
         }
     }
+
+    if ( 'quanto_impegno_vorresti_mettere' == $params['facet']['name'] ) {
+        $output = '<div class="facetwp-slider-wrap">';
+        $output .= '<div class="facetwp-slider"></div>';
+        $output .= '<div class="facetwp-slider-icon-container"><i class="wm-icon-cy-difficulty-1"></i> <i class="wm-icon-cy-difficulty-5"></i></div>';
+        $output .= '</div>';
+        $output .= '<span class="facetwp-slider-label"></span>';
+        $output .= '<div><input type="button" class="facetwp-slider-reset" value="' . __( 'Reset', 'fwp-front' ) . '" /></div>';
+    }
     return $output;
 }, 10, 2 );
 

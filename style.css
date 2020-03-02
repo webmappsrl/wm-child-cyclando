@@ -575,7 +575,7 @@ body #iubenda_policy .iub_content.legal_pp p {
     row-gap: 20px;
 }
 .advancedsearch-container .facetwp-template .post_meta_info p{
-    font-size: 22px;
+    font-size: 18px;
     line-height: 24px;
     min-height: 19px;
     overflow: hidden;
@@ -606,7 +606,16 @@ body #iubenda_policy .iub_content.legal_pp p {
 .advancedsearch-container .icons_separator:last-child {
     display: none;
 }
-
+.facetwp-slider-icon-container {
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.facetwp-slider-icon-container i {
+    padding: 0;
+}
 .cerca-result-container .facetwp-template {
     display: grid;
     grid-template-columns: 1fr 1fr;
