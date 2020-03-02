@@ -596,7 +596,7 @@ body #iubenda_policy .iub_content.legal_pp p {
     grid-template-rows: 1fr 1fr;
 }
 .advancedsearch-container .post_meta_with_icons {
-    font-size: 18px;
+    font-size: 22px;
     color: white;
     display: flex;
     align-items: center;

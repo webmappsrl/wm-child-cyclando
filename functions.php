@@ -272,44 +272,6 @@ function remove_custom_post_comment() {
 }
 
 
-add_filter( 'facetwp_facet_html', function( $output, $params ) {
-    if ( 'cosa_vuoi_fare' == $params['facet']['name'] ) {
-        $output = '';
-        $values = (array) $params['values'];
-        $selected_values = (array) $params['selected_values'];
-        foreach ( $values as $result ){
-            $get_term_activity = get_term_by('slug', esc_attr( $result['facet_value'] ), 'activity');
-            $term_activity = 'term_' . $get_term_activity->term_id;
-            $iconimage_activity = get_field('wm_taxonomy_icon', $term_activity);
-
-            $selected = in_array( $result['facet_value'], $selected_values ) ? ' checked' : '';
-            $selected .= ( 0 == $result['counter'] && '' == $selected ) ? ' disabled' : '';
-            $output .= '<div class="facetwp-checkbox' . $selected . '" data-value="' . esc_attr( $result['facet_value'] ) . '">';
-            $output .= '<i class="'.$iconimage_activity.'"></i> '. esc_html( $result['facet_display_value'] ) . ' (' .$result['counter'].')';
-            $output .= '</div>';
-        }
-    }
-
-    if ( 'come_vuoi_viaggiare' == $params['facet']['name'] ) {
-        $output = '';
-        $values = (array) $params['values'];
-        $selected_values = (array) $params['selected_values'];
-        foreach ( $values as $result ){
-            $get_term_activity = get_term_by('slug', esc_attr( $result['facet_value'] ), 'who');
-            $term_activity = 'term_' . $get_term_activity->term_id;
-            $iconimage_activity = get_field('wm_taxonomy_icon', $term_activity);
-
-            $selected = in_array( $result['facet_value'], $selected_values ) ? ' checked' : '';
-            $selected .= ( 0 == $result['counter'] && '' == $selected ) ? ' disabled' : '';
-            $output .= '<div class="facetwp-checkbox' . $selected . '" data-value="' . esc_attr( $result['facet_value'] ) . '">';
-            $output .= '<i class="'.$iconimage_activity.'"></i> '. esc_html( $result['facet_display_value'] ) . ' (' .$result['counter'].')';
-            $output .= '</div>';
-        }
-    }
-    return $output;
-}, 10, 2 );
-
-
 // add labels for each facet
 function fwp_add_facet_labels() {
     ?>
@@ -368,6 +330,58 @@ function the_shape_icon( $shape )
     }
     
 }
+
+
+add_filter( 'facetwp_facet_html', function( $output, $params ) {
+    if ( 'cosa_vuoi_fare' == $params['facet']['name'] ) {
+        $output = '';
+        $values = (array) $params['values'];
+        $selected_values = (array) $params['selected_values'];
+        foreach ( $values as $result ){
+            $get_term_activity = get_term_by('slug', esc_attr( $result['facet_value'] ), 'activity');
+            $term_activity = 'term_' . $get_term_activity->term_id;
+            $iconimage_activity = get_field('wm_taxonomy_icon', $term_activity);
+
+            $selected = in_array( $result['facet_value'], $selected_values ) ? ' checked' : '';
+            $selected .= ( 0 == $result['counter'] && '' == $selected ) ? ' disabled' : '';
+            $output .= '<div class="facetwp-checkbox' . $selected . '" data-value="' . esc_attr( $result['facet_value'] ) . '">';
+            $output .= '<i class="'.$iconimage_activity.'"></i> '. esc_html( $result['facet_display_value'] ) . ' (' .$result['counter'].')';
+            $output .= '</div>';
+        }
+    }
+
+    if ( 'come_vuoi_viaggiare' == $params['facet']['name'] ) {
+        $output = '';
+        $values = (array) $params['values'];
+        $selected_values = (array) $params['selected_values'];
+        foreach ( $values as $result ){
+            $get_term_activity = get_term_by('slug', esc_attr( $result['facet_value'] ), 'who');
+            $term_activity = 'term_' . $get_term_activity->term_id;
+            $iconimage_activity = get_field('wm_taxonomy_icon', $term_activity);
+
+            $selected = in_array( $result['facet_value'], $selected_values ) ? ' checked' : '';
+            $selected .= ( 0 == $result['counter'] && '' == $selected ) ? ' disabled' : '';
+            $output .= '<div class="facetwp-checkbox' . $selected . '" data-value="' . esc_attr( $result['facet_value'] ) . '">';
+            $output .= '<i class="'.$iconimage_activity.'"></i> '. esc_html( $result['facet_display_value'] ) . ' (' .$result['counter'].')';
+            $output .= '</div>';
+        }
+    }
+
+    if ( 'come_deve_essere_la_forma_del_viaggio' == $params['facet']['name'] ) {
+        $output = '';
+        $values = (array) $params['values'];
+        $selected_values = (array) $params['selected_values'];
+        foreach ( $values as $result ){
+
+            $selected = in_array( $result['facet_value'], $selected_values ) ? ' checked' : '';
+            $selected .= ( 0 == $result['counter'] && '' == $selected ) ? ' disabled' : '';
+            $output .= '<div class="facetwp-checkbox' . $selected . '" data-value="' . esc_attr( $result['facet_value'] ) . '">';
+            $output .= '<i class="'. the_shape_icon($result['facet_value'] ).'"></i> '. esc_html( $result['facet_display_value'] ) . ' (' .$result['counter'].')';
+            $output .= '</div>';
+        }
+    }
+    return $output;
+}, 10, 2 );
 
 /**changes the breadcrumb link of POI in yoast */
 add_filter( 'wpseo_breadcrumb_links', 'yoast_seo_breadcrumb_append_link' );
