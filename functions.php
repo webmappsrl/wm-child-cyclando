@@ -372,11 +372,23 @@ add_filter( 'facetwp_facet_html', function( $output, $params ) {
         $values = (array) $params['values'];
         $selected_values = (array) $params['selected_values'];
         foreach ( $values as $result ){
+            $shape_name = '';
+            switch (esc_attr( $result['facet_value'] )) {
+                case "linear":
+                    $shape_name = 'wm-icon-cy-shape-linear';
+                    break;
+                case "roundtrip":
+                    $shape_name = 'wm-icon-cy-shape-roundtrip';
+                    break;
+                case "daisy":
+                    $shape_name = 'wm-icon-cy-shape-daisy';
+                    break;
+            }
 
             $selected = in_array( $result['facet_value'], $selected_values ) ? ' checked' : '';
             $selected .= ( 0 == $result['counter'] && '' == $selected ) ? ' disabled' : '';
             $output .= '<div class="facetwp-checkbox' . $selected . '" data-value="' . esc_attr( $result['facet_value'] ) . '">';
-            $output .= '<i class="'. the_shape_icon($result['facet_value'] ).'"></i> '. esc_html( $result['facet_display_value'] ) . ' (' .$result['counter'].')';
+            $output .= '<i class="'. $shape_name.'"></i> '. esc_html( $result['facet_display_value'] ) . ' (' .$result['counter'].')';
             $output .= '</div>';
         }
     }
