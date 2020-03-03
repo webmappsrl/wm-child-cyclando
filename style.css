@@ -655,7 +655,9 @@ body #iubenda_policy .iub_content.legal_pp p {
 .advancedsearch-container .webmapp-grid-system .col-sm-12,.advancedsearch-container .webmapp-grid-system .col-md-12{
     padding-left: 0;
     padding-right: 0;
-
+}
+.cerca-facet-where-container .facetwp-autocomplete-update{
+    display: none;
 }
 .cerca-facet-where-container .l-section-h.i-cf{
     padding-bottom: 0px;
