@@ -677,7 +677,7 @@ body #iubenda_policy .iub_content.legal_pp p {
 .cerca-facet-count-container .facetwp-selections ul {
     margin-left: 0;
 }
-.cerca-facet-count-container .facetwp-selections li {
+/* .cerca-facet-count-container .facetwp-selections li {
     display: inline-block;
     line-height: 1;
     padding: 10px 5px;
@@ -689,6 +689,29 @@ body #iubenda_policy .iub_content.legal_pp p {
 }
 
 .cerca-facet-count-container .facetwp-selections li:hover {
+    box-shadow: 0 0 0 2px transparent, 0 2px 5px rgba(0, 0, 0, 0.11);
+    transition: 200ms all ease;
+} */
+
+.cerca-facet-count-container span.facetwp-selection-label {
+    display: none;
+}
+.cerca-facet-count-container .facetwp-selections .facetwp-selection-value {
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+    padding: 6px;
+    padding-right: 18px;
+    background-image: url(../images/icon-close.png);
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    background-position: 96% center;
+    transition: 200ms all ease;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0 0 0 2px transparent, 0 1px 0 rgba(0,0,0,0.08);
+}
+.cerca-facet-count-container .facetwp-selections .facetwp-selection-value:hover {
     box-shadow: 0 0 0 2px transparent, 0 2px 5px rgba(0, 0, 0, 0.11);
     transition: 200ms all ease;
 }
