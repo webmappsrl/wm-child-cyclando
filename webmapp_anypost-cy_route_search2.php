@@ -120,28 +120,26 @@ if ($promotion_value) {
                 </div>
                 <div class="webmapp_post-title">
                     <div class="post_meta_with_icons">
-                        <?php if ($icon_activities) {
+                    <?php if ($icon_activities) {
                             ?><div class="icon_holder"><?php
                                 foreach ($icon_activities as $icon) {
                                     echo '<i class="'.$icon.'"></i>'.' ';
                                 }
-                                echo ' / ';
                             ?></div> <?php
+                            echo '<div class="icons_separator"> | </div>';
                         } ?>
                         <?php if ($shape) {
                             ?><div class="icon_holder"><?php
-                                ?><i class="<?php echo the_shape_icon($shape); ?>"></i><?php echo ' / ';
-                            ?></div> <?php
-                            
+                                ?><i class="<?php echo the_shape_icon($shape); ?>"></i></div> <?php
+                               echo '<div class="icons_separator"> | </div>';
                         } ?>
                         <?php if ($icon_targets) {
                             ?><div class="icon_holder"><?php
                                 foreach ($icon_targets as $icon) {
                                     echo '<i class="'.$icon.'"></i>'.' ';
                                 }
-                                echo ' / ';
                             ?></div> <?php
-                            
+                            echo '<div class="icons_separator"> | </div>';
                         } ?>
                         <?php if ($diff_numero) {
                             ?><div class="icon_holder"><?php
