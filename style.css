@@ -652,13 +652,15 @@ body #iubenda_policy .iub_content.legal_pp p {
 .advancedsearch-container .webmapp_post_meta .prezzo-tab {
     padding: 8px 10px;
 }
-.cerca-facet-where-container .facetwp-autocomplete-update{
-    display: none;
+.advancedsearch-container .webmapp-grid-system .col-sm-12,.advancedsearch-container .webmapp-grid-system .col-md-12{
+    padding-left: 0;
+    padding-right: 0;
+
 }
 .cerca-facet-where-container .l-section-h.i-cf{
     padding-bottom: 0px;
 }
-.cerca-facet-where-container .facetwp-selections{
+.cerca-facet-count-container .facetwp-selections{
     padding: 10px 0;
 }
 .cerca-facet-count-container {
