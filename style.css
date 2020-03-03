@@ -138,6 +138,11 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
         display: none;
     }
 }
+@media screen and (max-width: 1200px) {
+    .advancedsearch-container .facetwp-template {
+        grid-template-columns: 1fr;
+    }
+}
 
 @media screen and (max-width: 990px) {
     body div#ccchildpages-1 {
