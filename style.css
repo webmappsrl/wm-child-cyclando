@@ -602,7 +602,7 @@ body #iubenda_policy .iub_content.legal_pp p {
     color: white;
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     flex-wrap: wrap;
 }
 .advancedsearch-container .icon_holder {
@@ -635,6 +635,9 @@ body #iubenda_policy .iub_content.legal_pp p {
 }
 .cerca-facet-where-container .facetwp-autocomplete-update{
     display: none;
+}
+.cerca-facet-where-container .l-section-h.i-cf{
+    padding-bottom: 0px;
 }
 .facetwp-slider-icon-container {
     padding-top: 10px;
