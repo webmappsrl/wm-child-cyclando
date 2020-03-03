@@ -274,7 +274,7 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     .general-cerca-facetwp-container .g-cols.vc_row {
         display: grid;
         grid-template-areas:
-            "a a a a c"
+            "e e a a c"
             "b b b b c"
             "b b b b c";
         grid-template-rows: 150px;
@@ -287,6 +287,9 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     }
     .advancedsearch-container {
         grid-area: b;
+    }
+    .cerca-facet-count-container {
+        grid-area: e;
     }
 }
 
@@ -670,9 +673,6 @@ body #iubenda_policy .iub_content.legal_pp p {
 }
 .cerca-facet-count-container .facetwp-selections{
     padding: 10px 0;
-}
-.cerca-facet-count-container {
-    padding-top: 30px;
 }
 .cerca-facet-count-container .facetwp-selections ul {
     margin-left: 0;
