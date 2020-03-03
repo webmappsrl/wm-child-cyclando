@@ -645,7 +645,7 @@ body #iubenda_policy .iub_content.legal_pp p {
 .cerca-facet-where-container .facetwp-selections ul {
     margin-left: 0;
 }
-.cerca-facet-where-container .facetwp-selections .facetwp-selections li {
+.cerca-facet-where-container .facetwp-selections li {
     display: inline-block;
     line-height: 1;
     padding: 10px 5px;
@@ -656,7 +656,7 @@ body #iubenda_policy .iub_content.legal_pp p {
     transition: 200ms all ease;
 }
 
-.cerca-facet-where-container .facetwp-selections .facetwp-selections li:hover {
+.cerca-facet-where-container .facetwp-selections li:hover {
     box-shadow: 0 0 0 2px transparent, 0 2px 5px rgba(0, 0, 0, 0.11);
     transition: 200ms all ease;
 }
