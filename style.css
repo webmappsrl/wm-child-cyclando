@@ -140,7 +140,7 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
 }
 @media screen and (max-width: 1200px) {
     .advancedsearch-container .facetwp-template {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr!important;
     }
 }
 
