@@ -138,6 +138,7 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
         display: none;
     }
 }
+
 @media screen and (max-width: 990px) {
     body div#ccchildpages-1 {
         grid-template-columns: 1fr;
@@ -262,6 +263,24 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     }
     .Home-intro-banner .l-section-h.i-cf {
         padding: 8rem 0 4rem;
+    }
+}
+@media screen and (min-width: 768px) {
+    .general-cerca-facetwp-container .g-cols.vc_row {
+        display: grid;
+        grid-template-areas:
+            "a a a a c"
+            "b b b b c"
+            "b b b b c";
+    } 
+    .cerca-facet-where-container {
+        grid-area: a;
+    }
+    .cerca-facets-container {
+        grid-area: c;
+    }
+    .advancedsearch-container {
+        grid-area: b;
     }
 }
 
@@ -577,7 +596,7 @@ body #iubenda_policy .iub_content.legal_pp p {
 .advancedsearch-container .facetwp-template .post_meta_info p{
     font-size: 16px;
     line-height: 24px;
-    min-height: 19px;
+    min-height: 24px;
     overflow: hidden;
     display: -webkit-inline-box;
     -webkit-line-clamp: 2;
@@ -660,6 +679,10 @@ body #iubenda_policy .iub_content.legal_pp p {
     box-shadow: 0 0 0 2px transparent, 0 2px 5px rgba(0, 0, 0, 0.11);
     transition: 200ms all ease;
 }
+.cerca-facets-container i {
+    font-size: 22px;
+}
+
 .facetwp-slider-icon-container {
     padding-top: 10px;
     display: flex;
