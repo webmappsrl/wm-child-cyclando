@@ -331,25 +331,6 @@ function the_shape_icon( $shape )
     
 }
 
-// hides facetwp-template facetwp-pager id nothing is selected
-add_action( 'wp_head', function() {
-    ?>
-    <script>
-    (function($) {
-        $(document).on('facetwp-loaded', function() {
-            if ( '' == FWP.build_query_string()) {
-                $('.facetwp-template').hide();
-                $('.facetwp-pager').hide();
-            } else {
-                $('.facetwp-template').show();
-                $('.facetwp-pager').show();
-            }
-         });
-    })(jQuery);
-    </script>
-    <?php
-    }, 100 );
-
 // change the output of facetwp Counter
 add_filter( 'facetwp_result_count', function( $output, $params ) {
     ($params['total'] == 1) ? $result_string = __('result', 'wm-child-cyclando') : $result_string = __('results', 'wm-child-cyclando');
