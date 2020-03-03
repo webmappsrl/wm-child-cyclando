@@ -331,7 +331,18 @@ function the_shape_icon( $shape )
     
 }
 
+// change the output of facetwp Counter
+add_filter( 'facetwp_result_count', function( $output, $params ) {
+    ($params['total'] == 1) ? $result_string = __('result', 'wm-child-cyclando') : $result_string = __('results', 'wm-child-cyclando');
+    if ($params['total'] > 10) {  
+        $output = $params['lower'] . '-' . $params['upper'] . ' ' .  __('of', 'wm-child-cyclando'). ' ' . $params['total'] . ' ' . $result_string ;
+    } else {
+        $output = $params['total'] . ' ' . $result_string ;
+    }
+    return $output;
+}, 10, 2 );
 
+// Edit facetWP HTML to add icons before the choices
 add_filter( 'facetwp_facet_html', function( $output, $params ) {
     if ( 'cosa_vuoi_fare' == $params['facet']['name'] ) {
         $output = '';
