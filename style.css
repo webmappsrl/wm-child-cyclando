@@ -702,7 +702,6 @@ body #iubenda_policy .iub_content.legal_pp p {
     cursor: pointer;
     padding: 6px;
     padding-right: 18px;
-    background-image: url(../images/icon-close.png);
     background-size: 12px 12px;
     background-repeat: no-repeat;
     background-position: 96% center;
