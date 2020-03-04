@@ -404,19 +404,6 @@ add_filter( 'facetwp_facet_html', function( $output, $params ) {
         }
     }
 
-    // if ( 'in_promozione' == $params['facet']['name'] ) {
-    //     $output = '';
-    //     $values = (array) $params['values'];
-    //     $selected_values = (array) $params['selected_values'];
-    //     foreach ( $selected_values as $val) {}
-    //     $selected = in_array( $result['facet_value'], $selected_values ) ? ' checked' : '';
-    //     $selected .= ( 0 == $result['counter'] && '' == $selected ) ? ' disabled' : '';
-    //     $output .= '<div class="facetwp-checkbox' . $selected . '" data-value="' . esc_attr( $result['facet_value'] ) . '">';
-    //     $output .= '<i class="'. $shape_name.'"></i> '. esc_html( $result['facet_display_value'] ) . ' (' .$result['counter'].')';
-    //     $output .= '</div>';
-    //     }
-    // }
-
     if ( 'quanto_impegno_vorresti_mettere' == $params['facet']['name'] ) {
         $output = '<div class="facetwp-slider-wrap">';
         $output .= '<div class="facetwp-slider"></div>';
@@ -426,6 +413,21 @@ add_filter( 'facetwp_facet_html', function( $output, $params ) {
         $output .= '<div><input type="button" class="facetwp-slider-reset" value="' . __( 'Reset', 'fwp-front' ) . '" /></div>';
     }
     return $output;
+}, 10, 2 );
+
+
+// Index the promotion value to yes and no in facetwp
+add_filter( 'facetwp_index_row', function( $params, $class ) {
+    if ( 'cerchi_un_viaggio_in_promozione' == $params['facet_name'] ) {
+        if ( $params['facet_value'] > 0 ) {
+            $params['facet_value'] = 'yes';
+            $params['facet_display_value'] = __('Yes', 'wm-child-cyclando');
+        } else {
+            $params['facet_value'] = 'no';
+            $params['facet_display_value'] = __('No', 'wm-child-cyclando');
+        }
+    }
+    return $params;
 }, 10, 2 );
 
 /**changes the breadcrumb link of POI in yoast */
