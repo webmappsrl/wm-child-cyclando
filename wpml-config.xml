@@ -1,0 +1,11 @@
+<wpml-config>
+    <custom-fields>
+        <custom-field action="translate">vn_prog</custom-field>
+        <custom-field action="translate">riassunto</custom-field>
+    </custom-fields>
+
+    <custom-term-fields>
+        <custom-term-field action="translate">html_description</custom-term-field>
+        <custom-term-field action="translate">title</custom-term-field>
+    </custom-term-fields>
+</wpml-config>
