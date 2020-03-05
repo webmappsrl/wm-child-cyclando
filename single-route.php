@@ -37,8 +37,10 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 		$touroperator_id = $touroperator_id_array[0];
 		$touroperator = get_the_title($touroperator_id);
 		$gallery_ids = array();
-		foreach ($gallery_items as $gallery_item) {
-			array_push($gallery_ids, $gallery_item['ID']);
+		if ($gallery_items) {
+			foreach ($gallery_items as $gallery_item) {
+				array_push($gallery_ids, $gallery_item['ID']);
+			}
 		}
 		//checks if it has promotion and creates a list of dates of promotion period
 		$in_promotion_active = get_field('wm_route_in_promotion');
@@ -96,7 +98,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 					<div class="vc_col-sm-3 vc_column_container l-sidebar">
 						<div class="vc_column-inner">
 							<div class="wpb_wrapper sidebar-departures">
-							<?php echo do_shortcode('[us_image_slider ids="' . implode(',', $gallery_ids) . '" fullscreen="1" img_size="large" img_fit="cover"]'); ?>
+							<?php if ($gallery_ids) {echo do_shortcode('[us_image_slider ids="' . implode(',', $gallery_ids) . '" fullscreen="1" img_size="large" img_fit="cover"]'); }?>
 							</div>
 						</div>
 					</div>
