@@ -871,7 +871,7 @@ foreach ( $variations_name_price as $var ) {
 
 
     <script>
-        ( function($) {
+        jQuery(document).ready( function($) {
             $( "#tabs" ).tabs({
                 activate: function( event, ui ) {
                     ui.newPanel.find('.webmapp_post_image').each(function(i,e){
@@ -886,7 +886,7 @@ foreach ( $variations_name_price as $var ) {
                     } );
                 }
             });
-        } )(jQuery);
+        } );
 
         jQuery(function(){
             window.et_pb_smooth_scroll = () => {};
