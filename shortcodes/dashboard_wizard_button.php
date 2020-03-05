@@ -13,8 +13,8 @@ function wizard_button()
     ob_start();
 ?>
     <p>Crea una nuova route:</p>
-    <button class="button button-primary button-hero load-customize hide-if-no-customize" id="dialogButton">Nuova route</button>
-    <button class="button button-primary button-hero load-customize hide-if-no-customize" id="tfRoutedialogButton">Tf Nuova route</button>
+    <button class="button button-primary button-hero load-customize" id="dialogButton">Nuova route</button>
+    <button class="button button-primary button-hero load-customize" id="tfRoutedialogButton">Tf Nuova route</button>
     <?php if ($_SERVER['SERVER_NAME'] !== 'cyclando.com') { ?>
         <div id="wm-wizards-dialog-container" title="Basic dialog" style="display:none">
         </div>
