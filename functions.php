@@ -6,6 +6,9 @@ require ('shortcodes/dashboard_wizard_button.php');
 require ('shortcodes/mobile_menu_quote_form.php');
 require ('shortcodes/menu_search_facetwp_wizard.php');
 require ('url_filters.php');
+if ( class_exists( 'WP_CLI' ) ) {
+    require ('wp-cli/cy-index-routes.php');
+}
 
 
 // Uncomment to disable GUTHENBERG
@@ -829,19 +832,25 @@ add_action( 'save_post' , function( $post_id, $post, $update )
 
     $toRegister = [];
     $today = new DateTime();
+    do_action( 'wpml_switch_language', "it" );
     if ( is_array( $dateTimes ) )
     {
+        sort($dateTimes);
         foreach( $dateTimes as $dateTime )
         {
             if ( $dateTime instanceof DateTime )
             {
-                $dateString = $dateTime->format("F Y");
+                
+                $dateString = date_i18n("F Y", $dateTime->getTimestamp() ) ;
+
                 if ( $today <= $dateTime && ! in_array( $dateString, $toRegister) )
                 {
                     $term = get_term_by('name', $dateString, 'when');
                     if ( $term == FALSE )
                     {
-                        $term = wp_insert_term( $dateString , 'when' );
+                        $term = wp_insert_term( $dateString , 'when' , [
+                            'slug' => $dateTime->getTimestamp()
+                        ]);
                     }
                     if ( $term instanceof WP_Term )
                         $toRegister[] = $term->term_id;
