@@ -180,14 +180,13 @@ add_action('admin_enqueue_scripts', 'admin_css_load');
 /**
  * Material Icons
  */
-
-add_action( 'wp_head' , 'aggiungi_material_icons' );
-function aggiungi_material_icons(){
-    // echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
-    //load jquery ui theme css
-    echo '<link href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" rel="stylesheet">';
-    echo '<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>';
-}
+// //add_action( 'wp_head' , 'aggiungi_material_icons' );
+// function aggiungi_material_icons(){
+//     // echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
+//     //load jquery ui theme css
+//     echo '<link href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" rel="stylesheet">';
+//     echo '<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>';
+// }
 
 
 /**
