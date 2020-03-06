@@ -1158,9 +1158,6 @@ body .blog-grid  #us_grid_1 .usg_hwrapper_1 {
     vertical-align: bottom;
 }
 #vn-search-element-container .facetwp-search {
-    vertical-align: bottom;
-}
-#vn-search-element-container .facetwp-search {
     background-color: white;
     box-shadow: 0 0 0 2px transparent, 0 0px 0 rgba(0,0,0,0.0) inset;
     transition: all .3s ease;
@@ -1171,5 +1168,5 @@ body .blog-grid  #us_grid_1 .usg_hwrapper_1 {
 }
 #page-header .w-html.ush_html_2 {
     margin-left: 0px; 
-    line-height: 2.5;
+    line-height: 3.5;
 }
