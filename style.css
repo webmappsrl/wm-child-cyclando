@@ -748,6 +748,29 @@ body #iubenda_policy .iub_content.legal_pp p {
     padding: 20px 0;
 }
 
+
+#cy-search-element-container .facetwp-search {
+    padding: 20px 22px 20px 8px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 17px;
+    background-color: #fffc;
+    height: 3.8rem;
+    border-radius: 0;
+    border: 1px solid #d6d6d6cc;
+}
+
+/* #cy-search-element-container input.facetwp-search::-moz-placeholder,
+#cy-search-element-container input.facetwp-search:-ms-input-placeholder,
+#cy-search-element-container input.facetwp-search::-webkit-input-placeholder */
+#cy-search-element-container input.facetwp-search::placeholder {
+    opacity: 1;
+}
+
+#cy-search-element-container i.facetwp-btn {
+    display: none;
+}
+
 #cy-search-element-container .facetwp-facet {
     margin-bottom: 0px;
     line-height: 14px;
@@ -1089,4 +1112,57 @@ body .blog-grid  #us_grid_1 .usg_hwrapper_1 {
     bottom: 0;
     left: 0;
     transform: rotate(-27deg);
+}
+/* menu search element */
+#page-header .l-subheader-cell.at_center {
+    display: none;
+}
+#vn-search-element-container .facet-label{
+    display: none;
+}
+#vn-search-element-container .facetwp-template{
+    display: none;
+}
+#vn-search-element-container .facetwp-type-search{
+    width: 43px;
+    margin-bottom: 0px;
+}
+#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare2.facetwp-type-search:hover,#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare2.facetwp-type-search:focus,#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare2.facetwp-type-search:focus-within {
+    width: 200px;
+    transition: all .3s ease;
+}
+.menu-searchbox-expandable {
+    background: #f5f5f5!important;
+    box-shadow: 0 0 0 2px transparent, 0 1px 0 rgba(0,0,0,0.08) inset!important;
+    transition: all .3s ease;
+}
+.menu-searchbox-expandable::placeholder{
+    opacity: 0.5!important;
+    transition: all .3s ease;
+}
+#vn-search-element-container .facetwp-type-search {
+    width: 43px;
+    pointer-events: none;
+    margin-bottom: 0px;
+    transition: all .3s ease;
+}
+#vn-search-element-container .facetwp-search-wrap {
+    position: relative;
+    pointer-events: auto;
+}
+#vn-search-element-container .facetwp-btn {
+    pointer-events: auto;
+    top: 15px;
+}
+#vn-search-element-container .facetwp-search {
+    background-color: white;
+    box-shadow: 0 0 0 2px transparent, 0 0px 0 rgba(0,0,0,0.0) inset;
+    transition: all .3s ease;
+}
+#vn-search-element-container .facetwp-search::placeholder {
+    opacity: 0;
+    transition: all .3s ease;
+}
+#page-header .w-html.ush_html_2 {
+    margin-left: 0px; 
 }
