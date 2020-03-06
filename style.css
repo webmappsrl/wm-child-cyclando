@@ -1136,10 +1136,10 @@ body .blog-grid  #us_grid_1 .usg_hwrapper_1 {
     box-shadow: 0 0 0 2px transparent, 0 1px 0 rgba(0,0,0,0.08) inset!important;
     transition: all .3s ease;
 }
-.menu-searchbox-expandable::placeholder{
+/* .menu-searchbox-expandable::placeholder{
     opacity: 0.5!important;
     transition: all .3s ease;
-}
+} */
 #vn-search-element-container .facetwp-type-search {
     width: 43px;
     pointer-events: none;
@@ -1166,7 +1166,37 @@ body .blog-grid  #us_grid_1 .usg_hwrapper_1 {
     opacity: 0;
     transition: all .3s ease;
 }
+/* new */
 #page-header .w-html.ush_html_2 {
-    margin-left: 0px; 
-    line-height: 3.5;
+    margin-left: 0px;
+    height: 2rem;
+    line-height: 2;
+}
+#cy-search-bar-header #searchform {
+    background-color: #f5f5f5;
+    padding: 0 0.8rem;
+    width: 100%;
+    border-radius: 0.3rem;
+    box-shadow: 0 0 0 0px transparent, 0 px 0 rgba(0,0,0,0) inset;
+    background-color: rgba(255, 255, 255, 0);
+    transition: all 0.3s;
+    line-height: 2;
+}
+#cy-search-bar-header #searchform input{
+    padding: 0;
+    padding-top: 7.8px;
+    width: 0;
+    line-height: 2rem;
+    height: 2rem;
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: 0 0 0 2px transparent, 0 0px 0 rgba(0,0,0,0) inset;
+}
+#cy-search-bar-header #searchform button{
+    color:rgb(112, 112, 110)!important;
+    vertical-align: bottom;
+    font-size: 19px;
+    line-height: 2;
+}
+.menu-input-expandable {
+    width: 160px!important;
 }

@@ -4,16 +4,9 @@ add_shortcode( 'facetwp_search_route_wizard', 'webmapp_facetwp_search_route_wiza
   
 function webmapp_facetwp_search_route_wizard() {
 
-    ob_start();
-    ?>
-
-    <div id="vn-search-element-container">
-    <div id="vn-search-bar-header" class="fselect-template">
-    <?php echo do_shortcode('[facetwp facet="dove_vuoi_andare"]'); ?>
-    <?php echo do_shortcode('[facetwp template="home_dove_vuoi_andare"]');?>
-    </div>
-    </div>
-    <?php
-
-    echo ob_get_clean();
+    echo '<div id="cy-search-bar-header"><form id="searchform" action="/cerca/"  method="get">
+	<input type="search" placeholder="' . __( 'Dove vuoi andare?','wm-child-verdenatura' ) . '" value="" name="_dove_vuoi_andare">
+	<button id="cy-search-lente" type="submit"><i class="fa fa-search"></i></button>
+    </form></div>';
 }
+

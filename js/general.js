@@ -5,8 +5,12 @@
 		var url = new URL(pathname);
 		var lang = url.searchParams.get("lang");
 		var lente;
-		lente = jQuery('#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-search');
-		lente.attr('tabindex',-1);
+		var input;
+		var form;
+		lente = jQuery('#cy-search-lente');
+		input = jQuery("#searchform input");
+		form = jQuery("#searchform");
+		input.attr('tabindex',-1);
 
 		// configuration for the search in banner homepahe
 		// jQuery(".facetwp-facet.facetwp-facet-search_route.facetwp-type-fselect").click(function () {
@@ -31,7 +35,7 @@
 		});
 		// upon click on menu search icon lente
 		jQuery('#vn-search-bar-header .facetwp-btn').click(function (event) {
-			event.preventDefault();
+			// event.preventDefault();
 			location.href = main_url + "?_dove_vuoi_andare=" + filter;
 		});
 		
@@ -39,19 +43,23 @@
 			location.href = main_url + "?_dove_vuoi_andare=" + filter + "&fwp_map=1";
 		});
 
-		lente.hover(function () {
-			jQuery("#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-search .facetwp-search").addClass("menu-searchbox-expandable");
+		form.hover(function () {
+			jQuery("#searchform").addClass("menu-searchbox-expandable");
+			input.addClass("menu-input-expandable");
 		}, function() { 
-			var input = jQuery("#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-search .facetwp-search");
 			if (!input.is(':focus')){
-				input.removeClass("menu-searchbox-expandable");
+				jQuery("#searchform").removeClass("menu-searchbox-expandable");
+				form.removeClass("menu-searchbox-expandable");
+				input.removeClass("menu-input-expandable");
 			}
 		});
-		lente.focusin(function () {
-			jQuery("#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-search .facetwp-search").addClass("menu-searchbox-expandable");
+		input.focusin(function () {
+			jQuery("#searchform").addClass("menu-searchbox-expandable");
+			input.removeClass("menu-input-expandable");
 		});
-		lente.focusout(function () {
-			jQuery("#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-search .facetwp-search").removeClass("menu-searchbox-expandable");
+		input.focusout(function () {
+			jQuery("#searchform").removeClass("menu-searchbox-expandable");
+			input.removeClass("menu-input-expandable");
 		});
 
 		jQuery(".facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-search").click(function () {
