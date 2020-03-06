@@ -55,7 +55,7 @@
 		});
 		input.focusin(function () {
 			jQuery("#searchform").addClass("menu-searchbox-expandable");
-			input.removeClass("menu-input-expandable");
+			input.addClass("menu-input-expandable");
 		});
 		input.focusout(function () {
 			jQuery("#searchform").removeClass("menu-searchbox-expandable");
