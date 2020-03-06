@@ -1152,7 +1152,13 @@ body .blog-grid  #us_grid_1 .usg_hwrapper_1 {
 }
 #vn-search-element-container .facetwp-btn {
     pointer-events: auto;
-    top: 15px;
+    top: 5px;
+}
+#vn-search-element-container .facetwp-search {
+    vertical-align: bottom;
+}
+#vn-search-element-container .facetwp-search {
+    vertical-align: bottom;
 }
 #vn-search-element-container .facetwp-search {
     background-color: white;
@@ -1165,4 +1171,5 @@ body .blog-grid  #us_grid_1 .usg_hwrapper_1 {
 }
 #page-header .w-html.ush_html_2 {
     margin-left: 0px; 
+    line-height: 2.5;
 }
