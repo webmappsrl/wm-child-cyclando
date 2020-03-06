@@ -751,7 +751,7 @@ function update_route_not_salable()
 }
 
 add_filter( 'facetwp_indexer_row_data', function( $rows, $params ) {
-    if ( 'dove_vuoi_andare2' == $params['facet']['name'] ) {
+    if ( 'dove_vuoi_andare' == $params['facet']['name'] ) {
         $post_id = $params['defaults']['post_id'];   
         $post = get_post( $post_id );
         //TITLE
