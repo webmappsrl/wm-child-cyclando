@@ -5,12 +5,12 @@
 		var url = new URL(pathname);
 		var lang = url.searchParams.get("lang");
 		var lente;
-		lente = jQuery('#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare2.facetwp-type-search');
+		lente = jQuery('#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-search');
 		lente.attr('tabindex',-1);
 
 		// configuration for the search in banner homepahe
 		// jQuery(".facetwp-facet.facetwp-facet-search_route.facetwp-type-fselect").click(function () {
-		jQuery(".facetwp-facet.facetwp-facet-dove_vuoi_andare2.facetwp-type-search").click(function () {
+		jQuery(".facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-search").click(function () {
 			// var $filter = jQuery(".fs-search input");
 			var $filter = jQuery(".facetwp-search-wrap input");
 
@@ -27,34 +27,34 @@
 			main_url = window.location.protocol + "//" + window.location.host + "/" + "cerca/";
 		}
 		jQuery('#cy-search-lente').click(function () {
-			location.href = main_url + "?_dove_vuoi_andare2=" + filter;
+			location.href = main_url + "?_dove_vuoi_andare=" + filter;
 		});
 		// upon click on menu search icon lente
 		jQuery('#vn-search-bar-header .facetwp-btn').click(function (event) {
 			event.preventDefault();
-			location.href = main_url + "?_dove_vuoi_andare2=" + filter;
+			location.href = main_url + "?_dove_vuoi_andare=" + filter;
 		});
 		
 		jQuery('#vn-menu-search-map').click(function () {
-			location.href = main_url + "?_dove_vuoi_andare2=" + filter + "&fwp_map=1";
+			location.href = main_url + "?_dove_vuoi_andare=" + filter + "&fwp_map=1";
 		});
 
 		lente.hover(function () {
-			jQuery("#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare2.facetwp-type-search .facetwp-search").addClass("menu-searchbox-expandable");
+			jQuery("#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-search .facetwp-search").addClass("menu-searchbox-expandable");
 		}, function() { 
-			var input = jQuery("#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare2.facetwp-type-search .facetwp-search");
+			var input = jQuery("#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-search .facetwp-search");
 			if (!input.is(':focus')){
 				input.removeClass("menu-searchbox-expandable");
 			}
 		});
 		lente.focusin(function () {
-			jQuery("#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare2.facetwp-type-search .facetwp-search").addClass("menu-searchbox-expandable");
+			jQuery("#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-search .facetwp-search").addClass("menu-searchbox-expandable");
 		});
 		lente.focusout(function () {
-			jQuery("#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare2.facetwp-type-search .facetwp-search").removeClass("menu-searchbox-expandable");
+			jQuery("#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-search .facetwp-search").removeClass("menu-searchbox-expandable");
 		});
 
-		jQuery(".facetwp-facet.facetwp-facet-dove_vuoi_andare2.facetwp-type-search").click(function () {
+		jQuery(".facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-search").click(function () {
 			jQuery('input').keydown(function (event) {
 				var keycode = (event.key ? event.key : event.which);
 				if (keycode == 'Enter') {

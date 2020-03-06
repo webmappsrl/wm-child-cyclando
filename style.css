@@ -1127,7 +1127,7 @@ body .blog-grid  #us_grid_1 .usg_hwrapper_1 {
     width: 43px;
     margin-bottom: 0px;
 }
-#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare2.facetwp-type-search:hover,#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare2.facetwp-type-search:focus,#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare2.facetwp-type-search:focus-within {
+#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-search:hover,#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-search:focus,#vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-search:focus-within {
     width: 200px;
     transition: all .3s ease;
 }

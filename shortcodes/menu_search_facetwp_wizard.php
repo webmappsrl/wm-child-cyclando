@@ -9,7 +9,7 @@ function webmapp_facetwp_search_route_wizard() {
 
     <div id="vn-search-element-container">
     <div id="vn-search-bar-header" class="fselect-template">
-    <?php echo do_shortcode('[facetwp facet="dove_vuoi_andare2"]'); ?>
+    <?php echo do_shortcode('[facetwp facet="dove_vuoi_andare"]'); ?>
     <?php echo do_shortcode('[facetwp template="home_dove_vuoi_andare"]');?>
     </div>
     </div>
