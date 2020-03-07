@@ -195,35 +195,35 @@ add_action('admin_enqueue_scripts', 'admin_css_load');
  * Search bar e map search
  */
 
- add_action ('et_header_top', 'vn_search_bar');
-function vn_search_bar() {
-    $lang = $_GET['lang'];
-    echo '<div id="vn-search-bar-header"><form id="searchform" action="/route/"  method="get">
-	<input type="search" placeholder="' . __( 'Search &hellip;','wm-child-verdenatura' ) . '" value="" name="wm_route_code"><input type="hidden" name="lang" value="'.$lang.'"/>
-	<button id="vn-search-lente" type="submit"><i class="fa fa-search"></i></button>
-    </form></div>';
+//  add_action ('et_header_top', 'vn_search_bar');
+// function vn_search_bar() {
+//     $lang = $_GET['lang'];
+//     echo '<div id="vn-search-bar-header"><form id="searchform" action="/route/"  method="get">
+// 	<input type="search" placeholder="' . __( 'Search &hellip;','wm-child-verdenatura' ) . '" value="" name="wm_route_code"><input type="hidden" name="lang" value="'.$lang.'"/>
+// 	<button id="vn-search-lente" type="submit"><i class="fa fa-search"></i></button>
+//     </form></div>';
 
-}
-
-
-add_action( 'et_header_top', 'vn_search_map' );
-function vn_search_map() {
-    echo '<div id="vn-search-map"><i class="material-icons">language</i></div>';
-}
+// }
 
 
-function my_search_form( $form ) {
-    $form = '<form role="search" method="get" id="searchform" class="searchform" action="' . home_url( 'http://vnpreprod.webmapp.it/route/?fwp_search_box' ) . '" >
-    <div><label class="screen-reader-text" for="s">' . __( 'Cerca:' ) . '</label>
-    <input type="text" value="' . get_search_query() . '" name="s" id="s" />
-    <input type="submit" id="searchsubmit" value="'. esc_attr__( 'Cerca' ) .'" />
-    </div>
-    </form>';
+// add_action( 'et_header_top', 'vn_search_map' );
+// function vn_search_map() {
+//     echo '<div id="vn-search-map"><i class="material-icons">language</i></div>';
+// }
 
-    return $form;
-}
 
-add_filter( 'get_search_form', 'my_search_form' );
+// function my_search_form( $form ) {
+//     $form = '<form role="search" method="get" id="searchform" class="searchform" action="' . home_url( 'http://vnpreprod.webmapp.it/route/?fwp_search_box' ) . '" >
+//     <div><label class="screen-reader-text" for="s">' . __( 'Cerca:' ) . '</label>
+//     <input type="text" value="' . get_search_query() . '" name="s" id="s" />
+//     <input type="submit" id="searchsubmit" value="'. esc_attr__( 'Cerca' ) .'" />
+//     </div>
+//     </form>';
+
+//     return $form;
+// }
+
+// add_filter( 'get_search_form', 'my_search_form' );
 
 
 
