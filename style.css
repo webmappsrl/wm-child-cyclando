@@ -278,6 +278,7 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
             "b b b b c"
             "b b b b c";
         grid-template-rows: 140px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1.2fr;
     } 
     .cerca-facet-where-container {
         grid-area: a;
