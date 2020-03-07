@@ -1171,6 +1171,9 @@ body .blog-grid  #us_grid_1 .usg_hwrapper_1 {
     transition: all .3s ease;
 }
 /* new */
+.cerca-facet-where-container .facetwp-btn {
+    top:8px;
+}
 #page-header .w-html.ush_html_2,#page-header .w-html.ush_html_3 {
     margin-left: 0px;
     margin-top: 5px;
