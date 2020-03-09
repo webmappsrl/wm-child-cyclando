@@ -157,9 +157,12 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     .cy-modal-content {
         width: 100%;
     }
-
+    #cy-search-element-container {
+        display: grid!important;
+    }
     #cy-search-lente {
-        display: none;
+        /* display: none; */
+        width: 100%!important;
     }
     .cerca-grid-container {
         grid-template-rows: 1fr;
