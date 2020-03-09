@@ -292,8 +292,10 @@ body {
     .single-route .meta-bar-txt-bold {
         color: white;
     }
-    .single-route .l-subheader-cell.at_right .w-html {
-        line-height: 60px;
+    .single-route .l-subheader-sticky-mobile .l-subheader-cell.at_right .w-html {
+        line-height: 60px!important;
+        height: 60px!important;
+        margin-top: 0!important;
     }
     #wm-book.wm-book {
         left: 16px;
