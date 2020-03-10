@@ -934,6 +934,9 @@ a.ccpage_title_link {
 
 /* woocommerce css */
 /* Campi nascosti per per il calcolatore Friendly - start */
+.wc-proceed-to-checkout a:last-child {
+    display: none!important;
+}
 .woocommerce-order-overview__payment-method.method {
     display: none!important;
 }
