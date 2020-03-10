@@ -121,7 +121,7 @@ if ( class_exists('WebMapp_RegisterFieldsGroup') )
         "note_dur" => array( 'key' => "vn_note_dur" , 'type' => "text" , 'label' => "Note Durata" ),
         //"partenze" => array( 'key' => "vn_partenze" , 'type' => "textarea" , 'label' => "Partenze" ),
         "part_sum" => array( 'key' => "vn_part_sum" , 'type' => "wysiwyg" , 'label' => "Partenze Riassunto" ),
-        "desc_min" => array( 'key' => "vn_desc_min" , 'type' => "textarea" , 'label' => "Descrizione Breve" ),
+        // "desc_min" => array( 'key' => "vn_desc_min" , 'type' => "textarea" , 'label' => "Descrizione Breve" ),
         "note" => array( 'key' => "vn_note" , 'type' => "textarea" , 'label' => "Note" ),
         "desc" => array( 'key' => "vn_desc" , 'type' => "wysiwyg" , 'label' => "Descrizione" ),
         "prog" => array( 'key' => "vn_prog" , 'type' => "wysiwyg" , 'label' => "Programma" ),
