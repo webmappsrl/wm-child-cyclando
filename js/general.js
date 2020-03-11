@@ -41,7 +41,11 @@ jQuery(document).ready(function () {
 		main_url = window.location.protocol + "//" + window.location.host + "/" + "cerca/";
 	}
 	lenteBanner.click(function () {
-		location.href = main_url + "?_dove_vuoi_andare=" + filter;
+		if (filter === undefined) {
+			location.href = main_url;
+		} else {
+			location.href = main_url + "?_dove_vuoi_andare=" + filter;
+		}
 	});
 	// upon click on menu search icon lente
 	jQuery('#vn-search-bar-header .facetwp-btn').click(function (event) {
