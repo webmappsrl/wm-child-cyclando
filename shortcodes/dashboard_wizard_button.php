@@ -15,6 +15,14 @@ function wizard_button()
     <p>Crea una nuova route:</p>
     <?php if ($_SERVER['SERVER_NAME'] !== 'cyclando.com') { ?>
         <div id="wm-wizards-container">
+<<<<<<< HEAD
+            <?php
+            $conf = "routeWizard,singleFieldRouteWizard";
+            echo do_shortcode ("[wmWizards conf='$conf']");
+            ?>
+        </div>
+    <?php } 
+=======
         </div>
     <?php } ?>
 
@@ -32,5 +40,6 @@ function wizard_button()
     </script>
 <?php
 
+>>>>>>> 7c1de4cdbbac69a184022149ecc7a97fbf339639
     echo ob_get_clean();
 }
