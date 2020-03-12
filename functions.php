@@ -866,7 +866,20 @@ add_action( 'save_post' , function( $post_id, $post, $update )
         wp_set_post_terms( $post_id , $toRegister , 'when');
     }
         
-
-    
-
 } , 10 , 3);
+
+
+add_filter( "views_edit-route", function($views){
+    ob_start();
+    ?>
+        <?php if ($_SERVER['SERVER_NAME'] !== 'cyclando.com') { ?>
+            <div id="wm-wizards-container">
+                <?php
+                $conf = "routeWizard,singleFieldRouteWizard";
+                echo do_shortcode ("[wmWizards conf='$conf']");
+                ?>
+            </div>
+        <?php }
+        echo ob_get_clean();
+    return $views;
+} );
