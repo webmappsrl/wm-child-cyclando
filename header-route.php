@@ -9,7 +9,7 @@ $us_layout = US_Layout::instance();
 // variable and queries
 $days = (int)get_field('vn_durata');
 $distance = get_field('distance');
-$difficulty = get_field('vn_diff');
+$difficulty = get_field('n7webmapp_route_difficulty');
 $difficulty = str_replace('.', ',', $difficulty);
 $nights = $days - 1;
 $post_id = get_the_ID();

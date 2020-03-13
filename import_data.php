@@ -114,7 +114,7 @@ if ( class_exists('WebMapp_RegisterFieldsGroup') )
     $custom_fields = array(
         "sih" => array( 'key' => "vn_sih" , 'type' => "true_false" , 'label' => "Show in home" ),//show in home
         "new" => array( 'key' => "vn_new" , 'type' => "true_false" , 'label' => "Novità" ),//novità
-        "diff" => array( 'key' => "vn_diff" , 'type' => "number" , 'label' => "Difficoltà" ),
+        // "diff" => array( 'key' => "vn_diff" , 'type' => "number" , 'label' => "Difficoltà" ),
         "mezza_pensione" => array( 'key' => "vn_mezza_pensione" , 'type' => "true_false" , 'label' => "Mezza pensione" ),
         "sopraponte" => array( 'key' => "vn_sopraponte" , 'type' => "true_false" , 'label' => "Sopraponte" ),
         "durata" => array( 'key' => "vn_durata" , 'type' => "number" , 'label' => "Durata" ),
