@@ -106,7 +106,6 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 			</div>
 		</section>
 		<!--- END first section -->
-		<?php if ($program) : ?>
 			<!--- second section  program and contact us-->
 			<section id="program-button" class="l-section height_auto for_sidebar at_right">
 				<div class="l-section-h">
@@ -115,11 +114,13 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 							<div class="vc_column-inner">
 								<div class="wpb_wrapper">
 									<section class="l-section cy-section-route-buttons">
+										<?php if ($program) : ?>
 										<div class="cy-route-body-button cy-route-body-programbutton">
 											<?php
 											echo "<span id='expand-map' class='header-txt-layer-1 expand-map-content'>". __('Program','wm-child-cyclando')."</span>";
 											?>
 										</div>
+										<?php endif; ?>
 										<div id="wm-book" class="cy-route-body-button cy-route-body-contactus expand-map-content">
 											<div class="meta-bar long-txt">
 												<p class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-verdenatura'); ?></p>
@@ -132,7 +133,6 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 					</div>
 				</div>
 			</section>
-		<?php endif; ?>
 		<!--- END Second section program and contact us-->
 		<?php if ($scheda_tecnica) : ?>
 			<section id="caratteristiche" class="l-section height_auto for_sidebar at_right">

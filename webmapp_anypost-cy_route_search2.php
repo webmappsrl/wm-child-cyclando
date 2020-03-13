@@ -7,7 +7,7 @@ $current_post_type = get_post_type();
 $post_id = get_the_ID();
 $target = 'who';
 $activity = 'activity';
-$diff_numero = get_field('wm-update-route-difficulty');
+$diff_numero = get_field('n7webmapp_route_difficulty');
 $shape = get_field('shape');
 
 // get terms targets icon
