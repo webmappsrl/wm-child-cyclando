@@ -1016,6 +1016,9 @@ body .woocommerce .return-to-shop {
     font-size: 16px!important;
     font-weight: 500!important;
 }
+.woocommerce-page .l-section-h.i-cf {
+    padding:40px 0;
+}
 .woocommerce-remove-coupon {
     /* display: none; */
 }
