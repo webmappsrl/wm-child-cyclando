@@ -280,7 +280,7 @@ do_action('us_before_canvas') ?>
 										<?php
 										$parent_id = $tax_places_to_go[0]->parent;
 										$parent  = get_term($parent_id)->name;
-										if ($parent_id) {
+										if ($parent) {
 											echo $parent;
 										}
 										?>
