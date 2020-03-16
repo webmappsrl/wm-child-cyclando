@@ -279,7 +279,10 @@ do_action('us_before_canvas') ?>
 									<p class='meta-bar-txt-light'>
 										<?php
 										$parent_id = $tax_places_to_go[0]->parent;
-										$parent  = get_term($parent_id)->name;
+										$parent = '';
+										if ($parent_id) {
+											$parent  = get_term($parent_id)->name;
+										}
 										if ($parent) {
 											echo $parent;
 										}
