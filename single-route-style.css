@@ -1644,3 +1644,6 @@ a:hover.tooltips span {
     left: 0;
     transform: rotate(-27deg);
 }
+#wpadminbar .quicklinks #wp-admin-bar-edit-content .ab-empty-item {
+    display: none;
+}

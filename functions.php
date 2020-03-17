@@ -893,11 +893,10 @@ function custom_button_example($wp_admin_bar){
     $post_type = get_post_type();
     if ($post_type == 'route'){
         $page_id = get_the_ID();
-        $term_id = $arry_term['term_id'];
         $args = array(
             'id' => 'edit-content',
             'meta' => array(
-                'html' => '<wm_wizards-wizard_container data-conf=\'{"conf":"{\"wizard\":\"singleFieldRouteWizard\",\"feature_id\":\"'.$page_id.'\"}"}\'></wm_wizards-wizard_container>',
+                'html' => '<wm-wizard-container data-conf=\'{"conf":"{\"wizard\":\"singleFieldRouteWizard\",\"feature_id\":\"'.$page_id.'\"}"}\'></wm-wizard-container>',
                 'class' => 'edit-content-class',
             )
             );
