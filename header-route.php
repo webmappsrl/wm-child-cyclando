@@ -368,6 +368,13 @@ do_action('us_before_canvas') ?>
 					</div>
 				</div>
 			</div> <!-- END div webmapp-layer-container -->
+			<?php if (current_user_can('administrator')){ ?>
+			<div id="wm-wizards-container">
+				<?php
+				echo do_shortcode ("[wmWizards conf='']");
+				?>
+			</div>
+			<?php } ?>
 			<!-- HTML modal for prices -->
 			<div id="cy-prices-modal" class="cy-prices-modal">
 						<div class="cy-modal-content">

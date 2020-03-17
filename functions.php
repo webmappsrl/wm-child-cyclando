@@ -883,3 +883,26 @@ add_filter( "views_edit-route", function($views){
         echo ob_get_clean();
     return $views;
 } );
+
+
+/** add custom button on admin bar for taxonomy page edit */
+require_once(ABSPATH . 'wp-admin/includes/screen.php');
+function custom_button_example($wp_admin_bar){
+    $screen = get_current_screen();
+    // adds a modifica content button on the page edit of a taxonomy in backend 
+    $post_type = get_post_type();
+    if ($post_type == 'route'){
+        $page_id = get_the_ID();
+        $term_id = $arry_term['term_id'];
+        $args = array(
+            'id' => 'edit-content',
+            'meta' => array(
+                'html' => '<wm_wizards-wizard_container data-conf=\'{"conf":"{\"wizard\":\"singleFieldRouteWizard\",\"feature_id\":\"'.$page_id.'\"}"}\'></wm_wizards-wizard_container>',
+                'class' => 'edit-content-class',
+            )
+            );
+            $wp_admin_bar->add_node($args);
+    } 
+}
+
+add_action('admin_bar_menu', 'custom_button_example', 90);
