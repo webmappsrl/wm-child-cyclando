@@ -891,7 +891,7 @@ function custom_button_example($wp_admin_bar){
     $screen = get_current_screen();
     // adds a modifica content button on the page edit of a taxonomy in backend 
     $post_type = get_post_type();
-    if ($post_type == 'route'){
+    if (! is_admin() && $post_type == 'route'){
         $page_id = get_the_ID();
         $args = array(
             'id' => 'edit-content',
