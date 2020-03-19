@@ -3,7 +3,6 @@
 	$(document).on('facetwp-loaded', function () {
 		const $el = $('.facetwp-facet-dove_vuoi_andare input[type="text"]');
 		$el.on( 'blur keydown input change keyup focus' , () => {
-			console.log($('.autocomplete-suggestions'))
 			$('.autocomplete-suggestions').remove()
 		});
 		
