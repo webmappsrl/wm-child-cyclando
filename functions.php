@@ -763,17 +763,6 @@ add_filter( 'facetwp_indexer_row_data', function( $rows, $params ) {
         $new_row = $params['defaults'];
         $new_row['facet_value'] = $post->post_name;
         $new_row['facet_display_value'] = $post->post_excerpt;
-        //WHERE TERMS
-        $terms = get_the_terms( $post_id , 'where' );
-        if ( is_array( $terms ) )
-        {
-            foreach( $terms as $term )
-            {
-                $new_row = $params['defaults'];
-                $new_row['facet_value'] = $term->term_id;
-                $new_row['facet_display_value'] = $term->name;
-            } 
-        }
         $rows[] = $new_row;
     }
     elseif ( 'quando_vuoi_partire' == $params['facet']['name'] )

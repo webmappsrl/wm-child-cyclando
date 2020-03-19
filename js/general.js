@@ -1,3 +1,8 @@
+//removes autocomplete dropdown dove_vuoi_andare facet
+jQuery(document).ready(function($){
+	$('.facetwp-facet-dove_vuoi_andare input[type="text"]').off('input change keydown keyup focus blur click');
+});
+
 jQuery(document).ready(function () {
 	var main_url;
 	var filter;
