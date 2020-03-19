@@ -1,9 +1,14 @@
 //removes autocomplete dropdown dove_vuoi_andare facet
 (function($) {
-    $(document).on('facetwp-loaded', function() {
-        $('.facetwp-facet-dove_vuoi_andare input[type="text"]').off('input change keydown keyup focus blur click');
-     });
+	$(document).on('facetwp-loaded', function() {
+		const $el = $('.facetwp-facet-dove_vuoi_andare input[type="text"]');
+		$el.on('input', function(){
+			$el.off('input blur focus click change keydown keyup');
+		})
+		
+		});
 })(jQuery);
+
 
 jQuery(document).ready(function () {
 	var main_url;
