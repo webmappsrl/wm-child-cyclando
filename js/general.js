@@ -1,12 +1,16 @@
 //removes autocomplete dropdown dove_vuoi_andare facet
-(function($) {
-	$(document).on('facetwp-loaded', function() {
+(function ($) {
+	$(document).on('facetwp-loaded', function () {
 		const $el = $('.facetwp-facet-dove_vuoi_andare input[type="text"]');
-		$el.on('input', function(){
-			$el.off('input blur focus click change keydown keyup');
-		})
-		
+		$el.on( 'blur keydown input change keyup focus' , () => {
+			console.log($('.autocomplete-suggestions'))
+			$('.autocomplete-suggestions').remove()
 		});
+		
+		
+	});
+
+
 })(jQuery);
 
 
@@ -22,7 +26,7 @@ jQuery(document).ready(function () {
 	lenteBanner = jQuery('#cy-search-lente');
 	input = jQuery("#searchform input");
 	form = jQuery("#searchform");
-	input.attr('tabindex',-1);
+	input.attr('tabindex', -1);
 
 	// configuration for the search in banner homepahe
 	// jQuery(".facetwp-facet.facetwp-facet-search_route.facetwp-type-fselect").click(function () {
@@ -64,7 +68,7 @@ jQuery(document).ready(function () {
 		// event.preventDefault();
 		location.href = main_url + "?_dove_vuoi_andare=" + filter;
 	});
-	
+
 	jQuery('#vn-menu-search-map').click(function () {
 		location.href = main_url + "?_dove_vuoi_andare=" + filter + "&fwp_map=1";
 	});
@@ -72,8 +76,8 @@ jQuery(document).ready(function () {
 	form.hover(function () {
 		jQuery("#searchform").addClass("menu-searchbox-expandable");
 		input.addClass("menu-input-expandable");
-	}, function() { 
-		if (!input.is(':focus')){
+	}, function () {
+		if (!input.is(':focus')) {
 			jQuery("#searchform").removeClass("menu-searchbox-expandable");
 			form.removeClass("menu-searchbox-expandable");
 			input.removeClass("menu-input-expandable");
@@ -162,16 +166,16 @@ jQuery(document).ready(function () {
 	});
 
 
-	if (jQuery(window).width() <= 1024 ) {
+	if (jQuery(window).width() <= 1024) {
 		// on document load shrinks the social share bar to the left side of the screen
-		var mobile_div = jQuery( '.et_social_mobile' );
-		mobile_div.fadeToggle( 600 );
-		jQuery( '.et_social_mobile_button' ).addClass( 'et_social_active_button' );
+		var mobile_div = jQuery('.et_social_mobile');
+		mobile_div.fadeToggle(600);
+		jQuery('.et_social_mobile_button').addClass('et_social_active_button');
 
-		if ( mobile_div.hasClass( 'et_social_opened' ) ) {
-			jQuery( '.et_social_mobile_overlay' ).fadeToggle( 600 );
-			mobile_div.removeClass( 'et_social_opened' );
-			mobile_div.find( '.et_social_networks' ).fadeToggle( 600 );
+		if (mobile_div.hasClass('et_social_opened')) {
+			jQuery('.et_social_mobile_overlay').fadeToggle(600);
+			mobile_div.removeClass('et_social_opened');
+			mobile_div.find('.et_social_networks').fadeToggle(600);
 		}
 	}
 
@@ -179,13 +183,13 @@ jQuery(document).ready(function () {
 		var page_content = document.getElementById("page-content");
 		// var recaptchaBadge = document.querySelector('.grecaptcha-badge');
 
-		if (jQuery(document).scrollTop() >= 200 ) {
+		if (jQuery(document).scrollTop() >= 200) {
 			jQuery(".l-subheader.at_bottom.width_full").addClass("l-subheader-sticky-mobile");
 		} else {
 			jQuery(".l-subheader.at_bottom.width_full").removeClass("l-subheader-sticky-mobile");
 		}
-		if (jQuery(window).width() <= 900 ) {
-			
+		if (jQuery(window).width() <= 900) {
+
 			if (jQuery(document).scrollTop() >= 1100) {
 				jQuery("#webmapp-layer-container").addClass("container-sticky");
 				page_content.classList.add("with_padding");
@@ -212,16 +216,16 @@ jQuery(document).ready(function () {
 			} else {
 				jQuery("#webmapp-layer-container").removeClass("container-sticky");
 				// page_content.classList.remove("with_padding");
-			
+
 			}
 		}
-		
+
 	});
 
 	//Studio samo add class to Contact form success email message
-	document.addEventListener( 'wpcf7mailsent', function( event ) {
+	document.addEventListener('wpcf7mailsent', function (event) {
 		jQuery('.wpcf7-response-output').attr('id', 'richiesta-informazioni');
-	}, false );
+	}, false);
 
 	// window.onscroll = function() {myFunction()};
 
