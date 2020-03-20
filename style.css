@@ -669,8 +669,18 @@ body #iubenda_policy .iub_content.legal_pp p {
     padding-left: 0;
     padding-right: 0;
 }
-.cerca-facet-where-container .facetwp-autocomplete-update{
+#cy-search-element-container .facetwp-autocomplete-update{
     display: none;
+}
+.facetwp-facet-dove_vuoi_andare .facetwp-autocomplete-update{
+    padding: 5px 10px;
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 0.3rem;
+    box-shadow: 0 0 0 2px transparent, 0 1px 0 rgba(0,0,0,0.08);
+}
+.facetwp-facet-dove_vuoi_andare .facetwp-autocomplete-update:hover{
+    box-shadow: 0 0 0 2px transparent, 0 2px 0 rgba(0,0,0,0.08);
 }
 .cerca-facet-where-container .l-section-h.i-cf{
     padding-bottom: 0px;
@@ -753,7 +763,7 @@ body #iubenda_policy .iub_content.legal_pp p {
 }
 
 
-#cy-search-element-container .facetwp-search {
+#cy-search-element-container .facetwp-autocomplete {
     padding: 20px 22px 20px 8px;
     font-size: 18px;
     font-weight: 700;
@@ -767,7 +777,7 @@ body #iubenda_policy .iub_content.legal_pp p {
 /* #cy-search-element-container input.facetwp-search::-moz-placeholder,
 #cy-search-element-container input.facetwp-search:-ms-input-placeholder,
 #cy-search-element-container input.facetwp-search::-webkit-input-placeholder */
-#cy-search-element-container input.facetwp-search::placeholder {
+#cy-search-element-container input.facetwp-autocomplete::placeholder {
     opacity: 1;
 }
 
