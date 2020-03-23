@@ -30,7 +30,7 @@ jQuery(document).ready(function () {
 		var $filter = jQuery("#cy-search-element-container input");
 		
 		$filter.keyup(function () {
-			console.log('pede');
+			// console.log('test');
 			// Retrieve the input field text
 			filter = jQuery(this).val();
 		});
