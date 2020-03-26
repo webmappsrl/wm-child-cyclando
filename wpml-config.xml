@@ -2,6 +2,8 @@
     <custom-fields>
         <custom-field action="translate">vn_prog</custom-field>
         <custom-field action="translate">riassunto</custom-field>
+      <custom-field action="copy">vn_durata</custom-field>
+
     </custom-fields>
 
     <custom-term-fields>
