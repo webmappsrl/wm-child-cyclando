@@ -18,6 +18,9 @@ class CyDaysOfWeek
             $this->start = $this->import_arg($start);
             $this->end = $this->import_arg($end);
 
+            if ( $this->start === FALSE || $this->end === FALSE )
+                return;
+
             if ( $this->end < $this->start )
                 throw new Exception('End of interval provided is lower than start.');
 
