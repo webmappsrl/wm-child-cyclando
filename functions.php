@@ -906,6 +906,7 @@ function custom_button_example($wp_admin_bar){
 
 add_action('admin_bar_menu', 'custom_button_example', 90);
 
+<<<<<<< HEAD
 // Add noindex only test.cyclando
 function noindexx(){
     if ( home_url() == 'https://test.cyclando.com' ) {
@@ -913,3 +914,30 @@ function noindexx(){
     }
 }
 add_action( 'wp_head', 'noindexx' );
+=======
+
+// /** WPML CLONE FEATURED IMAGE **/
+add_action( "save_post_route", function( $post_id, $post, $update ){
+
+    //get post language
+    $post_lang = apply_filters( 'wpml_post_language_details', NULL, $post_id );
+    //get wpml default language
+    $default_lang = apply_filters('wpml_default_language', NULL );
+    if ( $post_lang['language_code'] && $post_lang['language_code'] == $default_lang )
+        return;
+
+    $this_post_thumb = get_post_thumbnail_id( $post );
+    if ( $this_post_thumb )
+        return;
+    
+    $post_default_language = apply_filters( 'wpml_object_id', $post_id, 'route', FALSE, $default_lang );
+    if ( ! $post_default_language )
+        return;
+    $post_thumb = get_post_thumbnail_id( $post_default_language );
+    if ( ! $post_thumb )
+        return;
+
+    set_post_thumbnail( $post, $post_thumb );
+        
+} , 10 , 3);
+>>>>>>> e83da49a3ed15f3a9e07cd3b07656fe60ba0ac59
