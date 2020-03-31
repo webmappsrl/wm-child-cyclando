@@ -906,15 +906,6 @@ function custom_button_example($wp_admin_bar){
 
 add_action('admin_bar_menu', 'custom_button_example', 90);
 
-<<<<<<< HEAD
-// Add noindex only test.cyclando
-function noindexx(){
-    if ( home_url() == 'https://test.cyclando.com' ) {
-        echo '<meta name="robots" content="noindex,follow"/>';
-    }
-}
-add_action( 'wp_head', 'noindexx' );
-=======
 
 // /** WPML CLONE FEATURED IMAGE **/
 add_action( "save_post_route", function( $post_id, $post, $update ){
@@ -940,4 +931,3 @@ add_action( "save_post_route", function( $post_id, $post, $update ){
     set_post_thumbnail( $post, $post_thumb );
         
 } , 10 , 3);
->>>>>>> e83da49a3ed15f3a9e07cd3b07656fe60ba0ac59
