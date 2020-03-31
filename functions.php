@@ -905,3 +905,11 @@ function custom_button_example($wp_admin_bar){
 }
 
 add_action('admin_bar_menu', 'custom_button_example', 90);
+
+// Add noindex only test.cyclando
+function noindexx(){
+    if ( get_site_url() == 'https://test.cyclando.com' ) {
+        echo '<meta name="robots" content="noindex,follow"/>';
+    }
+}
+add_action( 'wp_head', 'noindexx' );
