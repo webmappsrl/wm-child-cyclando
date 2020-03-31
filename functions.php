@@ -931,3 +931,12 @@ add_action( "save_post_route", function( $post_id, $post, $update ){
     set_post_thumbnail( $post, $post_thumb );
         
 } , 10 , 3);
+
+
+// Add noindex only test.cyclando
+function wm_noindex(){
+    if ( home_url() == 'https://test.cyclando.com' ) {
+        echo '<meta name="robots" content="noindex,follow"/>';
+    }
+}
+add_action( 'wp_head', 'wm_noindex' );
