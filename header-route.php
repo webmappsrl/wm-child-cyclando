@@ -405,9 +405,9 @@ do_action('us_before_canvas') ?>
 								<div class="close-button-container"><span class="cy-close-map">&times;</span></div>
 								<div class="route-program"><h2><?php echo __('Program', 'wm-child-verdenatura'); ?></h2></div>
 							</div>
-							<div class="cy-modal-body">
+							<div class="cy-modal-body" style="height:300px;">
 							<?php 
-							echo do_shortcode('[wm-embedmaps route"https://a.webmapp.it/cyclando.com/geojson/'.$post_id.'.geojson"]');
+								echo do_shortcode('[wm-embedmaps route"https://a.webmapp.it/cyclando.com/geojson/'.$post_id.'.geojson"]');
 							?>
 							</div>
 						</div>
