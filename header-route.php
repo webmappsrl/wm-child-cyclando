@@ -407,7 +407,7 @@ do_action('us_before_canvas') ?>
 							</div>
 							<div class="cy-modal-body">
 							<?php 
-							echo do_shortcode('[wm-embedmaps route"https://a.webmapp.it/cyclando.com/geojson/id.geojson"]');
+							echo do_shortcode('[wm-embedmaps route"https://a.webmapp.it/cyclando.com/geojson/'.$post_id.'.geojson"]');
 							?>
 							</div>
 						</div>
