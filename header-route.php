@@ -414,7 +414,7 @@ do_action('us_before_canvas') ?>
 									?>
 								</div>
 							<?php endif;
-								//echo do_shortcode('[wm-embedmaps route="https://a.webmapp.it/cyclando.com/geojson/'.$post_id.'.geojson" height="70vh"]');
+								echo do_shortcode('[wm-embedmaps route="https://a.webmapp.it/cyclando.com/geojson/'.$post_id.'.geojson" height="70vh"]');
 							?>
 							</div>
 						</div>
