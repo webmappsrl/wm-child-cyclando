@@ -434,30 +434,50 @@ add_filter( 'facetwp_index_row', function( $params, $class ) {
     return $params;
 }, 10, 2 );
 
-/**changes the breadcrumb link of POI in yoast */
-add_filter( 'wpseo_breadcrumb_links', 'yoast_seo_breadcrumb_append_link' );
-function yoast_seo_breadcrumb_append_link( $links ) {
+// /**changes the breadcrumb link of POI in yoast */
+// add_filter( 'wpseo_breadcrumb_links', 'yoast_seo_breadcrumb_append_link' );
+// function yoast_seo_breadcrumb_append_link( $links ) {
 	
-    if ( is_singular( 'route' ) ) {
-        $breadcrumb[] = array(
-            'url' => site_url( '/cerca/' ),
-            'text' => __('Routes', 'wm-child-cyclando'),
-        );
-        array_splice( $links, 1,1, $breadcrumb );
-    }
+//     if ( is_singular( 'route' ) ) {
+//         $breadcrumb[] = array(
+//             'url' => site_url( '/cerca/' ),
+//             'text' => __('Routes', 'wm-child-cyclando'),
+//         );
+//         array_splice( $links, 1,1, $breadcrumb );
+//     }
     
-    if ( is_singular( 'post' ) ) {
-        $breadcrumb[] = array(
-            'url' => site_url( '/blog/' ),
-            'text' => __('Blog', 'wm-child-cyclando'),
-        );
-        array_splice( $links, 1,0, $breadcrumb );
-	}
+//     if ( is_singular( 'post' ) ) {
+//         $breadcrumb[] = array(
+//             'url' => site_url( '/blog/' ),
+//             'text' => __('Blog', 'wm-child-cyclando'),
+//         );
+//         array_splice( $links, 1,0, $breadcrumb );
+// 	}
 	
 
-    return $links;
+//     return $links;
 	
-}
+// }
+
+/**changes the breadcrumb link of POI and blog in Math rank breadcrumb */
+add_filter( 'rank_math/frontend/breadcrumb/items', function( $crumbs, $class ) {
+    if ( is_singular( 'route' ) ) {
+        $breadcrumb[] = array(
+            '0' => __('Routes', 'wm-child-cyclando'),
+            '1' => site_url( '/cerca/' ),
+        );
+        array_splice( $crumbs, 1,1, $breadcrumb );
+    }
+    if ( is_singular( 'post' ) ) {
+        $breadcrumb[] = array(
+            '0' => __('Blog', 'wm-child-cyclando'),
+            '1' => site_url( '/blog/' ),
+        );
+        array_splice( $crumbs, 1,0, $breadcrumb );
+	}
+	return $crumbs;
+}, 10, 2);
+
 
 
 // //  order wpfacet Duration and Seasosn months in archive route page

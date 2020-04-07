@@ -414,13 +414,13 @@ body {
     font-weight: 400;
 }
 
-/* Breadcrumb yoast menu */
-.breadcrumb-yoast a,
-.breadcrumb-yoast span {
+/* Breadcrumb rank math menu */
+.breadcrumb-rankmath a,
+.breadcrumb-rankmath span {
     font-size: 12px;
 }
 
-.breadcrumb-yoast .breadcrumb_last {
+.breadcrumb-rankmath .last {
     color: var(--color-primary);
 }
 
