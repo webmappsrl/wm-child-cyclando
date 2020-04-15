@@ -8,9 +8,8 @@ Template:       Impreza
 Version:        0.1.0
 Text Domain:    wm-child-verdenatura
 */
-@import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,500,600,700&display=swap');
-/* @import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates|Montserrat:400,500,600,700,800&display=swap'); */
 
+@import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,500,600,700&display=swap');
 :root {
     --color-primary: #9AC250;
     --color-primary-title: #749D27;
