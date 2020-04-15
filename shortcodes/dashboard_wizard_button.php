@@ -4,7 +4,8 @@ add_action('wp_dashboard_setup', 'webmapp_wizard_dashboard_button');
 
 function webmapp_wizard_dashboard_button()
 {
-
+    if ( ! get_option('webmapp_use_wizards') )
+        return;
     wp_add_dashboard_widget('custom_help_widget', 'Webmapp wizard', 'wizard_button', 'dashboard', 'normal', 'high');
 }
 
