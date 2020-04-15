@@ -368,7 +368,7 @@ do_action('us_before_canvas') ?>
 					</div>
 				</div>
 			</div> <!-- END div webmapp-layer-container -->
-			<?php if (current_user_can('administrator')){ ?>
+			<?php if (current_user_can('administrator') && get_option('webmapp_show_interactive_route_map')){ ?>
 			<div id="wm-wizards-container">
 				<?php
 				echo do_shortcode ("[wmWizards conf='']");
@@ -406,15 +406,17 @@ do_action('us_before_canvas') ?>
 								<div class="route-program"><h2><?php echo __('Program', 'wm-child-verdenatura'); ?></h2></div>
 							</div>
 							<div class="cy-modal-body">
-							<?php if ($program) : ?>
+							<?php if ($program && !get_option('webmapp_show_interactive_route_map')) : ?>
 								<div class="">
 									<?php
-									//echo "<h2>Programma</h2>";
+									echo "<h2>Programma</h2>";
 									echo $program;
 									?>
 								</div>
 							<?php endif;
-								//echo do_shortcode('[wm-embedmaps route="https://a.webmapp.it/cyclando.com/geojson/'.$post_id.'.geojson" height="70vh"]');
+								if ( get_option('webmapp_show_interactive_route_map') ) {
+									echo do_shortcode('[wm-embedmaps route="https://a.webmapp.it/cyclando.com/geojson/'.$post_id.'.geojson" height="70vh"]');
+								}
 							?>
 							</div>
 						</div>

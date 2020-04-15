@@ -5,6 +5,11 @@
 		$el.on( 'blur keydown input change keyup focus' , () => {
 			$('.autocomplete-suggestions').remove()
 		});
+		if (FWP.loaded) {
+            $('html, body').animate({
+                scrollTop: $('#page-content').offset().top
+            }, 500);
+        }
 	});
 })(jQuery);
 
