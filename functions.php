@@ -890,6 +890,10 @@ add_action( 'save_post' , function( $post_id, $post, $update )
 
 
 add_filter( "views_edit-route", function($views){
+
+    if ( ! get_option('webmapp_use_wizards') )
+        return $views;
+
     ob_start();
     ?>
         <?php if ($_SERVER['SERVER_NAME'] !== 'cyclando.com') { ?>
@@ -905,9 +909,14 @@ add_filter( "views_edit-route", function($views){
 } );
 
 
-/** add custom button on admin bar for taxonomy page edit */
-require_once(ABSPATH . 'wp-admin/includes/screen.php');
+
 function custom_button_example($wp_admin_bar){
+
+    if ( ! get_option('webmapp_use_wizards') )
+        return;
+
+    /** add custom button on admin bar for taxonomy page edit */
+    require_once(ABSPATH . 'wp-admin/includes/screen.php');
     $screen = get_current_screen();
     // adds a modifica content button on the page edit of a taxonomy in backend 
     $post_type = get_post_type();
