@@ -409,7 +409,6 @@ do_action('us_before_canvas') ?>
 							<?php if ($program && !get_option('webmapp_show_interactive_route_map')) : ?>
 								<div class="">
 									<?php
-									echo "<h2>Programma</h2>";
 									echo $program;
 									?>
 								</div>
