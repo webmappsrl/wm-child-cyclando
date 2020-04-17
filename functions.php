@@ -937,7 +937,11 @@ add_action('admin_bar_menu', 'custom_button_example', 90);
 
 
 // /** WPML CLONE FEATURED IMAGE **/
-add_action( "save_post_route", function( $post_id, $post, $update ){
+add_action( "save_post_route", "wm_copy_featured_image_on_save" , 10 , 3);
+add_action( "save_post_track", "wm_copy_featured_image_on_save" , 10 , 3);
+add_action( "save_post_poi", "wm_copy_featured_image_on_save" , 10 , 3);
+
+function wm_copy_featured_image_on_save( $post_id, $post, $update ){
 
     //get post language
     $post_lang = apply_filters( 'wpml_post_language_details', NULL, $post_id );
@@ -953,10 +957,11 @@ add_action( "save_post_route", function( $post_id, $post, $update ){
     $post_default_language = apply_filters( 'wpml_object_id', $post_id, 'route', FALSE, $default_lang );
     if ( ! $post_default_language )
         return;
+        
     $post_thumb = get_post_thumbnail_id( $post_default_language );
     if ( ! $post_thumb )
         return;
 
     set_post_thumbnail( $post, $post_thumb );
         
-} , 10 , 3);
+}
