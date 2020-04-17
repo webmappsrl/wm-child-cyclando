@@ -1,5 +1,5 @@
 <wpml-config>
     <custom-fields>
-        <custom-field action="copy">tour_operator</custom-field>
+    
     </custom-fields>
 </wpml-config>
