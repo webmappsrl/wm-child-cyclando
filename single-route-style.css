@@ -655,7 +655,7 @@ i {
     border-top-right-radius: 0px !important;
 }
 
-#cy-prices-modal .cy-modal-header.price-header-sticky {
+#cy-prices-modal .cy-modal-header.price-header-sticky, #cy-route-program .cy-modal-header.price-header-sticky, #cy-route-contact .cy-modal-header.price-header-sticky{
     position: sticky;
     top: 0;
     box-shadow: -2px 2px 7px -5px rgba(0, 0, 0, 0.65);
@@ -850,7 +850,7 @@ i {
     background-color: var(--color-secondary-hover);
     cursor: pointer;
 }
-.vedi-prezzi {
+.vedi-prezzi, .route-contact, .route-program {
     align-items: center;
     display: flex;
 }
@@ -897,10 +897,9 @@ div#popup-show-prices>div {
     z-index: 999;
 }
 
-#cy-prices-modal .wm-book {
+#cy-prices-modal .wm-book, #cy-route-program .wm-book, #cy-route-contact .wm-book{
     padding: 35px;
 }
-
 .wm-book:hover {
     cursor: pointer;
     background: var(--color-secondary-hover);
@@ -1391,8 +1390,6 @@ body #tab-stagioni a:hover {
 }
 
 .cy-modal-header h2 {
-    height: 29px;
-    width: 150px;
     color: var(--color-primary-title) !important;
     font-family: var(--font-family-primary);
     font-size: 30px;
@@ -1402,7 +1399,6 @@ body #tab-stagioni a:hover {
 }
 
 #cy-prices-modal .cy-modal-header h2 {
-    height: 29px;
     width: 150px;
     color: var(--color-primary-title);
     font-family: var(--font-family-primary);
@@ -1413,11 +1409,11 @@ body #tab-stagioni a:hover {
 
 #cy-route-program .cy-modal-header, #cy-route-contact .cy-modal-header {
     background: white;
-    padding: 30px 0px;
+    padding: 10px 0px;
     color: #fff;
     border-top-right-radius: 10px;
     display: grid;
-    grid-template-columns: 1fr 8fr;
+    grid-template-columns: 1fr 8fr 1fr;
     border: 1px solid var(--color-primary-paragraph);
     border-bottom: 0px;
     transition: 500ms all ease;

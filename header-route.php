@@ -209,7 +209,7 @@ do_action('us_before_canvas') ?>
 					</div>
 				</div>
 				<div id='webmapp-layer-1-map' class="webmapp-map-container">
-					<div class="webmapp-featured-map" style="background-image: url('<?php echo $featured_map; ?>')">
+					<div id="expand-map" class="webmapp-featured-map" style="background-image: url('<?php echo $featured_map; ?>')">
 						<div class="container">
 							<?php
 							if ($days) {
@@ -404,6 +404,11 @@ do_action('us_before_canvas') ?>
 							<div class="cy-modal-header">
 								<div class="close-button-container"><span class="cy-close-map">&times;</span></div>
 								<div class="route-program"><h2><?php echo __('Program', 'wm-child-verdenatura'); ?></h2></div>
+								<div id="wm-book-quote" class="meta-bar wm-book long-txt">
+									<p class='meta-bar-txt-bold'><?php echo __('Quote', 'wm-child-cyclando'); ?></p>
+									<a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>">
+									</a>
+								</div>
 							</div>
 							<div class="cy-modal-body">
 							<?php if ($program && !get_option('webmapp_show_interactive_route_map')) : ?>

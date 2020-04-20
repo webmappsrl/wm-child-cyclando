@@ -28,6 +28,12 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 		the_post();
 
 		// var 
+		$post_id = get_the_ID();
+		if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
+			$language = ICL_LANGUAGE_CODE;
+		} else {
+			$language = 'it';
+		}
 		$how_to_arrive = get_field('vn_come_arrivare');
 		$program = get_field('vn_prog');
 		$scheda_tecnica = get_field('vn_scheda_tecnica');
@@ -188,7 +194,11 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 				<div class="cy-modal-header">
 					<div class="close-button-container"><span class="cy-close-contact">&times;</span></div>
 					<div class="route-contact"><h2><?php echo __('Contact us', 'wm-child-verdenatura'); ?></h2></div>
-					<!-- <div class="meta-bar wm-book"><p class="meta-bar-txt-bold">chiedi informazione</p></div> -->
+					<div id="wm-book-quote" class="meta-bar wm-book long-txt">
+						<p class='meta-bar-txt-bold'><?php echo __('Quote', 'wm-child-cyclando'); ?></p>
+						<a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>">
+						</a>
+					</div>
 				</div>
 				<div class="cy-modal-body">
 					<?php echo do_shortcode('[contact-form-7 id="54052" title="Contact form route"]'); ?>
