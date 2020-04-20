@@ -99,7 +99,7 @@ body {
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 @media (min-width: 1100px) {
-    .logo-main-menu {
+    .l-header .w-image.logo-main-menu {
         height: 65px;
     }
 }
