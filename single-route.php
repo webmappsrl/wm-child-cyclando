@@ -220,9 +220,9 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 				?>
 				<section class="l-section for_comments">
 					<div class="l-section-h i-cf"><?php
-													wp_enqueue_script('comment-reply');
-													comments_template();
-													?></div>
+					wp_enqueue_script('comment-reply');
+					comments_template();
+					?></div>
 				</section><?php
 					}
 				}
