@@ -18,9 +18,41 @@ add_action('woocommerce_before_cart', 'preventivi_json_to_text',15);
 add_action('woocommerce_before_checkout_form', 'preventivi_json_to_text',15);
 
 
-
+/**
+ * Load translations for wm-child-verdenatura
+ */
+function vn_theme_setup(){
+    load_theme_textdomain('wm-child-verdenatura', get_stylesheet_directory() . '/languages');
+}
 add_action('after_setup_theme', 'vn_theme_setup');
 
+
+
+add_action( 'wp_enqueue_scripts', 'Divi_parent_theme_enqueue_styles' );
+function Divi_parent_theme_enqueue_styles() {
+    // wp_enqueue_style( 'divi-style', get_template_directory_uri() . '/style.css' );
+    wp_enqueue_style('route-single-post-style', get_stylesheet_directory_uri() . '/single-route-style.css');
+    wp_enqueue_style('jqeury-ui-tabs-style', 'https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css');
+    wp_enqueue_script('jquery-ui-core');
+    wp_enqueue_script('jquery-ui-tabs');
+    wp_enqueue_script( 'general_javascript', get_stylesheet_directory_uri() . '/js/general.js', array ('jquery') );
+    wp_enqueue_script( 'hightlight', get_stylesheet_directory_uri() . '/js/home_highlight.js');
+}
+
+function admin_css_load() {
+	wp_enqueue_style('style-admin-css', get_stylesheet_directory_uri().'/style-admin.css');
+	wp_enqueue_script('cyclando-admin', get_stylesheet_directory_uri().'/js/admin.js', array('jquery'));
+}
+add_action('admin_enqueue_scripts', 'admin_css_load');
+
+
+add_action( 'wp_head' , 'wm_add_seo_script' );
+function wm_add_seo_script(){
+    if ($_SERVER['SERVER_NAME'] == 'cyclando.com') {
+        echo '<meta name="google-site-verification" content="WuvVk6Oe2JdEzjKoI8vXlWjz20YFgwj32vSEoZMF9mU" />';
+        echo '<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/6554435.js"></script>';
+    }
+}
 
 /**
  * Filter activities in admin columns pro dropdown
@@ -82,12 +114,7 @@ function custom_ccchildpage_inner_template($template) {
 add_filter( 'ccchildpages_inner_template' ,'custom_ccchildpage_inner_template' );
 
 
-/**
- * Load translations for wm-child-verdenatura
- */
-function vn_theme_setup(){
-    load_theme_textdomain('wm-child-verdenatura', get_stylesheet_directory() . '/languages');
-}
+
 
 // /**
 //  * exclude the test page from search
@@ -159,25 +186,6 @@ function vn_theme_setup(){
 // }, 10, 2 );
 
 
-add_action( 'wp_enqueue_scripts', 'Divi_parent_theme_enqueue_styles' );
-function Divi_parent_theme_enqueue_styles() {
-    // wp_enqueue_style( 'divi-style', get_template_directory_uri() . '/style.css' );
-    wp_enqueue_style('route-single-post-style', get_stylesheet_directory_uri() . '/single-route-style.css');
-    wp_enqueue_style('jqeury-ui-tabs-style', 'https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css');
-    // css for dialog jquery not
-    // wp_enqueue_script( 'dialogJquery', get_stylesheet_directory_uri() . 'https://code.jquery.com/jquery-1.12.4.js');
-    // wp_enqueue_script( 'dialogUIJquery', get_stylesheet_directory_uri() . 'https://code.jquery.com/ui/1.12.1/jquery-ui.js');
-    wp_enqueue_script('jquery-ui-core');
-    wp_enqueue_script('jquery-ui-tabs');
-    wp_enqueue_script( 'hightlight', get_stylesheet_directory_uri() . '/js/home_highlight.js');
-    wp_enqueue_script( 'general_javascript', get_stylesheet_directory_uri() . '/js/general.js', array ('jquery') );
-}
-
-function admin_css_load() {
-	wp_enqueue_style('style-admin-css', get_stylesheet_directory_uri().'/style-admin.css');
-	wp_enqueue_script('cyclando-admin', get_stylesheet_directory_uri().'/js/admin.js', array('jquery'));
-}
-add_action('admin_enqueue_scripts', 'admin_css_load');
 
 /**
  * Material Icons
