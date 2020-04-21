@@ -17,7 +17,7 @@ function wizard_button()
     <?php if ($_SERVER['SERVER_NAME'] !== 'cyclando.com') { ?>
         <div id="wm-wizards-container">
             <?php
-            $conf = "routeWizard,singleFieldRouteWizard";
+            $conf = "singleFieldRouteWizard";
             echo do_shortcode ("[wmWizards conf='$conf']");
             ?>
         </div>
