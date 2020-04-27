@@ -23,7 +23,12 @@ $coming_soon = get_field('not_salable');
 if ($coming_soon) {
 	$coming_soon_class = 'coming-soon-button';
 }
-$featured_map = '/wp-content/themes/wm-child-cyclando/images/map-logo-osm.jpg';
+$has_track = get_field("n7webmap_route_related_track",$post_id);
+if ($has_track) {
+	$featured_map = "https://a.webmapp.it/cyclando.com/route/{$post_id}_map_1000x1000.png";
+} else {
+	$featured_map = '/wp-content/themes/wm-child-cyclando/images/map-logo-osm.jpg';
+}
 if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
 	$language = ICL_LANGUAGE_CODE;
 } else {
