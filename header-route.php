@@ -24,7 +24,7 @@ if ($coming_soon) {
 	$coming_soon_class = 'coming-soon-button';
 }
 $has_track = get_field("n7webmap_route_related_track",$post_id);
-if ($has_track) {
+if ($has_track && get_option('webmapp_show_interactive_route_map')) {
 	$featured_map = "https://a.webmapp.it/cyclando.com/route/{$post_id}_map_1000x1000.png";
 } else {
 	$featured_map = '/wp-content/themes/wm-child-cyclando/images/map-logo-osm.jpg';
