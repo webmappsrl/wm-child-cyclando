@@ -24,8 +24,10 @@ if ($coming_soon) {
 	$coming_soon_class = 'coming-soon-button';
 }
 $has_track = get_field("n7webmap_route_related_track",$post_id);
-if ($has_track && get_option('webmapp_show_interactive_route_map')) {
-	$featured_map = "https://a.webmapp.it/cyclando.com/route/{$post_id}_map_1000x1000.png";
+$headers = get_headers('https://a.webmapp.it/cyclando.com/route/{$post_id}_map_1000x1000.png', 1);
+$interactive_route_map = "https://a.webmapp.it/cyclando.com/route/{$post_id}_map_1000x1000.png";
+if ($has_track && get_option('webmapp_show_interactive_route_map') && strpos($headers['Content-Type'], 'image/') !== false) {
+	$featured_map = $interactive_route_map;
 } else {
 	$featured_map = '/wp-content/themes/wm-child-cyclando/images/map-logo-osm.jpg';
 }
