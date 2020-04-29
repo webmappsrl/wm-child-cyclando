@@ -424,10 +424,19 @@ do_action('us_before_canvas') ?>
 									echo $program;
 									?>
 								</div>
-							<?php endif;
-								if ( get_option('webmapp_show_interactive_route_map') ) {
+							<?php 
+								elseif ( !$has_track && get_option('webmapp_show_interactive_route_map') ) :
+									?>
+										<div class="">
+										<?php
+										echo $program;
+										?>
+										</div>
+									<?php
+								
+								elseif ( get_option('webmapp_show_interactive_route_map') ) :
 									echo do_shortcode('[wm-embedmaps route="https://a.webmapp.it/cyclando.com/geojson/'.$post_id.'.geojson" height="70vh"]');
-								}
+								endif;
 							?>
 							</div>
 						</div>
