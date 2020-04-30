@@ -59,7 +59,9 @@ $nights = intval($duration) - 1;
 $places_to_go = 'where';
 $tax_places_to_go = get_the_terms($post_id, $places_to_go);
 $parent_id = $tax_places_to_go[0]->parent;
-$parent  = get_term($parent_id)->name;
+if ($parent_id) {
+    $parent  = get_term($parent_id)->name;
+}
 
 
 $get_the_post_thumbanil = '';
