@@ -1371,7 +1371,7 @@ body #tab-stagioni a:hover {
 
 #cy-route-program .cy-modal-content {
     margin: 0.5vh auto;
-    width: 95%;
+    width: 98%;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
     animation-name: modalopen;
     animation-duration: var(--modal-duration);
@@ -1469,6 +1469,15 @@ body #tab-stagioni a:hover {
     border-top: 0px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
+}
+#cy-route-program .cy-modal-body {
+    padding: 10px !important;
+    background: #fff;
+    border: 1px solid var(--color-primary-paragraph);
+    border-top: 0px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    height: calc(98vh - 119px);
 }
 
 .cy-modal-footer {
