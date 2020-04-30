@@ -1470,6 +1470,10 @@ body #tab-stagioni a:hover {
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
 }
+
+.cy-modal-body .cy-modal-body-program{
+    padding: 1% 2% 3% 2%;
+}
 #cy-route-program .cy-modal-body {
     padding: 10px !important;
     background: #fff;
