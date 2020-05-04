@@ -1375,6 +1375,8 @@ body #tab-stagioni a:hover {
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
     animation-name: modalopen;
     animation-duration: var(--modal-duration);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 .cy-modal-content {
     margin: 100px auto;
@@ -1382,6 +1384,8 @@ body #tab-stagioni a:hover {
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
     animation-name: modalopen;
     animation-duration: var(--modal-duration);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 .cy-modal-header h2,

@@ -435,7 +435,7 @@ do_action('us_before_canvas') ?>
 									<?php
 								
 								elseif ( get_option('webmapp_show_interactive_route_map') ) :
-									echo do_shortcode('[wm-embedmaps feature_color="#F18E08" color="#9AC250" route="https://a.webmapp.it/cyclando.com/geojson/'.$post_id.'.geojson" height="100%"]');
+									echo do_shortcode('[wm-embedmaps feature_color="#9AC250" color="#F18E08" route="https://a.webmapp.it/cyclando.com/geojson/'.$post_id.'.geojson" height="100%"]');
 								endif;
 							?>
 							</div>
