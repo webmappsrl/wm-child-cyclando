@@ -464,12 +464,10 @@ do_action('us_before_canvas') ?>
 					const closeMapBtn = document.querySelector('.cy-close-map');
 
 					// Events expand map program Modal
-					const hasProgram = <?php echo $program ?>
-					if (hasProgram) {
+					
 						expandMapBtn.forEach((button) => {
 							button.addEventListener('click', openProgramModal);
 						});
-					}
 					closeMapBtn.addEventListener('click', closeProgramModal);
 
 					// Events modal prices
