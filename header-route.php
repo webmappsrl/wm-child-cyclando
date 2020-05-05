@@ -529,18 +529,23 @@ do_action('us_before_canvas') ?>
 					function outsideClick(e) {
 						if (e.target == modal) {
 							modal.style.display = 'none';
+							// add over flow hidden to cody to stop scroll
+							bodyDiv.style.overflow = "auto";
 						}
 						if (e.target == contactModal) {
 							contactModal.style.display = 'none';
+							// add over flow hidden to cody to stop scroll
+							bodyDiv.style.overflow = "auto";
 						}
 						if (e.target == programModal) {
 							programModal.style.display = 'none';
+							// add over flow hidden to cody to stop scroll
+							bodyDiv.style.overflow = "auto";
 						}
 					}
 
 					// Close prices modal and open contact modal
 					function closeModalOpenContact() {
-						console.log('vai');
 						modal.style.display = 'none';
 						contactModal.style.display = 'block';
 					}
