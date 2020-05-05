@@ -216,7 +216,7 @@ do_action('us_before_canvas') ?>
 					</div>
 				</div>
 				<div id='webmapp-layer-1-map' class="webmapp-map-container">
-					<div id="expand-map" class="webmapp-featured-map" style="background-image: url('<?php echo $featured_map; ?>')">
+					<div <?php echo ($program ? 'id="expand-map"' : '');?> class="webmapp-featured-map" style="background-image: url('<?php echo $featured_map; ?>')">
 						<div class="container">
 							<?php
 							if ($days) {
@@ -464,10 +464,9 @@ do_action('us_before_canvas') ?>
 					const closeMapBtn = document.querySelector('.cy-close-map');
 
 					// Events expand map program Modal
-					
-						expandMapBtn.forEach((button) => {
-							button.addEventListener('click', openProgramModal);
-						});
+					expandMapBtn.forEach((button) => {
+						button.addEventListener('click', openProgramModal);
+					});
 					closeMapBtn.addEventListener('click', closeProgramModal);
 
 					// Events modal prices
