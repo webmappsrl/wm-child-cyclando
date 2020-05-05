@@ -449,6 +449,7 @@ do_action('us_before_canvas') ?>
 					const modalBtn = document.querySelector('#popup-show-prices');
 					const closeBtn = document.querySelector('.cy-close');
 					const fixedAncor = document.querySelectorAll('.fixed-ancor-menu');
+					const bodyDiv = document.querySelector('body');
 
 					// Get contact elements
 					const contactModal = document.querySelector('#cy-route-contact');
@@ -485,31 +486,43 @@ do_action('us_before_canvas') ?>
 					// Open modal prices
 					function openModal() {
 						modal.style.display = 'block';
+						// add over flow hidden to cody to stop scroll
+						bodyDiv.style.overflow = "hidden";
 					}
 					// Open contact modal
 					function openContactModal() {
 						modal.style.display = 'none';
 						contactModal.style.display = 'block';
+						// add over flow hidden to cody to stop scroll
+						bodyDiv.style.overflow = "hidden";
 					}
 
 					// Open program modal
 					function openProgramModal() {
 						programModal.style.display = 'block';
+						// add over flow hidden to cody to stop scroll
+						bodyDiv.style.overflow = "hidden";
 					}
 
 					// Close modal prices
 					function closeModal() {
 						modal.style.display = 'none';
+						// add over flow hidden to cody to stop scroll
+						bodyDiv.style.overflow = "auto";
 					}
 
 					// Close contact modal
 					function closeContactModal() {
 						contactModal.style.display = 'none';
+						// add over flow hidden to cody to stop scroll
+						bodyDiv.style.overflow = "auto";
 					}
 
 					// Close program modal
 					function closeProgramModal() {
 						programModal.style.display = 'none';
+						// add over flow hidden to cody to stop scroll
+						bodyDiv.style.overflow = "auto";
 					}
 
 					// Close If Outside Click
