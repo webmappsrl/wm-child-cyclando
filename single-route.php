@@ -194,11 +194,6 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 				<div class="cy-modal-header">
 					<div class="close-button-container"><span class="cy-close-contact">&times;</span></div>
 					<div class="route-contact"><h2><?php echo __('Contact us', 'wm-child-verdenatura'); ?></h2></div>
-					<div id="wm-book-quote" class="meta-bar wm-book long-txt">
-						<p class='meta-bar-txt-bold'><?php echo __('Quote', 'wm-child-cyclando'); ?></p>
-						<a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>">
-						</a>
-					</div>
 				</div>
 				<div class="cy-modal-body">
 					<?php echo do_shortcode('[contact-form-7 id="54052" title="Contact form route"]'); ?>

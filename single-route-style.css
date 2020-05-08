@@ -854,6 +854,9 @@ i {
     align-items: center;
     display: flex;
 }
+.route-contact {
+    height: 98px;
+}
 div#popup-show-prices>div {
     float: left;
 }
