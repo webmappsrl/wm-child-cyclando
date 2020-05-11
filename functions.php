@@ -37,7 +37,7 @@ function Divi_parent_theme_enqueue_styles() {
     wp_enqueue_script('jquery-ui-tabs');
     wp_enqueue_script( 'general_javascript', get_stylesheet_directory_uri() . '/js/general.js', array ('jquery') );
     wp_enqueue_script( 'hightlight', get_stylesheet_directory_uri() . '/js/home_highlight.js');
-    wp_enqueue_script('hubspot_contact_form', get_stylesheet_directory_uri().'//js.hsforms.net/forms/v2.js', array('jquery'));
+    wp_enqueue_script('hubspot_contact_form', '//js.hsforms.net/forms/v2.js', array('jquery'));
 }
 
 function admin_css_load() {
