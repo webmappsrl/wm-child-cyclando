@@ -196,7 +196,13 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 					<div class="route-contact"><h2><?php echo __('Contact us', 'wm-child-verdenatura'); ?></h2></div>
 				</div>
 				<div class="cy-modal-body">
-					<?php echo do_shortcode('[contact-form-7 id="54052" title="Contact form route"]'); ?>
+					<?php //echo do_shortcode('[contact-form-7 id="54052" title="Contact form route"]'); ?>
+					<script>
+					hbspt.forms.create({
+						portalId: "6554435",
+						formId: "369b0992-8548-4163-9eb9-a0029e90e1dd"
+					});
+					</script>
 				</div>
 			</div>
 		</div>
