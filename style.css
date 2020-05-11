@@ -1077,6 +1077,9 @@ body .checkout-button.button.alt.wc-forward,body .woocommerce .button.alt {
     background: #749D27;
     background: linear-gradient(94deg, #9ac250 0%, #749D27 100%)!important;
 }
+.newsletter-cta h2 {
+    color: white!important;
+}
 /* blog page css */
 body .blog-grid  #us_grid_1 .usg_hwrapper_1 {
     margin-left: 10%;
@@ -1242,8 +1245,8 @@ input[type="text"], input[type="password"], input[type="email"], input[type="url
     box-shadow: 0 0 0 2px transparent, 0 1px 0 rgba(0,0,0,0.08) inset;
     transition: all 0.3s;
 }
-input:not([type="submit"]), select, textarea {
-    outline: none!important;
+.wpcf7-form input:not([type="submit"]), textarea, select {
+    background: #f5f5f5!important;
 }
 
 input:focus, input:focus + .w-form-checkbox, textarea:focus, select:focus, .select2-container--focus .select2-selection {
