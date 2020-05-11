@@ -97,7 +97,8 @@ $promotion_value = get_field('promotion_value',$post_id);
 if ($promotion_value) {
     $promotion_price = intval($price) - intval($promotion_value); 
 }
-
+$home_site = home_url();
+$home_site = str_replace( "https://", "", $home_site );
 ?>
 <!DOCTYPE HTML>
 <html class="<?php echo $us_layout->html_classes() ?>" <?php language_attributes('html') ?>>
@@ -435,8 +436,9 @@ do_action('us_before_canvas') ?>
 									<?php
 								
 								elseif ( get_option('webmapp_show_interactive_route_map') ) :
-									echo do_shortcode('[wm-embedmaps feature_color="#F18E08" color="#9AC250" route="https://a.webmapp.it/cyclando.com/geojson/'.$post_id.'.geojson" height="100%"]');
+									echo do_shortcode('[wm-embedmaps feature_color="#F18E08" color="#9AC250" route="https://a.webmapp.it/'.$home_site.'\/geojson/'.$post_id.'.geojson" height="100%"]');
 								endif;
+								
 							?>
 							</div>
 						</div>
