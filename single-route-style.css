@@ -279,13 +279,6 @@ body {
     .webmapp-container.container-sticky {
         background-color: var(--color-primary);
     }
-    .route-sticky-menu-bottom .w-nav-list.level_1.hover_simple {
-        bottom: 100%!important;
-        background-color: var(--color-primary)!important;
-        color: white!important;
-        top: auto!important;
-        box-shadow: 0 -3px 8px rgba(0,0,0,0.1)!important;
-    }
     .single-route .l-subheader.at_bottom {
             line-height: 60px;
     }
@@ -293,7 +286,10 @@ body {
         color: white;
     }
     #wm-book-quote > p {
-        padding: 0 50px;
+        padding: 0 20px;
+    }
+    .l-subheader-sticky-mobil #wm-book > p {
+        padding: 0 20px;
     }
     .single-route .l-subheader-sticky-mobile .l-subheader-cell.at_right .w-html {
         line-height: 60px!important;
