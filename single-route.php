@@ -81,6 +81,25 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 			}
 		}
 
+		//  get activities 
+		$target = 'who';
+		$places_to_go = 'where';
+		$activity = 'activity';
+		$tax_activities = get_the_terms($post_id, $activity);
+		$tax_targets = get_the_terms($post_id, $target);
+		$tax_places_to_go = get_the_terms($post_id, $places_to_go);
+		$tax_activities_slug = array();
+		foreach ($tax_activities as $tax_activity) {
+			array_push($tax_activities_slug, $tax_activity->slug );
+		}
+		$tax_targets_slug = array();
+		foreach ($tax_targets as $tax_target) {
+			array_push($tax_targets_slug, $tax_target->slug );
+		}
+		$tax_places_to_go_slug = array();
+		foreach ($tax_places_to_go as $tax_place) {
+			array_push($tax_places_to_go_slug, $tax_place->slug );
+		}
 		?>
 
 		<section class="l-section height_auto for_sidebar at_right intro-section">
@@ -198,10 +217,15 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 				<div class="cy-modal-body">
 					<?php //echo do_shortcode('[contact-form-7 id="54052" title="Contact form route"]'); ?>
 					<script>
-					hbspt.forms.create({
-						portalId: "6554435",
-						formId: "369b0992-8548-4163-9eb9-a0029e90e1dd"
-					});
+						hbspt.forms.create({
+							portalId: "6554435",
+							formId: "369b0992-8548-4163-9eb9-a0029e90e1dd",
+							onFormReady: function($form, ctx){
+								window['hs-form-iframe-0'].contentDocument.querySelector('input[name="activities"]').setAttribute('value', '<?php echo implode(";",$tax_activities_slug);  ?>')
+								window['hs-form-iframe-0'].contentDocument.querySelector('input[name="target"]').setAttribute('value', '<?php echo implode(";",$tax_targets_slug);  ?>')
+								window['hs-form-iframe-0'].contentDocument.querySelector('input[name="place_to_go"]').setAttribute('value', '<?php echo implode(";",$tax_places_to_go_slug);  ?>')
+							}
+						});
 					</script>
 				</div>
 			</div>

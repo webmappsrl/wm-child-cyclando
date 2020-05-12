@@ -38,6 +38,10 @@ function Divi_parent_theme_enqueue_styles() {
     wp_enqueue_script( 'general_javascript', get_stylesheet_directory_uri() . '/js/general.js', array ('jquery') );
     wp_enqueue_script( 'hightlight', get_stylesheet_directory_uri() . '/js/home_highlight.js');
     wp_enqueue_script('hubspot_contact_form', '//js.hsforms.net/forms/v2.js', array('jquery'));
+    //add hubspot to Browser IE 8
+    wp_register_script('hubspot_contact_form_IE8', '//js.hsforms.net/forms/v2-legacy.js', array('jquery'));
+    wp_enqueue_script( 'hubspot_contact_form_IE8');
+    wp_script_add_data( 'hubspot_contact_form_IE8', 'conditional', 'lt IE 8' );
 }
 
 function admin_css_load() {
