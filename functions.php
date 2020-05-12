@@ -949,4 +949,30 @@ function custom_button_example($wp_admin_bar){
 add_action('admin_bar_menu', 'custom_button_example', 90);
 
 
+function return_route_targets_array($post_id){
+    $target = 'who';
+    $tax_targets = get_the_terms($post_id, $target);
+    
+    $tax_targets_slug = array();
+    foreach ($tax_targets as $tax_target) {
+        array_push($tax_targets_slug, $tax_target->slug );
+    }
+    return $tax_targets_slug;
+}
 
+
+function return_route_targets_has_cyclando($post_id){
+    $target = 'who';
+    $tax_targets = get_the_terms($post_id, $target);
+    if (!$tax_targets)
+        return false;
+    $tax_targets_slug = array();
+    foreach ($tax_targets as $tax_target) {
+        array_push($tax_targets_slug, $tax_target->slug );
+    }
+    if (in_array('cyclando',$tax_targets_slug)) {
+        return true;
+    } else {
+        return false;
+    }
+}

@@ -89,17 +89,20 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 		$tax_targets = get_the_terms($post_id, $target);
 		$tax_places_to_go = get_the_terms($post_id, $places_to_go);
 		$tax_activities_slug = array();
-		foreach ($tax_activities as $tax_activity) {
-			array_push($tax_activities_slug, $tax_activity->slug );
-		}
+		if ($tax_activities)
+			foreach ($tax_activities as $tax_activity) {
+				array_push($tax_activities_slug, $tax_activity->slug );
+			}
 		$tax_targets_slug = array();
-		foreach ($tax_targets as $tax_target) {
-			array_push($tax_targets_slug, $tax_target->slug );
-		}
+		if ($tax_targets)
+			foreach ($tax_targets as $tax_target) {
+				array_push($tax_targets_slug, $tax_target->slug );
+			}
 		$tax_places_to_go_slug = array();
-		foreach ($tax_places_to_go as $tax_place) {
-			array_push($tax_places_to_go_slug, $tax_place->slug );
-		}
+		if ($tax_places_to_go)
+			foreach ($tax_places_to_go as $tax_place) {
+				array_push($tax_places_to_go_slug, $tax_place->slug );
+			}
 		?>
 
 		<section class="l-section height_auto for_sidebar at_right intro-section">

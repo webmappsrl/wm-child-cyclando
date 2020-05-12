@@ -20,8 +20,12 @@ $scheda_tecnica = get_field('vn_scheda_tecnica');
 $program = get_field('vn_prog');
 $touroperator_id_array = get_field('tour_operator');
 $coming_soon = get_field('not_salable');
-if ($coming_soon) {
+$popup_show_prices_class = 'popup-show-prices';
+if ($coming_soon && !return_route_targets_has_cyclando($post_id)) {
 	$coming_soon_class = 'coming-soon-button';
+} elseif (return_route_targets_has_cyclando($post_id)) {
+	$coming_soon_class = 'download-app-button';
+	$popup_show_prices_class = '';
 }
 $has_track = get_field("n7webmap_route_related_track",$post_id);
 $headers = get_headers('https://a.webmapp.it/cyclando.com/route/{$post_id}_map_1000x1000.png', 1);
@@ -217,7 +221,7 @@ do_action('us_before_canvas') ?>
 					</div>
 				</div>
 				<div id='webmapp-layer-1-map' class="webmapp-map-container">
-					<div <?php echo ($program ? 'id="expand-map"' : '');?> class="webmapp-featured-map" style="background-image: url('<?php echo $featured_map; ?>')">
+					<div <?php if ($program || get_option('webmapp_show_interactive_route_map')) { echo 'id="expand-map"';} else { echo ''; }?> class="webmapp-featured-map" style="background-image: url('<?php echo $featured_map; ?>')">
 						<div class="container">
 							<?php
 							if ($days) {
@@ -225,7 +229,7 @@ do_action('us_before_canvas') ?>
 								?>
 								<div class="route-duration">
 									<?php
-									if ($program){
+									if ($program || get_option('webmapp_show_interactive_route_map')){
 										//echo "<span id='expand-map' class='header-txt-layer-1 expand-map'><i class='cy-icons icon-expand-alt1'></i></span>";
 										echo "<span id='expand-map' class='header-txt-layer-1 expand-map'>". __('Program','wm-child-cyclando')."</span>";
 									}
@@ -245,9 +249,9 @@ do_action('us_before_canvas') ?>
 					<div class="webmapp-featured-meta-info" style="background-image: url('/wp-content/themes/wm-child-cyclando/images/background_menu_route_verde.png')">
 						<div class="container">
 							<div class="meta-bar show-prices">
-								<div id="popup-show-prices" class="popup-show-prices <?php echo $coming_soon_class?>">
+								<div id="<?php echo $popup_show_prices_class?>" class="popup-show-prices <?php echo $coming_soon_class?>">
 										<!-- <div class="meta-bar price-from"> -->
-										<?php if (!$coming_soon) {?>
+										<?php if (!$coming_soon && return_route_targets_has_cyclando($post_id) === false) {?>
 										<!-- <a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>"></a> -->
 										<div class="prezzo-container">
 											<!-- prezzo start-->
@@ -273,10 +277,16 @@ do_action('us_before_canvas') ?>
 										</div>
 										<!--.prezzo  end-->
 										<div class="show-price-btn"><i class="cy-icons icon-calendar-alt1"></i></div>
+										<?php } elseif (return_route_targets_has_cyclando($post_id)) {?>
+											<a class="download-app-link" target="_blank" href="https://info.cyclando.com/app">
+												<div class="scarica-app">
+													<span class='meta-bar-txt-light'><?php echo __('Download', 'wm-child-cyclando'); ?></span>
+												</div>
+											</a>
 										<?php } else {?>
-										<div class="coming-soon">
-											<span class='meta-bar-txt-light'><?php echo __('Coming soon!', 'wm-child-cyclando'); ?></span>
-										</div>
+											<div class="coming-soon">
+												<span class='meta-bar-txt-light'><?php echo __('Coming soon!', 'wm-child-cyclando'); ?></span>
+											</div>
 										<?php } ?>
 								</div>
 							</div>
@@ -342,15 +352,15 @@ do_action('us_before_canvas') ?>
 									</p>
 									<p class='meta-bar-txt-bold'>
 										<?php
-										$places_count = 0;
+										$activity_count = 0;
 										$tax_activities_names = array();
 										if ($tax_activities){
 											foreach ($tax_activities as $tax_activity) {
 												array_push($tax_activities_names, $tax_activity->name );
-												$places_count++;
+												$activity_count++;
 											}
 											echo $tax_activities[0]->name;
-											if ($places_count > 1) {
+											if ($activity_count > 1) {
 												echo "<a class='show-more-places tooltips' href='#!'> ... <span>";
 												foreach ($tax_activities_names as $name) { echo $name.'<br>'; }
 												// foreach (array_slice($tax_places_to_go_names,1) as $name) { echo $name; }
@@ -361,7 +371,7 @@ do_action('us_before_canvas') ?>
 									</p>
 								</div>
 							</div>
-							<?php if (!$coming_soon) {?>
+							<?php if (!$coming_soon && return_route_targets_has_cyclando($post_id) === false) {?>
 								<div id="wm-book-quote" class="meta-bar wm-book long-txt">
 									<p class='meta-bar-txt-bold'><?php echo __('Quote', 'wm-child-cyclando'); ?></p>
 									<a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>">
@@ -412,11 +422,17 @@ do_action('us_before_canvas') ?>
 							<div class="cy-modal-header">
 								<div class="close-button-container"><span class="cy-close-map">&times;</span></div>
 								<div class="route-program"><h2><?php echo __('Program', 'wm-child-verdenatura'); ?></h2></div>
+								<?php if (!$coming_soon && return_route_targets_has_cyclando($post_id) === false) {?>
 								<div id="wm-book-quote" class="meta-bar wm-book long-txt">
 									<p class='meta-bar-txt-bold'><?php echo __('Quote', 'wm-child-cyclando'); ?></p>
 									<a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>">
 									</a>
 								</div>
+								<?php } else { ?>
+									<div id="wm-book" class="meta-bar wm-book long-txt">
+										<p class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-verdenatura'); ?></p>
+									</div>
+								<?php } ?>
 							</div>
 							<div class="cy-modal-body">
 							<?php if ($program && !get_option('webmapp_show_interactive_route_map')) : ?>
@@ -459,7 +475,7 @@ do_action('us_before_canvas') ?>
 					const closeContactBtn = document.querySelector('.cy-close-contact');
 
 					// Get button element inside prices modal
-					const contactInsideModal = document.querySelector('#cy-prices-modal #wm-book');
+					// const contactInsideModal = document.querySelector('#cy-prices-modal #wm-book');
 
 					// Get MAP elements
 					const programModal = document.querySelector('#cy-route-program');
@@ -473,8 +489,12 @@ do_action('us_before_canvas') ?>
 					closeMapBtn.addEventListener('click', closeProgramModal);
 
 					// Events modal prices
-					modalBtn.addEventListener('click', openModal);
-					closeBtn.addEventListener('click', closeModal);
+					if (modalBtn){
+						modalBtn.addEventListener('click', openModal);
+					}
+					if (closeBtn) {
+						closeBtn.addEventListener('click', closeModal);
+					}
 					window.addEventListener('click', outsideClick);
 					// fixedAncor.addEventListener('click', scrollOffset);
 
@@ -494,6 +514,7 @@ do_action('us_before_canvas') ?>
 					// Open contact modal
 					function openContactModal() {
 						modal.style.display = 'none';
+						programModal.style.display = 'none';
 						contactModal.style.display = 'block';
 						// add over flow hidden to cody to stop scroll
 						bodyDiv.style.overflow = "hidden";

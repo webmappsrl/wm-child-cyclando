@@ -11,12 +11,12 @@ function mobile_menu_quote_form_function() {
         $language = 'it';
     }
     ?>
-    <?php if (!$coming_soon) {?>
-        <div id="wm-book-quote-mobile" class="meta-bar wm-book long-txt">
-            <p class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-verdenatura'); ?></p>
-            <a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>">
-            </a>
-        </div>
+    <?php if (!$coming_soon && return_route_targets_has_cyclando($post_id) === false) {?>
+    <div id="wm-book-quote" class="meta-bar wm-book long-txt">
+        <p class='meta-bar-txt-bold'><?php echo __('Quote', 'wm-child-cyclando'); ?></p>
+        <a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id.'?lang='.$language;?>">
+        </a>
+    </div>
     <?php } else { ?>
         <div id="wm-book" class="meta-bar wm-book long-txt">
             <p class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-verdenatura'); ?></p>

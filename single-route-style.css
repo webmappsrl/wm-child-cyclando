@@ -292,6 +292,9 @@ body {
     .single-route .meta-bar-txt-bold {
         color: white;
     }
+    #wm-book-quote > p {
+        padding: 0 50px;
+    }
     .single-route .l-subheader-sticky-mobile .l-subheader-cell.at_right .w-html {
         line-height: 60px!important;
         height: 60px!important;
@@ -413,7 +416,19 @@ body {
 .txt-font-light {
     font-weight: 400;
 }
-
+.scarica-app {
+    display: flex;
+    height: 60px;
+    text-align: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 0px 70px;
+}
+a.download-app-link {
+    position: relative!important;
+    color: white!important;
+}
 /* Breadcrumb rank math menu */
 .breadcrumb-rankmath a,
 .breadcrumb-rankmath span {
@@ -883,7 +898,10 @@ div#popup-show-prices>div {
     padding: 0 15px;
     left: 15px;
 }
-
+.w-html.hidden_for_tablets.ush_html_2 {
+    position: relative;
+    left: 16px;
+}
 .wm-book p{
     font-size: 28px;
     margin-bottom: 0;
@@ -1420,7 +1438,7 @@ body #tab-stagioni a:hover {
     color: #fff;
     border-top-right-radius: 10px;
     display: grid;
-    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-columns: 1fr 8fr 2fr;
     border: 1px solid var(--color-primary-paragraph);
     border-bottom: 0px;
     transition: 500ms all ease;
