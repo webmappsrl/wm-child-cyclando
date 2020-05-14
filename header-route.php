@@ -434,9 +434,8 @@ do_action('us_before_canvas') ?>
 									</div>
 								<?php } ?>
 							</div>
-							<div class="cy-modal-body">
 							<?php if ($program && !get_option('webmapp_show_interactive_route_map')) : ?>
-								<div class="cy-modal-body-program">
+								<div class="cy-modal-body cy-modal-body-program">
 									<?php
 									echo $program;
 									?>
@@ -444,7 +443,7 @@ do_action('us_before_canvas') ?>
 							<?php 
 								elseif ( !$has_track && get_option('webmapp_show_interactive_route_map') ) :
 									?>
-										<div class="cy-modal-body-program">
+										<div class="cy-modal-body cy-modal-body-program">
 										<?php
 										echo $program;
 										?>
@@ -458,7 +457,6 @@ do_action('us_before_canvas') ?>
 								endif;
 								
 							?>
-							</div>
 						</div>
 					</div>
 					<!-- END HTML modal for expand map program -->
