@@ -1492,11 +1492,7 @@ body #tab-stagioni a:hover {
     border-bottom-left-radius: 10px;
 }
 
-.cy-modal-body .cy-modal-body-program{
-    padding: 1% 2% 3% 2%;
-}
 #cy-route-program .cy-modal-body {
-    padding: 10px !important;
     background: #fff;
     border: 1px solid var(--color-primary-paragraph);
     border-top: 0px;
@@ -1505,6 +1501,7 @@ body #tab-stagioni a:hover {
 }
 #cy-route-program .cy-modal-body.cy-modal-body-map {
     height: calc(98vh - 119px);
+    padding: 10px!important;
 }
 .cy-modal-footer {
     background: var(--modal-color);
