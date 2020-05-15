@@ -145,12 +145,17 @@ if ($promotion_value) {
                             <?php endif; ?>
                         </p>
                     </div>
-                <?php 
-
-            } else {
-                ?> <div class='prezzo-tab <?php echo $coming_soon_class?>'><p><span><?php echo __('Coming soon!', 'wm-child-cyclando'); ?></span></p></div> <?php
-            }
-            ?>
+            <?php } elseif (return_route_targets_has_cyclando($post_id)) {?>
+            <a class="download-app-link" target="_blank" href="https://info.cyclando.com/app">
+                <div class="scarica-app">
+                    <span class='meta-bar-txt-light'><?php echo __('Download', 'wm-child-cyclando'); ?></span>
+                </div>
+            </a>
+            <?php } else {?>
+                <div class="coming-soon">
+                    <span class='meta-bar-txt-light'><?php echo __('Coming soon!', 'wm-child-cyclando'); ?></span>
+                </div>
+            <?php } ?>
         </div>
 
     </div>
