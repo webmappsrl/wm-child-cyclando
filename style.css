@@ -885,6 +885,10 @@ body #iubenda_policy .iub_content.legal_pp p {
     padding: 0 40px;
 }
 
+.webmapp-anypost-template-cy_route .single-post-wm .scarica-app {
+    height: 68px;
+}
+
 /* Template seo pages css */
 .page-template-seo_pages h2 {
     font-size: 34px;
