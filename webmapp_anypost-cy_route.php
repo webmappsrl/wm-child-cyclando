@@ -152,9 +152,7 @@ if ($promotion_value) {
                 </div>
             </a>
             <?php } else {?>
-                <div class="coming-soon">
-                    <span class='meta-bar-txt-light'><?php echo __('Coming soon!', 'wm-child-cyclando'); ?></span>
-                </div>
+                <div class='prezzo-tab <?php echo $coming_soon_class?>'><p><span><?php echo __('Coming soon!', 'wm-child-cyclando'); ?></span></p></div>
             <?php } ?>
         </div>
 

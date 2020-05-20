@@ -103,6 +103,8 @@ if ($promotion_value) {
 }
 $home_site = home_url();
 $home_site = str_replace( "https://", "", $home_site );
+
+$route_has_geojson = URL_exists("https://a.webmapp.it/cyclando.com/geojson/$post_id.geojson");
 ?>
 <!DOCTYPE HTML>
 <html class="<?php echo $us_layout->html_classes() ?>" <?php language_attributes('html') ?>>
@@ -221,7 +223,7 @@ do_action('us_before_canvas') ?>
 					</div>
 				</div>
 				<div id='webmapp-layer-1-map' class="webmapp-map-container">
-					<div <?php if ($program || get_option('webmapp_show_interactive_route_map')) { echo 'id="expand-map"';} else { echo ''; }?> class="webmapp-featured-map" style="background-image: url('<?php echo $featured_map; ?>')">
+					<div <?php if ($program || (get_option('webmapp_show_interactive_route_map') && $route_has_geojson)) { echo 'id="expand-map"';} else { echo ''; }?> class="webmapp-featured-map" style="background-image: url('<?php echo $featured_map; ?>')">
 						<div class="container">
 							<?php
 							if ($days) {
@@ -229,7 +231,7 @@ do_action('us_before_canvas') ?>
 								?>
 								<div class="route-duration">
 									<?php
-									if ($program || get_option('webmapp_show_interactive_route_map')){
+									if ($program || (get_option('webmapp_show_interactive_route_map') && $route_has_geojson)){
 										//echo "<span id='expand-map' class='header-txt-layer-1 expand-map'><i class='cy-icons icon-expand-alt1'></i></span>";
 										echo "<span id='expand-map' class='header-txt-layer-1 expand-map'>". __('Program','wm-child-cyclando')."</span>";
 									}

@@ -103,6 +103,8 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 			foreach ($tax_places_to_go as $tax_place) {
 				array_push($tax_places_to_go_slug, $tax_place->slug );
 			}
+
+		$route_has_geojson = URL_exists("https://a.webmapp.it/cyclando.com/geojson/$post_id.geojson");
 		?>
 
 		<section class="l-section height_auto for_sidebar at_right intro-section">
@@ -142,7 +144,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 							<div class="vc_column-inner">
 								<div class="wpb_wrapper">
 									<section class="l-section cy-section-route-buttons">
-										<?php if ($program) : ?>
+										<?php if ($program || (get_option('webmapp_show_interactive_route_map') && $route_has_geojson)) : ?>
 										<div class="cy-route-body-button cy-route-body-programbutton">
 											<?php
 											echo "<span id='expand-map' class='header-txt-layer-1 expand-map-content'>". __('Program','wm-child-cyclando')."</span>";
