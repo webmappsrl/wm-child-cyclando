@@ -381,7 +381,7 @@ do_action('us_before_canvas') ?>
 								</div>
 							<?php } else { ?>
 								<div id="cy-contact-in-alto" class="meta-bar wm-book long-txt">
-									<p class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-verdenatura'); ?></p>
+									<p id="cy-contact-in-alto-text" class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-verdenatura'); ?></p>
 								</div>
 							<?php } ?>
 						</div>
@@ -432,7 +432,7 @@ do_action('us_before_canvas') ?>
 								</div>
 								<?php } else { ?>
 									<div id="cy-contact-modal" class="meta-bar wm-book long-txt">
-										<p class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-verdenatura'); ?></p>
+										<p id="cy-contact-modal-text" class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-verdenatura'); ?></p>
 									</div>
 								<?php } ?>
 							</div>
