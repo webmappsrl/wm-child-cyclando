@@ -151,7 +151,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 											?>
 										</div>
 										<?php endif; ?>
-										<div id="wm-book" class="cy-route-body-button cy-route-body-contactus expand-map-content">
+										<div id="in-basso" class="cy-route-body-button cy-route-body-contactus expand-map-content">
 											<div class="meta-bar long-txt">
 												<p class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-verdenatura'); ?></p>
 											</div>

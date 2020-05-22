@@ -380,7 +380,7 @@ do_action('us_before_canvas') ?>
 									</a>
 								</div>
 							<?php } else { ?>
-								<div id="wm-book" class="meta-bar wm-book long-txt">
+								<div id="in-alto" class="meta-bar wm-book long-txt">
 									<p class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-verdenatura'); ?></p>
 								</div>
 							<?php } ?>
@@ -473,6 +473,9 @@ do_action('us_before_canvas') ?>
 
 					// Get contact elements
 					const contactModal = document.querySelector('#cy-route-contact');
+					const contactModalBtnAlto = document.querySelectorAll('#in-alto');
+					const contactModalBtnBasso = document.querySelectorAll('#in-basso');
+					const contactModalBtnBassoMobile = document.querySelectorAll('#in-basso-mobile');
 					const contactModalBtn = document.querySelectorAll('#wm-book');
 					const closeContactBtn = document.querySelector('.cy-close-contact');
 
@@ -502,6 +505,15 @@ do_action('us_before_canvas') ?>
 
 					// Events contactModal
 					contactModalBtn.forEach((button) => {
+						button.addEventListener('click', openContactModal);
+					});
+					contactModalBtnAlto.forEach((button) => {
+						button.addEventListener('click', openContactModal);
+					});
+					contactModalBtnBasso.forEach((button) => {
+						button.addEventListener('click', openContactModal);
+					});
+					contactModalBtnBassoMobile.forEach((button) => {
 						button.addEventListener('click', openContactModal);
 					});
 					closeContactBtn.addEventListener('click', closeContactModal);
