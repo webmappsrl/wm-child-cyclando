@@ -18,7 +18,7 @@ function mobile_menu_quote_form_function() {
         </a>
     </div>
     <?php } else { ?>
-        <div id="in-basso-mobile" class="meta-bar wm-book long-txt">
+        <div id="cy-contact-in-basso-mobile" class="meta-bar wm-book long-txt">
             <p class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-verdenatura'); ?></p>
         </div>
     <?php } ?>

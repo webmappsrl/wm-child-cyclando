@@ -288,16 +288,13 @@ body {
     #wm-book-quote > p {
         padding: 0 20px;
     }
-    .l-subheader-sticky-mobil #wm-book > p {
-        padding: 0 20px;
-    }
     .single-route .l-subheader-sticky-mobile .l-subheader-cell.at_right .w-html {
         line-height: 60px!important;
         height: 60px!important;
         margin-top: 0!important;
     }
-    #wm-book.wm-book {
-        left: 16px;
+    #cy-contact-in-basso-mobile.wm-book {
+        left: 0px;
         padding: 0 15px;
     }
     .archive #webmapp-layer-1 .webmapp-featured-image-img {
