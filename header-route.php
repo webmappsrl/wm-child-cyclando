@@ -231,7 +231,7 @@ do_action('us_before_canvas') ?>
 								?>
 								<div class="route-duration">
 									<?php
-									if ($program || (get_option('webmapp_show_interactive_route_map') && $route_has_geojson)){
+									if ($program or (get_option('webmapp_show_interactive_route_map') && $route_has_geojson)){
 										//echo "<span id='expand-map' class='header-txt-layer-1 expand-map'><i class='cy-icons icon-expand-alt1'></i></span>";
 										echo "<span id='expand-map' class='header-txt-layer-1 expand-map'>". __('Program','wm-child-cyclando')."</span>";
 									}
@@ -444,6 +444,15 @@ do_action('us_before_canvas') ?>
 								</div>
 							<?php 
 								elseif ( !$has_track && get_option('webmapp_show_interactive_route_map') ) :
+									?>
+										<div class="cy-modal-body cy-modal-body-program">
+										<?php
+										echo $program;
+										?>
+										</div>
+									<?php
+
+								elseif ( $route_has_geojson == false ) :
 									?>
 										<div class="cy-modal-body cy-modal-body-program">
 										<?php
