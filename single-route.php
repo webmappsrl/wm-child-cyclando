@@ -229,7 +229,14 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 								window['hs-form-iframe-0'].contentDocument.querySelector('input[name="activities"]').setAttribute('value', '<?php echo implode(";",$tax_activities_slug);  ?>')
 								window['hs-form-iframe-0'].contentDocument.querySelector('input[name="target"]').setAttribute('value', '<?php echo implode(";",$tax_targets_slug);  ?>')
 								window['hs-form-iframe-0'].contentDocument.querySelector('input[name="place_to_go"]').setAttribute('value', '<?php echo implode(";",$tax_places_to_go_slug);  ?>')
-							}
+							},
+							onFormSubmit: function($form) {
+								window.dataLayer = window.dataLayer || [];
+								window.dataLayer.push({
+
+								'event': 'formInviato',
+								});
+							} 
 						});
 					</script>
 				</div>
