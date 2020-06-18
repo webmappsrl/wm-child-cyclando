@@ -212,7 +212,7 @@ do_action('us_before_canvas') ?>
 											$get_term = get_term_by('slug', $tax_target->slug, 'who');
 											$term = 'term_' . $get_term->term_id;
 											$iconimage = get_field('wm_taxonomy_icon', $term);
-											if (strpos($iconimage,'wm-icon-cyc') !== false ) {
+											if (strpos($iconimage,'wm-icon-cy') !== false ) {
 												echo "<i class='$iconimage'></i>" . $tax_target->name;
 											} else {
 												echo "<i class='cy-icons icon-" . $iconimage . "'></i>" . $tax_target->name;
