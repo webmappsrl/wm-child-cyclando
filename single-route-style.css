@@ -46,7 +46,11 @@ i.cy-icons {
     content: "\eec5";
 }
 
-.icon-calendar:before {
+.icon-users:before {
+    content: "\ea57";
+}
+
+.icon-wm-icon-cyc_city-tours:before {
     content: "\e9cf";
 }
 
