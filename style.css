@@ -429,7 +429,9 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
 .webmapp-anypost-template-cy_route .row {
     margin-bottom: 30px;
 }
-
+.newsletter-cta p {
+    font-size: 24px;
+}
 /* archive taxonomy */
 .archive-taxonomy {
     padding: 3rem 2rem;

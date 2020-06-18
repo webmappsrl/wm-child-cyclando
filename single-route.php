@@ -40,8 +40,10 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 		$organizzazione = get_field('vn_part_pr');
 		$gallery_items = get_field('wm_route_gallery');
 		$touroperator_id_array = get_field('tour_operator');
-		$touroperator_id = $touroperator_id_array[0];
-		$touroperator = get_the_title($touroperator_id);
+		if ($touroperator_id_array) {
+			$touroperator_id = $touroperator_id_array[0];
+			$touroperator = get_the_title($touroperator_id);
+		}
 		$gallery_ids = array();
 		if ($gallery_items) {
 			foreach ($gallery_items as $gallery_item) {
