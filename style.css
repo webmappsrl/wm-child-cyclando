@@ -1087,7 +1087,7 @@ body .checkout-button.button.alt.wc-forward,body .woocommerce .button.alt {
 .us-woo-cart_compact .woocommerce .shop_table.cart td, .us-woo-cart_compact .woocommerce .shop_table.cart th {
     padding: 8px 0;
 }
-.newsletter-cta .wpb_wrapper{
+.newsletter-cta > .wpb_wrapper{
     background: #749D27;
     background: linear-gradient(94deg, #9ac250 0%, #749D27 100%)!important;
     border-radius: 5px;
