@@ -383,38 +383,38 @@ foreach ( $variations_name_price as $var ) {
 
         <?php endif; ?>
 
-            <div class="quotes-preventivo"><!------------ quote ---------------------->
-                <?php 
-                if (empty($low_season_products) && empty($high_season_products ) && $has_hotel){  //----------- start hotel product table
+                <?php   
+                    if (empty($low_season_products) && empty($high_season_products ) && $has_hotel){  //----------- start hotel product table
                 ?>
-                <table class="departures-quotes">
-                    <thead>
-                        <tr>
-                            <th><p class="tab-section"> 
+                <div class="quotes-preventivo"><!------------ quote ---------------------->
+                    <table class="departures-quotes">
+                        <thead>
+                            <tr>
+                                <th><p class="tab-section"> 
+                                    <?php
+                                    if( empty($season_products) && $has_hotel ){
+                                    echo __('Individual rates:' ,'wm-child-verdenatura');}?>
+                                    </p>
+                                </th>
                                 <?php
-                                if( empty($season_products) && $has_hotel ){
-                                echo __('Individual rates:' ,'wm-child-verdenatura');}?>
-                                </p>
-                            </th>
-                            <?php
-                            if (count($attributes_name_hotel) > 1) {
-                                foreach ($attributes_name_hotel as $hotel){
-                            ?>
-                            <th class="tab-section-quotes"><?php echo $hotel;?></th>
-                            <?php
+                                if (count($attributes_name_hotel) > 1) {
+                                    foreach ($attributes_name_hotel as $hotel){
+                                ?>
+                                <th class="tab-section-quotes"><?php echo $hotel;?></th>
+                                <?php
+                                    }
                                 }
-                            }
-                            ?>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$place,$from,$to)?>
-                    </tbody>       
-                </table>
+                                ?>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$place,$from,$to)?>
+                        </tbody>       
+                    </table>
+                </div> <!---- END  -------- quote hotel alberghi -->
                 <?php
                 }  //----------- END hotel product table
                 ?>
-            </div> <!---- END  -------- quote hotel alberghi -->
 
         <div class="extra-quotes"> <!------------ quote extra ---------------------->
             <p class="tab-section"> 
