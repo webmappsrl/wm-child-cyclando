@@ -2,6 +2,7 @@
 
 require ('import_data.php');
 require ('shortcodes/route_table_price.php');
+require ('shortcodes/wm_route_included_not_included.php');
 require ('shortcodes/dashboard_wizard_button.php');
 require ('shortcodes/mobile_menu_quote_form.php');
 require ('shortcodes/menu_search_facetwp_wizard.php');

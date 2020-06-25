@@ -23,6 +23,8 @@ $from = get_field('from');
 $to = get_field('to');
 
 //var
+$post_id = get_the_ID();
+$ini_activated = get_field('ini_activated',$post_id);
 $prduct_list_hotel = array();
 $attributes_name_hotel = array();
 $variations_name_price = array();
@@ -858,14 +860,19 @@ foreach ( $variations_name_price as $var ) {
             }
             ?>
         </div><!---- END  -------- quote extra -->
-        <div class="prezzi-description">
-            <?php 
-                $vn_part_pr = get_field( 'vn_part_pr' );
-                if ($vn_part_pr) {
-                echo $vn_part_pr;
-                }
-            ?>
-        </div>
+        <!-- IF Included and Not Included is activated show the options -->
+        <?php if ( $ini_activated ) : ?>
+            <?php echo wm_route_included_not_included($post_id); ?>
+        <?php endif; ?>
+        <!-- END ------ Included and Not Included is activated show the options -->
+            <div class="prezzi-description">
+                <?php 
+                    $vn_part_pr = get_field( 'vn_part_pr' );
+                    if ($vn_part_pr) {
+                    echo $vn_part_pr;
+                    }
+                ?>
+            </div>
     </div>
 
 
