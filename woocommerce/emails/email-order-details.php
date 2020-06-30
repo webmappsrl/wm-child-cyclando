@@ -63,33 +63,36 @@ do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plai
 		<tfoot>
 			<?php
 			$item_totals = $order->get_order_item_totals();
-
+			// get the deposit amount 
+			$deposit_amount = WC()->session->get('vn_deposit_amount');
 			if ( $item_totals ) {
 				$i = 0;
 				foreach ( $item_totals as $total ) {
 					$i++;
-					?>
-					<tr>
-						<th class="td" scope="row" colspan="2" style="text-align:<?php echo esc_attr( $text_align ); ?>; <?php echo ( 1 === $i ) ? 'border-top-width: 4px;' : ''; ?>">
-						<?php if ($order->has_status( 'on-hold' ) && $i === 1) {
-                                echo esc_attr_e( '25% Deposit', 'wm-child-cyclando' ).':';
-                            } else {
-                                echo wp_kses_post( $total['label'] ); 
-                            }
+					if ( ($deposit_amount && intval($deposit_amount) > 0 && $i === 1 ) || $i > 1) {
 						?>
-						</th>
-                        <td class="td" style="text-align:<?php echo esc_attr( $text_align ); ?>; <?php echo ( 1 === $i ) ? 'border-top-width: 4px;' : ''; ?>"><?php 
-                            if ($order->has_status( 'on-hold' ) && $i === 2) {
-                                $order_parent_id = $order->get_parent_id();
-								$order_parent = new WC_Order($order_parent_id);
-								$orderTotal = $order_parent->get_total();
-                                echo wp_kses_post(number_format($orderTotal, 2, ',', '.')).'€';
-                            } else {
-                                echo wp_kses_post( $total['value'] ); 
-                            }
-                        ?></td>
-					</tr>
-					<?php
+						<tr>
+							<th class="td" scope="row" colspan="2" style="text-align:<?php echo esc_attr( $text_align ); ?>; <?php echo ( 1 === $i ) ? 'border-top-width: 4px;' : ''; ?>">
+							<?php if ($order->has_status( 'on-hold' ) && $i === 1) {
+									echo esc_attr_e( '25% Deposit', 'wm-child-cyclando' ).':';
+								} else {
+									echo wp_kses_post( $total['label'] ); 
+								}
+							?>
+							</th>
+							<td class="td" style="text-align:<?php echo esc_attr( $text_align ); ?>; <?php echo ( 1 === $i ) ? 'border-top-width: 4px;' : ''; ?>"><?php 
+								if ($deposit_amount && intval($deposit_amount) && $i === 2) {
+									$order_parent_id = $order->get_parent_id();
+									$order_parent = new WC_Order($order_parent_id);
+									$orderTotal = $order_parent->get_total();
+									echo wp_kses_post(number_format($orderTotal, 2, ',', '.')).'€';
+								} else {
+									echo wp_kses_post( $total['value'] ); 
+								}
+							?></td>
+						</tr>
+						<?php
+					}
 				}
 			}
 			if ( $order->get_customer_note() ) {
