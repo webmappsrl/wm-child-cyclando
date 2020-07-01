@@ -47,9 +47,16 @@ do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plai
 		<tbody>
 			<?php
 			$order_parent_id = $order->get_parent_id();
-			$order_parent = new WC_Order($order_parent_id);
+			if ($order_parent_id) {
+				$order_parent = new WC_Order($order_parent_id);
+			}
+			if ($order_parent) {
+				$order_object = $order_parent;
+			} else {
+				$order_object = $order;
+			}
 			echo wc_get_email_order_items( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				$order_parent,
+				$order_object,
 				array(
 					'show_sku'      => $sent_to_admin,
 					'show_image'    => false,
