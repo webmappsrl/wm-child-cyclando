@@ -69,16 +69,19 @@ do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plai
 		</tbody>
 		<tfoot>
 			<?php
+			// get the deposit amount 
+			$deposit_amount = WC()->session->get('vn_deposit_amount');
+
 			$insurance = WC()->session->get('wp_quote_insurance');
 			if ($insurance && $insurance > 0) {
 				?>
 				<tr>
-					<td class="td" scope="row" colspan="2" style="text-align:<?php echo esc_attr( $text_align ); ?>;">
+					<td class="td" scope="row" colspan="2" style="text-align:<?php echo esc_attr( $text_align ); ?>; <?php echo ( isset($deposit_amount) ) ? '' : 'border-bottom-width: 4px;'; ?>">
 						<?php 
 						echo __('Cancellation insurance:' ,'wm-child-verdenatura'); 
 						?>
 					</td>
-					<td class="td" style="text-align:<?php echo esc_attr( $text_align ); ?>; <?php echo ( 1 === $i ) ? 'border-top-width: 4px;' : ''; ?>">
+					<td class="td" style="text-align:<?php echo esc_attr( $text_align ); ?>; <?php echo ( isset($deposit_amount) ) ? '' : 'border-bottom-width: 4px;'; ?>">
 						<?php 
 						echo wp_kses_post(number_format($insurance, 2, ',', '.')).'€';
 						?>
@@ -87,13 +90,12 @@ do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plai
 				<?php
 			}
 			$item_totals = $order->get_order_item_totals();
-			// get the deposit amount 
-			$deposit_amount = WC()->session->get('vn_deposit_amount');
+			
 			if ( $item_totals ) {
 				$i = 0;
-				foreach ( $item_totals as $total ) {
+				foreach ( $item_totals as $key => $total ) {
 					$i++;
-					if ( ($deposit_amount && intval($deposit_amount) > 0 && $i === 1 ) || $i > 1) {
+					if ( ($deposit_amount && intval($deposit_amount) > 0 && $i === 1 ) || ( $i > 1 && $key !== 'cart_subtotal' && strpos($key,'fee_') === false) ) {
 						?>
 						<tr>
 							<th class="td" scope="row" colspan="2" style="text-align:<?php echo esc_attr( $text_align ); ?>; <?php echo ( 1 === $i ) ? 'border-top-width: 4px;' : ''; ?>">
