@@ -343,7 +343,8 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     font-family: var(--font-family-primary-alternate);
 }
 .home-anypost-section h1 span{
-    color: var(--color-primary-title);
+    /*
+    color: var(--color-primary-title);*/
     font-family: var(--font-family-primary-alternate);
 }
 .webmapp-anypost-template-cy_route .webmapp_post_image {
@@ -352,20 +353,26 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
 }
 
 .webmapp-anypost-template-cy_route .webmapp_post-title {
+    /*
     background-color: #1010108a;
-    padding: 10px;
+    padding: 10px;*/
 }
 
 .webmapp-anypost-template-cy_route .webmapp_post-title h3 {
-    color: var(--color-white);
-    font-weight: 900;
-    font-weight: 900;
     font-family: var(--font-family-primary-alternate);
-    font-size: 29px;
+    font-size: 21px;
+    position: relative;
+    /* top: 50px; */
+    /* width: 433px; */
+    margin-left: 4%;
+    bottom: 40px;
+    z-index: 10;
 }
 
 .webmapp-anypost-template-cy_route .webmapp_post_image {
     height: 366px !important;
+    border-radius: 20px;
+    margin-top: 80px;
 }
 
 .webmapp-anypost-template-cy_route .webmapp_post_meta {
@@ -376,15 +383,20 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
 }
 
 .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info {
-    background-color: var(--color-primary-title);
-    font-family: var(--font-family-primary);
-    color: var(--color-white);
-    font-weight: 900;
-    padding: 15px 10px;
-    border-right: 1px solid white;
-    height: 100%;
-    display: grid;
-    align-items: center;
+        /* background-color: var(--color-primary-title); */
+        font-family: var(--font-family-primary);
+        color: black;
+        font-weight: 900;
+        padding: 0px 0px 0px 0px;
+        width: 400px;
+        /* border-right: 1px solid white; */
+        height: 100%;
+         display: grid; 
+        align-items: center;
+        background: white;
+        position: relative;
+        /*margin-left: -430px;*/
+        margin-top: 10px;
 }
 
 .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info p {
@@ -392,6 +404,12 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     font-size: 14px;
     line-height: 19px;
     min-height: 19px;
+    padding: 20px 20px 20px 20px;
+    background: white;
+    position: relative;
+    bottom: 45px;
+    width: 435px;
+   /* left: 430px;*/
 }
 
 .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info .meta_info_data {
@@ -758,23 +776,62 @@ body #iubenda_policy .iub_content.legal_pp p {
     display: none;
 }
 
-#cy-search-element-container {
+#cy-search-element-container{
     display: flex;
     justify-content: center;
-    padding: 20px 0;
+    padding: 17px 0;
+    width: 850px;
+    margin-left: 27%;
+    border-radius: 50px;
+    margin-top: 4%;
+
+
+
+}
+#cy-search-element-container {
+    background: #545454;
+    opacity: 0.9;
 }
 
 
-#cy-search-element-container .facetwp-autocomplete {
+
+#cy-search-element-container .facetwp-autocomplete{
     padding: 20px 22px 20px 8px;
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 20px;
+    line-height: 17px;
+    /*
+    background-color: #fffc;*/
+    height: 3.4rem;
+    border-radius: 30px 0px 0px 30px;
+    border: 1px solid #d6d6d6cc;
+    width: 300px;
+
+}
+select.facetwp-dropdown{
+    font-size: 20px;
+    line-height: 17px;
+    
+    height: 3.4rem;
+    border-radius: 0px;
+    border: 1px solid #d6d6d6cc;
+    width: 300px;
+
+    
+}
+div#cy-search-lente  {
+   /* padding: 20px 22px 20px 8px;*/
+    font-size: 20px;
     line-height: 17px;
     background-color: #fffc;
-    height: 3.8rem;
-    border-radius: 0;
+    height: 3.4rem;
+    border-radius: 0px 30px 30px 0px;
     border: 1px solid #d6d6d6cc;
+
+    
 }
+
+
+
 
 /* #cy-search-element-container input.facetwp-search::-moz-placeholder,
 #cy-search-element-container input.facetwp-search:-ms-input-placeholder,
@@ -804,13 +861,14 @@ body #iubenda_policy .iub_content.legal_pp p {
 }
 
 #cy-search-element-container #cy-search-lente {
-    width: 250px;
+    width: 220px;
     padding: 16px 15px;
     background-color: var(--color-secondary);
-    font-size: 18px;
+    font-size: 21px;
     font-weight: 600;
     cursor: pointer;
     transition: all .3s ease;
+    
 }
 #cy-search-element-container #cy-search-lente:hover {
     background-color: var(--color-secondary-hover)!important;
@@ -1270,4 +1328,43 @@ input:focus, input:focus + .w-form-checkbox, textarea:focus, select:focus, .sele
 }
 .facetwp-facet input {
     background: #f5f5f5;
+}
+
+/*
+tour italia 
+*/
+.vc_col-sm-8.wpb_column.vc_column_container.h2ItBici {
+    margin-right: 50%;
+}
+
+span.route_duration {
+    padding: 3%;
+    background: var(--color-primary);
+    color: white;
+    font-size: 20px;
+    margin: 4%;
+    border-radius: 5px;
+    font-weight: 700;
+    position: relative;
+    bottom: 110px;
+}
+
+span.leavingFrom, span.leavingFromPromo  {
+    background: var(--color-primary);
+    color: white;
+    padding: 1% 2% 9% 2%;
+    font-size: 15px;
+    bottom: 90px;
+    left: 280px;
+    position: relative;
+    border-radius: 9px;
+}
+
+span.cifra, span.cifraPromo {
+    color: white;
+    font-weight: 900;
+    font-size: 33px;
+    left: 170px;
+    position: relative;
+    bottom: 57px;
 }

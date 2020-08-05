@@ -53,7 +53,7 @@ foreach ($start_array as $date) {
 
 // route duration 
 $duration = get_field('vn_durata');
-$days = intval($duration);
+$nights = intval($duration);
 
 // places to go where 
 $places_to_go = 'where';
@@ -100,33 +100,22 @@ if ($promotion_value) {
             ?>
 
             <figure class="webmapp_post_image" style="background-image: url('<?php echo $get_the_post_thumbanil; ?>')">
-                
+                <div class="webmapp_post-title">
+                    <h3>
+                        <?php the_title() ?>
+                    </h3>
+                </div>
                 <?php
             if (!$coming_soon) {
                 ?>
-                <div class="post_meta_info">
-                <?php if (!$coming_soon) { ?>
-                <p class="route_first_date"><span class="route_duration"><?php echo  $days . ' ' . __('days', 'wm-child-cyclando') ?></span></p>
-
-                <?php } else { ?>
-                <p class="route_first_date"><span class="route_duration"><?php echo (!empty($duration))?$days . ' ' . __('days', 'wm-child-cyclando'):'' ?></span></p>
-                <?php } ?>
-            </div>
-                
                     <div class='prezzo-tab'>
                         <p>
-                            <span class="leavingFrom <?php if ( $promotion_value){ echo 'old-price';}?>">
-                            <?php  echo 'A PARTIRE DA' ?>
-                            </span>
-                            <span class="cifra<?php if ( $promotion_value){ echo 'old-price';}?>">
-                            <?php  echo $price. '€'; ?>
+                            <span class="cifra <?php if ( $promotion_value){ echo 'old-price';}?>">
+                            <?php  echo $price. ' €'; ?>
                             </span>
                             <?php if ( $promotion_value):?>
-                            <span class="leavingFromPromo">
-                                <?php  echo 'A PARTIRE DA'; ?>
-                            </span>
-                            <span class="cifraPromo<?php if ( $promotion_value){ echo 'old-price';}?>">
-                            <?php  echo $promotion_price. '€'; ?>
+                            <span class="new-price">
+                                <?php  echo $promotion_price. ' €'; ?>
                             </span>
                             <?php endif; ?>
                         </p>
@@ -148,30 +137,24 @@ if ($promotion_value) {
             ?>
         </div>
         <div class="webmapp_post_meta">
-        
             <div class="post_meta_info">
                 <?php if (!$coming_soon) { ?>
-                
+                <p class="route_first_date"><?php echo __('From', 'wm-child-verdenatura') . ' <span class="meta_info_data">' . $first_departure_date; ?></span><span class="route_duration"><?php echo ' - ' . $nights . ' ' . __('nights', 'wm-child-cyclando') ?></span></p>
                 <p class='meta-bar-txt-light'>
                     <?php echo $tax_places_to_go[0]->name;
                     if ($parent) : echo ', <strong>' . $parent . '</strong>';
                     endif; ?>
                 </p>
                 <?php } else { ?>
-                
+                <p class="route_first_date"><span class="route_duration"><?php echo (!empty($duration))?$nights . ' ' . __('nights', 'wm-child-cyclando'):'' ?></span></p>
                 <p class='meta-bar-txt-light'>
                     <?php echo $tax_places_to_go[0]->name;
                     if ($parent) : echo ', <strong>' . $parent . '</strong>';
                     endif; ?>
                 </p>
                 <?php } ?>
-                <div class="webmapp_post-title">
-                    <h3>
-                        <?php the_title() ?>
-                    </h3>
-                </div>
             </div>
-            
+           
         </div>
 
     </div>
