@@ -363,10 +363,11 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     font-size: 21px;
     position: relative;
     /* top: 50px; */
-    /* width: 433px; */
-    margin-left: 4%;
+    width: calc(100% + 50% + 1%);
+    margin-left: 8%;
     bottom: 60px;
     z-index: 10;
+    height: 30px;
 }
 
 .webmapp-anypost-template-cy_route .webmapp_post_image {
@@ -387,7 +388,7 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     font-family: var(--font-family-primary);
     color: black;
     font-weight: 900;
-    padding: 0px 0px 40px 0px;
+    padding: 0px 0px 0px 0px;
     /* width: 400px; */
     /* border-right: 1px solid white; */
     height: 100%;
@@ -411,8 +412,8 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     background: white;
     position: relative;
     bottom: 45px;
-    width: 433px;
-   /* left: 430px;*/
+    width: calc(100% + 57% + 10% - 1px);
+    /* left: 430px;*/
 }
 
 .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info .meta_info_data {
@@ -862,7 +863,7 @@ div#cy-search-lente  {
 
 #cy-search-element-container #cy-search-lente {
     width: 220px;
-    padding: 16px 15px;
+    padding: 2% 0% 0px 4%;
     background-color: var(--color-secondary);
     font-size: 21px;
     font-weight: 600;
@@ -1338,7 +1339,7 @@ tour italia
 }
 
 span.route_duration {
-    padding: 3%;
+    padding: 0% 2% 0% 2%;
     background: var(--color-primary);
     color: white;
     font-size: 20px;
@@ -1346,17 +1347,18 @@ span.route_duration {
     border-radius: 5px;
     font-weight: 700;
     position: relative;
-    bottom: 110px;
+    bottom: 140px;
     margin: 10% 0% 0% 4%;
+    left: -5px;
 }
 
 span.leavingFrom, span.leavingFromPromo  {
     background: var(--color-primary);
     color: white;
-    padding: 1% 2% 9% 2%;
-    font-size: 15px;
-    bottom: 90px;
-    left: 65%;
+    padding: 2% 3% 11% 3%;
+    font-size: 12px;
+    bottom: 91px;
+    left: 71%;
     position: relative;
     border-radius: 9px;
 }
@@ -1366,7 +1368,7 @@ span.cifra, span.cifraPromo {
     color: white;
     font-weight: 900;
     font-size: 33px;
-    left: 39%;
+    left: 47%;
     position: relative;
     bottom: 57px;
 }
@@ -1411,39 +1413,122 @@ figure.webmapp_post_image {
     #cy-search-element-container {
         margin: 4% 0% 0% 8%;
     }
-
     
 }
 
 @media screen and (min-width: 1137px) and (max-width: 1350px) {
     body span.leavingFrom, span.leavingFromPromo {
-        left: 60%;
+        left: 66%;
     }
     body span.cifra, span.cifraPromo {
-        left: 33%;
+        left: 38%;
     }
     .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info{
         width: 80%;
 
     }
     .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info p{
-        width: 386px;
-        padding: 20px 0px 20px 5%;
+        width: calc(100% + 57% + 52% - 1px);
+        padding: 20px 0px 20px 9%;
 
     }
     #cy-search-element-container {
         margin: 4% 0% 0% 16%;
     }
-
     
 }
+
 @media screen and (min-width: 1351px) and (max-width: 1450px) {
     
     .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info p{
-        width: 423px;
+       /* width: 423px;*/
         padding: 20px 0px 20px 5%;
 
     }
 
     
 }
+
+i.cy-icons.icon-search1 {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    #cy-search-element-container {
+        margin: -25% 0% 4% 5%;
+        width: 90%;
+        height: 100%;
+        border-radius: 20px;
+    }
+    
+    .home-banner-content-h {
+        position: relative;
+        right: 0%;
+        top: -40%;
+        bottom: 30%;
+    }
+
+    .facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-autocomplete {
+        /* display: none; */
+        padding: 0% 0% 10% 2%;
+        position: relative;
+        left: -30%;
+    }
+    #cy-search-element-container .facetwp-autocomplete {
+        border-radius: 15px 15px 15px 15px;
+        margin: 0% 0% 6% 4%;
+        width: calc(100% + 15%);
+        position: relative;
+        left: 18%;
+    }
+
+    h2.h2Home {
+        font-size: 28px !important;
+        margin-top: -8%;
+    }
+
+    select.facetwp-dropdown {
+        border-radius: 15px;
+        width: calc(100% + 15%);
+        position: relative;
+        left: -7%;
+        margin: -2% 0% 13% 0%;
+    }
+
+    div#cy-search-lente
+    {
+        border-radius: 15px;
+        /* width: 100%; */
+        position: relative;
+        width: calc(100% + 15%) !important;
+        left: -8%;
+    }
+
+    .l-section-img.loaded {
+        opacity: 1;
+        height: 76%;
+    }
+
+    .l-section.height_small, .l-section.height_medium, .l-section.width_full>div>div>.vc_col-sm-12>div>div>.w-tabs.layout_hor .w-tabs-section-content {
+
+        margin: -30% 0% 0% 0%;
+    }
+    
+}
+
+@media screen and (min-width: 600px) and (max-width: 900px) {
+
+    #cy-search-element-container {
+        background: #545454;
+        opacity: 0.9;
+        position: relative;
+        right: 22%;
+        width: 90%;
+    }
+    
+  
+}
+
+
+
+
