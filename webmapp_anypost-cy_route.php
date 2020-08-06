@@ -55,6 +55,13 @@ foreach ($start_array as $date) {
 $duration = get_field('vn_durata');
 $days = intval($duration);
 
+// distance
+$distance = intval(get_field('distance'));
+$ascent = floatval(get_field('ascent'));
+//echo "<br>".$distance ." = ". the_title()." dislivello ".$ascent."<br>";
+
+
+
 // places to go where 
 $places_to_go = 'where';
 $tax_places_to_go = get_the_terms($post_id, $places_to_go);
@@ -153,21 +160,26 @@ if ($promotion_value) {
                 <?php if (!$coming_soon) { ?>
                 
                 <p class='meta-bar-txt-light'>
-                    <?php echo $tax_places_to_go[0]->name;
+                    <?php echo strtoupper($tax_places_to_go[0]->name);
                     if ($parent) : echo ', <strong>' . $parent . '</strong>';
                     endif; ?>
                 </p>
                 <?php } else { ?>
                 
                 <p class='meta-bar-txt-light'>
-                    <?php echo $tax_places_to_go[0]->name;
+                    <?php echo strtoupper($tax_places_to_go[0]->name);
                     if ($parent) : echo ', <strong>' . $parent . '</strong>';
                     endif; ?>
                 </p>
                 <?php } ?>
                 <div class="webmapp_post-title">
                     <h3>
-                        <?php the_title() ?>
+                        <?php the_title()  ?>
+                    </h3>
+                </div>
+                <div class="webmapp_post-distance-ascent">
+                    <h3>
+                        <?php echo $distance ." km (ascent m) - ";  ?>
                     </h3>
                 </div>
             </div>
