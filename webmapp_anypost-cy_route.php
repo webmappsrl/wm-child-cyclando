@@ -179,7 +179,7 @@ if ($promotion_value) {
                 </div>
                 <div class="webmapp_post-distance-ascent">
                     <h3>
-                        <?php echo $distance ." km (ascent m) - ";  ?>
+                        <?php echo $distance ." km ";  ?>
                     </h3>
                 </div>
             </div>

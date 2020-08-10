@@ -1,4 +1,4 @@
-/*
+    /*
 Theme Name:     Cyclando
 Theme URI:
 Description:    Tema figlio per Cyclando (Impreza)
@@ -277,9 +277,9 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     .general-cerca-facetwp-container .g-cols.vc_row {
         display: grid;
         grid-template-areas:
-            "e e a a c"
-            "b b b b c"
-            "b b b b c";
+        "a e e e e"
+        "c b b b b"
+        "c b b b b";
         grid-template-rows: 170px;
         grid-template-columns: 1fr 1fr 1fr 1fr 1.2fr;
     } 
@@ -373,7 +373,7 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
 .webmapp-anypost-template-cy_route .webmapp_post_image {
     height: 366px !important;
     border-radius: 20px;
-    margin-top: 80px;
+    /*margin-top: 80px;*/
 }
 
 .webmapp-anypost-template-cy_route .webmapp_post_meta {
@@ -786,18 +786,17 @@ body #iubenda_policy .iub_content.legal_pp p {
     padding: 17px 0;
     width: 850px;
     border-radius: 50px;
-    margin: 4% 0% 0% 27%
+    margin: 4% 0% 0% 26%
 
 }
 #cy-search-element-container {
-    background: #545454;
-    opacity: 0.9;
+    background-color: rgba(0,0,0,0.5);
 }
 
 
 
 #cy-search-element-container .facetwp-autocomplete{
-    padding: 20px 22px 20px 8px;
+    /*padding: 20px 22px 20px 8px;*/
     font-size: 20px;
     line-height: 17px;
     /*
@@ -808,9 +807,33 @@ body #iubenda_policy .iub_content.legal_pp p {
     width: 300px;
 
 }
+
+
+   
+   
+
+    /*css only safari "align form"*/
+    @media screen and (min-width: 1000px) and (max-width: 1450px) {
+    
+        #cy-search-element-container:not(:root:root) 
+        {
+            margin: 4% 0% 0% 18%;
+        }
+
+         /*css only safari "dove vuoi andare"*/
+        #cy-search-element-container .facetwp-autocomplete:not(:root:root)
+        { 
+            padding: 3% 0 0 6%;
+        }
+                
+        
+    }
+   
+
+   
+
 select.facetwp-dropdown{
     font-size: 20px;
-    line-height: 17px;
     
     height: 3.4rem;
     border-radius: 0px;
@@ -937,7 +960,7 @@ div#cy-search-lente  {
 }
 
 .col-sm-12.col-md-4.webmapp_shortcode_any_post.post_type_route:not(:last-child){
-    margin-bottom: 30px;
+   /* margin-bottom: 30px;*/    
 }
 
 .advancedsearch-container .single-post-wm .scarica-app {
@@ -1314,7 +1337,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="url
     height: 2.8rem;
 }
 input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="tel"], input[type="number"], input[type="date"], input[type="search"], input[type="range"], textarea, select {
-    padding: 0 0.8rem;
+    padding: 0 0 0 1.2rem;
     width: 100%;
     border-radius: 0.3rem;
     box-shadow: 0 0 0 2px transparent, 0 1px 0 rgba(0,0,0,0.08) inset;
@@ -1350,6 +1373,7 @@ span.route_duration {
     bottom: 140px;
     margin: 10% 0% 0% 4%;
     left: -5px;
+    text-transform: uppercase;
 }
 
 span.leavingFrom, span.leavingFromPromo  {
@@ -1454,12 +1478,27 @@ i.cy-icons.icon-search1 {
 }
 
 @media screen and (max-width: 600px) {
+
+    #cy-search-element-container #cy-search-lente {
+        /* width: 220px; */
+        padding: 6% 0% 0px 0%;
+        background-color: var(--color-secondary);
+        font-size: 21px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all .3s ease;
+        text-align: -webkit-center;
+    }
     #cy-search-element-container {
         margin: -25% 0% 4% 5%;
         width: 90%;
         height: 100%;
         border-radius: 20px;
+        padding: 3% 0% 3% 0% ;
+        background-color: rgba(0,0,0,0.3)
     }
+
+  
     
     .home-banner-content-h {
         position: relative;
@@ -1477,14 +1516,19 @@ i.cy-icons.icon-search1 {
     #cy-search-element-container .facetwp-autocomplete {
         border-radius: 15px 15px 15px 15px;
         margin: 0% 0% 6% 4%;
-        width: calc(100% + 15%);
+        width: calc(100% + 16%);
         position: relative;
         left: 18%;
+        padding: 0px;
+        background-color: rgb(253, 252, 252,1);
+
     }
 
     h2.h2Home {
-        font-size: 28px !important;
-        margin-top: -8%;
+        font-size: 24px !important;
+        margin: -40% 0% 30% 0%;
+        position: relative;
+        top: -70%;
     }
 
     select.facetwp-dropdown {
@@ -1493,6 +1537,7 @@ i.cy-icons.icon-search1 {
         position: relative;
         left: -7%;
         margin: -2% 0% 13% 0%;
+        padding: 0px;
     }
 
     div#cy-search-lente
@@ -1513,14 +1558,58 @@ i.cy-icons.icon-search1 {
 
         margin: -30% 0% 0% 0%;
     }
+    ::placeholder {
+        position: relative;
+        top: 9%;
+        left: 2%;
+    }
+
+    .posts.webmapp-container-fluid {
+        margin: -26% 0 2% 0;
+    }   
+
+    .webmapp-anypost-template-cy_route .webmapp_post_image {
+
+       margin-top: 10%;
+        
+    }
+
+    h2#tourInBiciItalia:not(:root:root) {
+        width: 2000%;
+        font-size: 33px !important;
+        margin: 0% 0 -100% 0;
+    }
+
+    h2#tourInBiciEuropa:not(:root:root) {
+        margin: 40% 0 -10% 0;
+        width: 2000%;
+        font-size: 33px !important;
+    }
+
+    span.leavingFrom:not(:root:root) , span.leavingFromPromo:not(:root:root)  {
+        
+        bottom: 91px;
+        left: 64%;
+        position: relative;
+
+    }
+
+    span.cifra:not(:root:root) , span.cifraPromo:not(:root:root)  {
+       
+        left: 33%;
+        position: relative;
+        bottom: 57px;
+    }
+
+  
+    
     
 }
 
 @media screen and (min-width: 600px) and (max-width: 900px) {
 
     #cy-search-element-container {
-        background: #545454;
-        opacity: 0.9;
+        background-color: rgba(0,0,0,0.5);
         position: relative;
         right: 22%;
         width: 90%;
@@ -1529,6 +1618,38 @@ i.cy-icons.icon-search1 {
   
 }
 
+/*comportamento Quando*/
+.facetwp-dropdown
+{
+    -webkit-appearance: none;
+     appearance: none; 
+}
+/*comportamento Quando*/
 
+.facetwp-dropdown:active,.facetwp-dropdown:hover
+{
+    -webkit-appearance: auto;
+     appearance: auto; 
+     padding-left: 6%;
+}
 
+.webmapp_posts_controller.webmapp-grid-system .webmapp-container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 0 0 0;
+}
+
+.l-section.height_medium {
+     padding-top: 0% !important; 
+     /*padding-bottom: 4rem; */
+}
+
+.page-id-62001 .l-subheader-h, .page-id-62001 .l-section-h, .page-id-62001 .l-main .aligncenter, .page-id-62001 .w-tabs-section-content-h {
+    max-width: 1800px !important;
+}
+
+.page-id-62001 .l-section.height_medium {
+    padding-top: 2% !important; 
+    /*padding-bottom: 4rem; */
+}
 

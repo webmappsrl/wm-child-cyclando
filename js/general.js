@@ -28,6 +28,55 @@ jQuery(document).ready(function () {
 	form = jQuery("#searchform");
 	input.attr('tabindex', -1);
 
+
+	//change quando ? in 
+	jQuery(document).on('facetwp-loaded', function() {
+		
+		jQuery(".whenSearch select > option:nth-child(1)").html('In quale mese?');
+
+		}
+	
+	);	
+
+	jQuery(document).on('facetwp-loaded', function() {
+		
+		jQuery(".whereSearch input.facetwp-autocomplete-update").html('CERCA');
+
+		}
+	
+	);
+
+	jQuery(document).on('facetwp-loaded', function() {
+		
+		jQuery(".whereSearch input.facetwp-autocomplete-update").val('CERCA');
+
+		}
+	
+	);
+
+	jQuery(document).on('facetwp-loaded', function() {
+		
+		jQuery(".whenSearch h3").html('QUANDO');
+
+		}
+	
+	);
+	/*
+
+	jQuery(document).on('facetwp-loaded', function() {
+		
+		jQuery(".whereSearch").pre('<h3 class="whereSearchChild">Dove vuoi andare?</h3>');
+
+		}
+	
+	);*/
+	
+
+	
+
+	
+
+
 	
 
 	// configuration for the search in banner homepahe
@@ -65,36 +114,10 @@ jQuery(document).ready(function () {
 	lenteBanner.click(function () {
 		str = location.search;
 
-		if (str.lastIndexOf("_dove_vuoi_andare")!=1 && str.lastIndexOf("_quando_vuoi_partire_home")!=1) {
+		if (location.search === undefined) {
 			location.href = main_url;
 		} else {
-			/**
-			 * translate uri 
-			 */
-
-			//select only location
-			if(str.lastIndexOf("_dove_vuoi_andare") == 1 && str.lastIndexOf("&")== -1)
-			{
-				location.href = main_url + str;
-					
-			}
-			//select only "quando"
-			else if(str.lastIndexOf("_quando_vuoi_partire_home") == 1 && str.lastIndexOf("&")== -1)
-			{
-				index1 = str.lastIndexOf("=");
-				y = [str.slice(0, index1), str.slice(index1+1)];
-				location.href = main_url +"?_quando_vuoi_partire="+y[1];
-			}
-			else
-			{
-				index = str.lastIndexOf("&");
-				test = [str.slice(0, index), str.slice(index+1)];
-				x = test[1];
-				index1 = x.lastIndexOf("=");
-				y = [x.slice(0, index1), x.slice(index1+1)];
-				location.href = main_url + test[0]+"&_quando_vuoi_partire="+y[1];
-			}
-			
+			location.href = main_url + location.search;
 		}
 	});
 	// upon click on menu search icon lente
