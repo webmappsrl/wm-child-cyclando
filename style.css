@@ -383,7 +383,7 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     align-items: center;
 }
 
-.webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info {
+.page-id-2 .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info {
    /* background-color: var(--color-primary-title); */
     font-family: var(--font-family-primary);
     color: black;
@@ -424,7 +424,7 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     font-weight: 700;
 }
 
-.webmapp-anypost-template-cy_route .webmapp_post_meta .prezzo-tab {
+.page-id-2 .webmapp-anypost-template-cy_route .webmapp_post_meta .prezzo-tab {
     background-color: var(--color-primary);
     text-align: center;
     height: 100%;
@@ -684,7 +684,7 @@ body #iubenda_policy .iub_content.legal_pp p {
     -webkit-box-orient: vertical;
 }
 .advancedsearch-container .webmapp_post_meta .post_meta_info {
-    padding: 8px 10px;
+  /*  padding: 8px 10px;*/
 }
 .advancedsearch-container .webmapp_post_meta .prezzo-tab {
     padding: 8px 10px;
@@ -1361,7 +1361,7 @@ tour italia
     margin-right: 50%;
 }
 
-span.route_duration {
+.page-id-2 span.route_duration {
     padding: 0% 2% 0% 2%;
     background: var(--color-primary);
     color: white;
@@ -1653,3 +1653,403 @@ i.cy-icons.icon-search1 {
     /*padding-bottom: 4rem; */
 }
 
+/*stili pagina di ricerca*/
+
+.whereSearch {
+    box-shadow: 2px 2px 5px #dedede, -2px -2px 5px #dedede, 2px -2px 5px #dedede, -2px 2px 5px #dedede;
+    padding: 10% 40% 35% 30%;
+    border-radius: 20px;
+    width: 111%;
+    height: 460px;
+    position: relative;
+    border: 1px solid #ccc;
+
+   
+}
+
+.whereSearch .facetwp-autocomplete {
+    z-index: 1;
+}
+
+.whenSearch {
+    /* display: none; */
+    position: relative;
+}
+
+h4.tripSearch {
+    font-family: 'Montserrat Alternates', sans-serif;
+    color: gray;
+    font-size: 20px;
+    padding: 0 1% 0 1%;
+    position: absolute;
+    left: 6%;
+}
+
+h4.whereSearchChild {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    position: absolute;
+    top: 120px;
+    left: 22px;
+    /* top: 55px; */
+    /* padding: 0 0 1% 1%; */
+}
+
+.whenSearch h3.facet-label {
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    top: 65px;
+    left: 18px;
+    font-weight: 900;
+    padding: 0 0 1% 1%;
+}
+
+.whereSearch h3 {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: 500;
+    font-size: 1.8em;
+    width: 100%;
+    line-height: 1.2;
+    letter-spacing: 0em;
+    margin-bottom: 1.5rem;
+    position: absolute;
+    left: 20px;
+    top: 35px;
+    /* bottom: 88px; */
+}
+
+.page-id-62001 input.facetwp-autocomplete.ready {
+    position: absolute;
+    /* bottom: 50px; */
+    top: 150px;
+    left: 15px;
+    padding: 0 0 0 1.2rem;
+    width: 90%;
+    border-radius: 20px;
+    box-shadow: 0 0 0 2px transparent, 0 1px 0 rgba(0,0,0,0.08) inset;
+    transition: all 0.3s;
+    height: 55px;
+    border: 1px solid #ccc;
+    padding: 0 0 0 13%;
+}
+
+.page-id-62001 .facetwp-facet-dove_vuoi_andare .facetwp-autocomplete-update {
+    padding: 5px 10px;
+    margin-top: 10px;
+    position: absolute;
+    top: 80%;
+    left: 5%;
+    width: 90%;
+    height: 55px;
+    border-radius: 30px;
+    box-shadow: 0 0 0 2px transparent, 0 1px 0 rgba(0,0,0,0.08);
+    font-size: 23px;
+    text-align: center;
+    background: var(--color-secondary);
+    color: white;
+}
+
+.page-id-62001 select.facetwp-dropdown {
+    font-size: 16px;
+    height: 3.4rem;
+    border-radius: 20px;
+    height: 55px;
+    border: 1px solid #d6d6d6cc;
+    width: 100%;
+    position: relative;
+    top: 50px;
+    left: 15px;
+    color: gray;
+    border: 1px solid #ccc;
+    background: white !important;
+    padding: 0 0 0 16%;
+    opacity: 0.7;
+
+}
+
+i.wm-icon-calendar {
+    position: absolute;
+    left: 11%;
+    top: 110%;
+}
+
+i.wm-icon-ios7-search-strong.fa-2x {
+    position: absolute;
+    top:calc(35% + 2px);
+    left: 10%;
+    z-index: 1;
+}
+
+.page-id-62001 .advancedsearch-container .facetwp-template .post_meta_info p {
+    font-size: 30px;
+    line-height: 24px;
+    min-height: 24px;
+    overflow: hidden;
+    display: -webkit-inline-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+/*fanno casino ma servono per fare la form search*/
+.whatToDoSearch {
+ 
+    margin: 90% 0 0% 0;
+}
+
+.page-id-62001 .facetwp-facet input {
+    background: white;
+}
+
+.page-id-62001 .webmapp_post-featured-img {
+}
+
+.page-id-62001 .webmapp-anypost-template-cy_route .webmapp_post_image {
+    height: 300px !important;
+    border-radius: 20px 0 0 20px;
+    width: 35%;
+
+    /* margin-top: 80px; */
+}
+
+.page-id-62001 .advancedsearch-container .facetwp-template {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 20px;
+    row-gap: 20px;
+    width: 96%;
+    margin: 0% 0% 0 3%;     
+}
+
+.page-id-62001 .single-post-wm {
+    box-shadow: 2px 2px 5px #dedede, -2px -2px 5px #dedede, 2px -2px 5px #dedede, -2px 2px 5px #dedede;
+    border-radius: 20px 20px 20px 20px;
+    position: relative;
+    height: 300px;
+    margin: -3% 0 5% 0;
+}
+
+.page-id-62001 .advancedsearch-container .title-holder {
+    background-color: transparent;
+    /* color: black !important; */
+    /* color: black; */
+    /* padding: 10px; */
+    left: 38%;
+    /* bottom: -35%; */
+    margin: 5% 0 0 5px;
+    display: flex;
+    align-self: flex-start;
+    position: absolute;
+}
+
+.page-id-62001 .advancedsearch-container .title-holder h3
+{
+    color:black;
+    font-weight: 400;
+    font-family: var(--font-family-primary-alternate);
+    font-size: 24px;
+    overflow: hidden;
+    display: -webkit-inline-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+}
+
+.page-id-62001 .advancedsearch-container .post_meta_with_icons {
+    font-size: 22px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* margin: 0; */
+    position: absolute;
+    margin: 0% 0 0 0;
+    left: 50%;
+    top: 40%;
+}
+
+.countsSearch {
+    /* display: none; */
+    margin: 2px 0 1% calc(3% + 1px);
+    font-size: 30px;
+}
+
+.selectionsSearch {
+    margin: 0 0 0 calc(3% + 1px);
+}
+
+.page-id-62001 .webmapp-anypost-template-cy_route .single-post-wm .scarica-app
+{
+    background-color: var(--color-secondary);
+    height: 68px;
+    padding: 0 0 0 0%;
+    left: 20%;
+    /* display: grid; */
+    border-radius: 10px;
+    position: relative;
+    width: 74%;
+    margin: 0% 0% 7% 0%;
+    bottom: 0;
+
+}
+
+.page-id-62001 span.cifra, span.cifraPromo {
+    left: 15%;
+    top: 42%;
+    width: 100%;
+    position: absolute;
+
+}
+
+.page-id-62001 span.route_duration {
+    padding: 0% 2% 0% 2%;
+    background: var(--color-primary);
+    color: white;
+    font-size: 20px;
+    margin: 4%;
+    border-radius: 5px;
+    font-weight: 700;
+    position: relative;
+    bottom: 140px;
+    margin: 10% 0% -22% 4%;
+    left: -5px;
+    text-transform: uppercase;
+    position: absolute;
+    left: 3%;
+    bottom: 339%;
+}
+
+.page-id-62001 .meta-bar-txt-light {
+    margin: 0;
+    position: absolute;
+    color:white;
+    left: 15%;
+    /* margin: 2% 0 0 0; */
+    /* bottom: 17%; */
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 900;
+}
+
+
+.page-id-62001 .post_meta_info {
+    position: absolute;
+    top: 6%;
+    left: 1%;
+    width: 9%;
+}
+
+span.route_duration_free {
+    color: white;
+    background: var(--color-secondary);
+    padding: 2% 3% 2% 3%;
+    font-size: 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    /* width: 105%; */
+}
+
+.meta-bar-txt-title {
+    position: absolute;
+    left: 39%;
+    top: 0%;
+    margin: 2% 0 0 0;
+    color: black;
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
+
+span.partireDa {
+    color: white;
+    text-transform: uppercase;
+    position: relative;
+    font-size: 12px;
+    background: var(--color-primary);
+    padding: 3% 5% 15% 5%;
+    left: 126%;
+    /* border: cadetblue; */
+    bottom: 0%;
+    top: -46px;
+    margin: 0% 0 0% 0;
+    border-radius: 5px;
+}
+
+
+
+@media screen and (min-width: 900px) and (max-width: 1450px)
+{
+    .whereSearch
+    {
+        width: 320px;
+    }
+
+    .whereSearch h3
+    {
+        position: absolute;
+        left: 6%;
+        top: 7%;
+    }
+
+    .page-id-62001 select.facetwp-dropdown
+    {
+        width: 90%;
+    }
+
+    .whatToDoSearch 
+    {
+        margin: 80% 0 0% 0;
+    }
+
+    .page-id-62001 .advancedsearch-container .facetwp-template
+    {
+        width: 100%;
+        margin: 0% 0% 0 -2%;
+    }
+
+    .countsSearch {
+        /* display: none; */
+        margin: 2px 0 1% -2%;
+        font-size: 30px;
+    }
+    
+    .selectionsSearch {
+        margin: 0 0 0 -2%;
+    }
+
+    i.wm-icon-calendar {
+       
+    }
+
+    .page-id-62001 select.facetwp-dropdown
+    {
+        padding: 0 0 0 13%;
+    }
+
+    .page-id-62001 input.facetwp-autocomplete.ready
+    {
+        
+
+    }
+
+}
+
+@media screen and (min-width: 900px) and (max-width: 1250px)
+{
+    i.wm-icon-calendar 
+    {
+
+    }
+
+    i.wm-icon-ios7-search-strong.fa-2x 
+    {
+        position: absolute;
+        top: calc(35% + 2px);
+        left: 9%;
+    }
+
+    
+
+}

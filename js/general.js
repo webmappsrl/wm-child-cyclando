@@ -27,6 +27,7 @@ jQuery(document).ready(function () {
 	input = jQuery("#searchform input");
 	form = jQuery("#searchform");
 	input.attr('tabindex', -1);
+	var count = 0;
 
 
 	//change quando ? in 
@@ -61,15 +62,28 @@ jQuery(document).ready(function () {
 		}
 	
 	);
-	/*
+	
 
 	jQuery(document).on('facetwp-loaded', function() {
 		
-		jQuery(".whereSearch").pre('<h3 class="whereSearchChild">Dove vuoi andare?</h3>');
+			if(count == 0)//check per non moltiplicare elementi
+			{
+				jQuery(".whereSearch").prepend('<h4 class="tripSearch">Viaggi in Bici</h4>');
+				jQuery(".whereSearch .facet-wrap").prepend('<h4 class="whereSearchChild">DOVE</h4>');
+				count++;
+				console.log(count);
+
+			}
 
 		}
 	
-	);*/
+	);
+
+	
+
+	
+
+
 	
 
 	
