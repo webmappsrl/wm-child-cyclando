@@ -1793,6 +1793,15 @@ i.wm-icon-ios7-search-strong.fa-2x {
 }
 
 /*fanno casino ma servono per fare la form search*/
+
+span.lapp {
+    font-size: 35px;
+    position: absolute;
+    font-weight: 800;
+    left: -30%;
+    top: -8%;
+}
+
 .whatToDoSearch {
  
     margin: 90% 0 0% 0;
@@ -1863,11 +1872,25 @@ i.wm-icon-ios7-search-strong.fa-2x {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    /* margin: 0; */
+    /* background: red; */
+    /* margin: 10%; */
+    width: 60%;
+    height: 43%;
     position: absolute;
-    margin: 0% 0 0 0;
-    left: 50%;
-    top: 40%;
+    margin: 0% 0 0 0%;
+    left: calc(39% + 2px);
+    top: 38%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.icon_holder {
+  /*  position: relative;
+    left: 10%;
+    /* padding: 10%; */
+    /* width: 100%; 
+    margin: 10% 0% -4% 38%;*/
+    column-count: 3;
 }
 
 .countsSearch {
@@ -1885,11 +1908,11 @@ i.wm-icon-ios7-search-strong.fa-2x {
     background-color: var(--color-secondary);
     height: 68px;
     padding: 0 0 0 0%;
-    left: 20%;
+    left: 30%;
     /* display: grid; */
     border-radius: 10px;
     position: relative;
-    width: 74%;
+    width: 122px;
     margin: 0% 0% 7% 0%;
     bottom: 0;
 
@@ -1900,11 +1923,13 @@ i.wm-icon-ios7-search-strong.fa-2x {
     top: 42%;
     width: 100%;
     position: absolute;
+    font-size: 30px;
 
 }
 
 .page-id-62001 span.route_duration {
-    padding: 0% 2% 0% 2%;
+    padding: 1% 6% 1% 9%;
+    width: 121px;
     background: var(--color-primary);
     color: white;
     font-size: 20px;
@@ -1925,12 +1950,13 @@ i.wm-icon-ios7-search-strong.fa-2x {
     margin: 0;
     position: absolute;
     color:white;
-    left: 15%;
+    left: 25%;
+    top: 2%;
     /* margin: 2% 0 0 0; */
     /* bottom: 17%; */
     text-transform: uppercase;
-    font-size: 22px;
-    font-weight: 900;
+    font-size: 13px;
+    font-weight: 500;
 }
 
 
@@ -1938,13 +1964,13 @@ i.wm-icon-ios7-search-strong.fa-2x {
     position: absolute;
     top: 6%;
     left: 1%;
-    width: 9%;
+    width: 122px;
 }
 
 span.route_duration_free {
     color: white;
     background: var(--color-secondary);
-    padding: 2% 3% 2% 3%;
+    padding: 3% 7% 2% 9%;
     font-size: 20px;
     border-radius: 5px;
     text-transform: uppercase;
@@ -1968,15 +1994,50 @@ span.partireDa {
     position: relative;
     font-size: 12px;
     background: var(--color-primary);
-    padding: 3% 5% 15% 5%;
+    padding: 3% 6% 15% 6%;
     left: 126%;
     /* border: cadetblue; */
     bottom: 0%;
     top: -46px;
     margin: 0% 0 0% 0;
-    border-radius: 5px;
+    border-radius: 7px;
 }
 
+.icon_holder_b span {
+    margin: 0% 0% 0% 2%;
+    position: relative;
+    top: -3%;
+    color: black;
+    font-size: 20px;
+    font-family: var(--font-family-primary-alternate);
+}
+
+.icon_holder_d span {
+    margin: 0% 0% 0% 2%;
+    position: relative;
+    top: -3%;
+    color: black;
+    font-size: 20px;
+    font-family: var(--font-family-primary-alternate);
+}
+
+.icon_holder_a span {
+    margin: 0% 0% 0% 2%;
+    position: relative;
+    top: -3%;
+    color: black;
+    font-size: 20px;
+    font-family: var(--font-family-primary-alternate);
+}
+
+.icon_holder_c span {
+    margin: 0% 0% 0% 2%;
+    position: relative;
+    top: -3%;
+    color: black;
+    font-size: 20px;
+    font-family: var(--font-family-primary-alternate);
+}
 
 
 @media screen and (min-width: 900px) and (max-width: 1450px)
@@ -2034,6 +2095,56 @@ span.partireDa {
 
     }
 
+    .page-id-62001 .post_meta_info 
+    {
+        top: 6%;
+        width: 13%;
+    }
+
+    span.partireDa 
+    {
+        color: white;
+        text-transform: uppercase;
+        position: relative;
+        font-size: 12px;
+        background: var(--color-primary);
+        padding: 3% 6% 19% 6%;
+        left: 112%;
+        /* border: cadetblue; */
+        bottom: 0%;
+        top: -33px;
+        margin: 0% 0 0% 0;
+        border-radius: 7px;
+    }
+
+    .page-id-62001 .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info {
+        width:122px;
+        min-height: 0px;
+    }
+
+    .page-id-62001 .advancedsearch-container .title-holder {
+       
+        left: 37%;
+       
+    }
+
+    .page-id-62001 .webmapp-anypost-template-cy_route .single-post-wm .scarica-app
+    {
+        left: -4%;
+
+    }
+
+    span.partireDa 
+    {
+        padding: 3% 6% 22% 6%;
+    }
+
+    .page-id-62001 span.cifra, span.cifraPromo 
+    {
+        left: 9%;
+    }
+
+
 }
 
 @media screen and (min-width: 900px) and (max-width: 1250px)
@@ -2050,6 +2161,63 @@ span.partireDa {
         left: 9%;
     }
 
+    span.partireDa 
+    {
+        padding: 3% 6% 29% 6%;
+        left:105%;
+    }
+
+    .page-id-62001 span.cifra, span.cifraPromo 
+    {
+        left: 6%;
+
+    }
     
 
 }
+
+@media screen and (min-width: 1450px) and (max-width: 1738px)
+{
+    .page-id-62001 span.route_duration
+    {
+        width: 121px;
+
+    }
+
+    span.partireDa 
+    {
+        left: 118%;
+
+    }
+
+    .page-id-62001 .webmapp-anypost-template-cy_route .single-post-wm .scarica-app
+    {
+        left: 20%;
+
+    }
+    
+}
+
+@media screen and (min-width: 900px) and (max-width: 1250px)
+{
+    span.partireDa 
+    {
+        left: 100%;
+
+    }
+
+}
+
+@media screen and (min-width: 800px) and (max-width: 1368px)
+{
+    .page-id-62001 .advancedsearch-container .post_meta_with_icons
+    {
+        display: grid;
+        align-items: center;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+
+    }
+
+}
+
+
