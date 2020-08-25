@@ -1655,6 +1655,13 @@ i.cy-icons.icon-search1 {
 
 /*stili pagina di ricerca*/
 
+
+
+.titleSearch {
+    position: absolute;
+    top: 14%;
+}
+
 .whereSearch {
     box-shadow: 2px 2px 5px #dedede, -2px -2px 5px #dedede, 2px -2px 5px #dedede, -2px 2px 5px #dedede;
     padding: 10% 40% 35% 30%;
@@ -1700,8 +1707,8 @@ h4.whereSearchChild {
     font-size: 15px;
     font-family: 'Montserrat', sans-serif;
     position: relative;
-    top: 65px;
-    left: 18px;
+    top: -224px;
+    left: 20px;
     font-weight: 900;
     padding: 0 0 1% 1%;
 }
@@ -1739,7 +1746,7 @@ h4.whereSearchChild {
     padding: 5px 10px;
     margin-top: 10px;
     position: absolute;
-    top: 80%;
+    top: 77%;
     left: 5%;
     width: 90%;
     height: 55px;
@@ -1758,8 +1765,8 @@ h4.whereSearchChild {
     height: 55px;
     border: 1px solid #d6d6d6cc;
     width: 100%;
-    position: relative;
-    top: 50px;
+    position: absolute;
+    top: -195px;
     left: 15px;
     color: gray;
     border: 1px solid #ccc;
@@ -1772,7 +1779,7 @@ h4.whereSearchChild {
 i.wm-icon-calendar {
     position: absolute;
     left: 11%;
-    top: 110%;
+    top: -176px;
 }
 
 i.wm-icon-ios7-search-strong.fa-2x {
@@ -1792,8 +1799,6 @@ i.wm-icon-ios7-search-strong.fa-2x {
     -webkit-box-orient: vertical;
 }
 
-/*fanno casino ma servono per fare la form search*/
-
 span.lapp {
     font-size: 35px;
     position: absolute;
@@ -1804,7 +1809,7 @@ span.lapp {
 
 .whatToDoSearch {
  
-    margin: 90% 0 0% 0;
+    margin: 110% 0 0% 0;
 }
 
 .page-id-62001 .facetwp-facet input {
@@ -2061,7 +2066,7 @@ span.partireDa {
 
     .whatToDoSearch 
     {
-        margin: 80% 0 0% 0;
+        margin: 100% 0 0% 0;
     }
 
     .page-id-62001 .advancedsearch-container .facetwp-template
@@ -2080,20 +2085,11 @@ span.partireDa {
         margin: 0 0 0 -2%;
     }
 
-    i.wm-icon-calendar {
-       
-    }
-
     .page-id-62001 select.facetwp-dropdown
     {
         padding: 0 0 0 13%;
     }
 
-    .page-id-62001 input.facetwp-autocomplete.ready
-    {
-        
-
-    }
 
     .page-id-62001 .post_meta_info 
     {
@@ -2149,10 +2145,6 @@ span.partireDa {
 
 @media screen and (min-width: 900px) and (max-width: 1250px)
 {
-    i.wm-icon-calendar 
-    {
-
-    }
 
     i.wm-icon-ios7-search-strong.fa-2x 
     {
@@ -2216,6 +2208,229 @@ span.partireDa {
         align-items: center;
         grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
 
+    }
+
+}
+
+@media screen and (max-width: 600px)
+{
+    .page-id-62001 .g-cols.type_default>div>.vc_column-inner {
+         padding-left: 0; 
+         padding-right: 0%;
+    }
+
+
+    .page-id-62001 .g-cols.vc_row.type_default.valign_top {
+        margin: 34% 0 0 0;
+    }
+
+    .page-id-62001 h3:last-child
+    {
+        margin-bottom: 10%;
+        font-size: 17px;
+    }
+
+    .l-section-h.i-cf {
+        font-size: 13px;
+        letter-spacing: -1px;
+        line-height: 120%;
+    }
+
+    .page-id-62001 .g-cols.type_boxes>div, .g-cols.reversed>div:first-child, .g-cols:not(.reversed)>div:last-child, .g-cols>div.has-fill {
+        margin: 0% 0 0 0;
+    }
+
+    .whereSearch
+    {
+        margin: 0% 0 0 0;
+        width: 100%;
+    }
+
+     .page-id-62001 .facetwp-counts {
+        /* width: 1000%; */
+        position: relative;
+        right: 3%;
+        font-size: 15px;
+        margin: -10% 0 0 0;
+        /* top: 10%; */
+    }
+
+    h4.tripSearch {
+        font-family: 'Montserrat Alternates', sans-serif;
+        color: gray;
+        font-size: 20px;
+        padding: 0 0% 0 0%;
+        position: absolute;
+        /* background: red; */
+        left: 9%;
+        top: 8%;
+    }
+
+    .page-id-62001 .facetwp-facet-dove_vuoi_andare .facetwp-autocomplete-update 
+    {
+        top: 310px;
+        /* left: 5%; */
+        height: 65px;
+        width: 282%;
+        left: -47%;
+        border-radius: 10px;
+    }
+
+    .whereSearch h3
+    {
+        left: 9%
+    }
+
+    h4.whereSearchChild
+    {
+        left:10%;
+    }
+
+    .page-id-62001 input.facetwp-autocomplete.ready
+    {
+        top: 115px;
+        left: -49%;
+        width: 285%;
+        border-radius: 10px;
+        font-size: 16px;
+        padding: 0 0 5% 52%;
+    }
+
+    i.wm-icon-ios7-search-strong.fa-2x
+    {
+        left:12%;
+        top: calc(35% + 2px);
+    }
+
+    .whenSearch h3.facet-label
+    {
+        top: -223px;
+        left: 10%;
+    }
+
+    .page-id-62001 select.facetwp-dropdown
+    {
+        font-size: 16px;
+        width: 84%;
+        top: -190px;
+        border-radius: 10px;
+        left: 7%;
+        padding: 0 0 0 17%;
+    }
+
+    i.wm-icon-calendar
+    {
+        left: 13%;
+        top: -144%;
+    }
+
+    i.wm-icon-calendar 
+    {
+        left: 13%;
+        top: -820%;
+    }
+
+    .titleSearch {
+        position: absolute;
+        top: calc(14% + 10px);
+        left: 1%;
+    }
+
+  
+
+    .page-id-62001 .single-post-wm 
+    {
+        margin: 6% 0 5% 0;
+
+    }
+
+    .column_container .advancedsearch-container 
+    {
+        margin: 10% 0 0 0;
+
+    }
+
+    button#buttonFilterSearch {
+        font-family: var(--font-family-primary);
+        border-radius: 30px;
+        padding: 9% 35% 9% 35%;
+        background-color: white;
+        border: 1px solid black;
+        cursor: pointer;
+    }
+
+    .whatToDoSearch {
+        margin: 0% 0 0% 0;
+    }
+
+    .page-id-62001 .webmapp-anypost-template-cy_route .webmapp_post_image {
+        height: 180px !important;
+        border-radius: 20px 20px 0px 0px;
+        width: 100%;
+        /* margin-top: 80px; */
+        position: absolute;
+        top: -11%;
+    }
+
+    .page-id-62001 span.route_duration_free {
+        color: white;
+        background: var(--color-secondary);
+        padding: 3% 7% 2% 9%;
+        font-size: 20px;
+        /* border-radius: 5px; */
+        text-transform: uppercase;
+        position: absolute;
+        top: 0px;
+        left: 10px;
+        /* width: 105%; */
+    }
+
+    .page-id-62001 .webmapp-anypost-template-cy_route .single-post-wm .scarica-app
+    {
+        left:5%;
+        top:0%;
+    }
+    
+    span.lapp {
+        left: -43%;
+        top: 80%;
+    }
+
+    .page-id-62001 .meta-bar-txt-light
+    {
+        top:9%;
+    }
+
+    .page-id-62001 span.partireDa
+    {
+        left:0%;
+        padding: 5% 10px 20% 50px;
+        width: 1%;
+        top: -26px;
+    }
+
+    .page-id-62001 span.cifra, span.cifraPromo {
+      
+        
+    }
+
+
+    
+
+}
+
+
+@media screen and (min-width: 764px) and (max-width: 1000px)
+{
+    .page-id-62001 .advancedsearch-container .title-holder
+    {
+        margin: 13% 0px 0 -5px;
+
+    }
+
+    .page-id-62001 .advancedsearch-container .post_meta_with_icons
+    {
+        margin: 3% 0 0 0;
     }
 
 }

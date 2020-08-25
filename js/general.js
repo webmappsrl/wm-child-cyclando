@@ -28,6 +28,7 @@ jQuery(document).ready(function () {
 	form = jQuery("#searchform");
 	input.attr('tabindex', -1);
 	var count = 0;
+	zSearch = 0;
 
 
 	//change quando ? in 
@@ -78,6 +79,58 @@ jQuery(document).ready(function () {
 		}
 	
 	);
+
+	//mobile and desktop button management on first loading
+	if(jQuery( window ).width()>=700)
+    {
+		jQuery('#buttonFilterSearch').hide();
+    }
+    else
+    {
+        jQuery('#buttonFilterSearch').show();
+        //dropdown filtra   
+        jQuery('#buttonFilterSearch').click( function(event){
+			jQuery('#filterSearchDropdown').toggle();  
+        });
+        jQuery('#filterSearchDropdown').hide(); 
+	}
+	
+
+	//mobile and desktop button management after window change
+	jQuery(window).on('resize', function () {
+
+		if(jQuery( window ).width()>=700)
+		{
+			jQuery('#buttonFilterSearch').hide();
+			jQuery('#filterSearchDropdown').show(); 
+
+		}
+
+		else
+		{
+			jQuery('#buttonFilterSearch').show();
+			//dropdown filtra   
+			jQuery('#buttonFilterSearch').click( function(event){
+			jQuery('#filterSearchDropdown').toggle();   
+			});
+			jQuery('#filterSearchDropdown').hide(); 
+		}
+		
+	});
+	
+
+	
+
+			
+	
+				
+			
+			
+				
+			
+	
+
+
 
 	
 
