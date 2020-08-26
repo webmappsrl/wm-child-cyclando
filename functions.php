@@ -435,6 +435,7 @@ add_filter( 'facetwp_facet_html', function( $output, $params ) {
 
 
 // Index the promotion value to yes and no in facetwp
+// Exclude Taxonomy Cyclando from facetwp results in come_vuoi_viaggiare facet
 add_filter( 'facetwp_index_row', function( $params, $class ) {
     if ( 'cerchi_un_viaggio_in_promozione' == $params['facet_name'] ) {
         if ( $params['facet_value'] > 0 ) {
@@ -445,7 +446,14 @@ add_filter( 'facetwp_index_row', function( $params, $class ) {
             $params['facet_display_value'] = __('No', 'wm-child-cyclando');
         }
     }
+    if ( 'come_vuoi_viaggiare' == $params['facet_name'] ) {
+        $excluded_terms = array( 'Cyclando' );
+        if ( in_array( $params['facet_display_value'], $excluded_terms ) ) {
+            $params['facet_value'] = '';
+        }
+    }
     return $params;
+
 }, 10, 2 );
 
 // /**changes the breadcrumb link of POI in yoast */
@@ -984,7 +992,7 @@ function URL_exists($url){
     return stripos($headers[0],"200 OK")?true:false;
 }
 
-// Order result facetwp by price DESC
+// Orders facetwp results by price DESC or ASC
 add_filter( 'facetwp_sort_options', function( $options, $params ) {
     $options['price_desc'] = array(
         'label' => __( 'Price (Highest)', 'wm-child-cyclando' ),
