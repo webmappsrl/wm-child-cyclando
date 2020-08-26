@@ -84,10 +84,13 @@ jQuery(document).ready(function () {
 	if(jQuery( window ).width()>=700)
     {
 		jQuery('#buttonFilterSearch').hide();
+		jQuery('#orderSearch').hide();
+
     }
     else
     {
-        jQuery('#buttonFilterSearch').show();
+		jQuery('#buttonFilterSearch').show();
+		jQuery('#orderSearch').show();
         //dropdown filtra   
         jQuery('#buttonFilterSearch').click( function(event){
 			jQuery('#filterSearchDropdown').toggle();  
@@ -102,6 +105,7 @@ jQuery(document).ready(function () {
 		if(jQuery( window ).width()>=700)
 		{
 			jQuery('#buttonFilterSearch').hide();
+			jQuery('#orderSearch').hide();
 			jQuery('#filterSearchDropdown').show(); 
 
 		}
@@ -110,9 +114,9 @@ jQuery(document).ready(function () {
 		{
 			jQuery('#buttonFilterSearch').show();
 			//dropdown filtra   
-			jQuery('#buttonFilterSearch').click( function(event){
+		/*	jQuery('#buttonFilterSearch').click( function(event){
 			jQuery('#filterSearchDropdown').toggle();   
-			});
+			});*/
 			jQuery('#filterSearchDropdown').hide(); 
 		}
 		

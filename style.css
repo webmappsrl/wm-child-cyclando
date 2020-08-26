@@ -1742,6 +1742,12 @@ h4.whereSearchChild {
     padding: 0 0 0 13%;
 }
 
+.page-id-62001 input.facetwp-autocomplete.ready:not(:root:root)
+{
+    padding: 0 0 0 45%;
+    
+}
+
 .page-id-62001 .facetwp-facet-dove_vuoi_andare .facetwp-autocomplete-update {
     padding: 5px 10px;
     margin-top: 10px;
@@ -1871,31 +1877,25 @@ span.lapp {
 }
 
 .page-id-62001 .advancedsearch-container .post_meta_with_icons {
-    font-size: 22px;
     color: black;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    /* background: red; */
-    /* margin: 10%; */
     width: 60%;
     height: 43%;
     position: absolute;
     margin: 0% 0 0 0%;
     left: calc(39% + 2px);
-    top: 38%;
+    top: 42%;
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
 }
 
-.icon_holder {
-  /*  position: relative;
-    left: 10%;
-    /* padding: 10%; */
-    /* width: 100%; 
-    margin: 10% 0% -4% 38%;*/
-    column-count: 3;
+.page-id-62001 i > span {
+    padding: 0 0% 0 1%;
+    font-family: var(--font-family-primary-alternate);
+}
+
+.page-id-62001 .icon_holder {
+    width: 500%;
+    font-family: var(--font-family-primary-alternate);
 }
 
 .countsSearch {
@@ -2200,17 +2200,6 @@ span.partireDa {
 
 }
 
-@media screen and (min-width: 800px) and (max-width: 1368px)
-{
-    .page-id-62001 .advancedsearch-container .post_meta_with_icons
-    {
-        display: grid;
-        align-items: center;
-        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-
-    }
-
-}
 
 @media screen and (max-width: 600px)
 {
@@ -2330,12 +2319,65 @@ span.partireDa {
         top: -820%;
     }
 
-    .titleSearch {
-        position: absolute;
-        top: calc(14% + 10px);
+    .vc_col-sm-12.wpb_column.vc_column_container.divFilterSearchDrop {
+        position: relative;
+        top: 0%;
+        margin: -14% 0 10% 0;
         left: 1%;
     }
+    .page-id-62001 .advancedsearch-container .facetwp-template 
+    {
+        margin: 5% 0% 0 3%;
+    }
 
+    div#filterSearchDropdown {
+        position: relative;
+        left: 3%;
+        top: 10px;
+    }
+
+    .page-id-62001 .advancedsearch-container .post_meta_with_icons
+    {
+        top: 67%;
+        left: 0;
+        /* display: inline-grid; */
+        /* width: 50%; */
+        font-size: 10px;
+        /* display: grid; */
+        /* grid-template-columns: 1fr 1fr 1fr; */
+        display: grid;
+        grid-template-columns: 80px 80px 80px;
+        grid-template-rows: 70px;
+        grid-row-gap: -22px;
+        margin: 12px 0% 0px 6%;
+        padding: 7% 0% 77px 0%;
+    }
+
+    .icon_holder_a span
+    {
+        font-size: 13px;
+        display: grid;
+        grid-row-gap: auto;
+        grid-column: 2;
+      
+    }
+    .icon_holder_b span
+    {
+        font-size: 13px;
+
+    }
+    .icon_holder_c span
+    {
+        font-size: 13px;
+        
+    }
+
+
+    .icon_holder_d span
+    {
+        font-size: 13px;
+        
+    }
   
 
     .page-id-62001 .single-post-wm 
@@ -2364,12 +2406,22 @@ span.partireDa {
     }
 
     .page-id-62001 .webmapp-anypost-template-cy_route .webmapp_post_image {
-        height: 180px !important;
-        border-radius: 20px 20px 0px 0px;
+        height: 240px !important;
+        border-radius: 10px 10px 0px 0px;
         width: 100%;
         /* margin-top: 80px; */
         position: absolute;
         top: -11%;
+    }
+
+    .advancedsearch-container .webmapp_post_meta .prezzo-tab {
+        padding: 8px 10px;
+        position: absolute;
+        left: 53%;
+        background: var(--color-primary);
+        border-radius: 10px;
+        padding: 5% 1% 7% 0;
+        bottom: 3%;
     }
 
     .page-id-62001 span.route_duration_free {
@@ -2385,6 +2437,11 @@ span.partireDa {
         /* width: 105%; */
     }
 
+    .page-id-62001 .webmapp-anypost-template-cy_route .single-post-wm .scarica-app:not(:root:root)
+    {
+        left:-5%;
+        top:0%;
+    }
     .page-id-62001 .webmapp-anypost-template-cy_route .single-post-wm .scarica-app
     {
         left:5%;
@@ -2403,18 +2460,121 @@ span.partireDa {
 
     .page-id-62001 span.partireDa
     {
-        left:0%;
+        left:-13%;
         padding: 5% 10px 20% 50px;
         width: 1%;
-        top: -26px;
+        top: -17px;
     }
 
-    .page-id-62001 span.cifra, span.cifraPromo {
-      
-        
+    .vc_col-sm-6.wpb_column.vc_column_container.secondTitle {
+        margin: -11% 0 0 0;
     }
 
 
+    .page-id-62001 .single-post-wm {
+        height: 400px;
+        border-radius: 10px;
+    }
+
+    span.partireDa {
+        color: white;
+        text-transform: uppercase;
+        position: relative;
+        font-size: 12px;
+        background: transparent;
+        padding: 3% 6% 15% 6%;
+        left: 126%;
+        /* border: cadetblue; */
+        bottom: 0%;
+        top: -46px;
+        margin: 0% 0 0% 0;
+        border-radius: 7px;
+    }
+
+    .page-id-62001 span.cifra, .page-id-62001 span.cifraPromo {
+        left: 37%;
+        top: 60%;
+        width: 100%;
+        position: absolute;
+        font-size: 30px;
+    }
+
+    .page-id-62001 span.cifra:not(:root:root) 
+    {
+        left: 40%;
+        top: 60%;
+        width: 100%;
+        position: absolute;
+        font-size: 30px;
+    }
+
+    .page-id-62001 span.cifraPromo:not(:root:root)
+    {
+
+    }
+
+    .meta-bar-txt-title
+    {
+        width: 100%;
+        margin: 72% 0 0 -34%;
+        font-size: 14px;
+    }
+
+    .meta-bar-txt-title:not(:root:root)
+    {
+        width: 100%;
+        margin: 78% 0 0 -34%;
+        font-size: 14px;
+    }
+
+    .page-id-62001 .advancedsearch-container .title-holder
+    {
+        margin: 75% 0px 0 -36%;
+    }
+
+    .page-id-62001 .advancedsearch-container .title-holder:not(:root:root)
+    {
+        margin: 83% 0px 0 -37%;
+
+    }
+
+    div#orderSearch {
+        position: absolute;
+        left: 58%;
+        right: 2%;
+        font-size: 18px;
+        /* height: 6px; */
+        /* background: white; */
+    }
+
+    div#orderSearch:not(:root:root) {
+        position: absolute;
+        left: 57%;
+        right: 2%;
+        font-size: 18px;
+        /* height: 6px; */
+        /* background: white; */
+    }
+
+    select.facetwp-sort-select {
+        background: white !important;
+        box-shadow: none;
+        /* border: none; */
+        /* border-style: none; */
+    }
+
+    select.facetwp-sort-select:not(:root:root)  {
+        background: transparent !important;
+        box-shadow: none;
+        /* border: none; */
+        /* border-style: none; */
+    }
+
+    .page-id-62001 span.cifra:not(:root:root), .page-id-62001 span.cifraPromo:not(:root:root)
+    {
+        left: 30%;
+
+    }
     
 
 }
@@ -2432,6 +2592,16 @@ span.partireDa {
     {
         margin: 3% 0 0 0;
     }
+
+    .page-id-62001 .advancedsearch-container .post_meta_with_icons
+    {
+        font-size:15px;
+
+    }
+
+    
+
+    
 
 }
 
