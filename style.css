@@ -222,6 +222,7 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
         -moz-transition: height 1s;
         -o-transition: height 1s;
         transition: height 1s;
+        display: none;
     }
     
     .l-subheader-sticky-mobile .sticky-mobile-menu-phone {
@@ -1400,7 +1401,7 @@ span.cifra, span.cifraPromo {
 .webmapp_post-distance-ascent {
     font-size: 10px;
     color: gray;
-    /* display: grid; */
+    display: none;
     position: relative;
     left: 20px;
     bottom: 10px;
@@ -1554,8 +1555,7 @@ i.cy-icons.icon-search1 {
         height: 76%;
     }
 
-    .l-section.height_small, .l-section.height_medium, .l-section.width_full>div>div>.vc_col-sm-12>div>div>.w-tabs.layout_hor .w-tabs-section-content {
-
+    .home-anypost-section {
         margin: -30% 0% 0% 0%;
     }
     ::placeholder {
@@ -2271,7 +2271,7 @@ span.partireDa {
     .l-section-h.i-cf {
         font-size: 13px;
         letter-spacing: -1px;
-        line-height: 120%;
+        /* line-height: 120%; */
     }
 
     .page-id-62001 .g-cols.type_boxes>div, .g-cols.reversed>div:first-child, .g-cols:not(.reversed)>div:last-child, .g-cols>div.has-fill {
