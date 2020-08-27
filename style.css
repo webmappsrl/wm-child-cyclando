@@ -1358,9 +1358,7 @@ input:focus, input:focus + .w-form-checkbox, textarea:focus, select:focus, .sele
 /*
 tour italia 
 */
-.vc_col-sm-8.wpb_column.vc_column_container.h2ItBici {
-    margin-right: 50%;
-}
+
 
 span.route_duration {
     padding: 1% 3% 1% 3%;
