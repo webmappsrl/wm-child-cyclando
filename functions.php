@@ -993,22 +993,22 @@ function URL_exists($url){
 }
 
 // Orders facetwp results by price DESC or ASC
-add_filter( 'facetwp_sort_options', function( $options, $params ) {
-    $options['price_desc'] = array(
-        'label' => __( 'Price (Highest)', 'wm-child-cyclando' ),
-        'query_args' => array(
-            'orderby' => 'meta_value_num',
-            'meta_key' => 'wm_route_price',
-            'order' => 'DESC',
-        )
-    );
-    $options['price_asc'] = array(
-        'label' => __( 'Price (Lowest)', 'wm-child-cyclando' ),
-        'query_args' => array(
-            'orderby' => 'meta_value_num',
-            'meta_key' => 'wm_route_price',
-            'order' => 'ASC',
-        )
-    );
-    return $options;
-}, 10, 2 );
+// add_filter( 'facetwp_sort_options', function( $options, $params ) {
+//     $options['price_desc'] = array(
+//         'label' => __( 'Price (Highest)', 'wm-child-cyclando' ),
+//         'query_args' => array(
+//             'orderby' => 'meta_value_num',
+//             'meta_key' => 'wm_route_price',
+//             'order' => 'DESC',
+//         )
+//     );
+//     $options['price_asc'] = array(
+//         'label' => __( 'Price (Lowest)', 'wm-child-cyclando' ),
+//         'query_args' => array(
+//             'orderby' => 'meta_value_num',
+//             'meta_key' => 'wm_route_price',
+//             'order' => 'ASC',
+//         )
+//     );
+//     return $options;
+// }, 10, 2 );

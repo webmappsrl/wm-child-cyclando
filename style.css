@@ -384,6 +384,19 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     align-items: center;
 }
 
+.page-id-62001 .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info {
+    font-family: var(--font-family-primary);
+    color: black;
+    font-weight: 900;
+    padding: 10px 0px 0px 10px;
+    align-self: baseline;
+    position: relative;
+    display: -webkit-inline-box;
+    /* -webkit-line-clamp: 2; */
+    -webkit-box-orient: vertical;
+    justify-self: start;
+    width: fit-content;
+}
 .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info {
    /* background-color: var(--color-primary-title); */
     font-family: var(--font-family-primary);
@@ -425,6 +438,17 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     font-weight: 700;
 }
 
+.page-id-62001 .webmapp-anypost-template-cy_route .webmapp_post_meta .prezzo-tab {
+    background-color: var(--color-primary);
+    text-align: center;
+    width: fit-content;
+    justify-self: flex-end;
+    color: var(--color-white);
+    font-weight: 900;
+    align-self: end;
+    border-radius: 5px;
+    margin: 0 10px 10px 0px;
+}
 .webmapp-anypost-template-cy_route .webmapp_post_meta .prezzo-tab {
     background-color: var(--color-primary);
     text-align: center;
@@ -1387,6 +1411,14 @@ span.leavingFrom, span.leavingFromPromo  {
 }
 
 
+.page-id-62001 span.cifra,.page-id-62001 span.cifraPromo {
+    color: white;
+    font-weight: 900;
+    font-size: 33px;
+    /* left: 40%;
+    position: relative;
+    bottom: 57px; */
+}
 span.cifra, span.cifraPromo {
     color: white;
     font-weight: 900;
@@ -1927,10 +1959,10 @@ span.lapp {
 }
 
 .page-id-62001 span.cifra, span.cifraPromo {
-    left: 15%;
-    top: 42%;
+    /* left: 15%;/ */
+    /* top: 42%; */
     width: 100%;
-    position: absolute;
+    /* position: absolute; */
     font-size: 30px;
 
 }
@@ -2006,17 +2038,25 @@ span.route_duration_free {
 }
 
 
+.page-id-62001 span.partireDa {
+    color: white;
+    text-transform: uppercase;
+    font-size: 12px;
+    background: var(--color-primary);
+    margin: 0% 0 0% 0;
+    border-radius: 7px;
+}
 span.partireDa {
     color: white;
     text-transform: uppercase;
-    position: relative;
+    /* position: relative; */
     font-size: 12px;
     background: var(--color-primary);
     padding: 3% 6% 15% 6%;
-    left: 126%;
+    /* left: 126%; */
     /* border: cadetblue; */
-    bottom: 0%;
-    top: -46px;
+    /* bottom: 0%; */
+    /* top: -46px; */
     margin: 0% 0 0% 0;
     border-radius: 7px;
 }

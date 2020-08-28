@@ -9,51 +9,50 @@ $target = 'who';
 $activity = 'activity';
 $diff_numero = get_field('n7webmapp_route_difficulty');
 
-$title_path = $array = [
-    'daisy' => 'Percorso a margherita',
-    'linear' => 'Percorso lineare',
-    'roundtrip' => 'Percorso ad anello'
-];
-
-
-
+// $title_path = $array = [
+//     'daisy' => 'Percorso a margherita',
+//     'linear' => 'Percorso lineare',
+//     'roundtrip' => 'Percorso ad anello'
+// ];
 $shape = get_field('shape');
 
 // get terms targets icon
 $tax_targets = get_the_terms($post_id, $target);
-$icon_targets = array();
-$title_targets = $array = [
-    'wm-icon-cyc_city-tours' => 'City Tour',
-    'wm-icon-cy-target-guided' => 'Con Guida',
-    'wm-icon-cyc_cyclando' => 'Cyclando',
-    'wm-icon-family-15' => 'Famiglia',
-    'wm-icon-cy-target-selfguided' => 'Self-guided',
-    'wm-icon-cy-target-weekend' => 'Weekend'
-];
+$array_targets = array();
+// $title_targets = $array = [
+//     'wm-icon-cyc_city-tours' => 'City Tour',
+//     'wm-icon-cy-target-guided' => 'Con Guida',
+//     'wm-icon-cyc_cyclando' => 'Cyclando',
+//     'wm-icon-family-15' => 'Famiglia',
+//     'wm-icon-cy-target-selfguided' => 'Self-guided',
+//     'wm-icon-cy-target-weekend' => 'Weekend'
+// ];
 
 if ($tax_targets){
     foreach ($tax_targets as $target) {
         $term_target = 'term_' . $target->term_id;
+        $title_target = $target->name;
         $iconimage_target = get_field('wm_taxonomy_icon', $term_target);
-        array_push($icon_targets, $iconimage_target);
+        $array_targets[$title_target] = $iconimage_target;
     }
 }
 // get terms activities icon
 $tax_activities = get_the_terms($post_id, $activity);
-$icon_activities = array();
-$title_activities = $array = [
-    'wm-icon-touring-bike' => 'Bicicletta',
-    'wm-icon-road-bike' => 'Bici da Corsa',
-    'wm-icon-cy-bikeandboat' => 'Bici e Barca',
-    'wm-icon-fu_bike' => 'Ebike',
-    'wm-icon-mtb' => 'MTB',
-    'wm-icon-hiking2_15' => 'Trekking'
-];
+$array_activities = array();
+// $title_activities = $array = [
+//     'wm-icon-touring-bike' => 'Bicicletta',
+//     'wm-icon-road-bike' => 'Bici da Corsa',
+//     'wm-icon-cy-bikeandboat' => 'Bici e Barca',
+//     'wm-icon-fu_bike' => 'Ebike',
+//     'wm-icon-mtb' => 'MTB',
+//     'wm-icon-hiking2_15' => 'Trekking'
+// ];
 if ($tax_activities){
     foreach ($tax_activities as $activity) {
         $term_activity = 'term_' . $activity->term_id;
+        $title_activity = $activity->name;
         $iconimage_activity = get_field('wm_taxonomy_icon', $term_activity);
-        array_push($icon_activities, $iconimage_activity);
+        $array_activities[$title_activity] = $iconimage_activity;
     }
 }
 //get the first departure date
@@ -148,23 +147,23 @@ if ($promotion_value) {
                     ?>
                 </div>
                 <div class="post_meta_with_icons">
-                    <?php if ($icon_activities) {
+                    <?php if ($array_activities) {
                             ?><?php
-                            foreach ($icon_activities as $icon) { 
-                                echo '<div class="icon_holder"><i class="'.$icon.'"><span class="textIcon">'.$title_activities[$icon].'</span></i></div>';
+                            foreach ($array_activities as $title => $icon) { 
+                                echo '<div class="icon_holder"><i class="'.$icon.'"><span class="textIcon">'.$title.'</span></i></div>';
                         }
 
-                            ?><?php
+                            ?><?php //$title_activities[$icon]
                             
                         } ?>
                         <?php if ($shape) {
                             ?><div class="icon_holder"><?php
-                            ?><i class="<?php echo the_shape_icon($shape); ?>"><span class="textIcon"><?php echo $title_path[$shape]; ?></span></i></div> <?php
+                            ?><i class="<?php echo the_shape_icon($shape); ?>"><span class="textIcon"><?php echo __($shape,'wm-child-cyclando'); ?></span></i></div> <?php //$title_path[$shape]
                         } ?>
-                        <?php if ($icon_targets) {
+                        <?php if ($array_targets) {
                             ?><?php
-                            foreach ($icon_targets as $icon) { 
-                                        echo '<div class="icon_holder"><i class="'.$icon.'"><span class="textIcon">'.$title_targets[$icon].'</span></i></div>';
+                            foreach ($array_targets as $title => $icon) { 
+                                    echo '<div class="icon_holder"><i class="'.$icon.'"><span class="textIcon">'.$title.'</span></i></div>';
                                 }
                             ?><?php
                             
@@ -176,11 +175,7 @@ if ($promotion_value) {
                             </div> <?php
                         } ?>
                     </div>
-                
-
-
         </div>
-
             <div class="webmapp_post-title">
                     
                 </div>
