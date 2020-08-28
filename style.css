@@ -264,7 +264,12 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
         top: auto!important;
         box-shadow: 0 -3px 8px rgba(0,0,0,0.1)!important;
     }
-    
+    .wm_difficulty_number {
+        display: block;
+    }
+    .wm_difficulty_icon_holder:before {
+        display: none;
+    }
 }
 @media screen and (max-width: 768px) {
     h2 {
@@ -1419,7 +1424,7 @@ span.leavingFrom, span.leavingFromPromo  {
     position: relative;
     bottom: 57px; */
 }
-span.cifra, span.cifraPromo {
+.page-id-2 span.cifra, span.cifraPromo {
     color: white;
     font-weight: 900;
     font-size: 33px;
@@ -1684,7 +1689,20 @@ i.cy-icons.icon-search1 {
 }
 
 /*stili pagina di ricerca*/
-
+.facetwp-page.active {
+    font-weight: bold;
+    cursor: default;
+    background-color:var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    padding: 0 10px;
+}
+a.facetwp-page.active:hover {
+    color: white;
+}
+.wm_difficulty_number {
+    display: block;
+}
 .webmapp_post-featured-img {
     font-family: var(--font-family-primary);
 }
