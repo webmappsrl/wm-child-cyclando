@@ -437,7 +437,7 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
 .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .webmapp_post_meta .prezzo-tab {
     background-color: var(--color-primary);
     text-align: center;
-    width: fit-content;
+    min-width: 150px;
     justify-self: flex-end;
     color: var(--color-white);
     font-weight: 900;
@@ -645,12 +645,11 @@ body #iubenda_policy .iub_content.legal_pp p {
 }
 
 /* cerca page search page */
-/* .advancedsearch-container .facetwp-template {
+.advancedsearch-container .facetwp-template {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 20px;
-    row-gap: 20px;
-} */
+    grid-template-columns: 1fr;
+    grid-row-gap: 40px;
+}
 .advancedsearch-container .facetwp-template .post_meta_info p{
     font-size: 16px;
     line-height: 24px;
@@ -689,10 +688,7 @@ body #iubenda_policy .iub_content.legal_pp p {
     display: none;
 }
 .advancedsearch-container .title-holder {
-    background-color: #1010108a;
-    padding: 10px;
-    display: flex;
-    align-self: flex-start;
+    height: 100%;
 }
 .advancedsearch-container .title-holder h3{
     color: white;
@@ -733,21 +729,6 @@ body #iubenda_policy .iub_content.legal_pp p {
 .cerca-facet-count-container .facetwp-selections ul {
     margin-left: 0;
 }
-/* .cerca-facet-count-container .facetwp-selections li {
-    display: inline-block;
-    line-height: 1;
-    padding: 10px 5px;
-    margin-right: 5px;
-    background-color: #f5f5f5;
-    border-radius: 5px;
-    box-shadow: 0 0 0 2px transparent, 0 1px 0 rgba(0,0,0,0.08);
-    transition: 200ms all ease;
-}
-
-.cerca-facet-count-container .facetwp-selections li:hover {
-    box-shadow: 0 0 0 2px transparent, 0 2px 5px rgba(0, 0, 0, 0.11);
-    transition: 200ms all ease;
-} */
 
 .cerca-facet-count-container span.facetwp-selection-label {
     display: none;
@@ -1370,7 +1351,7 @@ tour italia
 */
 
 
-span.route_duration {
+.webmapp-anypost-template-cy_route span.route_duration {
     padding: 1% 3% 1% 3%;
     background: var(--color-primary);
     color: white;
@@ -1421,12 +1402,6 @@ span.leavingFrom, span.leavingFromPromo  {
     position: relative;
     left: 20px;
     bottom: 10px;
-}
-
-figure.webmapp_post_image {
-    /* box-shadow: 2px 2px 2px #dedede, -3px -2px 5px #dedede, 10px -10px 5px #dedede, 0px 0px 0px #dedede; */
-    /* box-shadow: 2px 2px 5px #dedede, -2px -2px 10px #555, 2px -2px 10px #555, -2px 2px 5px #555; */
-    box-shadow: 2px 2px 5px #dedede, -2px -2px 5px #dedede, 2px -2px 5px #dedede, -2px 2px 5px #dedede;
 }
 
 .single-post-wm {
@@ -1687,7 +1662,13 @@ a.facetwp-page.active:hover {
 .webmapp_post-featured-img {
     font-family: var(--font-family-primary);
 }
-
+.wm_template_advancedsearch .webmapp_post-featured-img {
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr 2fr 4fr;
+    align-items: center;
+    padding: 20px 30px;
+}
 .titleSearch {
     position: absolute;
     top: 14%;
@@ -1852,17 +1833,13 @@ span.lapp {
 .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .webmapp_post_image {
     height: 300px !important;
     border-radius: 20px 0 0 20px;
-    width: 35%;
-
-    /* margin-top: 80px; */
 }
-
-.wm_template_advancedsearch {
+.webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .webmapp_post_image .webmapp_post_meta {
     display: grid;
     grid-template-columns: 1fr;
-    column-gap: 20px;
-    row-gap: 20px;
-    width: 96%;
+
+}
+.wm_template_advancedsearch {
     margin: 0% 0% 0 3%;     
 }
 
@@ -1871,30 +1848,16 @@ span.lapp {
     border-radius: 20px 20px 20px 20px;
     position: relative;
     height: 300px;
-    margin: -3% 0 5% 0;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
 }
-
-.wm_template_advancedsearch .title-holder {
-    background-color: transparent;
-    /* color: black !important; */
-    /* color: black; */
-    /* padding: 10px; */
-    left: 38%;
-    /* bottom: -35%; */
-    margin: 5% 0 0 5px;
-    display: flex;
-    align-self: flex-start;
-    position: absolute;
-}
-
-
 
 .wm_template_advancedsearch .title-holder h3
 {
     color:black;
     font-weight: 400;
     font-family: var(--font-family-primary-alternate);
-    font-size: 24px;
+    font-size: 28px;
     overflow: hidden;
     display: -webkit-inline-box;
     -webkit-line-clamp: 2;
@@ -1904,14 +1867,10 @@ span.lapp {
 
 .wm_template_advancedsearch .post_meta_with_icons {
     color: black;
-    width: 60%;
-    height: 43%;
-    position: absolute;
     margin: 0% 0 0 0%;
-    left: calc(39% + 2px);
-    top: 130px;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    height: 100%;
 }
 
 .wm_template_advancedsearch .post_meta_with_icons:not(:root:root) {
@@ -1955,31 +1914,19 @@ span.lapp {
 }
 
 .wm_template_advancedsearch span.cifra, span.cifraPromo {
-    /* left: 15%;/ */
-    /* top: 42%; */
     width: 100%;
-    /* position: absolute; */
     font-size: 30px;
-
+    display: block;
 }
 
 .wm_template_advancedsearch span.route_duration {
     padding: 2% 6% 2% 9%;
-    width: 121px;
     background: var(--color-primary);
     color: white;
     font-size: 20px;
-    margin: 4%;
     border-radius: 5px;
     font-weight: 700;
-    position: relative;
-    bottom: 140px;
-    margin: 10% 0% -22% 4%;
-    left: -5px;
     text-transform: uppercase;
-    position: absolute;
-    left: 3%;
-    bottom: 339%;
 }
 
 .wm_template_advancedsearch .meta-bar-txt-light {
@@ -1988,8 +1935,6 @@ span.lapp {
     color:white;
     left: 25%;
     top: 2%;
-    /* margin: 2% 0 0 0; */
-    /* bottom: 17%; */
     text-transform: uppercase;
     font-size: 13px;
     font-weight: 500;
@@ -2024,12 +1969,9 @@ span.route_duration_free {
 }
 
 .meta-bar-txt-title {
-    position: absolute;
-    left: 39%;
-    top: 0%;
     margin: 2% 0 0 0;
     color: black;
-    font-size: 25px;
+    font-size: 18px;
     text-transform: uppercase;
 }
 
@@ -2041,8 +1983,9 @@ span.route_duration_free {
     background: var(--color-primary);
     margin: 0% 0 0% 0;
     border-radius: 7px;
+    display: block;
 }
-span.partireDa {
+.webmapp-anypost-template-cy_route span.partireDa {
     color: white;
     text-transform: uppercase;
     /* position: relative; */

@@ -169,8 +169,7 @@
                         if (!$coming_soon) {
                         ?>
                     <div class='prezzo-tab'>
-                        <p>
-                            <span class="partireDa"><?php echo 'a partire da'; ?>
+                            <span class="partireDa"><?php echo 'a partire da'; ?></span>
                                 <span class="cifra <?php if ($promotion_value) {
                                                                 echo 'old-price';
                                                             } ?>">
@@ -179,9 +178,8 @@
                                 <?php if ($promotion_value) : ?>
                                 <span class="new-price">
                                     <?php echo $promotion_price . ' €'; ?>
-                                </span></span>
+                                </span>
                             <?php endif; ?>
-                        </p>
                     </div>
                     <?php } elseif (return_route_targets_has_cyclando($post_id)) { ?>
                     <a class="download-app-link" target="_blank" href="https://info.cyclando.com/app">
