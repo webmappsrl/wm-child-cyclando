@@ -283,7 +283,7 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
         "a e e e e"
         "c b b b b"
         "c b b b b";
-        grid-template-rows: 170px;
+        grid-template-rows: 131px 100% 100%;
         grid-template-columns: 1fr 1fr 1fr 1fr 1.2fr;
     } 
     .cerca-facet-where-container {
@@ -375,9 +375,13 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
 
 .webmapp-anypost-template-cy_route .webmapp_post_meta {
     display: grid;
-    /* grid-template-columns: 2fr 1fr; */
     grid-template-columns: 3fr 2fr;
     align-items: center;
+}
+.wm_template_advancedsearch .webmapp-anypost-template-cy_route .webmapp_post_meta {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    height: 100%;
 }
 
 .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .webmapp_post_meta .post_meta_info {
@@ -392,6 +396,7 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     -webkit-box-orient: vertical;
     justify-self: start;
     width: fit-content;
+    min-width: 130px;
 }
 .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info {
    /* background-color: var(--color-primary-title); */
@@ -681,9 +686,6 @@ body #iubenda_policy .iub_content.legal_pp p {
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.advancedsearch-container .icon_holder {
-    padding-right: 10px;
-}
 .advancedsearch-container .icons_separator:last-child {
     display: none;
 }
@@ -706,6 +708,9 @@ body #iubenda_policy .iub_content.legal_pp p {
 .advancedsearch-container .webmapp-grid-system .col-sm-12,.advancedsearch-container .webmapp-grid-system .col-md-12{
     padding-left: 0;
     padding-right: 0;
+}
+.advancedsearch-container .facetwp-pager {
+    margin: 2% 0 0 3%;
 }
 #cy-search-element-container .facetwp-autocomplete-update{
     display: none;
@@ -978,11 +983,6 @@ div#cy-search-lente  {
     padding: 0 0;
 }
 
-@media screen and (max-width: 600px) {
-    .webmapp_shortcode_any_post.post_type_route {
-        padding: 0 0!important;
-    }
-}
 /* Child pages CSS */
 .ccchildpagethumbs {
     width: 100%;
@@ -1470,7 +1470,10 @@ i.cy-icons.icon-search1 {
 }
 
 @media screen and (max-width: 600px) {
-
+    .webmapp_shortcode_any_post.post_type_route {
+        padding: 0 0!important;
+    }
+    
     #cy-search-element-container #cy-search-lente {
         /* width: 220px; */
         padding: 6% 0% 0px 0%;
@@ -1883,7 +1886,7 @@ span.lapp {
 }
 
 .wm_template_advancedsearch  .icon_holder {
-    width: 200%;
+    width: 100%;
     font-family: var(--font-family-primary-alternate);
 }
 
@@ -1969,7 +1972,6 @@ span.route_duration_free {
 }
 
 .meta-bar-txt-title {
-    margin: 2% 0 0 0;
     color: black;
     font-size: 18px;
     text-transform: uppercase;
@@ -2089,31 +2091,9 @@ span.route_duration_free {
         width: 13%;
     }
 
-    span.partireDa 
-    {
-        color: white;
-        text-transform: uppercase;
-        position: relative;
-        font-size: 12px;
-        background: var(--color-primary);
-        padding: 3% 6% 19% 6%;
-        left: 112%;
-        /* border: cadetblue; */
-        bottom: 0%;
-        top: -33px;
-        margin: 0% 0 0% 0;
-        border-radius: 7px;
-    }
-
     .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .webmapp_post_meta .post_meta_info {
         width:122px;
         min-height: 0px;
-    }
-
-    .wm_template_advancedsearch .title-holder {
-       
-        left: 37%;
-       
     }
 
     .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .single-post-wm .scarica-app
@@ -2145,12 +2125,6 @@ span.route_duration_free {
         left: 9%;
     }
 
-    span.partireDa 
-    {
-        padding: 3% 6% 29% 6%;
-        left:105%;
-    }
-
     .wm_template_advancedsearch span.cifra, span.cifraPromo 
     {
         left: 6%;
@@ -2168,12 +2142,6 @@ span.route_duration_free {
 
     }
 
-    span.partireDa 
-    {
-        left: 118%;
-
-    }
-
     .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .single-post-wm .scarica-app
     {
         left: 20%;
@@ -2184,11 +2152,6 @@ span.route_duration_free {
 
 @media screen and (min-width: 900px) and (max-width: 1250px)
 {
-    span.partireDa 
-    {
-        left: 100%;
-
-    }
 
     .page-id-62001 input.facetwp-autocomplete.ready:not(:root:root)
 {
@@ -2630,11 +2593,6 @@ span.route_duration_free {
 
 @media screen and (min-width: 764px) and (max-width: 1000px)
 {
-    .wm_template_advancedsearch .title-holder
-    {
-        margin: 13% 0px 0 -5px;
-
-    }
 
     .wm_template_advancedsearch .post_meta_with_icons
     {
@@ -2721,7 +2679,16 @@ span.route_duration_free {
     }
 
 }
-
+@media screen and (max-width: 1100){
+    .wm_template_advancedsearch .single-post-wm {
+        height: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .webmapp_post_image {
+        border-radius: 20px 20px 0 0px;
+    }
+}
 
 
 
