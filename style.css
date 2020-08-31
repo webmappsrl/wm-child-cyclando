@@ -2102,11 +2102,6 @@ span.route_duration_free {
 
     }
 
-    span.partireDa 
-    {
-        padding: 3% 6% 22% 6%;
-    }
-
     .wm_template_advancedsearch span.cifra, span.cifraPromo 
     {
         left: 9%;
@@ -2679,7 +2674,7 @@ span.route_duration_free {
     }
 
 }
-@media screen and (max-width: 1100){
+@media screen and (max-width: 1100px){
     .wm_template_advancedsearch .single-post-wm {
         height: auto;
         grid-template-columns: 1fr;
