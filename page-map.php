@@ -49,7 +49,7 @@ p:hover {
 			if ($site_url = 'http://cyclando.local') {
 				$site_url = 'http://localhost/R';
 			} else {
-				$site_url = 'http://78.47.21.164/r';
+				$site_url = 'https://78.47.21.164/r';
 			}
 			$domande= file_get_contents($site_url.'edrum/psql/api/post/read_all_domande.php');
             ?> 
@@ -68,10 +68,10 @@ p:hover {
 				
 				jQuery(document).ready(function($) {
 					var siteurl = document.location.origin;
-					if (siteurl = 'http://localhost') {
+					if (siteurl = 'http://cyclando.local') {
 						siteurl = 'http://localhost/R';
 					} else {
-						siteurl = 'http://78.47.21.164/r';
+						siteurl = 'https://78.47.21.164/r';
 					}
 					console.log('esme site: '+siteurl);
 					function onDomandaClick (e){

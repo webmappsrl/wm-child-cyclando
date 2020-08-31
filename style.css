@@ -1701,7 +1701,7 @@ a.facetwp-page.active:hover {
     color: white;
 }
 .wm_difficulty_number {
-    display: block;
+    display: none;
 }
 .webmapp_post-featured-img {
     font-family: var(--font-family-primary);
