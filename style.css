@@ -290,8 +290,8 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     .wm_template_advancedsearch .post_meta_with_icons {
         color: black;
         margin: 0% 0 0 0%;
-        display: flex;
-        height: 100%;
+        display: flex!important;
+        height: 100%!important;
         float: left;
     }
     .wm_template_advancedsearch .webmapp_post-featured-img {
@@ -310,15 +310,12 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     .general-cerca-facetwp-container .g-cols.vc_row {
         display: grid;
         grid-template-areas:
-        "a e e e e"
+        "c e e e e"
         "c b b b b"
         "c b b b b";
-        grid-template-rows: 131px 100% 100%;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1.2fr;
+        grid-template-rows: 131px 100%;
+        grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr;
     } 
-    .cerca-facet-where-container {
-        grid-area: a;
-    }
     .cerca-facets-container {
         grid-area: c;
     }
@@ -1700,12 +1697,9 @@ a.facetwp-page.active:hover {
     box-shadow: 2px 2px 5px #dedede, -2px -2px 5px #dedede, 2px -2px 5px #dedede, -2px 2px 5px #dedede;
     padding: 10% 40% 35% 30%;
     border-radius: 20px;
-    width: 111%;
     height: 460px;
     position: relative;
     border: 1px solid #ccc;
-
-   
 }
 
 .whereSearch .facetwp-autocomplete {
@@ -1843,11 +1837,6 @@ span.lapp {
     top: -8%;
 }
 
-.whatToDoSearch {
- 
-    margin: 110% 0 0% 0;
-}
-
 .page-id-62001 .facetwp-facet input {
     background: white;
 }
@@ -1861,10 +1850,6 @@ span.lapp {
     grid-template-columns: 1fr;
     height: 100%;
     grid-template-rows: 1fr 1fr;
-}
-
-.wm_template_advancedsearch {
-    margin: 0% 0% 0 3%;     
 }
 
 .wm_template_advancedsearch .single-post-wm {
@@ -1908,8 +1893,6 @@ span.lapp {
 }
 
 .countsSearch {
-    /* display: none; */
-    margin: 2px 0 1% calc(3% + 1px);
     font-size: 30px;
 }
 
@@ -1991,7 +1974,7 @@ span.route_duration_free {
 .wm_template_advancedsearch span.partireDa {
     color: white;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 14px;
     background: var(--color-primary);
     margin: 0% 0 0% 0;
     border-radius: 7px;
@@ -2066,11 +2049,6 @@ span.route_duration_free {
     .page-id-62001 select.facetwp-dropdown
     {
         width: 90%;
-    }
-
-    .whatToDoSearch 
-    {
-        margin: 100% 0 0% 0;
     }
 
     .wm_template_advancedsearch
@@ -2401,14 +2379,6 @@ span.route_duration_free {
         width: 100%;
         position: absolute;
         font-size: 30px;
-    }
-
-    .meta-bar-txt-title
-    {
-        width: 100%;
-        margin: 58% 0 0 -34%;
-        font-size: 14px;
-        font-family: var(--font-family-primary);
     }
 
 
