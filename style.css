@@ -264,6 +264,7 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     .wm_difficulty_number {
         display: block!important;
         float: left;
+        padding-right: 5px;
     }
     .wm_difficulty_icon_holder:before {
         display: none;
@@ -283,9 +284,12 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     .wm_template_advancedsearch .icon_holder {
         color: black;
         margin: 0% 0 0 0%;
-        display: flex;
+        display: contents;
         height: 100%;
         float: left;
+    }
+    .wm_template_advancedsearch .webmapp_post-featured-img {
+        grid-template-rows: 1fr 2fr 2fr !important;
     }
     .wm_template_advancedsearch .post_meta_with_icons {
         color: black;
@@ -1695,7 +1699,6 @@ a.facetwp-page.active:hover {
 
 .whereSearch {
     box-shadow: 2px 2px 5px #dedede, -2px -2px 5px #dedede, 2px -2px 5px #dedede, -2px 2px 5px #dedede;
-    padding: 10% 40% 35% 30%;
     border-radius: 20px;
     height: 460px;
     position: relative;
@@ -2175,14 +2178,10 @@ span.route_duration_free {
     .wm_template_advancedsearch span.route_duration {
         padding: 4% 6% 4% 9%;
     }
-    .page-id-62001 .g-cols.type_default>div>.vc_column-inner {
-         padding-left: 0; 
-         padding-right: 0%;
-    }
 
 
     .page-id-62001 .g-cols.vc_row.type_default.valign_top {
-        margin: 34% 0 0 0;
+        margin: 6% 0 0 0;
     }
 
     .wm_template_advancedsearch .title-holder h3
@@ -2191,7 +2190,7 @@ span.route_duration_free {
     }
 
     .l-section-h.i-cf {
-        font-size: 13px;
+        font-size: 15px;
         letter-spacing: -1px;
         /* line-height: 120%; */
     }
@@ -2207,12 +2206,7 @@ span.route_duration_free {
     }
 
      .page-id-62001 .facetwp-counts {
-        /* width: 1000%; */
-        position: relative;
-        right: 3%;
-        font-size: 15px;
-        margin: -10% 0 0 0;
-        /* top: 10%; */
+        font-size: 18px;
     }
 
     h4.tripSearch {
@@ -2519,5 +2513,10 @@ span.route_duration_free {
     }
     .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .webmapp_post_image {
         border-radius: 20px 20px 0 0px;
+    }
+}
+@media screen and (max-width: 1600px){
+    .whereSearch h3 {
+        font-size: 1.6em!important;
     }
 }
