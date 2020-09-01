@@ -69,7 +69,7 @@ jQuery(document).ready(function () {
 		
 			if(count == 0)//check per non moltiplicare elementi
 			{
-				jQuery(".whereSearch").prepend('<h4 class="tripSearch">Viaggi in Bici</h4>');
+				//jQuery(".whereSearch").prepend('<h4 class="tripSearch">Viaggi in Bici</h4>');
 				jQuery(".whereSearch .facet-wrap").prepend('<h4 class="whereSearchChild">DOVE</h4>');
 				count++;
 				console.log(count);
