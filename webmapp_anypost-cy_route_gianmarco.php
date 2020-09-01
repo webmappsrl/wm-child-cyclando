@@ -98,39 +98,46 @@ if ($promotion_value) {
 
 <div class="col-sm-12 col-md-<?php echo $wm_anypost_bootstrap_col_type ?> webmapp_shortcode_any_post post_type_<?php echo $wm_anypost_post_type ?>">
 
-<div class="single-post-wm">
-    <div class="webmapp_post-featured-img">
-        
-        
-        <?php if (!$coming_soon && return_route_targets_has_cyclando($post_id) == false) { echo "<a href='$title_link' title=\"" . get_the_title() . "\">"; }?>
-        <figure class="webmapp_post_image" style="background-image: url('<?php echo $get_the_post_thumbanil; ?>')">
-            
+
+    <div class="single-post-wm">
+        <div class="webmapp_post-featured-img">
             <?php
+            echo "<a href='$title_link' title=\"" . get_the_title() . "\">";
+
+            ?>
+
+            <figure class="webmapp_post_image" style="background-image: url('<?php echo $get_the_post_thumbanil; ?>')">
+                
+                <?php
             if (!$coming_soon) {
                 ?>
                 <div class="post_meta_info">
-                    <?php if (!$coming_soon) { ?>
-                    <p class="route_first_date"><span class="route_duration"><?php echo  $days . ' ' . __('days', 'wm-child-cyclando') ?></span></p>
+                <?php if (!$coming_soon) { ?>
+                <p class="route_first_date"><span class="route_duration"><?php echo  $days . ' ' . __('days', 'wm-child-cyclando') ?></span></p>
 
-                    <?php } else { ?>
-                    <p class="route_first_date"><span class="route_duration"><?php echo (!empty($duration))?$days . ' ' . __('days', 'wm-child-cyclando'):'' ?></span></p>
-                    <?php } ?>
-                </div>
+                <?php } else { ?>
+                <p class="route_first_date"><span class="route_duration"><?php echo (!empty($duration))?$days . ' ' . __('days', 'wm-child-cyclando'):'' ?></span></p>
+                <?php } ?>
+            </div>
                 
-                <div class='prezzo-tab'>
-                    <span class="leavingFrom">
-                    <?php  echo 'A PARTIRE DA' ?>
-                    </span>
-                    <span class="cifra<?php if ( $promotion_value){ echo 'old-price';}?>">
-                    <?php  echo $price. '€'; ?>
-                    </span>
-                    <?php if ( $promotion_value):?>
-                    <span class="cifraPromo<?php if ( $promotion_value){ echo 'new-price';}?>">
-                    <?php  echo $promotion_price. '€'; ?>
-                    </span>
-                    <?php endif; ?>
-                </div>
-                
+                    <div class='prezzo-tab'>
+                        <p>
+                            <span class="leavingFrom <?php if ( $promotion_value){ echo 'old-price';}?>">
+                            <?php  echo 'A PARTIRE DA' ?>
+                            </span>
+                            <span class="cifra<?php if ( $promotion_value){ echo 'old-price';}?>">
+                            <?php  echo $price. '€'; ?>
+                            </span>
+                            <?php if ( $promotion_value):?>
+                            <span class="leavingFromPromo">
+                                <?php  echo 'A PARTIRE DA'; ?>
+                            </span>
+                            <span class="cifraPromo<?php if ( $promotion_value){ echo 'old-price';}?>">
+                            <?php  echo $promotion_price. '€'; ?>
+                            </span>
+                            <?php endif; ?>
+                        </p>
+                    </div>
             <?php } elseif (return_route_targets_has_cyclando($post_id)) {?>
             <a class="download-app-link" target="_blank" href="https://info.cyclando.com/app">
                 <div class="scarica-app">
@@ -141,25 +148,44 @@ if ($promotion_value) {
                 <div class='prezzo-tab <?php echo $coming_soon_class?>'><p><span><?php echo __('Coming soon!', 'wm-child-cyclando'); ?></span></p></div>
             <?php } ?>
             </figure>
-            <?php if (!$coming_soon && return_route_targets_has_cyclando($post_id) == false) { echo "</a>"; }?>
-            
+
+
+            <?php
+            echo "</a>";
+            ?>
         </div>
-        <?php echo "<a href='$title_link' title=\"" . get_the_title() . "\">"; ?>
         <div class="webmapp_post_meta">
         
+            <div class="post_meta_info">
+                <?php if (!$coming_soon) { ?>
+                
                 <p class='meta-bar-txt-light'>
                     <?php echo strtoupper($tax_places_to_go[0]->name);
                     if ($parent) : echo ', <strong>' . $parent . '</strong>';
                     endif; ?>
                 </p>
+                <?php } else { ?>
+                
+                <p class='meta-bar-txt-light'>
+                    <?php echo strtoupper($tax_places_to_go[0]->name);
+                    if ($parent) : echo ', <strong>' . $parent . '</strong>';
+                    endif; ?>
+                </p>
+                <?php } ?>
                 <div class="webmapp_post-title">
                     <h3>
                         <?php the_title()  ?>
                     </h3>
                 </div>
+                <div class="webmapp_post-distance-ascent">
+                    <h3>
+                        <?php echo $distance ." km ";  ?>
+                    </h3>
+                </div>
+            </div>
             
         </div>
-        <?php echo "</a>"; ?>
+
     </div>
-    
+
 </div>
