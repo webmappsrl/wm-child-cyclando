@@ -10,11 +10,11 @@
         $activity = 'activity';
         $diff_numero = get_field('n7webmapp_route_difficulty');
 
-        // $title_path = $array = [
-        //     'daisy' => 'Percorso a margherita',
-        //     'linear' => 'Percorso lineare',
-        //     'roundtrip' => 'Percorso ad anello'
-        // ];
+        $title_path = $array = [
+            'daisy' => 'Percorso a margherita',
+            'linear' => 'Percorso lineare',
+            'roundtrip' => 'Percorso ad anello'
+        ];
         $shape = get_field('shape');
 
         // get terms targets icon
@@ -220,9 +220,9 @@
 
                             } ?>
                     <?php if ($shape) {
-                    ?><div class="icon_holder"><?php
+                    ?>      <div class="icon_holder"><?php
                                                     ?><i class="<?php echo the_shape_icon($shape); ?>"><span
-                                class="textIcon"><?php echo __($shape, 'wm-child-cyclando'); ?></span></i></div>
+                                class="textIcon"><?php echo __($title_path[$shape], 'wm-child-cyclando'); ?></span></i></div>
                     <?php //$title_path[$shape]
                     } ?>
                     <?php if ($array_targets) {
@@ -238,7 +238,7 @@
                     ?><div class="icon_holder">
                         <i class="<?php $e = the_calcola_url($diff_numero); ?> wm_difficulty_icon_holder"><span
                                 class="textIcon wm_difficulty_number"><?php echo $diff_numero . '/5'; ?></span><span
-                                class="wm_difficulty_suffix"><?php echo __('Difficulty', 'wm-child-cyclando') ?></span></i>
+                                class="wm_difficulty_suffix"><?php echo __('Difficoltà', 'wm-child-cyclando') ?></span></i>
                         </div> <?php
                                 } ?>
                 </div>

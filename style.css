@@ -1876,7 +1876,7 @@ span.lapp {
 }
 
 .wm_template_advancedsearch span.textIcon {
-    text-transform: capitalize;
+    text-transform: initial;
 }
 .wm_template_advancedsearch .post_meta_with_icons {
     color: black;
