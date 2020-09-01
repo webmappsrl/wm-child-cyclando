@@ -2222,11 +2222,10 @@ span.route_duration_free {
 
     .page-id-62001 .facetwp-facet-dove_vuoi_andare .facetwp-autocomplete-update 
     {
-        top: 310px;
-        /* left: 5%; */
-        height: 65px;
-        width: 282%;
-        left: -47%;
+        top: 350px;
+        height: 55px;
+        width: 85%;
+        left: 37%;
         border-radius: 10px;
     }
 
@@ -2242,12 +2241,12 @@ span.route_duration_free {
 
     .page-id-62001 input.facetwp-autocomplete.ready
     {
-        top: 115px;
-        left: -49%;
-        width: 285%;
+        top: 149px;
+        left: 36%;
+        width: 85%;
         border-radius: 10px;
         font-size: 16px;
-        padding: 0 0 5% 45%;
+        padding: 0 0 2% 15%;
     }
 
     i.wm-icon-ios7-search-strong.fa-2x
