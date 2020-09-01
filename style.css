@@ -269,8 +269,9 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     .wm_difficulty_icon_holder:before {
         display: none;
     }
-    .wm_difficulty_icon_holder span {
-        float: left;
+    
+    .wm_template_advancedsearch span.textIcon {
+        line-height: 2;
     }
     .wm_template_advancedsearch .post_meta_with_icons .icon_holder i:before{
         display: none;
@@ -298,14 +299,11 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
         vertical-align: middle;
     }
     .wm_template_advancedsearch .webmapp_post-featured-img {
-        grid-template-rows: 1fr 1fr 2fr !important;
+        grid-template-rows: 1fr 1fr 1.3fr !important;
     }
     .wm_template_advancedsearch .post_meta_with_icons {
         display: block!important;
         height: auto!important;
-    }
-    .wm_template_advancedsearch .webmapp_post-featured-img {
-        grid-template-rows: 1fr 2fr 2fr;
     }
 }
 @media screen and (max-width: 768px) {
@@ -1812,7 +1810,7 @@ h4.whereSearchChild {
 i.wm-icon-calendar {
     position: absolute;
     left: 11%;
-    top: -184px;
+    top: -166px;
 }
 
 i.wm-icon-ios7-search-strong.fa-2x {
@@ -2110,7 +2108,7 @@ span.route_duration_free {
     i.wm-icon-ios7-search-strong.fa-2x 
     {
         position: absolute;
-        top: calc(35% + 2px);
+        top: calc(32% + 2px);
         left: 9%;
     }
 
@@ -2255,7 +2253,7 @@ span.route_duration_free {
     i.wm-icon-ios7-search-strong.fa-2x
     {
         left:12%;
-        top: 307px;
+        top: 132px;
     }
 
     .whenSearch h3.facet-label
