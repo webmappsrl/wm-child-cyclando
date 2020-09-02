@@ -283,6 +283,7 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     span.wm_difficulty_suffix {
         font-size: 16px;
         color: #3a3a3a;
+        line-height: 2;
     }
     .wm_template_advancedsearch .icon_holder {
         color: black;
