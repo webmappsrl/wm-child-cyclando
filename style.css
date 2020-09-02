@@ -98,7 +98,12 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
 .home-banner-content-h h2 {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.71);
 }
-
+body.page-template-default.page.page-parent #page-content,body.page-template-default.page.page-child #page-content {
+    padding: 2rem 0;
+}
+.wm-cyclando-page-divider-horizontal {
+    border-color: #fff;
+}
 @media screen and (min-width: 1137px) and (max-width: 1350px) {
     body .webmapp-anypost-template-cy_route .webmapp_post_meta .prezzo-tab p {
         font-size: 26px;
@@ -141,13 +146,16 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
     }
 }
 
-@media screen and (max-width: 990px) {
+@media screen and (max-width: 900px) {
     body div#ccchildpages-1 {
         grid-template-columns: 1fr;
     }
-}
-
-@media screen and (max-width: 900px) {
+    .l-subheader-sticky-mobile .menu-item:hover .w-nav-anchor, .l-subheader-sticky-mobile .menu-item:focus .w-nav-anchor, .l-subheader-sticky-mobile .menu-item:active .w-nav-anchor{
+        color: #fff!important;
+    }
+    .no-touch .menu-item.level_1.opened>.w-nav-anchor {
+        color: #fff!important;
+    }
     #page-content .Home-intro-banner {
         min-height: 75vh;
     }
