@@ -6,7 +6,7 @@ function wm_hs_api_create_contact( $user_id ) {
 
     //Hubspot APIKEY location => wp-config.php
     $hapikey = HUBSPOTAPIKEY;
-    
+
     $user_obj = get_userdata($user_id);
     $username = ucfirst($user_obj->user_login);
     $userfname = ucfirst($user_obj->first_name);
@@ -39,12 +39,6 @@ function wm_hs_api_create_contact( $user_id ) {
     $err = curl_error($curl);
 
     curl_close($curl);
-
-    if ($err) {
-    echo "cURL Error #:" . $err;
-    } else {
-    echo $response;
-    }
 
 }
 
