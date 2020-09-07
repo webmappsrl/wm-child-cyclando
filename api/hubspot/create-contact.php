@@ -4,7 +4,9 @@ add_action( 'user_register', 'wm_hs_api_create_contact', 10, 1 );
 
 function wm_hs_api_create_contact( $user_id ) {
 
-    $hapikey = HAPIKEY;
+    //Hubspot APIKEY location => wp-config.php
+    $hapikey = HUBSPOTAPIKEY;
+    
     $user_obj = get_userdata($user_id);
     $username = ucfirst($user_obj->user_login);
     $userfname = ucfirst($user_obj->first_name);
