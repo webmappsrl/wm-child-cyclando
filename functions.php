@@ -7,7 +7,7 @@ require ('shortcodes/dashboard_wizard_button.php');
 require ('shortcodes/mobile_menu_quote_form.php');
 require ('shortcodes/menu_search_facetwp_wizard.php');
 require ('url_filters.php');
-require ('api/hubspot/api-loader.php');
+require ('api/api-loader.php');
 
 if ( class_exists( 'WP_CLI' ) ) {
     require ('wp-cli/cy-index-routes.php');
