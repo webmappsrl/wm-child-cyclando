@@ -13,11 +13,16 @@ function wm_hs_api_create_contact( $user_id ) {
     $userlname = ucfirst($user_obj->last_name);
     $useremail = $user_obj->user_email;
     $usernewsletter = get_user_meta($user_id,'newsletter');
+    if ($usernewsletter[0] == '1' ){
+        $newsletter = "true";
+    } else {
+        $newsletter = "false";
+    }
 
     if (empty($userfname) || empty($userlname)) {
-        $CURLOPT_POSTFIELDS = "{\"properties\":{\"app_user\":\"true\",\"email\":\"$useremail\",\"firstname\":\"$username\",\"app_user_iscritto_newsletter\":\"$usernewsletter\"}}";
+        $CURLOPT_POSTFIELDS = "{\"properties\":{\"app_user\":\"true\",\"email\":\"$useremail\",\"firstname\":\"$username\",\"app_user_iscritto_newsletter\":\"$newsletter\"}}";
     } else {
-        $CURLOPT_POSTFIELDS = "{\"properties\":{\"app_user\":\"true\",\"email\":\"$useremail\",\"firstname\":\"$userfname\",\"lastname\":\"$userlname\",\"app_user_iscritto_newsletter\":\"$usernewsletter\"}}";
+        $CURLOPT_POSTFIELDS = "{\"properties\":{\"app_user\":\"true\",\"email\":\"$useremail\",\"firstname\":\"$userfname\",\"lastname\":\"$userlname\",\"app_user_iscritto_newsletter\":\"$newsletter\"}}";
     }
     $curl = curl_init();
 
