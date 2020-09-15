@@ -12,11 +12,12 @@ function wm_hs_api_create_contact( $user_id ) {
     $userfname = ucfirst($user_obj->first_name);
     $userlname = ucfirst($user_obj->last_name);
     $useremail = $user_obj->user_email;
+    $usernewsletter = get_user_meta($user_id,'newsletter');
 
     if (empty($userfname) || empty($userlname)) {
-        $CURLOPT_POSTFIELDS = "{\"properties\":{\"app_user\":\"true\",\"email\":\"$useremail\",\"firstname\":\"$username\"}}";
+        $CURLOPT_POSTFIELDS = "{\"properties\":{\"app_user\":\"true\",\"email\":\"$useremail\",\"firstname\":\"$username\",\"app_user_iscritto_newsletter\":\"$usernewsletter\"}}";
     } else {
-        $CURLOPT_POSTFIELDS = "{\"properties\":{\"app_user\":\"true\",\"email\":\"$useremail\",\"firstname\":\"$userfname\",\"lastname\":\"$userlname\"}}";
+        $CURLOPT_POSTFIELDS = "{\"properties\":{\"app_user\":\"true\",\"email\":\"$useremail\",\"firstname\":\"$userfname\",\"lastname\":\"$userlname\",\"app_user_iscritto_newsletter\":\"$usernewsletter\"}}";
     }
     $curl = curl_init();
 
@@ -39,6 +40,5 @@ function wm_hs_api_create_contact( $user_id ) {
     $err = curl_error($curl);
 
     curl_close($curl);
-
 }
 
