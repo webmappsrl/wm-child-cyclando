@@ -1271,6 +1271,32 @@ body .blog-grid  #us_grid_1 .usg_hwrapper_1 {
     left: 0;
     transform: rotate(-27deg);
 }
+/* CODIV-19 CSS banner */
+header#page-header.sticky {
+    top: 0;
+}
+.covidbanner {
+    background-color: #faf1ed;
+}
+.covidbanner-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1240px;
+    margin: 0 auto;
+    width: 100%;
+    font-size: 13px;
+    padding: 5px 0;
+}
+.covidbanner-container a {
+    color: black;
+}
+.covidbanner-container a:hover {
+    text-decoration: underline;
+}
+span.cy-close-covidbanner {
+    font-size: 24px;
+    cursor: pointer;
+}
 /* menu search element */
 #page-header .l-subheader-cell.at_center {
     display: none;
