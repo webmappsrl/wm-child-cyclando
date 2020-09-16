@@ -1051,9 +1051,9 @@ div#popup-show-prices>div {
     padding-bottom: 40px;
 }
 
-body .l-header.pos_fixed~.l-main>.l-section:first-of-type {
+/* body .l-header.pos_fixed~.l-main>.l-section:first-of-type {
     padding-top: 0;
-}
+} */
 
 .route-template-default .intro-section .l-sidebar .vc_column-inner {
     /* background-color: var(--color-primary-background); */
