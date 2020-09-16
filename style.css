@@ -1278,6 +1278,18 @@ header#page-header.sticky {
 .covidbanner {
     background-color: #faf1ed;
 }
+.covidbanner.with-wp-admin-bar {
+    position: fixed;
+    top: 32px;
+    width: 100%;
+    z-index: 10;
+}
+.covidbanner.without-wp-admin-bar {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 10;
+}
 .covidbanner-container {
     display: flex;
     justify-content: space-between;

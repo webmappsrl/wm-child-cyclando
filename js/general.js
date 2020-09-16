@@ -33,15 +33,29 @@ jQuery(document).ready(function () {
   jQuery("<div class='covidbanner'><div class='covidbanner-container'><span> AVVISO PER CHI VIAGGIA: <a href='https://cyclando.com/assicurazione-covid/'>scopri di più sul COVID-19</a></span> <span class='cy-close-covidbanner'>&times;</span></div></div>").insertBefore(".l-canvas.type_wide");
   const covidBanner = document.querySelector('.covidbanner');
   const closeCovidBtn = document.querySelector('.covidbanner .cy-close-covidbanner');
+  const wpAdminBar = document.querySelector('#wpadminbar');
+  
+  if (wpAdminBar) {
+	jQuery('html').attr('style','margin-top:70px!important');
+	covidBanner.classList.add("with-wp-admin-bar");
+  } else {
+	jQuery('html').attr('style','margin-top:38px!important');
+	covidBanner.classList.add("without-wp-admin-bar");
+
+  }
   closeCovidBtn.addEventListener('click', closeCovidBanner);
   function closeCovidBanner() {
 	covidBanner.style.display = 'none';
 	Cookies.set('wm_covid_banner_cookie', 'wm_covid_banner_visited', { expires: 30, path: '/' });
+	covidBanner.classList.remove("without-wp-admin-bar");
+	covidBanner.classList.remove("without-wp-admin-bar");
+	jQuery('html').removeAttr('style');
   }
   covidCookieValue = Cookies.get("wm_covid_banner_cookie");
   if (covidCookieValue == 'wm_covid_banner_visited') {
 	covidBanner.style.display = 'none';
   }
+
 
   // End covid banner
 
