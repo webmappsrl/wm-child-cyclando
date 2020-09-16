@@ -470,7 +470,10 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
     -webkit-box-orient: vertical;
 }
 
-.webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info p {
+.webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info p.route_first_date {
+    min-width: 130px;
+}
+.webmapp-anypost-template-cy_route .post_meta_info .post_meta_info p {
     margin: 0;
     font-size: 14px;
     line-height: 19px;
