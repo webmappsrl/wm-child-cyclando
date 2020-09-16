@@ -6,16 +6,7 @@
       $(".autocomplete-suggestions").remove();
 	});
 	if (FWP.loaded) { 
-		const facetwpPaged = document.querySelectorAll('.facetwp-page');
-		facetwpPaged.forEach((button) => {
-			button.addEventListener('click', wmScrollTop);
-		});
-	}
-
-	function wmScrollTop() {
-		$('html, body').animate({
-			scrollTop: $('#page-content').offset().top-40
-		}, 1000);
+		facetwpPagedScrollTop();
 	}
   });
 })(jQuery);
@@ -36,6 +27,18 @@ jQuery(document).ready(function () {
   var count = 0;
   zSearch = 0;
 
+  function facetwpPagedScrollTop (){
+	var facetwpPaged = document.querySelectorAll('.facetwp-page');
+	facetwpPaged.forEach((button) => {
+		button.addEventListener('click', wmScrollTop);
+	});
+  }
+  function wmScrollTop() {
+	jQuery('html, body').animate({
+		scrollTop: jQuery('#page-content').offset().top-40
+	}, 1000);
+  }
+  facetwpPagedScrollTop();
   // Covid banner
   jQuery("<div class='covidbanner'><div class='covidbanner-container'><span> AVVISO PER CHI VIAGGIA: <a href='https://cyclando.com/assicurazione-covid/'>scopri di più sul COVID-19</a></span> <span class='cy-close-covidbanner'>&times;</span></div></div>").insertBefore(".l-canvas.type_wide");
   const covidBanner = document.querySelector('.covidbanner');
