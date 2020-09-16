@@ -4,12 +4,19 @@
     const $el = $('.facetwp-facet-dove_vuoi_andare input[type="text"]');
     $el.on("blur keydown input change keyup focus", () => {
       $(".autocomplete-suggestions").remove();
-    });
-    // if (FWP.loaded) {
-    //     $('html, body').animate({
-    //         scrollTop: $('#page-content').offset().top
-    //     }, 500);
-    // }
+	});
+	if (FWP.loaded) { 
+		const facetwpPaged = document.querySelectorAll('.facetwp-page');
+		facetwpPaged.forEach((button) => {
+			button.addEventListener('click', wmScrollTop);
+		});
+	}
+
+	function wmScrollTop() {
+		$('html, body').animate({
+			scrollTop: $('#page-content').offset().top-40
+		}, 1000);
+	}
   });
 })(jQuery);
 
