@@ -45,15 +45,18 @@ jQuery(document).ready(function () {
   }
   closeCovidBtn.addEventListener('click', closeCovidBanner);
   function closeCovidBanner() {
-	covidBanner.style.display = 'none';
 	Cookies.set('wm_covid_banner_cookie', 'wm_covid_banner_visited', { expires: 30, path: '/' });
+	clearCookieStyle();
+  }
+  function clearCookieStyle() {
+	covidBanner.style.display = 'none';
 	covidBanner.classList.remove("without-wp-admin-bar");
 	covidBanner.classList.remove("without-wp-admin-bar");
 	jQuery('html').removeAttr('style');
   }
   covidCookieValue = Cookies.get("wm_covid_banner_cookie");
   if (covidCookieValue == 'wm_covid_banner_visited') {
-	covidBanner.style.display = 'none';
+	clearCookieStyle();
   }
 
 
