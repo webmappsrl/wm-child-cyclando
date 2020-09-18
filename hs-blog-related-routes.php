@@ -4,6 +4,7 @@ $route_ids = $_GET['id'];
 ?>
 
 <head>
+    <style>.webmapp_anypost_shortcode { padding:0 20px!important; } .webmapp_post_image { height:200px!important; }</style>
     <link rel="stylesheet" id="route-single-post-style-css"
         href="https://cyclando.com/wp-content/themes/wm-child-cyclando/single-route-style.css?ver=5.4.2" type="text/css"
         media="all">
