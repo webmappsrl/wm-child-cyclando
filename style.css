@@ -453,7 +453,7 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
     -webkit-box-orient: vertical;
     justify-self: start;
     width: fit-content;
-    min-width: 130px;
+    min-width: 140px;
 }
 .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info {
     font-family: var(--font-family-primary);
