@@ -510,6 +510,13 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
     padding: 15px 10px;
     display: grid;
 }
+.webmapp-anypost-template-cy_route_advancedsearch .webmapp_post_meta .prezzo-tab.coming-soon-button {
+    background-color: var(--color-secondary);
+}
+.webmapp-anypost-template-cy_route_advancedsearch .webmapp_post_meta .prezzo-tab.coming-soon-button p{
+    font-size: 20px;
+    max-width: 130px;
+}
 .webmapp-anypost-template-cy_route .webmapp_post_meta .prezzo-tab.coming-soon-button {
     background-color: var(--color-secondary);
     line-height: 20px;
@@ -1512,7 +1519,7 @@ tour italia
     transition: 500ms;
 }
 .single-post-wm:hover {
-    box-shadow: 3px 3px 11px #dedede, -3px -3px 11px #dedede, 3px -3px 10px #dedede, -3px 3px 10px #dedede;
+    box-shadow: 3px 3px 11px #dedede, -3px -3px 11px #dedede, 3px -3px 10px #dedede, -3px 3px 10px #dedede!important;
     transition: 500ms;
 }
 @media screen and (min-width: 900px) and (max-width: 1137px) {
