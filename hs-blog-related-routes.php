@@ -1,4 +1,4 @@
-<?php /* Template Name: related-routes */
+<?php /* Template Name: hs-blog-related-routes */
 wp_head();
 $route_ids = $_GET['id'];
 
