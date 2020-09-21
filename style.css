@@ -163,7 +163,12 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
         width: 100%;
     }
     #cy-search-element-container {
-        display: grid!important;
+        flex-direction: column;
+        width: 90%!important;
+        gap: 20px;
+    }
+    #cy-search-element-container #cy-search-lente {
+        
     }
     #cy-search-lente {
         /* display: none; */
@@ -318,9 +323,6 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
 @media screen and (max-width: 768px) {
     h2 {
         font-size: 26px!important;
-    }
-    .Home-intro-banner .l-section-h.i-cf {
-        padding: 6rem 0 4rem;
     }
 }
 @media screen and (min-width: 768px) {
@@ -843,19 +845,14 @@ body #iubenda_policy .iub_content.legal_pp p {
 
 #cy-search-element-container{
     display: flex;
-    justify-content: center;
-    padding: 17px 0;
-    width: 850px;
-    border-radius: 50px;
-    margin: 4% 0% 0% 26%
-
-}
-#cy-search-element-container {
+    width: 860px;
+    margin: 0 auto;
+    border: solid 15px rgba(0,0,0,0.0);
     background-color: rgba(0,0,0,0.5);
+    border-radius: 50px;
+    margin-top: 70px;
+
 }
-
-
-
 #cy-search-element-container .facetwp-autocomplete{
     /*padding: 20px 22px 20px 8px;*/
     font-size: 20px;
@@ -899,7 +896,8 @@ select.facetwp-dropdown{
 div#cy-search-lente  {
    /* padding: 20px 22px 20px 8px;*/
     font-size: 20px;
-    line-height: 17px;
+    line-height: 48px;
+    text-align: center;
     background-color: #fffc;
     height: 3.4rem;
     border-radius: 0px 30px 30px 0px;
@@ -939,8 +937,7 @@ div#cy-search-lente  {
 }
 
 #cy-search-element-container #cy-search-lente {
-    width: 220px;
-    padding: 2% 0% 0px 4%;
+    width: 240px;
     background-color: var(--color-secondary);
     font-size: 21px;
     font-weight: 600;
@@ -1529,9 +1526,6 @@ tour italia
         width: 80%;
 
     }
-    #cy-search-element-container {
-        margin: 4% 0% 0% 8%;
-    }
     
 }
 
@@ -1542,10 +1536,6 @@ tour italia
 
     }
     
-    #cy-search-element-container {
-        margin: 4% 0% 0% 16%;
-    }
-    
 }
 
 
@@ -1554,53 +1544,11 @@ i.cy-icons.icon-search1 {
 }
 
 @media screen and (max-width: 600px) {
+    .arrow-down-container {
+        display: none;
+    }
     .webmapp_shortcode_any_post.post_type_route {
         padding: 0 0!important;
-    }
-    
-    #cy-search-element-container #cy-search-lente {
-        /* width: 220px; */
-        padding: 6% 0% 0px 0%;
-        background-color: var(--color-secondary);
-        font-size: 21px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all .3s ease;
-        text-align: -webkit-center;
-    }
-    #cy-search-element-container {
-        margin: -25% 0% 4% 5%;
-        width: 90%;
-        height: 100%;
-        border-radius: 20px;
-        padding: 3% 0% 3% 0% ;
-        background-color: rgba(0,0,0,0.3)
-    }
-
-  
-    
-    .home-banner-content-h {
-        position: relative;
-        right: 0%;
-        top: -40%;
-        bottom: 30%;
-    }
-
-    .facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-autocomplete {
-        /* display: none; */
-        padding: 0% 0% 10% 2%;
-        position: relative;
-        left: -30%;
-    }
-    #cy-search-element-container .facetwp-autocomplete {
-        border-radius: 15px 15px 15px 15px;
-        margin: 0% 0% 6% 4%;
-        width: calc(100% + 16%);
-        position: relative;
-        left: 18%;
-        padding: 0px;
-        background-color: rgb(253, 252, 252,1);
-
     }
 
     h2.h2Home {
@@ -1609,25 +1557,7 @@ i.cy-icons.icon-search1 {
         position: relative;
         /* top: -70%; */
     }
-
-    select.facetwp-dropdown {
-        border-radius: 15px;
-        width: calc(100% + 15%);
-        position: relative;
-        left: -7%;
-        margin: -2% 0% 13% 0%;
-        padding: 0px;
-    }
-
-    div#cy-search-lente
-    {
-        border-radius: 15px;
-        /* width: 100%; */
-        position: relative;
-        width: calc(100% + 15%) !important;
-        left: -8%;
-    }
-
+    
     .l-section-img.loaded {
         opacity: 1;
         height: 76%;
@@ -1682,18 +1612,6 @@ i.cy-icons.icon-search1 {
   
     
     
-}
-
-@media screen and (min-width: 600px) and (max-width: 900px) {
-
-    #cy-search-element-container {
-        background-color: rgba(0,0,0,0.5);
-        position: relative;
-        right: 22%;
-        width: 90%;
-    }
-    
-  
 }
 
 /*comportamento Quando*/
@@ -2486,30 +2404,6 @@ span.route_duration_free {
 {
     .page-id-62001 div#filterSearchDropdown {
         margin: 42% 0 0 0;
-    }
-
-}
-
-@media screen and (min-width: 1500px) and (max-width: 1582px)
-{
-    #cy-search-element-container {
-        margin: 4% 0% 0% 23%;
-    }
-
-}
-
-@media screen and (min-width: 1400px) and (max-width: 1500px)
-{
-    #cy-search-element-container {
-        margin: 4% 0% 0% 21%;
-    }
-
-}
-
-@media screen and (min-width: 1300px) and (max-width: 1400px)
-{
-    #cy-search-element-container {
-        margin: 4% 0% 0% 19%;
     }
 
 }
