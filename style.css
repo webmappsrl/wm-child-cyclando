@@ -173,9 +173,23 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
         flex-direction: column;
         width: 90%!important;
         gap: 20px;
+        border-radius: 25px!important;
+        margin-top: 20px!important;
+        transition: all .3s ease;
+    }
+    #cy-search-element-container .facetwp-autocomplete {
+        transition: all .3s ease;
+        border-radius: 15px!important;
+        width: 100%!important;
+    }
+    #cy-search-element-container select.facetwp-dropdown {
+        transition: all .3s ease;
+        border-radius: 15px!important;
+        width: 100%!important;
     }
     #cy-search-element-container #cy-search-lente {
-        
+        transition: all .3s ease;
+        border-radius: 15px;
     }
     #cy-search-lente {
         /* display: none; */
@@ -857,11 +871,11 @@ body #iubenda_policy .iub_content.legal_pp p {
     display: flex;
     width: 860px;
     margin: 0 auto;
-    border: solid 15px rgba(0,0,0,0.0);
+    border: solid 20px rgba(0,0,0,0.0);
     background-color: rgba(0,0,0,0.5);
     border-radius: 50px;
     margin-top: 70px;
-
+    transition: all .3s ease;
 }
 #cy-search-element-container .facetwp-autocomplete{
     /*padding: 20px 22px 20px 8px;*/
