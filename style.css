@@ -457,7 +457,6 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
     color: black;
     padding: 20px 20px;
     font-weight: 900;
-    height: 100%;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 2fr;
@@ -1598,24 +1597,6 @@ i.cy-icons.icon-search1 {
         width: 2000%;
         font-size: 33px !important;
     }
-
-    span.leavingFrom:not(:root:root) , span.leavingFromPromo:not(:root:root)  {
-        
-        bottom: 91px;
-        left: 64%;
-        position: relative;
-
-    }
-
-    span.cifra:not(:root:root) , span.cifraPromo:not(:root:root)  {
-       
-        left: 33%;
-        position: relative;
-        bottom: 57px;
-    }
-
-  
-    
     
 }
 
