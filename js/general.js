@@ -80,15 +80,13 @@ jQuery(document).ready(function () {
 
   // End covid banner
 
-
-  jQuery(document).on("facetwp-loaded", function () {
+  
+  jQuery(document).one("facetwp-loaded", function () {
+    jQuery(".cy-facetwp-cerca-quando").append(jQuery(".cy-facetwp-cerca-where input.facetwp-autocomplete-update"));
     jQuery(".cy-facetwp-cerca-quando input.facetwp-autocomplete-update").html("CERCA");
     jQuery(".cy-facetwp-cerca-quando input.facetwp-autocomplete-update").val("CERCA");
   });
-  jQuery(window).on('load', function() {
-    jQuery(".cy-facetwp-cerca-quando").append(jQuery(".cy-facetwp-cerca-where input.facetwp-autocomplete-update"));
-  });
-  
+
   //mobile and desktop button management on first loading
   if (jQuery(window).width() >= 700) {
     jQuery("#buttonFilterSearch").hide();
