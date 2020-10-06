@@ -81,21 +81,10 @@ jQuery(document).ready(function () {
   // End covid banner
 
 
-  //change quando ? in
   jQuery(document).on("facetwp-loaded", function () {
-    //jQuery(".whenSearch select > option:nth-child(1)").html("In quale mese?");
-  });
-
-  jQuery(document).on("facetwp-loaded", function () {
-    jQuery(".cy-facetwp-cerca-where input.facetwp-autocomplete-update").html("CERCA");
-  });
-
-  jQuery(document).on("facetwp-loaded", function () {
-    jQuery(".cy-facetwp-cerca-where input.facetwp-autocomplete-update").val("CERCA");
-  });
-
-  jQuery(document).on("facetwp-loaded", function () {
-    //jQuery(".whenSearch h3").html("QUANDO");
+    jQuery(".cy-facetwp-cerca-quando").append(jQuery(".cy-facetwp-cerca-where input.facetwp-autocomplete-update"));
+    jQuery(".cy-facetwp-cerca-quando input.facetwp-autocomplete-update").html("CERCA");
+    jQuery(".cy-facetwp-cerca-quando input.facetwp-autocomplete-update").val("CERCA");
   });
 
   jQuery(document).on("facetwp-loaded", function () {
