@@ -83,7 +83,7 @@ jQuery(document).ready(function () {
 
   //change quando ? in
   jQuery(document).on("facetwp-loaded", function () {
-    jQuery(".whenSearch select > option:nth-child(1)").html("In quale mese?");
+    //jQuery(".whenSearch select > option:nth-child(1)").html("In quale mese?");
   });
 
   jQuery(document).on("facetwp-loaded", function () {
@@ -95,18 +95,18 @@ jQuery(document).ready(function () {
   });
 
   jQuery(document).on("facetwp-loaded", function () {
-    jQuery(".whenSearch h3").html("QUANDO");
+    //jQuery(".whenSearch h3").html("QUANDO");
   });
 
   jQuery(document).on("facetwp-loaded", function () {
-    if (count == 0) {
+    //if (count == 0) {
       //check per non moltiplicare elementi
       //jQuery(".whereSearch").prepend('<h4 class="tripSearch">Viaggi in Bici</h4>');
-      jQuery(".whereSearch .facet-wrap").prepend(
-        '<h4 class="whereSearchChild">DOVE</h4>'
-      );
-      count++;
-    }
+      // jQuery(".whereSearch .facet-wrap").prepend(
+      //   '<h4 class="whereSearchChild">DOVE</h4>'
+      // );
+      // count++;
+    //}
   });
 
   //mobile and desktop button management on first loading
