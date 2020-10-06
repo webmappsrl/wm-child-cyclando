@@ -1669,9 +1669,12 @@ a.facetwp-page.active:hover {
     border-radius: 20px;
     height: 420px;
     border: 1px solid #ccc;
+    padding: 20px;
 }
-
-.whereSearch .facetwp-autocomplete {
+.cerca-facet-where-container {
+    margin-bottom: 40;
+}
+.cy-facetwp-cerca-quando .facetwp-autocomplete {
     z-index: 1;
 }
 
@@ -1686,12 +1689,6 @@ h4.tripSearch {
     font-size: 20px;
 }
 
-h4.whereSearchChild {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
-    font-weight: 900;
-}
-
 .whenSearch h3.facet-label {
     font-size: 15px;
     font-family: 'Montserrat', sans-serif;
@@ -1699,7 +1696,7 @@ h4.whereSearchChild {
     padding: 0 0 1% 1%;
 }
 
-.whereSearch h3 {
+.cy-facetwp-cerca-quando h3 {
     font-family: 'Montserrat Alternates', sans-serif;
     font-weight: 500;
     font-size: 1.8em;
@@ -1719,9 +1716,6 @@ h4.whereSearchChild {
     border: 1px solid #ccc;
     padding: 0 0 0 13%;
 }
-
-
-
 .page-id-62001 .facetwp-facet-dove_vuoi_andare .facetwp-autocomplete-update {
     padding: 5px 10px;
     margin-top: 10px;
@@ -1733,7 +1727,9 @@ h4.whereSearchChild {
     background: var(--color-secondary);
     color: white;
 }
-
+.cy-facetwp-cerca-where .facetwp-facet-dove_vuoi_andare,.cy-facetwp-cerca-where .facetwp-facet-quando_vuoi_partire {
+    margin: 0;
+}
 .page-id-62001 select.facetwp-dropdown {
     font-size: 16px;
     height: 3.4rem;
@@ -1745,10 +1741,8 @@ h4.whereSearchChild {
     background: white !important;
     padding: 0 0 0 16%;
     opacity: 0.7;
-
+    width: 100%!important;
 }
-
-
 .wm_template_advancedsearch .post_meta_info p {
     font-size: 30px;
     line-height: 24px;
@@ -1957,118 +1951,6 @@ span.route_duration_free {
 }
 
 
-@media screen and (min-width: 900px) and (max-width: 1450px)
-{
-    .whereSearch
-    {
-        width: 320px;
-    }
-
-    .whereSearch h3
-    {
-        position: absolute;
-        left: 6%;
-        top: 7%;
-    }
-
-    .page-id-62001 select.facetwp-dropdown
-    {
-        width: 90%;
-    }
-
-    .wm_template_advancedsearch
-    {
-        width: 100%;
-        margin: 0% 0% 0 -2%;
-    }
-
-    .countsSearch {
-        /* display: none; */
-        margin: 2px 0 1% -2%;
-        font-size: 30px;
-    }
-    
-    .selectionsSearch {
-        margin: 0 0 0 -2%;
-    }
-
-    .page-id-62001 select.facetwp-dropdown
-    {
-        padding: 0 0 0 13%;
-    }
-
-
-    .wm_template_advancedsearch .post_meta_info 
-    {
-        top: 6%;
-        width: 13%;
-    }
-
-    .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .webmapp_post_meta .post_meta_info {
-        width:122px;
-        min-height: 0px;
-    }
-
-    .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .single-post-wm .scarica-app
-    {
-        left: -4%;
-
-    }
-
-    .wm_template_advancedsearch span.cifra, span.cifraPromo 
-    {
-        left: 9%;
-    }
-
-
-}
-
-@media screen and (min-width: 900px) and (max-width: 1250px)
-{
-
-    i.wm-icon-ios7-search-strong.fa-2x 
-    {
-        position: absolute;
-        top: calc(32% + 2px);
-        left: 9%;
-    }
-
-    .wm_template_advancedsearch span.cifra, span.cifraPromo 
-    {
-        left: 6%;
-
-    }
-    
-
-}
-
-@media screen and (min-width: 1450px) and (max-width: 1738px)
-{
-    .wm_template_advancedsearch span.route_duration
-    {
-        width: 121px;
-
-    }
-
-    .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .single-post-wm .scarica-app
-    {
-        left: 20%;
-
-    }
-    
-}
-
-@media screen and (min-width: 900px) and (max-width: 1250px)
-{
-
-    .page-id-62001 input.facetwp-autocomplete.ready:not(:root:root)
-{
-    padding: 0 0 0 45%;
-}
-
-
-}
-
 
 @media screen and (max-width: 600px)
 {
@@ -2117,12 +1999,6 @@ span.route_duration_free {
         margin: 0% 0 0 0;
     }
 
-    .whereSearch
-    {
-        margin: 0% 0 0 0;
-        width: 100%;
-    }
-
      .page-id-62001 .facetwp-counts {
         font-size: 18px;
     }
@@ -2142,26 +2018,11 @@ span.route_duration_free {
     {
         top: 307px;
         height: 55px;
-        width: 85%;
-        left: 37%;
         border-radius: 10px;
-    }
-
-    .whereSearch h3
-    {
-        left: 9%
-    }
-
-    h4.whereSearchChild
-    {
-        left:10%;
     }
 
     .page-id-62001 input.facetwp-autocomplete.ready
     {
-        top: 115px;
-        left: 36%;
-        width: 85%;
         border-radius: 10px;
         font-size: 16px;
         padding: 0 0 2% 15%;
@@ -2182,10 +2043,7 @@ span.route_duration_free {
     .page-id-62001 select.facetwp-dropdown
     {
         font-size: 16px;
-        width: 84%;
-        top: -190px;
         border-radius: 10px;
-        left: 7%;
         padding: 0 0 0 17%;
     }
 
@@ -2361,10 +2219,5 @@ span.route_duration_free {
     }
     .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .webmapp_post_image {
         border-radius: 20px 20px 0 0px;
-    }
-}
-@media screen and (max-width: 1600px){
-    .whereSearch h3 {
-        font-size: 1.6em!important;
     }
 }

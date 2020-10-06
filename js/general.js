@@ -87,11 +87,11 @@ jQuery(document).ready(function () {
   });
 
   jQuery(document).on("facetwp-loaded", function () {
-    jQuery(".whereSearch input.facetwp-autocomplete-update").html("CERCA");
+    jQuery(".cy-facetwp-cerca-where input.facetwp-autocomplete-update").html("CERCA");
   });
 
   jQuery(document).on("facetwp-loaded", function () {
-    jQuery(".whereSearch input.facetwp-autocomplete-update").val("CERCA");
+    jQuery(".cy-facetwp-cerca-where input.facetwp-autocomplete-update").val("CERCA");
   });
 
   jQuery(document).on("facetwp-loaded", function () {
