@@ -2112,10 +2112,20 @@ span.route_duration_free {
 }
 @media screen and (min-width: 768px) and (max-width: 1620px)
 {
- .cerca-facet-where-container h3 {
-     font-size: 20px;
-     transition: all .3s ease;
- }   
+    .cerca-facet-where-container h3 {
+        font-size: 20px;
+        transition: all .3s ease;
+    } 
+    input.facetwp-autocomplete.ready::placeholder {
+        font-size: 13px;
+    }
+    .page-id-62001 select.facetwp-dropdown {
+        font-size: 14px!important;
+        padding: 0 0 0 22%;
+    }
+    .page-id-62001 input.facetwp-autocomplete.ready {
+        padding: 0 0 0 20%;
+    }
 }
 
 @media screen and (min-width: 601px) and (max-width: 990px)

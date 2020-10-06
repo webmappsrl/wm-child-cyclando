@@ -82,22 +82,13 @@ jQuery(document).ready(function () {
 
 
   jQuery(document).on("facetwp-loaded", function () {
-    jQuery(".cy-facetwp-cerca-quando").append(jQuery(".cy-facetwp-cerca-where input.facetwp-autocomplete-update"));
     jQuery(".cy-facetwp-cerca-quando input.facetwp-autocomplete-update").html("CERCA");
     jQuery(".cy-facetwp-cerca-quando input.facetwp-autocomplete-update").val("CERCA");
   });
-
-  jQuery(document).on("facetwp-loaded", function () {
-    //if (count == 0) {
-      //check per non moltiplicare elementi
-      //jQuery(".whereSearch").prepend('<h4 class="tripSearch">Viaggi in Bici</h4>');
-      // jQuery(".whereSearch .facet-wrap").prepend(
-      //   '<h4 class="whereSearchChild">DOVE</h4>'
-      // );
-      // count++;
-    //}
+  jQuery(window).on('load', function() {
+    jQuery(".cy-facetwp-cerca-quando").append(jQuery(".cy-facetwp-cerca-where input.facetwp-autocomplete-update"));
   });
-
+  
   //mobile and desktop button management on first loading
   if (jQuery(window).width() >= 700) {
     jQuery("#buttonFilterSearch").hide();
