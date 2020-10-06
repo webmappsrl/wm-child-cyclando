@@ -1670,18 +1670,22 @@ a.facetwp-page.active:hover {
 .cy-facetwp-cerca-where h4, .cy-facetwp-cerca-quando h4 {
     font-size: 20px;
     font-weight: 500;
-    margin-top: 20px;
+    margin-top: 25px;
     margin-bottom: 10px;
 }
 .cy-facetwp-cerca-where i {
     position: absolute;
-    top: 61px;
+    top: 51px;
     left: 15px;
 }
 .cy-facetwp-cerca-quando i {
     position: absolute;
-    top: 68px;
+    top: 54px;
     left: 15px;
+}
+.divFilterSearchDrop {
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 .cerca-facet-where-container > .vc_column-inner > .wpb_wrapper {
     box-shadow: 2px 2px 5px #dedede, -2px -2px 5px #dedede, 2px -2px 5px #dedede, -2px 2px 5px #dedede;
@@ -1737,7 +1741,7 @@ h4.tripSearch {
 }
 .page-id-62001 .cy-facetwp-cerca-quando .facetwp-autocomplete-update {
     padding: 5px 10px;
-    margin-top: 10px;
+    margin-top: 40px;
     height: 55px;
     border-radius: 30px;
     box-shadow: 0 0 0 2px transparent, 0 1px 0 rgba(0,0,0,0.08);
@@ -1844,7 +1848,6 @@ h4.tripSearch {
     height: 68px;
     padding: 0 0 0 0%;
     left: 30%;
-    /* display: grid; */
     border-radius: 10px;
     position: relative;
     width: 122px;
@@ -1882,16 +1885,6 @@ h4.tripSearch {
 }
 
 
-.wm_template_advancedsearch span.route_duration:not(:root:root)
-{
-    width: 132px;
-}
-
-.wm_template_advancedsearch .title-holder:not(:root:root)
-{
-    margin: 7% 0 0 5px;
-}
-
 span.route_duration_free {
     color: white;
     background: var(--color-secondary);
@@ -1899,7 +1892,6 @@ span.route_duration_free {
     font-size: 20px;
     border-radius: 5px;
     text-transform: uppercase;
-    /* width: 105%; */
 }
 
 .meta-bar-txt-title {
@@ -1921,14 +1913,9 @@ span.route_duration_free {
 .webmapp-anypost-template-cy_route span.partireDa {
     color: white;
     text-transform: uppercase;
-    /* position: relative; */
     font-size: 12px;
     background: var(--color-primary);
     padding: 3% 6% 15% 6%;
-    /* left: 126%; */
-    /* border: cadetblue; */
-    /* bottom: 0%; */
-    /* top: -46px; */
     margin: 0% 0 0% 0;
     border-radius: 7px;
 }
@@ -2046,31 +2033,6 @@ span.route_duration_free {
         padding: 0 0 2% 15%;
     }
 
-    i.wm-icon-ios7-search-strong.fa-2x
-    {
-        left:12%;
-        top: 132px;
-    }
-
-    .whenSearch h3.facet-label
-    {
-        top: -223px;
-        left: 10%;
-    }
-
-    .page-id-62001 select.facetwp-dropdown
-    {
-        font-size: 16px;
-        border-radius: 10px;
-        padding: 0 0 0 17%;
-    }
-
-    i.wm-icon-calendar 
-    {
-        left: 13%;
-        top: -820%;
-    }
-
 
     div#filterSearchDropdown {
         margin-top: 30px;
@@ -2102,17 +2064,10 @@ span.route_duration_free {
         font-size: 13px;
         
     }
-  
 
     .wm_template_advancedsearch .single-post-wm 
     {
         margin: 0;
-
-    }
-
-    .column_container .advancedsearch-container 
-    {
-        margin: 10% 0 0 0;
 
     }
 
@@ -2123,15 +2078,6 @@ span.route_duration_free {
         background-color: white;
         border: 1px solid black;
         cursor: pointer;
-    }
-
-    .whatToDoSearch {
-        margin: 0% 0 0% 0;
-    }
-
-    .advancedsearch-container .webmapp_post_meta .prezzo-tab:not(:root:root) {
-        left: 53%;
-       
     }
 
     .route_duration_freespan.route_duration_free {
@@ -2147,34 +2093,6 @@ span.route_duration_free {
         /* width: 105%; */
     }
 
-    .route_duration_freespan.cifra:not(:root:root) 
-    {
-        left: 40%;
-        top: 60%;
-        width: 100%;
-        position: absolute;
-        font-size: 30px;
-    }
-
-
-    div#orderSearch {
-        position: absolute;
-        left: 58%;
-        right: 2%;
-        font-size: 18px;
-        /* height: 6px; */
-        /* background: white; */
-    }
-
-    div#orderSearch:not(:root:root) {
-        position: absolute;
-        left: 57%;
-        right: 2%;
-        font-size: 18px;
-        /* height: 6px; */
-        /* background: white; */
-    }
-
     select.facetwp-sort-select {
         background: white !important;
         box-shadow: none;
@@ -2188,14 +2106,6 @@ span.route_duration_free {
         /* border: none; */
         /* border-style: none; */
     }
-
-    .route_duration_freespan.cifra:not(:root:root), .route_duration_freespan.cifraPromo:not(:root:root)
-    {
-        left: 30%;
-
-    }
-    
-
 }
 
 
@@ -2212,14 +2122,6 @@ span.route_duration_free {
         font-size:15px;
 
     }    
-
-}
-
-@media screen and (min-width: 766px) and (max-width: 899px)
-{
-    .page-id-62001 div#filterSearchDropdown {
-        margin: 42% 0 0 0;
-    }
 
 }
 @media screen and (min-width: 601px) and (max-width: 990px)
