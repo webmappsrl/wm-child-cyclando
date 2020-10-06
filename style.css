@@ -1753,6 +1753,9 @@ h4.tripSearch {
     background: var(--color-secondary);
     color: white;
 }
+.facetwp-facet-dove_vuoi_andare .facetwp-autocomplete-update{
+  display: none;
+}
 .cy-facetwp-cerca-where .facetwp-facet-dove_vuoi_andare,.cy-facetwp-cerca-quando .facetwp-facet-quando_vuoi_partire {
     margin: 0;
 }
