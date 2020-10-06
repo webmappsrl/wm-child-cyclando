@@ -1697,6 +1697,9 @@ a.facetwp-page.active:hover {
 .cerca-facet-where-container {
     margin-bottom: 40px;
 }
+.cerca-facet-where-container h3 {
+    transition: all .3s ease;
+} 
 .cy-facetwp-cerca-quando .facetwp-autocomplete {
     z-index: 1;
 }
@@ -1960,20 +1963,9 @@ span.route_duration_free {
 
 @media screen and (max-width: 600px)
 {
-    .wm_template_advancedsearch .post_meta_with_icons:not(:root:root)
-    {   
-       margin: 18px 0% 0px 4%;
+    .page-id-62001 select.facetwp-dropdown {
+        border-radius: 10px;
     }
-
-    .wm_template_advancedsearch .title-holder:not(:root:root) {
-        background-color: transparent;
-        /* color: black !important; */
-        /* color: black; */
-        /* padding: 10px; */
-        left: 118px;
-        margin: 3% 0 0 5px; 
-    }
-
     .wm_template_advancedsearch .title-holder {
         /* color: black !important; */
         /* color: black; */
@@ -2100,12 +2092,6 @@ span.route_duration_free {
         /* border-style: none; */
     }
 
-    select.facetwp-sort-select:not(:root:root)  {
-        background: transparent !important;
-        box-shadow: none;
-        /* border: none; */
-        /* border-style: none; */
-    }
 }
 
 
@@ -2124,6 +2110,14 @@ span.route_duration_free {
     }    
 
 }
+@media screen and (min-width: 768px) and (max-width: 1620px)
+{
+ .cerca-facet-where-container h3 {
+     font-size: 20px;
+     transition: all .3s ease;
+ }   
+}
+
 @media screen and (min-width: 601px) and (max-width: 990px)
 {
     .webmapp-anypost-template-cy_route .webmapp_shortcode_any_post.post_type_route:not(:last-child) {
