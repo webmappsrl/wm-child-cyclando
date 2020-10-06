@@ -1661,8 +1661,27 @@ a.facetwp-page.active:hover {
     align-items: center;
     padding: 20px 30px;
 }
+.cy-facetwp-cerca-quando , .cy-facetwp-cerca-where {
+    position: relative;
+}
 .cy-facetwp-cerca-where h3, .cy-facetwp-cerca-quando h3 {
     display: none;
+}
+.cy-facetwp-cerca-where h4, .cy-facetwp-cerca-quando h4 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.cy-facetwp-cerca-where i {
+    position: absolute;
+    top: 61px;
+    left: 15px;
+}
+.cy-facetwp-cerca-quando i {
+    position: absolute;
+    top: 68px;
+    left: 15px;
 }
 .cerca-facet-where-container > .vc_column-inner > .wpb_wrapper {
     box-shadow: 2px 2px 5px #dedede, -2px -2px 5px #dedede, 2px -2px 5px #dedede, -2px 2px 5px #dedede;
