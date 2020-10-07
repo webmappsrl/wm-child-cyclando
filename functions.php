@@ -1014,13 +1014,3 @@ function URL_exists($url){
 //     );
 //     return $options;
 // }, 10, 2 );
-
-
-
-function mysite_custom_sort( $orderby, $wp_query ) {
-    if ( isset( $wp_query->query_vars['sort_custom'] ) ) {
-      $orderby = 'mt1.meta_value DESC, mt2.meta_value ASC';
-    }
-    return $orderby;
-  }
-  add_filter( 'posts_orderby', 'mysite_custom_sort', 10, 2 );
