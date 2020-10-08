@@ -20,6 +20,13 @@ $scheda_tecnica = get_field('vn_scheda_tecnica');
 $program = get_field('vn_prog');
 $touroperator_id_array = get_field('tour_operator');
 $coming_soon = get_field('not_salable');
+if ($coming_soon) {
+	// get the route price and if its 9.99 set it to 9999
+	$price = get_field('wm_route_price',$post_id);
+	if ( $price == null || $price == '9.99') {
+		update_field('wm_route_price', '9999', $post_id);
+	}
+}
 $popup_show_prices_class = 'popup-show-prices';
 if ($coming_soon && !return_route_targets_has_cyclando($post_id)) {
 	$coming_soon_class = 'coming-soon-button';
