@@ -36,7 +36,7 @@ Text Domain: wm-child-verdenatura
 .cyc-single-route-introduction-container .cyc-single-route-breadcrumb-wrapper {
     padding-top: 2rem;
 }
-.cyc-single-route-main-container .et_social_sidebar_networks {
+.et_social_sidebar_networks {
     display: none;
 }
 .cyc-single-route-main-container .rsFullscreenIcn {
@@ -60,6 +60,18 @@ Text Domain: wm-child-verdenatura
 }
 .cyc-single-route-monarch-share span{
     border-bottom: 1px solid;
+}
+.cyc-single-route-info-block-column-inner {
+    border: 1px solid var(--color-border-line);
+    box-shadow: 1px 1px 15px 1px var(--color-border-line);
+    border-radius: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+@media screen and (min-width: 769px) {
+    .cyc-single-route-main-container .rsNav.rsBullets {
+        display: none;
+    }
 }
 /* END new style */
 
@@ -293,10 +305,6 @@ body {
         grid-template-columns: 1fr 5fr 2fr 3fr;
     }
     
-    .single-route #page-content {
-        padding-top: 950px!important;
-    }
-    
     .single-route .l-subheader.at_bottom {
             line-height: 60px;
     }
@@ -428,7 +436,8 @@ a.download-app-link {
 /* Breadcrumb rank math menu */
 .breadcrumb-rankmath a,
 .breadcrumb-rankmath span {
-    font-size: 12px;
+    font-size: 13px;
+    color:var(--color-text-p);
 }
 
 .breadcrumb-rankmath .last {

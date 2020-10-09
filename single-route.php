@@ -294,7 +294,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 						</div>
 					</div>
 					<div class="vc_col-sm-3 wpb_column vc_column_container">
-						<div class="vc_column-inner us_custom_25707306">
+						<div class="vc_column-inner us_custom_25707306 cyc-single-route-info-block-column-inner">
 							<div class="wpb_wrapper">
 								<div class="wpb_text_column">
 									<div class="wpb_wrapper">
@@ -867,7 +867,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                 
 							jQuery( '.et_social_sidebar_networks' ).removeClass( 'et_social_visible_sidebar' );
 							jQuery( '.et_social_sidebar_networks' ).addClass( 'et_social_hidden_sidebar' );
-							jQuery( '.et_social_sidebar_networks' ).show(1000);
+							jQuery( '.et_social_sidebar_networks' ).show(2000);
 
 							jQuery( '#cyc-single-route-monarch-share-button' ).click( function(){
 								jQuery( '.et_social_hide_sidebar' ).toggleClass( 'et_social_hidden_sidebar' );

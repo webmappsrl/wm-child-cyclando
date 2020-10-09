@@ -18,7 +18,7 @@ Text Domain:    wm-child-verdenatura
     --color-secondary-hover: #e0870a;
     --color-primary-background: #EEF3E4;
     --color-link-inactive: #969688;
-    --color-text-p: #4e4e4e;
+    --color-text-p: #41413f;
     --color-text-strong: #333;
     --color-discount: #f55442;;
     --color-promotion: white;
@@ -27,6 +27,7 @@ Text Domain:    wm-child-verdenatura
     --font-family-primary-alternate: "Montserrat Alternates";
     --modal-duration: 1s;
     --modal-color: #428bca;
+    --color-border-line: #d4d4d4;
 }
 
 html {
