@@ -9,8 +9,6 @@ Version:        0.1.0
 Text Domain:    wm-child-verdenatura
 */
 
-/* @import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,500,600,700&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500;600;700&display=swap');
 :root {
     --color-primary: #9AC250;
     --color-primary-title: #749D27;
@@ -24,6 +22,7 @@ Text Domain:    wm-child-verdenatura
     --color-text-strong: #333;
     --color-discount: #f55442;;
     --color-promotion: white;
+    --font-family-paragraph: "Lato";
     --font-family-primary: "Montserrat";
     --font-family-primary-alternate: "Montserrat Alternates";
     --modal-duration: 1s;

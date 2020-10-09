@@ -20,6 +20,51 @@ Text Domain: wm-child-verdenatura
     font-display: block;
 }
 
+/* Start New Style */
+.cyc-single-route-main-container h1 {
+    font-size: 48px;
+    font-weight: bold;
+}
+.cyc-single-route-main-container h1 {
+    font-size: 48px;
+    font-weight: bold;
+}
+.cyc-single-route-intro-info-wrapper {
+    font-family: var(--font-family-primary);
+    font-size: 20px;
+}
+.cyc-single-route-introduction-container .cyc-single-route-breadcrumb-wrapper {
+    padding-top: 2rem;
+}
+.cyc-single-route-main-container .et_social_sidebar_networks {
+    display: none;
+}
+.cyc-single-route-main-container .rsFullscreenIcn {
+    font-size: 16px;
+    background-color: green;
+    border-radius: 30px;
+    line-height: 2.5rem;
+    margin: 20px;
+}
+.cyc-single-route-main-container .rsFullscreenBtn {
+    height: 50px;
+    width: 200px;
+    top: calc(100% - 80px);
+    opacity: 1!important;
+}
+.cyc-single-route-main-container .rsFullscreenBtn:after {
+    display: none;
+}
+.cyc-single-route-main-container .rsSlide,.cyc-single-route-main-container .rsOverflow {
+    border-radius: 15px;
+}
+.cyc-single-route-monarch-share span{
+    border-bottom: 1px solid;
+}
+/* END new style */
+
+
+
 i.cy-icons {
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: 'cyclando' !important;
@@ -247,42 +292,11 @@ body {
     body #cy-prices-modal .cy-modal-header {
         grid-template-columns: 1fr 5fr 2fr 3fr;
     }
-    .container-sticky div#webmapp-layer-1-map {
-        display: none;
-    }
+    
     .single-route #page-content {
         padding-top: 950px!important;
     }
-    .webmapp-container.container-sticky .webmapp-featured-image-img .container h1 {
-        font-size: 23px!important;
-        padding: 0 7% 0px;
-        align-self: center;
-    }
-    .webmapp-container.container-sticky .webmapp-featured-image-img {
-        background-image: none!important;
-    }
-    .webmapp-container.container-sticky .webmapp-featured-image-img .container {
-        background: none!important;
-    }
-    .webmapp-container.container-sticky .meta-bar.wm-where {
-        display: none;
-    }
-    .webmapp-container.container-sticky .meta-bar.wm-difficulty {
-        display: none;
-    }
-    .webmapp-container.container-sticky .webmapp-featured-meta-info .container {
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas:
-            "price price"
-    }
-    .webmapp-container.container-sticky .webmapp-featured-meta-info {
-        height: 100px;
-        background-image: none!important;
-    }
     
-    .webmapp-container.container-sticky {
-        background-color: var(--color-primary);
-    }
     .single-route .l-subheader.at_bottom {
             line-height: 60px;
     }
@@ -291,11 +305,6 @@ body {
     }
     #wm-book-quote > p {
         padding: 0 20px;
-    }
-    .single-route .l-subheader-sticky-mobile .l-subheader-cell.at_right .w-html {
-        line-height: 60px!important;
-        height: 60px!important;
-        margin-top: 0!important;
     }
     #cy-contact-in-basso-mobile.wm-book {
         left: 0px;
@@ -355,16 +364,6 @@ body {
     }
     .webmapp-featured-map .container .route-duration > span {
         font-size: 14px;
-    }
-    .webmapp-container.container-sticky .webmapp-featured-meta-info {
-        height: 80px;
-    }
-    .webmapp-container.container-sticky .webmapp-featured-image-img {
-        height: 80px!important;
-    }
-    .webmapp-container.container-sticky .webmapp-featured-image-img .container h1 {
-        font-size: 19px!important;
-        padding: 0 4% 0px;
     }
     .popup-show-prices {
         padding: 0px;
@@ -505,7 +504,6 @@ i {
 }
 /* add css webmapp-layer-container ardalan */
 .webmapp-container {
-    position: absolute;
     width: 100%;
     height: auto;
     z-index: 100;
@@ -516,94 +514,9 @@ i {
         "meta meta";
 }
 
-.webmapp-container.container-sticky {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    /* animation */
-    -webkit-animation: down 1s 1;
-    -moz-animation: down 1s 1;
-    -o-animation: down 1s 1;
-    animation: down 1s 1;
-    /* //box-shadow */
-    -webkit-box-shadow: 0 1px 6px 0px #a6a7a6;
-    -moz-box-shadow: 0 1px 6px 0px #a6a7a6;
-    box-shadow: 0 1px 6px 0px #a6a7a6;
-    /* //transition */
-    -webkit-transition: height 1s;
-    -moz-transition: height 1s;
-    -o-transition: height 1s;
-    transition: height 1s;
-}
-
-.webmapp-featured-image-img {
-    /* height: 400px; */
-    /* //transition */
-    /* -webkit-transition: height 1s;
-    -moz-transition: height 1s;
-    -o-transition: height 1s;
-    transition: height 1s; */
-}
-
-.webmapp-container.container-sticky .webmapp-featured-image-img {
-    height: 100px;
-    /* //transition */
-    -webkit-transition: height 1s;
-    -moz-transition: height 1s;
-    -o-transition: height 1s;
-    transition: height 1s;
-}
-
-/* Begin animation */
-@-o-keyframes down {
-    from {
-        top: -460px;
-    }
-
-    to {
-        top: 0;
-    }
-}
-
-@-moz-keyframes down {
-    from {
-        top: -460px;
-    }
-
-    to {
-        top: 0;
-    }
-}
-
-@-webkit-keyframes down {
-    from {
-        top: -460px;
-    }
-
-    to {
-        top: 0;
-    }
-}
-
-@keyframes down {
-    from {
-        top: -460px;
-    }
-
-    to {
-        top: 0;
-    }
-}
 
 /* end animation */
 /* END css webmapp-layer-container ardalan */
-
-.webmapp-container.container-sticky .webmapp-featured-image-img .container h1 {
-    font-size: 28px;
-    font-family: var(--font-family-primary-alternate);
-    /* transition: all 0.3s ease; */
-}
 
 .webmapp-featured-image-img .container .header-txt-layer-1 {
     font-size: 20px;
@@ -674,27 +587,6 @@ i {
     padding: 0 0 !important;
     transition: 500ms all ease;
     border-top-right-radius: 0px !important;
-}
-
-.webmapp-container.container-sticky .webmapp-featured-image-img .tax-targets {
-    display: none;
-}
-
-/* .webmapp-featured-image.sticky .webmapp-featured-image-img {
-    height: 100px;
-    transition: height 0.3s ease;
-} */
-.webmapp-container.container-sticky .webmapp-featured-image-img .container {
-    display: grid;
-    grid-template-rows: none;
-    grid-template-columns: 1fr;
-    justify-items: center;
-    height: 100%;
-}
-
-.webmapp-container.container-sticky .container .route-duration {
-    align-self: center;
-    padding-top: 20px;
 }
 
 /* menu layer 2 meta info */
@@ -991,12 +883,6 @@ div#popup-show-prices>div {
     padding: 1.5rem;
 }
 
-.webmapp-container.container-sticky #fixed-ancor-section .fixed-ancor-col-9 {
-    -webkit-box-shadow: -2px 2px 7px -5px rgba(0, 0, 0, 0.65);
-    -moz-box-shadow: -2px 2px 7px -5px rgba(0, 0, 0, 0.65);
-    box-shadow: -2px 2px 7px -5px rgba(0, 0, 0, 0.65);
-}
-
 #fixed-ancor-section .l-sidebar {
     background-color: var(--color-primary-background);
     padding: 1.5rem 0 0 0;
@@ -1047,7 +933,6 @@ div#popup-show-prices>div {
     position: relative;
 }
 .single-route #page-content {
-    padding-top: 500px;
     padding-bottom: 40px;
 }
 
