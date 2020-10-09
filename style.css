@@ -11,11 +11,11 @@ Text Domain:    wm-child-verdenatura
 
 :root {
     --color-primary: #9AC250;
-    --color-primary-title: #749D27;
+    --color-primary-title: #749d27;
     --color-primary-paragraph: #4D6E0E;
     --color-white: white;
     --color-secondary: #F18E08;
-    --color-secondary-hover: #e0870a;
+    --color-secondary-hover: #f16e08;
     --color-primary-background: #EEF3E4;
     --color-link-inactive: #969688;
     --color-text-p: #41413f;

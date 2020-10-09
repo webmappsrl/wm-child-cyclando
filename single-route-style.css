@@ -41,17 +41,21 @@ Text Domain: wm-child-verdenatura
 }
 .cyc-single-route-main-container .rsFullscreenIcn {
     font-size: 16px;
-    background-color: green;
+    background-color: var(--color-primary-title);
     border-radius: 30px;
     line-height: 2.5rem;
     margin: 20px;
 }
 .cyc-single-route-main-container .rsFullscreenBtn {
     height: 50px;
-    width: 200px;
+    width: 220px;
     top: calc(100% - 80px);
     opacity: 1!important;
 }
+.rsFullscreen .rsFullscreenIcn span{
+    display: none;
+}
+
 .cyc-single-route-main-container .rsFullscreenBtn:after {
     display: none;
 }

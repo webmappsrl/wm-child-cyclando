@@ -739,6 +739,9 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 						});
 
 						jQuery(document).ready(function() {
+							setTimeout(function(){ jQuery(".cyc-single-route-main-container .rsFullscreenIcn").html("<span>Guarda tutte le foto</span>");
+							console.log("foto"); }, 400);
+							
 							// Get DOM Elements
 							const modal = document.querySelector('#cy-prices-modal');
 							const modalBtn = document.querySelector('#popup-show-prices');
@@ -874,7 +877,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 								jQuery( '.et_social_sidebar_networks' ).toggleClass( 'et_social_hidden_sidebar et_social_visible_sidebar' );
 							});
 
-							jQuery(".cyc-single-route-main-container .rsFullscreenIcn").html("Guarda tutte le foto");
+							
 						});
 						// 			jQuery(document).ready(function(){
 						// 	jQuery( "a.fixed-ancor-menu" ).click(function( event ) {
