@@ -347,7 +347,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 		</section>
 		<!-- END section Gallery and Information block END  -->
 		<!-- START section Second menu START  -->
-		<section class="l-section wpb_row height_small cyc-single-route-second-menu-container">
+		<section class="l-section wpb_row height_auto cyc-single-route-second-menu-container">
 			<div class="l-section-h i-cf">
 				<div class="g-cols vc_row type_default valign_top">
 					<div class="vc_col-sm-9 wpb_column vc_column_container">
@@ -355,32 +355,32 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 							<div class="wpb_wrapper">
 								<div class="wpb_text_column">
 									<div class="wpb_wrapper cyc-single-route-second-menu-wrapper">
-										<div><?php echo __('Plan your trip', 'wm-child-cyclando'); ?></div>
+										<div><h4><?php echo __('Plan your trip', 'wm-child-cyclando'); ?></h4></div>
 										<div class="cyc-sr-sm-items">
 											<?php if ($program or (get_option('webmapp_show_interactive_route_map') && $route_has_geojson)) {
-												echo "<span id='expand-map'>" . __('Program', 'wm-child-cyclando') . "</span>";
+												echo "<h4 id='expand-map'>" . __('Program', 'wm-child-cyclando') . "</h4>";
 											} ?>
 										</div>
 										<div id="<?php echo $popup_show_prices_class ?>" class="cyc-sr-sm-items <?php echo $coming_soon_class ?>">
 											<?php if (!$coming_soon && return_route_targets_has_cyclando($post_id) === false) { ?>
-												<div class="prezzo-container">
-													Date e prezzi
-												</div>
+												<h4 class="prezzo-container">
+													<?php echo __('Dates & prices', 'wm-child-cyclando') ?>
+												</h4>
 											<?php } elseif (return_route_targets_has_cyclando($post_id)) { ?>
 												<a class="download-app-link" target="_blank" href="https://info.cyclando.com/app">
 													<div class="scarica-app">
-														<span class='meta-bar-txt-light'><?php echo __('Download', 'wm-child-cyclando'); ?></span>
+														<h4 class='meta-bar-txt-light'><?php echo __('Download', 'wm-child-cyclando'); ?></h4>
 													</div>
 												</a>
 											<?php } else { ?>
 												<div class="coming-soon">
-													<span class='meta-bar-txt-light'><?php echo __('Coming soon!', 'wm-child-cyclando'); ?></span>
+													<h4 class='meta-bar-txt-light'><?php echo __('Coming soon!', 'wm-child-cyclando'); ?></h4>
 												</div>
 											<?php } ?>
 										</div>
 										<div class="cyc-sr-sm-items">
 											<?php if ($program or (get_option('webmapp_show_interactive_route_map') && $route_has_geojson)) {
-												echo "<span id='expand-map'>" . __('Map', 'wm-child-cyclando') . "</span>";
+												echo "<h4 id='expand-map'>" . __('Map', 'wm-child-cyclando') . "</h4>";
 											} ?>
 										</div>
 									</div>
@@ -392,6 +392,51 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 			</div>
 		</section>
 		<!-- END section Second menu block END  -->
+		<!-- START section Description START  -->
+		<section class="l-section wpb_row height_small cyc-single-route-description-container">
+			<div class="l-section-h i-cf">
+				<div class="g-cols vc_row type_default valign_top">
+					<div class="vc_col-sm-9 wpb_column vc_column_container">
+						<div class="vc_column-inner">
+							<div class="wpb_wrapper">
+								<div class="wpb_text_column">
+									<div class="wpb_wrapper cyc-single-route-description-wrapper">
+										<?php
+										echo "<p class='route-excerpt'>" . get_the_excerpt() . "</p>";
+										echo get_the_content();
+										?>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- END section Description block END  -->
+		<!-- START section Description START  -->
+		<?php if ($touroperator) : ?>
+		<section class="l-section wpb_row height_small cyc-single-route-tour-operator-container">
+			<div class="l-section-h i-cf">
+				<div class="g-cols vc_row type_default valign_top">
+					<div class="vc_col-sm-9 wpb_column vc_column_container">
+						<div class="vc_column-inner">
+							<div class="wpb_wrapper">
+								<div class="wpb_text_column">
+									<div class="wpb_wrapper cyc-single-route-tour-operator-wrapper">
+										<?php
+										echo "<h4> " .__('Tour operator', 'wm-child-cyclando'). "</h4>" . "<p>" . $touroperator . "</p>";
+										?>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<?php endif; ?>
+		<!-- END section Description block END  -->
 		<!-- END new template END-->
 
 		<!-- import html header start -->
