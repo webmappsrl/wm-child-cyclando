@@ -298,8 +298,45 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 							<div class="wpb_wrapper">
 								<div class="wpb_text_column">
 									<div class="wpb_wrapper">
-										<p>la tua vacanza in</p>
-										<h3>Portogallo</h3>
+										<p><?php echo __('Your vacation in', 'wm-child-cyclando'); ?></p>
+										<div class="meta-bar wm-where">
+											<i class="cy-icons icon-map-marker-alt1"></i>
+											<div class="meta-bar-container">
+												<p class='meta-bar-txt-light'>
+													<?php
+													$parent_id = $tax_places_to_go[0]->parent;
+													$parent = '';
+													if ($parent_id) {
+														$parent  = get_term($parent_id)->name;
+													}
+													if ($parent) {
+														echo $parent;
+													}
+													?>
+												</p>
+												<p class='meta-bar-txt-bold'>
+													<?php
+													$places_count = 0;
+													$tax_places_to_go_names = array();
+													if ($tax_places_to_go) {
+														foreach ($tax_places_to_go as $tax_place_to_go) {
+															array_push($tax_places_to_go_names, $tax_place_to_go->name);
+															$places_count++;
+														}
+														echo $tax_places_to_go[0]->name;
+														if ($places_count > 1) {
+															echo "<a class='show-more-places tooltips' href='#!'> ... <span>";
+															foreach ($tax_places_to_go_names as $name) {
+																echo $name . '<br>';
+															}
+															// foreach (array_slice($tax_places_to_go_names,1) as $name) { echo $name; }
+															echo "</span></a>";
+														}
+													}
+													?>
+												</p>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -309,6 +346,52 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 			</div>
 		</section>
 		<!-- END section Gallery and Information block END  -->
+		<!-- START section Second menu START  -->
+		<section class="l-section wpb_row height_small cyc-single-route-second-menu-container">
+			<div class="l-section-h i-cf">
+				<div class="g-cols vc_row type_default valign_top">
+					<div class="vc_col-sm-9 wpb_column vc_column_container">
+						<div class="vc_column-inner">
+							<div class="wpb_wrapper">
+								<div class="wpb_text_column">
+									<div class="wpb_wrapper cyc-single-route-second-menu-wrapper">
+										<div><?php echo __('Plan your trip', 'wm-child-cyclando'); ?></div>
+										<div class="cyc-sr-sm-items">
+											<?php if ($program or (get_option('webmapp_show_interactive_route_map') && $route_has_geojson)) {
+												echo "<span id='expand-map'>" . __('Program', 'wm-child-cyclando') . "</span>";
+											} ?>
+										</div>
+										<div id="<?php echo $popup_show_prices_class ?>" class="cyc-sr-sm-items <?php echo $coming_soon_class ?>">
+											<?php if (!$coming_soon && return_route_targets_has_cyclando($post_id) === false) { ?>
+												<div class="prezzo-container">
+													Date e prezzi
+												</div>
+											<?php } elseif (return_route_targets_has_cyclando($post_id)) { ?>
+												<a class="download-app-link" target="_blank" href="https://info.cyclando.com/app">
+													<div class="scarica-app">
+														<span class='meta-bar-txt-light'><?php echo __('Download', 'wm-child-cyclando'); ?></span>
+													</div>
+												</a>
+											<?php } else { ?>
+												<div class="coming-soon">
+													<span class='meta-bar-txt-light'><?php echo __('Coming soon!', 'wm-child-cyclando'); ?></span>
+												</div>
+											<?php } ?>
+										</div>
+										<div class="cyc-sr-sm-items">
+											<?php if ($program or (get_option('webmapp_show_interactive_route_map') && $route_has_geojson)) {
+												echo "<span id='expand-map'>" . __('Map', 'wm-child-cyclando') . "</span>";
+											} ?>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- END section Second menu block END  -->
 		<!-- END new template END-->
 
 		<!-- import html header start -->
@@ -395,7 +478,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 										</div>
 									</div>
 									<div class="first-departure">
-										<span class='meta-bar-txt-light'><?php echo __('Next departures', 'wm-child-verdenatura'); ?></span>
+										<span class='meta-bar-txt-light'><?php echo __('Next departures', 'wm-child-cyclando'); ?></span>
 										<div class="first-departure-date"><?php echo $first_departure_date; ?></div>
 									</div>
 									<!--.prezzo  end-->
@@ -457,12 +540,12 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 							<div class="meta-bar-container">
 								<p class='meta-bar-txt-light'>
 									<?php
-									echo __('Difficulty', 'wm-child-verdenatura')
+									echo __('Difficulty', 'wm-child-cyclando')
 									?>
 								</p>
 								<p class='meta-bar-txt-bold'>
 									<?php
-									echo $difficulty . " " . __('from 5', 'wm-child-verdenatura');
+									echo $difficulty . " " . __('from 5', 'wm-child-cyclando');
 									?>
 								</p>
 							</div>
@@ -472,7 +555,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 							<div class="meta-bar-container">
 								<p class='meta-bar-txt-light'>
 									<?php
-									echo __('Activity', 'wm-child-verdenatura')
+									echo __('Activity', 'wm-child-cyclando')
 									?>
 								</p>
 								<p class='meta-bar-txt-bold'>
@@ -506,7 +589,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 							</div>
 						<?php } else { ?>
 							<div id="cy-contact-in-alto" class="meta-bar wm-book long-txt">
-								<p id="cy-contact-in-alto-text" class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-verdenatura'); ?></p>
+								<p id="cy-contact-in-alto-text" class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-cyclando'); ?></p>
 							</div>
 						<?php } ?>
 					</div>
@@ -551,7 +634,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 				<div class="cy-modal-header">
 					<div class="close-button-container"><span class="cy-close-map">&times;</span></div>
 					<div class="route-program">
-						<h2><?php echo __('Program', 'wm-child-verdenatura'); ?></h2>
+						<h2><?php echo __('Program', 'wm-child-cyclando'); ?></h2>
 					</div>
 					<?php if (!$coming_soon && return_route_targets_has_cyclando($post_id) === false) { ?>
 						<div id="wm-book-quote" class="meta-bar wm-book long-txt">
@@ -561,7 +644,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 						</div>
 					<?php } else { ?>
 						<div id="cy-contact-modal" class="meta-bar wm-book long-txt">
-							<p id="cy-contact-modal-text" class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-verdenatura'); ?></p>
+							<p id="cy-contact-modal-text" class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-cyclando'); ?></p>
 						</div>
 					<?php } ?>
 				</div>
@@ -649,7 +732,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 									<?php endif; ?>
 									<div id="cy-contact-in-basso" class="cy-route-body-button cy-route-body-contactus expand-map-content">
 										<div class="meta-bar long-txt">
-											<p id="cy-contact-in-basso-text" class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-verdenatura'); ?></p>
+											<p id="cy-contact-in-basso-text" class='meta-bar-txt-bold'><?php echo __('Contact us', 'wm-child-cyclando'); ?></p>
 										</div>
 									</div>
 								</section>
@@ -714,7 +797,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 				<div class="cy-modal-header">
 					<div class="close-button-container"><span class="cy-close-contact">&times;</span></div>
 					<div class="route-contact">
-						<h2><?php echo __('Contact us', 'wm-child-verdenatura'); ?></h2>
+						<h2><?php echo __('Contact us', 'wm-child-cyclando'); ?></h2>
 					</div>
 				</div>
 				<div class="cy-modal-body">

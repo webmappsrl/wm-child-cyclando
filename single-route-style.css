@@ -51,6 +51,7 @@ Text Domain: wm-child-verdenatura
     width: 220px;
     top: calc(100% - 80px);
     opacity: 1!important;
+    font-family: var(--font-family-primary-);
 }
 .rsFullscreen .rsFullscreenIcn span{
     display: none;
@@ -65,16 +66,40 @@ Text Domain: wm-child-verdenatura
 .cyc-single-route-monarch-share span{
     border-bottom: 1px solid;
 }
-.cyc-single-route-info-block-column-inner {
+.cyc-single-route-second-menu-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
     border: 1px solid var(--color-border-line);
-    box-shadow: 1px 1px 15px 1px var(--color-border-line);
-    border-radius: 15px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    border-radius: 25px;
+    padding: 10px 20px;
 }
-@media screen and (min-width: 769px) {
+.cyc-sr-sm-items {
+    color: var(--color-primary-title);
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.cyc-single-route-second-menu-wrapper div {
+    font-family: var(--font-family-primary);
+    font-weight: bold;
+}
+@media screen and (min-width: 768px) {
     .cyc-single-route-main-container .rsNav.rsBullets {
         display: none;
+    }
+    .cyc-single-route-info-block-column-inner {
+        border: 1px solid var(--color-border-line);
+        box-shadow: 1px 1px 15px 1px var(--color-border-line);
+        border-radius: 15px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .cyc-single-route-info-block-column-inner > .wpb_wrapper {
+        order: 1px solid var(--color-border-line);
+        box-shadow: 1px 1px 15px 1px var(--color-border-line);
+        border-radius: 15px;
+        padding: 20px;
     }
 }
 /* END new style */
@@ -740,12 +765,6 @@ i {
 .meta-bar.show-prices > a:hover + .popup-show-prices {
     background-color: var(--color-secondary-hover);
 }
-.popup-show-prices {
-    background-color: var(--color-secondary);
-    padding: 5px 7px;
-    border-radius: 50px;
-    border: 2px solid #fff;
-}
 .popup-show-prices .prezzo{
     padding: 0 10px 0 20px;
     width: 150px;
@@ -762,10 +781,6 @@ i {
 }
 .coming-soon-button {
     pointer-events: none;
-}
-.popup-show-prices:hover {
-    background-color: var(--color-secondary-hover);
-    cursor: pointer;
 }
 .vedi-prezzi, .route-contact, .route-program {
     align-items: center;

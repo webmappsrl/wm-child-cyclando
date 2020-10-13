@@ -25,7 +25,6 @@ function wmScrollTop() {
 
 jQuery(window).on('load', function() {
 	var facetwpPaged = document.querySelectorAll('.facetwp-page');
-	console.log(facetwpPaged);
 	facetwpPagedScrollTop(facetwpPaged);
 });
 
