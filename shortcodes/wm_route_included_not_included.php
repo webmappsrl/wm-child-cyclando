@@ -13,7 +13,7 @@ function wm_route_included_not_included($post_id) {
     <div class="extra-quotes">
         <p class="tab-section"> 
             <?php
-            echo __('Included: ' ,'wm-child-cycladno');?>
+            echo __('Included: ' ,'wm-child-cyclando');?>
         </p>
         <table class="extra-quotes-table">
             <tbody>
@@ -50,7 +50,7 @@ function wm_route_included_not_included($post_id) {
 
         <p class="tab-section"> 
             <?php
-            echo __('Not Included: ' ,'wm-child-cycladno');?>
+            echo __('Not Included: ' ,'wm-child-cyclando');?>
         </p>
         <table class="extra-quotes-table">
             <tbody>
