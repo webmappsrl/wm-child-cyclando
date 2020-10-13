@@ -73,6 +73,7 @@ Text Domain: wm-child-verdenatura
     border-radius: 25px;
     padding: 10px 20px;
 }
+
 .cyc-sr-sm-items {
     color: var(--color-primary-title);
     text-transform: uppercase;
@@ -92,6 +93,9 @@ Text Domain: wm-child-verdenatura
         border-radius: 15px;
         padding-top: 20px;
         padding-bottom: 20px;
+    }
+    .cyc-single-route-second-menu-container {
+        padding-top: 0!important;
     }
 }
 @media screen and (max-width: 767px) {
