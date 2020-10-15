@@ -21,6 +21,12 @@ Text Domain: wm-child-verdenatura
 }
 
 /* Start New Style */
+div, p {
+    transition: 300ms all ease;
+}
+div:hover, p:hover {
+    transition: 300ms all ease;
+}
 .cyc-single-route-main-container h1 {
     font-size: 48px;
     font-weight: bold;
@@ -68,10 +74,10 @@ Text Domain: wm-child-verdenatura
 }
 .cyc-single-route-second-menu-wrapper {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4,auto);
     border: 1px solid var(--color-border-line);
     border-radius: 25px;
-    padding: 10px 20px;
+    padding: 15px 25px;
 }
 
 .cyc-sr-sm-items h4{
@@ -82,7 +88,7 @@ Text Domain: wm-child-verdenatura
 .cyc-single-route-second-menu-wrapper h4 {
     font-family: var(--font-family-primary);
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
 }
 .cyc-single-route-description-wrapper {
     font-family: var(--font-family-primary);
@@ -96,6 +102,7 @@ Text Domain: wm-child-verdenatura
     border-bottom: 1px solid var(--color-border-line);
 }
 .wpb_wrapper.cyc-single-route-tour-operator-wrapper h4{
+    color:var(--color-text-p);
     margin: 0;
     font-size: 30px;
     font-weight: 700;
@@ -105,6 +112,60 @@ Text Domain: wm-child-verdenatura
     margin: 0;
     font-size: 30px;
     font-weight: 300;
+}
+.cyc-single-route-cta-text {
+    padding-bottom: 50px;
+}
+.cyc-single-route-cta-text p{
+    color: var(--color-text-p);
+    font-size: 24px;
+    font-family: var(--font-family-primary);
+    font-weight: 300;
+}
+.cyc-single-route-cta-buttons {
+    display: flex;
+    column-gap: 20px;
+}
+.cyc-single-route-cta-buttons .cy-btn-contact{
+    border: 2px solid var(--color-text-p);
+    border-radius: 24px;
+    padding: 10px 5px;
+    min-width: 250px;
+    cursor: pointer;
+}
+.cyc-single-route-cta-buttons .cy-btn-contact:hover{
+    background-color: var(--color-text-p);
+}
+.cyc-single-route-cta-buttons .cy-btn-contact:hover p{
+    color: white!important;
+}
+.cyc-single-route-cta-buttons .cy-btn-contact p{
+    color: var(--color-text-p);
+    font-size: 15px;
+    font-family: var(--font-family-primary);
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+}
+.cyc-single-route-cta-buttons .cy-btn-quote{
+    border: 2px solid var(--color-secondary);
+    border-radius: 24px;
+    padding: 10px 5px;
+    min-width: 250px;
+    background-color: var(--color-secondary);
+}
+.cyc-single-route-cta-buttons .cy-btn-quote:hover{
+    border: 2px solid var(--color-secondary-hover);
+    background-color: var(--color-secondary-hover);
+}
+
+.cyc-single-route-cta-buttons .cy-btn-quote p{
+    color: white!important;
+    font-size: 15px;
+    font-family: var(--font-family-primary);
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
 }
 @media screen and (min-width: 768px) {
     .cyc-single-route-main-container .rsNav.rsBullets {
@@ -816,16 +877,6 @@ i {
 div#popup-show-prices>div {
     float: left;
 }
-.wm-book {
-    background: var(--color-secondary);
-    position: relative;
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    height: 100%;
-}
 
 #wm-book-quote-mobile.wm-book {
     background: var(--color-secondary);
@@ -850,14 +901,6 @@ div#popup-show-prices>div {
 .wm-book.long-txt p {
     font-size: 25px;
 }
-.wm-book a{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
-}
 @media screen and (max-width: 768px) {
     .wm-book {
         padding: 35px 5px!important;
@@ -872,52 +915,6 @@ div#popup-show-prices>div {
 #cy-prices-modal .wm-book, #cy-route-program .wm-book, #cy-route-contact .wm-book{
     padding: 35px;
 }
-.wm-book:hover {
-    cursor: pointer;
-    background: var(--color-secondary-hover);
-}
-
-.wm-book:hover:before {
-    cursor: pointer;
-    content: "";
-    position: absolute;
-    width: 35px;
-    height: 50%;
-    right: 100%;
-    top: 0;
-    background: linear-gradient(to left bottom, var(--color-secondary-hover) 50%, transparent 50%);
-}
-
-.wm-book:hover:after {
-    cursor: pointer;
-    content: "";
-    position: absolute;
-    width: 35px;
-    height: 50%;
-    right: 100%;
-    bottom: 0;
-    background: linear-gradient(to left top, var(--color-secondary-hover) 50%, transparent 50%);
-}
-
-.wm-book:after,
-.wm-book:before {
-    content: "";
-    position: absolute;
-    width: 35px;
-    height: 50%;
-    right: 100%;
-}
-
-.wm-book:after {
-    bottom: 0;
-    background: linear-gradient(to left top, #F18E08 50%, transparent 50%);
-}
-
-.wm-book:before {
-    top: 0;
-    background: linear-gradient(to left bottom, #F18E08 50%, transparent 50%);
-}
-
 /* fixed ancor section */
 #fixed-ancor-section {
     padding: 0;
@@ -1099,11 +1096,12 @@ div#popup-show-prices>div {
     padding: 0;
 }
 .single-route section h2 {
-    color: var(--color-primary-title);
-    font-size: 3em;
-    font-weight: bold;
-    font-family: var(--font-family-primary-alternate);
+    color: var(--color-text-strong);
+    font-size: 2.5em;
+    font-weight: bolder;
+    font-family: var(--font-family-primary);
     padding-top: 10px;
+    margin-bottom: 10px;
 }
 
 .route-excerpt {
@@ -1578,29 +1576,6 @@ a:hover.tooltips span {
 .move {
     bottom: 60px!important;
 }
-
-.expand-map-content {
-    background: var(--color-secondary);
-    position: relative;
-    width: 360px;
-    text-align: center;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    height: 100%;
-    color: white;
-    font-size: 25px;
-    font-weight: 600;
-    padding: 30px;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: 500ms all ease;
-}
-
-.expand-map-content:hover {
-    background: var(--color-secondary-hover);
-}
-
 /* prezzo scontato price in promotion */
 .new-price {
     font-size: 24px;

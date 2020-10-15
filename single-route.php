@@ -437,6 +437,52 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 		</section>
 		<?php endif; ?>
 		<!-- END section Description block END  -->
+		<!-- START section call to action sei pronto START  -->
+		<section class="l-section wpb_row height_small cyc-single-route-cta-container">
+			<div class="l-section-h i-cf">
+				<div class="g-cols vc_row type_default valign_top">
+					<div class="vc_col-sm-9 wpb_column vc_column_container">
+						<div class="vc_column-inner">
+							<div class="wpb_wrapper">
+								<div class="wpb_text_column">
+									<div class="wpb_wrapper cyc-single-route-cta-wrapper">
+										<div class="cyc-single-route-cta-text">
+											<h2><?php echo __('Are you ready to leave for your next vacation?', 'wm-child-cyclando'); ?></h2>
+											<p><?php echo __('Personalize your vacation or just ask us any question.', 'wm-child-cyclando'); ?></p>
+										</div>
+										<div class="cyc-single-route-cta-buttons">
+											<div id="cy-contact-in-basso" class="">
+												<div class="cy-btn-contact">
+													<p><?php echo __('Contact us', 'wm-child-cyclando'); ?></p>
+												</div>
+											</div>
+											<?php if (!$coming_soon && return_route_targets_has_cyclando($post_id) === false) { ?>
+											<a target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id . '?lang=' . $language; ?>">
+												<div id="wm-book-quote" class="cy-btn-quote">
+													<p><?php echo __('Quote', 'wm-child-cyclando'); ?></p>
+												</div>
+											</a>
+											<?php } elseif (return_route_targets_has_cyclando($post_id)) { ?>
+											<a class="download-app-link" target="_blank" href="https://info.cyclando.com/app">
+												<div class="scarica-app">
+													<span class='meta-bar-txt-light'><?php echo __('Download', 'wm-child-cyclando'); ?></span>
+												</div>
+											</a>
+											<?php } else { ?>
+											<div class="coming-soon">
+												<span class='meta-bar-txt-light'><?php echo __('Coming soon!', 'wm-child-cyclando'); ?></span>
+											</div>
+											<?php } ?>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- END section call to action sei pronto block END  -->
 		<!-- END new template END-->
 
 		<!-- import html header start -->
