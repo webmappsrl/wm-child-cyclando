@@ -65,6 +65,11 @@ Text Domain: wm-child-verdenatura
 }
 .cyc-single-route-monarch-share span{
     border-bottom: 1px solid;
+    font-weight: 700;
+}
+.wm-icon-cyc-share:before {
+    font-size: 20px;
+    font-weight: bold;
 }
 .cyc-single-route-second-menu-wrapper {
     display: grid;
