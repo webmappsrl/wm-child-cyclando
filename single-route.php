@@ -260,7 +260,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 											<div class="wpb_wrapper">
 												<div class="wpb_text_column">
 													<div class="wpb_wrapper">
-														<p id="cyc-single-route-monarch-share-button" class="cyc-single-route-monarch-share"><i class="fas fa-share-square"></i><span><?php echo __('Share', 'wm-child-cyclando'); ?></span></p>
+														<p id="cyc-single-route-monarch-share-button" class="cyc-single-route-monarch-share"><i class="wm-icon-cyc-share"></i><span><?php echo __('Share', 'wm-child-cyclando'); ?></span></p>
 
 													</div>
 												</div>
