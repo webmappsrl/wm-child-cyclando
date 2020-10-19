@@ -464,13 +464,13 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 											</a>
 											<?php } elseif (return_route_targets_has_cyclando($post_id)) { ?>
 											<a class="download-app-link" target="_blank" href="https://info.cyclando.com/app">
-												<div class="scarica-app">
-													<span class='meta-bar-txt-light'><?php echo __('Download', 'wm-child-cyclando'); ?></span>
+												<div class="cy-btn-quote">
+													<p class=''><?php echo __('Download', 'wm-child-cyclando'); ?></p>
 												</div>
 											</a>
 											<?php } else { ?>
-											<div class="coming-soon">
-												<span class='meta-bar-txt-light'><?php echo __('Coming soon!', 'wm-child-cyclando'); ?></span>
+											<div class="cy-btn-quote">
+												<p class=''><?php echo __('Coming soon!', 'wm-child-cyclando'); ?></p>
 											</div>
 											<?php } ?>
 										</div>
