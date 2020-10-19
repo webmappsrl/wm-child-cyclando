@@ -196,6 +196,14 @@ Text Domain: wm-child-verdenatura
         flex-direction: column !important;
         row-gap: 20px !important;
     }
+
+element.style {
+}
+.cyc-single-route-second-menu-wrapper {
+    grid-template-columns: none !important;
+    grid-template-rows: repeat(4,auto);
+    grid-row-gap: 20px;
+}
 }
 /* END new style */
 
