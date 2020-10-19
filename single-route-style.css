@@ -192,6 +192,10 @@ Text Domain: wm-child-verdenatura
         border-radius: 15px;
         padding: 20px;
     }
+    .cyc-single-route-cta-buttons {
+        flex-direction: column !important;
+        row-gap: 20px !important;
+    }
 }
 /* END new style */
 
