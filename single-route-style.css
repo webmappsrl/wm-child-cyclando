@@ -173,7 +173,34 @@ Text Domain: wm-child-verdenatura
     text-align: center;
     transition: 300ms all ease;
 }
-
+.cyc-single-route-cta-container {
+    padding-bottom: 4rem!important;
+}
+.cyc-single-route-faq-container {
+    border-top: 2px solid var(--color-border-line);
+}
+.cyc-single-route-faq-container h5{
+    padding-bottom: 20px;
+}
+.cyc-single-route-faq-container h6{
+    margin:0!important;
+}
+.cyc-single-route-faq-container .w-tabs.accordion .w-tabs-section {
+    border-width: 0px!important;
+}
+.cyc-single-route-faq-container .w-tabs-section-header {
+    padding: 15px 0em 0px 0em!important;
+    color: var(--color-text-p)!important;
+}
+.cyc-single-route-faq-container .w-tabs-section-header:hover, .cyc-single-route-faq-container .w-tabs-section-header:focus {
+    background: none!important;
+}
+.cyc-single-route-faq-container .w-tabs-section-content {
+    padding: 0 0 5px!important;
+}
+.cyc-single-route-faq-container .w-tabs-section-content p{
+    color: #616161!important;
+}
 @media screen and (min-width: 768px) {
     .cyc-single-route-main-container .rsNav.rsBullets {
         display: none;
