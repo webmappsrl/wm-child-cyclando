@@ -913,7 +913,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 						});
 
 						jQuery(document).ready(function() {
-							setTimeout(function(){ jQuery(".cyc-single-route-main-container .rsFullscreenIcn").html("<span>Guarda tutte le foto</span>");
+							setTimeout(function(){ jQuery(".cyc-single-route-main-container .rsFullscreenIcn").html("<span class='gallery-expand-desktop'>Guarda tutte le foto</span><span class='gallery-expand-mobile'><i class='fas fa-expand'></i></span>");
 							console.log("foto"); }, 400);
 							
 							// Get DOM Elements
