@@ -181,6 +181,7 @@ Text Domain: wm-child-verdenatura
 }
 .cyc-single-route-faq-container h5{
     padding-bottom: 20px;
+    text-transform: uppercase;
 }
 .cyc-single-route-faq-container h6{
     margin:0!important;
