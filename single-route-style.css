@@ -201,6 +201,9 @@ Text Domain: wm-child-verdenatura
 .cyc-single-route-faq-container .w-tabs-section-content p{
     color: #616161!important;
 }
+.cyc-single-route-faq-container .w-tabs-section-title {
+    font-weight: 400!important;
+}
 @media screen and (min-width: 768px) {
     .cyc-single-route-main-container .rsNav.rsBullets {
         display: none;
