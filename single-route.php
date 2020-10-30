@@ -108,11 +108,31 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 
 
 		// Import from header
-		// variable and queries
-		$days = (int)get_field('vn_durata');
-		$distance = get_field('distance');
+        // variable and queries
+        $intro_info = array();
+        
+        $days = (int)get_field('vn_durata');
+        if ($days){
+            $days_info = '<span>'.$days.' '.__('days', 'wm-child-cyclando').'</span>';
+            array_push($intro_info,$days_info);
+        }
+        $distance = get_field('distance');
+        if ($distance) {
+            $distance_info =  '<span>'.$distance.' '.__('km', 'wm-child-cyclando').'</span>';
+            array_push($intro_info,$distance_info);
+        }
 		$difficulty = get_field('n7webmapp_route_difficulty');
-		$difficulty = str_replace('.', ',', $difficulty);
+        $difficulty = str_replace('.', ',', $difficulty);
+        // if ($difficulty) {
+        //     $difficulty_info =  '<span>'.'<i class="wm-icon-cyc_difficolta1"></i>'.' '.$difficulty.' '.__('from 5', 'wm-child-cyclando').'</span>';
+        //     array_push($intro_info,$difficulty_info);
+        // }
+        $shape = get_field('shape');
+        // if ($shape) {
+        //     $shape_icon = the_shape_icon($shape);
+        //     $shape_info =  "<span>"."<i class='$shape_icon'></i>"." ".__($shape, "wm-child-cyclando")."</span>";
+        //     array_push($intro_info,$shape_info);
+        // }
 		$nights = $days - 1;
 		$target = 'who';
 		$places_to_go = 'where';
@@ -150,13 +170,21 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 		}
 		$first_departure_date = '';
 		// get terms targets
-		$tax_targets = get_the_terms($post_id, $target);
+        $tax_targets = get_the_terms($post_id, $target);
+        foreach ($tax_targets as $tax_target) {
+            $get_term_target = get_term_by('slug', $tax_target->slug, $target);
+            $term_target = 'term_' . $get_term_target->term_id;
+            $array_target[$tax_target->name] = get_field('wm_taxonomy_icon', $term_target);
+        }
+
 		$tax_places_to_go = get_the_terms($post_id, $places_to_go);
 
-		$tax_activities = get_the_terms($post_id, $activity);
-		$get_term_activity = get_term_by('slug', $tax_activities[0]->slug, $activity);
-		$term_activity = 'term_' . $get_term_activity->term_id;
-		$iconimage_activity = get_field('wm_taxonomy_icon', $term_activity);
+        $tax_activities = get_the_terms($post_id, $activity);
+        foreach ($tax_activities as $tax_activity) {
+            $get_term_activity = get_term_by('slug', $tax_activity->slug, $activity);
+            $term_activity = 'term_' . $get_term_activity->term_id;
+            $array_activity[$tax_activity->name] = get_field('wm_taxonomy_icon', $term_activity);
+        }
 
 		//get the first departure date
 		$start_array = array();
@@ -201,7 +229,11 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 
 		// get the route price
 		$price = get_field('wm_route_price');
-		$price = (float)$price;
+        $price = (float)$price;
+        if ($price) {
+            $price_info = '<span>'.__('from', 'wm-child-cyclando').' '.$price.' '.__('€', 'wm-child-cyclando').'</span>';
+            array_push($intro_info,$price_info);
+        }
 
 		// get the post promotion name and value
 		$promotion_name = get_field('promotion_name', $post_id);
@@ -212,7 +244,8 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 		$home_site = home_url();
 		$home_site = str_replace("https://", "", $home_site);
 
-		$route_has_geojson = URL_exists("https://a.webmapp.it/cyclando.com/geojson/$post_id.geojson");
+        $route_has_geojson = URL_exists("https://a.webmapp.it/cyclando.com/geojson/$post_id.geojson");
+        
 	?>
 
     <!-- Start new template -->
@@ -242,15 +275,10 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                                             <div class="wpb_text_column">
                                                 <div class="wpb_wrapper cyc-single-route-intro-info-wrapper">
                                                     <?php
-														if ($days) {
-															echo "<span class=''>" .  " $days " . __('days', 'wm-child-cyclando') . " / </span>";
+														if ($intro_info) {
+															echo implode(' / ',$intro_info);
 														}
-														if ($distance) {
-															echo $distance . "<span class=''> km</span>";
-														}
-														if ($price) {
-															echo "<span class=''> / da $price €</span>";
-														}
+														
 														?>
                                                 </div>
                                             </div>
@@ -300,10 +328,10 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                 </div>
                 <div class="vc_col-sm-3 wpb_column vc_column_container">
                     <div class="vc_column-inner us_custom_25707306 cyc-single-route-info-block-column-inner">
-                        <div class="wpb_wrapper">
+                        <div class="wpb_wrapper cyc-single-route-info-where-wrapper">
                             <div class="wpb_text_column">
                                 <div class="wpb_wrapper">
-                                    <p><?php echo __('Your vacation in', 'wm-child-cyclando'); ?></p>
+                                    <p class="wm-your-vacation"><?php echo __('Your vacation in', 'wm-child-cyclando'); ?></p>
                                     <div class="meta-bar wm-where">
                                         <i class="cy-icons icon-map-marker-alt1"></i>
                                         <div class="meta-bar-container">
@@ -340,6 +368,150 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 													}
 													?>
                                             </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wpb_wrapper cyc-single-route-info-taxonomy-wrapper">
+                            <div class="wpb_text_column">
+                                <div class="wpb_wrapper">
+                                    <div class="meta-bar wm-difficulty">
+                                        <p class='meta-bar-txt-strong'>
+                                            <?php
+                                            echo __('Difficulty', 'wm-child-cyclando')
+                                            ?>
+                                        </p>
+                                        <?php if ($difficulty) { ?>
+                                                <div class="meta-bar-taxonomy-container">
+                                                    <i class="wm-icon-cyc_difficolta1"></i>
+                                                    <p class='meta-bar-txt-light'>
+                                                        <?php
+                                                        echo __('Difficulty', 'wm-child-cyclando').' '.$difficulty.__('/5', 'wm-child-cyclando');
+                                                        ?>
+                                                    </p>
+                                                </div>
+                                        <?php
+                                        } ?>
+                                    </div>
+                                    <div class="meta-bar wm-path">
+                                        <p class='meta-bar-txt-strong'>
+                                            <?php
+                                            echo __('Path', 'wm-child-cyclando')
+                                            ?>
+                                        </p>
+                                        <?php if ($shape) { ?>
+                                                <div class="meta-bar-taxonomy-container">
+                                                    <i class="<?php echo the_shape_icon($shape); ?>"></i>
+                                                    <p class='meta-bar-txt-light'>
+                                                        <?php
+                                                        echo __($shape, "wm-child-cyclando");
+                                                        ?>
+                                                    </p>
+                                                </div>
+                                        <?php 
+                                        } ?>
+                                    </div>
+                                    <div class="meta-bar wm-activity">
+                                        <p class='meta-bar-txt-strong'>
+                                            <?php
+                                            echo __('Activity', 'wm-child-cyclando')
+                                            ?>
+                                        </p>
+                                        <?php if ($array_activity) { 
+                                            foreach ($array_activity as $activity => $icon) { ?>
+                                                <div class="meta-bar-taxonomy-container">
+                                                    <i class="<?php echo $icon; ?>"></i>
+                                                    <p class='meta-bar-txt-light'>
+                                                        <?php
+                                                        echo $activity;
+                                                        ?>
+                                                    </p>
+                                                </div>
+                                        <?php }
+                                        } ?>
+                                    </div>
+                                    <div class="tax-targets">
+                                        <p class='meta-bar-txt-strong'>
+                                            <?php
+                                            echo __('Target', 'wm-child-cyclando')
+                                            ?>
+                                        </p>
+                                        <?php if ($array_target) { 
+                                            foreach ($array_target as $target => $icon) { ?>
+                                                <div class="meta-bar-taxonomy-container">
+                                                    <i class="<?php echo $icon; ?>"></i>
+                                                    <p class='meta-bar-txt-light'>
+                                                        <?php
+                                                        echo $target;
+                                                        ?>
+                                                    </p>
+                                                </div>
+                                        <?php }
+                                        } ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wpb_wrapper cyc-single-route-info-price-wrapper">
+                            <div class="wpb_text_column">
+                                <div class="wpb_wrapper">
+                                    <div class="meta-bar show-prices">
+                                        <div class="route-info-show-prices <?php echo $coming_soon_class ?>">
+                                            <?php if (!$coming_soon && return_route_targets_has_cyclando($post_id) === false) { ?>
+                                            <div class="prezzo-container">
+                                                <!-- prezzo start-->
+                                                <div class="prezzo">
+                                                    <?php if ($promotion_value) { ?>
+                                                    <p class='meta-bar-txt-light'><span
+                                                            class='old-price'><?php echo $price . ' €'; ?></span></p>
+                                                    <?php } else { ?>
+                                                    <p class='meta-bar-txt-light'><?php echo __('From', 'wm-child-cyclando'); ?></p>
+                                                    <?php } ?>
+                                                    <p class="cifra"><?php
+                                                        if ($promotion_value) {
+                                                            echo $promotion_price . ' €';
+                                                        } else {
+                                                            echo $price . ' €';
+                                                        }
+                                                        ?>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="prezzo-text">
+                                                <span class='meta-bar-txt-strong'><?php echo __('Best Price Guaranteed', 'wm-child-cyclando'); ?></span>
+                                            </div>
+                                            <a target="_blank"
+                                            href="https://cyclando.com/quote/#/<?php echo $post_id . '?lang=' . $language; ?>">
+                                                <div id="wm-book-quote" class="cy-btn-quote">
+                                                    <p><?php echo __('Quote', 'wm-child-cyclando'); ?></p>
+                                                </div>
+                                            </a>
+                                            <!--.prezzo  end-->
+                                            <?php } elseif (return_route_targets_has_cyclando($post_id)) { ?>
+                                            <a class="download-app-link" target="_blank" href="https://info.cyclando.com/app">
+                                                <div class="scarica-app">
+                                                    <span
+                                                        class='meta-bar-txt-light'><?php echo __('Download', 'wm-child-cyclando'); ?></span>
+                                                </div>
+                                            </a>
+                                            <?php } else { ?>
+                                            <div class="coming-soon">
+                                                <span
+                                                    class='meta-bar-txt-light'><?php echo __('Coming soon!', 'wm-child-cyclando'); ?></span>
+                                            </div>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wpb_wrapper cyc-single-route-info-button-wrapper">
+                            <div class="wpb_text_column">
+                                <div class="wpb_wrapper">
+                                    <div id="cy-contact-in-basso" class="">
+                                        <div class="cy-btn-contact">
+                                            <p><?php echo __('Contact us', 'wm-child-cyclando'); ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -622,12 +794,12 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                                     <p class='meta-bar-txt-light'><?php echo __('From', 'wm-child-cyclando'); ?></p>
                                     <?php } ?>
                                     <p class="cifra"><?php
-																if ($promotion_value) {
-																	echo $promotion_price . ' €';
-																} else {
-																	echo $price . ' €';
-																}
-																?>
+                                        if ($promotion_value) {
+                                            echo $promotion_price . ' €';
+                                        } else {
+                                            echo $price . ' €';
+                                        }
+                                        ?>
                                     </p>
                                 </div>
                             </div>
@@ -1125,9 +1297,9 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 
                     jQuery('.et_social_sidebar_networks').removeClass('et_social_visible_sidebar');
                     jQuery('.et_social_sidebar_networks').addClass('et_social_hidden_sidebar');
-                    jQuery('.et_social_sidebar_networks').show(2000);
-
+                    
                     jQuery('#cyc-single-route-monarch-share-button').click(function() {
+                        jQuery('.et_social_sidebar_networks').toggle(300);
                         jQuery('.et_social_hide_sidebar').toggleClass('et_social_hidden_sidebar');
                         jQuery('.et_social_sidebar_networks').toggleClass(
                             'et_social_hidden_sidebar et_social_visible_sidebar');

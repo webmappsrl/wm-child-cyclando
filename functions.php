@@ -339,13 +339,13 @@ function the_shape_icon( $shape )
 {
     switch ($shape) {
         case "linear":
-            echo 'wm-icon-cy-shape-linear';
+            return 'wm-icon-cyc_percorso-lineare';
             break;
         case "roundtrip":
-            echo 'wm-icon-cy-shape-roundtrip';
+            return 'wm-icon-cyc_percorso-ad-anello';
             break;
         case "daisy":
-            echo 'wm-icon-cy-shape-daisy';
+            return 'wm-icon-cyc_percorso-a-margherita';
             break;
     }
     

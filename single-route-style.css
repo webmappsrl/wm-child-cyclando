@@ -33,6 +33,9 @@ Text Domain: wm-child-verdenatura
     font-family: var(--font-family-primary);
     font-size: 20px;
 }
+.cyc-single-route-intro-info-wrapper i{
+    font-size: 26px;
+}
 .cyc-single-route-introduction-container .cyc-single-route-breadcrumb-wrapper {
     padding-top: 2rem;
 }
@@ -70,6 +73,124 @@ Text Domain: wm-child-verdenatura
 .wm-icon-cyc-share:before {
     font-size: 20px;
     font-weight: bold;
+}
+#cyc-single-route-monarch-share-button:hover {
+    cursor: pointer;
+}
+.cyc-single-route-info-block-column-inner .wm-where i {
+    padding-top: 6px;
+}
+.cyc-single-route-info-block-column-inner .wm-your-vacation {
+    margin: 0;
+}
+.cyc-single-route-info-block-column-inner {
+    display: flex;
+    justify-content: flex-start;
+}
+.cyc-single-route-info-where-wrapper {
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-border-line);
+}
+.cyc-single-route-info-taxonomy-wrapper{
+    padding: 20px 0;
+    border-bottom: 1px solid var(--color-border-line);
+}
+.cyc-single-route-info-taxonomy-wrapper .wpb_wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 20px;
+}
+.meta-bar-txt-strong {
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 14px;
+    margin: 0;
+    font-family: var(--font-family-primary);
+}
+.meta-bar-taxonomy-container{
+    display:flex;
+}
+.meta-bar-taxonomy-container i{
+    align-self: center;
+    font-size: 22px;
+}
+.meta-bar-taxonomy-container .meta-bar-txt-light{
+    align-self: center;
+    font-size: 13px;
+    color: var(--color-text-light);
+}
+.cyc-single-route-info-price-wrapper {
+    padding-top: 20px;
+}
+.cyc-single-route-info-price-wrapper .wpb_wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.route-info-show-prices{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 30px;
+}
+.cyc-single-route-info-price-wrapper .prezzo-container .cifra{
+    font-size: 26px;
+    font-weight: 800;
+}
+.cyc-single-route-info-price-wrapper a {
+    grid-column: auto / span 2;
+}
+.cyc-single-route-info-price-wrapper .meta-bar-txt-strong {
+    font-size: 16px!important;
+}
+.cyc-single-route-info-price-wrapper .cy-btn-quote {
+    border: 2px solid var(--color-secondary);
+    border-radius: 24px;
+    padding: 10px 5px;
+    min-width: 100%;
+    background-color: var(--color-secondary);
+    transition: 300ms all ease;
+}
+.cyc-single-route-info-price-wrapper .cy-btn-quote.cy-btn-quote:hover {
+    border: 2px solid var(--color-secondary-hover);
+    background-color: var(--color-secondary-hover);
+    transition: 300ms all ease;
+}
+.cyc-single-route-info-price-wrapper .cy-btn-quote p {
+    color: white!important;
+    font-size: 15px;
+    font-family: var(--font-family-primary);
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    transition: 300ms all ease;
+}
+.cyc-single-route-info-button-wrapper{
+    margin-top: auto;
+    padding-bottom: 20px;
+}
+.cyc-single-route-info-button-wrapper .cy-btn-contact {
+    border: 2px solid var(--color-text-p);
+    border-radius: 24px;
+    padding: 10px 5px;
+    min-width: 100%;
+    cursor: pointer;
+    transition: 300ms all ease;
+}
+.cyc-single-route-info-button-wrapper .cy-btn-contact p {
+    color: var(--color-text-p);
+    font-size: 15px;
+    font-family: var(--font-family-primary);
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    transition: 300ms all ease;
+}
+.cyc-single-route-info-button-wrapper .cy-btn-contact:hover p {
+    color: white!important;
+    transition: 300ms all ease;
+}
+.cyc-single-route-info-button-wrapper .cy-btn-contact:hover {
+    background-color: var(--color-text-p);
+    transition: 300ms all ease;
 }
 .cyc-single-route-second-menu-wrapper {
     display: grid;
@@ -1491,8 +1612,8 @@ body #tab-stagioni a:hover {
     border-bottom-left-radius: 10px;
 }
 .cy-modal-content {
-    margin: 100px auto;
-    width: 65%;
+    margin: 30px auto;
+    width: 97%;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
     animation-name: modalopen;
     animation-duration: var(--modal-duration);
