@@ -109,6 +109,7 @@ Text Domain: wm-child-verdenatura
 }
 .meta-bar-taxonomy-container{
     display:flex;
+    width: 100%;
 }
 .meta-bar-taxonomy-container i{
     align-self: center;
@@ -745,7 +746,6 @@ body {
 }
 .scarica-app {
     display: flex;
-    height: 60px;
     text-align: center;
     align-items: center;
     font-size: 24px;

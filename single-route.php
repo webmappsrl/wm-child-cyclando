@@ -230,9 +230,16 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 		// get the route price
 		$price = get_field('wm_route_price');
         $price = (float)$price;
-        if ($price) {
-            $price_info = '<span>'.__('from', 'wm-child-cyclando').' '.$price.' '.__('€', 'wm-child-cyclando').'</span>';
-            array_push($intro_info,$price_info);
+        if (!$coming_soon && return_route_targets_has_cyclando($post_id) === false) {
+            if ($price) {
+                $price_info = '<span>'.__('from', 'wm-child-cyclando').' '.$price.' '.__('€', 'wm-child-cyclando').'</span>';
+                array_push($intro_info,$price_info);
+            }
+        } elseif (return_route_targets_has_cyclando($post_id)) { 
+
+        } else { 
+        $price_info = '<span>'.__('Coming soon', 'wm-child-cyclando').'</span>';
+        array_push($intro_info,$price_info);
         }
 
 		// get the post promotion name and value
@@ -495,15 +502,15 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                                             <!--.prezzo  end-->
                                             <?php } elseif (return_route_targets_has_cyclando($post_id)) { ?>
                                             <a class="download-app-link" target="_blank" href="https://info.cyclando.com/app">
-                                                <div class="scarica-app">
+                                                <div class="cy-btn-quote">
                                                     <span
                                                         class='meta-bar-txt-light'><?php echo __('Download', 'wm-child-cyclando'); ?></span>
                                                 </div>
                                             </a>
                                             <?php } else { ?>
-                                            <div class="coming-soon">
+                                            <div class="cy-btn-quote">
                                                 <span
-                                                    class='meta-bar-txt-light'><?php echo __('Coming soon!', 'wm-child-cyclando'); ?></span>
+                                                    class='meta-bar-txt-light'><?php echo __('Coming soon', 'wm-child-cyclando'); ?></span>
                                             </div>
                                             <?php } ?>
                                         </div>
