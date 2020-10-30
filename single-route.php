@@ -405,7 +405,12 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                                                     <i class="<?php echo the_shape_icon($shape); ?>"></i>
                                                     <p class='meta-bar-txt-light'>
                                                         <?php
-                                                        echo __($shape, "wm-child-cyclando");
+                                                        $title_path = $array = [
+                                                            'daisy' => 'Percorso a margherita',
+                                                            'linear' => 'Percorso lineare',
+                                                            'roundtrip' => 'Percorso ad anello'
+                                                        ];
+                                                        echo __($title_path[$shape], "wm-child-cyclando");
                                                         ?>
                                                     </p>
                                                 </div>
