@@ -136,7 +136,7 @@ Text Domain: wm-child-verdenatura
     font-size: 26px;
     font-weight: 800;
 }
-.cyc-single-route-info-price-wrapper a {
+.cyc-single-route-info-price-wrapper a,.cyc-single-route-info-price-wrapper .coming-soon-button {
     grid-column: auto / span 2;
 }
 .cyc-single-route-info-price-wrapper .meta-bar-txt-strong {
@@ -927,9 +927,9 @@ i {
     float: left;
 }
 
-.meta-bar>div {
+/* .meta-bar>div {
     float: left;
-}
+} */
 
 .meta-bar-txt-light {
     margin: 0;

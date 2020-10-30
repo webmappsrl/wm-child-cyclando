@@ -238,7 +238,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         } elseif (return_route_targets_has_cyclando($post_id)) { 
 
         } else { 
-        $price_info = '<span>'.__('Coming soon', 'wm-child-cyclando').'</span>';
+        $price_info = '<span>'.__('Coming soon!', 'wm-child-cyclando').'</span>';
         array_push($intro_info,$price_info);
         }
 
@@ -501,16 +501,18 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                                             </a>
                                             <!--.prezzo  end-->
                                             <?php } elseif (return_route_targets_has_cyclando($post_id)) { ?>
+                                                <div></div>
+                                                <div></div>
                                             <a class="download-app-link" target="_blank" href="https://info.cyclando.com/app">
                                                 <div class="cy-btn-quote">
-                                                    <span
-                                                        class='meta-bar-txt-light'><?php echo __('Download', 'wm-child-cyclando'); ?></span>
+                                                <p><?php echo __('Download', 'wm-child-cyclando'); ?></p>
                                                 </div>
                                             </a>
                                             <?php } else { ?>
-                                            <div class="cy-btn-quote">
-                                                <span
-                                                    class='meta-bar-txt-light'><?php echo __('Coming soon', 'wm-child-cyclando'); ?></span>
+                                                <div></div>
+                                                <div></div>
+                                            <div class="cy-btn-quote coming-soon-button">
+                                                <p><?php echo __('Coming soon', 'wm-child-cyclando'); ?></p>
                                             </div>
                                             <?php } ?>
                                         </div>
