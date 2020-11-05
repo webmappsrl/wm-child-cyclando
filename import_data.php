@@ -125,7 +125,7 @@ if ( class_exists('WebMapp_RegisterFieldsGroup') )
         "note" => array( 'key' => "vn_note" , 'type' => "textarea" , 'label' => "Note",'wpml_cf_preferences' => WEBMAPP_TRANSLATE_CUSTOM_FIELD ),
         // "desc" => array( 'key' => "vn_desc" , 'type' => "wysiwyg" , 'label' => "Descrizione" ),
         "prog" => array( 'key' => "vn_prog" , 'type' => "wysiwyg" , 'label' => "Programma",'wpml_cf_preferences' => WEBMAPP_TRANSLATE_CUSTOM_FIELD ),
-        "scheda_tecnica" => array( 'key' => "vn_scheda_tecnica" , 'type' => "wysiwyg" , 'label' => "Scheda Tecnica",'wpml_cf_preferences' => WEBMAPP_TRANSLATE_CUSTOM_FIELD ),
+        //"scheda_tecnica" => array( 'key' => "vn_scheda_tecnica" , 'type' => "wysiwyg" , 'label' => "Scheda Tecnica",'wpml_cf_preferences' => WEBMAPP_TRANSLATE_CUSTOM_FIELD ),
         "part_pr" => array( 'key' => "vn_part_pr" , 'type' => "wysiwyg" , 'label' => "Partenze e Prezzi",'wpml_cf_preferences' => WEBMAPP_TRANSLATE_CUSTOM_FIELD ),
         "come_arrivare" => array( 'key' => "vn_come_arrivare" , 'type' => "wysiwyg" , 'label' => "Come Arrivare",'wpml_cf_preferences' => WEBMAPP_TRANSLATE_CUSTOM_FIELD ),
         // "latitude" => array( 'key' => "vn_latitude" , 'type' => "text" , 'label' => "Latitudine" ),
