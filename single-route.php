@@ -502,16 +502,14 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                                             </a>
                                             <!--.prezzo  end-->
                                             <?php } elseif (return_route_targets_has_cyclando($post_id)) { ?>
-                                                <div></div>
-                                                <div></div>
+                                                
                                             <a class="download-app-link" target="_blank" href="https://info.cyclando.com/app">
                                                 <div class="cy-btn-quote">
                                                 <p><?php echo __('Download', 'wm-child-cyclando'); ?></p>
                                                 </div>
                                             </a>
                                             <?php } else { ?>
-                                                <div></div>
-                                                <div></div>
+                                                
                                             <div class="cy-btn-quote coming-soon-button">
                                                 <p><?php echo __('Coming soon', 'wm-child-cyclando'); ?></p>
                                             </div>

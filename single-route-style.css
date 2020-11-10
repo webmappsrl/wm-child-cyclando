@@ -354,6 +354,9 @@ Text Domain: wm-child-verdenatura
     .meta-bar.show-prices a {
         padding-bottom: 15px!important;
     }
+    .cyc-single-route-info-price-wrapper {
+        padding-bottom: 15px;
+    }
 }
 @media screen and (min-width: 768px) {
     .cyc-single-route-main-container .rsNav.rsBullets {
