@@ -2153,3 +2153,17 @@ span.route_duration_free {
         border-radius: 20px 20px 0 0px;
     }
 }
+/* ibenda icon style */
+@media screen and (min-width:900px){
+    body .iubenda-tp-btn[data-tp-float][data-tp-float=bottom-right], .iubenda-tp-btn[data-tp-float][data-tp-float=top-right] {
+        left: 60px!important;
+        right: auto!important;
+    }
+}
+@media screen and (max-width:899px){
+    body .iubenda-tp-btn[data-tp-float][data-tp-float=bottom-right], .iubenda-tp-btn[data-tp-float][data-tp-float=top-right] {
+        left: 0px!important;
+        right: auto!important;
+        bottom:60px!important;
+    }
+}
