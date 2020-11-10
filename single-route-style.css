@@ -123,10 +123,10 @@ Text Domain: wm-child-verdenatura
 .cyc-single-route-info-price-wrapper {
     padding-top: 20px;
 }
-.cyc-single-route-info-price-wrapper .wpb_wrapper{
+/* .cyc-single-route-info-price-wrapper .wpb_wrapper{
     display: grid;
     grid-template-columns: 1fr 1fr;
-}
+} */
 .route-info-show-prices{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -195,7 +195,7 @@ Text Domain: wm-child-verdenatura
 }
 .cyc-single-route-second-menu-wrapper {
     display: grid;
-    grid-template-columns: repeat(4,auto);
+    grid-template-columns: repeat(3,auto);
     border: 1px solid var(--color-border-line);
     border-radius: 25px;
     padding: 15px 25px;
@@ -327,6 +327,28 @@ Text Domain: wm-child-verdenatura
 .cyc-single-route-faq-container .w-tabs-section-title {
     font-weight: 400!important;
 }
+.cyc-single-route-info-box {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+/* information container responsive style */
+@media screen and (min-width: 768px) and (max-width:1261px) {
+    .cyc-single-route-info-taxonomy-wrapper i{
+        display: none;
+    }
+    .route-info-show-prices {
+        grid-template-columns: 1fr!important;
+        grid-row-gap: 10px;
+    }
+    .cyc-single-route-info-price-wrapper a, .cyc-single-route-info-price-wrapper .coming-soon-button {
+        grid-column: auto!important;
+    }
+    .meta-bar.show-prices a {
+        padding-bottom: 15px!important;
+    }
+}
 @media screen and (min-width: 768px) {
     .cyc-single-route-main-container .rsNav.rsBullets {
         display: none;
@@ -341,13 +363,32 @@ Text Domain: wm-child-verdenatura
     .gallery-expand-mobile {
         display: none;
     }
+    .cyc-single-route-info-price-wrapper .cy-btn-quote p {
+        font-size: 13px!important;
+    }
+    .cyc-single-route-info-button-wrapper .cy-btn-contact p {
+        font-size: 13px!important;
+    }
+    .cyc-single-route-info-taxonomy-wrapper .wpb_wrapper {
+        grid-row-gap: 10px!important;
+        grid-column-gap: 5px!important;
+    }
+    .meta-bar-taxonomy-container .meta-bar-txt-light {
+        line-height: 17px!important;
+    }
 }
 @media screen and (max-width: 767px) {
-    .cyc-single-route-info-block-column-inner > .wpb_wrapper {
-        order: 1px solid var(--color-border-line);
+    .cyc-single-route-info-button-wrapper {
+        padding-top: 20px;
+    }
+    .cyc-single-route-info-box {
         box-shadow: 1px 1px 15px 1px var(--color-border-line);
         border-radius: 15px;
         padding: 20px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        flex-shrink: 0;
     }
     .cyc-single-route-cta-buttons {
         flex-direction: column !important;
@@ -363,7 +404,7 @@ Text Domain: wm-child-verdenatura
     }
     .cyc-single-route-second-menu-wrapper {
         grid-template-columns: none !important;
-        grid-template-rows: repeat(4,auto);
+        grid-template-rows: repeat(3,auto);
         grid-row-gap: 20px;
     }
     .cyc-single-route-gallery-information-container .rsBullets {
@@ -606,15 +647,6 @@ body {
     body .first-departure .first-departure-date {
         font-size: 18px;
         font-weight: bold;
-    }
-    body .meta-bar.wm-where {
-        grid-area: country;
-    }
-    body .meta-bar.wm-difficulty {
-        grid-area: difficulty;
-    }
-    body .meta-bar.wm-activity {
-        display: none;
     }
     body .webmapp-featured-meta-info .meta-bar.wm-book {
         display: none;

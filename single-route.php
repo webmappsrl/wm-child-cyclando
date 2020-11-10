@@ -335,6 +335,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                 </div>
                 <div class="vc_col-sm-3 wpb_column vc_column_container">
                     <div class="vc_column-inner us_custom_25707306 cyc-single-route-info-block-column-inner">
+                        <div class="cyc-single-route-info-box"><!--  start info box wrapper -->
                         <div class="wpb_wrapper cyc-single-route-info-where-wrapper">
                             <div class="wpb_text_column">
                                 <div class="wpb_wrapper">
@@ -531,6 +532,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                                 </div>
                             </div>
                         </div>
+                        </div><!--  end info box wrapper -->
                     </div>
                 </div>
             </div>
@@ -574,11 +576,6 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                                                 <?php echo __('Coming soon!', 'wm-child-cyclando'); ?></h4>
                                         </div>
                                         <?php } ?>
-                                    </div>
-                                    <div class="cyc-sr-sm-items">
-                                        <?php if ($program or (get_option('webmapp_show_interactive_route_map') && $route_has_geojson)) {
-												echo "<h4 id='expand-map'>" . __('Map', 'wm-child-cyclando') . "</h4>";
-											} ?>
                                     </div>
                                 </div>
                             </div>
@@ -684,263 +681,9 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         </div>
     </section>
     <!-- END section call to action sei pronto block END  -->
-    <!-- START section cose da sapere FAQ START  -->
-    <section class="l-section wpb_row height_small cyc-single-route-faq-container">
-        <div class="l-section-h i-cf">
-            <div class="g-cols vc_row type_default valign_top">
-                <div class="vc_col-sm-12 wpb_column vc_column_container">
-                    <div class="vc_column-inner">
-                        <div class="wpb_wrapper">
-                            <h5 style="text-align: left" class="vc_custom_heading"><?php echo __('Things to know', 'wm-child-cyclando') ?></h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="vc_col-sm-4 wpb_column vc_column_container">
-                    <div class="vc_column-inner">
-                        <div class="wpb_wrapper">
-							<h6 style="text-align: left" class="vc_custom_heading"><?php echo __('Booking', 'wm-child-cyclando') ?></h6>
-							<?php 
-							echo do_shortcode('[vc_tta_accordion scrolling="" c_icon=""][vc_tta_section tab_id="1603987578996-293b52a0-7a07" title="Posso cambiare la data?"][vc_column_text]I am text block. Click edit button to change this text.[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987709666-e05915db-c8e0" title="Posso cambiare la data?"][vc_column_text]I am text block. Click edit button to change this text.[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987706680-2cb9135f-e91b" title="Posso cambiare la data?"][vc_column_text]I am text block. Click edit button to change this text.[/vc_column_text][/vc_tta_section][/vc_tta_accordion]')
-							?>
-						</div>
-                    </div>
-                </div>
-                <div class="vc_col-sm-4 wpb_column vc_column_container">
-					<div class="vc_column-inner">
-                        <div class="wpb_wrapper">
-							<h6 style="text-align: left" class="vc_custom_heading"><?php echo __('Hotel', 'wm-child-cyclando') ?></h6>
-							<?php 
-							echo do_shortcode('[vc_tta_accordion scrolling="" c_icon=""][vc_tta_section tab_id="1603987578996-293b52a0-7a07" title="Posso cambiare la data?"][vc_column_text]I am text block. Click edit button to change this text.[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987709666-e05915db-c8e0" title="Posso cambiare la data?"][vc_column_text]I am text block. Click edit button to change this text.[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987706680-2cb9135f-e91b" title="Posso cambiare la data?"][vc_column_text]I am text block. Click edit button to change this text.[/vc_column_text][/vc_tta_section][/vc_tta_accordion]')
-							?>
-						</div>
-                    </div>
-				</div>
-                <div class="vc_col-sm-4 wpb_column vc_column_container">
-					<div class="vc_column-inner">
-                        <div class="wpb_wrapper">
-							<h6 style="text-align: left" class="vc_custom_heading"><?php echo __('Bicycles', 'wm-child-cyclando') ?></h6>
-							<?php 
-							echo do_shortcode('[vc_tta_accordion scrolling="" c_icon=""][vc_tta_section tab_id="1603987578996-293b52a0-7a07" title="Posso cambiare la data?"][vc_column_text]I am text block. Click edit button to change this text.[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987709666-e05915db-c8e0" title="Posso cambiare la data?"][vc_column_text]I am text block. Click edit button to change this text.[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987706680-2cb9135f-e91b" title="Posso cambiare la data?"][vc_column_text]I am text block. Click edit button to change this text.[/vc_column_text][/vc_tta_section][/vc_tta_accordion]')
-							?>
-						</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- END section cose da sapere FAQ END  -->
     <!-- END new template END-->
 
-    <!-- import html header start -->
-    <div id="webmapp-layer-container" class="webmapp-container">
-        <div id='webmapp-layer-1-title' class="webmapp-featured-image">
-            <div class="webmapp-featured-image-img" style="background-image: url('<?php echo $featured_image; ?>')">
-                <div class="container">
-                    <?php
-						if ($tax_targets) {
-						?>
-                    <div class="tax-targets"><span class='tax-target header-txt-layer-1'>
-                            <?php
-									foreach ($tax_targets as $tax_target) {
-										$get_term = get_term_by('slug', $tax_target->slug, 'who');
-										$term = 'term_' . $get_term->term_id;
-										$iconimage = get_field('wm_taxonomy_icon', $term);
-										if (strpos($iconimage, 'wm-icon-') !== false) {
-											echo "<i class='$iconimage'></i>" . $tax_target->name;
-										} else {
-											echo "<i class='cy-icons icon-" . $iconimage . "'></i>" . $tax_target->name;
-										}
-									}
-									?>
-                        </span>
-                    </div>
-                    <?php } ?>
-                    <h1 class=""><?php the_title() ?></h1>
-                </div>
-            </div>
-        </div>
-        <div id='webmapp-layer-1-map' class="webmapp-map-container">
-            <div <?php if ($program || (get_option('webmapp_show_interactive_route_map') && $route_has_geojson)) {
-							echo 'id="expand-map"';
-						} else {
-							echo '';
-						} ?> class="webmapp-featured-map" style="background-image: url('<?php echo $featured_map; ?>')">
-                <div class="container">
-                    <?php
-						if ($days) {
-
-						?>
-                    <div class="route-duration">
-                        <?php
-								if ($program or (get_option('webmapp_show_interactive_route_map') && $route_has_geojson)) {
-									//echo "<span id='expand-map' class='header-txt-layer-1 expand-map'><i class='cy-icons icon-expand-alt1'></i></span>";
-									echo "<span id='expand-map' class='header-txt-layer-1 expand-map'>" . __('Program', 'wm-child-cyclando') . "</span>";
-								}
-								echo "<span class='header-txt-layer-1 dur-txt'>" .  " $days " . __('days', 'wm-child-cyclando') . " / $nights " . __('nights', 'wm-child-cyclando') . " ";
-								if ($distance) {
-									echo $distance . "<span style='font-weight:100;'> km</span>";
-								}
-								echo "</span>";
-								?>
-                    </div>
-                    <?php } ?>
-                </div>
-            </div>
-        </div>
-
-        <div id='webmapp-layer-2' class="webmapp-featured-meta">
-            <div class="webmapp-featured-meta-info"
-                style="background-image: url('/wp-content/themes/wm-child-cyclando/images/background_menu_route_verde.png')">
-                <div class="container">
-                    <div class="meta-bar show-prices">
-                        <div id="<?php echo $popup_show_prices_class ?>"
-                            class="popup-show-prices <?php echo $coming_soon_class ?>">
-                            <!-- <div class="meta-bar price-from"> -->
-                            <?php if (!$coming_soon && return_route_targets_has_cyclando($post_id) === false) { ?>
-                            <!-- <a  target="_blank" href="https://cyclando.com/quote/#/<?php echo $post_id . '?lang=' . $language; ?>"></a> -->
-                            <div class="prezzo-container">
-                                <!-- prezzo start-->
-                                <div class="prezzo">
-                                    <?php if ($promotion_value) { ?>
-                                    <p class='meta-bar-txt-light'><span
-                                            class='old-price'><?php echo $price . ' €'; ?></span></p>
-                                    <?php } else { ?>
-                                    <p class='meta-bar-txt-light'><?php echo __('From', 'wm-child-cyclando'); ?></p>
-                                    <?php } ?>
-                                    <p class="cifra"><?php
-                                        if ($promotion_value) {
-                                            echo $promotion_price . ' €';
-                                        } else {
-                                            echo $price . ' €';
-                                        }
-                                        ?>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="first-departure">
-                                <span
-                                    class='meta-bar-txt-light'><?php echo __('Next departures', 'wm-child-cyclando'); ?></span>
-                                <div class="first-departure-date"><?php echo $first_departure_date; ?></div>
-                            </div>
-                            <!--.prezzo  end-->
-                            <div class="show-price-btn"><i class="cy-icons icon-calendar-alt1"></i></div>
-                            <?php } elseif (return_route_targets_has_cyclando($post_id)) { ?>
-                            <a class="download-app-link" target="_blank" href="https://info.cyclando.com/app">
-                                <div class="scarica-app">
-                                    <span
-                                        class='meta-bar-txt-light'><?php echo __('Download', 'wm-child-cyclando'); ?></span>
-                                </div>
-                            </a>
-                            <?php } else { ?>
-                            <div class="coming-soon">
-                                <span
-                                    class='meta-bar-txt-light'><?php echo __('Coming soon!', 'wm-child-cyclando'); ?></span>
-                            </div>
-                            <?php } ?>
-                        </div>
-                    </div>
-
-                    <div class="meta-bar wm-where">
-                        <i class="cy-icons icon-map-marker-alt1"></i>
-                        <div class="meta-bar-container">
-                            <p class='meta-bar-txt-light'>
-                                <?php
-									$parent_id = $tax_places_to_go[0]->parent;
-									$parent = '';
-									if ($parent_id) {
-										$parent  = get_term($parent_id)->name;
-									}
-									if ($parent) {
-										echo $parent;
-									}
-									?>
-                            </p>
-                            <p class='meta-bar-txt-bold'>
-                                <?php
-									$places_count = 0;
-									$tax_places_to_go_names = array();
-									if ($tax_places_to_go) {
-										foreach ($tax_places_to_go as $tax_place_to_go) {
-											array_push($tax_places_to_go_names, $tax_place_to_go->name);
-											$places_count++;
-										}
-										echo $tax_places_to_go[0]->name;
-										if ($places_count > 1) {
-											echo "<a class='show-more-places tooltips' href='#!'> ... <span>";
-											foreach ($tax_places_to_go_names as $name) {
-												echo $name . '<br>';
-											}
-											// foreach (array_slice($tax_places_to_go_names,1) as $name) { echo $name; }
-											echo "</span></a>";
-										}
-									}
-									?>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="meta-bar wm-difficulty">
-                        <i class="cy-icons icon-tachometer-slow1"></i>
-                        <div class="meta-bar-container">
-                            <p class='meta-bar-txt-light'>
-                                <?php
-									echo __('Difficulty', 'wm-child-cyclando')
-									?>
-                            </p>
-                            <p class='meta-bar-txt-bold'>
-                                <?php
-									echo $difficulty . " " . __('from 5', 'wm-child-cyclando');
-									?>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="meta-bar wm-activity">
-                        <i class="<?php echo $iconimage_activity; ?>"></i>
-                        <div class="meta-bar-container">
-                            <p class='meta-bar-txt-light'>
-                                <?php
-									echo __('Activity', 'wm-child-cyclando')
-									?>
-                            </p>
-                            <p class='meta-bar-txt-bold'>
-                                <?php
-									$activity_count = 0;
-									$tax_activities_names = array();
-									if ($tax_activities) {
-										foreach ($tax_activities as $tax_activity) {
-											array_push($tax_activities_names, $tax_activity->name);
-											$activity_count++;
-										}
-										echo $tax_activities[0]->name;
-										if ($activity_count > 1) {
-											echo "<a class='show-more-places tooltips' href='#!'> ... <span>";
-											foreach ($tax_activities_names as $name) {
-												echo $name . '<br>';
-											}
-											// foreach (array_slice($tax_places_to_go_names,1) as $name) { echo $name; }
-											echo "</span></a>";
-										}
-									}
-									?>
-                            </p>
-                        </div>
-                    </div>
-                    <?php if (!$coming_soon && return_route_targets_has_cyclando($post_id) === false) { ?>
-                    <div id="wm-book-quote" class="meta-bar wm-book long-txt">
-                        <p class='meta-bar-txt-bold'><?php echo __('Quote', 'wm-child-cyclando'); ?></p>
-                        <a target="_blank"
-                            href="https://cyclando.com/quote/#/<?php echo $post_id . '?lang=' . $language; ?>">
-                        </a>
-                    </div>
-                    <?php } else { ?>
-                    <div id="cy-contact-in-alto" class="meta-bar wm-book long-txt">
-                        <p id="cy-contact-in-alto-text" class='meta-bar-txt-bold'>
-                            <?php echo __('Contact us', 'wm-child-cyclando'); ?></p>
-                    </div>
-                    <?php } ?>
-                </div>
-            </div>
-        </div>
-    </div> <!-- END div webmapp-layer-container -->
+    
     <?php if (current_user_can('administrator') && get_option('webmapp_show_interactive_route_map')) { ?>
     <div id="wm-wizards-container">
         <?php
@@ -968,8 +711,8 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                 <?php echo do_shortcode('[route_table_price]'); ?>
             </div>
             <!-- <div class="cy-modal-footer">
-								<h3>Modal Footer</h3>
-							</div> -->
+                <h3>Modal Footer</h3>
+            </div> -->
         </div>
     </div>
     <!-- END HTML modal for prices -->
@@ -1031,115 +774,6 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         </div>
     </div>
     <!-- END HTML modal for expand map program -->
-    <!-- import html header END -->
-    <section class="l-section height_auto for_sidebar at_right intro-section">
-        <!--- first section -->
-        <div id="introduction" class="l-section-h">
-            <div class="g-cols type_default valign_top">
-                <div class="vc_col-sm-9 vc_column_container l-content">
-                    <div class="vc_column-inner">
-                        <div class="wpb_wrapper">
-                            <section class="l-section">
-                                <div class="l-section-h i-cf">
-                                    <?php
-										echo "<p class='route-excerpt'>" . get_the_excerpt() . "</p>";
-										echo get_the_content();
-										?>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                </div>
-                <div class="vc_col-sm-3 vc_column_container l-sidebar">
-                    <div class="vc_column-inner">
-                        <div class="wpb_wrapper sidebar-departures">
-                            <?php if ($gallery_ids) {
-									echo do_shortcode('[us_image_slider ids="' . implode(',', $gallery_ids) . '" fullscreen="1" img_size="large" img_fit="cover"]');
-								} ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--- END first section -->
-    <!--- second section  program and contact us-->
-    <section id="program-button" class="l-section height_auto for_sidebar at_right">
-        <div class="l-section-h">
-            <div class="type_default valign_top">
-                <div class="vc_col-sm-9 vc_column_container l-content">
-                    <div class="vc_column-inner">
-                        <div class="wpb_wrapper">
-                            <section class="l-section cy-section-route-buttons">
-                                <?php if ($program || (get_option('webmapp_show_interactive_route_map') && $route_has_geojson)) : ?>
-                                <div class="cy-route-body-button cy-route-body-programbutton">
-                                    <?php
-											echo "<span id='expand-map' class='header-txt-layer-1 expand-map-content'>" . __('Program', 'wm-child-cyclando') . "</span>";
-											?>
-                                </div>
-                                <?php endif; ?>
-                                <div id="cy-contact-in-basso"
-                                    class="cy-route-body-button cy-route-body-contactus expand-map-content">
-                                    <div class="meta-bar long-txt">
-                                        <p id="cy-contact-in-basso-text" class='meta-bar-txt-bold'>
-                                            <?php echo __('Contact us', 'wm-child-cyclando'); ?></p>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--- END Second section program and contact us-->
-    <?php if ($scheda_tecnica) : ?>
-    <section id="caratteristiche" class="l-section height_auto for_sidebar at_right">
-        <!--- Third section  Caratteristiche-->
-        <div class="l-section-h">
-            <div class="type_default valign_top">
-                <div class="vc_col-sm-9 vc_column_container l-content">
-                    <div class="vc_column-inner">
-                        <div class="wpb_wrapper">
-                            <section class="l-section">
-                                <div class="l-section-h i-cf">
-                                    <?php
-											echo "<h2>" . __('Features', 'wm-child-cyclando') . "</h2>";
-											echo $scheda_tecnica;
-											?>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--- END third section Caratteristiche-->
-    <?php endif; ?>
-    <?php if ($touroperator) : ?>
-    <!--- forth section  touroperator-->
-    <section id="touroperator" class="l-section height_auto for_sidebar at_right">
-        <div class="l-section-h">
-            <div class="type_default valign_top">
-                <div class="vc_col-sm-9 vc_column_container l-content">
-                    <div class="vc_column-inner">
-                        <div class="wpb_wrapper">
-                            <section class="l-section">
-                                <div class="l-section-h i-cf">
-                                    <?php
-											echo "<h2>Fatto da: $touroperator</h2>";
-											?>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <?php endif; ?>
-    <!--- END forth section touroperator-->
 
     <!-- HTML modal for contact in route -->
     <div id="cy-route-contact" class="cy-route-contact">
@@ -1333,28 +967,9 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
     </div>
     <!-- END HTML modal for contact in route -->
     <?php
-		// Post comments
-		if (comments_open() or get_comments_number() != '0') {
-
-			$show_comments = FALSE;
-			// Check comments option of Events Calendar plugin
-			if (function_exists('tribe_get_option') and get_post_type() == 'tribe_events') {
-				$show_comments = tribe_get_option('showComments');
-			}
-
-			if ($show_comments) {
-		?>
-    <section class="l-section for_comments">
-        <div class="l-section-h i-cf"><?php
-													wp_enqueue_script('comment-reply');
-													comments_template();
-													?></div>
-    </section><?php
-						}
-					}
-				}
-				do_action('us_after_page');
-							?>
+    }
+    do_action('us_after_page');
+    ?>
 </main>
 
 <?php get_footer() ?>
