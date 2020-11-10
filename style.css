@@ -161,9 +161,9 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
     .l-subheader-sticky-mobile .menu-item:hover .w-nav-anchor, .l-subheader-sticky-mobile .menu-item:focus .w-nav-anchor, .l-subheader-sticky-mobile .menu-item:active .w-nav-anchor{
         color: #fff!important;
     }
-    .no-touch .menu-item.level_1.opened>.w-nav-anchor {
+    /* .no-touch .menu-item.level_1.opened>.w-nav-anchor {
         color: #fff!important;
-    }
+    } */
     .cy-modal-content {
         width: 100%;
     }
