@@ -25,7 +25,7 @@ Text Domain:    wm-child-verdenatura
     --color-promotion: white;
     --font-family-paragraph: "Lato";
     --font-family-primary: "Montserrat";
-    --font-family-primary-alternate: "Montserrat Alternates";
+    --font-family-primary-alternate: "Montserrat";
     --modal-duration: 1s;
     --modal-color: #428bca;
     --color-border-line: #d4d4d4;
@@ -636,7 +636,7 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
 }
 
 .footer-menu-cyclando ul li a {
-    font-family: var(--font-family-primary-alternate);
+    font-family: var(--font-family-primary);
     font-size: 18px;
     font-weight: 600;
     line-height: 30px;
