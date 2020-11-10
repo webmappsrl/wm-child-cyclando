@@ -363,12 +363,6 @@ Text Domain: wm-child-verdenatura
     .gallery-expand-mobile {
         display: none;
     }
-    .cyc-single-route-info-price-wrapper .cy-btn-quote p {
-        font-size: 13px!important;
-    }
-    .cyc-single-route-info-button-wrapper .cy-btn-contact p {
-        font-size: 13px!important;
-    }
     .cyc-single-route-info-taxonomy-wrapper .wpb_wrapper {
         grid-row-gap: 10px!important;
         grid-column-gap: 5px!important;
@@ -378,6 +372,12 @@ Text Domain: wm-child-verdenatura
     }
 }
 @media screen and (max-width: 767px) {
+    .cyc-single-route-info-price-wrapper .cy-btn-quote p {
+        font-size: 13px!important;
+    }
+    .cyc-single-route-info-button-wrapper .cy-btn-contact p {
+        font-size: 13px!important;
+    }
     .cyc-single-route-info-button-wrapper {
         padding-top: 20px;
     }
