@@ -1839,10 +1839,10 @@ body #tab-stagioni a:hover {
 a.tooltips {
     position: relative;
     display: inline;
-    color: white;
+    color: var(--color-text-p);
 }
 a.tooltips:hover {
-    color: white!important;
+    color: var(--color-text-p);
 }
 a.tooltips span {
     position: absolute;
@@ -1876,10 +1876,18 @@ a:hover.tooltips span {
     margin-left: -76px;
     z-index: 9990;
 }
-
+.et_social_mobile_button.et_social_active_button {
+    display: none;
+}
+.et_social_mobile{
+    display: none!important;
+}
 /* share buttom social sharing */
 .move {
     bottom: 60px!important;
+}
+.et_social_hide_sidebar.et_social_icon {
+    display: none!important;
 }
 /* prezzo scontato price in promotion */
 .new-price {

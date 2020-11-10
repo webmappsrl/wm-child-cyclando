@@ -948,7 +948,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                     
                     jQuery('#cyc-single-route-monarch-share-button').click(function() {
                         jQuery('.et_social_sidebar_networks').toggle(300);
-                        jQuery('.et_social_hide_sidebar').toggleClass('et_social_hidden_sidebar');
+                        // jQuery('.et_social_hide_sidebar').toggleClass('et_social_hidden_sidebar');
                         jQuery('.et_social_sidebar_networks').toggleClass(
                             'et_social_hidden_sidebar et_social_visible_sidebar');
                     });
