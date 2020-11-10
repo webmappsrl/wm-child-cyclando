@@ -335,6 +335,12 @@ Text Domain: wm-child-verdenatura
 }
 /* information container responsive style */
 @media screen and (min-width: 768px) and (max-width:1261px) {
+    .cyc-single-route-info-price-wrapper .cy-btn-quote p {
+        font-size: 13px!important;
+    }
+    .cyc-single-route-info-button-wrapper .cy-btn-contact p {
+        font-size: 13px!important;
+    }
     .cyc-single-route-info-taxonomy-wrapper i{
         display: none;
     }
@@ -372,12 +378,6 @@ Text Domain: wm-child-verdenatura
     }
 }
 @media screen and (max-width: 767px) {
-    .cyc-single-route-info-price-wrapper .cy-btn-quote p {
-        font-size: 13px!important;
-    }
-    .cyc-single-route-info-button-wrapper .cy-btn-contact p {
-        font-size: 13px!important;
-    }
     .cyc-single-route-info-button-wrapper {
         padding-top: 20px;
     }
