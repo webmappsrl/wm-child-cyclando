@@ -15,7 +15,7 @@ function send_email_to_tour_operato($post_id) {
     $new_stato = $_POST['acf']['wm_route_stato_pubblicazione'];
 
     // Check if a specific value was updated.
-    if( isset($new_stato) && $new_stato == 'done' && $new_stato != $prev_stato) {
+    if( isset($new_stato) && $new_stato == 'done21' && $new_stato != $prev_stato) {
         wp_email_to_tour_operator($post_id);
     }
     
@@ -34,9 +34,9 @@ function wp_email_to_tour_operator($post_id) {
         define("HTML_EMAIL_HEADERS", array('Content-Type: text/html; charset=UTF-8'));
         $subject = 'Your tour is online on cyclando.com';
         $html_message = 'We are happy to inform you that your tour is now available on cyclando.com.<br>
-                        Here’s the link: <br>
-                        <a href="'.$post_permalink.'">'.$post_title.'</a><br>
+                        Here’s the link: <a href="'.$post_permalink.'">'.$post_title.'</a><br>
                         Please check tour’s program, dates and prices and if you find anything wrong, please respond to this email providing details on what we should change<br>
+                        <br>
                         Best wishes,<br>
                         Cyclando content team'; 
         
