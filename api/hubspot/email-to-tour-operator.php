@@ -27,14 +27,14 @@ function wp_email_to_tour_operator($post_id) {
     $post_title = get_the_title($post_id);
     // Get tour operator.
     $tour_operator_id = get_field('tour_operator',$post_id);
-    $tour_title = get_the_title($tour_operator_id);
+    $tour_title = get_the_title($tour_operator_id[0]);
     $TO_email = get_field('tour_operator_email',$tour_operator_id[0]);
     
     if ($TO_email) {
         // Define a constant to use with html emails
         define("HTML_EMAIL_HEADERS", array('Content-Type: text/html; charset=UTF-8'));
         $subject = 'Your tour is online on cyclando.com';
-        $html_message = 'Dear '.$tour_title.'<br>
+        $html_message = 'Greetings '.$tour_title.'<br>
                         We are happy to inform you that your tour is now available on cyclando.com.<br>
                         Here’s the link: <a href="'.$post_permalink.'">'.$post_title.'</a><br>
                         Please check tour’s program, dates and prices and if you find anything wrong, please respond to this email providing details on what we should change<br>
