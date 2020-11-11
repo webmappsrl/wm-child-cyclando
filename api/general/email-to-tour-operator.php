@@ -1,5 +1,4 @@
 <?php
-add_action( 'acf/save_post' ,'send_email_to_tour_operato',5,1);
 
 function send_email_to_tour_operato($post_id) {
     
@@ -20,6 +19,8 @@ function send_email_to_tour_operato($post_id) {
     }
     
 }
+add_action( 'acf/save_post' ,'send_email_to_tour_operato',5,1);
+
 
 function wp_email_to_tour_operator($post_id) {
 
