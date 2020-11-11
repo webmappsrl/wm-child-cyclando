@@ -29,16 +29,18 @@ function wp_email_to_tour_operator($post_id) {
     $tour_operator_id = get_field('tour_operator',$post_id);
     $TO_email = get_field('tour_operator_email',$tour_operator_id[0]);
     
-    // Define a constant to use with html emails
-    define("HTML_EMAIL_HEADERS", array('Content-Type: text/html; charset=UTF-8'));
-    $subject = 'Your tour is online on cyclando.com';
-    $html_message = 'We are happy to inform you that your tour is now available on cyclando.com.<br>
-                    Here’s the link: <br>
-                    <a href="'.$post_permalink.'">'.$post_title.'</a><br>
-                    Please check tour’s program, dates and prices and if you find anything wrong, please respond to this email providing details on what we should change<br>
-                    Best wishes,<br>
-                    Cyclando content team'; 
-    
-    // Send the email using wordpress mail function
-    wp_mail( $TO_email, $subject, $html_message, HTML_EMAIL_HEADERS );
+    if ($TO_email) {
+        // Define a constant to use with html emails
+        define("HTML_EMAIL_HEADERS", array('Content-Type: text/html; charset=UTF-8'));
+        $subject = 'Your tour is online on cyclando.com';
+        $html_message = 'We are happy to inform you that your tour is now available on cyclando.com.<br>
+                        Here’s the link: <br>
+                        <a href="'.$post_permalink.'">'.$post_title.'</a><br>
+                        Please check tour’s program, dates and prices and if you find anything wrong, please respond to this email providing details on what we should change<br>
+                        Best wishes,<br>
+                        Cyclando content team'; 
+        
+        // Send the email using wordpress mail function
+        wp_mail( $TO_email, $subject, $html_message, HTML_EMAIL_HEADERS );
+    }
 }
