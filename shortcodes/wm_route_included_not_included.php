@@ -9,6 +9,15 @@ function wm_route_included_not_included($post_id) {
     
     $fields = get_fields($post_id);
 
+    $included_not_included_translations = $array = [
+        'daisy' => 'Percorso a margherita',
+        'linear' => 'Percorso lineare',
+        'roundtrip' => 'Percorso ad anello'
+    ];
+
+    //get post language
+    $post_lang = apply_filters( 'wpml_post_language_details', NULL, $post_id );
+    $current_lang = $post_lang['language_code'];
     ?>
     <div class="extra-quotes">
         <p class="tab-section"> 
@@ -25,8 +34,14 @@ function wm_route_included_not_included($post_id) {
                             <tr>  
                                 <th>
                                     <?php
-                                        $field_object = get_field_object($field_key,$post_id); 
-                                        echo $field_object['label'];
+                                        if ($current_lang && $current_lang == 'it') {
+                                            $field_object = get_field_object($field_key,$post_id); 
+                                            echo $field_object['label'];
+                                        }
+                                        if ($current_lang && $current_lang == 'en') {
+                                            $field_object = get_field_object($field_key,$post_id); 
+                                            echo $field_object['label_eng'];
+                                        }
                                     ?>
                                 </th>
                             </tr>
@@ -37,7 +52,12 @@ function wm_route_included_not_included($post_id) {
                                 <tr>  
                                     <th>
                                         <?php
-                                            the_sub_field('ini_included_aditional');
+                                            if ($current_lang && $current_lang == 'it') {
+                                                the_sub_field('ini_included_aditional');
+                                            }
+                                            if ($current_lang && $current_lang == 'en') {
+                                                the_sub_field('ini_included_aditional_en');
+                                            }
                                         ?>
                                     </th>
                                 </tr>
@@ -62,8 +82,14 @@ function wm_route_included_not_included($post_id) {
                             <tr>  
                                 <th>
                                     <?php
-                                        $field_object = get_field_object($field_key,$post_id); 
-                                        echo $field_object['label'];
+                                        if ($current_lang && $current_lang == 'it') {
+                                            $field_object = get_field_object($field_key,$post_id); 
+                                            echo $field_object['label'];
+                                        }
+                                        if ($current_lang && $current_lang == 'en') {
+                                            $field_object = get_field_object($field_key,$post_id); 
+                                            echo $field_object['label_eng'];
+                                        }
                                     ?>
                                 </th>
                             </tr>
@@ -74,7 +100,12 @@ function wm_route_included_not_included($post_id) {
                             <tr>  
                                 <th>
                                     <?php
-                                        the_sub_field('ini_not_included_aditional');
+                                        if ($current_lang && $current_lang == 'it') {
+                                            the_sub_field('ini_not_included_aditional');
+                                        }
+                                        if ($current_lang && $current_lang == 'en') {
+                                            the_sub_field('ini_not_included_aditional_en');
+                                        }
                                     ?>
                                 </th>
                             </tr>
