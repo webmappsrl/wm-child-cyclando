@@ -46,7 +46,11 @@ jQuery(document).ready(function () {
   
 
   // Covid banner
-  jQuery("<div class='covidbanner'><div class='covidbanner-container'><span> AVVISO PER CHI VIAGGIA: <a href='https://cyclando.com/assicurazione-covid/'>scopri di più sul COVID-19</a></span> <span class='cy-close-covidbanner'>&times;</span></div></div>").insertBefore(".l-canvas.type_wide");
+  if (lang == "en") {
+    jQuery("<div class='covidbanner'><div class='covidbanner-container'><span> NOTICE FOR TRAVELERS: <a href='https://cyclando.com/assicurazione-covid/'>find out more about COVID-19</a></span> <span class='cy-close-covidbanner'>&times;</span></div></div>").insertBefore(".l-canvas.type_wide");
+  } else {
+    jQuery("<div class='covidbanner'><div class='covidbanner-container'><span> AVVISO PER CHI VIAGGIA: <a href='https://cyclando.com/assicurazione-covid/'>scopri di più sul COVID-19</a></span> <span class='cy-close-covidbanner'>&times;</span></div></div>").insertBefore(".l-canvas.type_wide");
+  }
   const covidBanner = document.querySelector('.covidbanner');
   const closeCovidBtn = document.querySelector('.covidbanner .cy-close-covidbanner');
   const wpAdminBar = document.querySelector('#wpadminbar');
@@ -153,7 +157,7 @@ jQuery(document).ready(function () {
       "//" +
       window.location.host +
       "/" +
-      "cerca/?lang=en&";
+      "tours/?lang=en&";
   } else {
     main_url =
       window.location.protocol + "//" + window.location.host + "/" + "cerca/";
