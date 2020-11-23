@@ -44,13 +44,6 @@ jQuery(document).ready(function () {
   var count = 0;
   zSearch = 0;
   
-  if (lang == "en") {
-    // Dove vui andare?
-    jQuery('#cy-search-element-container > div:nth-child(1) > div > input.facetwp-autocomplete.ready').attr("placeholder","Where you want to go?")
-    // In quale mese?
-    jQuery('#cy-search-element-container > div:nth-child(2) > div > select > option:nth-child(1)').text("In which month?")
-  }
-  
 
   // Covid banner
   jQuery("<div class='covidbanner'><div class='covidbanner-container'><span> AVVISO PER CHI VIAGGIA: <a href='https://cyclando.com/assicurazione-covid/'>scopri di più sul COVID-19</a></span> <span class='cy-close-covidbanner'>&times;</span></div></div>").insertBefore(".l-canvas.type_wide");
@@ -87,6 +80,12 @@ jQuery(document).ready(function () {
 
   
   jQuery(document).one("facetwp-loaded", function () {
+    if (lang == "en") {
+      // Dove vui andare?
+      jQuery('#cy-search-element-container > div:nth-child(1) > div > input.facetwp-autocomplete.ready').attr("placeholder","Where you want to go?")
+      // In quale mese?
+      jQuery('#cy-search-element-container > div:nth-child(2) > div > select > option:nth-child(1)').text("In which month?")
+    }
     jQuery(".cy-facetwp-cerca-quando").append(jQuery(".cy-facetwp-cerca-where input.facetwp-autocomplete-update"));
     jQuery(".cy-facetwp-cerca-quando input.facetwp-autocomplete-update").html("CERCA");
     jQuery(".cy-facetwp-cerca-quando input.facetwp-autocomplete-update").val("CERCA");
