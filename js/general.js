@@ -44,6 +44,13 @@ jQuery(document).ready(function () {
   var count = 0;
   zSearch = 0;
   
+  $lang = jQuery("html").attr('lang');
+  if ($lang == "en-US") {
+    // Dove vui andare?
+    jQuery('#cy-search-element-container > div:nth-child(1) > div > input.facetwp-autocomplete.ready').attr("placeholder","Where you want to go?")
+    // In quale mese?
+    jQuery('#cy-search-element-container > div:nth-child(2) > div > select > option:nth-child(1)').text("In which month?")
+  }
   
 
   // Covid banner
