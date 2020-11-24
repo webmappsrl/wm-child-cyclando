@@ -262,9 +262,8 @@ foreach ( $variations_name_price as $var ) {
                     ?>
                     <li><a href="#tab-<?php echo $season_name_id; ?>" ><?php
                         if ($_GET['lang'] == 'en') {
-                            $stagione_pos = strpos($season_name, 'Stagione');
-                            if ($stagione_pos) {
-                                $season_name_en = str_replace('Stagione', 'Season', $season_name);
+                            $season_name_en = str_replace('Stagione', 'Season', $season_name);
+                            if ($season_name_en) {
                                 echo __($season_name_en ,'wm-child-verdenatura');
                             } else {
                                 echo __($season_name ,'wm-child-verdenatura');
