@@ -261,8 +261,17 @@ foreach ( $variations_name_price as $var ) {
                     if (!$season_disactive):
                     ?>
                     <li><a href="#tab-<?php echo $season_name_id; ?>" ><?php
-                            echo __($season_name ,'wm-child-verdenatura');?>
-                                
+                        if ($_GET['lang'] == 'en') {
+                            $stagione_pos = strpos($season_name, 'Stagione');
+                            if ($stagione_pos) {
+                                $season_name_en = str_replace('Stagione', 'Season', $season_name);
+                                echo __($season_name_en ,'wm-child-verdenatura');
+                            } else {
+                                echo __($season_name ,'wm-child-verdenatura');
+                            }
+                        } else {
+                            echo __($season_name ,'wm-child-verdenatura');
+                        }?>
                         </a>
                     </li>
                     <?php endif; 

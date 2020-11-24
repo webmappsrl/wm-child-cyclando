@@ -418,7 +418,11 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                                                             'linear' => 'Percorso lineare',
                                                             'roundtrip' => 'Percorso ad anello'
                                                         ];
-                                                        echo __($title_path[$shape], "wm-child-cyclando");
+                                                        if ($language == 'it') {
+                                                            echo __($title_path[$shape], "wm-child-cyclando");
+                                                        } else {
+                                                            echo __($shape, "wm-child-cyclando");
+                                                        }
                                                         ?>
                                                     </p>
                                                 </div>
@@ -695,7 +699,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             <div class="cy-modal-header">
                 <div class="close-button-container"><span class="cy-close">&times;</span></div>
                 <div class="vedi-prezzi">
-                    <h2>Vedi i prezzi</h2>
+                    <h2><?php echo __('See the prices', 'wm-child-cyclando'); ?></h2>
                 </div>
                 <div class="meta-bar wm-activity"><i class="<?php echo $iconimage_activity; ?>"></i></div>
                 <div id="wm-book-quote" class="meta-bar wm-book long-txt">
