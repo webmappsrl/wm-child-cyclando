@@ -1625,9 +1625,9 @@ i.cy-icons.icon-search1 {
      padding-top: 0% !important; 
 } */
 
-.page-id-62001 .l-subheader-h, .page-id-62001 .l-section-h, .page-id-62001 .l-main .aligncenter, .page-id-62001 .w-tabs-section-content-h {
+/* .page-id-62001 .l-subheader-h, .page-id-62001 .l-section-h, .page-id-62001 .l-main .aligncenter, .page-id-62001 .w-tabs-section-content-h {
     max-width: 1800px !important;
-}
+} */
 @media (min-width: 1200px) {
     .pagina-cerca-descrizione-container {
         padding-top: 220px!important;
@@ -1737,7 +1737,7 @@ h4.tripSearch {
     margin-bottom: 1.5rem;
 }
 
-.page-id-62001 input.facetwp-autocomplete.ready {
+.general-cerca-facetwp-container input.facetwp-autocomplete.ready {
     
     padding: 0 0 0 1.2rem;
     border-radius: 20px;
@@ -1747,7 +1747,7 @@ h4.tripSearch {
     border: 1px solid #ccc;
     padding: 0 0 0 13%;
 }
-.page-id-62001 .cy-facetwp-cerca-quando .facetwp-autocomplete-update {
+.general-cerca-facetwp-container .cy-facetwp-cerca-quando .facetwp-autocomplete-update {
     padding: 5px 10px;
     margin-top: 40px;
     height: 55px;
@@ -1764,7 +1764,7 @@ h4.tripSearch {
 .cy-facetwp-cerca-where .facetwp-facet-dove_vuoi_andare,.cy-facetwp-cerca-quando .facetwp-facet-quando_vuoi_partire {
     margin: 0;
 }
-.page-id-62001 select.facetwp-dropdown {
+.general-cerca-facetwp-container select.facetwp-dropdown {
     font-size: 16px;
     height: 3.4rem;
     border-radius: 20px;
@@ -1787,7 +1787,7 @@ h4.tripSearch {
     -webkit-box-orient: vertical;
 }
 
-.page-id-62001 .facetwp-facet input {
+.general-cerca-facetwp-container .facetwp-facet input {
     background: white;
 }
 
@@ -1835,8 +1835,7 @@ h4.tripSearch {
     height: 100%;
 }
 
-
-.page-id-62001 i > span {
+.advancedsearch-container i > span {
     font-family: var(--font-family-primary-alternate);
 }
 
@@ -1971,7 +1970,7 @@ span.route_duration_free {
 
 @media screen and (max-width: 600px)
 {
-    .page-id-62001 select.facetwp-dropdown {
+    .general-cerca-facetwp-container select.facetwp-dropdown {
         border-radius: 10px;
     }
     .wm_template_advancedsearch .title-holder {
@@ -1986,7 +1985,7 @@ span.route_duration_free {
     }
 
 
-    .page-id-62001 .g-cols.vc_row.type_default.valign_top {
+    .general-cerca-facetwp-container .g-cols.vc_row.type_default.valign_top {
         margin: 6% 0 0 0;
     }
 
@@ -2001,11 +2000,11 @@ span.route_duration_free {
         /* line-height: 120%; */
     }
 
-    .page-id-62001 .g-cols.type_boxes>div, .g-cols.reversed>div:first-child, .g-cols:not(.reversed)>div:last-child, .g-cols>div.has-fill {
+    /* .page-id-62001 .g-cols.type_boxes>div, .g-cols.reversed>div:first-child, .g-cols:not(.reversed)>div:last-child, .g-cols>div.has-fill {
         margin: 0% 0 0 0;
-    }
+    } */
 
-     .page-id-62001 .facetwp-counts {
+     .general-cerca-facetwp-container .facetwp-counts {
         font-size: 18px;
     }
 
@@ -2020,13 +2019,13 @@ span.route_duration_free {
         top: 8%;
     }
 
-    .page-id-62001 .cy-facetwp-cerca-quando .facetwp-autocomplete-update 
+    .general-cerca-facetwp-container .cy-facetwp-cerca-quando .facetwp-autocomplete-update 
     {
         height: 55px;
         border-radius: 10px;
     }
 
-    .page-id-62001 input.facetwp-autocomplete.ready
+    .general-cerca-facetwp-container input.facetwp-autocomplete.ready
     {
         border-radius: 10px;
         font-size: 16px;
@@ -2127,13 +2126,13 @@ span.route_duration_free {
     input.facetwp-autocomplete.ready::placeholder {
         font-size: 13px;
     }
-    .page-id-62001 select.facetwp-dropdown {
+    /* .general-cerca-facetwp-container select.facetwp-dropdown {
         font-size: 14px!important;
         padding: 0 0 0 22%;
     }
-    .page-id-62001 input.facetwp-autocomplete.ready {
+    .general-cerca-facetwp-container input.facetwp-autocomplete.ready {
         padding: 0 0 0 20%;
-    }
+    } */
 }
 
 @media screen and (min-width: 601px) and (max-width: 990px)
