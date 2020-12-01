@@ -434,13 +434,13 @@ add_filter( 'facetwp_facet_html', function( $output, $params ) {
             $shape_name = '';
             switch (esc_attr( $result['facet_value'] )) {
                 case "linear":
-                    $shape_name = 'wm-icon-cy-shape-linear';
+                    $shape_name = 'wm-icon-cyc_percorso-lineare';
                     break;
                 case "roundtrip":
-                    $shape_name = 'wm-icon-cy-shape-roundtrip';
+                    $shape_name = 'wm-icon-cyc_percorso-ad-anello';
                     break;
                 case "daisy":
-                    $shape_name = 'wm-icon-cy-shape-daisy';
+                    $shape_name = 'wm-icon-cyc_percorso-a-margherita';
                     break;
             }
 

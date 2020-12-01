@@ -2,7 +2,11 @@
     $post_id = get_the_ID(); ?>
 <div class="webmapp_posts_controller webmapp-grid-system webmapp-anypost-template-cy_route_advancedsearch wm_template_advancedsearch">
     <?php
-
+        if (defined('ICL_LANGUAGE_CODE')) {
+            $language = ICL_LANGUAGE_CODE;
+        } else {
+            $language = 'it';
+        }
         $title_link = get_the_permalink();
         $current_post_type = get_post_type();
         $post_id = get_the_ID();
@@ -143,7 +147,7 @@
                     <div class="post_meta_info">
                         <?php if (!$coming_soon) { ?>
                         <?php if ($days == 1) { ?>
-                        <span class="route_duration"><?php echo $days . ' ' . 'giorno' ?></span>
+                        <span class="route_duration"><?php echo $days . ' ' . __('day', 'wm-child-cyclando') ?></span>
 
                         <?php } else { ?>
                         <span class="route_duration"><?php echo $days . ' ' . __('days', 'wm-child-cyclando') ?></span>
@@ -154,7 +158,7 @@
                         <?php if ($days == 1) { ?>
 
                         <div class="route_first_date"><span
-                                class="route_duration_free"><?php echo $days . ' ' . 'giorno' ?></span></div>
+                                class="route_duration_free"><?php echo $days . ' ' . __('day', 'wm-child-cyclando') ?></span></div>
 
                         <?php } else { ?>
                         <div class="route_first_date"><span
@@ -169,7 +173,7 @@
                         if (!$coming_soon) {
                         ?>
                     <div class='prezzo-tab'>
-                            <span class="partireDa"><?php echo 'a partire da'; ?></span>
+                            <span class="partireDa"><?php echo __('from', 'wm-child-cyclando'); ?></span>
                                 <span class="cifra <?php if ($promotion_value) {
                                                                 echo 'old-price';
                                                             } ?>">
@@ -220,9 +224,19 @@
 
                             } ?>
                     <?php if ($shape) {
-                    ?>      <div class="icon_holder"><?php
-                                                    ?><i class="<?php echo the_shape_icon($shape); ?>"><span
-                                class="textIcon"><?php echo __($title_path[$shape], 'wm-child-cyclando'); ?></span></i></div>
+                    ?>      <div class="icon_holder">
+                                <i class="<?php echo the_shape_icon($shape); ?>">
+                                    <span class="textIcon">
+                                    <?php
+                                    if ($language == 'it') {
+                                        echo __($title_path[$shape], 'wm-child-cyclando'); 
+                                    } else {
+                                        echo __($shape, 'wm-child-cyclando');
+                                    }
+                                    ?>
+                                    </span>
+                                 </i>
+                            </div>
                     <?php //$title_path[$shape]
                     } ?>
                     <?php if ($array_targets) {
