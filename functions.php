@@ -913,8 +913,10 @@ add_action( 'save_post' , function( $post_id, $post, $update )
         {
             if ( $dateTime instanceof DateTime )
             {
-                
-                $dateString = date_i18n("F Y", $dateTime->getTimestamp() ) ;
+                // Create When taxonomies with MONTH and YEAR
+                // $dateString = date_i18n("F Y", $dateTime->getTimestamp() ) ;
+                // Create When taxonomies with MONTH only
+                $dateString = date_i18n("F", $dateTime->getTimestamp() ) ;
 
                 if ( $today <= $dateTime && ! in_array( $dateString, $toRegister) )
                 {

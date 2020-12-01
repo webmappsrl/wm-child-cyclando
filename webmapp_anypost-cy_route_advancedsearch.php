@@ -226,15 +226,13 @@
                     <?php if ($shape) {
                     ?>      <div class="icon_holder">
                                 <i class="<?php echo the_shape_icon($shape); ?>">
-                                    <span class="textIcon">
-                                    <?php
+                                    <span class="textIcon"><?php
                                     if ($language == 'it') {
                                         echo __($title_path[$shape], 'wm-child-cyclando'); 
                                     } else {
                                         echo __($shape, 'wm-child-cyclando');
                                     }
-                                    ?>
-                                    </span>
+                                    ?></span>
                                  </i>
                             </div>
                     <?php //$title_path[$shape]
@@ -252,7 +250,7 @@
                     ?><div class="icon_holder">
                         <i class="<?php $e = the_calcola_url($diff_numero); ?> wm_difficulty_icon_holder"><span
                                 class="textIcon wm_difficulty_number"><?php echo $diff_numero . '/5'; ?></span><span
-                                class="wm_difficulty_suffix"><?php echo __('Difficoltà', 'wm-child-cyclando') ?></span></i>
+                                class="wm_difficulty_suffix"><?php echo __('Difficulty', 'wm-child-cyclando') ?></span></i>
                         </div> <?php
                                 } ?>
                 </div>
