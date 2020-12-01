@@ -547,20 +547,23 @@ add_filter( 'rank_math/frontend/breadcrumb/items', function( $crumbs, $class ) {
     wpfacet translate default labels
 */
 
-// add_filter( 'facetwp_i18n', function( $string ) {
-//     if ( isset( FWP()->facet->http_params['lang'] ) ) {
-//         $lang = FWP()->facet->http_params['lang'];
+add_filter( 'facetwp_i18n', function( $string ) {
+    if ( isset( FWP()->facet->http_params['lang'] ) ) {
+        $lang = FWP()->facet->http_params['lang'];
 
-//         $translations = array();
-//         $translations['en']['Cerca'] = 'Search';
+        $translations = array();
+        $translations['en']['Cerca'] = 'Apply';
+        $translations['en']['Agosto'] = 'August';
+        $translations['en']['Aprile'] = 'April';
+        $translations['en']['Giorni'] = 'Days';
 
-//         if ( isset( $translations[ $lang ][ $string ] ) ) {
-//             return $translations[ $lang ][ $string ];
-//         }
-//     }
+        if ( isset( $translations[ $lang ][ $string ] ) ) {
+            return $translations[ $lang ][ $string ];
+        }
+    }
 
-//     return $string;
-// });
+    return $string;
+});
 
 // /**
 //  * Filter the upload size limit for non-administrators.
