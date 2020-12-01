@@ -299,9 +299,37 @@ function fwp_add_facet_labels() {
         (function($) {
             $(document).on('facetwp-loaded', function() {
                 $('.facetwp-facet').each(function() {
+                    var pathname = window.location.href;
+                    var url = new URL(pathname);
+                    var lang = url.searchParams.get("lang");
+
                     var $facet = $(this);
                     var facet_name = $facet.attr('data-name');
                     var facet_label = FWP.settings.labels[facet_name];
+
+                    if (lang == 'en') {
+                        if (facet_label == 'Cosa vuoi fare?') {
+                            facet_label = 'Select Tour Type';
+                        }
+                        if (facet_label == 'Come deve essere la forma del viaggio?') {
+                            facet_label = 'Select Tour Shape';
+                        }
+                        if (facet_label == 'Come vuoi viaggiare?') {
+                            facet_label = 'Select Tour Category';
+                        }
+                        if (facet_label == 'Quanto ti senti allenato?') {
+                            facet_label = 'Select difficulty';
+                        }
+                        if (facet_label == 'Quanto vuoi che duri la tua vacanza?') {
+                            facet_label = 'Select duration';
+                        }
+                        if (facet_label == 'Quanto vuoi spendere?') {
+                            facet_label = 'Select price';
+                        }
+                        if (facet_label == 'Cerchi un viaggio in promozione?') {
+                            facet_label = 'Are you looking for a holiday deal?';
+                        }
+                    }
 
                     if ($facet.closest('.facet-wrap').length < 1) {
                         $facet.wrap('<div class="facet-wrap"></div>');
