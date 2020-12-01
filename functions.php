@@ -565,6 +565,35 @@ add_filter( 'facetwp_i18n', function( $string ) {
     return $string;
 });
 
+add_filter( 'facetwp_facet_render_args', function( $args ) {
+    if ( 'quando_vuoi_partire' == $args['facet']['name'] ) {
+        $translations = [
+            'Agosto' => __( 'Augost', 'wm-child-cyclando' ),
+            'Aprile' => __( 'April', 'wm-child-cyclando' ),
+            'Dicembre' => __( 'December', 'wm-child-cyclando' ),
+            'Febbraio' => __( 'February', 'wm-child-cyclando' ),
+            'Giugno' => __( 'June', 'wm-child-cyclando' ),
+            'Luglio' => __( 'July', 'wm-child-cyclando' ),
+            'Maggio' => __( 'May', 'wm-child-cyclando' ),
+            'Marzo' => __( 'March', 'wm-child-cyclando' ),
+            'Novembre' => __( 'November', 'wm-child-cyclando' ),
+            'Ottobre' => __( 'October', 'wm-child-cyclando' ),
+            'Settembre' => __( 'September', 'wm-child-cyclando' ),
+            'Gennaio' => __( 'January', 'wm-child-cyclando' )
+        ];
+
+        if ( ! empty( $args['values'] ) ) {
+            foreach ( $args['values'] as $key => $val ) {
+                $display_value = $val['facet_display_value'];
+                if ( isset( $translations[ $display_value ] ) ) {
+                    $args['values'][ $key ]['facet_display_value'] = $translations[ $display_value ];
+                }
+            }
+        }
+    }
+    return $args;
+});
+
 // /**
 //  * Filter the upload size limit for non-administrators.
 //  *
