@@ -950,18 +950,21 @@ add_action( 'save_post' , function( $post_id, $post, $update )
                 // Create When taxonomies with MONTH only
                 $dateString = date_i18n("F", $dateTime->getTimestamp() ) ;
 
-                if ( $today <= $dateTime && ! in_array( $dateString, $toRegister) )
-                {
+                // if ( $today <= $dateTime && ! in_array( $dateString, $toRegister) )
+                // {
                     $term = get_term_by('name', $dateString, 'when');
                     if ( $term == FALSE )
                     {
+                        // $term = wp_insert_term( $dateString , 'when' , [
+                        //     'slug' => $dateTime->getTimestamp()
+                        // ]);
                         $term = wp_insert_term( $dateString , 'when' , [
-                            'slug' => $dateTime->getTimestamp()
+                            'slug' => $dateString
                         ]);
                     }
                     if ( $term instanceof WP_Term )
                         $toRegister[] = $term->term_id;
-                }
+                // }
             }   
         }
     }
