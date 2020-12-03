@@ -482,6 +482,12 @@ add_filter( 'facetwp_index_row', function( $params, $class ) {
             $params['facet_value'] = '';
         }
     }
+    if ( 'cosa_vuoi_fare' == $params['facet_name'] ) {
+        $excluded_terms = array( 'Trekking' );
+        if ( in_array( $params['facet_display_value'], $excluded_terms ) ) {
+            $params['facet_value'] = '';
+        }
+    }
     return $params;
 
 }, 10, 2 );
