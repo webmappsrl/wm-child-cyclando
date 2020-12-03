@@ -787,8 +787,9 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                 </div>
             </div>
             <div class="cy-modal-body">
-                <?php //echo do_shortcode('[contact-form-7 id="54052" title="Contact form route"]'); 
-					?>
+                <?php 
+                    if ($language == 'it') {
+                ?>
                 <script>
                 hbspt.forms.create({
                     portalId: "6554435",
@@ -810,164 +811,189 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                         });
                     }
                 });
-
-                jQuery(document).ready(function() {
-                    setTimeout(function() {
-                        jQuery(".cyc-single-route-main-container .rsFullscreenIcn").html(
-                            "<span class='gallery-expand-desktop'>Guarda tutte le foto</span><span class='gallery-expand-mobile'><i class='fas fa-expand'></i></span>"
-                        );
-                        console.log("foto");
-                    }, 400);
-
-                    // Get DOM Elements
-                    const modal = document.querySelector('#cy-prices-modal');
-                    const modalBtn = document.querySelector('#popup-show-prices');
-                    const closeBtn = document.querySelector('.cy-close');
-                    const fixedAncor = document.querySelectorAll('.fixed-ancor-menu');
-                    const bodyDiv = document.querySelector('body');
-
-                    // Get contact elements
-                    const contactModal = document.querySelector('#cy-route-contact');
-                    const contactModalBtnAlto = document.querySelectorAll('#cy-contact-in-alto');
-                    const contactModalBtnBasso = document.querySelectorAll('#cy-contact-in-basso');
-                    const contactModalBtnBassoMobile = document.querySelectorAll('#cy-contact-in-basso-mobile');
-                    const contactModalBtn = document.querySelectorAll('#cy-contact-modal');
-                    const closeContactBtn = document.querySelector('.cy-close-contact');
-
-                    // Get button element inside prices modal
-                    // const contactInsideModal = document.querySelector('#cy-prices-modal #wm-book');
-
-                    // Get MAP elements
-                    const programModal = document.querySelector('#cy-route-program');
-                    const expandMapBtn = document.querySelectorAll('#expand-map');
-                    const closeMapBtn = document.querySelector('.cy-close-map');
-
-                    // Events expand map program Modal
-                    expandMapBtn.forEach((button) => {
-                        button.addEventListener('click', openProgramModal);
-                    });
-                    closeMapBtn.addEventListener('click', closeProgramModal);
-
-                    // Events modal prices
-                    if (modalBtn) {
-                        modalBtn.addEventListener('click', openModal);
-                    }
-                    if (closeBtn) {
-                        closeBtn.addEventListener('click', closeModal);
-                    }
-                    window.addEventListener('click', outsideClick);
-                    // fixedAncor.addEventListener('click', scrollOffset);
-
-                    // Events contactModal
-                    contactModalBtn.forEach((button) => {
-                        button.addEventListener('click', openContactModal);
-                    });
-                    contactModalBtnAlto.forEach((button) => {
-                        button.addEventListener('click', openContactModal);
-                    });
-                    contactModalBtnBasso.forEach((button) => {
-                        button.addEventListener('click', openContactModal);
-                    });
-                    contactModalBtnBassoMobile.forEach((button) => {
-                        button.addEventListener('click', openContactModal);
-                    });
-                    closeContactBtn.addEventListener('click', closeContactModal);
-                    // contactInsideModal.addEventListener('click', closeModalOpenContact);
-
-                    // Open modal prices
-                    function openModal() {
-                        modal.style.display = 'block';
-                        // add over flow hidden to cody to stop scroll
-                        bodyDiv.style.overflow = "hidden";
-                    }
-                    // Open contact modal
-                    function openContactModal() {
-                        modal.style.display = 'none';
-                        programModal.style.display = 'none';
-                        contactModal.style.display = 'block';
-                        // add over flow hidden to cody to stop scroll
-                        bodyDiv.style.overflow = "hidden";
-                    }
-
-                    // Open program modal
-                    function openProgramModal() {
-                        programModal.style.display = 'block';
-                        // add over flow hidden to cody to stop scroll
-                        bodyDiv.style.overflow = "hidden";
-                    }
-
-                    // Close modal prices
-                    function closeModal() {
-                        modal.style.display = 'none';
-                        // add over flow hidden to cody to stop scroll
-                        bodyDiv.style.overflow = "auto";
-                    }
-
-                    // Close contact modal
-                    function closeContactModal() {
-                        contactModal.style.display = 'none';
-                        // add over flow hidden to cody to stop scroll
-                        bodyDiv.style.overflow = "auto";
-                    }
-
-                    // Close program modal
-                    function closeProgramModal() {
-                        programModal.style.display = 'none';
-                        // add over flow hidden to cody to stop scroll
-                        bodyDiv.style.overflow = "auto";
-                    }
-
-                    // Close If Outside Click
-                    function outsideClick(e) {
-                        if (e.target == modal) {
-                            modal.style.display = 'none';
-                            // add over flow hidden to cody to stop scroll
-                            bodyDiv.style.overflow = "auto";
-                        }
-                        if (e.target == contactModal) {
-                            contactModal.style.display = 'none';
-                            // add over flow hidden to cody to stop scroll
-                            bodyDiv.style.overflow = "auto";
-                        }
-                        if (e.target == programModal) {
-                            programModal.style.display = 'none';
-                            // add over flow hidden to cody to stop scroll
-                            bodyDiv.style.overflow = "auto";
-                        }
-                    }
-
-                    // Close prices modal and open contact modal
-                    function closeModalOpenContact() {
-                        modal.style.display = 'none';
-                        contactModal.style.display = 'block';
-                    }
-
-
-                    // MONARCH interaction with Share Condividi button
-
-                    jQuery('.et_social_sidebar_networks').removeClass('et_social_visible_sidebar');
-                    jQuery('.et_social_sidebar_networks').addClass('et_social_hidden_sidebar');
-                    
-                    jQuery('#cyc-single-route-monarch-share-button').click(function() {
-                        jQuery('.et_social_sidebar_networks').toggle(300);
-                        // jQuery('.et_social_hide_sidebar').toggleClass('et_social_hidden_sidebar');
-                        jQuery('.et_social_sidebar_networks').toggleClass(
-                            'et_social_hidden_sidebar et_social_visible_sidebar');
-                    });
-
-
-                });
-                // 			jQuery(document).ready(function(){
-                // 	jQuery( "a.fixed-ancor-menu" ).click(function( event ) {
-                // 		event.preventDefault();
-                // 		jQuery("html, body").animate({ scrollTop: jQuery(jQuery(this).attr("href")).offset().top-200 }, 500);
-                // 	});
-                // });
                 </script>
+                <?php } else { ?>
+                <script>
+                    hbspt.forms.create({
+                        portalId: "6554435",
+                        formId: "bb3356c0-9f15-463a-9930-b403bc5dd680",
+                        onFormReady: function($form, ctx) {
+                            window['hs-form-iframe-0'].contentDocument.querySelector('input[name="activities"]')
+                                .setAttribute('value', '<?php echo implode(";", $tax_activities_slug);  ?>')
+                            window['hs-form-iframe-0'].contentDocument.querySelector('input[name="target"]')
+                                .setAttribute('value', '<?php echo implode(";", $tax_targets_slug);  ?>')
+                            window['hs-form-iframe-0'].contentDocument.querySelector(
+                                'input[name="place_to_go"]').setAttribute('value',
+                                '<?php echo implode(";", $tax_places_to_go_slug);  ?>')
+                        },
+                        onFormSubmit: function($form) {
+                            window.dataLayer = window.dataLayer || [];
+                            window.dataLayer.push({
+
+                                'event': 'formInviato',
+                            });
+                        }
+                    });
+                </script>
+                <?php } ?>
             </div>
         </div>
     </div>
     <!-- END HTML modal for contact in route -->
+    <script>
+        jQuery(document).ready(function() {
+            setTimeout(function() {
+                jQuery(".cyc-single-route-main-container .rsFullscreenIcn").html(
+                    "<span class='gallery-expand-desktop'>Guarda tutte le foto</span><span class='gallery-expand-mobile'><i class='fas fa-expand'></i></span>"
+                );
+                console.log("foto");
+            }, 400);
+
+            // Get DOM Elements
+            const modal = document.querySelector('#cy-prices-modal');
+            const modalBtn = document.querySelector('#popup-show-prices');
+            const closeBtn = document.querySelector('.cy-close');
+            const fixedAncor = document.querySelectorAll('.fixed-ancor-menu');
+            const bodyDiv = document.querySelector('body');
+
+            // Get contact elements
+            const contactModal = document.querySelector('#cy-route-contact');
+            const contactModalBtnAlto = document.querySelectorAll('#cy-contact-in-alto');
+            const contactModalBtnBasso = document.querySelectorAll('#cy-contact-in-basso');
+            const contactModalBtnBassoMobile = document.querySelectorAll('#cy-contact-in-basso-mobile');
+            const contactModalBtn = document.querySelectorAll('#cy-contact-modal');
+            const closeContactBtn = document.querySelector('.cy-close-contact');
+
+            // Get button element inside prices modal
+            // const contactInsideModal = document.querySelector('#cy-prices-modal #wm-book');
+
+            // Get MAP elements
+            const programModal = document.querySelector('#cy-route-program');
+            const expandMapBtn = document.querySelectorAll('#expand-map');
+            const closeMapBtn = document.querySelector('.cy-close-map');
+
+            // Events expand map program Modal
+            expandMapBtn.forEach((button) => {
+                button.addEventListener('click', openProgramModal);
+            });
+            closeMapBtn.addEventListener('click', closeProgramModal);
+
+            // Events modal prices
+            if (modalBtn) {
+                modalBtn.addEventListener('click', openModal);
+            }
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeModal);
+            }
+            window.addEventListener('click', outsideClick);
+            // fixedAncor.addEventListener('click', scrollOffset);
+
+            // Events contactModal
+            contactModalBtn.forEach((button) => {
+                button.addEventListener('click', openContactModal);
+            });
+            contactModalBtnAlto.forEach((button) => {
+                button.addEventListener('click', openContactModal);
+            });
+            contactModalBtnBasso.forEach((button) => {
+                button.addEventListener('click', openContactModal);
+            });
+            contactModalBtnBassoMobile.forEach((button) => {
+                button.addEventListener('click', openContactModal);
+            });
+            closeContactBtn.addEventListener('click', closeContactModal);
+            // contactInsideModal.addEventListener('click', closeModalOpenContact);
+
+            // Open modal prices
+            function openModal() {
+                modal.style.display = 'block';
+                // add over flow hidden to cody to stop scroll
+                bodyDiv.style.overflow = "hidden";
+            }
+            // Open contact modal
+            function openContactModal() {
+                modal.style.display = 'none';
+                programModal.style.display = 'none';
+                contactModal.style.display = 'block';
+                // add over flow hidden to cody to stop scroll
+                bodyDiv.style.overflow = "hidden";
+            }
+
+            // Open program modal
+            function openProgramModal() {
+                programModal.style.display = 'block';
+                // add over flow hidden to cody to stop scroll
+                bodyDiv.style.overflow = "hidden";
+            }
+
+            // Close modal prices
+            function closeModal() {
+                modal.style.display = 'none';
+                // add over flow hidden to cody to stop scroll
+                bodyDiv.style.overflow = "auto";
+            }
+
+            // Close contact modal
+            function closeContactModal() {
+                contactModal.style.display = 'none';
+                // add over flow hidden to cody to stop scroll
+                bodyDiv.style.overflow = "auto";
+            }
+
+            // Close program modal
+            function closeProgramModal() {
+                programModal.style.display = 'none';
+                // add over flow hidden to cody to stop scroll
+                bodyDiv.style.overflow = "auto";
+            }
+
+            // Close If Outside Click
+            function outsideClick(e) {
+                if (e.target == modal) {
+                    modal.style.display = 'none';
+                    // add over flow hidden to cody to stop scroll
+                    bodyDiv.style.overflow = "auto";
+                }
+                if (e.target == contactModal) {
+                    contactModal.style.display = 'none';
+                    // add over flow hidden to cody to stop scroll
+                    bodyDiv.style.overflow = "auto";
+                }
+                if (e.target == programModal) {
+                    programModal.style.display = 'none';
+                    // add over flow hidden to cody to stop scroll
+                    bodyDiv.style.overflow = "auto";
+                }
+            }
+
+            // Close prices modal and open contact modal
+            function closeModalOpenContact() {
+                modal.style.display = 'none';
+                contactModal.style.display = 'block';
+            }
+
+
+            // MONARCH interaction with Share Condividi button
+
+            jQuery('.et_social_sidebar_networks').removeClass('et_social_visible_sidebar');
+            jQuery('.et_social_sidebar_networks').addClass('et_social_hidden_sidebar');
+            
+            jQuery('#cyc-single-route-monarch-share-button').click(function() {
+                jQuery('.et_social_sidebar_networks').toggle(300);
+                // jQuery('.et_social_hide_sidebar').toggleClass('et_social_hidden_sidebar');
+                jQuery('.et_social_sidebar_networks').toggleClass(
+                    'et_social_hidden_sidebar et_social_visible_sidebar');
+            });
+
+
+        });
+        // 			jQuery(document).ready(function(){
+        // 	jQuery( "a.fixed-ancor-menu" ).click(function( event ) {
+        // 		event.preventDefault();
+        // 		jQuery("html, body").animate({ scrollTop: jQuery(jQuery(this).attr("href")).offset().top-200 }, 500);
+        // 	});
+        // });
+        </script>
     <?php
     }
     do_action('us_after_page');

@@ -568,7 +568,7 @@ add_filter( 'facetwp_i18n', function( $string ) {
 add_filter( 'facetwp_facet_render_args', function( $args ) {
     if ( 'quando_vuoi_partire' == $args['facet']['name'] ) {
         $translations = [
-            'Agosto' => __( 'Augost', 'wm-child-cyclando' ),
+            'Agosto' => __( 'August', 'wm-child-cyclando' ),
             'Aprile' => __( 'April', 'wm-child-cyclando' ),
             'Dicembre' => __( 'December', 'wm-child-cyclando' ),
             'Febbraio' => __( 'February', 'wm-child-cyclando' ),
@@ -1079,3 +1079,12 @@ function URL_exists($url){
 //     );
 //     return $options;
 // }, 10, 2 );
+
+// code to grant all additional WPML capabilities to administrators
+// Trun this code off after using it
+function wpmlsupp_1706_reset_wpml_capabilities() {
+    if ( function_exists( 'icl_enable_capabilities' ) ) {
+        icl_enable_capabilities();
+    }
+}
+add_action( 'shutdown', 'wpmlsupp_1706_reset_wpml_capabilities' );
