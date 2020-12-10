@@ -299,15 +299,16 @@ function fwp_add_facet_labels() {
         (function($) {
             $(document).on('facetwp-loaded', function() {
                 $('.facetwp-facet').each(function() {
-                    var pathname = window.location.href;
-                    var url = new URL(pathname);
-                    var lang = url.searchParams.get("lang");
+                    // var pathname = window.location.href;
+                    // var url = new URL(pathname);
+                    // var lang = url.searchParams.get("lang");
+                    var lang = document.documentElement.lang;
 
                     var $facet = $(this);
                     var facet_name = $facet.attr('data-name');
                     var facet_label = FWP.settings.labels[facet_name];
 
-                    if (lang == 'en') {
+                    if (lang == 'en-US') {
                         if (facet_label == 'Cosa vuoi fare?') {
                             facet_label = 'Select Tour Type';
                         }
@@ -560,6 +561,8 @@ add_filter( 'facetwp_i18n', function( $string ) {
         $translations = array();
         $translations['en']['Cerca'] = 'Apply';
         $translations['en']['Agosto'] = 'August';
+        $translations['it']['August'] = 'Agosto';
+        $translations['en']['Aprile'] = 'April';
         $translations['en']['Aprile'] = 'April';
         $translations['en']['Giorni'] = 'Days';
 
@@ -586,6 +589,18 @@ add_filter( 'facetwp_facet_render_args', function( $args ) {
             'Ottobre' => __( 'October', 'wm-child-cyclando' ),
             'Novembre' => __( 'November', 'wm-child-cyclando' ),
             'Dicembre' => __( 'December', 'wm-child-cyclando' ),
+            'January' => __( 'January', 'wm-child-cyclando' ),
+            'February' => __( 'February', 'wm-child-cyclando' ),
+            'March' => __( 'March', 'wm-child-cyclando' ),
+            'April' => __( 'April', 'wm-child-cyclando' ),
+            'May' => __( 'May', 'wm-child-cyclando' ),
+            'June' => __( 'June', 'wm-child-cyclando' ),
+            'July' => __( 'July', 'wm-child-cyclando' ),
+            'August' => __( 'August', 'wm-child-cyclando' ),
+            'September' => __( 'September', 'wm-child-cyclando' ),
+            'October' => __( 'October', 'wm-child-cyclando' ),
+            'November' => __( 'November', 'wm-child-cyclando' ),
+            'December' => __( 'December', 'wm-child-cyclando' ),
         ];
 
         if ( ! empty( $args['values'] ) ) {

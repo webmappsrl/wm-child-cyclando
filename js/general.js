@@ -31,9 +31,10 @@ jQuery(window).on('load', function() {
 jQuery(document).ready(function () {
   var main_url;
   var filter;
-  var pathname = window.location.href;
-  var url = new URL(pathname);
-  var lang = url.searchParams.get("lang");
+  // var pathname = window.location.href;
+  // var url = new URL(pathname);
+  // var lang = url.searchParams.get("lang");
+  var lang = document.documentElement.lang;
   var lenteBanner;
   var input;
   var form;
@@ -46,7 +47,7 @@ jQuery(document).ready(function () {
   
 
   // Covid banner
-  if (lang == "en") {
+  if (lang == "en-US") {
     jQuery("<div class='covidbanner'><div class='covidbanner-container'><span> NOTICE FOR TRAVELERS: <a href='https://cyclando.com/assicurazione-covid/'>find out more about COVID-19</a></span> <span class='cy-close-covidbanner'>&times;</span></div></div>").insertBefore(".l-canvas.type_wide");
   } else {
     jQuery("<div class='covidbanner'><div class='covidbanner-container'><span> AVVISO PER CHI VIAGGIA: <a href='https://cyclando.com/assicurazione-covid/'>scopri di più sul COVID-19</a></span> <span class='cy-close-covidbanner'>&times;</span></div></div>").insertBefore(".l-canvas.type_wide");
@@ -84,7 +85,7 @@ jQuery(document).ready(function () {
 
   
   jQuery(document).one("facetwp-loaded", function () {
-    if (lang == "en") {
+    if (lang == "en-US") {
       // Dove vui andare?
       jQuery('#cy-search-element-container > div:nth-child(1) > div > input.facetwp-autocomplete.ready').attr("placeholder","Choose country or city");
       jQuery('#page-content > section.l-section.wpb_row.height_small.general-cerca-facetwp-container > div > div > div.vc_col-sm-12.wpb_column.vc_column_container.cerca-facets-container > div > div > div:nth-child(1) > div > div > div > div:nth-child(2) > div > div > div > div > input').attr("placeholder","Choose country or city");
@@ -156,13 +157,13 @@ jQuery(document).ready(function () {
     });
   });
 
-  if (lang) {
+  if (lang == 'en-US') {
     main_url =
       window.location.protocol +
       "//" +
       window.location.host +
       "/" +
-      "tours/?lang=en&";
+      "en/tours/?";
   } else {
     main_url =
       window.location.protocol + "//" + window.location.host + "/" + "cerca/";

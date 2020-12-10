@@ -9,7 +9,11 @@ ob_start();
 
 
 //----------------------- query in variable products of route --------
-
+if (defined('ICL_LANGUAGE_CODE')) {
+    $language = ICL_LANGUAGE_CODE;
+} else {
+    $language = 'it';
+}
 //check if the route is in boat or not
 $boat_trip = get_field('trip_with_boat');
 if ($boat_trip) {
@@ -261,7 +265,7 @@ foreach ( $variations_name_price as $var ) {
                     if (!$season_disactive):
                     ?>
                     <li><a href="#tab-<?php echo $season_name_id; ?>" ><?php
-                        if ($_GET['lang'] == 'en') {
+                        if ($language == 'en') {
                             $season_name_en = str_replace('Stagione', 'Season', $season_name);
                             if ($season_name_en) {
                                 echo __($season_name_en ,'wm-child-verdenatura');
