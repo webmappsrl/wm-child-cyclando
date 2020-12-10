@@ -163,7 +163,7 @@ jQuery(document).ready(function () {
       "//" +
       window.location.host +
       "/" +
-      "en/tours/?";
+      "en/tours/";
   } else {
     main_url =
       window.location.protocol + "//" + window.location.host + "/" + "cerca/";
