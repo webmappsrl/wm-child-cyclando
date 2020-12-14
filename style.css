@@ -843,6 +843,7 @@ body #iubenda_policy .iub_content.legal_pp p {
 }
 .cerca-facets-container i {
     font-size: 22px;
+    padding-right: 10px!important;
 }
 
 .facetwp-slider-icon-container {
