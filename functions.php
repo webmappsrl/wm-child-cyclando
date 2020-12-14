@@ -1118,5 +1118,6 @@ add_action( 'shutdown', 'wpmlsupp_1706_reset_wpml_capabilities' );
 function wm_editor_can_edit_user(){
     $editorRole = get_role( 'editor' );
     $editorRole->add_cap( 'edit_users' );
+    $editorRole->add_cap('list_users');
 }
 add_action( 'init', 'wm_editor_can_edit_user' );
