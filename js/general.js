@@ -84,7 +84,7 @@ jQuery(document).ready(function () {
   // End covid banner
 
   
-  jQuery(document).on("facetwp-loaded", function () {
+  jQuery(document).one("facetwp-loaded", function () {
     if (lang == "en-US") {
       // Dove vui andare?
       jQuery('#cy-search-element-container > div:nth-child(1) > div > input.facetwp-autocomplete.ready').attr("placeholder","Choose country or city");
