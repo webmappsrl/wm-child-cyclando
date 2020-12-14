@@ -226,11 +226,11 @@
                     <?php if ($shape) {
                     ?>      <div class="icon_holder">
                                 <i class="<?php echo the_shape_icon($shape); ?>">
-                                    <span class="textIcon"><?php
+                                    <span class="textIcon <?php if ($language == 'en') { echo 'wm-advanced-search-shape-text-eng';} ?>"><?php
                                     if ($language == 'it') {
-                                        echo __($title_path[$shape], 'wm-child-cyclando'); 
+                                        echo $title_path[$shape]; 
                                     } else {
-                                        echo __($shape, 'wm-child-cyclando');
+                                        echo $shape;
                                     }
                                     ?></span>
                                  </i>

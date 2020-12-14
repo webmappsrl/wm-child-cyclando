@@ -1830,6 +1830,9 @@ h4.tripSearch {
 .wm_template_advancedsearch span.textIcon {
     text-transform: initial;
 }
+.wm_template_advancedsearch span.wm-advanced-search-shape-text-eng {
+    text-transform: capitalize;
+}
 .wm_template_advancedsearch .post_meta_with_icons {
     color: black;
     margin: 0% 0 0 0%;
