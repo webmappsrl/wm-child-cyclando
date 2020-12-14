@@ -93,13 +93,15 @@ jQuery(document).ready(function () {
       jQuery('#cy-search-element-container > div:nth-child(2) > div > select > option:nth-child(1)').text("Select month and year");
       jQuery('#page-content > section.l-section.wpb_row.height_small.general-cerca-facetwp-container > div > div > div.vc_col-sm-12.wpb_column.vc_column_container.cerca-facets-container > div > div > div:nth-child(1) > div > div > div > div:nth-child(3) > div > div > div > div > select > option:nth-child(1)').text("Select month and year");
       // CERCA
+      jQuery(".cy-facetwp-cerca-quando").append(jQuery(".cy-facetwp-cerca-where input.facetwp-autocomplete-update"));
       jQuery('#page-content > section.l-section.wpb_row.height_small.general-cerca-facetwp-container > div > div > div.vc_col-sm-12.wpb_column.vc_column_container.cerca-facets-container > div > div > div:nth-child(1) > div > div > div > div:nth-child(3) > div > div > input').html("Apply");
       jQuery('#page-content > section.l-section.wpb_row.height_small.general-cerca-facetwp-container > div > div > div.vc_col-sm-12.wpb_column.vc_column_container.cerca-facets-container > div > div > div:nth-child(1) > div > div > div > div:nth-child(3) > div > div > input').val("Apply");
       jQuery('#page-content > section.l-section.wpb_row.height_small.general-cerca-facetwp-container > div > div > div.vc_col-sm-12.wpb_column.vc_column_container.cerca-facets-container > div > div > div:nth-child(1) > div > div > div > div:nth-child(3) > div > div > input').attr("value","Apply");
+    } else {
+      jQuery(".cy-facetwp-cerca-quando").append(jQuery(".cy-facetwp-cerca-where input.facetwp-autocomplete-update"));
+      jQuery(".cy-facetwp-cerca-quando input.facetwp-autocomplete-update").html("CERCA");
+      jQuery(".cy-facetwp-cerca-quando input.facetwp-autocomplete-update").val("CERCA");
     }
-    jQuery(".cy-facetwp-cerca-quando").append(jQuery(".cy-facetwp-cerca-where input.facetwp-autocomplete-update"));
-    jQuery(".cy-facetwp-cerca-quando input.facetwp-autocomplete-update").html("CERCA");
-    jQuery(".cy-facetwp-cerca-quando input.facetwp-autocomplete-update").val("CERCA");
   });
 
   //mobile and desktop button management on first loading
