@@ -845,7 +845,9 @@ body #iubenda_policy .iub_content.legal_pp p {
     font-size: 22px;
     padding-right: 10px!important;
 }
-
+.facetwp-facet-come_deve_essere_la_forma_del_viaggio .facetwp-checkbox.checkbox-eng {
+    text-transform: capitalize!important;
+}
 .facetwp-slider-icon-container {
     padding-top: 10px;
     display: flex;

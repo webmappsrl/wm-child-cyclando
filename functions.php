@@ -458,7 +458,7 @@ add_filter( 'facetwp_facet_html', function( $output, $params ) {
             } else {
                 $selected = in_array( $result['facet_value'], $selected_values ) ? ' checked' : '';
                 $selected .= ( 0 == $result['counter'] && '' == $selected ) ? ' disabled' : '';
-                $output .= '<div class="facetwp-checkbox' . $selected . '" data-value="' . esc_attr( $result['facet_value'] ) . '">';
+                $output .= '<div class="facetwp-checkbox checkbox-eng' . $selected . '" data-value="' . esc_attr( $result['facet_value'] ) . '">';
                 $output .= '<i class="'. $shape_name.'"></i>'. esc_html( $result['facet_value'] ) . ' (' .$result['counter'].')';
                 $output .= '</div>';
             }
