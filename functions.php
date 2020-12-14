@@ -393,11 +393,6 @@ add_filter( 'facetwp_result_count', function( $output, $params ) {
 
 // Edit facetWP HTML to add icons before the choices
 add_filter( 'facetwp_facet_html', function( $output, $params ) {
-    if (defined('ICL_LANGUAGE_CODE')) {
-        $language = ICL_LANGUAGE_CODE;
-    } else {
-        $language = 'it';
-    }
     if ( 'cosa_vuoi_fare' == $params['facet']['name'] ) {
         $output = '';
         $values = (array) $params['values'];
@@ -449,19 +444,12 @@ add_filter( 'facetwp_facet_html', function( $output, $params ) {
                     $shape_name = 'wm-icon-cyc_percorso-a-margherita';
                     break;
             }
-            if ($language == 'it') {
-                $selected = in_array( $result['facet_value'], $selected_values ) ? ' checked' : '';
-                $selected .= ( 0 == $result['counter'] && '' == $selected ) ? ' disabled' : '';
-                $output .= '<div class="facetwp-checkbox' . $selected . '" data-value="' . esc_attr( $result['facet_value'] ) . '">';
-                $output .= '<i class="'. $shape_name.'"></i> '. esc_html( $result['facet_display_value'] ) . ' (' .$result['counter'].')';
-                $output .= '</div>';
-            } else {
-                $selected = in_array( $result['facet_value'], $selected_values ) ? ' checked' : '';
-                $selected .= ( 0 == $result['counter'] && '' == $selected ) ? ' disabled' : '';
-                $output .= '<div class="facetwp-checkbox' . $selected . '" data-value="' . esc_attr( $result['facet_value'] ) . '">';
-                $output .= '<i class="'. $shape_name.'"></i> '. esc_html( $result['facet_value'] ) . ' (' .$result['counter'].')';
-                $output .= '</div>';
-            }
+
+            $selected = in_array( $result['facet_value'], $selected_values ) ? ' checked' : '';
+            $selected .= ( 0 == $result['counter'] && '' == $selected ) ? ' disabled' : '';
+            $output .= '<div class="facetwp-checkbox' . $selected . '" data-value="' . esc_attr( $result['facet_value'] ) . '">';
+            $output .= '<i class="'. $shape_name.'"></i> '. esc_html( $result['facet_display_value'] ) . ' (' .$result['counter'].')';
+            $output .= '</div>';
         }
     }
 
