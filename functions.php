@@ -565,6 +565,9 @@ add_filter( 'facetwp_i18n', function( $string ) {
         $translations['en']['Aprile'] = 'April';
         $translations['en']['Aprile'] = 'April';
         $translations['en']['Giorni'] = 'Days';
+        $translations['en']['Percorso ad anello'] = 'Roundtrip';
+        $translations['en']['Percorso a margherita'] = 'Daisy';
+        $translations['en']['Percorso lineare'] = 'Linear';
 
         if ( isset( $translations[ $lang ][ $string ] ) ) {
             return $translations[ $lang ][ $string ];
@@ -1109,3 +1112,11 @@ function wpmlsupp_1706_reset_wpml_capabilities() {
     }
 }
 add_action( 'shutdown', 'wpmlsupp_1706_reset_wpml_capabilities' );
+
+
+// Gives Editor role possibility to modify users
+function wm_editor_can_edit_user(){
+    $editorRole = get_role( 'editor' );
+    $editorRole->add_cap( 'edit_users' );
+}
+add_action( 'init', 'wm_editor_can_edit_user' );
