@@ -552,15 +552,21 @@ add_filter( 'rank_math/frontend/breadcrumb/items', function( $crumbs, $class ) {
 
 
 // //  order wpfacet Duration and Seasosn months in archive route page
-// add_filter( 'facetwp_facet_orderby', function( $orderby, $facet ) {
-//     if ( 'durata' == $facet['name'] ) {
-//         $orderby = 'f.facet_value+0 ASC';
-//     }
-//     if ( 'seasons' == $facet['name'] ) {
-//         $orderby = 'FIELD(f.facet_display_value, "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre")';
-//     }
-//     return $orderby;
-// }, 10, 2 );
+add_filter( 'facetwp_facet_orderby', function( $orderby, $facet ) {
+    if (defined('ICL_LANGUAGE_CODE')) {
+        $language = ICL_LANGUAGE_CODE;
+    } else {
+        $language = 'it';
+    }
+    if ( 'quando_vuoi_partire' == $facet['name'] ) {
+        if ($language == 'it') {
+            $orderby = 'FIELD(f.facet_display_value, "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre")';
+        } elseif ($language == 'en') {
+            $orderby = 'FIELD(f.facet_display_value, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")';
+        }
+    }
+    return $orderby;
+}, 10, 2 );
 
 /*
     wpfacet translate default labels
