@@ -683,6 +683,51 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         </div>
     </section>
     <!-- END section call to action sei pronto block END  -->
+    <!-- START section cose da sapere FAQ START  -->
+    <section class="l-section wpb_row height_small cyc-single-route-faq-container">
+        <div class="l-section-h i-cf">
+            <div class="g-cols vc_row type_default valign_top">
+                <div class="vc_col-sm-12 wpb_column vc_column_container">
+                    <div class="vc_column-inner">
+                        <div class="wpb_wrapper">
+                            <h5 style="text-align: left" class="vc_custom_heading"><?php echo __('Things to know', 'wm-child-cyclando') ?></h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="vc_col-sm-4 wpb_column vc_column_container">
+					<div class="vc_column-inner">
+                        <div class="wpb_wrapper">
+							<h6 style="text-align: left" class="vc_custom_heading"><?php echo __('Bicycles', 'wm-child-cyclando') ?></h6>
+							<?php 
+							echo do_shortcode('[vc_tta_accordion scrolling="" c_icon=""][vc_tta_section tab_id="1603987578996-293b52a0-7a07" title="Posso portare la mia bici?"][vc_column_text]Certo! Ad ogni tour è possibile partecipare con la propria bicicletta o noleggiarne una. Noi tuttavia ti consigliamo il noleggio perché i ricambi non sono tutti uguali e solo con le nostre bici possiamo garantirti sempre l’assistenza meccanica migliore.[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987709666-e05915db-c8e0" title="Che tipo di assistenza ho durante il viaggio?"][vc_column_text]Avrai sempre un numero di telefono d’emergenza a cui fare riferimento. Nei viaggi self-guided dovrai essere in grado di eseguire piccole riparazioni, come sostituire una camera d’aria in caso di foratura, o rimettere a posto una catena caduta, ma potrai sempre contare sull\'assistenza in loco per rotture più gravi.[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987706680-2cb9135f-e91b" title="Come capisco se un tour è alla mia portata?"][vc_column_text]Classifichiamo i tour in una scala da 1 a 5 sulla base della lunghezza, del dislivello e della complessità dell’itinerario, ma se hai dubbi contattaci e ti aiuteremo a trovare il viaggio più adatto a te.[/vc_column_text][/vc_tta_section][/vc_tta_accordion]')
+							?>
+						</div>
+                    </div>
+                </div>
+                <div class="vc_col-sm-4 wpb_column vc_column_container">
+                    <div class="vc_column-inner">
+                        <div class="wpb_wrapper">
+							<h6 style="text-align: left" class="vc_custom_heading"><?php echo __('Booking', 'wm-child-cyclando') ?></h6>
+							<?php 
+							echo do_shortcode('[vc_tta_accordion scrolling="" c_icon=""][vc_tta_section tab_id="1603987578996-293b52a0-7a07" title="Come faccio a prenotare un tour?"][vc_column_text]Per prenotare un tour ti basta cliccare sul campo “preventivo” compilare tutti i campi, e versare l’acconto. Noi ci occuperemo della verifica di disponibilità presso i nostri corrispondenti e ti daremo conferma entro poche ore.[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987709666-e05915db-c8e0" title="Perché dovrei prenotare su Cyclando ?"][vc_column_text]Perché ti garantiamo il prezzo più basso e nel caso il tuo tour non sia disponibile o confermato, potrai sempre optare per la restituzione dell’importo versato, oppure scegliere un altro viaggio tra gli oltre 800 presenti in piattaforma.[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987706680-2cb9135f-e91b" title="Dovrei acquistare un\'assicurazione di viaggio?"][vc_column_text]L’assicurazione medico-bagaglio la offriamo noi gratuitamente, a tutti i cittadini italiani, su tutti i nostri tour. In più ti consigliamo di stipulare anche una polizza annullamento; fai click su <a href="https://cyclando.com/assicurazione-covid/">questo link</a> per maggiori informazioni[/vc_column_text][/vc_tta_section][/vc_tta_accordion]')
+							?>
+						</div>
+                    </div>
+                </div>
+                <div class="vc_col-sm-4 wpb_column vc_column_container">
+					<div class="vc_column-inner">
+                        <div class="wpb_wrapper">
+							<h6 style="text-align: left" class="vc_custom_heading"><?php echo __('Hotel', 'wm-child-cyclando') ?></h6>
+							<?php 
+							echo do_shortcode('[vc_tta_accordion scrolling="" c_icon=""][vc_tta_section tab_id="1603987578996-293b52a0-7a07" title="Posso conoscere prima gli hotel in cui alloggerò?"][vc_column_text]Diamo molta importanza alla scelta delle strutture e per garantirti più flessibilità in fase di prenotazione, abbiamo spesso più hotel a cui fare riferimento, per questo motivo non ci è possibile fornirti la lista esatta degli hotel prima della prenotazione.[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987709666-e05915db-c8e0" title="Cosa è incluso nel prezzo del tour ?"][vc_column_text]In ogni viaggio, cliccando su “Date e prezzi” potrai vedere cosa è incluso e cosa no. Naturalmente puoi sempre scriverci o chiamarci per avere maggiori informazioni o chiarimenti.[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987706680-2cb9135f-e91b" title="Come faccio ad arrivare/tornare al punto di partenza?"][vc_column_text]Il viaggio di andata e ritorno da casa al punto di partenza del viaggio è sempre escluso, possiamo però aiutarti a trovare la migliore soluzione disponibile.[/vc_column_text][/vc_tta_section][/vc_tta_accordion]')
+							?>
+						</div>
+                    </div>
+				</div>
+            </div>
+        </div>
+    </section>
+    <!-- END section cose da sapere FAQ END  -->
     <!-- END new template END-->
 
     

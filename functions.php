@@ -608,18 +608,6 @@ add_filter( 'facetwp_facet_render_args', function( $args ) {
             'Ottobre' => __( 'October', 'wm-child-cyclando' ),
             'Novembre' => __( 'November', 'wm-child-cyclando' ),
             'Dicembre' => __( 'December', 'wm-child-cyclando' ),
-            'January' => __( 'January', 'wm-child-cyclando' ),
-            'February' => __( 'February', 'wm-child-cyclando' ),
-            'March' => __( 'March', 'wm-child-cyclando' ),
-            'April' => __( 'April', 'wm-child-cyclando' ),
-            'May' => __( 'May', 'wm-child-cyclando' ),
-            'June' => __( 'June', 'wm-child-cyclando' ),
-            'July' => __( 'July', 'wm-child-cyclando' ),
-            'August' => __( 'August', 'wm-child-cyclando' ),
-            'September' => __( 'September', 'wm-child-cyclando' ),
-            'October' => __( 'October', 'wm-child-cyclando' ),
-            'November' => __( 'November', 'wm-child-cyclando' ),
-            'December' => __( 'December', 'wm-child-cyclando' ),
         ];
 
         if ( ! empty( $args['values'] ) ) {
