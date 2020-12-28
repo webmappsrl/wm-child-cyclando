@@ -788,26 +788,20 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             </div>
             <?php if ($program && !get_option('webmapp_show_interactive_route_map')) : ?>
             <div class="cy-modal-body cy-modal-body-program">
-                <?php
-						echo $program;
-						?>
+                <div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>
             </div>
             <?php
 				elseif (!$has_track && get_option('webmapp_show_interactive_route_map')) :
 				?>
             <div class="cy-modal-body cy-modal-body-program">
-                <?php
-						echo $program;
-						?>
+                <div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>
             </div>
             <?php
 
 				elseif ($route_has_geojson == false) :
 				?>
             <div class="cy-modal-body cy-modal-body-program">
-                <?php
-						echo $program;
-						?>
+                <div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>
             </div>
             <?php
 
@@ -1030,7 +1024,28 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                     'et_social_hidden_sidebar et_social_visible_sidebar');
             });
 
-
+            // Ajax call for program content in modal
+            jQuery( "#expand-map" ).on( "click", function() {
+                ajaxurl = '<?php echo admin_url( 'admin-ajax.php' ) ?>'; // get ajaxurl
+                post_id = <?php echo $post_id; ?>;
+                data = {
+                    'action': 'wm_ajax_program_content',
+                    'postid':  post_id,
+                };
+                jQuery.ajax({
+                    url: ajaxurl,
+                    type : 'post',
+                    data: data,
+                    beforeSend: function(){
+                    },
+                    success : function( response ) {
+                    },
+                    complete:function(response){
+                        obj = JSON.parse(response.responseText);
+                        jQuery(".cy-modal-body.cy-modal-body-program").html(obj);
+                    }
+                });
+            });
         });
         // 			jQuery(document).ready(function(){
         // 	jQuery( "a.fixed-ancor-menu" ).click(function( event ) {

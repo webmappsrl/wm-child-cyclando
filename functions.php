@@ -1125,3 +1125,14 @@ function wm_editor_can_edit_user(){
     $editorRole->add_cap('list_users');
 }
 add_action( 'init', 'wm_editor_can_edit_user' );
+
+
+// Prepare the program content for ajax call wm_ajax_program_content in single_route
+add_action( 'wp_ajax_wm_ajax_program_content', 'wm_ajax_program_content' );
+add_action( 'wp_ajax_nopriv_wm_ajax_program_content', 'wm_ajax_program_content' );
+function wm_ajax_program_content(){
+    $post_id = $_POST['postid'];          
+    $program = get_field('vn_prog', $post_id);
+    echo json_encode($program);
+    wp_die();
+}
