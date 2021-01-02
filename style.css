@@ -631,6 +631,12 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
 
 /* CSS footer */
 /* menu footer */
+.wm-menu-footer-left ul li a{
+    color: var(--color-secondary);
+}
+.wm-menu-footer-left ul li a:hover{
+    color: var(--color-secondary-hover);
+}
 .footer-menu-cyclando ul li:before {
     display: none;
 }
@@ -1238,7 +1244,6 @@ body .checkout-button.button.alt.wc-forward,body .woocommerce .button.alt {
 .newsletter-cta > .vc_column-inner >.wpb_wrapper{
     background: #749D27;
     background: linear-gradient(94deg, #9ac250 0%, #749D27 100%)!important;
-    border-radius: 5px;
     padding: 40px;
 }
 .newsletter-cta h2 {

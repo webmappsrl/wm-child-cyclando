@@ -359,19 +359,14 @@ jQuery(document).ready(function () {
     false
   );
 
-  // window.onscroll = function() {myFunction()};
+  jQuery(window).scroll(function() {    
+    var scroll = jQuery(window).scrollTop();
 
-  // 	// var header = document.getElementById("webmapp-layer-1");
-  // 	// var header2 = document.getElementById("webmapp-layer-2");
-  // 	var sticky = header.offsetTop;
-
-  // 	function myFunction() {
-  // 	if (window.pageYOffset > sticky) {
-  // 		// header.classList.add("sticky");
-  // 		// header2.classList.add("sticky2");
-  // 	} else {
-  // 		// header.classList.remove("sticky");
-  // 		// header2.classList.remove("sticky2");
-  // 	}
-  // }
+    if (scroll >= 100) {
+        jQuery("#page-header").addClass("sticky");
+    } else {
+        jQuery("#page-header").removeClass("sticky");
+    }
+  });
+  
 });
