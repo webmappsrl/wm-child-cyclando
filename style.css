@@ -1242,9 +1242,14 @@ body .checkout-button.button.alt.wc-forward,body .woocommerce .button.alt {
     padding: 8px 0;
 }
 .newsletter-cta > .vc_column-inner >.wpb_wrapper{
-    background: #749D27;
-    background: linear-gradient(94deg, #9ac250 0%, #749D27 100%)!important;
+    background: var(--color-primary);
+    /* background: linear-gradient(94deg, #9ac250 0%, #749D27 100%)!important; */
+    border-radius: 5px;
     padding: 40px;
+    background-image: url(/wp-content/uploads/2021/01/Cyc_newsletter_background.png);
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 .newsletter-cta h2 {
     color: white!important;
