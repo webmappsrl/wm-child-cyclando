@@ -58,6 +58,7 @@ add_action( 'wp_head' , 'wm_add_seo_script' );
 function wm_add_seo_script(){
     if ($_SERVER['SERVER_NAME'] == 'cyclando.com') {
         echo '<meta name="google-site-verification" content="WuvVk6Oe2JdEzjKoI8vXlWjz20YFgwj32vSEoZMF9mU" />';
+        echo '<meta name="facebook-domain-verification" content="2lvld3fv2q0bm9uasx5n0mr0njgbp8" />';
         echo '<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/6554435.js"></script>';
     }
 }
