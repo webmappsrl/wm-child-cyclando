@@ -33,7 +33,8 @@ function wp_email_to_tour_operator($post_id) {
     
     if ($TO_email) {
         // Define a constant to use with html emails
-        define("HTML_EMAIL_HEADERS", array('Content-Type: text/html; charset=UTF-8'));
+        $headers = array('Content-Type: text/html; charset=UTF-8;');
+        $headers[] = 'From: Cyclando Sales <sales@cyclando.com>';
         $subject = 'Your tour is online on cyclando.com';
         $html_message = 'Greetings '.$tour_title.'<br>
                         We are happy to inform you that your tour is now available on cyclando.com.<br>
@@ -44,6 +45,6 @@ function wp_email_to_tour_operator($post_id) {
                         Cyclando content team'; 
         
         // Send the email using wordpress mail function
-        wp_mail( $TO_email, $subject, $html_message, HTML_EMAIL_HEADERS );
+        wp_mail( $TO_email, $subject, $html_message, $headers );
     }
 }
