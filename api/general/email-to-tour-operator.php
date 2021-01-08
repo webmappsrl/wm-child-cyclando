@@ -39,7 +39,7 @@ function wp_email_to_tour_operator($post_id) {
         $html_message = 'Greetings '.$tour_title.'<br>
                         We are happy to inform you that your tour is now available on cyclando.com.<br>
                         Here’s the link: <a href="'.$post_permalink.'">'.$post_title.'</a><br>
-                        Please check tour’s program, dates and prices and if you find anything wrong, please respond to this email providing details on what we should change<br>
+                        Please check tour’s program, dates and prices and if you find anything wrong, please reply to this email providing details on what we should change<br>
                         <br>
                         Best wishes,<br>
                         Cyclando content team'; 
