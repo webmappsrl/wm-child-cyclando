@@ -99,14 +99,14 @@ if( $products ){
     
 }
 //  add the lowest price to vn_prezzp ACF : price from... 
-$lowest_price_list = array();
-foreach ( $variations_name_price as $var ) {
-    $price = preg_replace('/&.*?;/', '', $var['adult']);
-    $price = strip_tags($price);
-    $price_e = explode(',',$price);
-    $price_e = str_replace('.', '', $price_e[0]);
-    array_push($lowest_price_list , $price_e);
-}
+// $lowest_price_list = array();
+// foreach ( $variations_name_price as $var ) {
+//     $price = preg_replace('/&.*?;/', '', $var['adult']);
+//     $price = strip_tags($price);
+//     $price_e = explode(',',$price);
+//     $price_e = str_replace('.', '', $price_e[0]);
+//     array_push($lowest_price_list , $price_e);
+// }
 ?>
 
 
@@ -382,13 +382,13 @@ foreach ( $variations_name_price as $var ) {
                                     }
                                 }
                             }
-                        foreach ( $variations_name_price_seasonal as $var ) {
-                            $price = preg_replace('/&.*?;/', '', $var['adult']);
-                            $price = strip_tags($price);
-                            $price_e = explode(',',$price);
-                            $price_e = str_replace('.', '', $price_e[0]);
-                            array_push($lowest_price_list , $price_e);
-                        }
+                        // foreach ( $variations_name_price_seasonal as $var ) {
+                        //     $price = preg_replace('/&.*?;/', '', $var['adult']);
+                        //     $price = strip_tags($price);
+                        //     $price_e = explode(',',$price);
+                        //     $price_e = str_replace('.', '', $price_e[0]);
+                        //     array_push($lowest_price_list , $price_e);
+                        // }
                         }
                     ?>
                     <p class="part-e-pre"></p>
@@ -891,8 +891,8 @@ foreach ( $variations_name_price as $var ) {
             <?php
             }  //----------- END hotel product table
             //  add the lowest price to vn_prezzp ACF : price from... 
-            $lowest_price = min($lowest_price_list);
-            update_field('wm_route_price', $lowest_price);
+            // $lowest_price = min($lowest_price_list);
+            // update_field('wm_route_price', $lowest_price);
             ?>
         </div><!---- END  -------- quote extra -->
         <div class="prezzi-description">

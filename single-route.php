@@ -141,13 +141,6 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 		$program = get_field('vn_prog');
 		$touroperator_id_array = get_field('tour_operator');
 		$coming_soon = get_field('not_salable');
-		if ($coming_soon) {
-			// get the route price and if its 9.99 set it to 9999
-			$price = get_field('wm_route_price', $post_id);
-			if ($price == null || $price == '9.99') {
-				update_field('wm_route_price', '9999', $post_id);
-			}
-		}
 		$popup_show_prices_class = 'popup-show-prices';
 		if ($coming_soon && !return_route_targets_has_cyclando($post_id)) {
 			$coming_soon_class = 'coming-soon-button';
@@ -807,7 +800,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 
 				elseif (get_option('webmapp_show_interactive_route_map')) :
 					echo '<div class="cy-modal-body cy-modal-body-map">';
-					echo do_shortcode('[wm-embedmaps feature_color="#F18E08" color="#9AC250" route="https://a.webmapp.it/' . $home_site . '\/geojson/' . $post_id . '.geojson" height="100%" lang="it"]');
+					echo do_shortcode('[wm-embedmaps feature_color="#F18E08" color="#9AC250" route="https://a.webmapp.it/' . $home_site . '\/geojson/' . $post_id . '.geojson" height="100%" lang="'.$language.'"]');
 					echo '</div>';
 				endif;
 
