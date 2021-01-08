@@ -242,7 +242,10 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 			$promotion_price = intval($price) - intval($promotion_value);
 		}
 		$home_site = home_url();
-		$home_site = str_replace("https://", "", $home_site);
+        $home_site = str_replace("https://", "", $home_site);
+        if ($language == 'en') {
+            $home_site = str_replace("/en/", "", $home_site);
+        }
 
         $route_has_geojson = URL_exists("https://a.webmapp.it/cyclando.com/geojson/$post_id.geojson");
         
