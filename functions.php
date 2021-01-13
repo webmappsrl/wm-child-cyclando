@@ -6,7 +6,6 @@ require ('shortcodes/wm_route_included_not_included.php');
 require ('shortcodes/dashboard_wizard_button.php');
 require ('shortcodes/mobile_menu_quote_form.php');
 require ('shortcodes/menu_search_facetwp_wizard.php');
-require ('url_filters.php');
 require ('api/api-loader.php');
 
 if ( class_exists( 'WP_CLI' ) ) {
@@ -49,7 +48,6 @@ function Divi_parent_theme_enqueue_styles() {
 
 function admin_css_load() {
 	wp_enqueue_style('style-admin-css', get_stylesheet_directory_uri().'/style-admin.css');
-	wp_enqueue_script('cyclando-admin', get_stylesheet_directory_uri().'/js/admin.js', array('jquery'));
 }
 add_action('admin_enqueue_scripts', 'admin_css_load');
 
