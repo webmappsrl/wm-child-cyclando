@@ -8,9 +8,6 @@ $route_ids = $_GET['id'];
     <link rel="stylesheet" id="route-single-post-style-css"
         href="https://cyclando.com/wp-content/themes/wm-child-cyclando/single-route-style.css?ver=5.4.2" type="text/css"
         media="all">
-    <link rel="stylesheet" id="us-fonts-css"
-        href="https://fonts.googleapis.com/css?family=Montserrat+Alternates%3A400%2C600%2C700%2C900%7CMontserrat%3A400%2C600%2C700%2C900%7C%3A400%2C700&amp;display=swap&amp;ver=5.4.2"
-        type="text/css" media="all">
     <link rel="stylesheet" id="us-style-css"
         href="https://cyclando.com/wp-content/themes/Impreza/css/style.min.css?ver=7.4.2" type="text/css" media="all">
     <link rel="stylesheet" id="us-woocommerce-css"
