@@ -138,7 +138,7 @@ if ($promotion_value) {
                 </div>
             </a>
             <?php } else {?>
-                <div class='prezzo-tab <?php echo $coming_soon_class?>'><p><span><?php echo __('Coming soon!', 'wm-child-cyclando'); ?></span></p></div>
+                <div class='prezzo-tab <?php echo $coming_soon_class?>'><p><span><?php echo __('On Request', 'wm-child-cyclando'); ?></span></p></div>
             <?php } ?>
             </figure>
             <?php if (!$coming_soon && return_route_targets_has_cyclando($post_id) == false) { echo "</a>"; }?>

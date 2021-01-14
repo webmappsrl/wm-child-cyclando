@@ -194,7 +194,7 @@
                     </a>
                     <?php } else { ?>
                     <div class='prezzo-tab <?php echo $coming_soon_class ?>'>
-                        <p><span><?php echo __('Coming soon!', 'wm-child-cyclando'); ?></span></p>
+                        <p><span><?php echo __('On Request', 'wm-child-cyclando'); ?></span></p>
                     </div>
                     <?php } ?>
                 </div>

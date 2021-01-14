@@ -545,17 +545,17 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
     font-size: 20px;
     max-width: 130px;
 }
-.webmapp-anypost-template-cy_route .webmapp_post_meta .prezzo-tab.coming-soon-button {
+.webmapp-anypost-template-cy_route .prezzo-tab.coming-soon-button {
     background-color: var(--color-secondary);
     line-height: 20px;
     padding: 10px 10px;
 }
 
-.webmapp-anypost-template-cy_route .webmapp_post_meta .prezzo-tab p {
+.webmapp-anypost-template-cy_route .prezzo-tab p {
     font-size: 32px;
 }
 
-.webmapp-anypost-template-cy_route .webmapp_post_meta .prezzo-tab.coming-soon-button p {
+.webmapp-anypost-template-cy_route .prezzo-tab.coming-soon-button p {
     font-size: 20px;
 }
 
