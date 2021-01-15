@@ -1283,32 +1283,32 @@ function wm_toggle_route_price( $route_id, $post, $update )
 };
 
 /** filter to return post_ids from a dove_vuoi_andare facet, narrow results facet **/
-add_filter( 'facetwp_facet_filter_posts', function( $return, $params ) {
-	if ( 'dove_vuoi_andare' == $params['facet']['name'] ) {
+// add_filter( 'facetwp_facet_filter_posts', function( $return, $params ) {
+// 	if ( 'dove_vuoi_andare' == $params['facet']['name'] ) {
 	    
-		global $wpdb;
+// 		global $wpdb;
 
-		$return          = array();
-		$facet           = $params['facet'];
-		$selected_values = $params['selected_values'];
+// 		$return          = array();
+// 		$facet           = $params['facet'];
+// 		$selected_values = $params['selected_values'];
 
-		$sql = $wpdb->prepare( "SELECT DISTINCT post_id
-            FROM {$wpdb->prefix}facetwp_index
-            WHERE facet_name = %s",
-			$facet['name']
-		);
+// 		$sql = $wpdb->prepare( "SELECT DISTINCT post_id
+//             FROM {$wpdb->prefix}facetwp_index
+//             WHERE facet_name = %s",
+// 			$facet['name']
+// 		);
 
-		// Match ALL values
-		if ( $selected_values ) {
+// 		// Match ALL values
+// 		if ( $selected_values ) {
 
-            $return = facetwp_sql( $sql . " AND facet_display_value LIKE '$selected_values %' OR facet_display_value LIKE '% $selected_values' OR facet_display_value = '$selected_values'", $facet );
+//             $return = facetwp_sql( $sql . " AND facet_display_value LIKE '$selected_values %' OR facet_display_value LIKE '% $selected_values' OR facet_display_value = '$selected_values'", $facet );
 
 
-			if ( empty( $return ) ) {
-				return;
-			}
-		}
-	}
+// 			if ( empty( $return ) ) {
+// 				return;
+// 			}
+// 		}
+// 	}
 
-	return $return;
-}, 10, 2 );
+// 	return $return;
+// }, 10, 2 );
