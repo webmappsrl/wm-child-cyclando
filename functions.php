@@ -1301,7 +1301,7 @@ add_filter( 'facetwp_facet_filter_posts', function( $return, $params ) {
 		// Match ALL values
 		if ( $selected_values ) {
 
-            $return = facetwp_sql( $sql . " AND facet_display_value LIKE '$selected_values %' OR facet_display_value LIKE '% $selected_values' OR facet_display_value LIKE '$selected_values' OR facet_display_value LIKE '% $selected_values %'", $facet );
+            $return = facetwp_sql( $sql . " AND REPLACE(REPLACE(REPLACE(facet_display_value, '-', ''), ',', ''),':','') LIKE '$selected_values %' OR REPLACE(REPLACE(REPLACE(facet_display_value, '-', ''), ',', ''),':','') LIKE '% $selected_values' OR REPLACE(REPLACE(REPLACE(facet_display_value, '-', ''), ',', ''),':','') LIKE '$selected_values' OR REPLACE(REPLACE(REPLACE(facet_display_value, '-', ''), ',', ''),':','') LIKE '% $selected_values %'", $facet );
 
 			if ( empty( $return ) ) {
 				return;
