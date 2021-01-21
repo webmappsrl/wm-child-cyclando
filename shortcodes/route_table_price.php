@@ -868,7 +868,7 @@ foreach ( $variations_name_price as $var ) {
             //  add the lowest price to vn_prezzp ACF : price from... 
             if ($lowest_price_list) {
                 $lowest_price = min($lowest_price_list);
-                update_field('wm_route_price', $lowest_price);
+                //update_field('wm_route_price', $lowest_price);
             }
             ?>
         </div><!---- END  -------- quote extra -->
