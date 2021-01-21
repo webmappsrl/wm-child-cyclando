@@ -428,6 +428,7 @@ foreach ( $variations_name_price as $var ) {
                                             <th class="tab-section-quotes"><?php echo $hotel;?></th>
                                             <?php
                                         }
+                                    }
                                 }
                                 ?>
                             </tr>
