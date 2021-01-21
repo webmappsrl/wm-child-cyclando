@@ -1,6 +1,7 @@
 <?php
 
 include ('vn_route_tabs_td.php');
+include ('wm_product_attribute_mapping.php');
 add_shortcode( 'route_table_price', 'cyclando_render_route_tabs_shortcode' );
 // [bartag foo="foo-value"]
 function cyclando_render_route_tabs_shortcode() {
@@ -376,9 +377,16 @@ foreach ( $variations_name_price as $var ) {
                                 <?php
                                 if (count($attributes_name_hotel_seasonal) > 1) {
                                     foreach ($attributes_name_hotel_seasonal as $hotel){
-                                ?>
-                                <th class="tab-section-quotes"><?php echo $hotel;?></th>
-                                <?php
+                                        if ($language == 'en') {
+                                            ?>
+                                            <th class="tab-section-quotes"><?php echo product_attr_map($hotel);?></th>
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <th class="tab-section-quotes"><?php echo $hotel;?></th>
+                                            <?php
+                                        }
+                                        
                                     }
                                 }
                                 ?>
@@ -411,10 +419,15 @@ foreach ( $variations_name_price as $var ) {
                                 <?php
                                 if (count($attributes_name_hotel) > 1) {
                                     foreach ($attributes_name_hotel as $hotel){
-                                ?>
-                                <th class="tab-section-quotes"><?php echo $hotel;?></th>
-                                <?php
-                                    }
+                                        if ($language == 'en') {
+                                            ?>
+                                            <th class="tab-section-quotes"><?php echo product_attr_map($hotel);?></th>
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <th class="tab-section-quotes"><?php echo $hotel;?></th>
+                                            <?php
+                                        }
                                 }
                                 ?>
                             </tr>
