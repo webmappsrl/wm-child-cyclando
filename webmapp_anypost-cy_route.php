@@ -120,7 +120,7 @@ if ($promotion_value) {
                         ?>
                         <div class='prezzo-tab'>
                             <span class="leavingFrom">
-                            <?php  echo __('from', 'wm-child-cyclando') ?>
+                            <?php  echo __('From', 'wm-child-cyclando') ?>
                             </span>
                             <span class="cifra<?php if ( $promotion_value){ echo 'old-price';}?>">
                             <?php  echo $price. '€'; ?>
