@@ -98,8 +98,8 @@ body.home .Home-intro-banner .home-banner-content h2:last-child {
 }
 
 .home-banner-content-h h2 {
-    font-size: 58px;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.71);
+    font-size: 34px;
+    /* text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.71); */
 }
 body.page-template-default.page.page-parent #page-content,body.page-template-default.page.page-child #page-content {
     padding: 2rem 0;
@@ -151,7 +151,10 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
 
 @media screen and (max-width: 900px) {
     .home-banner-content-h h2 {
-        font-size: 44px;
+        font-size: 34px;
+        text-align: left!important;
+        width: 90%;
+        margin: auto;
     }
     .Home-intro-banner .l-section-h.i-cf {
         padding: 0;
@@ -174,23 +177,27 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
         height: 250px;
         justify-content: space-between;
         border-radius: 25px!important;
-        margin-top: 40px!important;
         transition: all .3s ease;
     }
+    .separator-homepage-search-form {
+        height: 200px!important;
+    
+    }
     #cy-search-element-container .facetwp-autocomplete {
+        padding: 20px 22px 20px 8px;
         transition: all .3s ease;
-        border-radius: 15px!important;
+        border-radius: 30px!important;
         width: 100%!important;
         padding-left: 11px;
     }
     #cy-search-element-container select.facetwp-dropdown {
-        transition: all .3s ease;
-        border-radius: 15px!important;
+        /* transition: all .3s ease; */
+        border-radius: 30px!important;
         width: 100%!important;
     }
     #cy-search-element-container #cy-search-lente {
         transition: all .3s ease;
-        border-radius: 15px;
+        border-radius: 30px;
     }
     #cy-search-lente {
         /* display: none; */
@@ -347,7 +354,10 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
 }
 @media screen and (max-width: 768px) {
     .home-banner-content-h h2 {
-        font-size: 34px!important;
+        font-size: 24px;
+        text-align: left!important;
+        width: 90%;
+        margin: auto;
     }
     h2 {
         font-size: 26px!important;
@@ -424,10 +434,12 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
     color: var(--color-primary-title);*/
     font-family: var(--font-family-primary-alternate);
 }
-.webmapp-anypost-template-cy_route .webmapp_post_image {
+.webmapp-anypost-template-cy_route .webmapp_post_image .post_meta_info_container{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
+    background-color: rgb(21 21 21 / 10%);
+    height: 100%;
 }
 
 .webmapp-anypost-template-cy_route .webmapp_post-title h3 {
@@ -470,11 +482,11 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
 .webmapp-anypost-template-cy_route .webmapp_post_meta p{
     font-size: 18px;
     font-weight: 400;
-    text-shadow: 1px 1px var(--color-text-shadow-dark);
+    /* text-shadow: 1px 1px var(--color-text-shadow-dark); */
 }
 .webmapp-anypost-template-cy_route .webmapp_post_meta .webmapp_post-title p{
     font-size: 15px;
-    text-shadow: 1px 1px var(--color-text-shadow-dark);
+    /* text-shadow: 1px 1px var(--color-text-shadow-dark); */
 }
 .wm_template_advancedsearch .webmapp-anypost-template-cy_route .webmapp_post_meta {
     display: grid;
@@ -888,23 +900,30 @@ body #iubenda_policy .iub_content.legal_pp p {
 #cy-search-element-container h3 {
     display: none;
 }
-
+.cy-search-form-container {
+    position: absolute;
+    width: 100%;
+    top: -80px;
+}
 #cy-search-element-container{
     display: flex;
     width: 860px;
+    column-gap: 20px;
     margin: 0 auto;
     border: solid 20px rgba(0,0,0,0.0);
-    background-color: rgba(0,0,0,0.5);
-    border-radius: 50px;
-    margin-top: 70px;
+    background: #FFFFFF;
+    box-shadow: 0 3px 6px 0 #DADADA;
+    border-radius: 16px;
     transition: all .3s ease;
 }
 #cy-search-element-container .facetwp-autocomplete{
-    /*padding: 20px 22px 20px 8px;*/
-    font-size: 20px;
+    padding: 20px 22px 20px 16px;
+    font-size: 16px;
     line-height: 3.3rem;
-    border-radius: 30px 0px 0px 30px;
-    border: 1px solid #d6d6d6cc;
+    border-radius: 30px;
+    color: #888;
+    border: 1px solid #000000;
+    font-weight: 400;
     width: 300px;
     height: 3.4rem;
 }
@@ -927,23 +946,23 @@ body #iubenda_policy .iub_content.legal_pp p {
 }
    
 select.facetwp-dropdown{
-    font-size: 20px;
-    
+    font-size: 16px;
+    color: #888;
     height: 3.4rem;
-    border-radius: 0px;
-    border: 1px solid #d6d6d6cc;
+    border-radius: 30px;
+    border: 1px solid black;
     width: 300px;
-
+    background-color: white;
     
 }
 div#cy-search-lente  {
-   /* padding: 20px 22px 20px 8px;*/
+    padding: 20px 22px 20px 8px;
     font-size: 20px;
-    line-height: 48px;
+    line-height: 15px;
     text-align: center;
     background-color: #fffc;
     height: 3.4rem;
-    border-radius: 0px 30px 30px 0px;
+    border-radius: 30px;
     border: 1px solid #d6d6d6cc;
 
     
@@ -982,11 +1001,11 @@ div#cy-search-lente  {
 #cy-search-element-container #cy-search-lente {
     width: 240px;
     background-color: var(--color-secondary);
-    font-size: 21px;
+    font-size: 17px;
     font-weight: 600;
     cursor: pointer;
     transition: all .3s ease;
-    
+    color: white;
 }
 #cy-search-element-container #cy-search-lente:hover {
     background-color: var(--color-secondary-hover)!important;
@@ -1473,7 +1492,7 @@ input:focus, input:focus + .w-form-checkbox, textarea:focus, select:focus, .sele
     box-shadow: 0 0 0 2px;
 }
 .facetwp-facet input {
-    background: #f5f5f5;
+    /* background: #f5f5f5; */
 }
 
 /*
@@ -1489,7 +1508,7 @@ tour italia
     border-radius: 5px;
     font-weight: 400;
     margin: 10% 0% 0% 4%;
-    text-shadow: 1px 1px var(--color-text-shadow-dark);
+    /* text-shadow: 1px 1px var(--color-text-shadow-dark); */
 }
 .webmapp-anypost-template-cy_route .post_meta_info {
     font-family: var(--font-family-primary);
@@ -1623,7 +1642,7 @@ i.cy-icons.icon-search1 {
 
 .facetwp-dropdown:active,.facetwp-dropdown:hover
 {
-    background: url(https://cyclando.com/wp-content/uploads/2020/09/down-arrow.png) 95% / 4% no-repeat #f5f5f5;
+    background: url(https://cyclando.com/wp-content/uploads/2020/09/down-arrow.png) 95% / 3% no-repeat #f5f5f5;
     transition: background-color 0.1ms linear;
 }
 

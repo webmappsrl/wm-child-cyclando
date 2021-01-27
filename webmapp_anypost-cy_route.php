@@ -104,7 +104,7 @@ if ($promotion_value) {
             
             <?php  echo "<a href='$title_link' title=\"" . get_the_title() . "\">"; ?>
             <figure class="webmapp_post_image" style="background-image: url('<?php echo $get_the_post_thumbanil; ?>')">
-
+            <div class="post_meta_info_container">
                 <div class="post_meta_info">
                     <?php if (!$coming_soon) { ?>
                     <p class="route_first_date"><span class="route_duration"><?php echo  $days . ' ' . __('days', 'wm-child-cyclando') ?></span></p>
@@ -155,7 +155,8 @@ if ($promotion_value) {
                         </p>
                     </div>
                 </div>
-
+                
+            </div>
             </figure>
             <?php  echo "</a>"; ?>
                 
