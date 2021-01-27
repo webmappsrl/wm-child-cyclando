@@ -181,6 +181,7 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
     }
     .separator-homepage-search-form {
         height: 200px!important;
+        z-index: -1;
     
     }
     #cy-search-element-container .facetwp-autocomplete {
