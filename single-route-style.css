@@ -335,8 +335,9 @@ Text Domain: wm-child-verdenatura
 }
 .cyc-single-route-gallery-information-container img.rsImg.rsMainSlideImage {
     margin-top: 0!important;
-    height: 100%!important;
+    margin-left: 0!important;
     width: 100%!important;
+    height: 100%!important;
 }
 /* information container responsive style */
 @media screen and (min-width: 768px) and (max-width:1261px) {
@@ -1738,7 +1739,9 @@ body #tab-stagioni a:hover {
     transition: 500ms all ease;
     z-index: 2;
 }
-
+#wm-wizards-container {
+    display: none;
+}
 .cy-modal-body {
     padding: 2% 3% 4% 3% !important;
     background: #fff;
@@ -1747,7 +1750,9 @@ body #tab-stagioni a:hover {
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
 }
-
+.cy-modal-body-program .w-iconbox-icon {
+    width:100%;
+}
 #cy-route-program .cy-modal-body {
     background: #fff;
     border: 1px solid var(--color-primary-paragraph);

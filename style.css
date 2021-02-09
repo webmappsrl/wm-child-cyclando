@@ -1649,6 +1649,9 @@ i.cy-icons.icon-search1 {
         padding-top: 220px!important;
         padding-bottom: 0!important;
     }
+    .pagina-cerca-descrizione-container .l-section-h.i-cf {
+        padding-top: 0 !important;
+    }
 }
 /* .page-id-62001 .l-section.height_medium {
     padding-top: 2% !important; 
