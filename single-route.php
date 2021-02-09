@@ -322,7 +322,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                             <div class="wpb_text_column">
                                 <div class="wpb_wrapper">
                                     <?php if ($gallery_ids) {
-										echo do_shortcode('[us_image_slider ids="' . implode(',', $gallery_ids) . '" fullscreen="1" img_size="large" arrows="hide" nav="dots"]');
+										echo do_shortcode('[us_image_slider ids="' . implode(',', $gallery_ids) . '" fullscreen="1" img_size="full" arrows="hide" nav="dots"]');
 										} ?>
                                 </div>
                             </div>
