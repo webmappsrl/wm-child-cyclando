@@ -333,6 +333,11 @@ Text Domain: wm-child-verdenatura
     flex-grow: 1;
     flex-shrink: 0;
 }
+.cyc-single-route-gallery-information-container img.rsImg.rsMainSlideImage {
+    margin-top: 0!important;
+    height: 100%!important;
+    width: 100%!important;
+}
 /* information container responsive style */
 @media screen and (min-width: 768px) and (max-width:1261px) {
     .cyc-single-route-info-price-wrapper .cy-btn-quote p {

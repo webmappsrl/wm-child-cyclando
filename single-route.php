@@ -312,7 +312,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
     </section>
 
     <!-- END section introduction END  -->
-    <!-- START section Gallery and Information block START -->
+    <!-- START section Gallery and Information block START  img_size="large" img_fit="cover" -->
     <section class="l-section wpb_row height_small cyc-single-route-gallery-information-container">
         <div class="l-section-h i-cf">
             <div class="g-cols vc_row type_default valign_top">
@@ -322,7 +322,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                             <div class="wpb_text_column">
                                 <div class="wpb_wrapper">
                                     <?php if ($gallery_ids) {
-										echo do_shortcode('[us_image_slider ids="' . implode(',', $gallery_ids) . '" fullscreen="1" img_size="full" arrows="hide" nav="dots"]');
+										echo do_shortcode('[us_image_slider ids="' . implode(',', $gallery_ids) . '" fullscreen="1" img_size="large" arrows="hide" nav="dots"]');
 										} ?>
                                 </div>
                             </div>
