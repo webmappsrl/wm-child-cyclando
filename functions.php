@@ -6,6 +6,8 @@ require ('shortcodes/wm_route_included_not_included.php');
 require ('shortcodes/dashboard_wizard_button.php');
 require ('shortcodes/mobile_menu_quote_form.php');
 require ('shortcodes/menu_search_facetwp_wizard.php');
+require ('shortcodes/oneclick_search_form.php');
+require ('shortcodes/oneclick_search_form_participants.php');
 require ('api/api-loader.php');
 
 if ( class_exists( 'WP_CLI' ) ) {
