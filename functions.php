@@ -7,7 +7,9 @@ require ('shortcodes/dashboard_wizard_button.php');
 require ('shortcodes/mobile_menu_quote_form.php');
 require ('shortcodes/menu_search_facetwp_wizard.php');
 require ('shortcodes/oneclick_search_form.php');
+require ('shortcodes/oneclick_search_form_participants_bikes.php');
 require ('shortcodes/oneclick_search_form_participants.php');
+require ('shortcodes/oneclick_search_form_bikes.php');
 require ('api/api-loader.php');
 
 if ( class_exists( 'WP_CLI' ) ) {

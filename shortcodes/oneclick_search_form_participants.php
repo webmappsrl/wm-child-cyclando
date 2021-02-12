@@ -8,10 +8,8 @@ function oneclick_search_form_participants() {
 
 
     ?>
-    <div class="oc-participants-bici-container">
-        <div id="oc-participants" class="oc-input-btn"><?= __('Participants','wm-child-cyclando'); ?></div>
-        <div id="oc-bici" class="oc-input-btn"><?= __('Bici','wm-child-cyclando'); ?></div>
-	</div>
+    
+    <div id="oc-participants" class="oc-input-btn"><span id="ocm-partecipants-number"></span><?= __('Participants','wm-child-cyclando'); ?></div>
 
 
     <!-- HTML modal for participants btn One Click Modal OCM -->
@@ -117,17 +115,32 @@ function oneclick_search_form_participants() {
             // var string = JSON.stringify(pCookie); 
             // console.log(parseInt(pCookie['kids']));
             // console.log(parseInt(pCookie['adults']));
+            // var string = JSON.stringify(pCookie); 
+            // console.log(string);
+            parseInt(pCookie['kids']) ? k = parseInt(pCookie['kids']) : k = 0;
+            parseInt(pCookie['adults']) ? a = parseInt(pCookie['adults']) : a = 0;
+            if (a || k ){
+                var sum = a + k +' ';
+            } else {
+                var sum = '';
+            }
             if (!("adults" in pCookie)) {
                 alert('Ci deve essere almeno un adulto');
+                $('#ocm-partecipants-number').text(sum);
             } else if (parseInt(pCookie['kids'])/3 > parseInt(pCookie['adults'])) {
                 alert('Ci devono essere più adulti');
+                $('#ocm-partecipants-number').text(sum);
+            } else if (Cookies.get('oc_participants_cookie')) {
+                var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie')); 
+                $.extend(true,savedCookie,pCookie);
+                Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
             } else if (pCookie) {
                 Cookies.set('oc_participants_cookie', JSON.stringify(pCookie), { expires: 7, path: '/' });
-                $('.ocm-participants-container').hide();
             } else {
                 alert('Scegli i partecipanti');
             }
-            
+            $('.ocm-participants-container').hide();
+            $('#ocm-partecipants-number').text(sum);
         });
 
 
@@ -136,6 +149,9 @@ function oneclick_search_form_participants() {
         function outsideClick(e) {
             if (e.target.id == 'oc-participants-modal') {
                 $('.ocm-participants-container').hide();
+            }
+            if (e.target.id == 'oc-bikes-modal') {
+                $('.ocm-bikes-container').hide();
             }
         }
     })(jQuery);

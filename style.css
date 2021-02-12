@@ -2210,7 +2210,7 @@ span.route_duration_free {
 /* Oneclick form modals */
 
 
-.ocm-participants-container {
+.ocm-participants-container, .ocm-bikes-container {
     display: none;
     position: fixed;
     z-index: 1000;
@@ -2221,7 +2221,7 @@ span.route_duration_free {
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.5);
 }
-.ocm-participants-content{
+.ocm-participants-content, .ocm-bikes-content{
     margin: 0;
     padding: 4%;
     background-color: #fff;
@@ -2269,25 +2269,25 @@ span.route_duration_free {
     text-align: center;
     line-height: 36px;
 }
-.ocm-participants-body {
+.ocm-participants-body, .ocm-bikes-body {
     display: grid;
     grid-template-columns: 8fr 1fr 1fr 1fr;
     padding: 10px 0;
 }
-.ocm-participants-header {
+.ocm-participants-header, .ocm-bikes-header {
     display: flex;
     justify-content: space-between;
     padding: 15px 0;
 }
-.ocm-participants-header h2{
+.ocm-participants-header h2, .ocm-bikes-header h2{
     color: #1a1a1a;
     font-size: 26px;
 }
-.ocm-participants-header .ocm-close-button-container{
+.ocm-close-button-container{
     color: #1a1a1a;
     font-size: 26px;
 }
-.ocm-participants-header .ocm-close-button-container:hover{
+.ocm-close-button-container:hover{
     cursor: pointer;
 }
 div#oc-kid-age-container {
@@ -2304,7 +2304,7 @@ div#oc-kid-age-container {
     appearance: none;
     background: url(https://cyclando.com/wp-content/uploads/2020/09/down-arrow.png) 94% / 5% no-repeat;
 }
-.oc-participants-done-btn {
+.oc-participants-done-btn, .oc-bikes-done-btn {
     width: 100%;
     text-align: center;
     background-color: var(--color-secondary);
@@ -2314,6 +2314,6 @@ div#oc-kid-age-container {
     border-radius: 30px;
     margin-top: 30px;
 }
-.oc-participants-done-btn:hover {
+.oc-participants-done-btn:hover, .oc-bikes-done-btn:hover {
     background-color: var(--color-secondary-hover);
 }
