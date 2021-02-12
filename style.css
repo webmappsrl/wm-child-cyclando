@@ -2317,3 +2317,6 @@ div#oc-kid-age-container {
 .oc-participants-done-btn:hover, .oc-bikes-done-btn:hover {
     background-color: var(--color-secondary-hover);
 }
+.regular-label i, .ebike-label i {
+    font-size:40px;
+}

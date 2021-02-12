@@ -33,6 +33,7 @@ function oneclick_search_form_participants() {
                 <div id="kid-participants" class="oc-number-input">0</div>
                 <button class="modal-btn oc-add-btn" name="kid-participants"><i class="fas fa-plus"></i></button>
             </div>
+            <div id="oc-age-text-container" class="oc-age-text-container"></div>
             <div id="oc-kid-age-container" class="oc-kid-age-container"></div>
             <div id="oc-participants-done-btn" class="oc-participants-done-btn"><?= __('Done','wm-child-cyclando')?></div>
         </div>
@@ -55,6 +56,11 @@ function oneclick_search_form_participants() {
                     $("#oc-kid-age-container").append(
                         '<div class="oc-kid-age-input-wrapper col-4"><select id="oc-kid-age-select-'+num+'" class="oc-kid-age-select"></select></div>'
                     );
+                    if ($("#oc-age-text-container").children().length == 0) {
+                        $("#oc-age-text-container").append(
+                            '<div class="oc-age-text-wrapper"><?php echo __('Age of the children on the day of departure','wm-child-cyclando'); ?></div>'
+                        );
+                    }
                     var select = '';
                     for (i=1;i<=17;i++){
                         select += '<option value=' + i + '>' + i + ' <?php echo __('years','wm-child-cyclando'); ?> </option>';
@@ -98,6 +104,9 @@ function oneclick_search_form_participants() {
                 if ($(e.target).attr('name') == 'kid-participants') {
                     $(".oc-kid-age-input-wrapper").last().remove();
                     delete pCookie['ages'][Object.keys(pCookie['ages']).pop()];
+                    if ($(".oc-kid-age-input-wrapper").children().length == 0) {
+                        $("#oc-age-text-container").empty();
+                    }
                 }
             });
         });
