@@ -343,11 +343,8 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
         vertical-align: middle;
     }
     .wm_template_advancedsearch .webmapp_post-featured-img {
-        grid-template-rows: 1fr 1fr 1.3fr !important;
-    }
-    .wm_template_advancedsearch .post_meta_with_icons {
-        display: block!important;
-        height: auto!important;
+        grid-template-columns: 2fr 1fr !important;
+        grid-template-rows: none!important;
     }
     .covidbanner-container {
         padding: 5px 10px!important;
@@ -497,17 +494,14 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
 
 .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .webmapp_post_meta .post_meta_info {
     font-family: var(--font-family-primary);
-    color: black;
-    font-weight: 900;
-    padding: 10px 0px 0px 10px;
-    align-self: baseline;
-    position: relative;
-    display: -webkit-inline-box;
-    /* -webkit-line-clamp: 2; */
-    -webkit-box-orient: vertical;
-    justify-self: start;
-    width: fit-content;
-    min-width: 140px;
+    position: absolute;
+    top: -14px;
+    right: 30px;
+    min-width: 90px;
+}
+.webmapp-anypost-template-cy_route_advancedsearch .webmapp_post_meta .post_title_info {
+    padding: 5px 15px;
+    color: white;
 }
 .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info {
     font-family: var(--font-family-primary);
@@ -805,17 +799,17 @@ body #iubenda_policy .iub_content.legal_pp p {
     display: none;
 }
 .advancedsearch-container .title-holder {
-    height: 100%;
+    
 }
 .advancedsearch-container .title-holder h3{
     color: white;
-    font-weight: 900;
     font-family: var(--font-family-primary-alternate);
-    font-size: 24px;
+    font-size: 16px;
     overflow: hidden;
     display: -webkit-inline-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    padding-top: 8px;
 }
 .advancedsearch-container .webmapp_post_meta .prezzo-tab {
     padding: 8px 10px;
@@ -1545,7 +1539,7 @@ tour italia
 
 
 .wm_template_advancedsearch span.cifra,.webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch span.cifraPromo {
-    color: white;
+    color: var(--color-primary);
     font-size: 15px;
 }
 .webmapp-anypost-template-cy_route span.cifra, span.cifraPromo {
@@ -1694,12 +1688,15 @@ a.facetwp-page.active:hover {
 .webmapp_post-featured-img {
     font-family: var(--font-family-primary);
 }
+.oc_search_adv_info_text_container {
+    color: #1a1a1a;
+}
 .wm_template_advancedsearch .webmapp_post-featured-img {
     position: relative;
     display: grid;
     grid-template-rows: 1fr 2fr 4fr;
     align-items: center;
-    padding: 20px 30px;
+    padding: 20px 15px;
 }
 .cy-facetwp-cerca-quando , .cy-facetwp-cerca-where {
     position: relative;
@@ -1831,10 +1828,10 @@ h4.tripSearch {
     border-radius: 20px 0 0 20px;
 }
 .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .webmapp_post_image .webmapp_post_meta {
-    display: grid;
-    grid-template-columns: 1fr;
     height: 100%;
-    grid-template-rows: 1fr 1fr;
+    display: grid;
+    align-items: end;
+    background-color: rgb(0 0 0 / 20%);
 }
 
 .wm_template_advancedsearch .single-post-wm {
@@ -1844,19 +1841,6 @@ h4.tripSearch {
     height: 300px;
     display: grid;
     grid-template-columns: 2fr 3fr;
-}
-
-.wm_template_advancedsearch .title-holder h3
-{
-    color:black;
-    font-weight: 400;
-    font-family: var(--font-family-primary-alternate);
-    font-size: 28px;
-    overflow: hidden;
-    display: -webkit-inline-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-
 }
 
 .wm_template_advancedsearch span.textIcon {
@@ -1907,18 +1891,17 @@ h4.tripSearch {
 
 .wm_template_advancedsearch span.cifra, span.cifraPromo {
     width: 100%;
-    font-size: 30px;
+    font-size: 20px;
+    text-align: center;
     display: block;
 }
 
 .wm_template_advancedsearch span.route_duration {
-    padding: 2% 6% 2% 9%;
+    padding: 8px 20px;
     background: var(--color-primary);
     color: white;
-    font-size: 20px;
-    border-radius: 5px;
-    font-weight: 700;
-    text-transform: uppercase;
+    font-size: 16px;
+    border-radius: 30px;
 }
 
 .wm_template_advancedsearch .meta-bar-txt-light {
@@ -1943,9 +1926,8 @@ span.route_duration_free {
 }
 
 .meta-bar-txt-title {
-    color: black;
+    color: white;
     font-size: 18px;
-    text-transform: uppercase;
 }
 
 
@@ -2018,10 +2000,6 @@ span.route_duration_free {
         left: 10px;
     }
 
-    .wm_template_advancedsearch span.route_duration {
-        padding: 4% 6% 4% 9%;
-    }
-
 
     .general-cerca-facetwp-container .g-cols.vc_row.type_default.valign_top {
         margin: 6% 0 0 0;
@@ -2029,7 +2007,7 @@ span.route_duration_free {
 
     .wm_template_advancedsearch .title-holder h3
     {
-        font-size: 25px;
+        font-size: 16px;
     }
 
     .l-section-h.i-cf {
@@ -2188,6 +2166,10 @@ span.route_duration_free {
     }
     .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .webmapp_post_image {
         border-radius: 20px 20px 0 0px;
+        height: 200px !important;
+    }
+    .wm_template_advancedsearch .post_meta_with_icons {
+        display: none!important;
     }
 }
 /* ibenda icon style */

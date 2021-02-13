@@ -370,3 +370,24 @@ jQuery(document).ready(function () {
   });
   
 });
+
+  function cal_sum_cookies(savedCookie) {
+    parseInt(savedCookie['kids']) ? k = parseInt(savedCookie['kids']) : k = 0;
+    parseInt(savedCookie['adults']) ? a = parseInt(savedCookie['adults']) : a = 0;
+    if (a || k ){
+        var psum = a + k;
+    } else {
+        var psum = null;
+    }
+    parseInt(savedCookie['regular']) ? r = parseInt(savedCookie['regular']) : r = 0;
+    parseInt(savedCookie['electric']) ? e = parseInt(savedCookie['electric']) : e = 0;
+    if (e || r ){
+        var bsum = e + r;
+    } else {
+        var bsum = null;
+    }
+    var sums = {};
+    sums['participants'] = psum;
+    sums['bikes'] = bsum;
+    return sums;
+  }
