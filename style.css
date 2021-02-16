@@ -150,6 +150,9 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
 }
 
 @media screen and (max-width: 900px) {
+    .advancedsearch-container .vc_column-inner{
+        padding: 0!important;
+    }
     .home-banner-content-h h2 {
         font-size: 34px;
         text-align: left!important;
@@ -2219,7 +2222,7 @@ span.route_duration_free {
 .modal-btn {
     background-color: #fff;
     border-radius: 30px;
-    padding: 4px 10px;
+    padding: 4px 11px;
     border: 1px #000 solid
 }
 .modal-btn > * {
@@ -2301,4 +2304,150 @@ div#oc-kid-age-container {
 }
 .regular-label i, .ebike-label i {
     font-size:40px;
+}
+
+/* search page modal popup form */
+#searchpage-form-oneclick-mobile {
+    display: none;
+    position: fixed;
+    z-index: 500;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#searchpage-form-oneclick-mobile .cy-search-form-container {
+    position: inherit;
+    top: unset;
+}
+.searchpage-form-oneclick-mobile-container {
+    margin: 45% auto;
+    width: 90%;
+    box-shadow: 0 5px 8px 0 rgb(0 0 0 / 20%), 0 7px 20px 0 rgb(0 0 0 / 17%);
+    animation-name: modalopen;
+}
+.searchpage-form-oneclick-body {
+    background-color: white;
+    padding: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+.searchpage-form-oneclick-body select.facetwp-dropdown {
+    width: 100%;
+}
+.searchpage-form-oneclick-body .facetwp-autocomplete {
+    font-size: 16px;
+    color: inherit;
+    line-height: 52px;
+    height: auto;
+    border-radius: 30px;
+    border: 1px solid black;
+    width: 100%;
+    background-color: white;
+}
+.searchpage-form-oneclick-body .facetwp-facet {
+    margin-bottom: 15px;
+}
+.searchpage-form-oneclick-body .facet-label{
+    display: none;
+}
+.searchpage-form-oneclick-body #cy-search-lente {
+    width: 240px;
+    background-color: var(--color-secondary);
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .3s ease;
+    color: white;
+    margin-top: 15px;
+}
+.searchpage-form-oneclick-header {
+    background-color: white;
+    padding: 15px 15px 0 15px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+span.searchpage-form-close {
+    font-size: 26px;
+}
+.search-form-holder-mobile-bikes i {
+    font-size: 24px;
+}
+.search-page-description-mobile p, .search-page-description-mobile h3{
+    color: white;
+}
+div#searchpage-form-holder-mobile {
+    position: absolute;
+    left: 0;
+    top: -60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    box-shadow: 0 3px 6px 0 #DADADA;
+    border-radius: 15px;
+    padding: 10px 10px;
+    background-color: white;
+}
+.search-form-holder-mobile-where {
+    float: left;
+    display: grid;
+    grid-template-columns: 1fr 14fr;
+    align-items: center;
+}
+.search-form-holder-mobile-where {
+    grid-column: 1 / -1;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+    margin-bottom: 4px;
+}
+.searchpage-form-mobile-where-text {
+    text-transform: capitalize;
+    font-size: 12px;
+}
+.search-form-holder-mobile-when {
+    float: left;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    align-items: center;
+}
+.searchpage-form-mobile-when-text {
+    text-transform: capitalize;
+}
+.search-form-holder-mobile-when div{
+    font-size: 12px;
+    width: auto;
+    line-height: 20px;
+    border-right: 1px solid #ccc;
+    margin-right: 10px;
+}
+.search-form-holder-mobile-participants {
+    float: left;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    align-items: center;
+}
+.search-form-holder-mobile-participants div{
+    font-size: 12px;
+    width: auto;
+    line-height: 20px;
+    border-right: 1px solid #ccc;
+    margin-right: 10px;
+    text-transform: capitalize;
+}
+.search-form-holder-mobile-bikes div {
+    font-size: 12px;
+    width: auto;
+    line-height: 20px;
+    text-transform: capitalize;
+}
+.search-form-holder-mobile-bikes {
+    float: left;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    align-items: center;
 }

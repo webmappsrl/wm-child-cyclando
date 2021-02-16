@@ -137,10 +137,10 @@ jQuery(document).ready(function () {
   // configuration for the search in banner homepahe
   // jQuery(".facetwp-facet.facetwp-facet-search_route.facetwp-type-fselect").click(function () {
   jQuery(
-    "#cy-search-element-container .facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-autocomplete"
+    ".facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-autocomplete"
   ).click(function () {
     // var $filter = jQuery(".fs-search input");
-    var $filter = jQuery("#cy-search-element-container input");
+    var $filter = jQuery(".facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-autocomplete input[type=text]");
     //#cy-search-lente
 
     $filter.keyup(function () {
