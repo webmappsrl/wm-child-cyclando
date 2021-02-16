@@ -49,101 +49,95 @@ function oneclick_search_form_bikes() {
                 if (parseInt(savedCookie['regular'])>0) {
                     $('#regular-bikes').text(parseInt(savedCookie['regular']));
                 }
-            } 
-        });
-        var bCookie = {};
-        //Add button
-        $( ".oc-add-btn" ).each(function(index,element) {
-            $(element).click( function(e){
-                if ($(e.target).attr('name') == 'regular-bikes' || $(e.target).attr('name') == 'electric-bikes') {
-                    var counter = $('#'+$(e.target).attr('name'));
-                    var count = parseInt(counter.text());
-                    counter.text(count +1);
-                    num = count + 1;
-                }
-                if ($(e.target).attr('name') == 'regular-bikes') {
-                    bCookie['regular'] = num;
-                }
-                if ($(e.target).attr('name') == 'electric-bikes') {
-                    bCookie['electric'] = num;
-                }
+            } else {
+                var savedCookie = {};
+            }
+
+            //Add button
+            $( ".oc-add-btn" ).each(function(index,element) {
+                $(element).click( function(e){
+                    savedCookie = ocmCheckCookie(); 
+                    if ($(e.target).attr('name') == 'regular-bikes' || $(e.target).attr('name') == 'electric-bikes') {
+                        var counter = $('#'+$(e.target).attr('name'));
+                        var count = parseInt(counter.text());
+                        counter.text(count +1);
+                        num = count + 1;
+                    }
+                    if ($(e.target).attr('name') == 'regular-bikes') {
+                        savedCookie['regular'] = num;
+                    }
+                    if ($(e.target).attr('name') == 'electric-bikes') {
+                        savedCookie['electric'] = num;
+                    }
+                });
             });
-        });
-        //Substract button
-        $( ".oc-substract-btn" ).each(function(index,element) {
-            $(element).click( function(e){
-                if ($(e.target).attr('name') == 'regular-bikes' || $(e.target).attr('name') == 'electric-bikes') {
-                    var counter = $('#'+$(e.target).attr('name'));
-                    var count = parseInt(counter.text());
-                    count = count - 1;
-                    count < 0 ? counter.text(0) : counter.text(count);
-                    console.log(count);
-                }
-                if ($(e.target).attr('name') == 'regular-bikes') {
-                    if (count > 0 ) {
-                        bCookie['regular'] = count;
-                    } else {
-                        delete bCookie['regular'];
+            //Substract button
+            $( ".oc-substract-btn" ).each(function(index,element) {
+                $(element).click( function(e){
+                    savedCookie = ocmCheckCookie(); 
+                    if ($(e.target).attr('name') == 'regular-bikes' || $(e.target).attr('name') == 'electric-bikes') {
+                        var counter = $('#'+$(e.target).attr('name'));
+                        var count = parseInt(counter.text());
+                        count = count - 1;
+                        count < 0 ? counter.text(0) : counter.text(count);
+                        console.log(count);
                     }
-                }
-                if ($(e.target).attr('name') == 'electric-bikes') {
-                    if (count > 0 ) {
-                        bCookie['electric'] = count;
-                    } else {
-                        delete bCookie['electric'];
+                    if ($(e.target).attr('name') == 'regular-bikes') {
+                        if (count > 0 ) {
+                            savedCookie['regular'] = count;
+                        } else {
+                            delete savedCookie['regular'];
+                        }
                     }
+                    if ($(e.target).attr('name') == 'electric-bikes') {
+                        if (count > 0 ) {
+                            savedCookie['electric'] = count;
+                        } else {
+                            delete savedCookie['electric'];
+                        }
+                    }
+                });
+            });
+            
+
+            $('#oc-bikes').on('click',function(){
+                $('.ocm-bikes-container').show();
+            });
+            $('.ocm-bikes-close').on('click',function(){
+                $('.ocm-bikes-container').hide();
+            });
+
+            $('.oc-bikes-done-btn').click( function(){
+                parseInt(savedCookie['regular']) ? r = parseInt(savedCookie['regular']) : r = 0;
+                parseInt(savedCookie['electric']) ? e = parseInt(savedCookie['electric']) : e = 0;
+                if (e || r ){
+                    var sum = e + r +' ';
+                } else {
+                    var sum = '';
+                }
+                var sums = cal_sum_cookies(savedCookie);
+                if (sums['participants'] < sum) {
+                    $("#ocm-warning-bikes-container").empty();
+                    $("#ocm-warning-bikes-container").append(
+                        '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Bikes number can not be more than participants number','wm-child-cyclando'); ?></div>'
+                    );
+                    console.log('savedCookie'+JSON.stringify(savedCookie));
+                }
+                else if  (savedCookie) {
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    $("#ocm-warning-bikes-container").empty();
+                    $('.ocm-bikes-container').hide();
+                    $('#ocm-bikes-number').text(sum);
+                    console.log('savedCookie'+JSON.stringify(savedCookie));
+                } else {
+                    Cookies.set('oc_participants_cookie', JSON.stringify(bCookie), { expires: 7, path: '/' });
+                    $("#ocm-warning-bikes-container").empty();
+                    $('.ocm-bikes-container').hide();
+                    $('#ocm-bikes-number').text(sum);
                 }
             });
         });
         
-
-        $('#oc-bikes').on('click',function(){
-            $('.ocm-bikes-container').show();
-        });
-        $('.ocm-bikes-close').on('click',function(){
-            $('.ocm-bikes-container').hide();
-        });
-
-        $('.oc-bikes-done-btn').click( function(){
-            var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie')); 
-            if (!("regular" in bCookie)) {
-                bCookie['regular'] = savedCookie['regular'];
-            }
-            if (!("electric" in bCookie)) {
-                bCookie['electric'] = savedCookie['electric'];
-            }
-            parseInt(bCookie['regular']) ? r = parseInt(bCookie['regular']) : r = 0;
-            parseInt(bCookie['electric']) ? e = parseInt(bCookie['electric']) : e = 0;
-            if (e || r ){
-                var sum = e + r +' ';
-            } else {
-                var sum = '';
-            }
-            var sums = cal_sum_cookies(savedCookie);
-            if (sums['participants'] < sum) {
-                $("#ocm-warning-bikes-container").empty();
-                $("#ocm-warning-bikes-container").append(
-                    '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Bikes number can not be more than participants number','wm-child-cyclando'); ?></div>'
-                );
-                console.log('savedCookie'+JSON.stringify(savedCookie));
-                console.log('bCookie'+JSON.stringify(bCookie));
-            }
-            else if  (Cookies.get('oc_participants_cookie')) {
-                var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie')); 
-                $.extend(true,savedCookie,bCookie);
-                Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
-                $("#ocm-warning-bikes-container").empty();
-                $('.ocm-bikes-container').hide();
-                $('#ocm-bikes-number').text(sum);
-                console.log('savedCookie'+JSON.stringify(savedCookie));
-            } else {
-                Cookies.set('oc_participants_cookie', JSON.stringify(bCookie), { expires: 7, path: '/' });
-                $("#ocm-warning-bikes-container").empty();
-                $('.ocm-bikes-container').hide();
-                $('#ocm-bikes-number').text(sum);
-                console.log('bCookie'+JSON.stringify(bCookie));
-            }
-        });
 
     })(jQuery);
     </script>

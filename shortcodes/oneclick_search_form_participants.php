@@ -65,141 +65,139 @@ function oneclick_search_form_participants() {
                 if (sums['bikes'] !== null) {
                     $('#ocm-bikes-number').html(sums['bikes'] + ' ');
                 }
-            } 
-        });
-        var pCookie = {};
-        //Add button
-        $( ".oc-add-btn" ).each(function(index,element) {
-            $(element).click( function(e){
-                var counter = $('#'+$(e.target).attr('name'));
-                var count = parseInt(counter.text());
-                if ($(e.target).attr('name') == 'adult-participants') {
-                    num = count + 1;
-                    counter.text(count +1);
-                    pCookie['adults'] = num;
-                    $("#ocm-warning-container").empty();
-                }
-                if ($(e.target).attr('name') == 'kid-participants') {
-                    if (count + 1 <= parseInt($('#adult-participants').text()) * 3) {
+            } else {
+                var savedCookie = {};
+            }
+            //Add button
+            $( ".oc-add-btn" ).each(function(index,element) {
+                $(element).click( function(e){
+                    savedCookie = ocmCheckCookie(); 
+                    var counter = $('#'+$(e.target).attr('name'));
+                    var count = parseInt(counter.text());
+                    if ($(e.target).attr('name') == 'adult-participants') {
                         num = count + 1;
                         counter.text(count +1);
-                        $("#oc-kid-age-container").append(
-                            '<div class="oc-kid-age-input-wrapper col-4"><select id="oc-kid-age-select-'+num+'" class="oc-kid-age-select"></select></div>'
-                        );
-                        if ($("#oc-age-text-container").children().length == 0) {
-                            $("#oc-age-text-container").append(
-                                '<div class="oc-age-text-wrapper"><?php echo __('Age of the children on the day of departure','wm-child-cyclando'); ?></div>'
+                        savedCookie['adults'] = num;
+                        $("#ocm-warning-container").empty();
+                    }
+                    if ($(e.target).attr('name') == 'kid-participants') {
+                        if (count + 1 <= parseInt($('#adult-participants').text()) * 3) {
+                            num = count + 1;
+                            counter.text(count +1);
+                            $("#oc-kid-age-container").append(
+                                '<div class="oc-kid-age-input-wrapper col-4"><select id="oc-kid-age-select-'+num+'" class="oc-kid-age-select"></select></div>'
+                            );
+                            if ($("#oc-age-text-container").children().length == 0) {
+                                $("#oc-age-text-container").append(
+                                    '<div class="oc-age-text-wrapper"><?php echo __('Age of the children on the day of departure','wm-child-cyclando'); ?></div>'
+                                );
+                            }
+                            ocmSetAgeSelectOptions(num);
+                            savedCookie['kids'] = num;
+                            if (!savedCookie['ages']) {
+                                savedCookie['ages'] = {}; 
+                            }
+                            // savedCookie['ages'][num] = 1;
+                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                            //Age Select
+                            $('#oc-kid-age-select-'+num).on('change', function(e) {
+                                savedCookie = ocmCheckCookie(); 
+                                console.log(e.target.id)
+                                savedCookie['ages'][e.target.id.split('-').pop()] = parseInt(this.value);
+                                Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                            });
+                            $("#ocm-warning-container").empty();
+                        } else {
+                            $("#ocm-warning-container").empty();
+                            $("#ocm-warning-container").append(
+                                '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Kids number can not be more than 3 times of adults','wm-child-cyclando'); ?></div>'
                             );
                         }
-                        ocmSetAgeSelectOptions(num);
-                        pCookie['kids'] = num;
-                        if (!pCookie['ages']) {
-                            pCookie['ages'] = {}; 
-                        }
-                        pCookie['ages'][num] = 1;
-                        //Age Select
-                        $('#oc-kid-age-select-'+num).on('change', function(e) {
-                            console.log(e.target.id)
-                            pCookie['ages'][e.target.id.split('-').pop()] = parseInt(this.value);
-                        });
-                        $("#ocm-warning-container").empty();
-                    } else {
-                        $("#ocm-warning-container").empty();
-                        $("#ocm-warning-container").append(
-                            '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Kids number can not be more than 3 times of adults','wm-child-cyclando'); ?></div>'
-                        );
                     }
-                }
+                });
             });
-        });
-        //Substract button
-        $( ".oc-substract-btn" ).each(function(index,element) {
-            $(element).click( function(e){
-                var counter = $('#'+$(e.target).attr('name'));
-                var count = parseInt(counter.text());
-                count = count - 1;
-                if (count < 0) {counter.text(0)}  ;
-                if ($(e.target).attr('name') == 'adult-participants') {
-                    count < 0 ? counter.text(0) : counter.text(count);
-                    pCookie['adults'] = count;
-                    $("#ocm-warning-container").empty();
-                }
-                if ($(e.target).attr('name') == 'kid-participants') {
-                    if (count <= parseInt($('#adult-participants').text()) * 3) {
-                        count < 0 ? counter.text(0) : counter.text(count);
-                        pCookie['kids'] = count;
-                        $(".oc-kid-age-input-wrapper").last().remove();
-                        delete pCookie['ages'][Object.keys(pCookie['ages']).pop()];
-                        if ($(".oc-kid-age-input-wrapper").children().length == 0) {
-                            $("#oc-age-text-container").empty();
-                        }
-                        $("#ocm-warning-container").empty();
-                    } else {
-                        $("#ocm-warning-container").empty();
-                        $("#ocm-warning-container").append(
-                            '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Kids number can not be more than 3 times of adults','wm-child-cyclando'); ?></div>'
-                        );
-                    }
-                }
-                if (count < 0 ) {
-                    delete pCookie['kids'];
-                }
-            });
-        });
-        
-
-        $('#oc-participants').on('click',function(){
-            $('.ocm-participants-container').show();
-        });
-        $('.ocm-participants-close').on('click',function(){
-            $('.ocm-participants-container').hide();
-        });
-
-        $('.oc-participants-done-btn').click( function(){
-            // console.log(pCookie);
-            // var string = JSON.stringify(pCookie); 
-            // console.log(parseInt(pCookie['kids']));
-            // console.log(parseInt(pCookie['adults']));
-            // var string = JSON.stringify(pCookie); 
-            // console.log(string);
-            var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie')); 
-            if (!("adults" in pCookie)) {
-                pCookie['adults'] = savedCookie['adults'];
-            }
-            if (!("kids" in pCookie)) {
-                pCookie['kids'] = savedCookie['kids'];
-            }
-            parseInt(pCookie['kids']) ? k = parseInt(pCookie['kids']) : k = 0;
-            parseInt(pCookie['adults']) ? a = parseInt(pCookie['adults']) : a = 0;
-            if (a || k ){
-                var sum = a + k +' ';
-            } else {
-                var sum = '';
-            }
-            if (!("adults" in pCookie)) {
-                $("#ocm-warning-container").append(
-                    '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('There should be at least one adult','wm-child-cyclando'); ?></div>'
-                );
-            } else if (parseInt(pCookie['kids'])/3 > parseInt(pCookie['adults'])) {
-                $("#ocm-warning-container").append(
-                    '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Kids number can not be more than 3 times of adults','wm-child-cyclando'); ?></div>'
-                );
-            } else if (Cookies.get('oc_participants_cookie')) {
-                var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie')); 
-                $.extend(true,savedCookie,pCookie);
-                Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
-                console.log('savedcookie'+JSON.stringify(savedCookie));
-                $('.ocm-participants-container').hide();
-                $('#ocm-partecipants-number').text(sum);
-            } else if (pCookie) {
-                Cookies.set('oc_participants_cookie', JSON.stringify(pCookie), { expires: 7, path: '/' });
-                console.log('pCookie'+JSON.stringify(pCookie));
-                $('.ocm-participants-container').hide();
-                $('#ocm-partecipants-number').text(sum);
-            } else {
-                alert('Scegli i partecipanti');
-            }
             
+            //Substract button
+            $( ".oc-substract-btn" ).each(function(index,element) {
+                $(element).click( function(e){
+                    savedCookie = ocmCheckCookie(); 
+                    var counter = $('#'+$(e.target).attr('name'));
+                    var count = parseInt(counter.text());
+                    count = count - 1;
+                    if (count < 0) {counter.text(0)}  ;
+                    if ($(e.target).attr('name') == 'adult-participants') {
+                        count < 0 ? counter.text(0) : counter.text(count);
+                        savedCookie['adults'] = count;
+                        $("#ocm-warning-container").empty();
+                    }
+                    if ($(e.target).attr('name') == 'kid-participants') {
+                        if (count <= parseInt($('#adult-participants').text()) * 3) {
+                            count < 0 ? counter.text(0) : counter.text(count);
+                            savedCookie['kids'] = count;
+                            $(".oc-kid-age-input-wrapper").last().remove();
+                            delete savedCookie['ages'][Object.keys(savedCookie['ages']).pop()];
+                            if ($(".oc-kid-age-input-wrapper").children().length == 0) {
+                                $("#oc-age-text-container").empty();
+                            }
+                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                            $("#ocm-warning-container").empty();
+                        } else {
+                            $("#ocm-warning-container").empty();
+                            $("#ocm-warning-container").append(
+                                '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Kids number can not be more than 3 times of adults','wm-child-cyclando'); ?></div>'
+                            );
+                        }
+                    }
+                    if (count < 0 ) {
+                        delete savedCookie['kids'];
+                    }
+                });
+            });
+            
+    
+            $('#oc-participants').on('click',function(){
+                $('.ocm-participants-container').show();
+            });
+            $('.ocm-participants-close').on('click',function(){
+                $('.ocm-participants-container').hide();
+            });
+    
+            $('.oc-participants-done-btn').click( function(){
+                // console.log(pCookie);
+                // var string = JSON.stringify(pCookie); 
+                // console.log(parseInt(pCookie['kids']));
+                // console.log(parseInt(pCookie['adults']));
+                // var string = JSON.stringify(pCookie); 
+                // console.log(string);
+                parseInt(savedCookie['kids']) ? k = parseInt(savedCookie['kids']) : k = 0;
+                parseInt(savedCookie['adults']) ? a = parseInt(savedCookie['adults']) : a = 0;
+                if (a || k ){
+                    var sum = a + k +' ';
+                } else {
+                    var sum = '';
+                }
+                if (!("adults" in savedCookie)) {
+                    $("#ocm-warning-container").append(
+                        '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('There should be at least one adult','wm-child-cyclando'); ?></div>'
+                    );
+                } else if (parseInt(savedCookie['kids'])/3 > parseInt(savedCookie['adults'])) {
+                    $("#ocm-warning-container").append(
+                        '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Kids number can not be more than 3 times of adults','wm-child-cyclando'); ?></div>'
+                    );
+                } else if (savedCookie) {
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    console.log('savedcookie'+JSON.stringify(savedCookie));
+                    $('.ocm-participants-container').hide();
+                    $('#ocm-partecipants-number').text(sum);
+                } else if (pCookie) {
+                    Cookies.set('oc_participants_cookie', JSON.stringify(pCookie), { expires: 7, path: '/' });
+                    $('.ocm-participants-container').hide();
+                    $('#ocm-partecipants-number').text(sum);
+                } else {
+                    alert('Scegli i partecipanti');
+                }
+                
+            });
         });
 
 
@@ -221,6 +219,8 @@ function oneclick_search_form_participants() {
             }
             $('#oc-kid-age-select-'+num).html(select);
         }
+
+        
     })(jQuery);
     </script>
     <!-- END HTML modal for participants btn-->

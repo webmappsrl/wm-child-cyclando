@@ -391,3 +391,12 @@ jQuery(document).ready(function () {
     sums['bikes'] = bsum;
     return sums;
   }
+
+  function ocmCheckCookie(){
+    if (Cookies.get('oc_participants_cookie')){
+        return savedCookies = JSON.parse(Cookies.get('oc_participants_cookie'));
+    } else {
+        return savedCookies = {}
+    }
+    
+}
