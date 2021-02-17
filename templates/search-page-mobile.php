@@ -83,4 +83,3 @@ echo do_shortcode('[vc_row us_bg_image_source="featured" us_bg_repeat="no-repeat
 })(jQuery);
 </script>
 <!-- END HTML modal for bikes btn-->
-<?php

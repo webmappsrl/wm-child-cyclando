@@ -65,9 +65,11 @@ function oneclick_search_form_bikes() {
                     }
                     if ($(e.target).attr('name') == 'regular-bikes') {
                         savedCookie['regular'] = num;
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                     }
                     if ($(e.target).attr('name') == 'electric-bikes') {
                         savedCookie['electric'] = num;
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                     }
                 });
             });
@@ -85,15 +87,19 @@ function oneclick_search_form_bikes() {
                     if ($(e.target).attr('name') == 'regular-bikes') {
                         if (count > 0 ) {
                             savedCookie['regular'] = count;
+                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                         } else {
                             delete savedCookie['regular'];
+                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                         }
                     }
                     if ($(e.target).attr('name') == 'electric-bikes') {
                         if (count > 0 ) {
                             savedCookie['electric'] = count;
+                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                         } else {
                             delete savedCookie['electric'];
+                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                         }
                     }
                 });
@@ -108,6 +114,7 @@ function oneclick_search_form_bikes() {
             });
 
             $('.oc-bikes-done-btn').click( function(){
+                savedCookie = ocmCheckCookie(); 
                 parseInt(savedCookie['regular']) ? r = parseInt(savedCookie['regular']) : r = 0;
                 parseInt(savedCookie['electric']) ? e = parseInt(savedCookie['electric']) : e = 0;
                 if (e || r ){
