@@ -194,7 +194,7 @@ function oneclick_search_form_participants() {
                     $("#ocm-warning-container").append(
                         '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Kids number can not be more than 3 times of adults','wm-child-cyclando'); ?></div>'
                     );
-                } else if (parseInt(sums['bikes']) > parseInt(sums['participants'])) {
+                } else if (parseInt(sums['participants']) == null || (parseInt(sums['bikes']) > parseInt(sums['participants']))) {
                     $("#ocm-warning-container").append(
                         '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Bikes number can not be more than participants','wm-child-cyclando'); ?></div>'
                     );
