@@ -377,14 +377,14 @@ jQuery(document).ready(function () {
     if (a || k ){
         var psum = a + k;
     } else {
-        var psum = null;
+        var psum = 0;
     }
     parseInt(savedCookie['regular']) ? r = parseInt(savedCookie['regular']) : r = 0;
     parseInt(savedCookie['electric']) ? e = parseInt(savedCookie['electric']) : e = 0;
     if (e || r ){
         var bsum = e + r;
     } else {
-        var bsum = null;
+        var bsum = 0;
     }
     var sums = {};
     sums['participants'] = psum;
