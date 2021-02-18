@@ -2375,7 +2375,7 @@ span.searchpage-form-close {
 div#searchpage-form-holder-mobile {
     position: absolute;
     left: 0;
-    top: -60px;
+    top: -47px;
     display: grid;
     grid-template-columns: 1fr 1.3fr 1fr;
     width: 100%;
