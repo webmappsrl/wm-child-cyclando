@@ -1337,3 +1337,20 @@ function wm_isMobileDev(){
     };
     return false;
 }
+
+
+// Disable Facet Auto-Refresh
+function fwp_disable_auto_refresh() {
+?>
+<script>
+(function($) {
+    $(function() {
+        if ('undefined' !== typeof FWP) {
+            FWP.auto_refresh = false;
+        }
+    });
+})(jQuery);
+</script>
+<?php
+}
+add_action( 'wp_head', 'fwp_disable_auto_refresh', 100 );

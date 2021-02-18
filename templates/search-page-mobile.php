@@ -14,7 +14,7 @@ echo do_shortcode('[vc_row us_bg_image_source="featured" us_bg_repeat="no-repeat
 <section class="l-section wpb_row height_small general-cerca-facetwp-container">
     <div class="l-section-h i-cf">
         <div class="g-cols vc_row type_default valign_top">
-            <div class="vc_col-sm-12 wpb_column vc_column_container cerca-facet-count-container">
+            <div class="vc_col-sm-12 wpb_column vc_column_container oc-searchpage-info-container-mobile">
                 <div class="vc_column-inner">
                     <div class="wpb_wrapper">
                         <div id="searchpage-form-holder-mobile" class="searchpage-form-holder-mobile">
@@ -29,7 +29,6 @@ echo do_shortcode('[vc_row us_bg_image_source="featured" us_bg_repeat="no-repeat
         </div>
     </div>
 </section>
-
 
 <!-- Form popup oneclick -->
 <div id="searchpage-form-oneclick-mobile" class="searchpage-form-oneclick-mobile">
@@ -54,6 +53,15 @@ echo do_shortcode('[vc_row us_bg_image_source="featured" us_bg_repeat="no-repeat
         });
         $('.searchpage-form-close').on('click', function() {
             $('#searchpage-form-oneclick-mobile').hide();
+            $(".cerca-facets-container").removeClass("cerca-facets-container-modal");
+            $("#cerca-facets-container-modal-header").show();
+            $("#filterSearchDropdown").hide();
+        });
+        $('#searchpage-facets-filter-btn').on('click', function() {
+            $('#searchpage-form-oneclick-mobile').hide();
+            $(".cerca-facets-container").removeClass("cerca-facets-container-modal");
+            $("#cerca-facets-container-modal-header").show();
+            $("#filterSearchDropdown").hide();
         });
 
         window.addEventListener('click', outsideClick);
@@ -61,6 +69,11 @@ echo do_shortcode('[vc_row us_bg_image_source="featured" us_bg_repeat="no-repeat
         function outsideClick(e) {
             if (e.target.id == 'searchpage-form-oneclick-mobile') {
                 $('#searchpage-form-oneclick-mobile').hide();
+            }
+            if (e.target.id == 'cerca-facets-container') {
+                $(".cerca-facets-container").removeClass("cerca-facets-container-modal");
+                $("#cerca-facets-container-modal-header").hide();
+                $("#filterSearchDropdown").hide();
             }
         }
 
@@ -77,7 +90,9 @@ echo do_shortcode('[vc_row us_bg_image_source="featured" us_bg_repeat="no-repeat
             } else {
                 $('.searchpage-form-mobile-bikes-text').html('<?= __('bikes', 'wm-child-cyclando') ?>');
             }
-            
+        } else {
+            $('.searchpage-form-mobile-participants-text').html('<?= __('participants', 'wm-child-cyclando') ?>');
+            $('.searchpage-form-mobile-bikes-text').html('<?= __('bikes', 'wm-child-cyclando') ?>');
         }
     });
 })(jQuery);

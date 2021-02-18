@@ -346,7 +346,7 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
         vertical-align: middle;
     }
     .wm_template_advancedsearch .webmapp_post-featured-img {
-        grid-template-columns: 2fr 1fr !important;
+        grid-template-columns: 3fr 1fr !important;
         grid-template-rows: none!important;
     }
     .covidbanner-container {
@@ -860,9 +860,9 @@ body #iubenda_policy .iub_content.legal_pp p {
     background-repeat: no-repeat;
     background-position: 96% center;
     transition: 200ms all ease;
-    background-color: #f5f5f5;
-    border-radius: 5px;
-    box-shadow: 0 0 0 2px transparent, 0 1px 0 rgba(0,0,0,0.08);
+    background-color: #FFFFFF;
+    box-shadow: 0 3px 6px 0 #dadada;
+    border-radius: 22px;
 }
 .cerca-facet-count-container .facetwp-selections .facetwp-selection-value:hover {
     box-shadow: 0 0 0 2px transparent, 0 2px 5px rgba(0, 0, 0, 0.11);
@@ -1693,13 +1693,14 @@ a.facetwp-page.active:hover {
 }
 .oc_search_adv_info_text_container {
     color: #1a1a1a;
+    font-size: 13px;
 }
 .wm_template_advancedsearch .webmapp_post-featured-img {
     position: relative;
     display: grid;
     grid-template-rows: 1fr 2fr 4fr;
     align-items: center;
-    padding: 20px 15px;
+    padding: 15px 12px;
 }
 .cy-facetwp-cerca-quando , .cy-facetwp-cerca-where {
     position: relative;
@@ -1894,7 +1895,7 @@ h4.tripSearch {
 
 .wm_template_advancedsearch span.cifra, span.cifraPromo {
     width: 100%;
-    font-size: 20px;
+    font-size: 17px;
     text-align: center;
     display: block;
 }
@@ -2051,12 +2052,6 @@ span.route_duration_free {
         padding: 0 0 2% 15%;
     }
 
-
-    div#filterSearchDropdown {
-        margin-top: 30px;
-    }
-
-    
     .icon_holder_a span
     {
         font-size: 13px;
@@ -2089,13 +2084,9 @@ span.route_duration_free {
 
     }
 
-    button#buttonFilterSearch {
-        font-family: var(--font-family-primary);
-        border-radius: 30px;
-        padding: 2% 6%;
-        background-color: white;
-        border: 1px solid black;
+    #buttonFilterSearch {
         cursor: pointer;
+        text-align: center;
     }
 
     .route_duration_freespan.route_duration_free {
@@ -2386,7 +2377,7 @@ div#searchpage-form-holder-mobile {
     left: 0;
     top: -60px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1.3fr 1fr;
     width: 100%;
     box-shadow: 0 3px 6px 0 #DADADA;
     border-radius: 15px;
@@ -2450,4 +2441,90 @@ div#searchpage-form-holder-mobile {
     display: grid;
     grid-template-columns: 1fr 4fr;
     align-items: center;
+}
+/* facets filters modal search page */
+.cerca-facets-container-modal {
+    position: fixed;
+    z-index: 500;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.cerca-facets-container-modal > .vc_column-inner{
+    margin-top: 120px;
+}
+.cerca-facets-container-modal h3{
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+#cerca-facets-container-modal-header {
+    display: none;
+    background-color: white;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+#filterSearchDropdown {
+    background: white;
+    padding-top: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.facetwp-checkbox.checked {
+    background-image: url(assets/images/checkbox-on.png)!important;
+}
+.facetwp-checkbox {
+    background: url(assets/images/checkbox.png) 0 50% no-repeat!important;
+}
+.searchpage-facets-filter-btn {
+    background-color: var(--color-secondary);
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .3s ease;
+    color: white;
+    margin-bottom: 30px;
+    padding: 20px 22px 20px 8px;
+    width: 100%!important;
+    line-height: 15px;
+    text-align: center;
+    height: 3.4rem;
+    border-radius: 30px;
+}
+.oc_search_adv_price_container {
+    font-size: 12px;
+}
+@media screen and (max-width:900px) {
+    .cerca-facet-count-container > div > .wpb_wrapper {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        align-items: center;
+    }
+    .searchpage-facets-selections-wrapper {
+        grid-column: 1 / -1;
+    }
+    .divFilterSearchDrop {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .filter-button-search-img {
+        background: #FFFFFF;
+        box-shadow: 0px 3px 6px 0px #dadada;
+        border-radius: 50%;
+        vertical-align: middle;
+    }
+    .filter-button-search-img:hover {
+        box-shadow: 0px 3px 6px 1px #dadada;
+    }
+    .cerca-facet-count-container > .vc_column-inner {
+        padding: 0!important;
+    }
+    .general-cerca-facetwp-container {
+        padding-top: 0!important;
+    }
 }

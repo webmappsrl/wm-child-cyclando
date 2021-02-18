@@ -56,5 +56,11 @@ get_header();
 	}
 	?>
 </main>
-
+<!-- filter popup modal header -->
+<div id="cerca-facets-container-modal-header">
+    <div class="">  
+        <h2><?php echo __('Filter','wm-child-cyclando'); ?></h2>
+    </div>
+    <div class="searchpage-form-close-button-container"><span class="searchpage-form-close">&times;</span></div>
+</div>
 <?php get_footer() ?>

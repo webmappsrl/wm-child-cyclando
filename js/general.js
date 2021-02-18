@@ -105,7 +105,7 @@ jQuery(document).ready(function () {
   });
 
   //mobile and desktop button management on first loading
-  if (jQuery(window).width() >= 700) {
+  if (jQuery(window).width() >= 900) {
     jQuery("#buttonFilterSearch").hide();
     jQuery("#orderSearch").hide();
   } else {
@@ -113,14 +113,18 @@ jQuery(document).ready(function () {
     jQuery("#orderSearch").show();
     //dropdown filtra
     jQuery("#buttonFilterSearch").click(function (event) {
-      jQuery("#filterSearchDropdown").toggle();
+      jQuery(".cerca-facets-container").addClass("cerca-facets-container-modal");
+      jQuery("#filterSearchDropdown").show();
+      jQuery(".cerca-facets-container #filterSearchDropdown > div > div > .wpb_wrapper").prepend(jQuery("#cerca-facets-container-modal-header"));
+      jQuery("#cerca-facets-container-modal-header").show();
     });
+    jQuery("#cerca-facets-container-modal-header").hide();
     jQuery("#filterSearchDropdown").hide();
   }
 
   //mobile and desktop button management after window change
   jQuery(window).on("resize", function () {
-    if (jQuery(window).width() >= 700) {
+    if (jQuery(window).width() >= 900) {
       jQuery("#buttonFilterSearch").hide();
       jQuery("#orderSearch").hide();
       jQuery("#filterSearchDropdown").show();
