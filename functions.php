@@ -11,6 +11,7 @@ require ('shortcodes/oneclick_search_form_participants_bikes.php');
 require ('shortcodes/oneclick_search_form_participants.php');
 require ('shortcodes/oneclick_search_form_bikes.php');
 require ('api/api-loader.php');
+require ('includes/oc_ajax_route_price.php');
 
 if ( class_exists( 'WP_CLI' ) ) {
     require ('wp-cli/cy-index-routes.php');
@@ -1354,3 +1355,4 @@ function fwp_disable_auto_refresh() {
 <?php
 }
 add_action( 'wp_head', 'fwp_disable_auto_refresh', 100 );
+

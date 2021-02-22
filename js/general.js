@@ -4,11 +4,18 @@
     const $el = $('.facetwp-facet-dove_vuoi_andare input[type="text"]');
     $el.on("blur keydown input change keyup focus", () => {
       $(".autocomplete-suggestions").remove();
-	});
-	var facetwpPaged2 = document.querySelectorAll('.facetwp-page');
-	if (FWP.loaded) { 
-		facetwpPagedScrollTop(facetwpPaged2);
-	}
+	  });
+	  var facetwpPaged2 = document.querySelectorAll('.facetwp-page');
+    if (FWP.loaded) { 
+      facetwpPagedScrollTop(facetwpPaged2);
+    }
+    $('.facetwp-dropdown').on('change', function() {
+      if ($(this).val()) {
+        return $(this).css('color', 'black');
+      } else {
+        return $(this).css('color', '#888');
+      }
+    });
   });
 })(jQuery);
 
@@ -372,7 +379,7 @@ jQuery(document).ready(function () {
         jQuery("#page-header").removeClass("sticky");
     }
   });
-  
+
 });
 
   function cal_sum_cookies(savedCookie) {
@@ -381,14 +388,14 @@ jQuery(document).ready(function () {
     if (a || k ){
         var psum = a + k;
     } else {
-        var psum = 0;
+        var psum = null;
     }
     parseInt(savedCookie['regular']) ? r = parseInt(savedCookie['regular']) : r = 0;
     parseInt(savedCookie['electric']) ? e = parseInt(savedCookie['electric']) : e = 0;
     if (e || r ){
         var bsum = e + r;
     } else {
-        var bsum = 0;
+        var bsum = null;
     }
     var sums = {};
     sums['participants'] = psum;

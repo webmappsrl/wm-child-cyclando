@@ -176,7 +176,7 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
     }
     #cy-search-element-container {
         flex-direction: column;
-        width: 90%!important;
+        width: 100%!important;
         height: 300px;
         justify-content: space-between;
         border-radius: 25px!important;
@@ -188,11 +188,10 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
     
     }
     #cy-search-element-container .facetwp-autocomplete {
-        padding: 20px 22px 20px 8px;
+        padding: 20px 22px 20px 8px!important;
         transition: all .3s ease;
         border-radius: 30px!important;
         width: 100%!important;
-        padding-left: 11px;
     }
     #cy-search-element-container select.facetwp-dropdown {
         /* transition: all .3s ease; */
@@ -473,9 +472,9 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
     color: white;
     padding: 20px 20px;
     font-weight: 900;
-    display: grid;
+    /* display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 2fr;
+    grid-template-rows: 1fr 2fr; */
     align-items: start;
     grid-column-start: 1;
     grid-column-end: 3;
@@ -854,15 +853,16 @@ body #iubenda_policy .iub_content.legal_pp p {
     display: inline-block;
     margin-right: 10px;
     cursor: pointer;
-    padding: 6px;
-    padding-right: 18px;
+    padding: 10px;
+    padding-right: 24px;
     background-size: 12px 12px;
     background-repeat: no-repeat;
-    background-position: 96% center;
+    background-position: 94% center;
     transition: 200ms all ease;
     background-color: #FFFFFF;
     box-shadow: 0 3px 6px 0 #dadada;
     border-radius: 22px;
+    font-size: 12px;
 }
 .cerca-facet-count-container .facetwp-selections .facetwp-selection-value:hover {
     box-shadow: 0 0 0 2px transparent, 0 2px 5px rgba(0, 0, 0, 0.11);
@@ -871,6 +871,7 @@ body #iubenda_policy .iub_content.legal_pp p {
 .cerca-facets-container i {
     font-size: 22px;
     padding-right: 10px!important;
+    display: none;
 }
 .facetwp-facet-come_deve_essere_la_forma_del_viaggio .facetwp-checkbox.checkbox-eng {
     text-transform: capitalize!important;
@@ -916,14 +917,17 @@ body #iubenda_policy .iub_content.legal_pp p {
 }
 #cy-search-element-container .facetwp-autocomplete{
     padding: 20px 22px 20px 16px;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 3.3rem;
     border-radius: 30px;
-    color: #888;
+    color: #000;
     border: 1px solid #000000;
     font-weight: 400;
     width: 300px;
     height: 3.4rem;
+}
+#cy-search-element-container .facetwp-autocomplete::placeholder{
+    color: #888;
 }
 
 /*css only safari "align form"*/
@@ -944,14 +948,17 @@ body #iubenda_policy .iub_content.legal_pp p {
 }
    
 select.facetwp-dropdown{
-    font-size: 16px;
-    color: #888;
+    font-size: 14px;
+    color: #000;
     height: 3.4rem;
     border-radius: 30px;
     border: 1px solid black;
     width: 300px;
     background-color: white;
     
+}
+select.facetwp-dropdown:first-child {
+    color: #888;
 }
 div#cy-search-lente  {
     padding: 20px 22px 20px 8px;
@@ -961,13 +968,7 @@ div#cy-search-lente  {
     background-color: #fffc;
     height: 3.4rem;
     border-radius: 30px;
-    border: 1px solid #d6d6d6cc;
-
-    
 }
-
-
-
 
 /* #cy-search-element-container input.facetwp-search::-moz-placeholder,
 #cy-search-element-container input.facetwp-search:-ms-input-placeholder,
@@ -999,7 +1000,7 @@ div#cy-search-lente  {
 #cy-search-element-container #cy-search-lente {
     width: 240px;
     background-color: var(--color-secondary);
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 600;
     cursor: pointer;
     transition: all .3s ease;
@@ -1896,7 +1897,7 @@ h4.tripSearch {
 .wm_template_advancedsearch span.cifra, span.cifraPromo {
     width: 100%;
     font-size: 17px;
-    text-align: center;
+    text-align: right;
     display: block;
 }
 
@@ -2086,7 +2087,7 @@ span.route_duration_free {
 
     #buttonFilterSearch {
         cursor: pointer;
-        text-align: center;
+        text-align: right;
     }
 
     .route_duration_freespan.route_duration_free {
@@ -2213,7 +2214,7 @@ span.route_duration_free {
 .modal-btn {
     background-color: #fff;
     border-radius: 30px;
-    padding: 4px 11px;
+    padding: 4px 13px;
     border: 1px #000 solid
 }
 .modal-btn > * {
@@ -2229,7 +2230,11 @@ span.route_duration_free {
         display: grid;
         grid-template-columns: 1fr 1fr;
         column-gap: 10px;
+        font-size: 14px;
     }
+}
+#oc-participants.selected {
+    color: black;
 }
 .oc-participants-bici-container .oc-input-btn{
     border: 1px #000 solid;
@@ -2406,6 +2411,9 @@ div#searchpage-form-holder-mobile {
     grid-template-columns: 1fr 4fr;
     align-items: center;
 }
+.search-form-holder-mobile-when i{
+    font-size: 22px;
+}
 .searchpage-form-mobile-when-text {
     text-transform: capitalize;
 }
@@ -2459,6 +2467,7 @@ div#searchpage-form-holder-mobile {
 .cerca-facets-container-modal h3{
     font-size: 20px;
     margin-bottom: 5px;
+    font-weight: 500;
 }
 #cerca-facets-container-modal-header {
     display: none;

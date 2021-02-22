@@ -61,9 +61,11 @@ function oneclick_search_form_participants() {
                 var sums = cal_sum_cookies(savedCookie);
                 if (sums['participants'] !== null) {
                     $('#ocm-partecipants-number').html(sums['participants'] + ' ');
+                    $("#oc-participants").addClass('selected');
                 } 
                 if (sums['bikes'] !== null) {
                     $('#ocm-bikes-number').html(sums['bikes'] + ' ');
+                    $("#oc-participants").addClass('selected');
                 }
             } else {
                 var savedCookie = {};
@@ -207,7 +209,11 @@ function oneclick_search_form_participants() {
                 } else {
                     alert('Scegli i partecipanti');
                 }
-                
+                if (sum) {
+                    $("#oc-participants").addClass('selected');
+                } else {
+                    $("#oc-participants").removeClass('selected');
+                }
             });
         });
 

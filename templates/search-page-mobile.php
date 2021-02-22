@@ -19,7 +19,7 @@ echo do_shortcode('[vc_row us_bg_image_source="featured" us_bg_repeat="no-repeat
                     <div class="wpb_wrapper">
                         <div id="searchpage-form-holder-mobile" class="searchpage-form-holder-mobile">
                             <div class="search-form-holder-mobile-where"><i class="fal fa-map-marker-alt"></i><div class="searchpage-form-mobile-where-text"><?= $where_txt ?></div></div>
-                            <div class="search-form-holder-mobile-when"><i class="fal fa-calendar-alt"></i><div class="searchpage-form-mobile-when-text"><?= $when_txt ?></div></div>
+                            <div class="search-form-holder-mobile-when"><i class="wm-icon-cyc_weekend"></i><div class="searchpage-form-mobile-when-text"><?= $when_txt ?></div></div>
                             <div class="search-form-holder-mobile-participants"><i class="fal fa-user-friends"></i><div class="searchpage-form-mobile-participants-text"></div></div>
                             <div class="search-form-holder-mobile-bikes"><i class="wm-icon-cyc_bici"></i><div class="searchpage-form-mobile-bikes-text"></div></div>
                         </div>

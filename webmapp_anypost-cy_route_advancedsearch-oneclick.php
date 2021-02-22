@@ -218,8 +218,7 @@
 
                     <?php if (!$coming_soon) { ?>
                             <div class='prezzo-tab'>
-                                <span class="cifra">
-                                    <?php echo $price . ' €'; ?>
+                                <span class="cifra cifra-<?= $post_id ?>">
                                 </span>
                             </div>
                             <?php } elseif (return_route_targets_has_cyclando($post_id)) { ?>
@@ -254,6 +253,36 @@
                 }
                 $('.oc_search_adv_info_text_<?= $post_id ?>').append('<div>'+text+'</div>');
             }
+        });
+        $(document).on("facetwp-loaded", function () {
+            var ocCookies = '';
+            if (Cookies.get('oc_participants_cookie')) {
+                ocCookies = JSON.parse(Cookies.get('oc_participants_cookie'));
+            }
+            // console.log(ocCookies);
+            var post_id = <?= $post_id ?>;
+                var data = {
+                    'action': 'oc_ajax_route_price',
+                    'postid':  post_id,
+                    'cookies':  ocCookies,
+                };
+                $.ajax({
+                    url: '/wp-admin/admin-ajax.php',
+                    type : 'post',
+                    data: data,
+                    beforeSend: function(){
+                        $(".cifra-"+post_id).html("Calculating");
+                    },
+                    success : function( response ) {
+                        console.log(response.responseText);
+                        $(".cifra-"+post_id).html("Serving");
+                    },
+                    complete:function(response){
+                        obj = JSON.parse(response.responseText);
+                        console.log(obj);
+                        $(".cifra-"+post_id).html(response.responseText+'€');
+                    }
+                });
         });
     })(jQuery);;
 </script>
