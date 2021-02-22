@@ -2236,6 +2236,9 @@ span.route_duration_free {
 #oc-participants.selected {
     color: black;
 }
+#oc-bikes.selected {
+    color: black;
+}
 .oc-participants-bici-container .oc-input-btn{
     border: 1px #000 solid;
     border-radius: 35px;

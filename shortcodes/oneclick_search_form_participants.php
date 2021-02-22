@@ -65,7 +65,7 @@ function oneclick_search_form_participants() {
                 } 
                 if (sums['bikes'] !== null) {
                     $('#ocm-bikes-number').html(sums['bikes'] + ' ');
-                    $("#oc-participants").addClass('selected');
+                    $("#oc-bikes").addClass('selected');
                 }
             } else {
                 var savedCookie = {};

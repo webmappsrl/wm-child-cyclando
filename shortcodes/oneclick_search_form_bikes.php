@@ -142,6 +142,11 @@ function oneclick_search_form_bikes() {
                     $('.ocm-bikes-container').hide();
                     $('#ocm-bikes-number').text(sum);
                 }
+                if (sum) {
+                    $("#oc-bikes").addClass('selected');
+                } else {
+                    $("#oc-bikes").removeClass('selected');
+                }
             });
         });
         
