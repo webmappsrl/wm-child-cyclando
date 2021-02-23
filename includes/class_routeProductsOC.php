@@ -5,6 +5,7 @@ class routeProductsOC {
 
     protected $cookies;
     protected $post_id;
+    protected $price;
 
     public function __construct($cookies,$post_id){
         $this->cookies = $cookies;
@@ -12,7 +13,7 @@ class routeProductsOC {
     }
 
     public function getHotelProducts () {
-        $seasonal_products = get_sub_field('wm_route_quote_model_season_product',$this->post_id);
+        $seasonal_products = $this->getHotelSeasonalVariations($this->post_id);
         $general_products = get_field('product',$this->post_id);
         if ($seasonal_products) {
             $products = $seasonal_products;
@@ -34,13 +35,11 @@ class routeProductsOC {
     public function getProductsExtraVariations ($products) {
         if ($products){  //----------- start hotel product table
             $extra_variation_name_price = array();
-            $extra_variation_name_description = array();
                 foreach( $products as $p ){ // variables of each product
                 $product = wc_get_product($p); 
                     if($product->is_type('variable')){
                         $category = $product->get_categories();
                         if(strip_tags($category) == 'extra'){
-                            $has_extra = true;
                             foreach($product->get_available_variations() as $variation ){
                                 // Extra Name
                                 $xattributes = $variation['attributes'];
@@ -123,11 +122,34 @@ class routeProductsOC {
         $regular = intval($this->cookies['regular']);
         $electric = intval($this->cookies['electric']);
         
-        if ($hotel) {
-            $price = $hotel[0]['adult'] * intval($adults);
+        if ($adults) {
+            $this->price += $hotel[0]['adult'] * intval($adults);
+        }
+        if ($kids) {
+            $this->price += $hotel[0]['adult'] * intval($kids);
+        }
+        if ($regular && $extra['bike']) {
+            $this->price += $extra['bike'] * intval($regular);
+        }
+        if ($electric && $extra['ebike']) {
+            $this->price += $extra['ebike'] * intval($electric);
         }
         
-        return $price;
+        return $this->price;
     }
 
+
+
+    public function getHotelSeasonalVariations($post_id){
+        $seasonal_variations = array();
+        if (have_rows('model_season',$post_id)) {
+            while( have_rows('model_season',$post_id) ): the_row();
+                $variation = get_sub_field('wm_route_quote_model_season_product');
+                // $variations = $this->getProductsHotelVariations($variation);
+                array_push($seasonal_variations,$variation[0]);
+            endwhile;
+        }
+        
+        return $seasonal_variations;
+    }
 }
