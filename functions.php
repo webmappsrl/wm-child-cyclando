@@ -11,7 +11,9 @@ require ('shortcodes/oneclick_search_form_participants_bikes.php');
 require ('shortcodes/oneclick_search_form_participants.php');
 require ('shortcodes/oneclick_search_form_bikes.php');
 require ('api/api-loader.php');
+require ('includes/class_routeProductsOC.php') ;
 require ('includes/oc_ajax_route_price.php');
+
 
 if ( class_exists( 'WP_CLI' ) ) {
     require ('wp-cli/cy-index-routes.php');

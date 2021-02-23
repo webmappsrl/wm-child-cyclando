@@ -1699,7 +1699,7 @@ a.facetwp-page.active:hover {
 .wm_template_advancedsearch .webmapp_post-featured-img {
     position: relative;
     display: grid;
-    grid-template-rows: 1fr 2fr 4fr;
+    /* grid-template-rows: 1fr 2fr 4fr; */
     align-items: center;
     padding: 15px 12px;
 }

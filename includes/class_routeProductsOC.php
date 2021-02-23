@@ -6,7 +6,7 @@ class routeProductsOC {
     protected $cookies;
     protected $post_id;
 
-    public function __cunstruct($cookies,$post_id){
+    public function __construct($cookies,$post_id){
         $this->cookies = $cookies;
         $this->post_id = $post_id;
     }
@@ -20,13 +20,51 @@ class routeProductsOC {
             $products = $general_products;
         }
         if ($products) {
-            return $products;
-            // return $this->getProductsHotelVariations($products);
+            return $this->getProductsHotelVariations($products);
+        }
+    }
+    
+    public function getExtraProducts () {
+        $products = get_field('product',$this->post_id);
+        if ($products) {
+            return $this->getProductsExtraVariations($products);
         }
     }
 
-    public function getExtraProducts () {
-        
+    public function getProductsExtraVariations ($products) {
+        if ($products){  //----------- start hotel product table
+            $extra_variation_name_price = array();
+            $extra_variation_name_description = array();
+                foreach( $products as $p ){ // variables of each product
+                $product = wc_get_product($p); 
+                    if($product->is_type('variable')){
+                        $category = $product->get_categories();
+                        if(strip_tags($category) == 'extra'){
+                            $has_extra = true;
+                            foreach($product->get_available_variations() as $variation ){
+                                // Extra Name
+                                $xattributes = $variation['attributes'];
+                                $xvariation_name = '';
+                                foreach($xattributes as $name_var){
+                                    $xvariation_name = $name_var;
+                                }
+                                // Prices
+                                if ($variation['display_price'] == 0){
+                                    $xprice = __('Free' ,'wm-child-verdenatura');
+                                } 
+                                elseif (!empty($variation['display_price'])){
+                                    $xprice = strip_tags($variation['display_price']);
+                                } else {
+                                    $xprice = strip_tags($variation['price_html']);
+                                }
+                                $extra_name_price = array($xvariation_name => intval($xprice));
+                                $extra_variation_name_price += $extra_name_price;
+                            }
+                        }
+                    }
+                }
+            return $extra_variation_name_price;
+        }
 
     }
 
@@ -59,12 +97,12 @@ class routeProductsOC {
                                 if ($variation['display_price'] == 0){
                                     $price = __('Free' ,'wm-child-verdenatura');
                                 } 
-                                elseif (!empty($variation['price_html'])){
-                                    $price = $variation['price_html'];
+                                elseif (!empty($variation['display_price'])){
+                                    $price = strip_tags($variation['display_price']);
                                 } else {
-                                    $price = $variation['display_price'].'€';
+                                    $price = strip_tags($variation['price_html']);
                                 }
-                                $variation_name_price = array($variation_name => $price);
+                                $variation_name_price = array($variation_name => intval($price));
                                 $list_all_variations_name += array($variation_name => $variation['price_html']);
                                 $product_variation_name_price += $variation_name_price;
                             }
@@ -72,8 +110,24 @@ class routeProductsOC {
                         }
                     }
                 }
-                return $variations_name_price;
-            }
+            return $variations_name_price;
+        }
+    }
+
+    public function calculatePrice () {
+        $hotel = $this->getHotelProducts();
+        $extra = $this->getExtraProducts();
+
+        $adults = intval($this->cookies['adults']);
+        $kids = intval($this->cookies['kids']);
+        $regular = intval($this->cookies['regular']);
+        $electric = intval($this->cookies['electric']);
+        
+        if ($hotel) {
+            $price = $hotel[0]['adult'] * intval($adults);
+        }
+        
+        return $price;
     }
 
 }
