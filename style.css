@@ -2516,6 +2516,7 @@ div#searchpage-form-holder-mobile {
 }
 .oc_search_adv_price_container .w-iconbox-icon {
     font-size: 1rem!important;
+    width: 50%!important;
 }
 @media screen and (max-width:900px) {
     .cerca-facet-count-container > div > .wpb_wrapper {
