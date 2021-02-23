@@ -218,8 +218,8 @@
 
                     <?php if (!$coming_soon) { ?>
                             <div class='prezzo-tab'>
-                                <span class="cifra cifra-<?= $post_id ?>">
-                                </span>
+                                <div class="cifra cifra-<?= $post_id ?>">
+                                </div>
                             </div>
                             <?php } elseif (return_route_targets_has_cyclando($post_id)) { ?>
                             <a class="download-app-link" target="_blank" href="https://info.cyclando.com/app">
@@ -271,11 +271,11 @@
                     type : 'post',
                     data: data,
                     beforeSend: function(){
-                        $(".cifra-"+post_id).html("Calculating");
+                        $(".cifra-"+post_id).html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
                     },
                     success : function( response ) {
                         console.log(response.responseText);
-                        $(".cifra-"+post_id).html("Serving");
+                        $(".cifra-"+post_id).html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
                     },
                     complete:function(response){
                         obj = JSON.parse(response.responseText);

@@ -1542,11 +1542,11 @@ tour italia
 }
 
 
-.wm_template_advancedsearch span.cifra,.webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch span.cifraPromo {
+.wm_template_advancedsearch .cifra,.webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch span.cifraPromo {
     color: var(--color-primary);
     font-size: 15px;
 }
-.webmapp-anypost-template-cy_route span.cifra, span.cifraPromo {
+.webmapp-anypost-template-cy_route .cifra, span.cifraPromo {
     color: white;
     font-size: 15px;
 }
@@ -1894,7 +1894,7 @@ h4.tripSearch {
 
 }
 
-.wm_template_advancedsearch span.cifra, span.cifraPromo {
+.wm_template_advancedsearch .cifra, span.cifraPromo {
     width: 100%;
     font-size: 17px;
     text-align: right;
@@ -2510,6 +2510,9 @@ div#searchpage-form-holder-mobile {
 }
 .oc_search_adv_price_container {
     font-size: 12px;
+}
+.oc_search_adv_price_container .w-iconbox-icon i {
+    padding: 0!important;
 }
 @media screen and (max-width:900px) {
     .cerca-facet-count-container > div > .wpb_wrapper {
