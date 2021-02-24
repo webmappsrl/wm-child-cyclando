@@ -2481,6 +2481,9 @@ div#searchpage-form-holder-mobile {
     justify-content: space-between;
     padding-bottom: 20px;
 }
+.cerca-facets-container .facetwp-checkbox {
+    padding-left: 27px;
+}
 #filterSearchDropdown {
     background: white;
     padding-top: 20px;
