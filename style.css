@@ -188,7 +188,7 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
     
     }
     #cy-search-element-container .facetwp-autocomplete {
-        padding: 20px 22px 20px 8px!important;
+        padding: 20px 22px 20px 15px!important;
         transition: all .3s ease;
         border-radius: 30px!important;
         width: 100%!important;
@@ -197,6 +197,11 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
         /* transition: all .3s ease; */
         border-radius: 30px!important;
         width: 100%!important;
+        padding: 0 0 0 1rem;
+    }
+    .webmapp_posts_controller.webmapp-grid-system .webmapp-container-fluid {
+        padding-left: 15px!important;
+        padding-right: 15px!important;
     }
     #cy-search-element-container #cy-search-lente {
         transition: all .3s ease;
@@ -1601,15 +1606,15 @@ i.cy-icons.icon-search1 {
         padding: 0 0!important;
     }
 
-    ::placeholder {
+    /* ::placeholder {
         position: relative;
         top: 9%;
         left: 2%;
-    }
+    } */
 
-    .posts.webmapp-container-fluid {
+    /* .posts.webmapp-container-fluid {
         margin: -26% 0 2% 0;
-    }   
+    }    */
 
     .webmapp-anypost-template-cy_route .webmapp_post_image {
 
@@ -1617,7 +1622,7 @@ i.cy-icons.icon-search1 {
         
     }
 
-    h2#tourInBiciItalia:not(:root:root) {
+    /* h2#tourInBiciItalia:not(:root:root) {
         width: 2000%;
         font-size: 33px !important;
         margin: 0% 0 -100% 0;
@@ -1627,7 +1632,7 @@ i.cy-icons.icon-search1 {
         margin: 40% 0 -10% 0;
         width: 2000%;
         font-size: 33px !important;
-    }
+    } */
     
 }
 
@@ -2232,6 +2237,12 @@ span.route_duration_free {
         column-gap: 10px;
         font-size: 14px;
     }
+    .filterSearchDropdownBtn {
+        display: none;
+    }
+    .cerca-facets-container-modal .filterSearchDropdownBtn {
+        display: block;
+    }
 }
 #oc-participants.selected {
     color: black;
@@ -2548,5 +2559,23 @@ div#searchpage-form-holder-mobile {
     }
     .general-cerca-facetwp-container {
         padding-top: 0!important;
+    }
+    .cerca-facets-container-modal #filterSearchDropdown > div > div:first-child > div {
+        padding-bottom: 100px;
+    }
+    .cerca-facets-container-modal #filterSearchDropdown .filterSearchDropdownBtn {
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
+    }
+    .filterSearchDropdownBtn {
+        padding: 1.5rem 1.5rem 0;
+        z-index: 100;
+        background: white;
+        transition: all .3s ease;
+    }
+    .filterSearchDropdownBtn-shadow {
+        box-shadow: 0px -1px 7px -1px rgb(50 50 50 / 70%);
+        transition: all .3s ease;
     }
 }

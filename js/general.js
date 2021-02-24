@@ -17,6 +17,7 @@
       }
     });
   });
+
 })(jQuery);
 
 function facetwpPagedScrollTop (facetwpPaged){
@@ -86,11 +87,10 @@ jQuery(document).ready(function () {
   if (covidCookieValue == 'wm_covid_banner_visited') {
 	clearCookieStyle();
   }
-
-
   // End covid banner
 
-  
+
+
   jQuery(document).one("facetwp-loaded", function () {
     if (lang == "en-US") {
       // Dove vui andare?
@@ -122,8 +122,19 @@ jQuery(document).ready(function () {
     jQuery("#buttonFilterSearch").click(function (event) {
       jQuery(".cerca-facets-container").addClass("cerca-facets-container-modal");
       jQuery("#filterSearchDropdown").show();
-      jQuery(".cerca-facets-container #filterSearchDropdown > div > div > .wpb_wrapper").prepend(jQuery("#cerca-facets-container-modal-header"));
+      jQuery(".cerca-facets-container #filterSearchDropdown > div > div:first-child > .wpb_wrapper").prepend(jQuery("#cerca-facets-container-modal-header"));
+      jQuery(".cerca-facets-container #filterSearchDropdown > div").append(jQuery(".filterSearchDropdownBtn"));
       jQuery("#cerca-facets-container-modal-header").show();
+
+      // adds box shadow to the apply button on filter mofal facetwp in searchpage
+      jQuery('.filterSearchDropdownBtn').addClass('filterSearchDropdownBtn-shadow');
+      jQuery('.cerca-facets-container-modal').on('scroll', function() {
+        if(jQuery(this).scrollTop() + jQuery(this).innerHeight() >= jQuery(this)[0].scrollHeight) {
+            jQuery('.filterSearchDropdownBtn').removeClass('filterSearchDropdownBtn-shadow');
+          } else {
+            jQuery('.filterSearchDropdownBtn').addClass('filterSearchDropdownBtn-shadow');
+        }
+      })
     });
     jQuery("#cerca-facets-container-modal-header").hide();
     jQuery("#filterSearchDropdown").hide();
