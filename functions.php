@@ -1300,8 +1300,14 @@ add_filter( 'facetwp_facet_filter_posts', function( $return, $params ) {
 
 		// Match ALL values
 		if ( $selected_values ) {
+            
+            $replace = "REGEXP_REPLACE(REPLACE(REPLACE(REPLACE(facet_display_value, '-', ''), ',', ''),':',''), '[[:alpha:]]''', '')";
 
-            $return = facetwp_sql( $sql . " AND REPLACE(REPLACE(REPLACE(facet_display_value, '-', ''), ',', ''),':','') LIKE '$selected_values %' OR REPLACE(REPLACE(REPLACE(facet_display_value, '-', ''), ',', ''),':','') LIKE '% $selected_values' OR REPLACE(REPLACE(REPLACE(facet_display_value, '-', ''), ',', ''),':','') LIKE '$selected_values' OR REPLACE(REPLACE(REPLACE(facet_display_value, '-', ''), ',', ''),':','') LIKE '% $selected_values %'", $facet );
+            $return = facetwp_sql( $sql . " AND 
+            $replace LIKE '$selected_values %' OR 
+            $replace LIKE '% $selected_values' OR 
+            $replace LIKE '$selected_values' OR 
+            $replace LIKE '% $selected_values %'", $facet );
 
 			if ( empty( $return ) ) {
 				return;
