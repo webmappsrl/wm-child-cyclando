@@ -71,6 +71,13 @@ function oneclick_search_form_participants() {
                     $('#ocm-bikes-number').html(sums['bikes'] + ' ');
                     $("#oc-bikes").addClass('selected');
                 }
+            } else {
+                var savedCookie = {};
+                savedCookie['adults'] = 2;
+                $('#adult-participants').text(2);
+                $('#ocm-partecipants-number').html(2 + ' ');
+                $("#oc-participants").addClass('selected');
+                Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
             }
             //Add button
             $( ".oc-add-btn" ).each(function(index,element) {
