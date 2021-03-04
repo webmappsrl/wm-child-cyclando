@@ -44,9 +44,13 @@ function oneclick_search_form_participants() {
     (function ($) {
         $(document).ready(function () {
             if (Cookies.get('oc_participants_cookie')) {
-                var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie')); 
+                var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
                 if (parseInt(savedCookie['adults'])>0) {
                     $('#adult-participants').text(parseInt(savedCookie['adults']));
+                } else {
+                    savedCookie['adults'] = 2;
+                    $('#adult-participants').text(2);
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                 }
                 if (parseInt(savedCookie['kids'])>0) {
                     $('#kid-participants').text(parseInt(savedCookie['kids']));
@@ -67,8 +71,6 @@ function oneclick_search_form_participants() {
                     $('#ocm-bikes-number').html(sums['bikes'] + ' ');
                     $("#oc-bikes").addClass('selected');
                 }
-            } else {
-                var savedCookie = {};
             }
             //Add button
             $( ".oc-add-btn" ).each(function(index,element) {
@@ -128,9 +130,9 @@ function oneclick_search_form_participants() {
                     var count = parseInt(counter.text());
                     count = count - 1;
                     if ($(e.target).attr('name') == 'adult-participants') {
-                        if (count < 0) {
-                            counter.text(0);
-                            savedCookie['adults'] = 0;
+                        if (count < 1) {
+                            counter.text(1);
+                            savedCookie['adults'] = 1;
                             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                         } else { 
                             counter.text(count);
