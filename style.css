@@ -357,10 +357,10 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
         padding: 5px 10px!important;
     }
     #page-header .ush_menu_1 .w-nav-icon {
-        font-size: 33px;
+        font-size: 35px;
     }
     #page-header .ush_menu_1 .w-nav-icon i {
-        border-width: 5px;
+        border-width: 6px;
         border-radius: 8px;
     }
     #page-header .ush_menu_1 .w-nav-icon i::after {
