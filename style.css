@@ -356,17 +356,17 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
     .covidbanner-container {
         padding: 5px 10px!important;
     }
-    .ush_menu_1 .w-nav-icon {
+    #page-header .ush_menu_1 .w-nav-icon {
         font-size: 33px;
     }
-    .ush_menu_1 .w-nav-icon i {
+    #page-header .ush_menu_1 .w-nav-icon i {
         border-width: 5px;
         border-radius: 8px;
     }
-    .ush_menu_1 .w-nav-icon i::after {
+    #page-header .ush_menu_1 .w-nav-icon i::after {
         border-radius: 8px;
     }
-    .ush_menu_1 .w-nav-icon i::before {
+    #page-header .ush_menu_1 .w-nav-icon i::before {
         border-radius: 8px;
     }
 }
