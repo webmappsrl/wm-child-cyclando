@@ -1329,6 +1329,7 @@ function wm_custom_header_id_mobile($area_id){
     }
     // Single route
     if ($area_id == 50234 && wm_isMobileDev()) {
+        // $area_id = 100474;
         $area_id = 100843;
     }
     return $area_id;
