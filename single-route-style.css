@@ -1918,3 +1918,27 @@ a:hover.tooltips span {
 #wpadminbar .quicklinks #wp-admin-bar-edit-content .ab-empty-item {
     display: none;
 }
+
+/* oneclick style mobile verssion */
+/* style taxonomy section cyc-route-mobile-taxonomy-activity-wrapper */
+.cyc-route-mobile-taxonomy-container {
+    background: var(--color-secondary-background);
+    display: grid;
+    padding: 15px 25px;
+    grid-template-columns: repeat(4,1fr);
+    column-gap: 5px;
+}
+.cyc-route-mobile-taxonomy-container .meta-bar-txt-strong{
+    text-transform: inherit;
+    font-weight: 600;
+    font-size: 12px;
+    color: #000000;
+    letter-spacing: 0;
+}
+.cyc-route-mobile-taxonomy-container .meta-bar-txt-light{
+    font-family: var(--font-family-primary);
+    font-size: 12px;
+    color: #000000;
+    letter-spacing: 0;
+    line-height: normal;
+}
