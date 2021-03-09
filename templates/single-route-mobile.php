@@ -109,30 +109,20 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 
 		// Import from header
         // variable and queries
-        $intro_info = array();
-        
         $days = (int)get_field('vn_durata');
-        if ($days){
+        if ($days && $days == 1){
+            $days_info = '<span>'.$days.' '.__('day', 'wm-child-cyclando').'</span>';
+        } else {
             $days_info = '<span>'.$days.' '.__('days', 'wm-child-cyclando').'</span>';
-            array_push($intro_info,$days_info);
         }
         $distance = get_field('distance');
         if ($distance) {
             $distance_info =  '<span>'.$distance.' '.__('km', 'wm-child-cyclando').'</span>';
-            array_push($intro_info,$distance_info);
         }
 		$difficulty = get_field('n7webmapp_route_difficulty');
         $difficulty = str_replace('.', ',', $difficulty);
-        // if ($difficulty) {
-        //     $difficulty_info =  '<span>'.'<i class="wm-icon-cyc_difficolta1"></i>'.' '.$difficulty.' '.__('from 5', 'wm-child-cyclando').'</span>';
-        //     array_push($intro_info,$difficulty_info);
-        // }
         $shape = get_field('shape');
-        // if ($shape) {
-        //     $shape_icon = the_shape_icon($shape);
-        //     $shape_info =  "<span>"."<i class='$shape_icon'></i>"." ".__($shape, "wm-child-cyclando")."</span>";
-        //     array_push($intro_info,$shape_info);
-        // }
+
 		$nights = $days - 1;
 		$target = 'who';
 		$places_to_go = 'where';
@@ -170,7 +160,20 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             $array_target[$tax_target->name] = get_field('wm_taxonomy_icon', $term_target);
         }
 
+        // get places to go
 		$tax_places_to_go = get_the_terms($post_id, $places_to_go);
+        $places_to_go_list = array();
+        if ($tax_places_to_go) {
+            foreach ($tax_places_to_go as $place) {
+                if ($place->parent !== 0) {
+                    $city = $place->name;
+                    array_push($places_to_go_list,$city);
+                    $nation  = get_term($place->parent)->name;
+                    array_push($places_to_go_list,$nation);
+                }
+            }
+        }
+        $places_to_go_list = array_unique($places_to_go_list);
 
         $tax_activities = get_the_terms($post_id, $activity);
         foreach ($tax_activities as $tax_activity) {
@@ -226,13 +229,11 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         if (!$coming_soon && return_route_targets_has_cyclando($post_id) === false) {
             if ($price) {
                 $price_info = '<span>'.__('from', 'wm-child-cyclando').' '.$price.' '.__('€', 'wm-child-cyclando').'</span>';
-                array_push($intro_info,$price_info);
             }
         } elseif (return_route_targets_has_cyclando($post_id)) { 
 
         } else { 
-        $price_info = '<span>'.__('On Request', 'wm-child-cyclando').'</span>';
-        array_push($intro_info,$price_info);
+            $price_info = '<span>'.__('On Request', 'wm-child-cyclando').'</span>';
         }
 
 		// get the post promotion name and value
@@ -248,62 +249,68 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         }
 
         $route_has_geojson = URL_exists("https://a.webmapp.it/cyclando.com/geojson/$post_id.geojson");
-        
+        $featured_image = get_the_post_thumbnail_url($post_id,'us_600_0');
+        if (! $featured_image) {
+            $featured_image = get_the_post_thumbnail_url($post_id,'large');
+            if (!$featured_image) {
+                $featured_image = wp_get_attachment_image_src($gallery_ids[0],'us_600_0');
+                $featured_image = $featured_image[0];
+            }
+        }
 	?>
 
     <!-- Start new template -->
-    <!-- Start section introduction  -->
-    <section class="l-section wpb_row height_auto cyc-single-route-introduction-container" style="background-color: purple;">
+    <!-- Start section introduction and gallery -->
+    <section class="l-section wpb_row height_auto cyc-single-route-introduction-container cyc-route-introduction-mobile" style="background-image:url(<?= $featured_image ?>);">
         <div class="l-section-h i-cf">
             <div class="g-cols vc_row type_default valign_top">
                 <div class="vc_col-sm-12 wpb_column vc_column_container">
                     <div class="vc_column-inner">
-                        <div class="wpb_wrapper">
-                            <div class="wpb_text_column">
-                                <div class="wpb_wrapper cyc-single-route-breadcrumb-wrapper">
-                                    <div class="breadcrumb-rankmath">
-                                        <?php echo do_shortcode('[rank_math_breadcrumb]'); ?></div>
+                        <div class="wpb_wrapper cyc-route-mobile-introduction-wrapper">
+                            <div class="cyc-route-mobile-introduction-gallery">
+                                <div class="cyc-route-mobile-gallery-container">
+                                    <?php if ($gallery_ids) {
+                                        echo do_shortcode('[us_image_slider ids="' . implode(',', $gallery_ids) . '" fullscreen="1" img_size="large" img_fit="cover" arrows="hide" nav="dots"]');
+                                    } ?>
                                 </div>
+                            </div>
+                            <div class="cyc-route-mobile-introduction-days">
+                                <p><?= ($days) ? $days_info : '' ?></p>
+                                <p><?= ($distance) ? $distance_info : '' ?></p>
+                            </div>
+                            <div class="cyc-route-mobile-introduction-title">
+                                <?php 
+                                    if ($places_to_go_list) {
+                                        foreach ($places_to_go_list as $count => $place) {
+                                            if ($count == 0) {
+                                                echo "<span class='meta-txt-strong'>$place</span>";
+                                            } elseif ($count == 1) {
+                                                echo "<span class='meta-txt-light'>, $place</span>";
+                                            } 
+                                        }
+                                        if (count($places_to_go_list) >= 3) {
+                                            echo "<a class='show-more-places tooltips' href='#!'> ... <span>";
+                                            foreach ($places_to_go_list as $count => $name) {
+                                                if ($count >= 2) {
+                                                    echo $name . '<br>';
+                                                }
+                                            }
+                                            echo "</span></a>";
+                                        }
+                                    }
+                                ?>
+                                <h1 class=""><?php the_title() ?></h1>
                             </div>
 
-                            <div class="wpb_text_column ">
-                                <div class="wpb_wrapper">
-                                    <h1 class=""><?php the_title() ?></h1>
-                                </div>
+                            <div class="cyc-route-mobile-introduction-icons">
+                                <p id="cyc-single-route-monarch-gallery-button" class="cyc-single-route-monarch-share">
+                                    <i class="wm-icon-cyc_gallery"></i>
+                                </p>
+                                <p id="cyc-single-route-monarch-share-button" class="cyc-single-route-monarch-share">
+                                    <i class="material-icons">ios_share</i>
+                                </p>
                             </div>
-                            <div class="g-cols wpb_row  type_default valign_top vc_inner">
-                                <div class="vc_col-sm-10 wpb_column vc_column_container">
-                                    <div class="vc_column-inner">
-                                        <div class="wpb_wrapper">
-                                            <div class="wpb_text_column">
-                                                <div class="wpb_wrapper cyc-single-route-intro-info-wrapper">
-                                                    <?php
-														if ($intro_info) {
-															echo implode(' / ',$intro_info);
-														}
-														
-														?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="vc_col-sm-2 wpb_column vc_column_container">
-                                    <div class="vc_column-inner">
-                                        <div class="wpb_wrapper">
-                                            <div class="wpb_text_column">
-                                                <div class="wpb_wrapper">
-                                                    <p id="cyc-single-route-monarch-share-button"
-                                                        class="cyc-single-route-monarch-share"><i
-                                                            class="wm-icon-cyc-share"></i><span><?php echo __('Share', 'wm-child-cyclando'); ?></span>
-                                                    </p>
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -311,7 +318,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         </div>
     </section>
 
-    <!-- END section introduction END  -->
+    <!-- END section introduction andgalery END  -->
     <!-- START section taxonomies and difficulty block START  -->
     <div class="cyc-route-mobile-taxonomy-container">
         <div class="cyc-route-mobile-taxonomy-activity-wrapper">
@@ -909,12 +916,9 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                 });
             });
         });
-        // 			jQuery(document).ready(function(){
-        // 	jQuery( "a.fixed-ancor-menu" ).click(function( event ) {
-        // 		event.preventDefault();
-        // 		jQuery("html, body").animate({ scrollTop: jQuery(jQuery(this).attr("href")).offset().top-200 }, 500);
-        // 	});
-        // });
+            jQuery(document).ready(function(){
+                jQuery('#cyc-single-route-monarch-gallery-button').click(function(){jQuery('.rsFullscreenBtn').trigger('click')})
+            });
         </script>
     <?php
     }

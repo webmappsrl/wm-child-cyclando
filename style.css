@@ -1368,7 +1368,7 @@ header#page-header.sticky {
     top: 0;
 }
 .covidbanner {
-    background-color: #faf1ed;
+    background-color:var(--color-tab-background);
 }
 .covidbanner.with-wp-admin-bar {
     position: fixed;
