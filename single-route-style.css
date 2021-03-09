@@ -1924,7 +1924,7 @@ a:hover.tooltips span {
 .cyc-single-route-introduction-container.cyc-route-introduction-mobile {
     background-position: center;
     background-size: cover;
-    box-shadow: inset 0 0 0 50vw rgb(31 31 31 / 30%);
+    box-shadow: inset 0 0 0 50vw rgb(0 0 0 / 40%);
 }
 .wpb_wrapper.cyc-route-mobile-introduction-wrapper {
     display: grid;
@@ -1968,7 +1968,7 @@ a:hover.tooltips span {
     border-radius: 20px;
 }
 .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-icons i.material-icons {
-    padding: 3px 5px;
+    padding: 5px 5px;
 }
 .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-icons p {
     font-size: 25px;
@@ -2018,7 +2018,7 @@ body .cyc-single-route-main-container .cyc-route-mobile-tab-container .w-tabs-li
 body .cyc-single-route-main-container .cyc-route-mobile-tab-container .w-tabs-item.active,body .cyc-single-route-main-container .cyc-route-mobile-tab-container .w-tabs-item  {
     background: var(--color-secondary-background)!important;
     padding: 1em 10px;
-    border-width: 0;
+    border-width: 0!important;
 }
 body .cyc-single-route-main-container .cyc-route-mobile-tab-container .w-tabs-list-h {
     padding: 0 15px;
