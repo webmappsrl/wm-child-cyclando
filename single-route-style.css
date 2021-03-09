@@ -1928,7 +1928,7 @@ a:hover.tooltips span {
 }
 .wpb_wrapper.cyc-route-mobile-introduction-wrapper {
     display: grid;
-    grid-template-rows: 3fr 2fr 2.3fr 3fr;
+    grid-template-rows: 1fr 2fr 2.3fr 3fr;
 }
 .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-title {
     color: white;
