@@ -1942,3 +1942,36 @@ a:hover.tooltips span {
     letter-spacing: 0;
     line-height: normal;
 }
+/*  */
+.cyc-route-mobile-tab-container .w-tabs.accordion .w-tabs-section {
+    float: left;
+}
+.cyc-route-mobile-tab-container .w-tabs-section-control {
+    display: none;
+}
+.cyc-route-mobile-tab-container .w-tabs-list.items_3 {
+    background: var(--color-secondary-background);
+}
+.cyc-single-route-main-container .cyc-route-mobile-tab-container .w-tabs-item.active,.cyc-single-route-main-container .cyc-route-mobile-tab-container .w-tabs-item  {
+    background: var(--color-secondary-background)!important;
+    padding: 1em 10px;
+}
+.cyc-single-route-main-container .cyc-route-mobile-tab-container .w-tabs-list-h {
+    padding: 0 15px;
+    background: var(--color-secondary-background);
+}
+.cyc-route-mobile-tab-container .w-tabs-item.active .w-tabs-item-h{
+    background: var(--color-tab-background);
+    font-weight: 600;
+    color: white;
+}
+.cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-h{
+    border: 1px solid var(--color-tab-background);
+    border-radius: 15px;
+    color: var(--color-tab-background);
+    font-size: 12px;
+    padding: 0px 15px;
+}
+.cyc-route-mobile-tab-container .w-tabs-section-content{
+    padding: 0px;
+}

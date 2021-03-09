@@ -394,8 +394,15 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             } ?>
         </div>
     </div>
-    <!-- START section taxonomies and difficulty block END  -->
+    <!-- END section taxonomies and difficulty block END  -->
     
+    <!-- START section Second menu Tab START  -->
+    <div class="cyc-route-mobile-tab-container">
+        <?php 
+        echo do_shortcode('[vc_tta_tabs][vc_tta_section active="1" tab_id="1615221700207-6345d186-4e71" title="'.__('Plan', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_plan][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221700263-b2f1f133-a833" title="'.__('Program', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_program][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221704269-1b7373dd-65c0" title="'.__('Includes', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_includes][/vc_column_text][/vc_tta_section][/vc_tta_tabs]');
+        ?>
+    </div>
+    <!-- END section Second menu Tab END  -->
     <!-- START section Second menu START  -->
     <section class="l-section wpb_row height_auto cyc-single-route-second-menu-container">
         <div class="l-section-h i-cf">
