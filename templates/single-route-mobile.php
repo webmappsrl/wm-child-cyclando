@@ -406,7 +406,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
     <!-- START section Second menu Tab START  -->
     <div class="cyc-route-mobile-tab-container">
         <?php 
-        echo do_shortcode('[vc_tta_tabs][vc_tta_section active="1" tab_id="1615221700207-6345d186-4e71" title="'.__('Plan', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_plan][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221700263-b2f1f133-a833" title="'.__('Program', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_program][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221704269-1b7373dd-65c0" title="'.__('Includes', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_includes][/vc_column_text][/vc_tta_section][/vc_tta_tabs]');
+        echo do_shortcode('[vc_tta_tabs][vc_tta_section active="1" tab_id="1615221700207-6345d186-4e71" title="'.__('Plan', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_plan][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221700263-b2f1f133-a833" el_class="oc-tab-program" title="'.__('Program', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_program][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221704269-1b7373dd-65c0" title="'.__('Includes', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_includes][/vc_column_text][/vc_tta_section][/vc_tta_tabs]');
         ?>
     </div>
     <!-- END section Second menu Tab END  -->
@@ -894,7 +894,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             });
 
             // Ajax call for program content in modal
-            jQuery( "#expand-map" ).on( "click", function() {
+            jQuery( ".oc-tab-program" ).on( "click", function() {
                 ajaxurl = '<?php echo admin_url( 'admin-ajax.php' ) ?>'; // get ajaxurl
                 post_id = <?php echo $post_id; ?>;
                 data = {
@@ -911,7 +911,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                     },
                     complete:function(response){
                         obj = JSON.parse(response.responseText);
-                        jQuery(".cy-modal-body.cy-modal-body-program").html(obj);
+                        jQuery(".oc-route-tab-mobile-program-body").html(obj);
                     }
                 });
             });

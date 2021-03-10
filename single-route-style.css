@@ -2040,3 +2040,13 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
 .cyc-route-mobile-tab-container .w-tabs-section-content{
     padding: 0px;
 }
+.oc-route-tab-mobile-program-body {
+    padding: 10px 20px;
+}
+.oc-route-tab-mobile-program-body .w-iconbox-icon i {
+    padding: 0;
+    color: var(--color-tab-background);
+}
+.oc-route-tab-mobile-program-body .w-iconbox-icon {
+    width: 100%;
+}
