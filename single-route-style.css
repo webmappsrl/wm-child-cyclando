@@ -1734,6 +1734,9 @@ body #tab-stagioni a:hover {
     z-index: 2;
 }
 
+.cyc-route-mobile-tab-container .cy-modal-body {
+    border: none;
+}
 .cy-modal-body {
     padding: 2% 3% 4% 3% !important;
     background: #fff;

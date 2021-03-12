@@ -637,57 +637,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
     </div>
     <!-- END HTML modal for prices -->
 
-    <!-- HTML modal for expand map program -->
-    <div id="cy-route-program" class="cy-prices-modal">
-        <div class="cy-modal-content">
-            <div class="cy-modal-header">
-                <div class="close-button-container"><span class="cy-close-map">&times;</span></div>
-                <div class="route-program">
-                    <h2><?php echo __('Program', 'wm-child-cyclando'); ?></h2>
-                </div>
-                <?php if (!$coming_soon && return_route_targets_has_cyclando($post_id) === false) { ?>
-                <div id="wm-book-quote" class="meta-bar wm-book long-txt">
-                    <p class='meta-bar-txt-bold'><?php echo __('Quote', 'wm-child-cyclando'); ?></p>
-                    <a target="_blank"
-                        href="https://cyclando.com/quote/#/<?php echo $post_id . '?lang=' . $language; ?>">
-                    </a>
-                </div>
-                <?php } else { ?>
-                <div id="cy-contact-modal" class="meta-bar wm-book long-txt">
-                    <p id="cy-contact-modal-text" class='meta-bar-txt-bold'>
-                        <?php echo __('Contact us', 'wm-child-cyclando'); ?></p>
-                </div>
-                <?php } ?>
-            </div>
-            <?php if ($program && !get_option('webmapp_show_interactive_route_map')) : ?>
-            <div class="cy-modal-body cy-modal-body-program">
-                <div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>
-            </div>
-            <?php
-				elseif (!$has_track && get_option('webmapp_show_interactive_route_map')) :
-				?>
-            <div class="cy-modal-body cy-modal-body-program">
-                <div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>
-            </div>
-            <?php
-
-				elseif ($route_has_geojson == false) :
-				?>
-            <div class="cy-modal-body cy-modal-body-program">
-                <div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>
-            </div>
-            <?php
-
-				elseif (get_option('webmapp_show_interactive_route_map')) :
-					echo '<div class="cy-modal-body cy-modal-body-map">';
-					echo do_shortcode('[wm-embedmaps feature_color="#F18E08" color="#9AC250" route="https://a.webmapp.it/' . $home_site . '\/geojson/' . $post_id . '.geojson" height="100%" lang="'.$language.'"]');
-					echo '</div>';
-				endif;
-
-				?>
-        </div>
-    </div>
-    <!-- END HTML modal for expand map program -->
+    
 
     <!-- HTML modal for contact in route -->
     <div id="cy-route-contact" class="cy-route-contact">
@@ -779,16 +729,6 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             // Get button element inside prices modal
             // const contactInsideModal = document.querySelector('#cy-prices-modal #wm-book');
 
-            // Get MAP elements
-            const programModal = document.querySelector('#cy-route-program');
-            const expandMapBtn = document.querySelectorAll('#expand-map');
-            const closeMapBtn = document.querySelector('.cy-close-map');
-
-            // Events expand map program Modal
-            expandMapBtn.forEach((button) => {
-                button.addEventListener('click', openProgramModal);
-            });
-            closeMapBtn.addEventListener('click', closeProgramModal);
 
             // Events modal prices
             if (modalBtn) {
@@ -825,18 +765,11 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             // Open contact modal
             function openContactModal() {
                 modal.style.display = 'none';
-                programModal.style.display = 'none';
                 contactModal.style.display = 'block';
                 // add over flow hidden to cody to stop scroll
                 bodyDiv.style.overflow = "hidden";
             }
 
-            // Open program modal
-            function openProgramModal() {
-                programModal.style.display = 'block';
-                // add over flow hidden to cody to stop scroll
-                bodyDiv.style.overflow = "hidden";
-            }
 
             // Close modal prices
             function closeModal() {
@@ -852,12 +785,6 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                 bodyDiv.style.overflow = "auto";
             }
 
-            // Close program modal
-            function closeProgramModal() {
-                programModal.style.display = 'none';
-                // add over flow hidden to cody to stop scroll
-                bodyDiv.style.overflow = "auto";
-            }
 
             // Close If Outside Click
             function outsideClick(e) {
@@ -868,11 +795,6 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                 }
                 if (e.target == contactModal) {
                     contactModal.style.display = 'none';
-                    // add over flow hidden to cody to stop scroll
-                    bodyDiv.style.overflow = "auto";
-                }
-                if (e.target == programModal) {
-                    programModal.style.display = 'none';
                     // add over flow hidden to cody to stop scroll
                     bodyDiv.style.overflow = "auto";
                 }
