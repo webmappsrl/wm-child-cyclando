@@ -2,8 +2,17 @@
 
 add_shortcode( 'route_mobile_tab_program', 'route_mobile_tab_program' );
   
-function route_mobile_tab_program() {
+function route_mobile_tab_program($atts) {
 
+    extract( shortcode_atts( array(
+        'program' => '',
+        'has_track' => '',
+        'route_has_geojson' => '',
+        'home_site' => '',
+        'post_id' => '',
+        'language' => '',
+    ), $atts ) );
+    
     ob_start();
 
 

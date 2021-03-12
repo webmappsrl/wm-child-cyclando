@@ -139,6 +139,10 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 			$popup_show_prices_class = '';
 		}
 		$has_track = get_field("n7webmap_route_related_track", $post_id);
+        $has_track_program = false;
+        if (is_array($has_track) && $has_track) {
+            $has_track_program = true;
+        }
 		$headers = get_headers('https://a.webmapp.it/cyclando.com/route/{$post_id}_map_1000x1000.png', 1);
 		$interactive_route_map = "https://a.webmapp.it/cyclando.com/route/{$post_id}_map_1000x1000.png";
 		if ($has_track && get_option('webmapp_show_interactive_route_map') && strpos($headers['Content-Type'], 'image/') !== false) {
@@ -243,7 +247,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 			$promotion_price = intval($price) - intval($promotion_value);
 		}
 		$home_site = home_url();
-        $home_site = str_replace("https://", "", $home_site);
+        $home_site = preg_replace("/https?:\/\//", "", $home_site);
         if ($language == 'en') {
             $home_site = str_replace("/en/", "", $home_site);
         }
@@ -406,7 +410,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
     <!-- START section Second menu Tab START  -->
     <div class="cyc-route-mobile-tab-container">
         <?php 
-        echo do_shortcode('[vc_tta_tabs][vc_tta_section active="1" tab_id="1615221700207-6345d186-4e71" title="'.__('Plan', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_plan][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221700263-b2f1f133-a833" el_class="oc-tab-program" title="'.__('Program', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_program][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221704269-1b7373dd-65c0" title="'.__('Includes', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_includes][/vc_column_text][/vc_tta_section][/vc_tta_tabs]');
+        echo do_shortcode('[vc_tta_tabs][vc_tta_section active="1" tab_id="1615221700207-6345d186-4e71" title="'.__('Plan', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_plan][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221700263-b2f1f133-a833" el_class="oc-tab-program" title="'.__('Program', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_program program="'.$program.'" has_track="'.$has_track_program.'" route_has_geojson="'.$route_has_geojson.'" home_site="'.$home_site.'" post_id="'.$post_id.'" language="'.$language.'"][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221704269-1b7373dd-65c0" title="'.__('Includes', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_includes][/vc_column_text][/vc_tta_section][/vc_tta_tabs]');
         ?>
     </div>
     <!-- END section Second menu Tab END  -->
