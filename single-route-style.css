@@ -2080,3 +2080,9 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     font-weight: 400;
     border: 0px;
 }
+.oc-route-mobile-search-form-container {
+    padding: 15px;
+    box-shadow: 0 3px 6px 0 #dadada;
+    border-radius: 16px;
+    margin: 1.5rem;
+}

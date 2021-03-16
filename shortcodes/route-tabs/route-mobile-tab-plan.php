@@ -7,7 +7,12 @@ function route_mobile_tab_plan() {
     ob_start();
 
 
-    ?>plan<?php
+    ?>
+    <div class="oc-route-mobile-search-form-container">
+        <?= do_shortcode("[oneclick_search_form_participants]")?>
+        <?= do_shortcode("[oneclick_search_form_bikes]")?>
+	</div>
+    <?php
 
 
     echo ob_get_clean();
