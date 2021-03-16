@@ -19,8 +19,9 @@ function wm_route_included_not_included($post_id) {
     $post_lang = apply_filters( 'wpml_post_language_details', NULL, $post_id );
     $current_lang = $post_lang['language_code'];
     ?>
-    <div class="extra-quotes">
-        <p class="tab-section"> 
+    <div class="extra-quotes oc-mobile-included-not-included-container">
+        <p class="tab-section wm-included-label"> 
+            <i class="wm-icon-checkmark-circled"></i>
             <?php
             echo __('Included: ' ,'wm-child-cyclando');?>
         </p>
@@ -67,8 +68,8 @@ function wm_route_included_not_included($post_id) {
                 
             </tbody>
         </table>
-
-        <p class="tab-section"> 
+        <p class="tab-section wm-not-included-label"> 
+            <i class="wm-icon-close-circled"></i>                                
             <?php
             echo __('Not Included: ' ,'wm-child-cyclando');?>
         </p>

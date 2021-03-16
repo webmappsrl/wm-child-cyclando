@@ -2053,3 +2053,30 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
 .oc-route-tab-mobile-program-body .w-iconbox-icon {
     width: 100%;
 }
+.cyc-route-mobile-tab-container .wm-not-included-label {
+    font-size: 18px;
+    font-weight: 600;
+}
+.cyc-route-mobile-tab-container .wm-not-included-label i{
+    color: var(--color-discount);
+}
+.cyc-route-mobile-tab-container .wm-included-label {
+    font-size: 18px;
+    font-weight: 600;
+}
+.cyc-route-mobile-tab-container .wm-included-label i{
+    color: var(--color-tab-background);
+}
+.oc-mobile-included-not-included-container {
+    padding: 25px;
+    font-family: var(--font-family-primary);
+}
+.oc-mobile-included-not-included-container th{
+    display: list-item;
+    list-style: disc inside;
+    padding: 0 0 0 5px;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    border: 0px;
+}
