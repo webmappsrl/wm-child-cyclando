@@ -2086,3 +2086,81 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     border-radius: 16px;
     margin: 1.5rem;
 }
+/* single route mobile description */
+.oc-single-route-mobile-description-container{
+    padding-top: 0px!important;
+}
+.oc-single-route-mobile-description-container .route-excerpt {
+    color: var(--color-text-p);
+    font-family: var(--font-family-primary);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 27px;
+    letter-spacing: 0;
+}
+.oc-single-route-mobile-description-container .cyc-single-route-description-wrapper ul {
+    list-style-type: none;
+    margin-left: 0;
+}
+.oc-single-route-mobile-description-container .cyc-single-route-description-wrapper li {
+    margin: 0 0 1rem;
+    font-size: 14px;
+    list-style-type: none;
+    padding: .25em 0 0 2.5em;
+    position: relative;
+    line-height: 23px;
+}
+.oc-single-route-mobile-description-container .cyc-single-route-description-wrapper li::before {
+    content: " ";
+    display: block;
+    border: solid .8em var(--color-tab-background);
+    border-radius: 17px;
+    height: 0;
+    width: 0;
+    position: absolute;
+    left: .5em;
+    top: 24%;
+    margin-top: -.5em;
+}
+.oc-single-route-mobile-description-container .cyc-single-route-description-wrapper li::after {
+    content: " ";
+    display: block;
+    width: .3em;
+    height: .6em;
+    border: solid #fff;
+    border-width: 0 .2em .2em 0;
+    position: absolute;
+    left: 1em;
+    top: 25%;
+    margin-top: -.2em;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+/* style tour operator single route mobile */
+.oc-single-route-mobile-tour-operator-container {
+    background:  var(--color-secondary-background);
+}
+.oc-single-route-mobile-tour-operator-container .cyc-single-route-tour-operator-wrapper {
+    padding: 0;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-top: 0;
+    border-bottom: 0;
+}
+.oc-single-route-mobile-tour-operator-container .cyc-single-route-tour-operator-wrapper h4{
+    font-size: 18px;
+    letter-spacing: 0;
+    font-weight: 500;
+    font-family: var(--font-family-primary);
+}
+.oc-single-route-mobile-tour-operator-container .cyc-single-route-tour-operator-wrapper i{
+    font-size: 35px;
+}
+.oc-single-route-mobile-tour-operator-container .cyc-single-route-tour-operator-wrapper p{
+    font-size: 18px;
+    font-weight: 600;
+    font-family: var(--font-family-primary);
+}

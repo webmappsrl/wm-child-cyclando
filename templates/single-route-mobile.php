@@ -414,55 +414,9 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         ?>
     </div>
     <!-- END section Second menu Tab END  -->
-    <!-- START section Second menu START  -->
-    <section class="l-section wpb_row height_auto cyc-single-route-second-menu-container">
-        <div class="l-section-h i-cf">
-            <div class="g-cols vc_row type_default valign_top">
-                <div class="vc_col-sm-9 wpb_column vc_column_container">
-                    <div class="vc_column-inner">
-                        <div class="wpb_wrapper">
-                            <div class="wpb_text_column">
-                                <div class="wpb_wrapper cyc-single-route-second-menu-wrapper">
-                                    <div>
-                                        <h4><?php echo __('Plan your trip', 'wm-child-cyclando'); ?></h4>
-                                    </div>
-                                    <div class="cyc-sr-sm-items">
-                                        <?php if ($program or (get_option('webmapp_show_interactive_route_map') && $route_has_geojson)) {
-												echo "<h4 id='expand-map'>" . __('Program', 'wm-child-cyclando') . "</h4>";
-											} ?>
-                                    </div>
-                                    <div id="<?php echo $popup_show_prices_class ?>"
-                                        class="cyc-sr-sm-items <?php echo $coming_soon_class ?>">
-                                        <?php if (!$coming_soon && return_route_targets_has_cyclando($post_id) === false) { ?>
-                                        <h4 class="prezzo-container">
-                                            <?php echo __('Dates & prices', 'wm-child-cyclando') ?>
-                                        </h4>
-                                        <?php } elseif (return_route_targets_has_cyclando($post_id)) { ?>
-                                        <a class="download-app-link" target="_blank"
-                                            href="https://info.cyclando.com/app">
-                                            <div class="scarica-app">
-                                                <h4 class='meta-bar-txt-light'>
-                                                    <?php echo __('Download', 'wm-child-cyclando'); ?></h4>
-                                            </div>
-                                        </a>
-                                        <?php } else { ?>
-                                        <div class="coming-soon">
-                                            <h4 class='meta-bar-txt-light'>
-                                                <?php echo __('On Request', 'wm-child-cyclando'); ?></h4>
-                                        </div>
-                                        <?php } ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- END section Second menu block END  -->
+    
     <!-- START section Description START  -->
-    <section class="l-section wpb_row height_small cyc-single-route-description-container">
+    <section class="l-section wpb_row height_small cyc-single-route-description-container oc-single-route-mobile-description-container">
         <div class="l-section-h i-cf">
             <div class="g-cols vc_row type_default valign_top">
                 <div class="vc_col-sm-9 wpb_column vc_column_container">
@@ -485,7 +439,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
     <!-- END section Description block END  -->
     <!-- START section Description START  -->
     <?php if ($touroperator) : ?>
-    <section class="l-section wpb_row height_small cyc-single-route-tour-operator-container">
+    <section class="l-section wpb_row height_small cyc-single-route-tour-operator-container oc-single-route-mobile-tour-operator-container">
         <div class="l-section-h i-cf">
             <div class="g-cols vc_row type_default valign_top">
                 <div class="vc_col-sm-9 wpb_column vc_column_container">
@@ -494,7 +448,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                             <div class="wpb_text_column">
                                 <div class="wpb_wrapper cyc-single-route-tour-operator-wrapper">
                                     <?php
-										echo "<h4> " .__('Tour operator', 'wm-child-cyclando'). "</h4>" . "<p>" . $touroperator . "</p>";
+										echo "<h4><i class='wm-icon-cyc_bici'></i> " .__('Tour operator', 'wm-child-cyclando'). "</h4>" . "<p>" . $touroperator . "</p>";
 										?>
                                 </div>
                             </div>
@@ -527,25 +481,6 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                                                 <p><?php echo __('Contact us', 'wm-child-cyclando'); ?></p>
                                             </div>
                                         </div>
-                                        <?php if (!$coming_soon && return_route_targets_has_cyclando($post_id) === false) { ?>
-                                        <a target="_blank"
-                                            href="https://cyclando.com/quote/#/<?php echo $post_id . '?lang=' . $language; ?>">
-                                            <div id="wm-book-quote" class="cy-btn-quote">
-                                                <p><?php echo __('Quote', 'wm-child-cyclando'); ?></p>
-                                            </div>
-                                        </a>
-                                        <?php } elseif (return_route_targets_has_cyclando($post_id)) { ?>
-                                        <a class="download-app-link" target="_blank"
-                                            href="https://info.cyclando.com/app">
-                                            <div class="cy-btn-quote">
-                                                <p class=''><?php echo __('Download', 'wm-child-cyclando'); ?></p>
-                                            </div>
-                                        </a>
-                                        <?php } else { ?>
-                                        <div class="cy-btn-quote">
-                                            <p class=''><?php echo __('On Request', 'wm-child-cyclando'); ?></p>
-                                        </div>
-                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
