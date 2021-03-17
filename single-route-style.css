@@ -235,7 +235,7 @@ Text Domain: wm-child-verdenatura
     font-weight: 300;
 }
 .cyc-single-route-cta-text {
-    padding-bottom: 50px;
+    padding-bottom: 20px;
 }
 .cyc-single-route-cta-text p{
     color: var(--color-text-p);
@@ -301,10 +301,6 @@ Text Domain: wm-child-verdenatura
 .cyc-single-route-faq-container {
     border-top: 2px solid var(--color-border-line);
 }
-.cyc-single-route-faq-container h5{
-    padding-bottom: 20px;
-    text-transform: uppercase;
-}
 .cyc-single-route-faq-container h6{
     margin:0!important;
 }
@@ -312,14 +308,11 @@ Text Domain: wm-child-verdenatura
     border-width: 0px!important;
 }
 .cyc-single-route-faq-container .w-tabs-section-header {
-    padding: 15px 0em 0px 0em!important;
+    padding: 20px 0em 0px 0em!important;
     color: var(--color-text-p)!important;
 }
 .cyc-single-route-faq-container .w-tabs-section-header:hover, .cyc-single-route-faq-container .w-tabs-section-header:focus {
     background: none!important;
-}
-.cyc-single-route-faq-container .w-tabs-section-content {
-    padding: 0 0 5px!important;
 }
 .cyc-single-route-faq-container .w-tabs-section-content p{
     color: #616161!important;
@@ -687,9 +680,6 @@ body {
 @media screen and (max-width: 768px) {
     .grid-container-period-seasonal {
         grid-template-columns: repeat(2, 1fr);
-    }
-    .single-route section h2 {
-        font-size: 32px!important;
     }
     .intro-section .l-sidebar {
         padding: 0!important;
@@ -2163,4 +2153,79 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     font-size: 18px;
     font-weight: 600;
     font-family: var(--font-family-primary);
+}
+.oc-single-route-mobile-cta-container {
+    padding-bottom: 24px!important;
+    background-color: var(--color-tab-background);
+}
+.oc-single-route-mobile-cta-container h2, .oc-single-route-mobile-cta-container p{
+    color: white!important;
+}
+body .oc-single-route-mobile-cta-container h2{
+    font-size: 24px;
+    letter-spacing: 0;
+    font-weight: 500;
+}
+body .oc-single-route-mobile-cta-container p{
+    font-size: 18px;
+    letter-spacing: 0;
+    font-weight: 400;
+}
+.oc-single-route-mobile-cta-container .cy-btn-contact{
+    border: 2px solid #fdfdfd;
+    background: white;
+    width: 90%;
+    margin: auto;
+}
+.oc-single-route-mobile-cta-container .cy-btn-contact:hover{
+    border: 2px solid #fdfdfd;
+    background: var(--color-tab-background);
+}
+body .oc-single-route-mobile-cta-container .cy-btn-contact p{
+    color: var(--color-tab-background)!important;
+    text-transform: initial;
+    font-size: 18px;
+    letter-spacing: 0;
+    font-weight: 400;
+}
+body .oc-single-route-mobile-cta-container .cy-btn-contact:hover p{
+    color: white!important;
+}
+.oc-single-route-mobile-faq-container .oc_faq_heading i {
+    font-size: 34px;
+}
+.oc-single-route-mobile-faq-container .oc_faq_heading  {
+    font-size: 18px;
+    letter-spacing: 0;
+}
+.oc-single-route-mobile-faq-container .oc-faq-accordion-column {
+    margin: 0!important;
+}
+.oc-single-route-mobile-faq-container .oc-faq-accordion-column-inner {
+    padding: 0!important;   
+}
+.oc-single-route-mobile-faq-container .oc-faq-accordion-column-inner h6{
+    padding: 15px 25px;
+    background-color: var(--color-secondary-background);
+}
+.oc-single-route-mobile-faq-container .oc-faq-accordion-column-inner .w-tabs-sections-h{
+    padding: 0px 25px;
+}
+.oc-single-route-mobile-faq-container .oc-faq-accordion-column-inner .w-tabs-section-control{
+    right: 0em!important;
+}
+.oc-single-route-mobile-faq-container .oc-faq-accordion-column-inner .w-tabs-section:not(:last-child) .w-tabs-section-header-h {
+    border-bottom: 1px solid #e2e2e2;
+}
+.oc-single-route-mobile-faq-container .oc-faq-accordion-column-inner .w-tabs-section-header-h {
+    padding: 0px 0 20px 0px;
+    font-size: 14px;
+}
+.oc-single-route-mobile-faq-container .oc-faq-accordion-column-inner .w-tabs-section-content p{
+    font-size: 14px;
+}
+.w-tabs.icon_chevron .w-tabs-section-control:before {
+    content: '\f078'!important;
+    font-family: fontawesome;
+    font-weight: 100!important;
 }
