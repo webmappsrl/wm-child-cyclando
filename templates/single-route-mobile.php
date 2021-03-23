@@ -640,12 +640,43 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
     </div>
     <!-- END HTML modal for contact in route -->
     <script>
+        var post_id = <?= $post_id ?>;
+        var departureArrays = <?php echo json_encode($start_array)?>;
+        function ajaxUpdatePrice(){
+            console.log('ajaxUpdatePrice function called');
+            if (Cookies.get('oc_participants_cookie')) {
+            var ocCookies = JSON.parse(Cookies.get('oc_participants_cookie'));
+            }
+            var data = {
+                'action': 'oc_ajax_route_price',
+                'postid':  post_id,
+                'cookies':  ocCookies,
+            };
+            jQuery.ajax({
+                url: '/wp-admin/admin-ajax.php',
+                type : 'post',
+                data: data,
+                beforeSend: function(){
+                    jQuery(".cifraajax").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
+                },
+                success : function( response ) {
+                    console.log(response.responseText);
+                    jQuery(".cifraajax").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
+                },
+                complete:function(response){
+                    obj = JSON.parse(response.responseText);
+                    console.log(response.responseText);
+                    console.log(obj);
+                    jQuery(".cifraajax").html(response.responseText+'€');
+                }
+            });
+        }
         jQuery(document).ready(function() {
+
             setTimeout(function() {
                 jQuery(".cyc-single-route-main-container .rsFullscreenIcn").html(
                     "<span class='gallery-expand-desktop'>Guarda tutte le foto</span><span class='gallery-expand-mobile'><i class='fas fa-expand'></i></span>"
                 );
-                console.log("foto");
             }, 400);
 
             // Get DOM Elements
@@ -782,6 +813,8 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             jQuery(document).ready(function(){
                 jQuery('#cyc-single-route-monarch-gallery-button').click(function(){jQuery('.rsFullscreenBtn').trigger('click')})
             });
+
+            
         </script>
     <?php
     }

@@ -9,8 +9,10 @@ function route_mobile_tab_plan() {
 
     ?>
     <div class="oc-route-mobile-search-form-container">
+        <?= do_shortcode("[onclick_route_form_datepicker]")?>
         <?= do_shortcode("[oneclick_search_form_participants]")?>
         <?= do_shortcode("[oneclick_search_form_bikes]")?>
+        <div class="cifraajax"></div>
 	</div>
     <?php
 

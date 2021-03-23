@@ -13,6 +13,7 @@ require ('shortcodes/oneclick_search_form_bikes.php');
 require ('shortcodes/route-tabs/route-mobile-tab-includes.php');
 require ('shortcodes/route-tabs/route-mobile-tab-plan.php');
 require ('shortcodes/route-tabs/route-mobile-tab-program.php');
+require ('shortcodes/route-oc/onclick_route_form_datepicker.php');
 require ('api/api-loader.php');
 require ('includes/class_routeProductsOC.php') ;
 require ('includes/oc_ajax_route_price.php');
@@ -50,6 +51,7 @@ function Divi_parent_theme_enqueue_styles() {
     wp_enqueue_script( 'general_javascript', get_stylesheet_directory_uri() . '/js/general.js', array ('jquery') );
     wp_enqueue_script( 'hightlight', get_stylesheet_directory_uri() . '/js/home_highlight.js');
     wp_enqueue_script('hubspot_contact_form', '//js.hsforms.net/forms/v2.js', array('jquery'));
+    wp_enqueue_script('datepicker', 'https://code.jquery.com/ui/1.12.1/jquery-ui.js', array('jquery'));
     //add hubspot to Browser IE 8
     wp_register_script('hubspot_contact_form_IE8', '//js.hsforms.net/forms/v2-legacy.js', array('jquery'));
     wp_enqueue_script( 'hubspot_contact_form_IE8');
@@ -1366,3 +1368,26 @@ function fwp_disable_auto_refresh() {
 }
 add_action( 'wp_head', 'fwp_disable_auto_refresh', 100 );
 
+// Function to get all the dates in given range 
+function getDatesFromRange($start, $end, $format = 'd-m-Y') { 
+      
+    // Declare an empty array 
+    $array = array(); 
+      
+    // Variable that store the date interval 
+    // of period 1 day 
+    $interval = new DateInterval('P1D'); 
+  
+    $realEnd = new DateTime($end); 
+    $realEnd->add($interval); 
+  
+    $period = new DatePeriod(new DateTime($start), $interval, $realEnd); 
+  
+    // Use loop to store date into array 
+    foreach($period as $date) {                  
+        $array[] = $date->format($format);  
+    } 
+  
+    // Return the array elements 
+    return $array; 
+} 

@@ -13,7 +13,7 @@ class routeProductsOC {
     }
 
     public function getHotelProducts () {
-        $seasonal_products = $this->getHotelSeasonalVariations($this->post_id);
+        $seasonal_products = $this->getHotelSeasonalVariations($this->post_id,$this->cookies['departureDate']);
         $general_products = get_field('product',$this->post_id);
         if ($seasonal_products) {
             $products = $seasonal_products;
@@ -140,13 +140,35 @@ class routeProductsOC {
 
 
 
-    public function getHotelSeasonalVariations($post_id){
+    public function getHotelSeasonalVariations($post_id,$departureDate){
         $seasonal_variations = array();
+        $variation = array();
         if (have_rows('model_season',$post_id)) {
             while( have_rows('model_season',$post_id) ): the_row();
-                $variation = get_sub_field('wm_route_quote_model_season_product');
-                // $variations = $this->getProductsHotelVariations($variation);
-                array_push($seasonal_variations,$variation[0]);
+                $variation_disacitve = get_sub_field('wm_route_quote_model_season_disactive');
+                $product = get_sub_field('product');
+                if (!$variation_disacitve) {
+                    if (have_rows('wm_route_quote_model_season_dates_periods_repeater')) {
+                        while( have_rows('wm_route_quote_model_season_dates_periods_repeater') ): the_row();
+                        $start = get_sub_field('wm_route_quote_model_season_dates_periods_start');
+                        $stop = get_sub_field('wm_route_quote_model_season_dates_periods_stop');
+                        $start = DateTime::createFromFormat('d/m/Y', $start);
+                        $stop = DateTime::createFromFormat('d/m/Y', $stop);
+                        $start = $start->format('m/d/Y');
+                        $stop = $stop->format('m/d/Y');
+                        $days = getDatesFromRange($start, $stop); 
+                        foreach ( $days as $day )
+                        {
+                            if ( $day == $departureDate ) 
+                            {
+                                $variation = $product;
+                                array_push($seasonal_variations,$variation[0]);
+                            }
+                        }
+                        endwhile;
+                    }
+                }
+                
             endwhile;
         }
         

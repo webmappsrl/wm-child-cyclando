@@ -2229,3 +2229,119 @@ body .oc-single-route-mobile-cta-container .cy-btn-contact:hover p{
     font-family: fontawesome;
     font-weight: 100!important;
 }
+/*  route page oneclick datepicker */
+body .ui-datepicker.ui-widget.ui-widget-content {
+    margin: 0px;
+    padding: 4%;
+    background-color: rgb(255, 255, 255);
+    position: fixed!important;
+    box-shadow: rgb(0 0 0 / 20%) 0px 5px 8px 0px, rgb(0 0 0 / 17%) 0px 7px 20px 0px;
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    bottom: 0px;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    top: auto!important;
+    left: auto!important;
+}
+.datepicker-div-wrapper {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.ocm-participants-header.datepicker-header-wrapper {
+    display: none;
+}
+#ui-datepicker-div .ocm-participants-header.datepicker-header-wrapper {
+    display: block;
+}
+.oc-route-mobile-search-form-container .datepicker-holder input {
+    -webkit-tap-highlight-color: rgb(0,0,0);
+    box-sizing: border-box;
+    vertical-align: top;
+    text-transform: none;
+    font: inherit;
+    margin: 0;
+    outline: none!important;
+    -webkit-appearance: none;
+    letter-spacing: 0em;
+    background: #fff;
+    box-shadow: 0px 1px 0px 0px rgb(0 0 0 / 8%) inset;
+    min-height: 2.8rem;
+    padding: 20px 22px 20px 15px!important;
+    transition: all .3s ease;
+    border-radius: 30px!important;
+    width: 100%!important;
+    font-size: 14px;
+    line-height: 3.3rem;
+    color: #000;
+    border: 1px solid #000000;
+    font-weight: 400;
+    height: 3.4rem;
+}
+.ui-widget-header {
+    border: 0!important;
+    background: none!important;
+    color: #222222;
+    font-weight: 400!important;
+}
+.ui-datepicker-title span {
+    font-size: 17px;
+    color: #333;
+}
+.ui-datepicker-prev span, .ui-datepicker-next span {
+    background-image: none !important;
+}
+.ui-datepicker-prev span.ui-icon {
+    width: 13px;
+    height: 26px;
+    font-size: 33px;
+    display: block;
+    text-indent: 0;
+    overflow: hidden;
+    background-repeat: no-repeat;
+}
+.ui-datepicker-prev span:before {
+    content: "\f104";
+    font-family: FontAwesome;
+    position: relative;
+}
+.ui-datepicker-prev:hover {
+    color: #fff;
+}
+.ui-datepicker-next span.ui-icon {
+    width: 13px;
+    height: 26px;
+    font-size: 33px;
+    display: block;
+    text-indent: 0;
+    overflow: hidden;
+    background-repeat: no-repeat;
+}
+.ui-datepicker-next span:before {
+    content: "\f105";
+    font-family: FontAwesome;
+    position: relative;
+}
+.ui-datepicker-next:hover {
+    color: #fff;
+}
+.ui-datepicker table {
+    min-height: 278px;
+}
+#ui-datepicker-div > table > thead > tr > th > span {
+    font-weight: 400!important;
+}
+.ui-state-default, .ui-widget-content .ui-state-default {
+    border: 0!important;
+    background: none!important;
+    text-align: center;
+}
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span {
+    margin-top: -15px!important;
+}
