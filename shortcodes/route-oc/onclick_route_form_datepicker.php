@@ -14,7 +14,7 @@ function onclick_route_form_datepicker() {
             $( function() {
                 
                 // TODO: set the initial valueof datepicker input to the selected date
-                $( "#datepicker" ).val("29 Marzo 2021");
+                $( "#datepicker" ).val(first_departure_date_ajax);
                 function availableDepartures(date) {
                     dmy = ('0' +date.getDate()).slice(-2) + "-" + ('0' +(date.getMonth()+1)).slice(-2) + "-" + date.getFullYear();
                     if ($.inArray(dmy, departureArrays) != -1) {

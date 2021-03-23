@@ -156,6 +156,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 			$language = 'it';
 		}
 		$first_departure_date = '';
+		$first_departure_date_ajax = '';
 		// get terms targets
         $tax_targets = get_the_terms($post_id, $target);
         foreach ($tax_targets as $tax_target) {
@@ -223,6 +224,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 		foreach ($start_array as $date) {
 			if (date('Y-m-d', strtotime('+7 day')) <= date('Y-m-d', strtotime($date))) {
 				$first_departure_date = date_i18n('d F', strtotime($date));
+				$first_departure_date_ajax = date_i18n('d F Y', strtotime($date));
 				break;
 			}
 		}
@@ -642,6 +644,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
     <script>
         var post_id = <?= $post_id ?>;
         var departureArrays = <?php echo json_encode($start_array)?>;
+        var first_departure_date_ajax = <?php echo json_encode($first_departure_date_ajax )?>;
         function ajaxUpdatePrice(){
             console.log('ajaxUpdatePrice function called');
             if (Cookies.get('oc_participants_cookie')) {

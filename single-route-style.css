@@ -2361,3 +2361,8 @@ body .ui-datepicker.ui-widget.ui-widget-content {
     top: auto!important;
     left: auto!important;
 }
+.cifraajax .w-iconbox-icon i {
+    padding: 0!important;
+    color: var(--color-tab-background);
+    font-size: 20px;
+}
