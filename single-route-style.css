@@ -2231,21 +2231,12 @@ body .oc-single-route-mobile-cta-container .cy-btn-contact:hover p{
 }
 /*  route page oneclick datepicker */
 body .ui-datepicker.ui-widget.ui-widget-content {
-    margin: 0px;
-    padding: 4%;
-    background-color: rgb(255, 255, 255);
-    position: fixed!important;
-    box-shadow: rgb(0 0 0 / 20%) 0px 5px 8px 0px, rgb(0 0 0 / 17%) 0px 7px 20px 0px;
-    animation-name: modalopen;
-    animation-duration: var(--modal-duration);
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    bottom: 0px;
-    z-index: 1;
     display: block;
     width: 100%;
     top: auto!important;
     left: auto!important;
+    border: 0;
+    position: relative!important;
 }
 .datepicker-div-wrapper {
     height: 100%;
@@ -2257,8 +2248,14 @@ body .ui-datepicker.ui-widget.ui-widget-content {
 .ocm-participants-header.datepicker-header-wrapper {
     display: none;
 }
-#ui-datepicker-div .ocm-participants-header.datepicker-header-wrapper {
-    display: block;
+.datepicker-content-wrapper .ocm-participants-header.datepicker-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+}
+.datepicker-content-wrapper .ocm-participants-header.datepicker-header-wrapper h2{
+    font-size: 22px!important;
+    letter-spacing: 0;
 }
 .oc-route-mobile-search-form-container .datepicker-holder input {
     -webkit-tap-highlight-color: rgb(0,0,0);
@@ -2344,4 +2341,23 @@ body .ui-datepicker.ui-widget.ui-widget-content {
 }
 .ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span {
     margin-top: -15px!important;
+}
+.datepicker-content-wrapper {
+    background: white;
+    position: fixed;
+    bottom: 0;
+    box-shadow: rgb(0 0 0 / 20%) 0px 5px 8px 0px, rgb(0 0 0 / 17%) 0px 7px 20px 0px;
+    margin: 0px;
+    padding: 4%;
+    background-color: rgb(255, 255, 255);
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    bottom: 0px;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    top: auto!important;
+    left: auto!important;
 }

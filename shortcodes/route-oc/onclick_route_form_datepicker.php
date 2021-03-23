@@ -24,13 +24,10 @@ function onclick_route_form_datepicker() {
                     }
                 }
                 function showOverLay(input){
-                    $("#ui-datepicker-div").wrap("<div class='datepicker-div-wrapper'></div>");
-                    // $("#ui-datepicker-div").prepend($(".datepicker-header-wrapper"));
+                    $("#ui-datepicker-div").wrap("<div class='datepicker-div-wrapper'><div class='datepicker-content-wrapper'></div></div>");
                     $(".datepicker-div-wrapper").css("position", "fixed"); 
-                    console.log(input);
                     setTimeout(function() {
-                        var headerPane = $( input ).datepicker( "widget" ).find( ".ui-datepicker-header" );
-                        $( headerPane ).before( 
+                        $( ".datepicker-div-wrapper .datepicker-content-wrapper" ).prepend( 
                             `<div class="ocm-participants-header datepicker-header-wrapper">
                                 <div>
                                     <h2><?php echo __('Choose you departure date', 'wm-child-cyclando'); ?></h2>
@@ -41,8 +38,10 @@ function onclick_route_form_datepicker() {
                     }, 1 );
                 }
                 function removeOverLay(){
+                    $(".datepicker-content-wrapper").unwrap();
                     $("#ui-datepicker-div").unwrap();
                     $(".datepicker-div-wrapper").css("position", "relative"); 
+                    $( ".datepicker-div-wrapper .datepicker-content-wrapper" ).remove( ".datepicker-header-wrapper" );
                 }
                 $.datepicker.regional['it'] = {
                     closeText: 'Chiudi', // set a close button text
