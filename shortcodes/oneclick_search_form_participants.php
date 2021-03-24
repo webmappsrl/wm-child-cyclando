@@ -233,8 +233,13 @@ function oneclick_search_form_participants($atts) {
                     $('#ocm-partecipants-number').text(sum);
                     $('#ocm-partecipants-adult-number').text(parseInt(savedCookie['adults']) + ' ');
                     $("#oc-participants-adult").addClass('selected');
-                    $('#ocm-partecipants-kid-number').text(parseInt(savedCookie['kids']) + ' ');
-                    $("#oc-participants-kid").addClass('selected');
+                    if (savedCookie['kids'] > 0) {
+                        $('#ocm-partecipants-kid-number').text(parseInt(savedCookie['kids']) + ' ');
+                        $("#oc-participants-kid").addClass('selected');
+                    } else {
+                        $('#ocm-partecipants-kid-number').text("");
+                        $("#oc-participants-kid").removeClass('selected');
+                    }
                     $("#ocm-warning-container").empty();
                     <?php if ($adults_kids) { ?>
                     ajaxUpdatePrice();
