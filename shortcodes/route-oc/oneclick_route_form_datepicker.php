@@ -1,8 +1,8 @@
 <?php 
 
-add_shortcode( 'onclick_route_form_datepicker', 'onclick_route_form_datepicker' );
+add_shortcode( 'oneclick_route_form_datepicker', 'oneclick_route_form_datepicker' );
   
-function onclick_route_form_datepicker() {
+function oneclick_route_form_datepicker() {
 
     ob_start();
 
@@ -13,6 +13,7 @@ function onclick_route_form_datepicker() {
         $(document).ready(function () {
             $( function() {
                 
+
                 // TODO: set the initial valueof datepicker input to the selected date
                 $( "#datepicker" ).val(first_departure_date_ajax);
                 function availableDepartures(date) {

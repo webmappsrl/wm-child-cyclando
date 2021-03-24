@@ -4,7 +4,7 @@ add_shortcode( 'oneclick_search_form_bikes', 'oneclick_search_form_bikes' );
   
 function oneclick_search_form_bikes($atts) {
     extract( shortcode_atts( array(
-        'adults_kids' => ''
+        'route' => ''
     ), $atts ) );
     ob_start();
 
@@ -137,7 +137,7 @@ function oneclick_search_form_bikes($atts) {
                     $("#ocm-warning-bikes-container").empty();
                     $('.ocm-bikes-container').hide();
                     $('#ocm-bikes-number').text(sum);
-                    <?php if ($adults_kids) { ?>
+                    <?php if ($route) { ?>
                     ajaxUpdatePrice();
                     <?php } ?>
                 } else {

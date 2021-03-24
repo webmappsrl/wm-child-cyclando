@@ -150,13 +150,9 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 		} else {
 			$featured_map = '/wp-content/themes/wm-child-cyclando/images/map-logo-osm.jpg';
 		}
-		if (defined('ICL_LANGUAGE_CODE')) {
-			$language = ICL_LANGUAGE_CODE;
-		} else {
-			$language = 'it';
-		}
 		$first_departure_date = '';
 		$first_departure_date_ajax = '';
+		$first_departure_date_ajax_dormatdmY = '';
 		// get terms targets
         $tax_targets = get_the_terms($post_id, $target);
         foreach ($tax_targets as $tax_target) {
@@ -225,6 +221,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 			if (date('Y-m-d', strtotime('+7 day')) <= date('Y-m-d', strtotime($date))) {
 				$first_departure_date = date_i18n('d F', strtotime($date));
 				$first_departure_date_ajax = date_i18n('d F Y', strtotime($date));
+				$first_departure_date_ajax_dormatdmY = date_i18n('d-m-Y', strtotime($date));
 				break;
 			}
 		}
@@ -412,7 +409,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
     <!-- START section Second menu Tab START  -->
     <div class="cyc-route-mobile-tab-container">
         <?php 
-        echo do_shortcode('[vc_tta_tabs][vc_tta_section active="1" tab_id="1615221700207-6345d186-4e71" el_class="oc-tab-plan" title="'.__('Plan', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_plan][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221700263-b2f1f133-a833" el_class="oc-tab-program" title="'.__('Program', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_program program="'.$program.'" has_track="'.$has_track_program.'" route_has_geojson="'.$route_has_geojson.'" home_site="'.$home_site.'" post_id="'.$post_id.'" language="'.$language.'"][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221704269-1b7373dd-65c0" el_class="oc-tab-includes" title="'.__('Includes', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_includes post_id="'.$post_id.'"][/vc_column_text][/vc_tta_section][/vc_tta_tabs]');
+        echo do_shortcode('[vc_tta_tabs][vc_tta_section active="1" tab_id="1615221700207-6345d186-4e71" el_class="oc-tab-plan" title="'.__('Plan', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_plan post_id="'.$post_id.'" first_departure="'.$first_departure_date_ajax_dormatdmY.'"][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221700263-b2f1f133-a833" el_class="oc-tab-program" title="'.__('Program', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_program program="'.$program.'" has_track="'.$has_track_program.'" route_has_geojson="'.$route_has_geojson.'" home_site="'.$home_site.'" post_id="'.$post_id.'" language="'.$language.'"][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221704269-1b7373dd-65c0" el_class="oc-tab-includes" title="'.__('Includes', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_includes post_id="'.$post_id.'"][/vc_column_text][/vc_tta_section][/vc_tta_tabs]');
         ?>
     </div>
     <!-- END section Second menu Tab END  -->
@@ -669,7 +666,16 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                     obj = JSON.parse(response.responseText);
                     console.log(response.responseText);
                     console.log(obj);
-                    jQuery(".cifraajax").html(response.responseText+'€');
+                    jQuery(".cifraajax").html(obj.price+'€');
+                    var options = '<option disabled="disabled">Select a category</option>';
+                    jQuery.each(obj.category, function(index, value) {
+                        var selected = '';
+                        if (ocCookies.catgory == value) {
+                            selected = 'selected="selected"';
+                        }
+                        options += '<option '+ selected +' value=' + index + '>' + value + ' </option>';
+                    });
+                    jQuery(".category-select-holder select").html(options);
                 }
             });
         }

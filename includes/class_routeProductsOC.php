@@ -105,7 +105,7 @@ class routeProductsOC {
                                 $list_all_variations_name += array($variation_name => $variation['price_html']);
                                 $product_variation_name_price += $variation_name_price;
                             }
-                            array_push($variations_name_price,$product_variation_name_price);
+                            $variations_name_price[$product_attribute_name] = $product_variation_name_price;
                         }
                     }
                 }
@@ -122,11 +122,17 @@ class routeProductsOC {
         $regular = intval($this->cookies['regular']);
         $electric = intval($this->cookies['electric']);
         
+        if (array_key_exists(intval($this->cookies['category']),$hotel)) {
+            $category = intval($this->cookies['category']);
+        } else {
+            $category = array_key_first($hotel);
+        }
+
         if ($adults) {
-            $this->price += $hotel[0]['adult'] * intval($adults);
+            $this->price += $hotel[$category]['adult'] * intval($adults);
         }
         if ($kids) {
-            $this->price += $hotel[0]['adult'] * intval($kids);
+            $this->price += $hotel[$category]['adult'] * intval($kids);
         }
         if ($regular && $extra['bike']) {
             $this->price += $extra['bike'] * intval($regular);
@@ -135,14 +141,16 @@ class routeProductsOC {
             $this->price += $extra['ebike'] * intval($electric);
         }
         
-        return $this->price;
+
+        $object['price'] = $this->price;
+        $object['category'] = array_keys($hotel);
+        return $object;
     }
 
 
 
     public function getHotelSeasonalVariations($post_id,$departureDate){
         $seasonal_variations = array();
-        $variation = array();
         if (have_rows('model_season',$post_id)) {
             while( have_rows('model_season',$post_id) ): the_row();
                 $variation_disacitve = get_sub_field('wm_route_quote_model_season_disactive');
@@ -161,8 +169,7 @@ class routeProductsOC {
                         {
                             if ( $day == $departureDate ) 
                             {
-                                $variation = $product;
-                                array_push($seasonal_variations,$variation[0]);
+                               $seasonal_variations = $product;
                             }
                         }
                         endwhile;

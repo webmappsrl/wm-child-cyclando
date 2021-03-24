@@ -4,12 +4,12 @@ add_shortcode( 'oneclick_search_form_participants', 'oneclick_search_form_partic
   
 function oneclick_search_form_participants($atts) {
     extract( shortcode_atts( array(
-        'adults_kids' => ''
+        'route' => ''
     ), $atts ) );
     ob_start();
 
 
-    if ($adults_kids) {
+    if ($route) {
         ?>
         <div id="oc-participants-adult" class="oc-participants-btn oc-input-btn"><span id="ocm-partecipants-adult-number"></span><?= __('Adults','wm-child-cyclando'); ?></div>
         <div id="oc-participants-kid" class="oc-participants-btn oc-input-btn"><span id="ocm-partecipants-kid-number"></span><?= __('Kids','wm-child-cyclando'); ?></div>
@@ -89,6 +89,7 @@ function oneclick_search_form_participants($atts) {
             } else {
                 var savedCookie = {};
                 savedCookie['adults'] = 2;
+                savedCookie['category'] = 0;
                 $('#adult-participants').text(2);
                 $('#ocm-partecipants-number').html(2 + ' ');
                 $("#oc-participants").addClass('selected');
@@ -241,7 +242,7 @@ function oneclick_search_form_participants($atts) {
                         $("#oc-participants-kid").removeClass('selected');
                     }
                     $("#ocm-warning-container").empty();
-                    <?php if ($adults_kids) { ?>
+                    <?php if ($route) { ?>
                     ajaxUpdatePrice();
                     <?php } ?>
                 } else {

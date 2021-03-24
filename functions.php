@@ -13,7 +13,8 @@ require ('shortcodes/oneclick_search_form_bikes.php');
 require ('shortcodes/route-tabs/route-mobile-tab-includes.php');
 require ('shortcodes/route-tabs/route-mobile-tab-plan.php');
 require ('shortcodes/route-tabs/route-mobile-tab-program.php');
-require ('shortcodes/route-oc/onclick_route_form_datepicker.php');
+require ('shortcodes/route-oc/oneclick_route_form_datepicker.php');
+require ('shortcodes/route-oc/oneclick_route_form_category.php');
 require ('api/api-loader.php');
 require ('includes/class_routeProductsOC.php') ;
 require ('includes/oc_ajax_route_price.php');
@@ -1391,3 +1392,120 @@ function getDatesFromRange($start, $end, $format = 'd-m-Y') {
     // Return the array elements 
     return $array; 
 } 
+
+function route_has_hotel_category($route_id,$first_departure) {
+    $attributes_name_hotel = array();
+    $variations_name_price = array();
+    $list_all_variations_name = array();
+
+    $attributes_name_hotel_seasonal = array();
+    $variations_name_price_seasonal = array();
+    $list_all_variations_name_seasonal = array();
+
+    $products = get_field('product',$route_id);
+    
+
+    if( $products ){
+        foreach( $products as $p ){ // variables of each product
+        $product = wc_get_product($p); 
+            if($product->is_type('variable')){
+                $product_with_variables = wc_get_product( $p );
+                $category = $product_with_variables->get_categories();
+                $attributes_list = $product_with_variables->get_variation_attributes();
+                foreach ($attributes_list as $value => $key ) {
+                    $product_attribute_name = $value;
+                }
+                if(strip_tags($category) == 'hotel'){
+                    array_push($attributes_name_hotel,$product_attribute_name);
+                    $product_variation_name_price = array();
+                    foreach($product->get_available_variations() as $variation ){
+
+                        // hotel Name
+                        $attributes = $variation['attributes'];
+                        $variation_name = '';
+                        foreach($attributes as $name_var){
+                            $variation_name = $name_var;
+                        }
+                        // Prices
+                        if ($variation['display_price'] == 0){
+                            $price = __('Free' ,'wm-child-verdenatura');
+                        } 
+                        elseif (!empty($variation['price_html'])){
+                            $price = $variation['price_html'];
+                        } else {
+                            $price = $variation['display_price'].'€';
+                        }
+                        $variation_name_price = array($variation_name => $price);
+                        $list_all_variations_name += array($variation_name => $variation['price_html']);
+                        $product_variation_name_price += $variation_name_price;
+                    }
+                    $variations_name_price += array( $product_attribute_name =>$product_variation_name_price);
+                }
+            }
+        }
+    }
+    while( have_rows('model_season',$route_id) ): the_row();
+        $season_products = get_sub_field('wm_route_quote_model_season_product'); 
+        $variation_disacitve = get_sub_field('wm_route_quote_model_season_disactive');
+        if (!$variation_disacitve) {
+            if (have_rows('wm_route_quote_model_season_dates_periods_repeater')) {
+                while( have_rows('wm_route_quote_model_season_dates_periods_repeater') ): the_row();
+                $start = get_sub_field('wm_route_quote_model_season_dates_periods_start');
+                $stop = get_sub_field('wm_route_quote_model_season_dates_periods_stop');
+                $start = DateTime::createFromFormat('d/m/Y', $start);
+                $stop = DateTime::createFromFormat('d/m/Y', $stop);
+                $start = $start->format('m/d/Y');
+                $stop = $stop->format('m/d/Y');
+                $days = getDatesFromRange($start, $stop); 
+                foreach ( $days as $day )
+                {
+                    if ( $day == $first_departure ) 
+                    {
+                        if ($season_products){  //----------- start hotel product table
+                            foreach( $season_products as $p ){ // variables of each product
+                            $product = wc_get_product($p); 
+                                if($product->is_type('variable')){
+                                    $product_with_variables = wc_get_product( $p );
+                                    $category = $product_with_variables->get_categories();
+                                    $attributes_list = $product_with_variables->get_variation_attributes();
+                                    foreach ($attributes_list as $value => $key ) {
+                                        $product_attribute_name = $value;
+                                    }
+                                    if(strip_tags($category) == 'hotel'){
+                                        array_push($attributes_name_hotel_seasonal,$product_attribute_name);
+                                        $product_variation_name_price = array();
+                                        foreach($product->get_available_variations() as $variation ){
+            
+                                            // hotel Name
+                                            $attributes = $variation['attributes'];
+                                            $variation_name = '';
+                                            foreach($attributes as $name_var){
+                                                $variation_name = $name_var;
+                                            }
+                                            // Prices
+                                            if (!empty($variation['price_html'])){
+                                                $price = $variation['price_html'];
+                                            } else {
+                                                $price = $variation['display_price'].'€';
+                                            }
+                                            $variation_name_price = array($variation_name => $price);
+                                            $list_all_variations_name_seasonal += array($variation_name => $variation['price_html']);
+                                            $product_variation_name_price += $variation_name_price;
+                                        }
+                                        $variations_name_price_seasonal += array( $product_attribute_name =>$product_variation_name_price);
+                                    }
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+                endwhile;
+            }
+            
+        }
+    endwhile;
+    $object['model'] = $attributes_name_hotel;
+    $object['modelseasonal'] = $attributes_name_hotel_seasonal;
+    return $object;
+}
