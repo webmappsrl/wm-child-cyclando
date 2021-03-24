@@ -2,15 +2,24 @@
 
 add_shortcode( 'oneclick_search_form_participants', 'oneclick_search_form_participants' );
   
-function oneclick_search_form_participants() {
-
+function oneclick_search_form_participants($atts) {
+    extract( shortcode_atts( array(
+        'adults_kids' => ''
+    ), $atts ) );
     ob_start();
 
 
+    if ($adults_kids) {
+        ?>
+        <div id="oc-participants-adult" class="oc-participants-btn oc-input-btn"><span id="ocm-partecipants-adult-number"></span><?= __('Adults','wm-child-cyclando'); ?></div>
+        <div id="oc-participants-kid" class="oc-participants-btn oc-input-btn"><span id="ocm-partecipants-kid-number"></span><?= __('Kids','wm-child-cyclando'); ?></div>
+        <?php
+    } else {
+        ?>
+        <div id="oc-participants" class="oc-participants-btn oc-input-btn"><span id="ocm-partecipants-number"></span><?= __('Participants','wm-child-cyclando'); ?></div>
+        <?php
+    }
     ?>
-    
-    <div id="oc-participants" class="oc-input-btn"><span id="ocm-partecipants-number"></span><?= __('Participants','wm-child-cyclando'); ?></div>
-
 
     <!-- HTML modal for participants btn One Click Modal OCM -->
     <div id="oc-participants-modal" class="ocm-participants-container">
@@ -47,13 +56,19 @@ function oneclick_search_form_participants() {
                 var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
                 if (parseInt(savedCookie['adults'])>0) {
                     $('#adult-participants').text(parseInt(savedCookie['adults']));
+                    $('#ocm-partecipants-adult-number').text(parseInt(savedCookie['adults']) + ' ');
+                    $("#oc-participants-adult").addClass('selected');
                 } else {
                     savedCookie['adults'] = 2;
                     $('#adult-participants').text(2);
+                    $('#ocm-partecipants-adult-number').text(2);
+                    $("#oc-participants-adult").addClass('selected');
                     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                 }
                 if (parseInt(savedCookie['kids'])>0) {
                     $('#kid-participants').text(parseInt(savedCookie['kids']));
+                    $('#ocm-partecipants-kid-number').text(parseInt(savedCookie['kids']) + ' ');
+                    $("#oc-participants-kid").addClass('selected');
                     $.each(savedCookie['ages'],function(index,value){
                         $("#oc-kid-age-container").append(
                         '<div class="oc-kid-age-input-wrapper col-4"><select id="oc-kid-age-select-'+index+'" class="oc-kid-age-select"></select></div>'
@@ -77,6 +92,8 @@ function oneclick_search_form_participants() {
                 $('#adult-participants').text(2);
                 $('#ocm-partecipants-number').html(2 + ' ');
                 $("#oc-participants").addClass('selected');
+                $('#ocm-partecipants-adult-number').text(2 + ' ');
+                $("#ocm-partecipants-adult-number").addClass('selected');
                 Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
             }
             //Add button
@@ -173,7 +190,7 @@ function oneclick_search_form_participants() {
             });
             
     
-            $('#oc-participants').on('click',function(){
+            $('.oc-participants-btn').on('click',function(){
                 $('.ocm-participants-container').show();
             });
             $('.ocm-participants-close').on('click',function(){
@@ -214,7 +231,14 @@ function oneclick_search_form_participants() {
                     console.log('savedcookie'+JSON.stringify(savedCookie));
                     $('.ocm-participants-container').hide();
                     $('#ocm-partecipants-number').text(sum);
+                    $('#ocm-partecipants-adult-number').text(parseInt(savedCookie['adults']) + ' ');
+                    $("#oc-participants-adult").addClass('selected');
+                    $('#ocm-partecipants-kid-number').text(parseInt(savedCookie['kids']) + ' ');
+                    $("#oc-participants-kid").addClass('selected');
                     $("#ocm-warning-container").empty();
+                    <?php if ($adults_kids) { ?>
+                    ajaxUpdatePrice();
+                    <?php } ?>
                 } else {
                     alert('Scegli i partecipanti');
                 }

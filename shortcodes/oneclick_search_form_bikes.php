@@ -2,8 +2,10 @@
 
 add_shortcode( 'oneclick_search_form_bikes', 'oneclick_search_form_bikes' );
   
-function oneclick_search_form_bikes() {
-
+function oneclick_search_form_bikes($atts) {
+    extract( shortcode_atts( array(
+        'adults_kids' => ''
+    ), $atts ) );
     ob_start();
 
 
@@ -135,7 +137,9 @@ function oneclick_search_form_bikes() {
                     $("#ocm-warning-bikes-container").empty();
                     $('.ocm-bikes-container').hide();
                     $('#ocm-bikes-number').text(sum);
-                    console.log('savedCookie'+JSON.stringify(savedCookie));
+                    <?php if ($adults_kids) { ?>
+                    ajaxUpdatePrice();
+                    <?php } ?>
                 } else {
                     Cookies.set('oc_participants_cookie', JSON.stringify(bCookie), { expires: 7, path: '/' });
                     $("#ocm-warning-bikes-container").empty();

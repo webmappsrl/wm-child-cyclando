@@ -646,7 +646,6 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         var departureArrays = <?php echo json_encode($start_array)?>;
         var first_departure_date_ajax = <?php echo json_encode($first_departure_date_ajax )?>;
         function ajaxUpdatePrice(){
-            console.log('ajaxUpdatePrice function called');
             if (Cookies.get('oc_participants_cookie')) {
             var ocCookies = JSON.parse(Cookies.get('oc_participants_cookie'));
             }
