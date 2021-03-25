@@ -673,7 +673,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                         if (ocCookies.catgory == value) {
                             selected = 'selected="selected"';
                         }
-                        options += '<option '+ selected +' value=' + index + '>' + value + ' </option>';
+                        options += "<option "+selected+" value='"+ value + "'>" + value + "</option>";
                     });
                     jQuery(".category-select-holder select").html(options);
                 }

@@ -122,8 +122,8 @@ class routeProductsOC {
         $regular = intval($this->cookies['regular']);
         $electric = intval($this->cookies['electric']);
         
-        if (array_key_exists(intval($this->cookies['category']),$hotel)) {
-            $category = intval($this->cookies['category']);
+        if (array_key_exists($this->cookies['category'],$hotel)) {
+            $category = $this->cookies['category'];
         } else {
             $category = array_key_first($hotel);
         }

@@ -25,9 +25,9 @@ function oneclick_route_form_category($atts) {
             <option selected="selected" disabled="disabled"><?= __('Select a category', 'wm-child-cyclando') ?></option>
         <?php 
         if ($categories) { 
-            foreach ($categories as $count => $hotel) {
+            foreach ($categories as $hotel) {
         ?>
-                <option value="<?= $count ?>"><?= $hotel ?></option>
+                <option value="<?= $hotel ?>"><?= $hotel ?></option>
         <?php 
             } 
         }
@@ -41,6 +41,7 @@ function oneclick_route_form_category($atts) {
                 $('select').on('change', function() {
                     var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie')); 
                     savedCookie['category'] = this.value;
+                    console.log(savedCookie['category']);
                     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                     ajaxUpdatePrice();
                 });
