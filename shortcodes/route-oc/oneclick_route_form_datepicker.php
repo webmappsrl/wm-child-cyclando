@@ -74,6 +74,7 @@ function oneclick_route_form_datepicker() {
                     beforeShow: showOverLay,
                     onClose: removeOverLay,
                 });
+                ajaxUpdatePrice();
             });
         });
         
