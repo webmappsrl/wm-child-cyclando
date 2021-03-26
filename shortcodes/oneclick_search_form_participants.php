@@ -4,15 +4,17 @@ add_shortcode( 'oneclick_search_form_participants', 'oneclick_search_form_partic
   
 function oneclick_search_form_participants($atts) {
     extract( shortcode_atts( array(
-        'route' => ''
+        'route' => '',
+        'has_kids' => ''
     ), $atts ) );
     ob_start();
-
 
     if ($route) {
         ?>
         <div id="oc-participants-adult" class="oc-participants-btn oc-input-btn"><span id="ocm-partecipants-adult-number"></span><?= __('Adults','wm-child-cyclando'); ?></div>
+        <?php if ($has_kids) { ?>
         <div id="oc-participants-kid" class="oc-participants-btn oc-input-btn"><span id="ocm-partecipants-kid-number"></span><?= __('Kids','wm-child-cyclando'); ?></div>
+        <?php } ?>
         <?php
     } else {
         ?>

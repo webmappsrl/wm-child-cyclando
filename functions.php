@@ -15,6 +15,7 @@ require ('shortcodes/route-tabs/route-mobile-tab-plan.php');
 require ('shortcodes/route-tabs/route-mobile-tab-program.php');
 require ('shortcodes/route-oc/oneclick_route_form_datepicker.php');
 require ('shortcodes/route-oc/oneclick_route_form_category.php');
+require ('shortcodes/route-oc/oneclick_route_form_single_room.php');
 require ('api/api-loader.php');
 require ('includes/class_routeProductsOC.php') ;
 require ('includes/oc_ajax_route_price.php');
@@ -1393,6 +1394,48 @@ function getDatesFromRange($start, $end, $format = 'd-m-Y') {
     return $array; 
 } 
 
+function route_has_extra_category($route_id) { 
+
+    $products = get_field('product',$route_id);
+    $extra_variation_name_price = array();
+    $extra_variation_name_description = array();
+
+    if( $products ){
+        foreach( $products as $p ){ // variables of each product
+        $product = wc_get_product($p); 
+            if($product->is_type('variable')){
+                $product_with_variables = wc_get_product( $p );
+                $category = $product_with_variables->get_categories();
+                if(strip_tags($category) == 'extra'){
+                    foreach($product->get_available_variations() as $variation ){
+                        // Extra Name
+                        $xattributes = $variation['attributes'];
+                        $xvariation_name = '';
+                        foreach($xattributes as $name_var){
+                            $xvariation_name = $name_var;
+                        }
+                        // Prices
+                        if ($variation['display_price'] == 0){
+                            $xprice = __('Free' ,'wm-child-verdenatura');
+                        } 
+                        elseif (!empty($variation['price_html'])){
+                            $xprice = $variation['price_html'];
+                        } else {
+                            $xprice = $variation['display_price'].'€';
+                        }
+                        $extra_name_price = array($xvariation_name => $xprice);
+                        $extra_variation_name_price += $extra_name_price;
+                        $extra_name_description = array($xvariation_name => $variation['variation_description']);
+                        $extra_variation_name_description += $extra_name_description;
+                    }
+                }
+            }
+        }
+    }
+    $object['name'] = $extra_variation_name_price;
+    $object['desc'] = $extra_variation_name_description;
+    return $object;
+}
 function route_has_hotel_category($route_id,$first_departure) {
     $attributes_name_hotel = array();
     $variations_name_price = array();
@@ -1433,7 +1476,7 @@ function route_has_hotel_category($route_id,$first_departure) {
                         elseif (!empty($variation['price_html'])){
                             $price = $variation['price_html'];
                         } else {
-                            $price = $variation['display_price'].'€';
+                            $price = $variation['display_price'];
                         }
                         $variation_name_price = array($variation_name => $price);
                         $list_all_variations_name += array($variation_name => $variation['price_html']);
@@ -1486,7 +1529,7 @@ function route_has_hotel_category($route_id,$first_departure) {
                                             if (!empty($variation['price_html'])){
                                                 $price = $variation['price_html'];
                                             } else {
-                                                $price = $variation['display_price'].'€';
+                                                $price = $variation['display_price'];
                                             }
                                             $variation_name_price = array($variation_name => $price);
                                             $list_all_variations_name_seasonal += array($variation_name => $variation['price_html']);
@@ -1505,7 +1548,7 @@ function route_has_hotel_category($route_id,$first_departure) {
             
         }
     endwhile;
-    $object['model'] = $attributes_name_hotel;
-    $object['modelseasonal'] = $attributes_name_hotel_seasonal;
+    $object['model'] = $variations_name_price;
+    $object['modelseasonal'] = $variations_name_price_seasonal;
     return $object;
 }

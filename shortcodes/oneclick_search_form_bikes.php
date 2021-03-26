@@ -4,14 +4,20 @@ add_shortcode( 'oneclick_search_form_bikes', 'oneclick_search_form_bikes' );
   
 function oneclick_search_form_bikes($atts) {
     extract( shortcode_atts( array(
-        'route' => ''
+        'route' => '',
+        'has_bike' => '',
+        'has_ebike' => ''
     ), $atts ) );
     ob_start();
 
 
     ?>
+    <?php if ($has_bike || $has_ebike): ?>
    <div id="oc-bikes" class="oc-input-btn"><span id="ocm-bikes-number"></span><?= __('Bikes','wm-child-cyclando'); ?></div>
-	
+   <?php endif; ?>
+    <?php if (!$has_bike && !$has_ebike): ?>
+   <div class="oc-input-btn"><?= __('Bikes included','wm-child-cyclando'); ?></div>
+   <?php endif; ?>
 
 
     <!-- HTML modal for bikes btn One Click Modal OCM -->
@@ -23,18 +29,22 @@ function oneclick_search_form_bikes($atts) {
                 </div>
                 <div class="ocm-close-button-container"><span class="ocm-bikes-close">&times;</span></div>
             </div>
+            <?php if ($has_bike): ?>
             <div class="ocm-bikes-body">
                 <div class="regular-label"><i class="wm-icon-cyc_bici"></i><?php echo __('Regular','wm-child-cyclando'); ?></div>
                 <button  class="modal-btn oc-substract-btn" name="regular-bikes"><i class="fas fa-minus"></i></button>
                 <div id="regular-bikes" class="oc-number-input">0</div>
                 <button  class="modal-btn oc-add-btn" name="regular-bikes"><i class="fas fa-plus"></i></button>
             </div>
+            <?php endif; ?>
+            <?php if ($has_ebike): ?>
             <div class="ocm-bikes-body">
                 <div class="ebike-label"><i class="wm-icon-cyc_e-bike"></i><?php echo __('Ebike','wm-child-cyclando'); ?></div>
                 <button  class="modal-btn oc-substract-btn" name="electric-bikes"><i class="fas fa-minus"></i></button>
                 <div id="electric-bikes" class="oc-number-input">0</div>
                 <button class="modal-btn oc-add-btn" name="electric-bikes"><i class="fas fa-plus"></i></button>
             </div>
+            <?php endif; ?>
             <div id="ocm-warning-bikes-container" class="ocm-warning-bike-container"></div>
             <div id="oc-bikes-done-btn" class="oc-bikes-done-btn"><?= __('Done','wm-child-cyclando')?></div>
         </div>

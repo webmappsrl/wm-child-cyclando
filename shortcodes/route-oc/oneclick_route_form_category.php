@@ -20,7 +20,7 @@ function oneclick_route_form_category($atts) {
     ob_start();
 
     ?>
-    <div class="category-select-holder">
+    <div class="category-select-holder oc-route-select-holder">
         <select>
             <option selected="selected" disabled="disabled"><?= __('Select a category', 'wm-child-cyclando') ?></option>
         <?php 
@@ -38,7 +38,7 @@ function oneclick_route_form_category($atts) {
     (function ($) {
         $(document).ready(function () {
             $( function() {
-                $('select').on('change', function() {
+                $('.category-select-holder select').on('change', function() {
                     var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie')); 
                     savedCookie['category'] = this.value;
                     console.log(savedCookie['category']);
@@ -47,8 +47,6 @@ function oneclick_route_form_category($atts) {
                 });
             });
         });
-        
-
     })(jQuery);
     </script>
     <?php

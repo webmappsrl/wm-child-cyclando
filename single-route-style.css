@@ -2070,12 +2070,35 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     font-weight: 400;
     border: 0px;
 }
+/* single route tab plan */
 .oc-route-mobile-search-form-container {
     padding: 15px;
     box-shadow: 0 3px 6px 0 #dadada;
     border-radius: 16px;
     margin: 1.5rem;
     font-size: 14px;
+    display: grid;
+    grid-row-gap: 15px;
+}
+.oc-route-mobile-search-form-asbb-wrapper {
+    display: grid;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    grid-template-areas:
+        "a b"
+        "c d";
+}
+#oc-participants-adult {
+    grid-area: a;
+}
+#oc-participants-kid {
+    grid-area: c;
+}
+.single-room-select-holder {
+    grid-area: b;
+}
+#oc-bikes {
+    grid-area: d;
 }
 /* single route mobile description */
 .oc-single-route-mobile-description-container{
@@ -2368,13 +2391,13 @@ body .ui-datepicker.ui-widget.ui-widget-content {
     font-size: 20px;
 }
 /* route form category selector */
-.category-select-holder select {
+.oc-route-select-holder select {
     -webkit-tap-highlight-color: rgb(0,0,0);
     box-sizing: border-box;
     text-transform: none;
     font: inherit;
     letter-spacing: 0em;
-    background: #fff;
+    background: url(/wp-content/themes/wm-child-cyclando/assets/images/arrow-down.png) 95% / 5% no-repeat #fff;
     box-shadow: 0px 1px 0px 0px rgb(0 0 0 / 8%) inset;
     min-height: 2.8rem;
     -webkit-appearance: none;
@@ -2389,7 +2412,16 @@ body .ui-datepicker.ui-widget.ui-widget-content {
     font-weight: 400;
     height: 3.4rem;
 }
-.category-select-holder select:active, .category-select-holder select:hover {
-    background: url(https://cyclando.com/wp-content/uploads/2020/09/down-arrow.png) 95% / 3% no-repeat #f5f5f5;
+.oc-route-select-holder select:active, .oc-route-select-holder select:hover {
+    background: url(/wp-content/themes/wm-child-cyclando/assets/images/arrow-up.png) 95% / 5% no-repeat #fff;
     transition: background-color 0.1ms linear;
 }
+.single-room-select-holder.oc-route-select-holder select {
+    background-size: 11%;
+    background-position: 88%;
+}
+.single-room-select-holder.oc-route-select-holder select:active, .single-room-select-holder.oc-route-select-holder select:hover {
+    background-size: 11%;
+    background-position: 88%;
+}
+

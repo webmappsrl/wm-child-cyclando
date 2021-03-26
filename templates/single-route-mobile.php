@@ -667,20 +667,43 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                     console.log(response.responseText);
                     console.log(obj);
                     jQuery(".cifraajax").html(obj.price+'€');
-                    var options = '<option disabled="disabled">Select a category</option>';
-                    jQuery.each(obj.category, function(index, value) {
-                        var selected = '';
-                        if (ocCookies.catgory == value) {
-                            selected = 'selected="selected"';
-                        }
-                        options += "<option "+selected+" value='"+ value + "'>" + value + "</option>";
-                    });
-                    jQuery(".category-select-holder select").html(options);
+                    calcCategorySelectOptions(obj);
+                    calcSigleSelectOptions();
                 }
             });
         }
-        jQuery(document).ready(function() {
+        function calcCategorySelectOptions(obj){ 
+            var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie')); 
+            var options = '<option disabled="disabled"><?= __('Select a category', 'wm-child-cyclando') ?></option>';
+            jQuery.each(obj.category, function(index, value) {
+                var selected = '';
+                if (savedCookie.catgory == value) {
+                    selected = 'selected="selected"';
+                }
+                options += "<option "+selected+" value='"+ value + "'>" + value + "</option>";
+            });
+            jQuery(".category-select-holder select").html(options);
+        }
 
+        function calcSigleSelectOptions(){
+            var options = '<option disabled="disabled"><?= __('Single', 'wm-child-cyclando') ?></option>';
+                var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie')); 
+                
+                if (parseInt(savedCookie['adults'])>0) { 
+                    jQuery.each(new Array(parseInt(savedCookie['adults'])), function(index) {
+                        var selected = '';
+                        index = index + 1;
+                        if (parseInt(savedCookie['single']) == index) {
+                            selected = 'selected="selected"';
+                        }
+                        options += "<option "+selected+" value='"+ index + "'>" + index + "</option>";
+                    });
+                }
+                jQuery(".single-room-select-holder select").html(options);
+        }
+
+        jQuery(document).ready(function() {
+            ajaxUpdatePrice();
             setTimeout(function() {
                 jQuery(".cyc-single-route-main-container .rsFullscreenIcn").html(
                     "<span class='gallery-expand-desktop'>Guarda tutte le foto</span><span class='gallery-expand-mobile'><i class='fas fa-expand'></i></span>"
