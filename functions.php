@@ -1307,7 +1307,7 @@ add_filter( 'facetwp_facet_filter_posts', function( $return, $params ) {
 		$selected_values = $params['selected_values'];
 
 
-        // Match ALL values
+        // Match ALL valuess
         if ( $selected_values ) {
 
             $sql = $wpdb->prepare( "SELECT DISTINCT post_id
