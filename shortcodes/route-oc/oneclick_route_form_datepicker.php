@@ -12,10 +12,9 @@ function oneclick_route_form_datepicker() {
     (function ($) {
         $(document).ready(function () {
             $( function() {
-                
 
-                // TODO: set the initial valueof datepicker input to the selected date
                 $( "#datepicker" ).val(first_departure_date_ajax);
+
                 function availableDepartures(date) {
                     dmy = ('0' +date.getDate()).slice(-2) + "-" + ('0' +(date.getMonth()+1)).slice(-2) + "-" + date.getFullYear();
                     if ($.inArray(dmy, departureArrays) != -1) {
@@ -69,11 +68,19 @@ function oneclick_route_form_datepicker() {
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                         $("#datepicker").datepicker("option", "dateFormat", "d MM yy" );
                         ajaxUpdatePrice();
-                        // TODO: add function to recalculate prices
                     },
                     beforeShow: showOverLay,
                     onClose: removeOverLay,
                 });
+
+
+                // set the initial valueof datepicker input to the selected date
+                var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie')); 
+                if (!savedCookie['departureDate']) {
+                    savedCookie['departureDate'] = $("#datepicker").datepicker("option", "dateFormat", "dd-mm-yy" ).val();
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    $("#datepicker").datepicker("option", "dateFormat", "d MM yy" );
+                }
                 ajaxUpdatePrice();
             });
         });
