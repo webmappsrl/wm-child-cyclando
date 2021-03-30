@@ -1306,21 +1306,26 @@ add_filter( 'facetwp_facet_filter_posts', function( $return, $params ) {
 		$facet           = $params['facet'];
 		$selected_values = $params['selected_values'];
 
-		$sql = $wpdb->prepare( "SELECT DISTINCT post_id
-            FROM {$wpdb->prefix}facetwp_index
-            WHERE facet_name = %s",
-			$facet['name']
-		);
 
-		// Match ALL values
-		if ( $selected_values ) {
+        // Match ALL values
+        if ( $selected_values ) {
 
-            $return = facetwp_sql( $sql . " AND REPLACE(REPLACE(REPLACE(facet_display_value, '-', ''), ',', ''),':','') LIKE '$selected_values %' OR REPLACE(REPLACE(REPLACE(facet_display_value, '-', ''), ',', ''),':','') LIKE '% $selected_values' OR REPLACE(REPLACE(REPLACE(facet_display_value, '-', ''), ',', ''),':','') LIKE '$selected_values' OR REPLACE(REPLACE(REPLACE(facet_display_value, '-', ''), ',', ''),':','') LIKE '% $selected_values %'", $facet );
+            $sql = $wpdb->prepare( "SELECT DISTINCT post_id
+                FROM {$wpdb->prefix}facetwp_index
+                WHERE facet_name = %1$s AND facet_display_value LIKE %2$s AND facet_display_value NOT LIKE %3$s AND facet_display_value NOT LIKE %4$s",
+                $facet['name'],
+                '%'.$selected_values.'%',
+                '%'.$selected_values.'[a-z]%',
+                '%[a-z]'.$selected_values.'%'
+            );
 
-			if ( empty( $return ) ) {
-				return;
-			}
-		}
+            $return = facetwp_sql( $sql , $facet );
+
+            if ( empty( $return ) ) {
+                return;
+            }
+        }
+
 	}
 
 	return $return;
