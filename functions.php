@@ -1337,10 +1337,10 @@ add_filter( 'facetwp_facet_filter_posts', function( $return, $params ) {
             WHERE facet_name = 'dove_vuoi_andare' AND facet_display_value REGEXP %s",
             $regexFull
             );
+            $results = $wpdb->get_results( $sqlString );
+            // $return = facetwp_sql( $sqlString , $facet );
 
-            $return = facetwp_sql( $sqlString , $facet );
-
-			if ( empty( $return ) ) {
+			if ( empty( $results ) ) {
 				return;
 			}
 		}
