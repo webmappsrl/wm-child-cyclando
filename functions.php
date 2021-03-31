@@ -1317,7 +1317,7 @@ add_filter( 'facetwp_facet_filter_posts', function( $return, $params ) {
 		if ( $selected_values ) {
 
             
-             // 
+            // 
             // magic regex string
             // explained here -> https://regex101.com/r/T1TN8y/3
             $regexString = "(?=.*((?:[^a-z]|^)(%s)(?:[^a-z]|$)).*)";
@@ -1348,7 +1348,7 @@ add_filter( 'facetwp_facet_filter_posts', function( $return, $params ) {
 
 	}
 
-	return $return;
+	return $results;
 }, 10, 2 );
 
 
