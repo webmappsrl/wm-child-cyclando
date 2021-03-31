@@ -12,14 +12,17 @@ function oneclick_search_form_bikes($atts) {
 
 
     ?>
-    <?php if ($has_bike || $has_ebike): ?>
-   <div id="oc-bikes" class="oc-input-btn"><span id="ocm-bikes-number"></span><?= __('Bikes','wm-child-cyclando'); ?></div>
-   <?php endif; ?>
-    <?php if (!$has_bike && !$has_ebike): ?>
-   <div class="oc-input-btn"><?= __('Bikes included','wm-child-cyclando'); ?></div>
-   <?php endif; ?>
-
-
+    <?php if (is_single('route')): ?>
+        <?php if ($has_bike || $has_ebike): ?>
+            <div id="oc-bikes" class="oc-input-btn"><span id="ocm-bikes-number"></span><?= __('Bikes','wm-child-cyclando'); ?></div>
+        <?php endif; ?>
+        <?php if (!$has_bike && !$has_ebike): ?>
+            <div class="oc-input-btn"><?= __('Bikes included','wm-child-cyclando'); ?></div>
+        <?php endif; ?>
+   <?php else: ?>
+    <div id="oc-bikes" class="oc-input-btn"><span id="ocm-bikes-number"></span><?= __('Bikes','wm-child-cyclando'); ?></div>
+    <?php endif; ?>
+    
     <!-- HTML modal for bikes btn One Click Modal OCM -->
     <div id="oc-bikes-modal" class="ocm-bikes-container">
         <div class="ocm-bikes-content">

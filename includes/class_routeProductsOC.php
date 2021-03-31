@@ -56,7 +56,7 @@ class routeProductsOC {
                                 } else {
                                     $xprice = strip_tags($variation['price_html']);
                                 }
-                                $extra_name_price = array($xvariation_name => intval($xprice));
+                                $extra_name_price = array($xvariation_name => array('id'=>$variation['variation_id'],'price'=>intval($xprice)));
                                 $extra_variation_name_price += $extra_name_price;
                             }
                         }
@@ -72,7 +72,6 @@ class routeProductsOC {
         if ($products){  //----------- start hotel product table
             $attributes_name_hotel = array();
             $variations_name_price = array();
-            $list_all_variations_name = array();
                 foreach( $products as $p ){ // variables of each product
                 $product = wc_get_product($p); 
                     if($product->is_type('variable')){
@@ -101,8 +100,7 @@ class routeProductsOC {
                                 } else {
                                     $price = strip_tags($variation['price_html']);
                                 }
-                                $variation_name_price = array($variation_name => intval($price));
-                                $list_all_variations_name += array($variation_name => $variation['price_html']);
+                                $variation_name_price = array($variation_name => array('id'=>$variation['variation_id'],'price'=>intval($price)));
                                 $product_variation_name_price += $variation_name_price;
                             }
                             $variations_name_price[$product_attribute_name] = $product_variation_name_price;
@@ -122,28 +120,44 @@ class routeProductsOC {
         $regular = intval($this->cookies['regular']);
         $electric = intval($this->cookies['electric']);
         
+        $addToCart = '';
+        
         if (array_key_exists($this->cookies['category'],$hotel)) {
             $category = $this->cookies['category'];
         } else {
-            $category = array_key_first($hotel);
+            // Choose the less expensive category if the category name is not specified
+            $keyAdultPrice = 0;
+            $categoryName = '';
+            foreach ($hotel as $key => $value) {
+                if ($keyAdultPrice == 0) {
+                    $keyAdultPrice = $value['adult']['price'];
+                    $categoryName = $key;
+                } elseif ($keyAdultPrice > $value['adult']['price']) {
+                    $keyAdultPrice = $value['adult']['price'];
+                    $categoryName = $key;
+                }
+            }
+            $category = $categoryName;
         }
 
         if ($adults) {
-            $this->price += $hotel[$category]['adult'] * intval($adults);
+            $this->price += $hotel[$category]['adult']['price'] * intval($adults);
         }
         if ($kids) {
-            $this->price += $hotel[$category]['adult'] * intval($kids);
+            $this->price += $hotel[$category]['adult']['price'] * intval($kids);
         }
         if ($regular && $extra['bike']) {
-            $this->price += $extra['bike'] * intval($regular);
+            $this->price += $extra['bike']['price'] * intval($regular);
         }
         if ($electric && $extra['ebike']) {
-            $this->price += $extra['ebike'] * intval($electric);
+            $this->price += $extra['ebike']['price'] * intval($electric);
         }
         
 
         $object['price'] = $this->price;
         $object['category'] = array_keys($hotel);
+        $object['categoryname'] = $category;
+        $object['addtocart'] = $addToCart;
         return $object;
     }
 

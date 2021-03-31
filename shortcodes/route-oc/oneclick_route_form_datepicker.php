@@ -12,8 +12,16 @@ function oneclick_route_form_datepicker() {
     (function ($) {
         $(document).ready(function () {
             $( function() {
-
-                $( "#datepicker" ).val(first_departure_date_ajax);
+                if (Cookies.get('oc_participants_cookie')) { 
+                    var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie')); 
+                }
+                if (savedCookie['departureDate']) {
+                    var Cookiedate = savedCookie['departureDate'].split('-');
+                    var monthNames = {'01':'Gennaio','02':'Febbraio','03':'Marzo','04':'Aprile','05':'Maggio','06':'Giugno','07':'Luglio','08':'Agosto','09':'Settembre','10':'Ottobre','11':'Novembre','12':'Dicembre'}
+                    $( "#datepicker" ).val(Cookiedate[0]+" "+monthNames[Cookiedate[1]]+" "+Cookiedate[2]);
+                } else {
+                    $( "#datepicker" ).val(first_departure_date_ajax);
+                }
 
                 function availableDepartures(date) {
                     dmy = ('0' +date.getDate()).slice(-2) + "-" + ('0' +(date.getMonth()+1)).slice(-2) + "-" + date.getFullYear();
@@ -64,9 +72,14 @@ function oneclick_route_form_datepicker() {
                     defaultDate: +7,
                     onSelect: function(dateText, inst) { 
                         var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie')); 
+                        console.log(savedCookie);
                         savedCookie['departureDate'] = $("#datepicker").datepicker("option", "dateFormat", "dd-mm-yy" ).val();
+                        console.log(savedCookie['departureDate']);
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                         $("#datepicker").datepicker("option", "dateFormat", "d MM yy" );
+                        var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie')); 
+                        console.log(savedCookie);
+                        console.log(savedCookie['departureDate']);
                         ajaxUpdatePrice();
                     },
                     beforeShow: showOverLay,

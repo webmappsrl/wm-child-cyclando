@@ -2084,21 +2084,10 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     display: grid;
     grid-column-gap: 15px;
     grid-row-gap: 15px;
-    grid-template-areas:
-        "a b"
-        "c d";
+    grid-template-columns:1fr 1fr;
 }
-#oc-participants-adult {
-    grid-area: a;
-}
-#oc-participants-kid {
-    grid-area: c;
-}
-.single-room-select-holder {
-    grid-area: b;
-}
-#oc-bikes {
-    grid-area: d;
+.w-tabs-section {
+    width: 100%;
 }
 /* single route mobile description */
 .oc-single-route-mobile-description-container{

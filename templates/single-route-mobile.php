@@ -677,7 +677,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             var options = '<option disabled="disabled"><?= __('Select a category', 'wm-child-cyclando') ?></option>';
             jQuery.each(obj.category, function(index, value) {
                 var selected = '';
-                if (savedCookie.category == value) {
+                if (obj.categoryname == value) {
                     selected = 'selected="selected"';
                 }
                 options += "<option "+selected+" value='"+ value + "'>" + value + "</option>";

@@ -28,12 +28,14 @@ function route_mobile_tab_plan($atts) {
     } else {
         $product_sample = $has_hotel_category['model'][array_key_first($has_hotel_category['model'])];
     }
-    foreach ($product_sample as $key => $value) {
-        if (strpos($key,'kid') !== false) {
-            $has_kids = true;
-        }
-        if ($key == 'adult-single') {
-            $has_single = true;
+    if ($product_sample) {
+        foreach ($product_sample as $key => $value) {
+            if (strpos($key,'kid') !== false) {
+                $has_kids = true;
+            }
+            if ($key == 'adult-single') {
+                $has_single = true;
+            }
         }
     }
     if (is_array($has_extra_category)){
