@@ -1334,8 +1334,7 @@ add_filter( 'facetwp_facet_filter_posts', function( $return, $params ) {
             // escape words (security improvment for sql injection attacks)
             $sqlString = $wpdb->prepare("SELECT DISTINCT post_id
             FROM {$wpdb->prefix}facetwp_index
-            WHERE facet_name = %s AND facet_display_value REGEXP %s",
-            $facet['name'],
+            WHERE facet_name = 'dove_vuoi_andare' AND facet_display_value REGEXP %s",
             $regexFull
             );
 
