@@ -1316,35 +1316,12 @@ add_filter( 'facetwp_facet_filter_posts', function( $return, $params ) {
 		// Match ALL values
 		if ( $selected_values ) {
 
-            
-            // 
-            // magic regex string
-            // explained here -> https://regex101.com/r/T1TN8y/3
-            $regexString = "(?=.*((?:[^a-z]|^)(%s)(?:[^a-z]|$)).*)";
-
-            // get single words from search phrase (a word has a space after or before) -> insert them in array
-            $wordsToSearch = explode( ' ' , $selected_values );
-
-            // prepare regex string
-            $regexFull = '';
-            // foreach word print a regex rule as $regexString -> replace %s with single word
-            foreach( $wordsToSearch as $w )
-                $regexFull .= sprintf($regexString,$w);
-
-            // escape words (security improvment for sql injection attacks)
-            $sqlString = $wpdb->prepare("SELECT DISTINCT post_id
-            FROM {$wpdb->prefix}facetwp_index
-            WHERE facet_name = 'dove_vuoi_andare' AND facet_display_value REGEXP %s",
-            $regexFull
-            );
-            $return = $wpdb->get_results( $sqlString );
-            // $return = facetwp_sql( $sqlString , $facet );
+            $return = facetwp_sql( $sql . " AND REPLACE(REPLACE(REPLACE(facet_display_value, '-', ''), ',', ''),':','') LIKE '$selected_values %' OR REPLACE(REPLACE(REPLACE(facet_display_value, '-', ''), ',', ''),':','') LIKE '% $selected_values' OR REPLACE(REPLACE(REPLACE(facet_display_value, '-', ''), ',', ''),':','') LIKE '$selected_values' OR REPLACE(REPLACE(REPLACE(facet_display_value, '-', ''), ',', ''),':','') LIKE '% $selected_values %'", $facet );
 
 			if ( empty( $return ) ) {
 				return;
 			}
 		}
-       
 
 	}
 
