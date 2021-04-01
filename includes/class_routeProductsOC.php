@@ -117,6 +117,7 @@ class routeProductsOC {
 
         $adults = intval($this->cookies['adults']);
         $kids = intval($this->cookies['kids']);
+        $ages = $this->cookies['ages'];
         $regular = intval($this->cookies['regular']);
         $electric = intval($this->cookies['electric']);
         
@@ -144,7 +145,7 @@ class routeProductsOC {
             $this->price += $hotel[$category]['adult']['price'] * intval($adults);
         }
         if ($kids) {
-            $this->price += $hotel[$category]['adult']['price'] * intval($kids);
+            $this->price += $this->calculateKidsPrice($hotel[$category],$kids,$ages);
         }
         if ($regular && $extra['bike']) {
             $this->price += $extra['bike']['price'] * intval($regular);
@@ -194,5 +195,71 @@ class routeProductsOC {
         }
         
         return $seasonal_variations;
+    }
+
+    public function calculateKidsPrice($category,$kids,$ages){
+
+        $price = 0;
+        $minAge = 0;
+        $maxAge1 = 0;
+        $minAge2 = 0;
+        $maxAge2 = 0;
+        $minAge3 = 0;
+        $maxAge = 0;
+        $adultPrice = 0;
+
+        foreach($category as $key => $value) {
+            if (strpos($key, 'kid')!== false) {
+                $kidExplode = explode('_',$key);
+                if ($kidExplode[0] == 'kid1') {
+                    if ($kidExplode[2]) {
+                        $minAge = $kidExplode[2];
+                    } else {
+                        $minAge = 1;
+                    }
+                    $maxAge1 = $kidExplode[1];
+                    $maxAge = $kidExplode[1];
+                }
+                if ($kidExplode[0] == 'kid2') {
+                    $minAge2 = $maxAge1 + 1;
+                    $maxAge2 = $kidExplode[1];
+                    $maxAge = $kidExplode[1];
+                }
+                if ($kidExplode[0] == 'kid3') {
+                    $minAge3 = $maxAge2 + 1;
+                    $maxAge = $kidExplode[1];
+                }
+            }
+            if ($key == 'adult') {
+                $adultPrice = $value['price'];
+            }
+        }
+        foreach($ages as $age) {
+            foreach($category as $key => $value) {
+                if (strpos($key, 'kid')!== false) {
+                    $kidExplode = explode('_',$key);
+                    if ($minAge <= $age && $age <= $maxAge1 ) {
+                        if ($kidExplode[0] == 'kid1') {
+                            $price += intval($value['price']);
+                        }
+                    }
+                    if ($minAge2 <= $age && $age <= $maxAge2 ) {
+                        if ($kidExplode[0] == 'kid2') {
+                            $price += intval($value['price']);
+                        }
+                    }
+                    if ($minAge3 <= $age && $age <= $maxAge3 ) {
+                        if ($kidExplode[0] == 'kid3') {
+                            $price += intval($value['price']);
+                        }
+                    }
+                }
+            }
+            if ($maxAge < $age ) {
+                $price += intval($adultPrice);
+            }
+        }
+
+        return $price;
     }
 }
