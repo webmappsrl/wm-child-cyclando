@@ -24,7 +24,7 @@ function route_mobile_tab_plan($atts) {
     if (count($has_hotel_category['model']) > 1 || count($has_hotel_category['modelseasonal']) > 1) {
         $has_category = true;
     }
-    if (count($has_hotel_category['modelseasonal']) > 1) {
+    if (count($has_hotel_category['modelseasonal']) >= 1) {
         $product_sample = $has_hotel_category['modelseasonal'][array_key_first($has_hotel_category['modelseasonal'])];
     } else {
         $product_sample = $has_hotel_category['model'][array_key_first($has_hotel_category['model'])];
