@@ -32,7 +32,7 @@ function oneclick_search_form_bikes($atts) {
                 </div>
                 <div class="ocm-close-button-container"><span class="ocm-bikes-close">&times;</span></div>
             </div>
-            <?php if ($has_bike): ?>
+            <?php if ($has_bike && $route): ?>
             <div class="ocm-bikes-body">
                 <div class="regular-label"><i class="wm-icon-cyc_bici"></i><?php echo __('Regular','wm-child-cyclando'); ?></div>
                 <button  class="modal-btn oc-substract-btn" name="regular-bikes"><i class="fas fa-minus"></i></button>
@@ -40,7 +40,7 @@ function oneclick_search_form_bikes($atts) {
                 <button  class="modal-btn oc-add-btn" name="regular-bikes"><i class="fas fa-plus"></i></button>
             </div>
             <?php endif; ?>
-            <?php if ($has_ebike): ?>
+            <?php if ($has_ebike && $route): ?>
             <div class="ocm-bikes-body">
                 <div class="ebike-label"><i class="wm-icon-cyc_e-bike"></i><?php echo __('Ebike','wm-child-cyclando'); ?></div>
                 <button  class="modal-btn oc-substract-btn" name="electric-bikes"><i class="fas fa-minus"></i></button>
