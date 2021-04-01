@@ -39,7 +39,7 @@ function oneclick_search_form_participants($atts) {
                 <div id="adult-participants" class="oc-number-input">0</div>
                 <button  class="modal-btn oc-add-btn" name="adult-participants"><i class="fas fa-plus"></i></button>
             </div>
-            <?php if (is_single('route')): ?>
+            <?php if ($route): ?>
                 <?php if ($has_kids ) { ?>
                 <div class="ocm-participants-body">
                     <div class="kid-label"><?php echo __('Kids','wm-child-cyclando'); ?></div>

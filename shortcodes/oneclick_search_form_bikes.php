@@ -32,7 +32,7 @@ function oneclick_search_form_bikes($atts) {
                 </div>
                 <div class="ocm-close-button-container"><span class="ocm-bikes-close">&times;</span></div>
             </div>
-            <?php if (is_single('route')): ?>
+            <?php if ($route): ?>
                 <?php if ($has_bike): ?>
                 <div class="ocm-bikes-body">
                     <div class="regular-label"><i class="wm-icon-cyc_bici"></i><?php echo __('Regular','wm-child-cyclando'); ?></div>
