@@ -12,6 +12,7 @@ function route_mobile_tab_plan($atts) {
     $product_sample = array();
     $has_category = false;
     $has_kids = false;
+    $min_kid_age = '';
     $has_single = false;
     $has_bike = false;
     $has_ebike = false;
@@ -30,11 +31,20 @@ function route_mobile_tab_plan($atts) {
     }
     if ($product_sample) {
         foreach ($product_sample as $key => $value) {
+            // Activate kid select if there is any
             if (strpos($key,'kid') !== false) {
                 $has_kids = true;
             }
+            // Activate single room select if there is any
             if ($key == 'adult-single') {
                 $has_single = true;
+            }
+            // Set min kid age select if there is any
+            if (strpos($key,'kid') !== false) {
+                $ageSplit = explode('_',$key);
+                if ($ageSplit[2]) {
+                    $min_kid_age = $ageSplit[2];
+                }
             }
         }
     }
@@ -56,12 +66,14 @@ function route_mobile_tab_plan($atts) {
             <?= do_shortcode('[oneclick_route_form_category post_id="'.$post_id.'" first_departure="'.$first_departure.'"]')?>
         <?php } ?>
         <div class="oc-route-mobile-search-form-asbb-wrapper">
-            <?= do_shortcode("[oneclick_search_form_participants route='true' has_kids=$has_kids ]")?>
+            <?= do_shortcode("[oneclick_search_form_participants route='true' has_kids='$has_kids' min_kid_age='$min_kid_age']")?>
         <?php if ($has_single) { ?>
             <?= do_shortcode("[oneclick_route_form_single_room]")?>
             <?php } ?>
         <?php if ($has_bike || $has_ebike) { ?>
-            <?= do_shortcode("[oneclick_search_form_bikes route='true' has_bike=$has_bike has_ebike=$has_ebike ]")?>
+            <?= do_shortcode("[oneclick_search_form_bikes route='true' has_bike='$has_bike' has_ebike='$has_ebike' ]")?>
+        <?php } else { ?>
+            <div id="" class="oc-input-btn selected"><?php echo __('Bikes are included','wm-child-cyclando'); ?></div>
         <?php } ?>
         </div>
         <div class="cifraajax"></div>

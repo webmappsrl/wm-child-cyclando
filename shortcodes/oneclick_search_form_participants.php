@@ -5,10 +5,11 @@ add_shortcode( 'oneclick_search_form_participants', 'oneclick_search_form_partic
 function oneclick_search_form_participants($atts) {
     extract( shortcode_atts( array(
         'route' => '',
-        'has_kids' => ''
+        'has_kids' => '',
+        'min_kid_age' => ''
     ), $atts ) );
     ob_start();
-
+    
     if ($route) {
         ?>
         <div id="oc-participants-adult" class="oc-participants-btn oc-input-btn"><span id="ocm-partecipants-adult-number"></span><?= __('Adults','wm-child-cyclando'); ?></div>
@@ -38,12 +39,14 @@ function oneclick_search_form_participants($atts) {
                 <div id="adult-participants" class="oc-number-input">0</div>
                 <button  class="modal-btn oc-add-btn" name="adult-participants"><i class="fas fa-plus"></i></button>
             </div>
+            <?php if ($has_kids) { ?>
             <div class="ocm-participants-body">
                 <div class="kid-label"><?php echo __('Kids','wm-child-cyclando'); ?></div>
                 <button  class="modal-btn oc-substract-btn" name="kid-participants"><i class="fas fa-minus"></i></button>
                 <div id="kid-participants" class="oc-number-input">0</div>
                 <button class="modal-btn oc-add-btn" name="kid-participants"><i class="fas fa-plus"></i></button>
             </div>
+            <?php } ?>
             <div id="ocm-warning-container" class="ocm-warning-container"></div>
             <div id="oc-age-text-container" class="oc-age-text-container"></div>
             <div id="oc-kid-age-container" class="oc-kid-age-container"></div>
@@ -54,6 +57,21 @@ function oneclick_search_form_participants($atts) {
     <script>
     (function ($) {
         $(document).ready(function () {
+            // checks if the kids are not availible and if they are previously selected, adds their value to adults
+            var has_kids = <?php echo json_encode($has_kids )?>;
+            if (has_kids == "") {
+                if (Cookies.get('oc_participants_cookie')) {
+                    var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
+                    savedCookie['adults'] += parseInt(savedCookie['kids']);
+                    delete savedCookie['ages'];
+                    delete savedCookie['kids'];
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    $("#ocm-warning-container").append(
+                                '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Kids participation is not available for this route. Their number is added to adults','wm-child-cyclando'); ?></div>'
+                            );
+                }
+            }
+
             if (Cookies.get('oc_participants_cookie')) {
                 var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
                 if (parseInt(savedCookie['adults'])>0) {
@@ -63,7 +81,7 @@ function oneclick_search_form_participants($atts) {
                 } else {
                     savedCookie['adults'] = 2;
                     $('#adult-participants').text(2);
-                    $('#ocm-partecipants-adult-number').text(2);
+                    $('#ocm-partecipants-adult-number').text(2 + ' ');
                     $("#oc-participants-adult").addClass('selected');
                     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                 }
@@ -272,7 +290,15 @@ function oneclick_search_form_participants($atts) {
 
         function ocmSetAgeSelectOptions(num){
             var select = '';
-            for (i=1;i<=17;i++){
+            var midKidAgeholder = 0;
+            var midKidAge = <?php echo json_encode($min_kid_age )?>;
+            
+            if (midKidAge) {
+                midKidAgeholder = midKidAge;
+            } else {
+                midKidAgeholder = 1;
+            }
+            for (i=midKidAgeholder;i<=17;i++){
                 select += '<option value=' + i + '>' + i + ' <?php echo __('years','wm-child-cyclando'); ?> </option>';
             }
             $('#oc-kid-age-select-'+num).html(select);

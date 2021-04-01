@@ -1334,12 +1334,12 @@ add_filter('us_get_page_area_id','wm_custom_header_id_mobile');
 function wm_custom_header_id_mobile($area_id){
     // Search page
     if ($area_id == 57181 && wm_isMobileDev()) {
-        $area_id = 100826;
+        $area_id = 103585;
     }
     // Single route
     if ($area_id == 50234 && wm_isMobileDev()) {
         // $area_id = 100474;
-        $area_id = 100843;
+        $area_id = 103584;
     }
     return $area_id;
 }

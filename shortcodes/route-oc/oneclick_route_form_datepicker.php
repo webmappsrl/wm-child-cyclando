@@ -78,8 +78,6 @@ function oneclick_route_form_datepicker() {
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                         $("#datepicker").datepicker("option", "dateFormat", "d MM yy" );
                         var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie')); 
-                        console.log(savedCookie);
-                        console.log(savedCookie['departureDate']);
                         ajaxUpdatePrice();
                     },
                     beforeShow: showOverLay,

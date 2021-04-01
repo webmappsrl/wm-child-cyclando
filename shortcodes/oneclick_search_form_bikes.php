@@ -22,7 +22,7 @@ function oneclick_search_form_bikes($atts) {
    <?php else: ?>
     <div id="oc-bikes" class="oc-input-btn"><span id="ocm-bikes-number"></span><?= __('Bikes','wm-child-cyclando'); ?></div>
     <?php endif; ?>
-    
+
     <!-- HTML modal for bikes btn One Click Modal OCM -->
     <div id="oc-bikes-modal" class="ocm-bikes-container">
         <div class="ocm-bikes-content">
@@ -56,6 +56,20 @@ function oneclick_search_form_bikes($atts) {
     <script>
     (function ($) {
         $(document).ready(function () {
+            // checks if the ebikes are not availible and if they are previously selected, adds their value to bikes
+            var has_ebike = <?php echo json_encode($has_ebike )?>;
+            if (has_ebike == "") {
+                if (Cookies.get('oc_participants_cookie')) {
+                    var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
+                    savedCookie['regular'] += parseInt(savedCookie['electric']);
+                    delete savedCookie['electric'];
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    $("#ocm-warning-bikes-container").append(
+                                '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Ebikes are not available in this route. Their number is added to bikes','wm-child-cyclando'); ?></div>'
+                            );
+                }
+            }
+
             if (Cookies.get('oc_participants_cookie')) {
                 var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie')); 
                 if (parseInt(savedCookie['electric'])>0) {
