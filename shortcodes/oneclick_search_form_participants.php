@@ -57,6 +57,7 @@ function oneclick_search_form_participants($atts) {
     <script>
     (function ($) {
         $(document).ready(function () {
+            <?php if ($route) { ?>
             // checks if the kids are not availible and if they are previously selected, adds their value to adults
             var has_kids = <?php echo json_encode($has_kids )?>;
             if (has_kids == "") {
@@ -71,7 +72,7 @@ function oneclick_search_form_participants($atts) {
                             );
                 }
             }
-
+            <?php } ?>
             if (Cookies.get('oc_participants_cookie')) {
                 var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
                 if (parseInt(savedCookie['adults'])>0) {

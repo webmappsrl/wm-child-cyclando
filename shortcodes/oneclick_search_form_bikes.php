@@ -56,6 +56,7 @@ function oneclick_search_form_bikes($atts) {
     <script>
     (function ($) {
         $(document).ready(function () {
+            <?php if ($route) { ?>
             // checks if the ebikes are not availible and if they are previously selected, adds their value to bikes
             var has_ebike = <?php echo json_encode($has_ebike )?>;
             if (has_ebike == "") {
@@ -69,7 +70,7 @@ function oneclick_search_form_bikes($atts) {
                             );
                 }
             }
-
+            <?php } ?>
             if (Cookies.get('oc_participants_cookie')) {
                 var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie')); 
                 if (parseInt(savedCookie['electric'])>0) {
