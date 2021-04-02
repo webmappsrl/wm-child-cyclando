@@ -5,7 +5,10 @@ $where = $_GET['_dove_vuoi_andare'];
 $when = $_GET['_quando_vuoi_partire'];
 
 ($where) ? $where_txt = str_replace("%20"," ",$where) : $where_txt = __('Select your destination','wm-child-cyclando');
-($when) ? $when_txt = str_replace("%20"," ",$when) : $when_txt = __('Quando','wm-child-cyclando');
+if ($when) {
+    $when_txt = explode('-',str_replace("%20"," ",$when));
+}
+($when) ? $when_txt = $when_txt[0] : $when_txt = __('Quando','wm-child-cyclando');
 
 echo do_shortcode('[vc_row us_bg_image_source="featured" us_bg_repeat="no-repeat" us_bg_overlay_color="rgba(0,0,0,0.30)" el_class="pagina-cerca-descrizione-container search-page-description-mobile" css="%7B%22default%22%3A%7B%22color%22%3A%22%23ffffff%22%7D%7D"][vc_column][us_separator size="huge"][us_separator][/vc_column][vc_column width="1/2"][vc_column_text]</p><h3>'.__('Plan your bike itinerary and leave immediately for your next vacation', 'wm-child-cyclando').'</h3><p>[/vc_column_text][/vc_column][vc_column width="1/2" el_class="secondTitle"][vc_column_text]'.__('With Cyclando, calculating the itinerary of your cycling holiday is very simple. Our cycle itinerary planner will allow you to find the trip that suits you best, based on your choices on:', 'wm-child-cyclando').'[/vc_column_text][/vc_column][vc_column][us_separator][/vc_column][/vc_row]');
 
