@@ -713,17 +713,21 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                         }
                     }
                     console.log(finalDate);
-                    finalDate = finalDate.split('-');
-                    finaleDay = finalDate[2];
-                    finaleMonth = finalDate[1];
-                    // var monthNames = {'1':'Gennaio','2':'Febbraio','3':'Marzo','4':'Aprile','5':'Maggio','6':'Giugno','7':'Luglio','8':'Agosto','9':'Settembre','1':'Ottobre','11':'Novembre','12':'Dicembre'};
-                    var monthNames = {'1':'01','2':'02','3':'03','4':'04','5':'05','6':'06','7':'07','8':'08','9':'09','1':'10','11':'11','12':'12'};
-
-                    finaleYear = finalDate[0];
-                    first_departure_date_ajax = finaleDay + '-' + monthNames[finaleMonth] + '-' + finaleYear;
-                    console.log(first_departure_date_ajax);
-                    ocCookies['departureDate'] = first_departure_date_ajax;
-                    Cookies.set('oc_participants_cookie', JSON.stringify(ocCookies), { expires: 7, path: '/' });
+                    if (finalDate) {
+                        finalDate = finalDate.split('-');
+                        finaleDay = finalDate[2];
+                        finaleMonth = finalDate[1];
+                        // var monthNames = {'1':'Gennaio','2':'Febbraio','3':'Marzo','4':'Aprile','5':'Maggio','6':'Giugno','7':'Luglio','8':'Agosto','9':'Settembre','1':'Ottobre','11':'Novembre','12':'Dicembre'};
+                        var monthNames = {'1':'01','2':'02','3':'03','4':'04','5':'05','6':'06','7':'07','8':'08','9':'09','1':'10','11':'11','12':'12'};
+    
+                        finaleYear = finalDate[0];
+                        first_departure_date_ajax = finaleDay + '-' + monthNames[finaleMonth] + '-' + finaleYear;
+                        console.log(first_departure_date_ajax);
+                        ocCookies['departureDate'] = first_departure_date_ajax;
+                        Cookies.set('oc_participants_cookie', JSON.stringify(ocCookies), { expires: 7, path: '/' });
+                    } else {
+                        first_departure_date_ajax = <?php echo json_encode($first_departure_date_ajax )?>
+                    }
                 }
             }
         });
