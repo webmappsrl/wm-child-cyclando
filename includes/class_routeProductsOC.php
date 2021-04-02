@@ -248,7 +248,7 @@ class routeProductsOC {
                             $price += intval($value['price']);
                         }
                     }
-                    if ($minAge3 <= $age && $age <= $maxAge3 ) {
+                    if ($minAge3 <= $age && $age <= $maxAge ) {
                         if ($kidExplode[0] == 'kid3') {
                             $price += intval($value['price']);
                         }

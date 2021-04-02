@@ -162,8 +162,6 @@ function oneclick_search_form_participants($atts) {
                             //Age Select
                             $('#oc-kid-age-select-'+num).on('change', function(e) {
                                 savedCookie = ocmCheckCookie(); 
-                                console.log(num)
-                                console.log(e.target.id)
                                 savedCookie['ages'][e.target.id.split('-').pop()] = parseInt(this.value);
                                 Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                             });
@@ -225,7 +223,6 @@ function oneclick_search_form_participants($atts) {
             $( ".oc-kid-age-select" ).each(function(index,element) {
                 $(element).on('change', function(e){
                     savedCookie = ocmCheckCookie(); 
-                    console.log(e.target.id)
                     savedCookie['ages'][e.target.id.split('-').pop()] = parseInt(this.value);
                     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                 });
