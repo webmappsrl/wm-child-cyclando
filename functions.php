@@ -16,6 +16,8 @@ require ('shortcodes/route-tabs/route-mobile-tab-program.php');
 require ('shortcodes/route-oc/oneclick_route_form_datepicker.php');
 require ('shortcodes/route-oc/oneclick_route_form_category.php');
 require ('shortcodes/route-oc/oneclick_route_form_single_room.php');
+require ('shortcodes/route-oc/oneclick_route_form_purchase.php');
+require ('shortcodes/route-oc/oneclick_route_your_reservation_panel.php');
 require ('api/api-loader.php');
 require ('includes/class_routeProductsOC.php') ;
 require ('includes/oc_ajax_route_price.php');

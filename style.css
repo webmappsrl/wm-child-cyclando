@@ -2218,6 +2218,17 @@ span.route_duration_free {
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.5);
 }
+.ocm-proceed-container{
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
 .ocm-participants-content, .ocm-bikes-content{
     margin: 0;
     padding: 4%;
@@ -2230,6 +2241,17 @@ span.route_duration_free {
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     bottom: 0;
+}
+.ocm-proceed-content{
+    position: relative;
+    margin: 5.7vh auto;
+    background-color: #fff;
+    width: 90%;
+    height: 90vh;
+    box-shadow: 0 5px 8px 0 rgb(0 0 0 / 20%), 0 7px 20px 0 rgb(0 0 0 / 17%);
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+    border-radius: 10px;
 }
 .modal-btn {
     background-color: #fff;
@@ -2322,6 +2344,19 @@ div#oc-kid-age-container {
     margin-top: 30px;
 }
 .oc-participants-done-btn:hover, .oc-bikes-done-btn:hover {
+    background-color: var(--color-secondary-hover);
+}
+.oc-proceed-done-btn {
+    width: 100%;
+    text-align: center;
+    background-color: var(--color-secondary);
+    padding: 10px;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 30px;
+    margin-top: 30px;
+}
+.oc-proceed-done-btn:hover {
     background-color: var(--color-secondary-hover);
 }
 .regular-label i, .ebike-label i {
@@ -2518,6 +2553,7 @@ div#searchpage-form-holder-mobile {
 }
 .facetwp-checkbox {
     background: url(assets/images/checkbox.png) 0 50% no-repeat!important;
+    align-self: center;
 }
 .searchpage-facets-filter-btn {
     background-color: var(--color-secondary);

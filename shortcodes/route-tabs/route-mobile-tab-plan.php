@@ -83,6 +83,7 @@ function route_mobile_tab_plan($atts) {
         <div class="oc-route-mobile-plan-price-container">
             <div class="cifraajax-title"><?= __('Total', 'wm-child-cyclando') ?></div><div class="cifraajax"></div>
         </div>
+        <?= do_shortcode("[oneclick_route_form_purchase route='true' ]")?>
         <div class="cyc-single-route-cta-buttons">
             <div id="cy-contact-in-basso" class="">
                 <div class="cy-btn-contact">
@@ -91,6 +92,9 @@ function route_mobile_tab_plan($atts) {
             </div>
         </div>
 	</div>
+    <div class="oc-route-mobile-your-reservation-container">
+        <?= do_shortcode("[oneclick_route_your_reservation_panel route='true' ]")?>
+    </div>
     <?php
 
 

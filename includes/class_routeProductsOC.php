@@ -169,9 +169,9 @@ class routeProductsOC {
 
         $object['departureDateFormated'] = $departureDateFormated;
         $object['todayPlus30'] = $todayPlus30;
-        $object['price'] = $this->price;
+        $object['price'] = number_format($this->price, 2, ',', '.');
         if ($deposit) {
-            $object['deposit'] = $deposit;
+            $object['deposit'] = number_format($deposit, 2, ',', '.');
         }
         $object['category'] = array_keys($hotel);
         $object['categoryname'] = $category;

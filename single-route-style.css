@@ -2080,6 +2080,34 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     display: grid;
     grid-row-gap: 15px;
 }
+.oc-route-mobile-your-reservation-container {
+    display: none;
+    padding: 15px;
+    box-shadow: 0 3px 6px 0 #dadada;
+    border-radius: 16px;
+    margin: 1.5rem;
+    font-size: 14px;
+    grid-row-gap: 15px;
+}
+.oc-route-your-reservation-header {
+    display: flex;
+    flex-wrap: wrap;
+}
+.oc-route-your-reservation-header > div{
+    flex-grow: 1;
+    width: 50%;
+}
+.oc-route-your-reservation-modify p {
+    text-align: right;
+    font-size: 12px;
+}
+.oc-route-your-reservation-modify span {
+    border-bottom: 1px solid;
+    padding: 0 5px;
+}
+.oc-route-your-reservation-title h4 {
+    font-size: 18px;
+}
 .oc-route-mobile-search-form-asbb-wrapper {
     display: grid;
     grid-column-gap: 15px;
@@ -2123,15 +2151,52 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
 .cifraajax-title {
     font-size: 18px;
 }
+.oc-route-mobile-search-form-container .oc-acquista-route.cyc-single-route-cta-buttons .cy-btn-contact {
+    border: 1px solid var(--color-secondary);
+    background-color: var(--color-secondary);
+}
+.oc-route-mobile-search-form-container .oc-acquista-route.cyc-single-route-cta-buttons .cy-btn-contact p {
+    color: white;
+    font-weight: 400;
+    text-transform: initial;
+}
+.oc-route-mobile-search-form-container .oc-acquista-route.cyc-single-route-cta-buttons .cy-btn-contact:hover {
+    background-color: var(--color-secondary-hover);
+}
 .oc-route-mobile-search-form-container .cyc-single-route-cta-buttons .cy-btn-contact {
     border: 1px solid var(--color-secondary);
 }
 .oc-route-mobile-search-form-container .cyc-single-route-cta-buttons .cy-btn-contact p {
     color: var(--color-secondary);
     font-weight: 400;
+    text-transform: initial;
 }
 .oc-route-mobile-search-form-container .cyc-single-route-cta-buttons .cy-btn-contact:hover {
     background-color: var(--color-secondary-hover);
+}
+.ocm-extras-proceed-summary-container {
+    position: absolute;
+    bottom: 0;
+    padding: 4%;
+    width: 100%;
+}
+.ocm-extras-proceed-detail-container {
+    padding: 4%;
+    width: 100%;
+}
+.ocm-proceed-extras-body {
+    display: grid;
+    grid-template-columns: 15fr 1fr 1fr 1fr;
+    padding: 10px 0;
+}
+.ocm-proceed-extras-body .label{
+    padding-left: 25px;
+    height: 100%;
+    line-height: 20px;
+}
+.ocm-extras-proceed-summary-container .oc-route-mobile-plan-price-container {
+    border-top: 1px solid #a7a7a7;
+    padding-top: 15px;
 }
 /* single route mobile description */
 .oc-single-route-mobile-description-container{
