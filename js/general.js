@@ -109,6 +109,15 @@ jQuery(document).ready(function () {
       jQuery(".cy-facetwp-cerca-quando input.facetwp-autocomplete-update").html("CERCA");
       jQuery(".cy-facetwp-cerca-quando input.facetwp-autocomplete-update").val("CERCA");
     }
+    jQuery(".facetwp-facet-quando_vuoi_partire .facetwp-dropdown").on('change',function(e){
+      var val = this.value;
+      FWP.parse_facets();
+      FWP.set_hash();
+      savedCookie = ocmCheckCookie(); 
+      var split = val.split('-');
+      savedCookie['departureMonth'] = split[0];
+      Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+    });
   });
 
   //mobile and desktop button management on first loading
@@ -182,6 +191,7 @@ jQuery(document).ready(function () {
     });
   });
 
+  
   if (lang == 'en-US') {
     main_url =
       window.location.protocol +
@@ -203,15 +213,15 @@ jQuery(document).ready(function () {
     }
   });
 
-  // upon click on menu search icon lente
-  jQuery("#vn-search-bar-header .facetwp-btn").click(function (event) {
-    // event.preventDefault();
-    location.href = main_url + "?_dove_vuoi_andare=" + filter;
-  });
+  // // upon click on menu search icon lente
+  // jQuery("#vn-search-bar-header .facetwp-btn").click(function (event) {
+  //   // event.preventDefault();
+  //   location.href = main_url + "?_dove_vuoi_andare=" + filter;
+  // });
 
-  jQuery("#vn-menu-search-map").click(function () {
-    location.href = main_url + "?_dove_vuoi_andare=" + filter + "&fwp_map=1";
-  });
+  // jQuery("#vn-menu-search-map").click(function () {
+  //   location.href = main_url + "?_dove_vuoi_andare=" + filter + "&fwp_map=1";
+  // });
 
   form.hover(
     function () {

@@ -217,6 +217,12 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 
 			return $dateTimestamp1 < $dateTimestamp2 ? -1 : 1;
 		});
+        $start_arraydFY = array();
+        $start_arrayYmd = array();
+		foreach ($start_array as $date) { 
+            $start_arraydFY[] = date_i18n('d F Y', strtotime($date));
+            $start_arrayYmd[] = date_i18n('Y-n-d', strtotime($date));
+        }
 		foreach ($start_array as $date) {
 			if (date('Y-m-d', strtotime('+7 day')) <= date('Y-m-d', strtotime($date))) {
 				$first_departure_date = date_i18n('d F', strtotime($date));
@@ -641,7 +647,84 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
     <script>
         var post_id = <?= $post_id ?>;
         var departureArrays = <?php echo json_encode($start_array)?>;
-        var first_departure_date_ajax = <?php echo json_encode($first_departure_date_ajax )?>;
+        var start_arraydFY = <?php echo json_encode($start_arraydFY)?>;
+        var start_arrayYmd = <?php echo json_encode($start_arrayYmd)?>;
+        // var first_departure_date_ajax = <?php //echo json_encode($first_departure_date_ajax )?>;
+        var first_departure_date_ajax;
+
+        jQuery(document).ready(function() {
+            if (Cookies.get('oc_participants_cookie')) {
+                var ocCookies = JSON.parse(Cookies.get('oc_participants_cookie'));
+                if (ocCookies['departureMonth']) {
+
+                    var finalDate = '';
+                    var sevenDaysFromToday;
+                    var monthNames = {gennaio:0,febbraio:1,marzo:2,aprile:3,maggio:4,giugno:5,luglio:6,agosto:7,settembre:8,ottobre:9,novembre:10,dicembre:11}
+                    var selectedMonthNumber = monthNames[ocCookies['departureMonth'].toLowerCase()];
+                    var d = new Date();
+                    var currentMonth = monthNames[d.getMonth()];
+
+                    // Set the first day of month
+                    var monthStartDay = 1;
+
+                    // Calculate the last day of the current month
+                    d.setDate(1)
+                    d.setMonth(d.getMonth() + 1)
+                    d.setDate(d.getDate() - 1)
+                    var monthLastDay = d.getDate();
+
+                    // Calculate the current date + 7 days
+                    d = new Date();
+                    d.setDate(d.getDate() + 7);
+                    var dayTodayPlusSevenDays = d.getDate();
+                    var monthTodayPlusSevenDays = d.getMonth();
+                    var yearTodayPlusSevenDays = d.getFullYear();
+
+                    if (monthTodayPlusSevenDays == selectedMonthNumber  ) {
+                        monthTodayPlusSevenDays++;
+                        dayTodayPlusSevenDays = '0'+dayTodayPlusSevenDays;
+                        dayTodayPlusSevenDays = dayTodayPlusSevenDays.slice(-2);
+                        sevenDaysFromToday = yearTodayPlusSevenDays+'-'+monthTodayPlusSevenDays+'-'+dayTodayPlusSevenDays;
+
+                        if (start_arrayYmd.indexOf(sevenDaysFromToday) > -1) {
+                            finalDate = sevenDaysFromToday;
+                        } else {
+                            var index = 0;
+                            while (index < start_arrayYmd.length && !finalDate) {
+                                if (sevenDaysFromToday < start_arrayYmd[index]) { 
+                                    finalDate =  start_arrayYmd[index];
+                                } else {
+                                    index++;
+                                }
+                            }
+                        }
+                    } else {
+                        var index = 0;
+                        while (index < start_arrayYmd.length && !finalDate) {
+                            if (!finalDate) {
+                                if (sevenDaysFromToday < start_arrayYmd[index]) { 
+                                    finalDate =  start_arrayYmd[index];
+                                } else {
+                                    index++;
+                                }
+                            }
+                        }
+                    }
+                    console.log(finalDate);
+                    finalDate = finalDate.split('-');
+                    finaleDay = finalDate[2];
+                    finaleMonth = finalDate[1];
+                    // var monthNames = {'1':'Gennaio','2':'Febbraio','3':'Marzo','4':'Aprile','5':'Maggio','6':'Giugno','7':'Luglio','8':'Agosto','9':'Settembre','1':'Ottobre','11':'Novembre','12':'Dicembre'};
+                    var monthNames = {'1':'01','2':'02','3':'03','4':'04','5':'05','6':'06','7':'07','8':'08','9':'09','1':'10','11':'11','12':'12'};
+
+                    finaleYear = finalDate[0];
+                    first_departure_date_ajax = finaleDay + '-' + monthNames[finaleMonth] + '-' + finaleYear;
+                    console.log(first_departure_date_ajax);
+                    ocCookies['departureDate'] = first_departure_date_ajax;
+                    Cookies.set('oc_participants_cookie', JSON.stringify(ocCookies), { expires: 7, path: '/' });
+                }
+            }
+        });
         function ajaxUpdatePrice(){
             if (Cookies.get('oc_participants_cookie')) {
             var ocCookies = JSON.parse(Cookies.get('oc_participants_cookie'));
@@ -659,7 +742,6 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                     jQuery(".cifraajax").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
                 },
                 success : function( response ) {
-                    console.log(response.responseText);
                     jQuery(".cifraajax").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
                 },
                 complete:function(response){
