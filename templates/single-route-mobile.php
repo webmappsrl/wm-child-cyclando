@@ -700,6 +700,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                         }
                     } else {
                         var index = 0;
+                        sevenDaysFromToday = monthStartDay+'-'+selectedMonthNumber+'-'+dayTodayPlusSevenDays;
                         while (index < start_arrayYmd.length && !finalDate) {
                             if (!finalDate) {
                                 if (sevenDaysFromToday < start_arrayYmd[index]) { 
