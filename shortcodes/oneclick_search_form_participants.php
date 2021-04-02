@@ -160,13 +160,13 @@ function oneclick_search_form_participants($atts) {
                             savedCookie['ages'][num] = 1;
                             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                             //Age Select
-                            // $('#oc-kid-age-select-'+num).on('change', function(e) {
-                            //     savedCookie = ocmCheckCookie(); 
-                            //     console.log(num)
-                            //     console.log(e.target.id)
-                            //     savedCookie['ages'][e.target.id.split('-').pop()] = parseInt(this.value);
-                            //     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
-                            // });
+                            $('#oc-kid-age-select-'+num).on('change', function(e) {
+                                savedCookie = ocmCheckCookie(); 
+                                console.log(num)
+                                console.log(e.target.id)
+                                savedCookie['ages'][e.target.id.split('-').pop()] = parseInt(this.value);
+                                Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                            });
                             $("#ocm-warning-container").empty();
                         } else {
                             $("#ocm-warning-container").empty();

@@ -195,13 +195,14 @@ jQuery(document).ready(function () {
   }
   lenteBanner.click(function () {
     str = location.search;
-
+    console.log(str);
     if (location.search === undefined) {
       location.href = main_url;
     } else {
       location.href = main_url + location.search;
     }
   });
+
   // upon click on menu search icon lente
   jQuery("#vn-search-bar-header .facetwp-btn").click(function (event) {
     // event.preventDefault();
