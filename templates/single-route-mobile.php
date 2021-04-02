@@ -649,8 +649,9 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         var departureArrays = <?php echo json_encode($start_array)?>;
         var start_arraydFY = <?php echo json_encode($start_arraydFY)?>;
         var start_arrayYmd = <?php echo json_encode($start_arrayYmd)?>;
-        // var first_departure_date_ajax = <?php //echo json_encode($first_departure_date_ajax )?>;
-        var first_departure_date_ajax;
+        var first_departure_date_ajax = <?php echo json_encode($first_departure_date_ajax )?>;
+        var planSummarytxt = '';
+
 
         jQuery(document).ready(function() {
             if (Cookies.get('oc_participants_cookie')) {
@@ -725,9 +726,8 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                         console.log(first_departure_date_ajax);
                         ocCookies['departureDate'] = first_departure_date_ajax;
                         Cookies.set('oc_participants_cookie', JSON.stringify(ocCookies), { expires: 7, path: '/' });
-                    } else {
-                        first_departure_date_ajax = <?php echo json_encode($first_departure_date_ajax )?>
-                    }
+                    } 
+                    
                 }
             }
         });
@@ -755,8 +755,16 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                     console.log(response.responseText);
                     console.log(obj);
                     jQuery(".cifraajax").html(obj.price+'€');
+                    jQuery( ".deposit-title" ).remove();
+                    jQuery( ".depositajax" ).remove();
+                    if (obj.deposit) {
+                        jQuery( ".oc-route-mobile-plan-price-container" ).prepend( 
+                            `<div class="deposit-title"><?= __('Deposit', 'wm-child-cyclando') ?></div><div class="depositajax">`+obj.deposit+`€</div>`
+                        );
+                    }
                     calcCategorySelectOptions(obj);
                     calcSigleSelectOptions();
+                    updatePlanSummaryTxt(ocCookies);
                 }
             });
         }
@@ -788,6 +796,33 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                     });
                 }
                 jQuery(".single-room-select-holder select").html(options);
+        }
+
+        function updatePlanSummaryTxt(savedCookie){
+            var sums = cal_sum_cookies(savedCookie);
+            planSummarytxt = sums['participants'] + ' ' + '<?= __('participants', 'wm-child-cyclando') ?>' + ', ' + sums['bikes'] + ' ' + '<?= __('bikes', 'wm-child-cyclando') ?>' + ' ' + '<?= __('for', 'wm-child-cyclando') ?>' + ' ' + '<?php echo json_encode($days)?>' + ' ' + '<?= __('days', 'wm-child-cyclando') ?>' ;
+            jQuery(".oc-route-mobile-plan-summary").html(planSummarytxt);
+        }
+
+        function cal_sum_cookies(savedCookie) {
+            parseInt(savedCookie['kids']) ? k = parseInt(savedCookie['kids']) : k = 0;
+            parseInt(savedCookie['adults']) ? a = parseInt(savedCookie['adults']) : a = 0;
+            if (a || k ){
+                var psum = a + k;
+            } else {
+                var psum = null;
+            }
+            parseInt(savedCookie['regular']) ? r = parseInt(savedCookie['regular']) : r = 0;
+            parseInt(savedCookie['electric']) ? e = parseInt(savedCookie['electric']) : e = 0;
+            if (e || r ){
+                var bsum = e + r;
+            } else {
+                var bsum = null;
+            }
+            var sums = {};
+            sums['participants'] = psum;
+            sums['bikes'] = bsum;
+            return sums;
         }
 
         jQuery(document).ready(function() {

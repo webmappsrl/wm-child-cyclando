@@ -76,7 +76,20 @@ function route_mobile_tab_plan($atts) {
             <div id="" class="oc-input-btn selected"><?php echo __('Bikes are included','wm-child-cyclando'); ?></div>
         <?php } ?>
         </div>
-        <div class="cifraajax"></div>
+        <div class="oc-route-mobile-plan-summary-container">
+            <h4><?= __('Best price for', 'wm-child-cyclando') ?></h4>
+            <div class="oc-route-mobile-plan-summary"></div>
+        </div>
+        <div class="oc-route-mobile-plan-price-container">
+            <div class="cifraajax-title"><?= __('Total', 'wm-child-cyclando') ?></div><div class="cifraajax"></div>
+        </div>
+        <div class="cyc-single-route-cta-buttons">
+            <div id="cy-contact-in-basso" class="">
+                <div class="cy-btn-contact">
+                    <p><?php echo __('Contact us', 'wm-child-cyclando'); ?></p>
+                </div>
+            </div>
+        </div>
 	</div>
     <?php
 

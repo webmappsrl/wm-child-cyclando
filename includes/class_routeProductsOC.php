@@ -122,7 +122,16 @@ class routeProductsOC {
         $electric = intval($this->cookies['electric']);
         
         $addToCart = '';
+        $deposit = 0;
+        $percentToGet = 25;
+        $percentInDecimal = $percentToGet / 100;
+        $departureDate = $this->cookies['departureDate'];
+        $departureDateExplod = explode('-',$departureDate);
+        $departureDateFormated = $departureDateExplod[2] . '-' . $departureDateExplod[1] . '-' . $departureDateExplod[0];
+        $datetime = date("Y-m-d");
+        $todayPlus30 = date('Y-m-d', strtotime('+30 day', strtotime($datetime)));
         
+
         if (array_key_exists($this->cookies['category'],$hotel)) {
             $category = $this->cookies['category'];
         } else {
@@ -154,8 +163,16 @@ class routeProductsOC {
             $this->price += $extra['ebike']['price'] * intval($electric);
         }
         
+        if ($departureDateFormated > $todayPlus30) {
+            $deposit = $percentInDecimal * $this->price;
+        }
 
+        $object['departureDateFormated'] = $departureDateFormated;
+        $object['todayPlus30'] = $todayPlus30;
         $object['price'] = $this->price;
+        if ($deposit) {
+            $object['deposit'] = $deposit;
+        }
         $object['category'] = array_keys($hotel);
         $object['categoryname'] = $category;
         $object['addtocart'] = $addToCart;

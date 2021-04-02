@@ -2089,6 +2089,50 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
 .w-tabs-section {
     width: 100%;
 }
+.oc-route-mobile-plan-summary-container h4 {
+    font-size: 18px;
+    margin: 0;
+}
+.oc-route-mobile-plan-summary {
+    font-size: 14px;
+    padding-left: 10px;
+}
+.oc-route-mobile-plan-summary-container {
+    border-top: 1px solid #a7a7a7;
+    padding-top: 15px;
+}
+.oc-route-mobile-plan-price-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.oc-route-mobile-plan-price-container > div {
+    flex-grow: 1;
+    width: 50%;
+}
+.depositajax {
+    text-align: right;
+    font-size: 24px;
+}
+.deposit-title {
+    font-size: 18px;
+}
+.cifraajax {
+    text-align: right;
+    font-size: 24px;
+}
+.cifraajax-title {
+    font-size: 18px;
+}
+.oc-route-mobile-search-form-container .cyc-single-route-cta-buttons .cy-btn-contact {
+    border: 1px solid var(--color-secondary);
+}
+.oc-route-mobile-search-form-container .cyc-single-route-cta-buttons .cy-btn-contact p {
+    color: var(--color-secondary);
+    font-weight: 400;
+}
+.oc-route-mobile-search-form-container .cyc-single-route-cta-buttons .cy-btn-contact:hover {
+    background-color: var(--color-secondary-hover);
+}
 /* single route mobile description */
 .oc-single-route-mobile-description-container{
     padding-top: 0px!important;
@@ -2413,4 +2457,3 @@ body .ui-datepicker.ui-widget.ui-widget-content {
     background-size: 11%;
     background-position: 88%;
 }
-
