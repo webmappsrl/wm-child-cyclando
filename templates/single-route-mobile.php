@@ -800,7 +800,15 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 
         function updatePlanSummaryTxt(savedCookie){
             var sums = cal_sum_cookies(savedCookie);
-            planSummarytxt = sums['participants'] + ' ' + '<?= __('participants', 'wm-child-cyclando') ?>' + ', ' + sums['bikes'] + ' ' + '<?= __('bikes', 'wm-child-cyclando') ?>' + ' ' + '<?= __('for', 'wm-child-cyclando') ?>' + ' ' + '<?php echo json_encode($days)?>' + ' ' + '<?= __('days', 'wm-child-cyclando') ?>' ;
+            var planSummarytxtBikes = '';
+            planSummarytxtPartecipants = sums['participants'] + ' ' + '<?= __('participants', 'wm-child-cyclando') ?>';
+            if (sums['bikes']) {
+                planSummarytxtBikes = ', ' + sums['bikes'] + ' ' + '<?= __('bikes', 'wm-child-cyclando') ?>';
+            }
+            planSummarytxtDuration = ' ' + '<?= __('for', 'wm-child-cyclando') ?>' + ' ' + '<?php echo json_encode($days)?>' + ' ' + '<?= __('days', 'wm-child-cyclando') ?>' ;
+
+            planSummarytxt =  planSummarytxtPartecipants + planSummarytxtBikes + planSummarytxtDuration;
+
             jQuery(".oc-route-mobile-plan-summary").html(planSummarytxt);
         }
 
