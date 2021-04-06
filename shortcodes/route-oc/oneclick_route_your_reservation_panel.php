@@ -57,13 +57,10 @@ function oneclick_route_your_reservation_panel($atts) {
     <div class="oc-route-mobile-plan-price-container">
         <div class="cifraajax-title"><?= __('Total', 'wm-child-cyclando') ?></div><div class="cifraajax"></div>
     </div>
-    
+
     <script>
         (function ($) {
             $(document).ready(function () {
-
-                var savedCookies = ocmCheckCookie();
-                $('#oc-route-your-reservation-departure').html(savedCookies['departureDate']);
 
                 // hide and show the plan Tab
                 $('#oc-route-your-reservation-modify').on('click',function(){
