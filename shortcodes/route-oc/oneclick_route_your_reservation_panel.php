@@ -143,7 +143,6 @@ function oneclick_route_your_reservation_panel($atts)
                         savedCookies['billingprivacy'] = $( ".purchase-form-checkbox-privacy" ).val();
                         savedCookies['billingconditions'] = $( ".purchase-form-checkbox-conditions" ).val();
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookies), { expires: 7, path: '/' });
-                        $("<input/>").attr("type", "hidden").attr("name", "add-to-cart").attr("value", savedCookies['addtocart']).appendTo(this);
                         form.submit();
                     }
                 });

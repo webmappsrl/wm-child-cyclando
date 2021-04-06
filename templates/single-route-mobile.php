@@ -766,6 +766,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                     calcSigleSelectOptions();
                     updatePlanSummaryTxt(ocCookies);
                     updateYourReservationSummaryTxt(ocCookies);
+                    jQuery('#yourReservationPurchaseFrom').append('<input type="hidden" name="add-to-cart" value="'+obj.addtocart+'" />');
                 }
             });
         }
