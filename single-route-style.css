@@ -2131,6 +2131,19 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     min-height: 3rem;
     padding: 0 1.3rem;
 }
+.oc-route-your-reservation-purchase-form-container input.form-input.error {
+    border: 1px solid var(--color-secondary-hover);
+}
+.oc-route-your-reservation-purchase-form-container label.error {
+    display: none!important;
+}
+.oc-route-your-reservation-purchase-form-container div.error {
+    color: var(--color-secondary-hover);
+}
+.oc-route-your-reservation-purchase-form-container .purchase-form-checkbox input.error {
+    background: none!important;
+    border: 1px solid var(--color-secondary-hover);
+}
 .oc-route-your-reservation-purchase-form-container input.form-input::placeholder {
     font-size: 14px;
 }

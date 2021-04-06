@@ -73,11 +73,14 @@ function oneclick_route_your_reservation_panel($atts)
             </div>
             <div class="purchase-form-checkbox">
                 <input type="checkbox" class="checkbox" id="privacy" name="privacy">
-                <p class="purchase-form-checkbox-info purchase-form-checkbox-privacy"><?= __('I have read and accept the terms of the privacy policy on data processing', 'wm-child-cyclando') ?></p>
+                <p class="purchase-form-checkbox-info purchase-form-checkbox-privacy"><?= __("I have read and accept the terms of the <a href='/privacy'>privacy policy on data processing</a>", 'wm-child-cyclando') ?></p>
             </div>
             <div class="purchase-form-checkbox">
                 <input type="checkbox" class="checkbox" id="conditions" name="conditions">
-                <p class="purchase-form-checkbox-info purchase-form-checkbox-conditions"><?= __('I have read and accept the terms and conditions', 'wm-child-cyclando') ?></p>
+                <p class="purchase-form-checkbox-info purchase-form-checkbox-conditions"><?= __("I have read and accept the <a href='/privacy'>terms and conditions</a>", 'wm-child-cyclando') ?></p>
+            </div>
+            <div class="error" style="">
+                <span></span>
             </div>
             <input type="submit" value="Paga" class="form-submit">
         </form>
@@ -87,6 +90,16 @@ function oneclick_route_your_reservation_panel($atts)
             $(document).ready(function() {
                 // Selezione form e definizione dei metodi di validazione
                 $("#yourReservationPurchaseFrom").validate({
+                    invalidHandler: function (e, validator) {
+                    var errors = validator.numberOfInvalids();
+                    if (errors) {
+                        var message = errors == 1 ? '<?php echo __('You missed 1 field.', 'wm-child-cyclando'); ?>' : '<?php echo __('You missed', 'wm-child-cyclando'); ?> ' + errors + ' <?php echo __('field.', 'wm-child-cyclando'); ?>';
+                        $("div.error span").html(message);
+                        $("div.error").show();
+                    } else {
+                        $("div.error").hide();
+                    }
+                    },
                     // Definiamo le nostre regole di validazione
                     rules: {
                         // login - nome del campo di input da validare
@@ -114,11 +127,11 @@ function oneclick_route_your_reservation_panel($atts)
                     },
                     // Personalizzimao i mesasggi di errore
                     messages: {
-                        name: "Inserisci la login",
-                        surname: "Inserisci la login",
+                        name: "Inserisci il nome",
+                        surname: "Inserisci il cognome",
                         email: "Inserisci la tua email",
-                        privacy: "Inserisci la tua email",
-                        conditions: "Inserisci la tua email",
+                        privacy: "Accetta la privacy e policy",
+                        conditions: "Accetta i termini e condizioni",
                     },
                     // Settiamo il submit handler per la form
                     submitHandler: function(form) {
