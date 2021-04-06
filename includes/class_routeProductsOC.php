@@ -161,11 +161,11 @@ class routeProductsOC {
         }
         if ($regular && $extra['bike']) {
             $this->price += $extra['bike']['price'] * intval($regular);
-            $addToCart[] = $extra['bike']['price'] . ':' . $regular;
+            $addToCart[] = $extra['bike']['id'] . ':' . $regular;
         }
         if ($electric && $extra['ebike']) {
             $this->price += $extra['ebike']['price'] * intval($electric);
-            $addToCart[] = $extra['ebike']['price'] . ':' . $electric;
+            $addToCart[] = $extra['ebike']['id'] . ':' . $electric;
         }
         
         if ($departureDateFormated > $todayPlus30) {
