@@ -2108,6 +2108,54 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     border-bottom: 1px solid;
     padding: 0 5px;
 }
+.oc-route-your-reservation-purchase-form-container .form-submit {
+    border: 1px solid var(--color-secondary);
+    background-color: var(--color-secondary);
+    width: 100%;
+    padding: 13px;
+    border-radius: 30px;
+    margin-top: 13px;
+    margin-bottom: 10px;
+}
+.oc-route-your-reservation-purchase-form-container .form-submit:hover,.oc-route-your-reservation-purchase-form-container .form-submit:focus {
+    border: 1px solid var(--color-secondary-hover);
+    background-color: var(--color-secondary-hover);
+}
+.oc-route-your-reservation-purchase-form-container input.form-input {
+    background-color: white;
+    box-shadow: none;
+    margin-bottom: 13px;
+    border: 1px solid black;
+    border-radius: 30px;
+    line-height: 3rem;
+    min-height: 3rem;
+    padding: 0 1.3rem;
+}
+.oc-route-your-reservation-purchase-form-container input.form-input::placeholder {
+    font-size: 14px;
+}
+.oc-route-your-reservation-purchase-form-container {
+    padding-top: 20px;
+}
+.oc-route-your-reservation-purchase-form-container h3{
+    margin-bottom: 15px;
+}
+.oc-route-your-reservation-purchase-form-container .purchase-form-checkbox{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+.oc-route-your-reservation-purchase-form-container .purchase-form-checkbox-info{
+    line-height: 20px;
+    width: 100%;
+}
+.oc-route-your-reservation-purchase-form-container .purchase-form-checkbox input{
+    appearance: none;
+    background: url(assets/images/checkbox.png) 0 50% no-repeat!important;
+}
+.oc-route-your-reservation-purchase-form-container .purchase-form-checkbox input:checked{
+    background-image: url(assets/images/checkbox-on.png)!important;
+}
 .oc-route-your-reservation-title h4 {
     font-size: 18px;
 }

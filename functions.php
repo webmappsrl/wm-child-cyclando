@@ -60,6 +60,9 @@ function Divi_parent_theme_enqueue_styles() {
     wp_register_script('hubspot_contact_form_IE8', '//js.hsforms.net/forms/v2-legacy.js', array('jquery'));
     wp_enqueue_script( 'hubspot_contact_form_IE8');
     wp_script_add_data( 'hubspot_contact_form_IE8', 'conditional', 'lt IE 8' );
+    if (is_singular('route')){
+        wp_enqueue_script('jQueryValidate', 'https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.2/jquery.validate.min.js', array('jquery'));
+    }
 }
 
 function admin_css_load() {
