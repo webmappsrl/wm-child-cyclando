@@ -834,7 +834,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             if (savedCookie['regular']) {
                 yRSummarytxtRegular = savedCookie['regular'] + ' ' + '<?= __('regular', 'wm-child-cyclando') ?>';
             }
-            if (savedCookie['regular']) {
+            if (savedCookie['regular'] && savedCookie['electric']) {
                 yRSummarytxtRegularComa = ', ';
             }
             if (savedCookie['electric']) {
