@@ -63,7 +63,7 @@ function oneclick_route_your_reservation_panel($atts)
 
     <div class="oc-route-your-reservation-purchase-form-container">
         <h3 class="oc-route-your-reservation-purchase-form-title"><?php echo __('Purchase', 'wm-child-cyclando'); ?></h3>
-        <form action="/quote-wc" method="get" id="yourReservationPurchaseFrom">
+        <form action="/quote-wc?add-to-cart=96810:2,120:2,201:2" method="get" id="yourReservationPurchaseFrom">
             <input type="text" name="name" class="form-input oc-form-name" placeholder="<?php echo __('Name', 'wm-child-cyclando'); ?>">
             <input type="text" name="surname" class="form-input oc-form-surname" placeholder="<?php echo __('Surname', 'wm-child-cyclando'); ?>">
             <input type="text" name="email" class="form-input oc-form-email" placeholder="<?php echo __('Email', 'wm-child-cyclando'); ?>">

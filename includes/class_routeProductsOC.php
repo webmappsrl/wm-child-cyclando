@@ -121,7 +121,7 @@ class routeProductsOC {
         $regular = intval($this->cookies['regular']);
         $electric = intval($this->cookies['electric']);
         
-        $addToCart = '';
+        $addToCart = array();
         $deposit = 0;
         $percentToGet = 25;
         $percentInDecimal = $percentToGet / 100;
@@ -152,15 +152,20 @@ class routeProductsOC {
 
         if ($adults) {
             $this->price += $hotel[$category]['adult']['price'] * intval($adults);
+            $addToCart[] = $hotel[$category]['adult']['id'] . ':' . intval($adults);
         }
         if ($kids) {
-            $this->price += $this->calculateKidsPrice($hotel[$category],$kids,$ages);
+            $calculateKidsPriceResult = $this->calculateKidsPrice($hotel[$category],$kids,$ages);
+            $this->price += $calculateKidsPriceResult['price'];
+            $addToCart[] = $calculateKidsPriceResult['add_to_cart'];
         }
         if ($regular && $extra['bike']) {
             $this->price += $extra['bike']['price'] * intval($regular);
+            $addToCart[] = $extra['bike']['price'] . ':' . $regular;
         }
         if ($electric && $extra['ebike']) {
             $this->price += $extra['ebike']['price'] * intval($electric);
+            $addToCart[] = $extra['ebike']['price'] . ':' . $electric;
         }
         
         if ($departureDateFormated > $todayPlus30) {
@@ -175,7 +180,7 @@ class routeProductsOC {
         }
         $object['category'] = array_keys($hotel);
         $object['categoryname'] = $category;
-        $object['addtocart'] = $addToCart;
+        $object['addtocart'] = implode(',',$addToCart);
         return $object;
     }
 
@@ -216,14 +221,14 @@ class routeProductsOC {
 
     public function calculateKidsPrice($category,$kids,$ages){
 
-        $price = 0;
+        $price = array();
         $minAge = 0;
         $maxAge1 = 0;
         $minAge2 = 0;
         $maxAge2 = 0;
         $minAge3 = 0;
         $maxAge = 0;
-        $adultPrice = 0;
+        $adultPrice = array();
 
         foreach($category as $key => $value) {
             if (strpos($key, 'kid')!== false) {
@@ -248,7 +253,8 @@ class routeProductsOC {
                 }
             }
             if ($key == 'adult') {
-                $adultPrice = $value['price'];
+                $adultPrice['price'] = $value['price'];
+                $adultPrice['id'] = $value['id'];
             }
         }
         foreach($ages as $age) {
@@ -257,26 +263,30 @@ class routeProductsOC {
                     $kidExplode = explode('_',$key);
                     if ($minAge <= $age && $age <= $maxAge1 ) {
                         if ($kidExplode[0] == 'kid1') {
-                            $price += intval($value['price']);
+                            $price['price'] += intval($value['price']);
+                            $add_to_cart[] = $value['id'] . ':' . '1';
                         }
                     }
                     if ($minAge2 <= $age && $age <= $maxAge2 ) {
                         if ($kidExplode[0] == 'kid2') {
-                            $price += intval($value['price']);
+                            $price['price'] += intval($value['price']);
+                            $add_to_cart[] = $value['id'] . ':' . '1';
                         }
                     }
                     if ($minAge3 <= $age && $age <= $maxAge ) {
                         if ($kidExplode[0] == 'kid3') {
-                            $price += intval($value['price']);
+                            $price['price'] += intval($value['price']);
+                            $add_to_cart[] = $value['id'] . ':' . '1';
                         }
                     }
                 }
             }
             if ($maxAge < $age ) {
-                $price += intval($adultPrice);
+                $price['price'] += intval($adultPrice['price']);
+                $add_to_cart[] = $adultPrice['id'] . ':' . '1';
             }
         }
-
+        $price['add_to_cart'] = implode(',',$add_to_cart);
         return $price;
     }
 }
