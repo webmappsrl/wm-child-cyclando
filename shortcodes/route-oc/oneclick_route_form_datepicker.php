@@ -21,6 +21,7 @@ function oneclick_route_form_datepicker() {
                     $( "#datepicker" ).val(Cookiedate[0]+" "+monthNames[Cookiedate[1]]+" "+Cookiedate[2]);
                 } else {
                     $( "#datepicker" ).val(first_departure_date_ajax);
+                    $('#oc-route-your-reservation-departure').html(first_departure_date_ajax);
                 }
 
                 function availableDepartures(date) {
@@ -77,6 +78,7 @@ function oneclick_route_form_datepicker() {
                         console.log(savedCookie['departureDate']);
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                         $("#datepicker").datepicker("option", "dateFormat", "d MM yy" );
+                        $('#oc-route-your-reservation-departure').html(dateText);
                         var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie')); 
                         ajaxUpdatePrice();
                     },

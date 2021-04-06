@@ -2089,16 +2089,19 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     font-size: 14px;
     grid-row-gap: 15px;
 }
-.oc-route-your-reservation-header {
+.oc-route-your-reservation-row {
     display: flex;
     flex-wrap: wrap;
+    padding-bottom: 13px;
 }
-.oc-route-your-reservation-header > div{
+.oc-route-your-reservation-row > div{
     flex-grow: 1;
     width: 50%;
 }
-.oc-route-your-reservation-modify p {
+.oc-route-your-reservation-column-info p {
     text-align: right;
+}
+.oc-route-your-reservation-modify p {
     font-size: 12px;
 }
 .oc-route-your-reservation-modify span {

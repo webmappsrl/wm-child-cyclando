@@ -765,6 +765,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                     calcCategorySelectOptions(obj);
                     calcSigleSelectOptions();
                     updatePlanSummaryTxt(ocCookies);
+                    updateYourReservationSummaryTxt(ocCookies);
                 }
             });
         }
@@ -810,6 +811,50 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             planSummarytxt =  planSummarytxtPartecipants + planSummarytxtBikes + planSummarytxtDuration;
 
             jQuery(".oc-route-mobile-plan-summary").html(planSummarytxt);
+        }
+
+        function updateYourReservationSummaryTxt(savedCookie){
+
+            var yRSummarytxtKids = '';
+            yRSummarytxtadults = savedCookie['adults'] + ' ' + '<?= __('adults', 'wm-child-cyclando') ?>';
+            if (savedCookie['kids']) {
+                yRSummarytxtKids = ', ' + savedCookie['kids'] + ' ' + '<?= __('kids', 'wm-child-cyclando') ?>';
+            }
+
+            var yRSummarytxtRegular = '';
+            var yRSummarytxtElectric = '';
+            var yRSummarytxtRegularComa = '';
+            if (savedCookie['regular'] || savedCookie['electric']) {
+                jQuery('.oc-route-your-reservation-bikes-title').show();
+                jQuery('.oc-route-your-reservation-bikes-info').show();
+            } else {
+                jQuery('.oc-route-your-reservation-bikes-title').hide();
+                jQuery('.oc-route-your-reservation-bikes-info').hide();
+            }
+            if (savedCookie['regular']) {
+                yRSummarytxtRegular = savedCookie['regular'] + ' ' + '<?= __('regular', 'wm-child-cyclando') ?>';
+            }
+            if (savedCookie['regular']) {
+                yRSummarytxtRegularComa = ', ';
+            }
+            if (savedCookie['electric']) {
+                yRSummarytxtElectric =  savedCookie['electric'] + ' ' + '<?= __('electric', 'wm-child-cyclando') ?>';
+            }
+            
+            var yRSummarytxtCategory = '';
+            if (savedCookie['category']) {
+                jQuery('.oc-route-your-reservation-category-title').show();
+                jQuery('.oc-route-your-reservation-category-info').show();
+                jQuery("#oc-route-your-reservation-category").html(savedCookie['electric']);
+            } else {
+                jQuery('.oc-route-your-reservation-category-title').hide();
+                jQuery('.oc-route-your-reservation-category-info').hide();
+            }
+
+            yRSummarytxtParticipants =  yRSummarytxtadults + yRSummarytxtKids ;
+            yRSummarytxtBikes =  yRSummarytxtRegular + yRSummarytxtRegularComa + yRSummarytxtElectric ;
+            jQuery("#oc-route-your-reservation-participants").html(yRSummarytxtParticipants);
+            jQuery("#oc-route-your-reservation-bikes").html(yRSummarytxtBikes);
         }
 
         function cal_sum_cookies(savedCookie) {
