@@ -19,6 +19,7 @@ function oneclick_route_form_datepicker() {
                     var Cookiedate = savedCookie['departureDate'].split('-');
                     var monthNames = {'01':'Gennaio','02':'Febbraio','03':'Marzo','04':'Aprile','05':'Maggio','06':'Giugno','07':'Luglio','08':'Agosto','09':'Settembre','10':'Ottobre','11':'Novembre','12':'Dicembre'}
                     $( "#datepicker" ).val(Cookiedate[0]+" "+monthNames[Cookiedate[1]]+" "+Cookiedate[2]);
+                    $('#oc-route-your-reservation-departure').html(Cookiedate[0]+" "+monthNames[Cookiedate[1]]+" "+Cookiedate[2]);
                 } else {
                     $( "#datepicker" ).val(first_departure_date_ajax);
                     $('#oc-route-your-reservation-departure').html(first_departure_date_ajax);
