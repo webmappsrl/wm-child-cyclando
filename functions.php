@@ -31,8 +31,8 @@ if ( class_exists( 'WP_CLI' ) ) {
 // Uncomment to disable GUTHENBERG
 // add_filter('use_block_editor_for_post_type', '__return_false');
 
-add_action('woocommerce_before_cart', 'preventivi_json_to_text',15);
-add_action('woocommerce_before_checkout_form', 'preventivi_json_to_text',15);
+//add_action('woocommerce_before_cart', 'preventivi_json_to_text',15);
+//add_action('woocommerce_before_checkout_form', 'preventivi_json_to_text',15);
 
 
 /**

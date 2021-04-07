@@ -123,7 +123,6 @@ class routeProductsOC {
         
         $addToCart = array();
         $deposit = 0;
-        $depositDescription = '{"routeId":96737,"hotel":{"name":"Stagione A","adult":{"productId":96759,"price":545},"thirdAdult":{"productId":96762,"price":372},"singleRoom":{"productId":96760,"price":196},"singleTraveller":{"productId":96761,"price":168}},"departureDate":"2020-11-26","rooms":[[{"firstName":"asd","lastName":"asd","price":909,"type":0,"date":"1978-10-18"}]],"duration":"7","from":"Pisa","to":"Firenze"}';
         $percentToGet = 25;
         $percentInDecimal = $percentToGet / 100;
         $departureDate = $this->cookies['departureDate'];
@@ -176,13 +175,13 @@ class routeProductsOC {
         $object['departureDateFormated'] = $departureDateFormated;
         $object['todayPlus30'] = $todayPlus30;
         $object['price'] = number_format($this->price, 2, ',', '.');
-        if ($deposit) {
-            $object['deposit'] = number_format($deposit, 2, ',', '.');
-            $object['depositcode'] = $this->createDeposit($this->price,$deposit,$depositDescription);
-        }
         $object['category'] = array_keys($hotel);
         $object['categoryname'] = $category;
         $object['addtocart'] = implode(',',$addToCart);
+        if ($deposit) {
+            $object['deposit'] = number_format($deposit, 2, ',', '.');
+            $object['depositaddtocart'] = $this->createDepositProduct($this->price,$deposit);
+        }
         return $object;
     }
 
@@ -292,26 +291,21 @@ class routeProductsOC {
         return $price;
     }
 
-    public function createDeposit($price,$depositamount,$depositDescription) {
-        $coupon_code = time().$price; // Code
-        $amount = 0; // depositamount
-        $discount_type = 'fixed_cart'; // Type: fixed_cart, percent, fixed_product, percent_product
+    public function createDepositProduct($price,$depositamount) {
+        $product_title = time().$price; // Code
 
-        $coupon = array(
-        'post_title' => $coupon_code,
-        'post_excerpt' => $depositDescription,
+        $product_args = array(
+        'post_title' => $product_title,
         'post_status' => 'publish',
         'post_author' => 1,
-        'post_type' => 'shop_coupon');
+        'post_type' => 'product');
 
-        $new_coupon_id = wp_insert_post( $coupon );
+        $new_product_id = wp_insert_post( $product_args );
 
         // Add meta
-        update_post_meta( $new_coupon_id, 'discount_type', $discount_type );
-        update_post_meta( $new_coupon_id, 'coupon_amount', $amount );
-        update_post_meta( $new_coupon_id, 'individual_use', 'true' );
+        update_post_meta( $new_product_id, '_price', $depositamount );
 
-        return $coupon_code;
+        return $new_product_id.':1';
     }
 }
 

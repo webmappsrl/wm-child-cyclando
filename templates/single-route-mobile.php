@@ -751,6 +751,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                     jQuery(".cifraajax").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
                 },
                 complete:function(response){
+                    var addtocart = '';
                     obj = JSON.parse(response.responseText);
                     console.log(response.responseText);
                     console.log(obj);
@@ -762,16 +763,17 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                             `<div class="deposit-title"><?= __('Deposit', 'wm-child-cyclando') ?></div><div class="depositajax">`+obj.deposit+`€</div>`
                         );
                     }
+                    if (obj.depositaddtocart) {
+                        addtocart = obj.depositaddtocart;
+                    } else {
+                        addtocart = obj.addtocart;
+                    }
                     calcCategorySelectOptions(obj);
                     calcSigleSelectOptions();
                     updatePlanSummaryTxt(ocCookies);
                     updateYourReservationSummaryTxt(ocCookies);
-                    jQuery( "#quotewccoupon" ).remove();
                     jQuery( "#quotewcaddtocart" ).remove();
-                    jQuery( "#quotewcinsurance" ).remove();
-                    jQuery('#yourReservationPurchaseFrom').prepend('<input type="hidden" id="quotewcinsurance" name="insurance" value="0" />');
-                    jQuery('#yourReservationPurchaseFrom').prepend('<input type="hidden" id="quotewccoupon" name="coupon" value="'+obj.depositcode+'" />');
-                    jQuery('#yourReservationPurchaseFrom').prepend('<input type="hidden" id="quotewcaddtocart" name="add-to-cart" value="'+obj.addtocart+'" />');
+                    jQuery('#yourReservationPurchaseFrom').prepend('<input type="hidden" id="quotewcaddtocart" name="add-to-cart" value="'+addtocart+'" />');
                 }
             });
         }
@@ -883,6 +885,33 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             sums['bikes'] = bsum;
             return sums;
         }
+
+        // ajax on route purchase button that creates a new hubspot deal 
+        function ajaxCreatHubspotDeal(){
+            if (Cookies.get('oc_participants_cookie')) {
+            var ocCookies = JSON.parse(Cookies.get('oc_participants_cookie'));
+            }
+            var data = {
+                'action': 'oc_ajax_create_hs_deal',
+                'postid':  post_id,
+                'cookies':  ocCookies,
+            };
+            jQuery.ajax({
+                url: '/wp-admin/admin-ajax.php',
+                type : 'post',
+                data: data,
+                beforeSend: function(){
+                },
+                success : function( response ) {
+                },
+                complete:function(response){
+                    obj = JSON.parse(response.responseText);
+                    console.log(response.responseText);
+                    console.log(obj);
+                }
+            });
+        }
+
 
         jQuery(document).ready(function() {
             
@@ -1023,9 +1052,9 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                 });
             });
         });
-            jQuery(document).ready(function(){
-                jQuery('#cyc-single-route-monarch-gallery-button').click(function(){jQuery('.rsFullscreenBtn').trigger('click')})
-            });
+        jQuery(document).ready(function(){
+            jQuery('#cyc-single-route-monarch-gallery-button').click(function(){jQuery('.rsFullscreenBtn').trigger('click')})
+        });
 
             
         </script>

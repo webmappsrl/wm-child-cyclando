@@ -73,11 +73,11 @@ function oneclick_route_your_reservation_panel($atts)
             </div>
             <div class="purchase-form-checkbox">
                 <input type="checkbox" class="checkbox" id="privacy" name="quotewcprivacy">
-                <p class="purchase-form-checkbox-info purchase-form-checkbox-privacy"><?= __("I have read and accept the terms of the <a href='/privacy'>privacy policy on data processing</a>", 'wm-child-cyclando') ?></p>
+                <p class="purchase-form-checkbox-info purchase-form-checkbox-privacy"><?= __("I have read and accept the terms of the <a href='/privacy'>privacy policy on data processing</a>", 'wm-child-cyclando') ?><abbr class="required" title="obbligatorio">*</abbr></p>
             </div>
             <div class="purchase-form-checkbox">
                 <input type="checkbox" class="checkbox" id="conditions" name="quotewcconditions">
-                <p class="purchase-form-checkbox-info purchase-form-checkbox-conditions"><?= __("I have read and accept the <a href='/privacy'>terms and conditions</a>", 'wm-child-cyclando') ?></p>
+                <p class="purchase-form-checkbox-info purchase-form-checkbox-conditions"><?= __("I have read and accept the <a href='/privacy'>terms and conditions</a>", 'wm-child-cyclando') ?><abbr class="required" title="obbligatorio">*</abbr></p>
             </div>
             <div class="error" style="">
                 <span></span>
@@ -144,6 +144,7 @@ function oneclick_route_your_reservation_panel($atts)
                         savedCookies['billingconditions'] = $( ".purchase-form-checkbox-conditions" ).val();
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookies), { expires: 7, path: '/' });
                         form.submit();
+                        //ajaxCreatHubspotDeal();
                     }
                 });
                 // hide and show the plan Tab
