@@ -123,6 +123,7 @@ class routeProductsOC {
         
         $addToCart = array();
         $deposit = 0;
+        $depositDescription = '{"routeId":96737,"hotel":{"name":"Stagione A","adult":{"productId":96759,"price":545},"thirdAdult":{"productId":96762,"price":372},"singleRoom":{"productId":96760,"price":196},"singleTraveller":{"productId":96761,"price":168}},"departureDate":"2020-11-26","rooms":[[{"firstName":"asd","lastName":"asd","price":909,"type":0,"date":"1978-10-18"}]],"duration":"7","from":"Pisa","to":"Firenze"}';
         $percentToGet = 25;
         $percentInDecimal = $percentToGet / 100;
         $departureDate = $this->cookies['departureDate'];
@@ -177,6 +178,7 @@ class routeProductsOC {
         $object['price'] = number_format($this->price, 2, ',', '.');
         if ($deposit) {
             $object['deposit'] = number_format($deposit, 2, ',', '.');
+            $object['depositcode'] = $this->createDeposit($this->price,$deposit,$depositDescription);
         }
         $object['category'] = array_keys($hotel);
         $object['categoryname'] = $category;
@@ -289,4 +291,27 @@ class routeProductsOC {
         $price['add_to_cart'] = implode(',',$add_to_cart);
         return $price;
     }
+
+    public function createDeposit($price,$depositamount,$depositDescription) {
+        $coupon_code = time().$price; // Code
+        $amount = 0; // Amount
+        $discount_type = 'fixed_cart'; // Type: fixed_cart, percent, fixed_product, percent_product
+
+        $coupon = array(
+        'post_title' => $coupon_code,
+        'post_excerpt' => $depositDescription,
+        'post_status' => 'publish',
+        'post_author' => 1,
+        'post_type' => 'shop_coupon');
+
+        $new_coupon_id = wp_insert_post( $coupon );
+
+        // Add meta
+        update_post_meta( $new_coupon_id, 'discount_type', $discount_type );
+        update_post_meta( $new_coupon_id, 'coupon_amount', $amount );
+        update_post_meta( $new_coupon_id, 'individual_use', 'true' );
+
+        return $coupon_code;
+    }
 }
+
