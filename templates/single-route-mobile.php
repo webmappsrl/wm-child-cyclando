@@ -766,8 +766,12 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                     calcSigleSelectOptions();
                     updatePlanSummaryTxt(ocCookies);
                     updateYourReservationSummaryTxt(ocCookies);
-                    jQuery('#yourReservationPurchaseFrom').prepend('<input type="hidden" name="coupon" value="'+obj.depositcode+'" />');
-                    jQuery('#yourReservationPurchaseFrom').prepend('<input type="hidden" name="add-to-cart" value="'+obj.addtocart+'" />');
+                    jQuery( "#quotewccoupon" ).remove();
+                    jQuery( "#quotewcaddtocart" ).remove();
+                    jQuery( "#quotewcinsurance" ).remove();
+                    jQuery('#yourReservationPurchaseFrom').prepend('<input type="hidden" id="quotewcinsurance" name="insurance" value="0" />');
+                    jQuery('#yourReservationPurchaseFrom').prepend('<input type="hidden" id="quotewccoupon" name="coupon" value="'+obj.depositcode+'" />');
+                    jQuery('#yourReservationPurchaseFrom').prepend('<input type="hidden" id="quotewcaddtocart" name="add-to-cart" value="'+obj.addtocart+'" />');
                 }
             });
         }

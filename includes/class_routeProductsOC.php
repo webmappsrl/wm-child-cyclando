@@ -294,7 +294,7 @@ class routeProductsOC {
 
     public function createDeposit($price,$depositamount,$depositDescription) {
         $coupon_code = time().$price; // Code
-        $amount = 0; // Amount
+        $amount = 0; // depositamount
         $discount_type = 'fixed_cart'; // Type: fixed_cart, percent, fixed_product, percent_product
 
         $coupon = array(
