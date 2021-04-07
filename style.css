@@ -1164,6 +1164,9 @@ a.ccpage_title_link {
 
 /* woocommerce css */
 /* Campi nascosti per per il calcolatore Friendly - start */
+.woocommerce-billing-fields__field-wrapper {
+    display: none;
+}
 .wc-proceed-to-checkout a:last-child {
     display: none!important;
 }

@@ -68,15 +68,15 @@ function oneclick_route_your_reservation_panel($atts)
             <input type="text" name="quotewcsurname" class="form-input oc-form-surname" placeholder="<?php echo __('Surname', 'wm-child-cyclando'); ?>">
             <input type="text" name="quotewcemail" class="form-input oc-form-email" placeholder="<?php echo __('Email', 'wm-child-cyclando'); ?>">
             <div class="purchase-form-checkbox">
-                <input type="checkbox" class="checkbox" id="newsletter" name="quotewcnewsletter">
+                <input type="checkbox" class="checkbox" id="newsletter" name="quotewcnewsletter" checked value="">
                 <p class="purchase-form-checkbox-info purchase-form-checkbox-newsletter"><?= __('I would like to subscribe to the newsletter', 'wm-child-cyclando') ?></p>
             </div>
             <div class="purchase-form-checkbox">
-                <input type="checkbox" class="checkbox" id="privacy" name="quotewcprivacy">
+                <input type="checkbox" class="checkbox" id="privacy" name="quotewcprivacy" checked value="">
                 <p class="purchase-form-checkbox-info purchase-form-checkbox-privacy"><?= __("I have read and accept the terms of the <a href='/privacy'>privacy policy on data processing</a>", 'wm-child-cyclando') ?><abbr class="required" title="obbligatorio">*</abbr></p>
             </div>
             <div class="purchase-form-checkbox">
-                <input type="checkbox" class="checkbox" id="conditions" name="quotewcconditions">
+                <input type="checkbox" class="checkbox" id="conditions" name="quotewcconditions" checked="" value="">
                 <p class="purchase-form-checkbox-info purchase-form-checkbox-conditions"><?= __("I have read and accept the <a href='/privacy'>terms and conditions</a>", 'wm-child-cyclando') ?><abbr class="required" title="obbligatorio">*</abbr></p>
             </div>
             <div class="error" style="">
@@ -139,9 +139,15 @@ function oneclick_route_your_reservation_panel($atts)
                         savedCookies['billingname'] = $( ".oc-form-name" ).val();
                         savedCookies['billingsurname'] = $( ".oc-form-surname" ).val();
                         savedCookies['billingemail'] = $( ".oc-form-email" ).val();
-                        savedCookies['billingnewsletter'] = $( ".purchase-form-checkbox-newsletter" ).val();
-                        savedCookies['billingprivacy'] = $( ".purchase-form-checkbox-privacy" ).val();
-                        savedCookies['billingconditions'] = $( ".purchase-form-checkbox-conditions" ).val();
+                        if ($(".purchase-form-checkbox-newsletter").is(':checked')) {
+                            savedCookies['billingnewsletter'] = 'on';
+                        }
+                        if ($(".purchase-form-checkbox-privacy").is(':checked')) {
+                            savedCookies['billingprivacy'] = 'on';
+                        }
+                        if ($(".purchase-form-checkbox-conditions").is(':checked')) {
+                            savedCookies['billingconditions'] = 'on';
+                        }
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookies), { expires: 7, path: '/' });
                         form.submit();
                         //ajaxCreatHubspotDeal();
