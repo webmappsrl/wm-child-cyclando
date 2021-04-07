@@ -64,19 +64,19 @@ function oneclick_route_your_reservation_panel($atts)
     <div class="oc-route-your-reservation-purchase-form-container">
         <h3 class="oc-route-your-reservation-purchase-form-title"><?php echo __('Purchase', 'wm-child-cyclando'); ?></h3>
         <form action="/quote-wc" method="get" id="yourReservationPurchaseFrom">
-            <input type="text" name="name" class="form-input oc-form-name" placeholder="<?php echo __('Name', 'wm-child-cyclando'); ?>">
-            <input type="text" name="surname" class="form-input oc-form-surname" placeholder="<?php echo __('Surname', 'wm-child-cyclando'); ?>">
-            <input type="text" name="email" class="form-input oc-form-email" placeholder="<?php echo __('Email', 'wm-child-cyclando'); ?>">
+            <input type="text" name="quotewcname" class="form-input oc-form-name" placeholder="<?php echo __('Name', 'wm-child-cyclando'); ?>">
+            <input type="text" name="quotewcsurname" class="form-input oc-form-surname" placeholder="<?php echo __('Surname', 'wm-child-cyclando'); ?>">
+            <input type="text" name="quotewcemail" class="form-input oc-form-email" placeholder="<?php echo __('Email', 'wm-child-cyclando'); ?>">
             <div class="purchase-form-checkbox">
-                <input type="checkbox" class="checkbox" id="newsletter" name="newsletter">
+                <input type="checkbox" class="checkbox" id="newsletter" name="quotewcnewsletter">
                 <p class="purchase-form-checkbox-info purchase-form-checkbox-newsletter"><?= __('I would like to subscribe to the newsletter', 'wm-child-cyclando') ?></p>
             </div>
             <div class="purchase-form-checkbox">
-                <input type="checkbox" class="checkbox" id="privacy" name="privacy">
+                <input type="checkbox" class="checkbox" id="privacy" name="quotewcprivacy">
                 <p class="purchase-form-checkbox-info purchase-form-checkbox-privacy"><?= __("I have read and accept the terms of the <a href='/privacy'>privacy policy on data processing</a>", 'wm-child-cyclando') ?></p>
             </div>
             <div class="purchase-form-checkbox">
-                <input type="checkbox" class="checkbox" id="conditions" name="conditions">
+                <input type="checkbox" class="checkbox" id="conditions" name="quotewcconditions">
                 <p class="purchase-form-checkbox-info purchase-form-checkbox-conditions"><?= __("I have read and accept the <a href='/privacy'>terms and conditions</a>", 'wm-child-cyclando') ?></p>
             </div>
             <div class="error" style="">
