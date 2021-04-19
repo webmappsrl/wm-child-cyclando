@@ -31,6 +31,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 		// var 
 		$post_id = get_the_ID();
         $wm_post_id = wm_get_original_post_it($post_id);
+        $wm_post_id = $wm_post_id['id'];
 		if (defined('ICL_LANGUAGE_CODE')) {
 			$language = ICL_LANGUAGE_CODE;
 		} else {
