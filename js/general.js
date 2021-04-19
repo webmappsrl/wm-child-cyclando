@@ -427,9 +427,9 @@ jQuery(document).ready(function () {
 
   function ocmCheckCookie(){
     if (Cookies.get('oc_participants_cookie')){
-        return savedCookies = JSON.parse(Cookies.get('oc_participants_cookie'));
+        return savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
     } else {
-        return savedCookies = {}
+        return savedCookie = {}
     }
     
 }

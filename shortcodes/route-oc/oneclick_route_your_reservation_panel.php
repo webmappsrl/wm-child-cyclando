@@ -135,20 +135,20 @@ function oneclick_route_your_reservation_panel($atts)
                     },
                     // Settiamo il submit handler per la form
                     submitHandler: function(form) {
-                        var savedCookies = ocmCheckCookie();
-                        savedCookies['billingname'] = $( ".oc-form-name" ).val();
-                        savedCookies['billingsurname'] = $( ".oc-form-surname" ).val();
-                        savedCookies['billingemail'] = $( ".oc-form-email" ).val();
+                        var savedCookie = ocmCheckCookie();
+                        savedCookie['billingname'] = $( ".oc-form-name" ).val();
+                        savedCookie['billingsurname'] = $( ".oc-form-surname" ).val();
+                        savedCookie['billingemail'] = $( ".oc-form-email" ).val();
                         if ($("#quotewcnewsletter").is(':checked')) {
-                            savedCookies['billingnewsletter'] = 'on';
+                            savedCookie['billingnewsletter'] = 'on';
                         }
                         if ($("#quotewcprivacy").is(':checked')) {
-                            savedCookies['billingprivacy'] = 'on';
+                            savedCookie['billingprivacy'] = 'on';
                         }
                         if ($("#quotewcconditions").is(':checked')) {
-                            savedCookies['billingconditions'] = 'on';
+                            savedCookie['billingconditions'] = 'on';
                         }
-                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookies), { expires: 7, path: '/' });
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                         form.submit();
                         //ajaxCreatHubspotDeal();
                     }

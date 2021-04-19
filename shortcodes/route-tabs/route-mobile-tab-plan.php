@@ -6,7 +6,9 @@ function route_mobile_tab_plan($atts) {
     extract( shortcode_atts( array(
         'post_id' => '',
         'first_departure' => '',
+        'has_extra' => ''
     ), $atts ) );
+
 
     $has_hotel_category = array();
     $product_sample = array();
@@ -49,10 +51,10 @@ function route_mobile_tab_plan($atts) {
         }
     }
     if (is_array($has_extra_category)){
-        if (array_key_exists('bike', $has_extra_category['name'])) {
+        if (array_key_exists('bike', $has_extra_category)) {
             $has_bike = true;
         }
-        if (array_key_exists('ebike', $has_extra_category['name'])) {
+        if (array_key_exists('ebike', $has_extra_category)) {
             $has_ebike = true;
         }
     }
@@ -83,7 +85,7 @@ function route_mobile_tab_plan($atts) {
         <div class="oc-route-mobile-plan-price-container">
             <div class="cifraajax-title"><?= __('Total', 'wm-child-cyclando') ?></div><div class="cifraajax"></div>
         </div>
-        <?= do_shortcode("[oneclick_route_form_purchase route='true' ]")?>
+        <?= do_shortcode("[oneclick_route_form_purchase route='true']")?>
         <div class="cyc-single-route-cta-buttons">
             <div id="cy-contact-in-basso" class="">
                 <div class="cy-btn-contact">

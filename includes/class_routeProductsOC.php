@@ -120,6 +120,7 @@ class routeProductsOC {
         $ages = $this->cookies['ages'];
         $regular = intval($this->cookies['regular']);
         $electric = intval($this->cookies['electric']);
+        $has_extra = $this->cookies['extra'];
         
         $addToCart = array();
         $deposit = 0;
@@ -167,7 +168,12 @@ class routeProductsOC {
             $this->price += $extra['ebike']['price'] * intval($electric);
             $addToCart[] = $extra['ebike']['id'] . ':' . $electric;
         }
-        
+        if ($has_extra && $extra) {
+            foreach ($has_extra as $label => $num) {
+                $this->price += $extra[$label]['price'] * intval($num);
+                $addToCart[] = $extra[$label]['id'] . ':' . $num;
+            }
+        }
         if ($departureDateFormated > $todayPlus30) {
             $deposit = $percentInDecimal * $this->price;
         }

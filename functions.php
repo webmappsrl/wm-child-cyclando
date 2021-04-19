@@ -21,6 +21,7 @@ require ('shortcodes/route-oc/oneclick_route_your_reservation_panel.php');
 require ('api/api-loader.php');
 require ('includes/class_routeProductsOC.php') ;
 require ('includes/oc_ajax_route_price.php');
+require ('includes/wm_has_extra_get_label.php');
 
 
 if ( class_exists( 'WP_CLI' ) ) {
@@ -1404,9 +1405,7 @@ function getDatesFromRange($start, $end, $format = 'd-m-Y') {
 function route_has_extra_category($route_id) { 
 
     $products = get_field('product',$route_id);
-    $extra_variation_name_price = array();
-    $extra_variation_name_description = array();
-
+    $object = array();
     if( $products ){
         foreach( $products as $p ){ // variables of each product
         $product = wc_get_product($p); 
@@ -1424,23 +1423,16 @@ function route_has_extra_category($route_id) {
                         // Prices
                         if ($variation['display_price'] == 0){
                             $xprice = __('Free' ,'wm-child-verdenatura');
-                        } 
-                        elseif (!empty($variation['price_html'])){
-                            $xprice = $variation['price_html'];
-                        } else {
-                            $xprice = $variation['display_price'].'€';
+                        }  else {
+                            $xprice = $variation['display_price'];
                         }
-                        $extra_name_price = array($xvariation_name => $xprice);
-                        $extra_variation_name_price += $extra_name_price;
-                        $extra_name_description = array($xvariation_name => $variation['variation_description']);
-                        $extra_variation_name_description += $extra_name_description;
+                        $object[$xvariation_name]['label'] = wm_has_extra_get_label($xvariation_name,$variation['variation_description']);
+                        $object[$xvariation_name]['price'] = str_replace('€','',strip_tags($xprice));
                     }
                 }
             }
         }
     }
-    $object['name'] = $extra_variation_name_price;
-    $object['desc'] = $extra_variation_name_description;
     return $object;
 }
 function route_has_hotel_category($route_id,$first_departure) {
