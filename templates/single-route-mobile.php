@@ -30,6 +30,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 
 		// var 
 		$post_id = get_the_ID();
+        $wm_post_id = wm_get_original_post_it($post_id);
 		if (defined('ICL_LANGUAGE_CODE')) {
 			$language = ICL_LANGUAGE_CODE;
 		} else {
@@ -143,7 +144,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         if (is_array($has_track) && $has_track) {
             $has_track_program = true;
         }
-		$headers = get_headers('https://a.webmapp.it/cyclando.com/route/{$post_id}_map_1000x1000.png', 1);
+		$headers = get_headers("https://a.webmapp.it/cyclando.com/route/{$post_id}_map_1000x1000.png", 1);
 		$interactive_route_map = "https://a.webmapp.it/cyclando.com/route/{$post_id}_map_1000x1000.png";
 		if ($has_track && get_option('webmapp_show_interactive_route_map') && strpos($headers['Content-Type'], 'image/') !== false) {
 			$featured_map = $interactive_route_map;
@@ -257,7 +258,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             $home_site = str_replace("/en/", "", $home_site);
         }
 
-        $route_has_geojson = URL_exists("https://a.webmapp.it/cyclando.com/geojson/$post_id.geojson");
+        $route_has_geojson = URL_exists("https://a.webmapp.it/cyclando.com/geojson/$wm_post_id.geojson");
         $featured_image = get_the_post_thumbnail_url($post_id,'us_600_0');
         if (! $featured_image) {
             $featured_image = get_the_post_thumbnail_url($post_id,'large');
@@ -415,7 +416,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
     <!-- START section Second menu Tab START  -->
     <div class="cyc-route-mobile-tab-container">
         <?php 
-        echo do_shortcode('[vc_tta_tabs][vc_tta_section active="1" tab_id="1615221700207-6345d186-4e71" el_class="oc-tab-plan" title="'.__('Plan', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_plan post_id="'.$post_id.'" first_departure="'.$first_departure_date_ajax_dormatdmY.'"][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221700263-b2f1f133-a833" el_class="oc-tab-program" title="'.__('Program', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_program program="'.$program.'" has_track="'.$has_track_program.'" route_has_geojson="'.$route_has_geojson.'" home_site="'.$home_site.'" post_id="'.$post_id.'" language="'.$language.'"][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221704269-1b7373dd-65c0" el_class="oc-tab-includes" title="'.__('Includes', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_includes post_id="'.$post_id.'"][/vc_column_text][/vc_tta_section][/vc_tta_tabs]');
+        echo do_shortcode('[vc_tta_tabs][vc_tta_section active="1" tab_id="1615221700207-6345d186-4e71" el_class="oc-tab-plan" title="'.__('Plan', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_plan post_id="'.$post_id.'" first_departure="'.$first_departure_date_ajax_dormatdmY.'"][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221700263-b2f1f133-a833" el_class="oc-tab-program" title="'.__('Program', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_program program="'.$program.'" has_track="'.$has_track_program.'" route_has_geojson="'.$route_has_geojson.'" home_site="'.$home_site.'" post_id="'.$wm_post_id.'" language="'.$language.'"][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221704269-1b7373dd-65c0" el_class="oc-tab-includes" title="'.__('Includes', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_includes post_id="'.$post_id.'"][/vc_column_text][/vc_tta_section][/vc_tta_tabs]');
         ?>
     </div>
     <!-- END section Second menu Tab END  -->
