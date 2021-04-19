@@ -54,6 +54,16 @@ function oneclick_route_form_purchase($atts) {
             $(document).ready(function () {
                 $('#oc-acquista-route .cy-btn-contact').on('click',function(){
                     $('.ocm-proceed-container').show();
+                    $( ".facetwp-checkbox" ).each(function(index,element) {
+                        if (Cookies.get('oc_participants_cookie')) {
+                            var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
+                        }
+                        if (savedCookie['extra'][$(this).attr('name')] > 0) {
+                            if (savedCookie['extra'][$(this).attr('name')] < savedCookie['adults'] + savedCookie['kids']) {
+                                $('.oc-modal-button-container-'+$(this).attr('name')+' .oc-extra-add-btn').prop("disabled", false);
+                            }
+                        }
+                    });
                 });
                 $('.oc-proceed-done-btn').on('click',function(){
                     $('.ocm-proceed-container').hide();
@@ -68,14 +78,15 @@ function oneclick_route_form_purchase($atts) {
                     }
                 }
                 // Populate the extras from var has_extra
-                var savedCookie = ocmCheckCookie();
-                if (savedCookie['extra']) {
-
-                } else {
-                    savedCookie['extra'] = {};
-                }
                 $.each(has_extra,function(index,value){
                     var defaulnum = 0;
+                    if (Cookies.get('oc_participants_cookie')) {
+                        var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
+                        if (!savedCookie['extra']) {
+                            savedCookie['extra'] = {};
+                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                        } 
+                    }
                     if (savedCookie['extra']) {
                         if (savedCookie['extra'][index] > 0) {
                             defaulnum = savedCookie['extra'][index];
@@ -87,10 +98,20 @@ function oneclick_route_form_purchase($atts) {
                 });
                 //checkbox interactions
                 $( ".facetwp-checkbox" ).each(function(index,element) {
+                    if (Cookies.get('oc_participants_cookie')) {
+                        var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
+                        if (!savedCookie['extra']) {
+                            savedCookie['extra'] = {};
+                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                        } 
+                    }
                     if (savedCookie['extra'][$(this).attr('name')] > 0) {
                         $( this ).toggleClass( "checked" );
                         $('.oc-modal-button-container-'+$(this).attr('name')).toggleClass("display-grid");
                         $('#'+$(this).attr('name')).text(savedCookie['extra'][$(this).attr('name')]);
+                        if (savedCookie['extra'][$(this).attr('name')] == savedCookie['adults'] + savedCookie['kids']) {
+                            $('.oc-modal-button-container-'+$(this).attr('name')+' .oc-extra-add-btn').prop("disabled", true);
+                        }
                     }
                     $(element).click( function(e){
                         $( this ).toggleClass( "checked" );
@@ -111,14 +132,23 @@ function oneclick_route_form_purchase($atts) {
                 //Add button
                 $( ".oc-extra-add-btn" ).each(function(index,element) {
                     $(element).click( function(e){
-                        var savedCookie = ocmCheckCookie();
-                        console.log('ammato');
-                        console.log(savedCookie);
+                        if (Cookies.get('oc_participants_cookie')) {
+                            var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
+                            if (!savedCookie['extra']) {
+                                savedCookie['extra'] = {};
+                                Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                            } 
+                        }
                         var counter = $('#'+$(this).attr('name'));
                         var count = parseInt(counter.text());
                         num = count + 1;
-                        if (num + 1 == savedCookie['adults']) {
+                        if (num == savedCookie['adults'] + savedCookie['kids']) {
                             $(this).prop("disabled", true);
+                            counter.text(num);
+                            savedCookie['extra'][$(this).attr('name')] = num;
+                            var countplus = parseInt(counter.text());
+                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                            ajaxUpdatePrice();
                         } else {
                             counter.text(num);
                             savedCookie['extra'][$(this).attr('name')] = num;
@@ -131,6 +161,13 @@ function oneclick_route_form_purchase($atts) {
                 //Substract button
                 $( ".oc-extra-substract-btn" ).each(function(index,element) {
                     $(element).click( function(e){
+                        if (Cookies.get('oc_participants_cookie')) {
+                            var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
+                            if (!savedCookie['extra']) {
+                                savedCookie['extra'] = {};
+                                Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                            } 
+                        }
                         $('.oc-modal-button-container-'+$(this).attr('name')+' .oc-extra-add-btn').prop("disabled", false);
                         var counter = $('#'+$(this).attr('name'));
                         var count = parseInt(counter.text());
