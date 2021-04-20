@@ -5,12 +5,14 @@ add_shortcode( 'oneclick_route_form_purchase', 'oneclick_route_form_purchase' );
 function oneclick_route_form_purchase($atts) {
     extract( shortcode_atts( array(
         'route' => '',
-        'has_extra' => ''
+        'has_extra' => '',
+        'first_departure' => ''
     ), $atts ) );
 
     $post_id = get_the_ID();
     $wm_post_id = wm_get_original_post_it($post_id);
     $wm_post_id = $wm_post_id['id'];
+    $has_single = false;
     // get the extra fields for extra popup 
     $has_extra = route_has_extra_category($wm_post_id);
     if ($has_extra['bike']) {
@@ -18,6 +20,21 @@ function oneclick_route_form_purchase($atts) {
     }
     if ($has_extra['ebike']) {
         unset($has_extra['ebike']);
+    }
+    $has_single = false;
+    $has_hotel_category = route_has_hotel_category($post_id,$first_departure);
+    if (count($has_hotel_category['modelseasonal']) >= 1) {
+        $product_sample = $has_hotel_category['modelseasonal'][array_key_first($has_hotel_category['modelseasonal'])];
+    } else {
+        $product_sample = $has_hotel_category['model'][array_key_first($has_hotel_category['model'])];
+    }
+    if ($product_sample) {
+        foreach ($product_sample as $key => $value) {
+            // Activate single room select if there is any
+            if ($key == 'adult-single') {
+                $has_single = true;
+            }
+        }
     }
     ob_start();
 
@@ -38,8 +55,11 @@ function oneclick_route_form_purchase($atts) {
             <div class="ocm-extras-nocond-title"><?php echo __('Do you want to add more?', 'wm-child-cyclando'); ?></div>
             <div class="ocm-extras-proceed-detail-container">
 
-
             </div>
+            <?php } ?>
+            
+            <?php if ($has_single) { ?>
+            <?= do_shortcode("[oneclick_route_form_single_room]")?>
             <?php } ?>
             <div class="ocm-extras-proceed-summary-container">
                 <div class="oc-route-mobile-plan-price-container">
@@ -107,15 +127,18 @@ function oneclick_route_form_purchase($atts) {
                     '<div class="ocm-proceed-extras-body "><div class="facetwp-checkbox facetwp-checkbox-'+index+'" name="'+index+'"><div class="label">'+value.label+' (<strong>'+value.price+'€</strong>)</div></div><div class="oc-modal-button-container oc-modal-button-container-'+index+'"><button class="modal-btn oc-extra-substract-btn" name="'+index+'"><i class="fas fa-minus"></i></button><div id="'+index+'" class="oc-number-input">'+defaulnum+'</div><button class="modal-btn oc-extra-add-btn" name="'+index+'"><i class="fas fa-plus"></i></button></div>'
                     );
                 });
-                    
-                    // if (!savedCookie['extra']) {
-                    //     savedCookie['extra'] = {};
-                    //     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
-                    // }
                 
                 //checkbox interactions
                 $( ".facetwp-checkbox" ).each(function(index,element) {
                     var savedCookie = ocmCheckCookie();
+                    if (!savedCookie['extra']) {
+                        savedCookie['extra'] = {};
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    } 
+                    if (!savedCookie['supplement']) {
+                        savedCookie['supplement'] = {};
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    }
                     if (!!savedCookie['extra'] && savedCookie['extra'][$(this).attr('name')] > 0) {
                         $( this ).toggleClass( "checked" );
                         $('.oc-modal-button-container-'+$(this).attr('name')).toggleClass("display-grid");
@@ -125,47 +148,65 @@ function oneclick_route_form_purchase($atts) {
                             $('.oc-modal-button-container-'+$(this).attr('name')+' .oc-extra-add-btn').prop("disabled", true);
                         }
                     }
+                    if (!!savedCookie['supplement'] && savedCookie['supplement'][$(this).attr('name')] > 0) {
+                        $( this ).toggleClass( "checked" );
+                        $('.oc-modal-button-container-'+$(this).attr('name')).toggleClass("display-grid");
+                        $('#'+$(this).attr('name')).text(savedCookie['supplement'][$(this).attr('name')]);
+                        var sums = cal_sum_cookies(savedCookie);
+                        if (savedCookie['supplement'][$(this).attr('name')] == sums['participants']) {
+                            $('.oc-modal-button-container-'+$(this).attr('name')+' .oc-extra-add-btn').prop("disabled", true);
+                        }
+                    }
                     $(element).click( function(e){
                         var savedCookie = ocmCheckCookie();
                         $( this ).toggleClass( "checked" );
                         var container = $('.oc-modal-button-container-'+$(this).attr('name'));
                         container.toggleClass("display-grid");
                         var counter = $('#'+$(this).attr('name'));
-                        if ($(this).hasClass("checked")) {
+                        if (!$(this).attr('conditional')){
+                            if ($(this).hasClass("checked")) {
                             counter.text(1);
                             savedCookie['extra'][$(this).attr('name')] = 1;
+                            } else {
+                                counter.text(0);
+                                savedCookie['extra'][$(this).attr('name')] = 0;
+                            }
                         } else {
-                            counter.text(0);
-                            savedCookie['extra'][$(this).attr('name')] = 0;
+                            if ($(this).hasClass("checked")) {
+                            counter.text(1);
+                            savedCookie['supplement'][$(this).attr('name')] = 1;
+                            } else {
+                                counter.text(0);
+                                savedCookie['supplement'][$(this).attr('name')] = 0;
+                            }
                         }
+                        
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
-                        ajaxUpdatePrice();
+                        if (!$(this).attr('conditional')){
+                            ajaxUpdatePrice();
+                        }
                     });
                 });
                 //Add button
                 $( ".oc-extra-add-btn" ).each(function(index,element) {
                     $(element).click( function(e){
                         var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
-                        if (!savedCookie['extra']) {
-                            savedCookie['extra'] = {};
-                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
-                        } 
                         var counter = $('#'+$(this).attr('name'));
                         var count = parseInt(counter.text());
                         num = count + 1;
                         var sums = cal_sum_cookies(savedCookie);
                         if (num == sums['participants']) {
                             $(this).prop("disabled", true);
-                            counter.text(num);
+                        }
+                        counter.text(num);
+                        if (!$(this).attr('conditional')){
                             savedCookie['extra'][$(this).attr('name')] = num;
-                            var countplus = parseInt(counter.text());
-                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
-                            ajaxUpdatePrice();
                         } else {
-                            counter.text(num);
-                            savedCookie['extra'][$(this).attr('name')] = num;
-                            var countplus = parseInt(counter.text());
-                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                            savedCookie['supplement'][$(this).attr('name')] = num;
+                        }
+                        var countplus = parseInt(counter.text());
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                        if (!$(this).attr('conditional')){
                             ajaxUpdatePrice();
                         }
                     });
@@ -174,26 +215,35 @@ function oneclick_route_form_purchase($atts) {
                 $( ".oc-extra-substract-btn" ).each(function(index,element) {
                     $(element).click( function(e){
                         var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
-                        if (!savedCookie['extra']) {
-                            savedCookie['extra'] = {};
-                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
-                        } 
                         $('.oc-modal-button-container-'+$(this).attr('name')+' .oc-extra-add-btn').prop("disabled", false);
                         var counter = $('#'+$(this).attr('name'));
                         var count = parseInt(counter.text());
                         num = count - 1;
                         if (num < 1) {
                             counter.text(0);
-                            savedCookie['extra'][$(this).attr('name')] = 0;
+                            if (!$(this).attr('conditional')){
+                                savedCookie['extra'][$(this).attr('name')] = 0;
+                            } else {
+                                savedCookie['supplement'][$(this).attr('name')] = 0;
+                            }
+                            
                             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
-                            ajaxUpdatePrice();
+                            if (!$(this).attr('conditional')){
+                                ajaxUpdatePrice();
+                            }
                             $('.oc-modal-button-container-'+$(this).attr('name')).toggleClass("display-grid");
                             $( ".facetwp-checkbox-"+$(this).attr('name')).toggleClass('checked');
                         } else { 
                             counter.text(num);
+                            if (!$(this).attr('conditional')){
                             savedCookie['extra'][$(this).attr('name')] = num;
+                            } else {
+                                savedCookie['supplement'][$(this).attr('name')] = num;
+                            }
                             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
-                            ajaxUpdatePrice();
+                            if (!$(this).attr('conditional')){
+                                ajaxUpdatePrice();
+                            }
                         }
                     });
                 });
@@ -203,7 +253,6 @@ function oneclick_route_form_purchase($atts) {
                     $('.oc-route-extra-row.oc-route-extra-details').empty();
                     $.each(savedCookie['extra'],function(index,value){
                         var extra = has_extra[index];
-                        console.log(extra)
                         var label = extra.label;
                         $('.oc-route-extra-row.oc-route-extra-details').append(
                             '<div class="oc-route-your-reservation-column-title"><p>'+label+'</p></div><div class="oc-route-your-reservation-column-info"><p>'+value+'</p></div>'

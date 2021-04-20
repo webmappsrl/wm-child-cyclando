@@ -15,7 +15,6 @@ function route_mobile_tab_plan($atts) {
     $has_category = false;
     $has_kids = false;
     $min_kid_age = '';
-    $has_single = false;
     $has_bike = false;
     $has_ebike = false;
     $has_hotel_category = route_has_hotel_category($post_id,$first_departure);
@@ -36,10 +35,6 @@ function route_mobile_tab_plan($atts) {
             // Activate kid select if there is any
             if (strpos($key,'kid') !== false) {
                 $has_kids = true;
-            }
-            // Activate single room select if there is any
-            if ($key == 'adult-single') {
-                $has_single = true;
             }
             // Set min kid age select if there is any
             if (strpos($key,'kid') !== false) {
@@ -69,9 +64,6 @@ function route_mobile_tab_plan($atts) {
         <?php } ?>
         <div class="oc-route-mobile-search-form-asbb-wrapper">
             <?= do_shortcode("[oneclick_search_form_participants route='true' has_kids='$has_kids' min_kid_age='$min_kid_age']")?>
-        <?php if ($has_single) { ?>
-            <?= do_shortcode("[oneclick_route_form_single_room]")?>
-            <?php } ?>
         <?php if ($has_bike || $has_ebike) { ?>
             <?= do_shortcode("[oneclick_search_form_bikes route='true' has_bike='$has_bike' has_ebike='$has_ebike' ]")?>
         <?php } else { ?>
@@ -85,7 +77,7 @@ function route_mobile_tab_plan($atts) {
         <div class="oc-route-mobile-plan-price-container">
             <div class="cifraajax-title"><?= __('Total', 'wm-child-cyclando') ?></div><div class="cifraajax"></div>
         </div>
-        <?= do_shortcode("[oneclick_route_form_purchase route='true']")?>
+        <?= do_shortcode("[oneclick_route_form_purchase route='true' first_departure='$first_departure']")?>
         <div class="cyc-single-route-cta-buttons">
             <div id="cy-contact-in-basso" class="">
                 <div class="cy-btn-contact">
