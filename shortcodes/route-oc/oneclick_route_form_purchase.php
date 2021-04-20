@@ -55,11 +55,13 @@ function oneclick_route_form_purchase($atts) {
                 $('#oc-acquista-route .cy-btn-contact').on('click',function(){
                     $('.ocm-proceed-container').show();
                     $( ".facetwp-checkbox" ).each(function(index,element) {
+                        var savedCookie = {};
                         if (Cookies.get('oc_participants_cookie')) {
-                            var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
+                            savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
                         }
-                        if (savedCookie['extra'][$(this).attr('name')] > 0) {
-                            if (savedCookie['extra'][$(this).attr('name')] < savedCookie['adults'] + savedCookie['kids']) {
+                        if ( !!savedCookie['extra'] && savedCookie['extra'][$(this).attr('name')] > 0) {
+                            var sums = cal_sum_cookies(savedCookie);
+                            if (savedCookie['extra'][$(this).attr('name')] < sums['participants']) {
                                 $('.oc-modal-button-container-'+$(this).attr('name')+' .oc-extra-add-btn').prop("disabled", false);
                             }
                         }
@@ -96,24 +98,26 @@ function oneclick_route_form_purchase($atts) {
                     '<div class="ocm-proceed-extras-body "><div class="facetwp-checkbox facetwp-checkbox-'+index+'" name="'+index+'"><div class="label">'+value.label+' (<strong>'+value.price+'€</strong>)</div></div><div class="oc-modal-button-container oc-modal-button-container-'+index+'"><button class="modal-btn oc-extra-substract-btn" name="'+index+'"><i class="fas fa-minus"></i></button><div id="'+index+'" class="oc-number-input">'+defaulnum+'</div><button class="modal-btn oc-extra-add-btn" name="'+index+'"><i class="fas fa-plus"></i></button></div>'
                     );
                 });
+                    
+                    // if (!savedCookie['extra']) {
+                    //     savedCookie['extra'] = {};
+                    //     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    // }
+                
                 //checkbox interactions
                 $( ".facetwp-checkbox" ).each(function(index,element) {
-                    if (Cookies.get('oc_participants_cookie')) {
-                        var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
-                        if (!savedCookie['extra']) {
-                            savedCookie['extra'] = {};
-                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
-                        } 
-                    }
-                    if (savedCookie['extra'][$(this).attr('name')] > 0) {
+                    var savedCookie = ocmCheckCookie();
+                    if (!!savedCookie['extra'] && savedCookie['extra'][$(this).attr('name')] > 0) {
                         $( this ).toggleClass( "checked" );
                         $('.oc-modal-button-container-'+$(this).attr('name')).toggleClass("display-grid");
                         $('#'+$(this).attr('name')).text(savedCookie['extra'][$(this).attr('name')]);
-                        if (savedCookie['extra'][$(this).attr('name')] == savedCookie['adults'] + savedCookie['kids']) {
+                        var sums = cal_sum_cookies(savedCookie);
+                        if (savedCookie['extra'][$(this).attr('name')] == sums['participants']) {
                             $('.oc-modal-button-container-'+$(this).attr('name')+' .oc-extra-add-btn').prop("disabled", true);
                         }
                     }
                     $(element).click( function(e){
+                        var savedCookie = ocmCheckCookie();
                         $( this ).toggleClass( "checked" );
                         var container = $('.oc-modal-button-container-'+$(this).attr('name'));
                         container.toggleClass("display-grid");
@@ -132,17 +136,16 @@ function oneclick_route_form_purchase($atts) {
                 //Add button
                 $( ".oc-extra-add-btn" ).each(function(index,element) {
                     $(element).click( function(e){
-                        if (Cookies.get('oc_participants_cookie')) {
-                            var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
-                            if (!savedCookie['extra']) {
-                                savedCookie['extra'] = {};
-                                Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
-                            } 
-                        }
+                        var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
+                        if (!savedCookie['extra']) {
+                            savedCookie['extra'] = {};
+                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                        } 
                         var counter = $('#'+$(this).attr('name'));
                         var count = parseInt(counter.text());
                         num = count + 1;
-                        if (num == savedCookie['adults'] + savedCookie['kids']) {
+                        var sums = cal_sum_cookies(savedCookie);
+                        if (num == sums['participants']) {
                             $(this).prop("disabled", true);
                             counter.text(num);
                             savedCookie['extra'][$(this).attr('name')] = num;
@@ -161,13 +164,11 @@ function oneclick_route_form_purchase($atts) {
                 //Substract button
                 $( ".oc-extra-substract-btn" ).each(function(index,element) {
                     $(element).click( function(e){
-                        if (Cookies.get('oc_participants_cookie')) {
-                            var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
-                            if (!savedCookie['extra']) {
-                                savedCookie['extra'] = {};
-                                Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
-                            } 
-                        }
+                        var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
+                        if (!savedCookie['extra']) {
+                            savedCookie['extra'] = {};
+                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                        } 
                         $('.oc-modal-button-container-'+$(this).attr('name')+' .oc-extra-add-btn').prop("disabled", false);
                         var counter = $('#'+$(this).attr('name'));
                         var count = parseInt(counter.text());
