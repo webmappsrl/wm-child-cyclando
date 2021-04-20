@@ -55,12 +55,6 @@ function wm_has_extra_get_label($extra_variation_name,$extra_variation_desc) {
                         if('bikewarranty' == $extra_variation_name) {           
                         
                                     $label = __('Bike Coverage' ,'wm-child-verdenatura');
-                                    ?>
-                                
-                                    
-                                
-                                <?php
-                                    $label = $extra_variation_name['bikewarranty'];
                                     
                         }
                         ?> <!---- END row bikewarranty ---->
