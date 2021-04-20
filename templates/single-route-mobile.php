@@ -277,7 +277,22 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         if ($has_extra['ebike']) {
             unset($has_extra['ebike']);
         }
-        // $has_extra = json_encode($has_extra);
+        $hotel_product_items = array();
+        $has_hotel_category = route_has_hotel_category($post_id,$first_departure_date_ajax_dormatdmY);
+        if (count($has_hotel_category['modelseasonal']) >= 1) {
+            $hotel_product_items = $has_hotel_category['modelseasonal'][array_key_first($has_hotel_category['modelseasonal'])];
+        } else {
+            $hotel_product_items = $has_hotel_category['model'][array_key_first($has_hotel_category['model'])];
+        }
+        $products_to_remove = array('adult' ,'adult-single');
+        foreach ($hotel_product_items as $product => $val) {
+            if (in_array($product,$products_to_remove)) {
+                unset($hotel_product_items[$product]);
+            } 
+            if (strpos($product,'kid') !== false) {
+                unset($hotel_product_items[$product]);
+            }
+        }
 	?>
 
     <!-- Start new template -->
@@ -427,7 +442,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
     <!-- START section Second menu Tab START  -->
     <div class="cyc-route-mobile-tab-container">
         <?php 
-        echo do_shortcode('[vc_tta_tabs][vc_tta_section active="1" tab_id="1615221700207-6345d186-4e71" el_class="oc-tab-plan" title="'.__('Plan', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_plan post_id="'.$wm_post_id.'" has_extra="'.$has_extra.'" first_departure="'.$first_departure_date_ajax_dormatdmY.'"][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221700263-b2f1f133-a833" el_class="oc-tab-program" title="'.__('Program', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_program program="'.$program.'" has_track="'.$has_track_program.'" route_has_geojson="'.$route_has_geojson.'" home_site="'.$home_site.'" post_id="'.$wm_post_id.'" language="'.$language.'"][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221704269-1b7373dd-65c0" el_class="oc-tab-includes" title="'.__('Includes', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_includes post_id="'.$wm_post_id.'"][/vc_column_text][/vc_tta_section][/vc_tta_tabs]');
+        echo do_shortcode('[vc_tta_tabs][vc_tta_section active="1" tab_id="1615221700207-6345d186-4e71" el_class="oc-tab-plan" title="'.__('Plan', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_plan post_id="'.$wm_post_id.'" hotel_product_items="'.$hotel_product_items.'" has_extra="'.$has_extra.'" first_departure="'.$first_departure_date_ajax_dormatdmY.'"][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221700263-b2f1f133-a833" el_class="oc-tab-program" title="'.__('Program', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_program program="'.$program.'" has_track="'.$has_track_program.'" route_has_geojson="'.$route_has_geojson.'" home_site="'.$home_site.'" post_id="'.$wm_post_id.'" language="'.$language.'"][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221704269-1b7373dd-65c0" el_class="oc-tab-includes" title="'.__('Includes', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_includes post_id="'.$wm_post_id.'"][/vc_column_text][/vc_tta_section][/vc_tta_tabs]');
         ?>
     </div>
     <!-- END section Second menu Tab END  -->
@@ -662,6 +677,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         var start_arraydFY = <?php echo json_encode($start_arraydFY)?>;
         var start_arrayYmd = <?php echo json_encode($start_arrayYmd)?>;
         var has_extra = <?php echo json_encode($has_extra)?>;
+        var hotel_product_items = <?php echo json_encode($hotel_product_items)?>;
         var first_departure_date_ajax = <?php echo json_encode($first_departure_date_ajax )?>;
         var planSummarytxt = '';
 
@@ -782,7 +798,6 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                         addtocart = obj.addtocart;
                     }
                     calcCategorySelectOptions(obj);
-                    calcSigleSelectOptions();
                     updatePlanSummaryTxt(ocCookies);
                     updateYourReservationSummaryTxt(ocCookies);
                     jQuery( "#quotewcaddtocart" ).remove();
@@ -803,6 +818,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             jQuery(".category-select-holder select").html(options);
         }
 
+        // old function - not in use - for single room dropdown
         function calcSigleSelectOptions(){
             var options = '<option disabled="disabled"><?= __('Single', 'wm-child-cyclando') ?></option>';
                 var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie')); 

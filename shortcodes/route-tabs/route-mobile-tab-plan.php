@@ -6,7 +6,8 @@ function route_mobile_tab_plan($atts) {
     extract( shortcode_atts( array(
         'post_id' => '',
         'first_departure' => '',
-        'has_extra' => ''
+        'has_extra' => '',
+        'hotel_product_items' => ''
     ), $atts ) );
 
 
@@ -77,7 +78,7 @@ function route_mobile_tab_plan($atts) {
         <div class="oc-route-mobile-plan-price-container">
             <div class="cifraajax-title"><?= __('Total', 'wm-child-cyclando') ?></div><div class="cifraajax"></div>
         </div>
-        <?= do_shortcode("[oneclick_route_form_purchase route='true' first_departure='$first_departure']")?>
+        <?= do_shortcode("[oneclick_route_form_purchase route='true' hotel_product_items='$hotel_product_items' first_departure='$first_departure']")?>
         <div class="cyc-single-route-cta-buttons">
             <div id="cy-contact-in-basso" class="">
                 <div class="cy-btn-contact">

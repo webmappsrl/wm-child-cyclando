@@ -22,6 +22,7 @@ require ('api/api-loader.php');
 require ('includes/class_routeProductsOC.php') ;
 require ('includes/oc_ajax_route_price.php');
 require ('includes/wm_has_extra_get_label.php');
+require ('includes/wm_has_hotel_get_label.php');
 
 
 if ( class_exists( 'WP_CLI' ) ) {
@@ -1438,7 +1439,6 @@ function route_has_extra_category($route_id) {
 function route_has_hotel_category($route_id,$first_departure) {
     $attributes_name_hotel = array();
     $variations_name_price = array();
-    $list_all_variations_name = array();
 
     $attributes_name_hotel_seasonal = array();
     $variations_name_price_seasonal = array();
@@ -1446,6 +1446,20 @@ function route_has_hotel_category($route_id,$first_departure) {
 
     $products = get_field('product',$route_id);
     
+    //check if the route is in boat or not
+    $place = '';
+    $from = '';
+    $to = '';
+    $boat_trip = get_field('trip_with_boat',$route_id);
+    if ($boat_trip) {
+        $place = __('cabin','wm-child-verdenatura');
+    } else {
+        $place = __('room','wm-child-verdenatura');
+    }
+    // get route from and to
+    // get the name of the cities From e To
+    $from = get_field('from',$route_id);
+    $to = get_field('to',$route_id);
 
     if( $products ){
         foreach( $products as $p ){ // variables of each product
@@ -1471,15 +1485,11 @@ function route_has_hotel_category($route_id,$first_departure) {
                         // Prices
                         if ($variation['display_price'] == 0){
                             $price = __('Free' ,'wm-child-verdenatura');
-                        } 
-                        elseif (!empty($variation['price_html'])){
-                            $price = $variation['price_html'];
-                        } else {
+                        }  else {
                             $price = $variation['display_price'];
                         }
-                        $variation_name_price = array($variation_name => $price);
-                        $list_all_variations_name += array($variation_name => $variation['price_html']);
-                        $product_variation_name_price += $variation_name_price;
+                        $product_variation_name_price[$variation_name]['label'] = wm_has_hotel_get_label($variation_name,$variation['variation_description'],$place,$from,$to);
+                        $product_variation_name_price[$variation_name]['price'] = str_replace('€','',strip_tags($price));
                     }
                     $variations_name_price += array( $product_attribute_name =>$product_variation_name_price);
                 }
@@ -1525,14 +1535,13 @@ function route_has_hotel_category($route_id,$first_departure) {
                                                 $variation_name = $name_var;
                                             }
                                             // Prices
-                                            if (!empty($variation['price_html'])){
-                                                $price = $variation['price_html'];
-                                            } else {
+                                            if ($variation['display_price'] == 0){
+                                                $price = __('Free' ,'wm-child-verdenatura');
+                                            }  else {
                                                 $price = $variation['display_price'];
                                             }
-                                            $variation_name_price = array($variation_name => $price);
-                                            $list_all_variations_name_seasonal += array($variation_name => $variation['price_html']);
-                                            $product_variation_name_price += $variation_name_price;
+                                            $product_variation_name_price[$variation_name]['label'] = wm_has_hotel_get_label($variation_name,$variation['variation_description'],$place,$from,$to);
+                                            $product_variation_name_price[$variation_name]['price'] = str_replace('€','',strip_tags($price));
                                         }
                                         $variations_name_price_seasonal += array( $product_attribute_name =>$product_variation_name_price);
                                     }

@@ -24,17 +24,7 @@ function oneclick_route_form_single_room()
             (function($) {
                 $(document).ready(function() {
                     $(function() {
-                        calcSigleSelectOptions();
-
-                        $('.single-room-select-holder select').on('change', function() {
-                            var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
-                            savedCookie['single'] = this.value;
-                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), {
-                                expires: 7,
-                                path: '/'
-                            });
-                            // ajaxUpdatePrice();
-                        });
+                        
                     });
                 });
 

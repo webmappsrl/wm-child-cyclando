@@ -2098,6 +2098,9 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     flex-grow: 1;
     width: 50%;
 }
+.oc-route-your-reservation-title h4 {
+    font-weight: 600;
+}
 .oc-route-your-reservation-column-info p {
     text-align: right;
 }
@@ -2152,6 +2155,7 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
 }
 .oc-route-your-reservation-purchase-form-container h3{
     margin-bottom: 15px;
+    font-weight: 600;
 }
 .oc-route-your-reservation-purchase-form-container .purchase-form-checkbox{
     display: flex;
@@ -2274,6 +2278,10 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     padding: 4%;
     width: 100%;
 }
+.ocm-hotel-proceed-detail-container {
+    padding: 0 4% 4%;
+    width: 100%;
+}
 .ocm-proceed-extras-body {
     display: grid;
     grid-template-columns: 70% 30%;
@@ -2286,6 +2294,12 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     font-weight: 500;
     letter-spacing: 0;
     padding: 15px 15px 0;
+}
+.ocm-extras-cond-disclaimer {
+    font-family: var(--font-family-primary);
+    letter-spacing: 0;
+    line-height: 20px;
+    padding: 5px 15px 0px;
 }
 .oc-modal-button-container {
     display: none;

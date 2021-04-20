@@ -6,7 +6,8 @@ function oneclick_route_form_purchase($atts) {
     extract( shortcode_atts( array(
         'route' => '',
         'has_extra' => '',
-        'first_departure' => ''
+        'first_departure' => '',
+        'hotel_product_items' => ''
     ), $atts ) );
 
     $post_id = get_the_ID();
@@ -58,8 +59,14 @@ function oneclick_route_form_purchase($atts) {
             </div>
             <?php } ?>
             
-            <?php if ($has_single) { ?>
-            <?= do_shortcode("[oneclick_route_form_single_room]")?>
+            <?php if ($has_single || $hotel_product_items) { ?>
+            <div class="ocm-extras-nocond-title"><?php echo __('Supplements', 'wm-child-cyclando'); ?></div>
+            <div class="ocm-extras-cond-disclaimer"><?php echo __('Subject to availability check. We will send you an email with the confirmation of availability and the price of the supplement', 'wm-child-cyclando'); ?></div>
+            <div class="ocm-hotel-proceed-detail-container">
+                <?php if ($has_single) {
+                  echo do_shortcode("[oneclick_route_form_single_room]");
+                } ?>
+            </div>
             <?php } ?>
             <div class="ocm-extras-proceed-summary-container">
                 <div class="oc-route-mobile-plan-price-container">
@@ -90,8 +97,14 @@ function oneclick_route_form_purchase($atts) {
                 $('.oc-proceed-done-btn').on('click',function(){
                     // populate extra section in your reservation if any extra is selected
                     var savedCookie = ocmCheckCookie();
-                    if ( !!savedCookie['extra']) {
-                        updateYourReservationExtraSummaryTxt(savedCookie,has_extra);
+                    if ( !!savedCookie['extra'] || !!savedCookie['supplement']) {
+                        $('.oc-route-extra-row.oc-route-extra-details').empty();
+                        if (!!savedCookie['extra']) {
+                            updateYourReservationExtraSummaryTxt(savedCookie,has_extra);
+                        }
+                        if (!!savedCookie['supplement']) {
+                            updateYourReservationHotelSummaryTxt(savedCookie,hotel_product_items);
+                        }
                     } else {
                         $('.oc-route-extra-row.oc-route-extra-header').removeClass("display-flex");
                         $('.oc-route-extra-row.oc-route-extra-details').removeClass("display-flex");
@@ -125,6 +138,24 @@ function oneclick_route_form_purchase($atts) {
                     }
                     $(".ocm-extras-proceed-detail-container").append(
                     '<div class="ocm-proceed-extras-body "><div class="facetwp-checkbox facetwp-checkbox-'+index+'" name="'+index+'"><div class="label">'+value.label+' (<strong>'+value.price+'€</strong>)</div></div><div class="oc-modal-button-container oc-modal-button-container-'+index+'"><button class="modal-btn oc-extra-substract-btn" name="'+index+'"><i class="fas fa-minus"></i></button><div id="'+index+'" class="oc-number-input">'+defaulnum+'</div><button class="modal-btn oc-extra-add-btn" name="'+index+'"><i class="fas fa-plus"></i></button></div>'
+                    );
+                });
+
+                // Populate the extra conditional hotel products from var hotel_product_items
+                $.each(hotel_product_items,function(index,value){ 
+                    var defaulnum = 0;
+                    var savedCookie = ocmCheckCookie();
+                    if (!savedCookie['supplement']) {
+                        savedCookie['supplement'] = {};
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    }
+                    if (savedCookie['supplement']) {
+                        if (savedCookie['supplement'][index] > 0) {
+                            defaulnum = savedCookie['supplement'][index];
+                        }
+                    }
+                    $(".ocm-hotel-proceed-detail-container").append(
+                    '<div class="ocm-proceed-extras-body "><div class="facetwp-checkbox facetwp-checkbox-'+index+'" name="'+index+'" conditional="true" ><div class="label">'+value.label+' (<strong>'+value.price+'€</strong>)</div></div><div class="oc-modal-button-container oc-modal-button-container-'+index+'"><button class="modal-btn oc-extra-substract-btn" name="'+index+'" conditional="true"><i class="fas fa-minus"></i></button><div id="'+index+'" class="oc-number-input">'+defaulnum+'</div><button class="modal-btn oc-extra-add-btn" name="'+index+'" conditional="true"><i class="fas fa-plus"></i></button></div>'
                     );
                 });
                 
@@ -250,8 +281,18 @@ function oneclick_route_form_purchase($atts) {
                 function updateYourReservationExtraSummaryTxt (savedCookie,has_extra) {
                     $('.oc-route-extra-row.oc-route-extra-header').addClass("display-flex");
                     $('.oc-route-extra-row.oc-route-extra-details').addClass("display-flex");
-                    $('.oc-route-extra-row.oc-route-extra-details').empty();
                     $.each(savedCookie['extra'],function(index,value){
+                        var extra = has_extra[index];
+                        var label = extra.label;
+                        $('.oc-route-extra-row.oc-route-extra-details').append(
+                            '<div class="oc-route-your-reservation-column-title"><p>'+label+'</p></div><div class="oc-route-your-reservation-column-info"><p>'+value+'</p></div>'
+                        )
+                    });
+                }
+                function updateYourReservationHotelSummaryTxt (savedCookie,has_extra) {
+                    $('.oc-route-extra-row.oc-route-extra-header').addClass("display-flex");
+                    $('.oc-route-extra-row.oc-route-extra-details').addClass("display-flex");
+                    $.each(savedCookie['supplement'],function(index,value){
                         var extra = has_extra[index];
                         var label = extra.label;
                         $('.oc-route-extra-row.oc-route-extra-details').append(
