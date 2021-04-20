@@ -50,6 +50,17 @@ function oneclick_route_your_reservation_panel($atts)
             <p id="oc-route-your-reservation-category"></p>
         </div>
     </div>
+    
+    <div class="oc-route-extra-row oc-route-extra-header">
+        <div class="oc-route-your-reservation-column-title oc-route-your-reservation-title">
+            <h4><?php echo __('Extra', 'wm-child-cyclando'); ?></h4>
+        </div>
+        <div class="oc-route-extra-column-info oc-route-your-reservation-modify">
+            <p id="oc-route-extra-modify"><span><?php echo __('Modify', 'wm-child-cyclando'); ?></span></p>
+        </div>
+    </div>
+    <div class="oc-route-extra-row oc-route-extra-details">
+    </div>
 
     <div class="oc-route-mobile-plan-summary-container">
         <h4><?= __('Best price for', 'wm-child-cyclando') ?></h4>
@@ -157,6 +168,12 @@ function oneclick_route_your_reservation_panel($atts)
                 $('#oc-route-your-reservation-modify').on('click', function() {
                     $('.oc-route-mobile-your-reservation-container').hide();
                     $('.oc-route-mobile-search-form-container').show();
+                });
+                // hide and show extra popup
+                $('#oc-route-extra-modify').on('click', function() {
+                    $('.oc-route-mobile-your-reservation-container').hide();
+                    $('.oc-route-mobile-search-form-container').show();
+                    $('.ocm-proceed-container').show();
                 });
             });
         })(jQuery);

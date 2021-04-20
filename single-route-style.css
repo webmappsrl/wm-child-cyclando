@@ -2172,6 +2172,32 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
 .oc-route-your-reservation-title h4 {
     font-size: 18px;
 }
+.oc-route-extra-row.oc-route-extra-header,
+.oc-route-extra-row.oc-route-extra-details {
+    display: none;
+}
+.oc-route-extra-row.oc-route-extra-header.display-flex,
+.oc-route-extra-row.oc-route-extra-details.display-flex{
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 13px;
+    row-gap: 10px;
+}
+.oc-route-extra-row.oc-route-extra-header > div {
+    flex-grow: 1;
+    width: 50%;
+}
+.oc-route-extra-row.oc-route-extra-details .oc-route-your-reservation-column-title {
+    width: 50%;
+    line-height: 20px;
+}
+.oc-route-extra-row.oc-route-extra-details .oc-route-your-reservation-column-info {
+    width: 50%;
+    line-height: 20px;
+}
+.oc-route-extra-column-info.oc-route-your-reservation-modify p{
+    text-align: right;
+}
 .oc-route-mobile-search-form-asbb-wrapper {
     display: grid;
     grid-column-gap: 15px;

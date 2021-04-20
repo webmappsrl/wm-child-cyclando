@@ -68,6 +68,15 @@ function oneclick_route_form_purchase($atts) {
                     });
                 });
                 $('.oc-proceed-done-btn').on('click',function(){
+                    // populate extra section in your reservation if any extra is selected
+                    var savedCookie = ocmCheckCookie();
+                    if ( !!savedCookie['extra']) {
+                        updateYourReservationExtraSummaryTxt(savedCookie,has_extra);
+                    } else {
+                        $('.oc-route-extra-row.oc-route-extra-header').removeClass("display-flex");
+                        $('.oc-route-extra-row.oc-route-extra-details').removeClass("display-flex");
+                        $('.oc-route-extra-row.oc-route-extra-details').empty();
+                    }
                     $('.ocm-proceed-container').hide();
                     $('.oc-route-mobile-search-form-container').hide();
                     $('.oc-route-mobile-your-reservation-container').show();
@@ -188,6 +197,19 @@ function oneclick_route_form_purchase($atts) {
                         }
                     });
                 });
+                function updateYourReservationExtraSummaryTxt (savedCookie,has_extra) {
+                    $('.oc-route-extra-row.oc-route-extra-header').addClass("display-flex");
+                    $('.oc-route-extra-row.oc-route-extra-details').addClass("display-flex");
+                    $('.oc-route-extra-row.oc-route-extra-details').empty();
+                    $.each(savedCookie['extra'],function(index,value){
+                        var extra = has_extra[index];
+                        console.log(extra)
+                        var label = extra.label;
+                        $('.oc-route-extra-row.oc-route-extra-details').append(
+                            '<div class="oc-route-your-reservation-column-title"><p>'+label+'</p></div><div class="oc-route-your-reservation-column-info"><p>'+value+'</p></div>'
+                        )
+                    });
+                }
             });
         })(jQuery);
     </script>
