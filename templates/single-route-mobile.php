@@ -284,7 +284,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         } else {
             $hotel_product_items = $has_hotel_category['model'][array_key_first($has_hotel_category['model'])];
         }
-        $products_to_remove = array('adult' ,'adult-single');
+        $products_to_remove = array('adult' ,'adult-single','single-traveller');
         foreach ($hotel_product_items as $product => $val) {
             if (in_array($product,$products_to_remove)) {
                 unset($hotel_product_items[$product]);
