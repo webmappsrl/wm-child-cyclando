@@ -200,7 +200,7 @@ function oneclick_route_form_purchase($atts) {
                             savedCookie['extra'][$(this).attr('name')] = 1;
                             } else {
                                 counter.text(0);
-                                savedCookie['extra'][$(this).attr('name')] = 0;
+                                delete savedCookie['extra'][$(this).attr('name')];
                             }
                         } else {
                             if ($(this).hasClass("checked")) {
@@ -208,7 +208,7 @@ function oneclick_route_form_purchase($atts) {
                             savedCookie['supplement'][$(this).attr('name')] = 1;
                             } else {
                                 counter.text(0);
-                                savedCookie['supplement'][$(this).attr('name')] = 0;
+                                delete savedCookie['supplement'][$(this).attr('name')];
                             }
                         }
                         
@@ -253,9 +253,9 @@ function oneclick_route_form_purchase($atts) {
                         if (num < 1) {
                             counter.text(0);
                             if (!$(this).attr('conditional')){
-                                savedCookie['extra'][$(this).attr('name')] = 0;
+                                delete savedCookie['extra'][$(this).attr('name')];
                             } else {
-                                savedCookie['supplement'][$(this).attr('name')] = 0;
+                                delete savedCookie['supplement'][$(this).attr('name')];
                             }
                             
                             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
@@ -293,8 +293,12 @@ function oneclick_route_form_purchase($atts) {
                     $('.oc-route-extra-row.oc-route-extra-header').addClass("display-flex");
                     $('.oc-route-extra-row.oc-route-extra-details').addClass("display-flex");
                     $.each(savedCookie['supplement'],function(index,value){
-                        var extra = has_extra[index];
-                        var label = extra.label;
+                        if (index == 'single_room') {
+                            var label = '<?php echo __('Single room', 'wm-child-cyclando'); ?>'
+                        } else {
+                            var extra = has_extra[index];
+                            var label = extra.label;
+                        }
                         $('.oc-route-extra-row.oc-route-extra-details').append(
                             '<div class="oc-route-your-reservation-column-title"><p>'+label+'</p></div><div class="oc-route-your-reservation-column-info"><p>'+value+'</p></div>'
                         )

@@ -1188,8 +1188,8 @@ a.ccpage_title_link {
 .woocommerce-order-received .woocommerce-order-details {
     display: none;
 }
-.woocommerce-checkout .shop_table.woocommerce-checkout-review-order-table{
-    display: none!important;
+table.shop_table.woocommerce-checkout-review-order-table tr:not(.order-total) {
+    display: none;
 }
 .woocommerce-checkout #order_review_heading{
     display: none!important;

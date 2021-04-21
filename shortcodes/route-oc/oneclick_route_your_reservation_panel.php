@@ -114,35 +114,35 @@ function oneclick_route_your_reservation_panel($atts)
                     // Definiamo le nostre regole di validazione
                     rules: {
                         // login - nome del campo di input da validare
-                        name: {
+                        quotewcname: {
                             // Definiamo il campo login come obbligatorio
                             required: true,
                             minlength: 3
                         },
-                        surname: {
+                        quotewcsurname: {
                             // Definiamo il campo login come obbligatorio
                             required: true,
                             minlength: 3,
                         },
-                        email: {
+                        quotewcemail: {
                             required: true,
                             // Definiamo il campo email come un campo di tipo email
                             email: true
                         },
-                        privacy: {
+                        quotewcprivacy: {
                             required: true
                         },
-                        conditions: {
+                        quotewcconditions: {
                             required: true,
                         }
                     },
                     // Personalizzimao i mesasggi di errore
                     messages: {
-                        name: "Inserisci il nome",
-                        surname: "Inserisci il cognome",
-                        email: "Inserisci la tua email",
-                        privacy: "Accetta la privacy e policy",
-                        conditions: "Accetta i termini e condizioni",
+                        quotewcname: "Inserisci il nome",
+                        quotewcsurname: "Inserisci il cognome",
+                        quotewcemail: "Inserisci la tua email",
+                        quotewcprivacy: "Accetta la privacy e policy",
+                        quotewcconditions: "Accetta i termini e condizioni",
                     },
                     // Settiamo il submit handler per la form
                     submitHandler: function(form) {
