@@ -944,19 +944,14 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                 complete:function(response){
                     obj = JSON.parse(response.responseText);
                     var savedCookie = ocmCheckCookie();
+                    savedCookie['hsdealid1'] = response.responseText['id'];
                     savedCookie['hsdealid'] = response.responseText.id;
                     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
-                    console.log('response');
-                    console.log(response);
-                    console.log(response.responseText);
-                    console.log('obj');
-                    console.log(obj);
-                    console.log(response.responseText.id);
                     setTimeout(
                     function() 
                     {
                         //do something special
-                    }, 5000);
+                    }, 50000);
                 }
             });
         }
