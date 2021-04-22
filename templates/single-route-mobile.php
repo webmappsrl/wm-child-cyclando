@@ -680,7 +680,6 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         var hotel_product_items = <?php echo json_encode($hotel_product_items)?>;
         var first_departure_date_ajax = <?php echo json_encode($first_departure_date_ajax )?>;
         var planSummarytxt = '';
-        var hsdeal;
 
 
         jQuery(document).ready(function() {
@@ -943,15 +942,10 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                 },
                 complete:function(response){
                     obj = JSON.parse(response.responseText);
+                    var res = JSON.parse(obj);
                     var savedCookie = ocmCheckCookie();
-                    savedCookie['hsdealid1'] = response.responseText['id'];
-                    savedCookie['hsdealid'] = response.responseText.id;
+                    savedCookie['hsdealid'] = res.id;
                     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
-                    setTimeout(
-                    function() 
-                    {
-                        //do something special
-                    }, 50000);
                 }
             });
         }
