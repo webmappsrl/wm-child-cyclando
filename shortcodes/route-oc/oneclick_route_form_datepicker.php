@@ -96,6 +96,7 @@ function oneclick_route_form_datepicker() {
                     $("#datepicker").datepicker("option", "dateFormat", "d MM yy" );
                 }
                 ajaxUpdatePrice();
+                jQuery( ".datepicker" ).datepicker({ }).attr('readonly','readonly');
             });
         });
         
