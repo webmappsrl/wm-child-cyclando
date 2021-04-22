@@ -1560,3 +1560,27 @@ function route_has_hotel_category($route_id,$first_departure) {
     $object['modelseasonal'] = $variations_name_price_seasonal;
     return $object;
 }
+
+// add custom text in checkout page for payment with bank transfer pagamento con bonifico
+function wm_wc_review_order_before_payment(  ) { 
+    ob_start();
+
+    ?>
+    <div class="woocommerce_custom_payment_info">
+    <p><strong><?php echo __('If you prefer you can pay by bank transfer:', 'wm-child-cyclando');?></strong></p>
+    <p><?php echo __('Payable to: Cyclando srl', 'wm-child-cyclando');?></p>
+    <p><?php echo __('IBAN: IT13K0200867019000105916036', 'wm-child-cyclando');?></p>
+    <p><?php echo __('Indicate in the reason: "Surname; Tour; departure date" and send a copy of the bank transfer to <a href="mailto:info@cyclando.com">INFO@CYCLANDO.COM</a>', 'wm-child-cyclando');?></p>
+    </div>
+    <?php
+
+    echo ob_get_clean();
+}; 
+add_action( 'woocommerce_review_order_before_payment', 'wm_wc_review_order_before_payment', 10, 0 );
+
+// change checkout place order button text
+add_filter( 'woocommerce_order_button_text', 'wm_checkout_custom_button_text' );
+ 
+function wm_checkout_custom_button_text( $button_text ) {
+   return __('Pay', 'wm-child-cyclando');
+}

@@ -1296,6 +1296,15 @@ body .checkout-button.button.alt.wc-forward,body .woocommerce .button.alt {
 .us-woo-cart_compact .woocommerce .shop_table.cart td, .us-woo-cart_compact .woocommerce .shop_table.cart th {
     padding: 8px 0;
 }
+.woocommerce_custom_payment_info {
+    background-color: white;
+    padding: 4%;
+    margin-bottom: 20px;
+}
+.woocommerce_custom_payment_info p {
+    font-size: 14px;
+    margin-bottom: 0;
+}
 .newsletter-cta > .vc_column-inner >.wpb_wrapper{
     background: var(--color-primary);
     /* background: linear-gradient(94deg, #9ac250 0%, #749D27 100%)!important; */
