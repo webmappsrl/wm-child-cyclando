@@ -22,7 +22,8 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   // Get the deposit
   $deposit_amount = "0";
   if ($cookies['deposit']) {
-    $deposit_amount = $cookies['deposit'];
+    $deposit_amount = str_replace('.', '', $cookies['deposit']);
+    $deposit_amount = str_replace(',', '.', $deposit_amount);
   }
   $single_room = '';
   $extra = array();
@@ -57,7 +58,8 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   $order_issued_date = date('Y-m-d');
   
   // Get the order total amount and billing name
-  $order_total = $cookies['price'];
+  $order_total = str_replace('.', '', $cookies['price']);
+  $order_total = str_replace(',', '.', $order_total);
   $billing_first_name = $cookies['billingname'];
   $billing_last_name = $cookies['billingsurname'];
 
@@ -82,7 +84,7 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
     \"url_route\": \"$routePermalink\",
     \"camere_singole\": \"$single_room\",
     \"extra\": \"$extra\",
-    \"supplemento\": \"$supplement\",
+    \"supplemento\": \"$supplement\"
   }}";
 
   $curl = curl_init();
