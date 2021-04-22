@@ -85,7 +85,7 @@ function oneclick_route_form_datepicker() {
                     },
                     beforeShow: showOverLay,
                     onClose: removeOverLay,
-                });
+                }).attr('readonly','readonly');
 
 
                 // set the initial valueof datepicker input to the selected date
@@ -96,7 +96,6 @@ function oneclick_route_form_datepicker() {
                     $("#datepicker").datepicker("option", "dateFormat", "d MM yy" );
                 }
                 ajaxUpdatePrice();
-                jQuery( ".datepicker" ).datepicker({ }).attr('readonly','readonly');
             });
         });
         
