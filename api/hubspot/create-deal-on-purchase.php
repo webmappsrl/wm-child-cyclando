@@ -19,77 +19,53 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   //Hubspot APIKEY location => wp-config.php
   $hapikey = HUBSPOTAPIKEY;
 
-  //Get WC order obj
-  $order = wc_get_order($order_get_id);
-
-  // Check if the order has deposit (Parent) or is a single order with no deposit attached to it
-  $order_parent_id = $order->get_parent_id();
-  if ($order_parent_id) {
-    $order_parent = new WC_Order($order_parent_id);
+  // Get the deposit
+  $deposit_amount = "0";
+  if ($cookies['deposit']) {
+    $deposit_amount = $cookies['deposit'];
   }
-  if ($order_parent) {
-    $order_object = $order_parent;
-  } else {
-    $order_object = $order;
-  }
-
-  // Get the order_object ID
-  $order_object_id = $order_object->get_id();
-
-  // Get the deposit amount
-  $order_has_deposit = $order_object->get_meta('_wc_deposits_order_has_deposit', true);
-  if ($order_has_deposit === 'yes') {
-    $deposit_amount = floatval($order_object->get_meta('_wc_deposits_deposit_amount', true));
-  } else {
-    $deposit_amount = "0";
-  }
-  
-  // Get the issued date
-  $order_date = $order_object->order_date;
-  $order_issued_date = date('Y-m-d',strtotime($order_date));
-
-  // Get the order total amount and billing name
-  $order_total = $order_object->get_total();
-  $billing_first_name = $order_object->get_billing_first_name();
-  $billing_last_name = $order_object->get_billing_last_name();
-
-  // Get the order coupon to extract the json 
-  $coupon = $order_object->get_coupon_codes();
-	$coupon_name = $coupon['0'];
-	$coupon_obj = get_posts( array( 
-		'name' => $coupon_name, 
-		'post_type' => 'shop_coupon'
-	) );
-	foreach ( $coupon_obj as $info) {
-		$description = $info->post_excerpt;
-	}
-	$desc = json_decode($description, JSON_PRETTY_PRINT);
-  foreach ($desc as $val => $key){
-    if ($val == 'routeId') { 
-      $routeid = $key;
-      $routName = get_the_title($routeid);
-      $routePermalink = get_permalink($routeid);
-    } 
-    if ($val == 'departureDate') {
-      $date = $key;
-      $departure_date = date("Y-m-d", strtotime($date));
-    }
-    if ($val == 'rooms') {
-      $rooms = $key;
-      $adults_number = 0;
-      $kids_number = 0;
-      foreach ($rooms as $val2 => $room){
-        foreach ($room as $val3 => $pax){
-          $pax_type = $pax['type'];
-          if ($pax_type == '0') {
-            $adults_number ++;
-          } else {
-            $kids_number ++;
-          }
-        }
+  $single_room = '';
+  $extra = array();
+  $supplement = array();
+  if ($cookies['supplement']) {
+    foreach ($cookies['supplement'] as $supp => $num) {
+      if ($supp == 'single_room') {
+        $single_room = $num;
+      } else {
+        $supplement += array($supp => $num);
       }
     }
   }
+  if ($cookies['extra']) {
+    foreach ($cookies['extra'] as $supp => $num) {
+        $extra += array($supp => $num);
+    }
+  }
+  if ($cookies['regular']) {
+    $extra += array('regular' => $cookies['regular']);
+  }
+  if ($cookies['electric']) {
+    $extra += array('electric' => $cookies['electric']);
+  }
+  $extra = http_build_query($extra,'',',');
+  $supplement = http_build_query($supplement,'',',');
+
+  // Get the issued date
+  $departure_date = explode('-',$cookies['departureDate']);
+  $departure_date = $departure_date[2].'-'.$departure_date[1].'-'.$departure_date[0];
+
+  $order_issued_date = date('Y-m-d');
+  
+  // Get the order total amount and billing name
+  $order_total = $cookies['price'];
+  $billing_first_name = $cookies['billingname'];
+  $billing_last_name = $cookies['billingsurname'];
+
+  // Get route info
+  $routePermalink = $cookies['routePermalink'];
+
+  $adults_number = $cookies['adults'];
+  $kids_number = $cookies['kids'];
 
   $CURLOPT_POSTFIELDS_ARRAY = "{\"properties\":{
     \"dealname\": \"$billing_first_name $billing_last_name\",
@@ -99,11 +75,14 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
     \"amount\": \"$order_total\",
     \"createdate\": \"$order_issued_date\",
     \"data_di_partenza\": \"$departure_date\",
-    \"descrizione\": \"$order_object_id\",
+    \"descrizione\": \"$post_id\",
     \"nr_adulti\": \"$adults_number\",
     \"nr_bambini\": \"$kids_number\",
     \"amount_acconto\": \"$deposit_amount\",
-    \"url_route\": \"$routePermalink\"
+    \"url_route\": \"$routePermalink\",
+    \"camere_singole\": \"$single_room\",
+    \"extra\": \"$extra\",
+    \"supplemento\": \"$supplement\",
   }}";
 
   $curl = curl_init();
@@ -127,5 +106,11 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   $err = curl_error($curl);
 
   curl_close($curl);
+
+  if ($err) {
+    return "cURL Error #:" . $err;
+  } else {
+    return $response;
+  }
 }; 
 

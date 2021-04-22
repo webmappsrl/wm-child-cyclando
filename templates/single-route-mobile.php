@@ -680,6 +680,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         var hotel_product_items = <?php echo json_encode($hotel_product_items)?>;
         var first_departure_date_ajax = <?php echo json_encode($first_departure_date_ajax )?>;
         var planSummarytxt = '';
+        var hsdeal;
 
 
         jQuery(document).ready(function() {
@@ -785,12 +786,19 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                     console.log(response.responseText);
                     console.log(obj);
                     jQuery(".cifraajax").html(obj.price+'€');
+                    var savedCookie = ocmCheckCookie();
+                    savedCookie['price'] = obj.price;
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                     jQuery( ".deposit-title" ).remove();
                     jQuery( ".depositajax" ).remove();
+                    delete savedCookie['deposit'];
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                     if (obj.deposit) {
                         jQuery( ".oc-route-mobile-plan-price-container" ).prepend( 
                             `<div class="deposit-title"><?= __('Deposit', 'wm-child-cyclando') ?></div><div class="depositajax">`+obj.deposit+`€</div>`
                         );
+                        savedCookie['deposit'] = obj.deposit;
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                     }
                     if (obj.depositaddtocart) {
                         addtocart = obj.depositaddtocart;
@@ -915,7 +923,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             return sums;
         }
 
-        // ajax on route purchase button that creates a new hubspot deal 
+        // ajax on route purchase / pay button that creates a new hubspot deal 
         function ajaxCreatHubspotDeal(){
             if (Cookies.get('oc_participants_cookie')) {
             var ocCookies = JSON.parse(Cookies.get('oc_participants_cookie'));
@@ -935,6 +943,8 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                 },
                 complete:function(response){
                     obj = JSON.parse(response.responseText);
+                    hsdeal = response;
+                    console.log(response);
                     console.log(response.responseText);
                     console.log(obj);
                 }

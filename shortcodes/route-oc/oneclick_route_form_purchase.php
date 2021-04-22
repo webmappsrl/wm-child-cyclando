@@ -297,14 +297,15 @@ function oneclick_route_form_purchase($atts) {
                 function updateYourReservationHotelSummaryTxt (savedCookie,has_extra) {
                     $('.oc-route-extra-row.oc-route-extra-header').addClass("display-flex");
                     $('.oc-route-extra-row.oc-route-extra-details').addClass("display-flex");
+                    var has_single = <?= $has_single ?>;
                     $.each(savedCookie['supplement'],function(index,value){
                         var extra = has_extra[index];
-                        if (extra) {
-                            if (index == 'single_room') {
-                                var label = '<?php echo __('Single room', 'wm-child-cyclando'); ?>'
-                            } else {
-                                var label = extra.label;
-                            }
+                        if (index == 'single_room' && has_single) {
+                            var label = '<?php echo __('Single room', 'wm-child-cyclando'); ?>'
+                            $('.oc-route-extra-row.oc-route-extra-details').append(
+                            '<div class="oc-route-your-reservation-column-title"><p>'+label+'</p></div><div class="oc-route-your-reservation-column-info"><p>'+value+'</p></div>')
+                        } else if (extra) {
+                            var label = extra.label;
                             $('.oc-route-extra-row.oc-route-extra-details').append(
                             '<div class="oc-route-your-reservation-column-title"><p>'+label+'</p></div><div class="oc-route-your-reservation-column-info"><p>'+value+'</p></div>')
                         } else {

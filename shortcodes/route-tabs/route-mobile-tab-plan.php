@@ -21,7 +21,7 @@ function route_mobile_tab_plan($atts) {
     $has_hotel_category = route_has_hotel_category($post_id,$first_departure);
     $has_extra_category = route_has_extra_category($post_id);
     // echo '<pre>';
-    // print_r($has_hotel_category);
+    // print_r(date('Y-m-d'));
     // echo '</pre>';
     if (count($has_hotel_category['model']) > 1 || count($has_hotel_category['modelseasonal']) > 1) {
         $has_category = true;

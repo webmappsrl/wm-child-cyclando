@@ -159,9 +159,10 @@ function oneclick_route_your_reservation_panel($atts)
                         if ($("#quotewcconditions").is(':checked')) {
                             savedCookies['billingconditions'] = 'on';
                         }
+                        savedCookies['routePermalink'] = window.location.href;
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookies), { expires: 7, path: '/' });
                         form.submit();
-                        //ajaxCreatHubspotDeal();
+                        ajaxCreatHubspotDeal();
                     }
                 });
                 // hide and show the plan Tab
