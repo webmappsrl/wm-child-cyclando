@@ -283,25 +283,34 @@ function oneclick_route_form_purchase($atts) {
                     $('.oc-route-extra-row.oc-route-extra-details').addClass("display-flex");
                     $.each(savedCookie['extra'],function(index,value){
                         var extra = has_extra[index];
-                        var label = extra.label;
-                        $('.oc-route-extra-row.oc-route-extra-details').append(
-                            '<div class="oc-route-your-reservation-column-title"><p>'+label+'</p></div><div class="oc-route-your-reservation-column-info"><p>'+value+'</p></div>'
-                        )
+                        if (extra) {
+                            var label = extra.label;
+                            $('.oc-route-extra-row.oc-route-extra-details').append(
+                                '<div class="oc-route-your-reservation-column-title"><p>'+label+'</p></div><div class="oc-route-your-reservation-column-info"><p>'+value+'</p></div>'
+                            )
+                        } else {
+                            delete savedCookie['extra'][index];
+                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                        }
                     });
                 }
                 function updateYourReservationHotelSummaryTxt (savedCookie,has_extra) {
                     $('.oc-route-extra-row.oc-route-extra-header').addClass("display-flex");
                     $('.oc-route-extra-row.oc-route-extra-details').addClass("display-flex");
                     $.each(savedCookie['supplement'],function(index,value){
-                        if (index == 'single_room') {
-                            var label = '<?php echo __('Single room', 'wm-child-cyclando'); ?>'
+                        var extra = has_extra[index];
+                        if (extra) {
+                            if (index == 'single_room') {
+                                var label = '<?php echo __('Single room', 'wm-child-cyclando'); ?>'
+                            } else {
+                                var label = extra.label;
+                            }
+                            $('.oc-route-extra-row.oc-route-extra-details').append(
+                            '<div class="oc-route-your-reservation-column-title"><p>'+label+'</p></div><div class="oc-route-your-reservation-column-info"><p>'+value+'</p></div>')
                         } else {
-                            var extra = has_extra[index];
-                            var label = extra.label;
+                            delete savedCookie['supplement'][index];
+                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                         }
-                        $('.oc-route-extra-row.oc-route-extra-details').append(
-                            '<div class="oc-route-your-reservation-column-title"><p>'+label+'</p></div><div class="oc-route-your-reservation-column-info"><p>'+value+'</p></div>'
-                        )
                     });
                 }
             });
