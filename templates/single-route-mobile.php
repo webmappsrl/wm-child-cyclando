@@ -30,6 +30,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 
 		// var 
 		$post_id = get_the_ID();
+        $route_title = get_the_title($post_id);
         $wm_post_id = wm_get_original_post_it($post_id);
         $wm_post_id = $wm_post_id['id'];
 		if (defined('ICL_LANGUAGE_CODE')) {
@@ -679,6 +680,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         var has_extra = <?php echo json_encode($has_extra)?>;
         var hotel_product_items = <?php echo json_encode($hotel_product_items)?>;
         var first_departure_date_ajax = <?php echo json_encode($first_departure_date_ajax )?>;
+        var route_title = <?php echo json_encode($route_title) ?>;
         var planSummarytxt = '';
 
 
@@ -786,7 +788,8 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                     jQuery(".cifraajax").html(obj.price+'€');
                     var savedCookie = ocmCheckCookie();
                     savedCookie['price'] = obj.price;
-                    savedCookie['routeName'] = <?php the_title() ?>;
+                    savedCookie['routeName'] = route_title;
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                     jQuery( ".deposit-title" ).remove();
                     jQuery( ".depositajax" ).remove();
                     delete savedCookie['deposit'];
