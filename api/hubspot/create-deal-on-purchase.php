@@ -77,7 +77,7 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
     \"amount\": \"$order_total\",
     \"createdate\": \"$order_issued_date\",
     \"data_di_partenza\": \"$departure_date\",
-    \"descrizione\": \"$post_id\",
+    \"descrizione\": \"Route ID: $post_id\",
     \"nr_adulti\": \"$adults_number\",
     \"nr_bambini\": \"$kids_number\",
     \"amount_acconto\": \"$deposit_amount\",

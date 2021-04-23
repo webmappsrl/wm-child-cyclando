@@ -782,12 +782,11 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                 complete:function(response){
                     var addtocart = '';
                     obj = JSON.parse(response.responseText);
-                    console.log(response.responseText);
                     console.log(obj);
                     jQuery(".cifraajax").html(obj.price+'€');
                     var savedCookie = ocmCheckCookie();
                     savedCookie['price'] = obj.price;
-                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    savedCookie['routeName'] = <?php the_title() ?>;
                     jQuery( ".deposit-title" ).remove();
                     jQuery( ".depositajax" ).remove();
                     delete savedCookie['deposit'];
