@@ -294,7 +294,16 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             }
         }
 	?>
-
+    <script>
+        var post_id = <?= $post_id ?>;
+        var departureArrays = <?php echo json_encode($start_array)?>;
+        var start_arraydFY = <?php echo json_encode($start_arraydFY)?>;
+        var start_arrayYmd = <?php echo json_encode($start_arrayYmd)?>;
+        var has_extra = <?php echo json_encode($has_extra)?>;
+        var hotel_product_items = <?php echo json_encode($hotel_product_items)?>;
+        var first_departure_date_ajax = <?php echo json_encode($first_departure_date_ajax )?>;
+        var planSummarytxt = '';
+    </script>
     <!-- Start new template -->
     <!-- Start section introduction and gallery -->
     <section class="l-section wpb_row height_auto cyc-single-route-introduction-container cyc-route-introduction-mobile" style="background-image:url(<?= $featured_image ?>);">
@@ -672,16 +681,6 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
     </div>
     <!-- END HTML modal for contact in route -->
     <script>
-        var post_id = <?= $post_id ?>;
-        var departureArrays = <?php echo json_encode($start_array)?>;
-        var start_arraydFY = <?php echo json_encode($start_arraydFY)?>;
-        var start_arrayYmd = <?php echo json_encode($start_arrayYmd)?>;
-        var has_extra = <?php echo json_encode($has_extra)?>;
-        var hotel_product_items = <?php echo json_encode($hotel_product_items)?>;
-        var first_departure_date_ajax = <?php echo json_encode($first_departure_date_ajax )?>;
-        var planSummarytxt = '';
-
-
         jQuery(document).ready(function() {
             if (Cookies.get('oc_participants_cookie')) {
                 var ocCookies = JSON.parse(Cookies.get('oc_participants_cookie'));

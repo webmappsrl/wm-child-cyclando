@@ -96,7 +96,8 @@ defined( 'ABSPATH' ) || exit;
 <script type="text/javascript">
     jQuery(document).ready(function(){
         var ocCookies = ocmCheckCookie();
-        jQuery('#thankyou-data-partenza').html(ocCookies['departureDate']);
+        departureDate = ocCookies['departureDate'].split('-');
+        jQuery('#thankyou-data-partenza').html(departureDate[0]+'/'+departureDate[1]+'/'+departureDate[2]);
         jQuery('#thankyou-route-name').html('<a href="'+ocCookies['routePermalink']+'">'+ocCookies['routeName']+'</a>');
         jQuery('#thankyou-numero-ordine strong').html(ocCookies['hsdealid']);
     })

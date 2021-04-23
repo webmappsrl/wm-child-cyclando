@@ -122,24 +122,29 @@ function oneclick_route_form_purchase($atts) {
                     }
                 }
                 // Populate the extras from var has_extra
-                $.each(has_extra,function(index,value){
-                    var defaulnum = 0;
-                    if (Cookies.get('oc_participants_cookie')) {
-                        var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
-                        if (!savedCookie['extra']) {
-                            savedCookie['extra'] = {};
-                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
-                        } 
-                    }
-                    if (savedCookie['extra']) {
-                        if (savedCookie['extra'][index] > 0) {
-                            defaulnum = savedCookie['extra'][index];
+                console.log('has_extra');
+                console.log(has_extra);
+                if (has_extra) {
+                    $.each(has_extra,function(index,value){
+                        var defaulnum = 0;
+                        if (Cookies.get('oc_participants_cookie')) {
+                            var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
+                            if (!savedCookie['extra']) {
+                                savedCookie['extra'] = {};
+                                Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                            } 
                         }
-                    }
-                    $(".ocm-extras-proceed-detail-container").append(
-                    '<div class="ocm-proceed-extras-body "><div class="facetwp-checkbox facetwp-checkbox-'+index+'" name="'+index+'"><div class="label">'+value.label+' (<strong>'+value.price+'€</strong>)</div></div><div class="oc-modal-button-container oc-modal-button-container-'+index+'"><button class="modal-btn oc-extra-substract-btn" name="'+index+'"><i class="fas fa-minus"></i></button><div id="'+index+'" class="oc-number-input">'+defaulnum+'</div><button class="modal-btn oc-extra-add-btn" name="'+index+'"><i class="fas fa-plus"></i></button></div>'
-                    );
-                });
+                        if (savedCookie['extra']) {
+                            if (savedCookie['extra'][index] > 0) {
+                                defaulnum = savedCookie['extra'][index];
+                            }
+                        }
+                        $(".ocm-extras-proceed-detail-container").append(
+                        '<div class="ocm-proceed-extras-body "><div class="facetwp-checkbox facetwp-checkbox-'+index+'" name="'+index+'"><div class="label">'+value.label+' (<strong>'+value.price+'€</strong>)</div></div><div class="oc-modal-button-container oc-modal-button-container-'+index+'"><button class="modal-btn oc-extra-substract-btn" name="'+index+'"><i class="fas fa-minus"></i></button><div id="'+index+'" class="oc-number-input">'+defaulnum+'</div><button class="modal-btn oc-extra-add-btn" name="'+index+'"><i class="fas fa-plus"></i></button></div>'
+                        );
+                    });
+                }
+                
 
                 // Populate the extra conditional hotel products from var hotel_product_items
                 $.each(hotel_product_items,function(index,value){ 
