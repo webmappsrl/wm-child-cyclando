@@ -30,6 +30,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 
 		// var 
 		$post_id = get_the_ID();
+        $route_title = get_the_title($post_id);
         $wm_post_id = wm_get_original_post_it($post_id);
         $wm_post_id = $wm_post_id['id'];
 		if (defined('ICL_LANGUAGE_CODE')) {
@@ -294,16 +295,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             }
         }
 	?>
-    <script>
-        var post_id = <?= $post_id ?>;
-        var departureArrays = <?php echo json_encode($start_array)?>;
-        var start_arraydFY = <?php echo json_encode($start_arraydFY)?>;
-        var start_arrayYmd = <?php echo json_encode($start_arrayYmd)?>;
-        var has_extra = <?php echo json_encode($has_extra)?>;
-        var hotel_product_items = <?php echo json_encode($hotel_product_items)?>;
-        var first_departure_date_ajax = <?php echo json_encode($first_departure_date_ajax )?>;
-        var planSummarytxt = '';
-    </script>
+
     <!-- Start new template -->
     <!-- Start section introduction and gallery -->
     <section class="l-section wpb_row height_auto cyc-single-route-introduction-container cyc-route-introduction-mobile" style="background-image:url(<?= $featured_image ?>);">
@@ -681,6 +673,17 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
     </div>
     <!-- END HTML modal for contact in route -->
     <script>
+        var post_id = <?= $post_id ?>;
+        var departureArrays = <?php echo json_encode($start_array)?>;
+        var start_arraydFY = <?php echo json_encode($start_arraydFY)?>;
+        var start_arrayYmd = <?php echo json_encode($start_arrayYmd)?>;
+        var has_extra = <?php echo json_encode($has_extra)?>;
+        var hotel_product_items = <?php echo json_encode($hotel_product_items)?>;
+        var first_departure_date_ajax = <?php echo json_encode($first_departure_date_ajax )?>;
+        var route_title = <?php echo json_encode($route_title) ?>;
+        var planSummarytxt = '';
+
+
         jQuery(document).ready(function() {
             if (Cookies.get('oc_participants_cookie')) {
                 var ocCookies = JSON.parse(Cookies.get('oc_participants_cookie'));
@@ -781,15 +784,22 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                 complete:function(response){
                     var addtocart = '';
                     obj = JSON.parse(response.responseText);
-                    console.log(response.responseText);
                     console.log(obj);
                     jQuery(".cifraajax").html(obj.price+'€');
+                    var savedCookie = ocmCheckCookie();
+                    savedCookie['price'] = obj.price;
+                    savedCookie['routeName'] = route_title;
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                     jQuery( ".deposit-title" ).remove();
                     jQuery( ".depositajax" ).remove();
+                    delete savedCookie['deposit'];
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                     if (obj.deposit) {
                         jQuery( ".oc-route-mobile-plan-price-container" ).prepend( 
                             `<div class="deposit-title"><?= __('Deposit', 'wm-child-cyclando') ?></div><div class="depositajax">`+obj.deposit+`€</div>`
                         );
+                        savedCookie['deposit'] = obj.deposit;
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                     }
                     if (obj.depositaddtocart) {
                         addtocart = obj.depositaddtocart;
@@ -914,7 +924,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             return sums;
         }
 
-        // ajax on route purchase button that creates a new hubspot deal 
+        // ajax on route purchase / pay button that creates a new hubspot deal 
         function ajaxCreatHubspotDeal(){
             if (Cookies.get('oc_participants_cookie')) {
             var ocCookies = JSON.parse(Cookies.get('oc_participants_cookie'));
@@ -934,8 +944,10 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                 },
                 complete:function(response){
                     obj = JSON.parse(response.responseText);
-                    console.log(response.responseText);
-                    console.log(obj);
+                    var res = JSON.parse(obj);
+                    var savedCookie = ocmCheckCookie();
+                    savedCookie['hsdealid'] = res.id;
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                 }
             });
         }
