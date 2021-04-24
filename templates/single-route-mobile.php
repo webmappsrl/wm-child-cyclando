@@ -943,8 +943,11 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                 success : function( response ) {
                 },
                 complete:function(response){
-                    obj = JSON.parse(response.responseText);
+                    console.log(response);
+                    var obj = JSON.parse(response.responseText);
+                    console.log(obj);
                     var res = JSON.parse(obj);
+                    console.log(res);
                     var savedCookie = ocmCheckCookie();
                     savedCookie['hsdealid'] = res.id;
                     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
