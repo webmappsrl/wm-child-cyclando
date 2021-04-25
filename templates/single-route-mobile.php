@@ -925,7 +925,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         }
 
         // ajax on route purchase / pay button that creates a new hubspot deal 
-        function ajaxCreatHubspotDeal(){
+        function ajaxCreatHubspotDeal(form){
             if (Cookies.get('oc_participants_cookie')) {
             var ocCookies = JSON.parse(Cookies.get('oc_participants_cookie'));
             }
@@ -948,6 +948,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                     var savedCookie = ocmCheckCookie();
                     savedCookie['hsdealid'] = res.id;
                     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    form.submit();
                 }
             });
         }

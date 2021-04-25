@@ -161,8 +161,7 @@ function oneclick_route_your_reservation_panel($atts)
                         }
                         savedCookies['routePermalink'] = window.location.href;
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookies), { expires: 7, path: '/' });
-                        ajaxCreatHubspotDeal();
-                        form.submit();
+                        ajaxCreatHubspotDeal(form);
                     }
                 });
                 // hide and show the plan Tab
