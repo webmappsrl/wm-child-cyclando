@@ -1337,17 +1337,17 @@ add_filter( 'facetwp_facet_filter_posts', function( $return, $params ) {
 
 
 //change header id for mobile version Search page - pagina cerca and Single route page
-add_filter('us_get_page_area_id','wm_custom_header_id_mobile');
+//add_filter('us_get_page_area_id','wm_custom_header_id_mobile');
 function wm_custom_header_id_mobile($area_id){
     // Search page
-    if ($area_id == 57181 && wm_isMobileDev()) {
-        $area_id = 103585;
-    }
+    // if ($area_id == 57181 && wm_isMobileDev()) {
+    //     $area_id = 103585;
+    // }
     // Single route
-    if ($area_id == 50234 && wm_isMobileDev()) {
-        // $area_id = 100474;
-        $area_id = 103584;
-    }
+    // if ($area_id == 50234 && wm_isMobileDev()) {
+    //     // $area_id = 100474;
+    //     $area_id = 103584;
+    // }
     return $area_id;
 }
 

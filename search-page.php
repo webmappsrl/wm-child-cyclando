@@ -24,11 +24,8 @@ get_header();
 
         // With Cyclando, calculating the itinerary of your cycling holiday is very simple. Our cycle itinerary planner will allow you to find the trip that suits you best, based on your choices on:
         // Con Cyclando calcolare l’itinerario della tua vacanza in bici è semplicissimo. Il nostro pianificatore di itinerari ciclabili ti permetterà di trovare il viaggio su misura per te, in base alle tue scelte su:
-        if (wm_isMobileDev()) {
-			load_template( __DIR__ . '/templates/search-page-mobile.php' );
-        } else {
-			load_template( __DIR__ . '/templates/search-page-desktop.php' );
-        }
+			
+		load_template( __DIR__ . '/templates/search-page-desktop.php' );
 
         // Loads the content from the page
 		$content_area_id = us_get_page_area_id( 'content' );

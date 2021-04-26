@@ -1996,8 +1996,6 @@ a:hover.tooltips span {
     }
     .cyc-route-taxonomy-tab-row-container .oc-route-mobile-search-form-container {
         padding: 40px;
-    }
-    .cyc-route-taxonomy-tab-row-container .oc-route-mobile-search-form-container {
         margin: 1.5rem 1.5rem 7px;
     }
     .cyc-route-taxonomy-tab-row-container .meta-bar-txt-strong {
@@ -2019,6 +2017,10 @@ a:hover.tooltips span {
         box-shadow: 0 3px 6px 0 #dadada;
         border-radius: 16px;
         margin: 1.5rem 1.5rem 7px;
+    }
+    .cyc-route-taxonomy-tab-row-container .oc-route-mobile-your-reservation-container {
+        margin: 1.5rem 1.5rem 7px;
+        padding: 40px;
     }
     .cyc-route-taxonomy-row-wrapper > div {
         width: 100%;
