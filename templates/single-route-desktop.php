@@ -286,12 +286,14 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             $hotel_product_items = $has_hotel_category['model'][array_key_first($has_hotel_category['model'])];
         }
         $products_to_remove = array('adult' ,'adult-single','single-traveller');
-        foreach ($hotel_product_items as $product => $val) {
-            if (in_array($product,$products_to_remove)) {
-                unset($hotel_product_items[$product]);
-            } 
-            if (strpos($product,'kid') !== false) {
-                unset($hotel_product_items[$product]);
+        if ($hotel_product_items) {
+            foreach ($hotel_product_items as $product => $val) {
+                if (in_array($product,$products_to_remove)) {
+                    unset($hotel_product_items[$product]);
+                } 
+                if (strpos($product,'kid') !== false) {
+                    unset($hotel_product_items[$product]);
+                }
             }
         }
 	?>
@@ -581,33 +583,6 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 				?>
     </div>
     <?php } ?>
-    <!-- HTML modal for prices -->
-    <div id="cy-prices-modal" class="cy-prices-modal">
-        <div class="cy-modal-content">
-            <div class="cy-modal-header">
-                <div class="close-button-container"><span class="cy-close">&times;</span></div>
-                <div class="vedi-prezzi">
-                    <h2><?php echo __('See the prices', 'wm-child-cyclando'); ?></h2>
-                </div>
-                <div class="meta-bar wm-activity"><i class="<?php echo $iconimage_activity; ?>"></i></div>
-                <div id="wm-book-quote" class="meta-bar wm-book long-txt">
-                    <p class='meta-bar-txt-bold'><?php echo __('Quote', 'wm-child-cyclando'); ?></p>
-                    <a target="_blank"
-                        href="https://cyclando.com/quote/#/<?php echo $post_id . '?lang=' . $language; ?>">
-                    </a>
-                </div>
-            </div>
-            <div class="cy-modal-body">
-                <?php echo do_shortcode('[route_table_price]'); ?>
-            </div>
-            <!-- <div class="cy-modal-footer">
-                <h3>Modal Footer</h3>
-            </div> -->
-        </div>
-    </div>
-    <!-- END HTML modal for prices -->
-
-    
 
     <!-- HTML modal for contact in route -->
     <div id="cy-route-contact" class="cy-route-contact">
@@ -808,14 +783,14 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                     }
                     calcCategorySelectOptions(obj);
                     updatePlanSummaryTxt(ocCookies);
-                    updateYourReservationSummaryTxt(ocCookies);
+                    updateYourReservationSummaryTxt(ocCookies,obj);
                     jQuery( "#quotewcaddtocart" ).remove();
                     jQuery('#yourReservationPurchaseFrom').prepend('<input type="hidden" id="quotewcaddtocart" name="add-to-cart" value="'+addtocart+'" />');
                 }
             });
         }
         function calcCategorySelectOptions(obj){ 
-            var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie')); 
+            var savedCookie = ocmCheckCookie(); 
             var options = '<option disabled="disabled"><?= __('Select a category', 'wm-child-cyclando') ?></option>';
             jQuery.each(obj.category, function(index, value) {
                 var selected = '';
@@ -859,7 +834,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             jQuery(".oc-route-mobile-plan-summary").html(planSummarytxt);
         }
 
-        function updateYourReservationSummaryTxt(savedCookie){
+        function updateYourReservationSummaryTxt(ocCookies,obj){
 
             var yRSummarytxtKids = '';
             yRSummarytxtadults = savedCookie['adults'] + ' ' + '<?= __('adults', 'wm-child-cyclando') ?>';
@@ -888,10 +863,10 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             }
             
             var yRSummarytxtCategory = '';
-            if (savedCookie['category']) {
+            if (obj.categoryname) {
                 jQuery('.oc-route-your-reservation-category-title').show();
                 jQuery('.oc-route-your-reservation-category-info').show();
-                jQuery("#oc-route-your-reservation-category").html(savedCookie['electric']);
+                jQuery("#oc-route-your-reservation-category").html(obj.categoryname);
             } else {
                 jQuery('.oc-route-your-reservation-category-title').hide();
                 jQuery('.oc-route-your-reservation-category-info').hide();

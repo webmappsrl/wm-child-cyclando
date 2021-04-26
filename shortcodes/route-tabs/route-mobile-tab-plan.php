@@ -54,31 +54,37 @@ function route_mobile_tab_plan($atts) {
             $has_ebike = true;
         }
     }
+    $coming_soon = get_field('not_salable',$post_id);
     ob_start();
 
 
     ?>
     <div class="oc-route-mobile-search-form-container">
-        <?= do_shortcode("[oneclick_route_form_datepicker]")?>
-        <?php if ($has_category) { ?>
-            <?= do_shortcode('[oneclick_route_form_category post_id="'.$post_id.'" first_departure="'.$first_departure.'"]')?>
-        <?php } ?>
-        <div class="oc-route-mobile-search-form-asbb-wrapper">
-            <?= do_shortcode("[oneclick_search_form_participants route='true' has_kids='$has_kids' min_kid_age='$min_kid_age']")?>
-        <?php if ($has_bike || $has_ebike) { ?>
-            <?= do_shortcode("[oneclick_search_form_bikes route='true' has_bike='$has_bike' has_ebike='$has_ebike' ]")?>
-        <?php } else { ?>
-            <div id="" class="oc-input-btn selected"><?php echo __('Bikes are included','wm-child-cyclando'); ?></div>
-        <?php } ?>
-        </div>
-        <div class="oc-route-mobile-plan-summary-container">
-            <h4><?= __('Best price for', 'wm-child-cyclando') ?></h4>
-            <div class="oc-route-mobile-plan-summary"></div>
-        </div>
-        <div class="oc-route-mobile-plan-price-container">
-            <div class="cifraajax-title"><?= __('Total', 'wm-child-cyclando') ?></div><div class="cifraajax"></div>
-        </div>
-        <?= do_shortcode("[oneclick_route_form_purchase route='true' hotel_product_items='$hotel_product_items' first_departure='$first_departure']")?>
+        <?php if ($coming_soon) :?>
+            <h4><?php echo __('On riquest','wm-child-cyclando'); ?></h4>
+        <?php else:?>
+            <?= do_shortcode("[oneclick_route_form_datepicker]")?>
+            <?php if ($has_category) { ?>
+                <?= do_shortcode('[oneclick_route_form_category post_id="'.$post_id.'" first_departure="'.$first_departure.'"]')?>
+            <?php } ?>
+            <div class="oc-route-mobile-search-form-asbb-wrapper">
+                <?= do_shortcode("[oneclick_search_form_participants route='true' has_kids='$has_kids' min_kid_age='$min_kid_age']")?>
+            <?php if ($has_bike || $has_ebike) { ?>
+                <?= do_shortcode("[oneclick_search_form_bikes route='true' has_bike='$has_bike' has_ebike='$has_ebike' ]")?>
+            <?php } else { ?>
+                <div class="oc-input-btn selected bikes-included"><?php echo __('Bikes are included','wm-child-cyclando'); ?></div>
+            <?php } ?>
+            </div>
+            <div class="oc-route-mobile-plan-summary-container">
+                <h4><?= __('Best price for', 'wm-child-cyclando') ?></h4>
+                <div class="oc-route-mobile-plan-summary"></div>
+            </div>
+            <div class="oc-route-mobile-plan-price-container">
+                <div class="cifraajax-title"><?= __('Total', 'wm-child-cyclando') ?></div><div class="cifraajax"></div>
+            </div>
+            <?= do_shortcode("[oneclick_route_form_purchase route='true' hotel_product_items='$hotel_product_items' first_departure='$first_departure']")?>
+        <?php endif;?>
+        
         <div class="cyc-single-route-cta-buttons">
             <div id="cy-contact-in-basso" class="">
                 <div class="cy-btn-contact">

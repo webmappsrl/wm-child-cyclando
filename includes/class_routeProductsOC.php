@@ -116,17 +116,29 @@ class routeProductsOC {
         $extra = $this->getExtraProducts();
 
         $adults = intval($this->cookies['adults']);
-        $kids = intval($this->cookies['kids']);
-        $ages = $this->cookies['ages'];
-        $regular = intval($this->cookies['regular']);
-        $electric = intval($this->cookies['electric']);
-        $has_extra = $this->cookies['extra'];
+        if ($this->cookies['kids'])
+            $kids = intval($this->cookies['kids']);
+        
+        if ($this->cookies['ages'])
+            $ages = $this->cookies['ages'];
+
+        if ($this->cookies['regular'])
+            $regular = intval($this->cookies['regular']);
+
+        if ($this->cookies['electric'])
+            $electric = intval($this->cookies['electric']);
+
+        if ($this->cookies['extra'])
+            $has_extra = $this->cookies['extra'];
         
         $addToCart = array();
         $deposit = 0;
         $percentToGet = 25;
         $percentInDecimal = $percentToGet / 100;
-        $departureDate = $this->cookies['departureDate'];
+
+        if ($this->cookies['departureDate'])
+            $departureDate = $this->cookies['departureDate'];
+            
         $departureDateExplod = explode('-',$departureDate);
         $departureDateFormated = $departureDateExplod[2] . '-' . $departureDateExplod[1] . '-' . $departureDateExplod[0];
         $datetime = date("Y-m-d");

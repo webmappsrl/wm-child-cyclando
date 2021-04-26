@@ -82,7 +82,6 @@ function oneclick_route_form_purchase($atts) {
                 $('#oc-acquista-route .cy-btn-contact').on('click',function(){
                     $('.ocm-proceed-container').show();
                     $( ".facetwp-checkbox" ).each(function(index,element) {
-                        var savedCookie = {};
                         if (Cookies.get('oc_participants_cookie')) {
                             savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
                         }
@@ -122,8 +121,6 @@ function oneclick_route_form_purchase($atts) {
                     }
                 }
                 // Populate the extras from var has_extra
-                console.log('has_extra');
-                console.log(has_extra);
                 if (has_extra) {
                     $.each(has_extra,function(index,value){
                         var defaulnum = 0;

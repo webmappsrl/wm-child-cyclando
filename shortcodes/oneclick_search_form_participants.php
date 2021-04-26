@@ -70,9 +70,11 @@ function oneclick_search_form_participants($atts) {
             // checks if the kids are not availible and if they are previously selected, adds their value to adults
             var has_kids = <?php echo json_encode($has_kids )?>;
             if (has_kids == "") {
-                if (Cookies.get('oc_participants_cookie')) {
-                    var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
-                    savedCookie['adults'] += parseInt(savedCookie['kids']);
+                var savedCookie = ocmCheckCookie();
+                if (savedCookie) {
+                    if (savedCookie['kids']) {
+                        savedCookie['adults'] += parseInt(savedCookie['kids']);
+                    }
                     delete savedCookie['ages'];
                     delete savedCookie['kids'];
                     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
@@ -82,9 +84,9 @@ function oneclick_search_form_participants($atts) {
                 }
             }
             <?php } ?>
-            if (Cookies.get('oc_participants_cookie')) {
-                var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
-                if (parseInt(savedCookie['adults'])>0) {
+            var savedCookie = ocmCheckCookie();
+            if (savedCookie) {
+                if (parseInt(savedCookie['adults']) > 0) {
                     $('#adult-participants').text(parseInt(savedCookie['adults']));
                     $('#ocm-partecipants-adult-number').text(parseInt(savedCookie['adults']) + ' ');
                     $("#oc-participants-adult").addClass('selected');
@@ -95,7 +97,7 @@ function oneclick_search_form_participants($atts) {
                     $("#oc-participants-adult").addClass('selected');
                     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                 }
-                if (parseInt(savedCookie['kids'])>0) {
+                if (parseInt(savedCookie['kids']) > 0) {
                     $('#kid-participants').text(parseInt(savedCookie['kids']));
                     $('#ocm-partecipants-kid-number').text(parseInt(savedCookie['kids']) + ' ');
                     $("#oc-participants-kid").addClass('selected');
@@ -117,7 +119,7 @@ function oneclick_search_form_participants($atts) {
                     $("#oc-bikes").addClass('selected');
                 }
             } else {
-                var savedCookie = {};
+                savedCookie = {};
                 savedCookie['adults'] = 2;
                 savedCookie['category'] = 0;
                 $('#adult-participants').text(2);
@@ -252,7 +254,7 @@ function oneclick_search_form_participants($atts) {
                     var sum = '';
                 }
                 var sums = cal_sum_cookies(savedCookie);
-                console.log('sums'+JSON.stringify(sums));
+                // console.log('sums'+JSON.stringify(sums));
                 if (!("adults" in savedCookie)) {
                     $("#ocm-warning-container").append(
                         '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('There should be at least one adult','wm-child-cyclando'); ?></div>'
