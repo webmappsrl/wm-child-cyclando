@@ -39,9 +39,8 @@ function oneclick_route_form_category($atts) {
         $(document).ready(function () {
             $( function() {
                 $('.category-select-holder select').on('change', function() {
-                    var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie')); 
+                    var savedCookie = ocmCheckCookie();
                     savedCookie['category'] = this.value;
-                    console.log(savedCookie['category']);
                     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                     ajaxUpdatePrice();
                 });

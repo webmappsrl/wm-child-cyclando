@@ -796,10 +796,13 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                 var selected = '';
                 if (obj.categoryname == value) {
                     selected = 'selected="selected"';
+                    savedCookie['category'] = value;
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                 }
                 options += "<option "+selected+" value='"+ value + "'>" + value + "</option>";
             });
             jQuery(".category-select-holder select").html(options);
+            updateYourReservationSummaryTxt(savedCookie);
         }
 
         // old function - not in use - for single room dropdown
@@ -834,7 +837,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             jQuery(".oc-route-mobile-plan-summary").html(planSummarytxt);
         }
 
-        function updateYourReservationSummaryTxt(ocCookies,obj){
+        function updateYourReservationSummaryTxt(savedCookie){
 
             var yRSummarytxtKids = '';
             yRSummarytxtadults = savedCookie['adults'] + ' ' + '<?= __('adults', 'wm-child-cyclando') ?>';
@@ -863,10 +866,11 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             }
             
             var yRSummarytxtCategory = '';
-            if (obj.categoryname) {
+
+            if (savedCookie['category']) {
                 jQuery('.oc-route-your-reservation-category-title').show();
                 jQuery('.oc-route-your-reservation-category-info').show();
-                jQuery("#oc-route-your-reservation-category").html(obj.categoryname);
+                jQuery("#oc-route-your-reservation-category").html(savedCookie['category']);
             } else {
                 jQuery('.oc-route-your-reservation-category-title').hide();
                 jQuery('.oc-route-your-reservation-category-info').hide();
