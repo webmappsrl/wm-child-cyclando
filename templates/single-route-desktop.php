@@ -358,98 +358,101 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
     </section>
 
     <!-- END section introduction andgalery END  -->
-    <!-- START section taxonomies and difficulty block START  -->
-    <div class="cyc-route-mobile-taxonomy-container">
-        <div class="cyc-route-mobile-taxonomy-activity-wrapper">
-            <p class='meta-bar-txt-strong'>
-                <?php
-                echo __('Activity', 'wm-child-cyclando')
-                ?>
-            </p>
-            <?php if ($array_activity) { 
-                foreach ($array_activity as $activity => $icon) { ?>
-                    <div class="meta-bar-taxonomy-container">
-                        <p class='meta-bar-txt-light'>
-                            <?php
-                            echo $activity;
-                            ?>
-                        </p>
-                    </div>
-            <?php }
-            } ?>
+    <div class="cyc-route-taxonomy-tab-row-container">
+        <!-- START section taxonomies and difficulty block START  -->
+        <div class="cyc-route-mobile-taxonomy-container">
+            <div class="cyc-route-taxonomy-row-wrapper">
+                <div class="cyc-route-mobile-taxonomy-activity-wrapper">
+                    <p class='meta-bar-txt-strong'>
+                        <?php
+                        echo __('Activity', 'wm-child-cyclando')
+                        ?>
+                    </p>
+                    <?php if ($array_activity) { 
+                        foreach ($array_activity as $activity => $icon) { ?>
+                            <div class="meta-bar-taxonomy-container">
+                                <p class='meta-bar-txt-light'>
+                                    <?php
+                                    echo $activity;
+                                    ?>
+                                </p>
+                            </div>
+                    <?php }
+                    } ?>
+                </div>
+                <div class="cyc-route-mobile-taxonomy-target-wrapper">
+                    <p class='meta-bar-txt-strong'>
+                        <?php
+                        echo __('Target', 'wm-child-cyclando')
+                        ?>
+                    </p>
+                    <?php if ($array_target) { 
+                        foreach ($array_target as $target => $icon) { ?>
+                            <div class="meta-bar-taxonomy-container">
+                                <p class='meta-bar-txt-light'>
+                                    <?php
+                                    echo $target;
+                                    ?>
+                                </p>
+                            </div>
+                    <?php }
+                    } ?>
+                </div>
+                <div class="cyc-route-mobile-taxonomy-shape-wrapper">
+                    <p class='meta-bar-txt-strong'>
+                        <?php
+                        echo __('Path', 'wm-child-cyclando')
+                        ?>
+                    </p>
+                    <?php if ($shape) { ?>
+                            <div class="meta-bar-taxonomy-container">
+                                <p class='meta-bar-txt-light'>
+                                    <?php
+                                    $title_path = $array = [
+                                        'daisy' => 'A margherita',
+                                        'linear' => 'Lineare',
+                                        'roundtrip' => 'Ad anello'
+                                    ];
+                                    if ($language == 'it') {
+                                        echo __($title_path[$shape], "wm-child-cyclando");
+                                    } else {
+                                        echo __($shape, "wm-child-cyclando");
+                                    }
+                                    ?>
+                                </p>
+                            </div>
+                    <?php 
+                    } ?>
+                </div>
+                <div class="cyc-route-mobile-taxonomy-difficulty-wrapper">
+                    <p class='meta-bar-txt-strong'>
+                        <?php
+                        echo __('Difficulty', 'wm-child-cyclando')
+                        ?>
+                    </p>
+                    <?php if ($difficulty) { ?>
+                            <div class="meta-bar-taxonomy-container">
+                                <p class='meta-bar-txt-light'>
+                                    <?php
+                                    echo $difficulty. ' ' . __('out of 5', 'wm-child-cyclando');
+                                    ?>
+                                </p>
+                            </div>
+                    <?php
+                    } ?>
+                </div>
+            </div>
         </div>
-        <div class="cyc-route-mobile-taxonomy-target-wrapper">
-            <p class='meta-bar-txt-strong'>
-                <?php
-                echo __('Target', 'wm-child-cyclando')
-                ?>
-            </p>
-            <?php if ($array_target) { 
-                foreach ($array_target as $target => $icon) { ?>
-                    <div class="meta-bar-taxonomy-container">
-                        <p class='meta-bar-txt-light'>
-                            <?php
-                            echo $target;
-                            ?>
-                        </p>
-                    </div>
-            <?php }
-            } ?>
-        </div>
-        <div class="cyc-route-mobile-taxonomy-shape-wrapper">
-            <p class='meta-bar-txt-strong'>
-                <?php
-                echo __('Path', 'wm-child-cyclando')
-                ?>
-            </p>
-            <?php if ($shape) { ?>
-                    <div class="meta-bar-taxonomy-container">
-                        <p class='meta-bar-txt-light'>
-                            <?php
-                            $title_path = $array = [
-                                'daisy' => 'A margherita',
-                                'linear' => 'Lineare',
-                                'roundtrip' => 'Ad anello'
-                            ];
-                            if ($language == 'it') {
-                                echo __($title_path[$shape], "wm-child-cyclando");
-                            } else {
-                                echo __($shape, "wm-child-cyclando");
-                            }
-                            ?>
-                        </p>
-                    </div>
+        <!-- END section taxonomies and difficulty block END  -->
+        
+        <!-- START section Second menu Tab START  -->
+        <div class="cyc-route-mobile-tab-container">
             <?php 
-            } ?>
+            echo do_shortcode('[vc_tta_tabs][vc_tta_section active="1" tab_id="1615221700207-6345d186-4e71" el_class="oc-tab-plan" title="'.__('Plan', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_plan post_id="'.$wm_post_id.'" hotel_product_items="'.$hotel_product_items.'" has_extra="'.$has_extra.'" first_departure="'.$first_departure_date_ajax_dormatdmY.'"][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221700263-b2f1f133-a833" el_class="oc-tab-program" title="'.__('Program', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_program program="'.$program.'" has_track="'.$has_track_program.'" route_has_geojson="'.$route_has_geojson.'" home_site="'.$home_site.'" post_id="'.$wm_post_id.'" language="'.$language.'"][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221704269-1b7373dd-65c0" el_class="oc-tab-includes" title="'.__('Includes', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_includes post_id="'.$wm_post_id.'"][/vc_column_text][/vc_tta_section][/vc_tta_tabs]');
+            ?>
         </div>
-        <div class="cyc-route-mobile-taxonomy-difficulty-wrapper">
-            <p class='meta-bar-txt-strong'>
-                <?php
-                echo __('Difficulty', 'wm-child-cyclando')
-                ?>
-            </p>
-            <?php if ($difficulty) { ?>
-                    <div class="meta-bar-taxonomy-container">
-                        <p class='meta-bar-txt-light'>
-                            <?php
-                            echo $difficulty. ' ' . __('out of 5', 'wm-child-cyclando');
-                            ?>
-                        </p>
-                    </div>
-            <?php
-            } ?>
-        </div>
+        <!-- END section Second menu Tab END  -->
     </div>
-    <!-- END section taxonomies and difficulty block END  -->
-    
-    <!-- START section Second menu Tab START  -->
-    <div class="cyc-route-mobile-tab-container">
-        <?php 
-        echo do_shortcode('[vc_tta_tabs][vc_tta_section active="1" tab_id="1615221700207-6345d186-4e71" el_class="oc-tab-plan" title="'.__('Plan', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_plan post_id="'.$wm_post_id.'" hotel_product_items="'.$hotel_product_items.'" has_extra="'.$has_extra.'" first_departure="'.$first_departure_date_ajax_dormatdmY.'"][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221700263-b2f1f133-a833" el_class="oc-tab-program" title="'.__('Program', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_program program="'.$program.'" has_track="'.$has_track_program.'" route_has_geojson="'.$route_has_geojson.'" home_site="'.$home_site.'" post_id="'.$wm_post_id.'" language="'.$language.'"][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221704269-1b7373dd-65c0" el_class="oc-tab-includes" title="'.__('Includes', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_includes post_id="'.$wm_post_id.'"][/vc_column_text][/vc_tta_section][/vc_tta_tabs]');
-        ?>
-    </div>
-    <!-- END section Second menu Tab END  -->
-    
     <!-- START section Description START  -->
     <section class="l-section wpb_row height_small cyc-single-route-description-container oc-single-route-mobile-description-container">
         <div class="l-section-h i-cf">
