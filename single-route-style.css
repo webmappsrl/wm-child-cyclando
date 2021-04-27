@@ -2174,6 +2174,7 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
 }
 .oc-route-your-reservation-modify p {
     font-size: 12px;
+    cursor: pointer;
 }
 .oc-route-your-reservation-modify span {
     border-bottom: 1px solid;
@@ -2188,9 +2189,10 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     margin-top: 13px;
     margin-bottom: 10px;
 }
-.oc-route-your-reservation-purchase-form-container .form-submit:hover,.oc-route-your-reservation-purchase-form-container .form-submit:focus {
+body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body .oc-route-your-reservation-purchase-form-container .form-submit:focus {
     border: 1px solid var(--color-secondary-hover);
-    background-color: var(--color-secondary-hover);
+    background-color: var(--color-secondary-hover)!important;
+    color: white!important;
 }
 .oc-route-your-reservation-purchase-form-container input.form-input {
     background-color: white;

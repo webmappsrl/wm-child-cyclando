@@ -2387,6 +2387,7 @@ div#oc-kid-age-container {
     font-size: 18px;
     border-radius: 30px;
     margin-top: 30px;
+    cursor: pointer;
 }
 .oc-proceed-done-btn:hover {
     background-color: var(--color-secondary-hover);
