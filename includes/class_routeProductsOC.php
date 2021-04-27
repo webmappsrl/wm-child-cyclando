@@ -116,6 +116,7 @@ class routeProductsOC {
         $extra = $this->getExtraProducts();
 
         $adults = intval($this->cookies['adults']);
+        
         if ($this->cookies['kids'])
             $kids = intval($this->cookies['kids']);
         

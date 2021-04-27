@@ -997,7 +997,9 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             }
             // Open contact modal
             function openContactModal() {
-                modal.style.display = 'none';
+                if (modal) {
+                    modal.style.display = 'none';
+                }
                 contactModal.style.display = 'block';
                 // add over flow hidden to cody to stop scroll
                 bodyDiv.style.overflow = "hidden";

@@ -2560,6 +2560,7 @@ body .ui-datepicker.ui-widget.ui-widget-content {
     position: fixed;
     top: 0;
     background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
 }
 .ocm-participants-header.datepicker-header-wrapper {
     display: none;
@@ -2658,24 +2659,68 @@ body .ui-datepicker.ui-widget.ui-widget-content {
 .ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span {
     margin-top: -15px!important;
 }
-.datepicker-content-wrapper {
-    background: white;
-    position: fixed;
-    bottom: 0;
-    box-shadow: rgb(0 0 0 / 20%) 0px 5px 8px 0px, rgb(0 0 0 / 17%) 0px 7px 20px 0px;
-    margin: 0px;
-    padding: 4%;
-    background-color: rgb(255, 255, 255);
-    animation-name: modalopen;
-    animation-duration: var(--modal-duration);
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    bottom: 0px;
-    z-index: 1;
-    display: block;
-    width: 100%;
-    top: auto!important;
-    left: auto!important;
+@media screen and (max-width: 767px) {
+    .datepicker-content-wrapper {
+        background: white;
+        position: fixed;
+        bottom: 0;
+        box-shadow: rgb(0 0 0 / 20%) 0px 5px 8px 0px, rgb(0 0 0 / 17%) 0px 7px 20px 0px;
+        margin: 0px;
+        padding: 4%;
+        background-color: rgb(255, 255, 255);
+        animation-name: modalopen;
+        animation-duration: var(--modal-duration);
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        bottom: 0px;
+        z-index: 1;
+        display: block;
+        width: 100%;
+        top: auto!important;
+        left: auto!important;
+    }
+}
+@media screen and (min-width: 768px) { 
+    /* popups design in desktop mode */
+    .ocm-proceed-content {
+        max-width: 600px;
+    }
+    .cy-modal-content {
+        max-width: 600px;
+    }
+    #cy-route-program .cy-modal-header, #cy-route-contact .cy-modal-header {
+        grid-template-columns: 2fr 7fr 2fr!important;
+    }
+    .cy-modal-body {
+        padding: 2% 6% 4% 6% !important;
+    }
+    .ocm-extras-nocond-title {
+        padding: 25px 25px 0!important;
+    }
+    .ocm-extras-proceed-detail-container {
+        padding: 2% 6%;
+    }
+    .ocm-extras-cond-disclaimer {
+        padding: 5px 25px 0px!important;
+    }
+    .ocm-hotel-proceed-detail-container {
+        padding: 0 6% 4%;
+    }
+    .cifraajax-title {
+        font-size: 26px!important;
+    }
+    .datepicker-content-wrapper {
+        position: relative;
+        margin: 23.7vh auto;
+        background-color: #fff;
+        max-width: 600px;
+        height: auto;
+        box-shadow: 0 5px 8px 0 rgb(0 0 0 / 20%), 0 7px 20px 0 rgb(0 0 0 / 17%);
+        animation-name: modalopen;
+        animation-duration: var(--modal-duration);
+        border-radius: 10px;
+        padding: 20px 30px;
+    }
 }
 .cifraajax .w-iconbox-icon i {
     padding: 0!important;
