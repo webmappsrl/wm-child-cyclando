@@ -2280,7 +2280,7 @@ span.route_duration_free {
     animation-name: modalopen;
     animation-duration: var(--modal-duration);
     border-radius: 10px;
-    padding-bottom: 160px;
+    padding-bottom: 190px;
 }
 .modal-btn {
     background-color: #fff;
