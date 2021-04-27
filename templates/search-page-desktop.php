@@ -60,12 +60,16 @@ echo do_shortcode('[vc_row height="large" us_bg_image_source="featured" us_bg_re
             $("#cerca-facets-container-modal-header").show();
             $("#filterSearchDropdown").hide();
         });
-        $('#searchpage-facets-filter-btn').on('click', function() {
-            $('#searchpage-form-oneclick-mobile').hide();
-            $(".cerca-facets-container").removeClass("cerca-facets-container-modal");
-            $("#cerca-facets-container-modal-header").show();
-            $("#filterSearchDropdown").hide();
-        });
+        if ($(window).width() < 768) {
+            $('#searchpage-facets-filter-btn').on('click', function() {
+                $('#searchpage-form-oneclick-mobile').hide();
+                $(".cerca-facets-container").removeClass("cerca-facets-container-modal");
+                $("#cerca-facets-container-modal-header").show();
+                $("#filterSearchDropdown").hide();
+            });
+        } else {
+            $("#cerca-facets-container-modal-header").hide();
+        }
 
         window.addEventListener('click', outsideClick);
         // Close If Outside Click

@@ -351,10 +351,10 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
         padding-left: 5px;
         vertical-align: middle;
     }
-    .wm_template_advancedsearch .webmapp_post-featured-img {
+    /* .wm_template_advancedsearch .webmapp_post-featured-img {
         grid-template-columns: 3fr 1fr !important;
         grid-template-rows: none!important;
-    }
+    } */
     .covidbanner-container {
         padding: 5px 10px!important;
     }
@@ -944,10 +944,10 @@ body #iubenda_policy .iub_content.legal_pp p {
         padding: 20px!important;
         width: 100%!important;
     }
-    .oc_search_adv_detail_container {
-        display: flex;
-        justify-content: space-between;
-    }
+}
+.oc_search_adv_detail_container {
+    display: flex;
+    justify-content: space-between;
 }
 #cy-search-element-container{
     display: flex;
@@ -1880,7 +1880,7 @@ h4.tripSearch {
 }
 
 .selectionsSearch {
-    margin: 0 0 0 calc(3% + 1px);
+    /* margin: 0 0 0 calc(3% + 1px); */
 }
 
 .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .single-post-wm .scarica-app
@@ -2463,6 +2463,7 @@ div#oc-kid-age-container {
 }
 span.searchpage-form-close {
     font-size: 26px;
+    cursor: pointer;
 }
 .search-form-holder-mobile-bikes i {
     font-size: 24px;
