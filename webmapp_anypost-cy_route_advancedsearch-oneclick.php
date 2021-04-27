@@ -184,8 +184,7 @@
                             } ?>
                     <?php if ($shape) {
                     ?>      <div class="icon_holder">
-                                <i class="<?php echo the_shape_icon($shape); ?>">
-                                    <span class="textIcon <?php if ($language == 'en') { echo 'wm-advanced-search-shape-text-eng';} ?>"><?php
+                                <i class="<?php echo the_shape_icon($shape); ?>"><span class="textIcon <?php if ($language == 'en') { echo 'wm-advanced-search-shape-text-eng';} ?>"><?php
                                     if ($language == 'it') {
                                         echo $title_path[$shape]; 
                                     } else {
@@ -213,25 +212,27 @@
                         </div> <?php
                         } ?>
                 </div>
-                <div class="oc_search_adv_info_text_<?= $post_id ?> oc_search_adv_info_text_container"> </div>
-                <div class="oc_search_adv_price_container">
-
-                    <?php if (!$coming_soon) { ?>
-                            <div class='prezzo-tab'>
-                                <div class="cifra cifra-<?= $post_id ?>">
+                <div class="oc_search_adv_detail_container">
+                    <div class="oc_search_adv_info_text_<?= $post_id ?> oc_search_adv_info_text_container"> </div>
+                    <div class="oc_search_adv_price_container">
+    
+                        <?php if (!$coming_soon) { ?>
+                                <div class='prezzo-tab'>
+                                    <div class="cifra cifra-<?= $post_id ?>">
+                                    </div>
                                 </div>
-                            </div>
-                            <?php } elseif (return_route_targets_has_cyclando($post_id)) { ?>
-                            <a class="download-app-link" target="_blank" href="https://info.cyclando.com/app">
-                                <div class="scarica-app">
-                                    <span class='meta-bar-txt-light'><?php echo __('Download', 'wm-child-cyclando'); ?></span>
+                                <?php } elseif (return_route_targets_has_cyclando($post_id)) { ?>
+                                <a class="download-app-link" target="_blank" href="https://info.cyclando.com/app">
+                                    <div class="scarica-app">
+                                        <span class='meta-bar-txt-light'><?php echo __('Download', 'wm-child-cyclando'); ?></span>
+                                    </div>
+                                </a>
+                                <?php } else { ?>
+                                <div class='prezzo-tab <?php echo $coming_soon_class ?>'>
+                                    <p><span><?php echo __('On Request', 'wm-child-cyclando'); ?></span></p>
                                 </div>
-                            </a>
-                            <?php } else { ?>
-                            <div class='prezzo-tab <?php echo $coming_soon_class ?>'>
-                                <p><span><?php echo __('On Request', 'wm-child-cyclando'); ?></span></p>
-                            </div>
-                        <?php } ?>
+                            <?php } ?>
+                    </div>
                 </div>
             </div>
         </div>

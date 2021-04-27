@@ -805,9 +805,11 @@ body #iubenda_policy .iub_content.legal_pp p {
 }
 .advancedsearch-container .webmapp_post-title {
     display: grid;
-    /* grid-template-rows: 1fr 1fr; */
     grid-template-columns: 1fr;
 
+}
+.post_meta_with_icons span {
+    font-size: 16px;
 }
 .advancedsearch-container .post_meta_with_icons {
     font-size: 22px;
@@ -820,13 +822,10 @@ body #iubenda_policy .iub_content.legal_pp p {
 .advancedsearch-container .icons_separator:last-child {
     display: none;
 }
-.advancedsearch-container .title-holder {
-    
-}
 .advancedsearch-container .title-holder h3{
     color: white;
     font-family: var(--font-family-primary-alternate);
-    font-size: 16px;
+    font-size: 20px;
     overflow: hidden;
     display: -webkit-inline-box;
     -webkit-line-clamp: 2;
@@ -932,11 +931,8 @@ body #iubenda_policy .iub_content.legal_pp p {
     #cy-search-element-container .facetwp-autocomplete {
         width: 180px!important;
     }
-    select.facetwp-dropdown {
-        width: 180px!important;
-    }
     .oc-input-btn {
-        min-width: 136px;
+        min-width: 265px;
         padding: 12px 17px!important;
     }
     .oc-participants-bici-container {
@@ -947,6 +943,10 @@ body #iubenda_policy .iub_content.legal_pp p {
     div#cy-search-lente {
         padding: 20px!important;
         width: 100%!important;
+    }
+    .oc_search_adv_detail_container {
+        display: flex;
+        justify-content: space-between;
     }
 }
 #cy-search-element-container{
@@ -1534,9 +1534,6 @@ input[type="text"], input[type="password"], input[type="email"], input[type="url
 input:focus, input:focus + .w-form-checkbox, textarea:focus, select:focus, .select2-container--focus .select2-selection {
     box-shadow: 0 0 0 2px;
 }
-.facetwp-facet input {
-    /* background: #f5f5f5; */
-}
 
 /*
 tour italia 
@@ -1627,12 +1624,8 @@ tour italia
     
     .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info{
         width: 80%;
-
     }
-    
 }
-
-
 i.cy-icons.icon-search1 {
     display: none;
 }
@@ -1644,35 +1637,9 @@ i.cy-icons.icon-search1 {
     .webmapp_shortcode_any_post.post_type_route {
         padding: 0 0!important;
     }
-
-    /* ::placeholder {
-        position: relative;
-        top: 9%;
-        left: 2%;
-    } */
-
-    /* .posts.webmapp-container-fluid {
-        margin: -26% 0 2% 0;
-    }    */
-
     .webmapp-anypost-template-cy_route .webmapp_post_image {
-
        margin-top: 10%;
-        
     }
-
-    /* h2#tourInBiciItalia:not(:root:root) {
-        width: 2000%;
-        font-size: 33px !important;
-        margin: 0% 0 -100% 0;
-    }
-
-    h2#tourInBiciEuropa:not(:root:root) {
-        margin: 40% 0 -10% 0;
-        width: 2000%;
-        font-size: 33px !important;
-    } */
-    
 }
 
 /*comportamento Quando*/
@@ -1708,16 +1675,8 @@ i.cy-icons.icon-search1 {
 @media (min-width: 1200px) {
     .pagina-cerca-descrizione-container {
         padding-top: 220px!important;
-        padding-bottom: 0!important;
     }
 }
-/* .page-id-62001 .l-section.height_medium {
-    padding-top: 2% !important; 
-    padding-bottom: 4rem;
-} */
-/* section.l-section.wpb_row.height_medium.pagina-cerca-descrizione-container {
-    padding-bottom: 0;
-} */
 /*stili pagina di ricerca*/
 .facetwp-page.active {
     font-weight: bold;
@@ -1908,6 +1867,7 @@ h4.tripSearch {
 
 .advancedsearch-container i > span {
     font-family: var(--font-family-primary-alternate);
+    padding-left: 10px;
 }
 
 .wm_template_advancedsearch  .icon_holder {
@@ -1916,7 +1876,7 @@ h4.tripSearch {
 }
 
 .countsSearch {
-    font-size: 30px;
+    font-size: 21px;
 }
 
 .selectionsSearch {
@@ -2043,9 +2003,6 @@ span.route_duration_free {
         border-radius: 10px;
     }
     .wm_template_advancedsearch .title-holder {
-        /* color: black !important; */
-        /* color: black; */
-        /* padding: 10px; */
         left: 10px;
     }
 
@@ -2054,21 +2011,9 @@ span.route_duration_free {
         margin: 6% 0 0 0;
     }
 
-    .wm_template_advancedsearch .title-holder h3
-    {
+    .wm_template_advancedsearch .title-holder h3{
         font-size: 16px;
     }
-
-    .l-section-h.i-cf {
-        /* font-size: 15px;
-        letter-spacing: -1px; */
-        /* line-height: 120%; */
-    }
-
-    /* .page-id-62001 .g-cols.type_boxes>div, .g-cols.reversed>div:first-child, .g-cols:not(.reversed)>div:last-child, .g-cols>div.has-fill {
-        margin: 0% 0 0 0;
-    } */
-
      .general-cerca-facetwp-container .facetwp-counts {
         font-size: 18px;
     }
@@ -2079,7 +2024,6 @@ span.route_duration_free {
         font-size: 20px;
         padding: 0 0% 0 0%;
         position: absolute;
-        /* background: red; */
         left: 9%;
         top: 8%;
     }
@@ -2181,13 +2125,6 @@ span.route_duration_free {
     input.facetwp-autocomplete.ready::placeholder {
         font-size: 13px;
     }
-    /* .general-cerca-facetwp-container select.facetwp-dropdown {
-        font-size: 14px!important;
-        padding: 0 0 0 22%;
-    }
-    .general-cerca-facetwp-container input.facetwp-autocomplete.ready {
-        padding: 0 0 0 20%;
-    } */
 }
 
 @media screen and (min-width: 601px) and (max-width: 990px)
@@ -2239,7 +2176,7 @@ span.route_duration_free {
     top: 0;
     height: 100%;
     width: 100%;
-    overflow: auto;
+    overflow: hidden;
     background-color: rgba(0, 0, 0, 0.5);
 }
 .ocm-proceed-container{
@@ -2273,15 +2210,64 @@ span.route_duration_free {
 @media screen and (min-width: 768px) { 
     .ocm-participants-content, .ocm-bikes-content{
         position: relative;
-        margin: 23.7vh auto;
+        margin: calc( 50vh - 200px) auto;
         background-color: #fff;
         max-width: 600px;
-        height: auto;
+        min-height: 370px;
         box-shadow: 0 5px 8px 0 rgb(0 0 0 / 20%), 0 7px 20px 0 rgb(0 0 0 / 17%);
         animation-name: modalopen;
         animation-duration: var(--modal-duration);
         border-radius: 10px;
         padding: 30px 30px;
+    }
+    .search-page-description-mobile p, .search-page-description-mobile h3 {
+        text-align: center;
+        color: white;
+        margin: auto;
+    }
+    .search-page-description-mobile p { 
+        font-size: 18px;
+        max-width: 720px;
+    }
+    .search-page-description-mobile h3 {
+        font-size: 1.6em;
+        padding-bottom: 20px;
+        max-width: 630px;
+    }
+    div#searchpage-form-holder-mobile {
+        left: calc( 50% - 450px)!important;
+        max-width: 900px;
+    }
+    .searchpage-form-oneclick-mobile-container {
+        max-width: 600px;
+    }
+    .searchpage-form-oneclick-header {
+        padding: 20px 25px 0!important;
+    }
+    .searchpage-form-oneclick-body {
+        padding: 15px 25px 20px!important;
+    }
+    div#searchpage-form-holder-mobile div {
+        font-size: 16px!important;
+    }
+    div#searchpage-form-holder-mobile i {
+        font-size: 19px;
+    }
+    .search-form-holder-mobile-bikes i {
+        font-size: 26px!important;
+    }
+    .search-form-holder-mobile-when i {
+        font-size: 25px!important;
+    }
+    .cerca-facets-container h3 {
+        font-size: 1.2em!important;
+        font-weight: bold;
+    }
+    .wm_template_advancedsearch .cifra, span.cifraPromo {
+        font-size: 26px!important;
+    }
+    .oc_search_adv_info_text_container {
+        font-size: 16px;
     }
 }
 .ocm-proceed-content{
@@ -2427,7 +2413,7 @@ div#oc-kid-age-container {
     top: unset;
 }
 .searchpage-form-oneclick-mobile-container {
-    margin: 45% auto;
+    margin: calc( 50vh - 200px) auto;
     width: 90%;
     box-shadow: 0 5px 8px 0 rgb(0 0 0 / 20%), 0 7px 20px 0 rgb(0 0 0 / 17%);
     animation-name: modalopen;
@@ -2487,7 +2473,7 @@ span.searchpage-form-close {
 div#searchpage-form-holder-mobile {
     position: absolute;
     left: 0;
-    top: -47px;
+    top: -80px;
     display: grid;
     grid-template-columns: 1fr 1.3fr 1fr;
     width: 100%;
@@ -2617,7 +2603,8 @@ div#searchpage-form-holder-mobile {
     border-radius: 30px;
 }
 .oc_search_adv_price_container {
-    font-size: 12px;
+    font-size: 16px;
+    color: var(--color-secondary);
 }
 .oc_search_adv_price_container .w-iconbox-icon i {
     padding: 0!important;

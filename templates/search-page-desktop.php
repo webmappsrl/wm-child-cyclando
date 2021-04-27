@@ -10,11 +10,11 @@ if ($when) {
 }
 ($when) ? $when_txt = $when_txt[0] : $when_txt = __('Quando','wm-child-cyclando');
 
-echo do_shortcode('[vc_row us_bg_image_source="featured" us_bg_repeat="no-repeat" us_bg_overlay_color="rgba(0,0,0,0.30)" el_class="pagina-cerca-descrizione-container search-page-description-mobile" css="%7B%22default%22%3A%7B%22color%22%3A%22%23ffffff%22%7D%7D"][vc_column][us_separator size="huge"][us_separator][/vc_column][vc_column width="1/2"][vc_column_text]</p><h3>'.__('Plan your bike itinerary and leave immediately for your next vacation', 'wm-child-cyclando').'</h3><p>[/vc_column_text][/vc_column][vc_column width="1/2" el_class="secondTitle"][vc_column_text]'.__('With Cyclando, calculating the itinerary of your cycling holiday is very simple. Our cycle itinerary planner will allow you to find the trip that suits you best, based on your choices on:', 'wm-child-cyclando').'[/vc_column_text][/vc_column][vc_column][us_separator][/vc_column][/vc_row]');
+echo do_shortcode('[vc_row height="large" us_bg_image_source="featured" us_bg_repeat="no-repeat" us_bg_overlay_color="rgba(0,0,0,0.30)" el_class="pagina-cerca-descrizione-container search-page-description-mobile" css="%7B%22default%22%3A%7B%22color%22%3A%22%23ffffff%22%7D%7D"][vc_column][/vc_column][vc_column][vc_column_text]<h3>'.__('Plan your bike itinerary and leave immediately for your next vacation', 'wm-child-cyclando').'</h3><p>'.__('With Cyclando, calculating the itinerary of your cycling holiday is very simple. Our cycle itinerary planner will allow you to find the trip that suits you best, based on your choices on:', 'wm-child-cyclando').'</p>[/vc_column_text][/vc_column][us_separator][/vc_row]');
 
 ?>
 
-<section class="l-section wpb_row height_small general-cerca-facetwp-container">
+<section class="l-section wpb_row height_small">
     <div class="l-section-h i-cf">
         <div class="g-cols vc_row type_default valign_top">
             <div class="vc_col-sm-12 wpb_column vc_column_container oc-searchpage-info-container-mobile">
