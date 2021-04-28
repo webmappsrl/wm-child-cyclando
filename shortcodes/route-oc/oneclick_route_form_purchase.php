@@ -13,7 +13,6 @@ function oneclick_route_form_purchase($atts) {
     $post_id = get_the_ID();
     $wm_post_id = wm_get_original_post_it($post_id);
     $wm_post_id = $wm_post_id['id'];
-    $has_single = false;
     // get the extra fields for extra popup 
     $has_extra = route_has_extra_category($wm_post_id);
     if ($has_extra['bike']) {
@@ -22,7 +21,7 @@ function oneclick_route_form_purchase($atts) {
     if ($has_extra['ebike']) {
         unset($has_extra['ebike']);
     }
-    $has_single = false;
+    $has_single = '';
     $has_hotel_category = route_has_hotel_category($post_id,$first_departure);
     if (count($has_hotel_category['modelseasonal']) >= 1) {
         $product_sample = $has_hotel_category['modelseasonal'][array_key_first($has_hotel_category['modelseasonal'])];
