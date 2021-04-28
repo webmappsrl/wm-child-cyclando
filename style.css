@@ -931,7 +931,7 @@ body #iubenda_policy .iub_content.legal_pp p {
     #cy-search-element-container .facetwp-autocomplete {
         width: 180px!important;
     }
-    .oc-input-btn {
+    .oc-participants-bici-container .oc-input-btn {
         min-width: 265px;
         padding: 12px 17px!important;
     }
@@ -2268,6 +2268,12 @@ span.route_duration_free {
     }
     .oc_search_adv_info_text_container {
         font-size: 16px;
+    }
+    .cy-search-form-container select.facetwp-dropdown {
+        width: 180px;
+    }
+    .cy-search-form-container .oc-input-btn {
+        min-width: 138px;
     }
 }
 .ocm-proceed-content{
