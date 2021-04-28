@@ -2206,6 +2206,9 @@ span.route_duration_free {
         border-top-left-radius: 10px;
         bottom: 0;
     }
+    .oc-input-btn.bikes-included{
+        padding: 10px 6px;
+    }
 }
 @media screen and (min-width: 768px) { 
     .ocm-participants-content, .ocm-bikes-content{
@@ -2326,9 +2329,7 @@ div.selected {
     color: #888;
     cursor: pointer;
 }
-.oc-input-btn.bikes-included{
-    padding: 10px 8px;
-}
+
 .oc-input-btn:hover{
     background-color: #f5f5f5;
 }

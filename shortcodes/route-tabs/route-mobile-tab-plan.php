@@ -13,11 +13,11 @@ function route_mobile_tab_plan($atts) {
 
     $has_hotel_category = array();
     $product_sample = array();
-    $has_category = false;
-    $has_kids = false;
+    $has_category = 0;
+    $has_kids = 0;
     $min_kid_age = '';
-    $has_bike = false;
-    $has_ebike = false;
+    $has_bike = 0;
+    $has_ebike = 0;
     $has_hotel_category = route_has_hotel_category($post_id,$first_departure);
     $has_extra_category = route_has_extra_category($post_id);
     if (count($has_hotel_category['model']) > 1 || count($has_hotel_category['modelseasonal']) > 1) {
@@ -93,6 +93,24 @@ function route_mobile_tab_plan($atts) {
     <div class="oc-route-mobile-your-reservation-container">
         <?= do_shortcode("[oneclick_route_your_reservation_panel route='true' hotel_product_items='$hotel_product_items']")?>
     </div>
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                var has_bike = <?= $has_bike ?>;
+                var has_ebike = <?= $has_ebike ?>;
+                console.log('niente bici');
+                console.log(has_bike);
+                console.log(has_ebike);
+                if (!has_bike && !has_ebike) {
+                    var savedCookie = ocmCheckCookie();
+                    console.log('niente bici2');
+                    delete savedCookie['electric'];
+                    delete savedCookie['regular'];
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                }
+            });
+        })(jQuery);
+    </script>
     <?php
 
 

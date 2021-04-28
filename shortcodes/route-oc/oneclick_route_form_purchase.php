@@ -36,8 +36,6 @@ function oneclick_route_form_purchase($atts) {
             }
         }
     }
-    echo $hotel_product_items;
-    print_r($hotel_product_items);
     ob_start();
 
     ?>

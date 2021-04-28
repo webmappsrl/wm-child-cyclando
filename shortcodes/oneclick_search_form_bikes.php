@@ -71,31 +71,26 @@ function oneclick_search_form_bikes($atts) {
     <script>
     (function ($) {
         $(document).ready(function () {
+            var savedCookie = ocmCheckCookie();
             <?php if ($route) { ?>
-            // checks if the ebikes are not availible and if they are previously selected, adds their value to bikes
-            var has_ebike = <?php echo json_encode($has_ebike )?>;
-            if (has_ebike == "") {
-                if (Cookies.get('oc_participants_cookie')) {
-                    var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
-                    savedCookie['regular'] += parseInt(savedCookie['electric']);
-                    delete savedCookie['electric'];
-                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
-                    $("#ocm-warning-bikes-container").append(
-                                '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Ebikes are not available in this route. Their number is added to bikes','wm-child-cyclando'); ?></div>'
-                            );
+                // checks if the ebikes are not availible and if they are previously selected, adds their value to bikes
+                var has_ebike = <?php echo json_encode($has_ebike )?>;
+                if (has_ebike == "") {
+                    if (savedCookie['electric']) {
+                        savedCookie['regular'] += parseInt(savedCookie['electric']);
+                        delete savedCookie['electric'];
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                        $("#ocm-warning-bikes-container").append(
+                                    '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Ebikes are not available in this route. Their number is added to bikes','wm-child-cyclando'); ?></div>'
+                                );
+                    }
                 }
-            }
             <?php } ?>
-            if (Cookies.get('oc_participants_cookie')) {
-                var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie')); 
-                if (parseInt(savedCookie['electric'])>0) {
-                    $('#electric-bikes').text(parseInt(savedCookie['electric']));
-                }
-                if (parseInt(savedCookie['regular'])>0) {
-                    $('#regular-bikes').text(parseInt(savedCookie['regular']));
-                }
-            } else {
-                var savedCookie = {};
+            if (parseInt(savedCookie['electric'])>0) {
+                $('#electric-bikes').text(parseInt(savedCookie['electric']));
+            }
+            if (parseInt(savedCookie['regular'])>0) {
+                $('#regular-bikes').text(parseInt(savedCookie['regular']));
             }
 
             //Add button
