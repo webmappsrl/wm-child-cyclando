@@ -2381,6 +2381,7 @@ div#oc-kid-age-container {
     font-size: 18px;
     border-radius: 30px;
     margin-top: 30px;
+    cursor: pointer;
 }
 .oc-participants-done-btn:hover, .oc-bikes-done-btn:hover {
     background-color: var(--color-secondary-hover);
@@ -2494,7 +2495,7 @@ div#searchpage-form-holder-mobile {
 .search-form-holder-mobile-where {
     float: left;
     display: grid;
-    grid-template-columns: 1fr 14fr;
+    grid-template-columns: 1fr 15fr;
     align-items: center;
 }
 .search-form-holder-mobile-where {
@@ -2502,6 +2503,9 @@ div#searchpage-form-holder-mobile {
     border-bottom: 1px solid #ccc;
     padding-bottom: 8px;
     margin-bottom: 4px;
+}
+.search-form-holder-mobile-where i {
+    padding-left: 5px;
 }
 .searchpage-form-mobile-where-text {
     text-transform: capitalize;

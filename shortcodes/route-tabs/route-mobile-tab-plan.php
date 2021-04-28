@@ -98,12 +98,8 @@ function route_mobile_tab_plan($atts) {
             $(document).ready(function () {
                 var has_bike = <?= $has_bike ?>;
                 var has_ebike = <?= $has_ebike ?>;
-                console.log('niente bici');
-                console.log(has_bike);
-                console.log(has_ebike);
                 if (!has_bike && !has_ebike) {
                     var savedCookie = ocmCheckCookie();
-                    console.log('niente bici2');
                     delete savedCookie['electric'];
                     delete savedCookie['regular'];
                     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
