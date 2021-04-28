@@ -256,16 +256,13 @@
             }
         });
         $(document).on("facetwp-loaded", function () {
-            var ocCookies = '';
-            if (Cookies.get('oc_participants_cookie')) {
-                ocCookies = JSON.parse(Cookies.get('oc_participants_cookie'));
-            }
-            // console.log(ocCookies);
+            var savedCookie = ocmCheckCookie();
+            console.log(savedCookie);
             var post_id = <?= $post_id ?>;
                 var data = {
                     'action': 'oc_ajax_route_price',
                     'postid':  post_id,
-                    'cookies':  ocCookies,
+                    'cookies':  savedCookie,
                 };
                 $.ajax({
                     url: '/wp-admin/admin-ajax.php',
