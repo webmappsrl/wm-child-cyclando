@@ -21,7 +21,7 @@ function oneclick_route_form_purchase($atts) {
     if ($has_extra['ebike']) {
         unset($has_extra['ebike']);
     }
-    $has_single = '';
+    $has_single = 0;
     $has_hotel_category = route_has_hotel_category($post_id,$first_departure);
     if (count($has_hotel_category['modelseasonal']) >= 1) {
         $product_sample = $has_hotel_category['modelseasonal'][array_key_first($has_hotel_category['modelseasonal'])];
@@ -36,15 +36,21 @@ function oneclick_route_form_purchase($atts) {
             }
         }
     }
+    echo $hotel_product_items;
+    print_r($hotel_product_items);
     ob_start();
 
     ?>
     <div class="cyc-single-route-cta-buttons oc-acquista-route">
+    <?php if ($hotel_product_items || $has_extra): ?>
         <div id="oc-acquista-route" class="">
             <div class="cy-btn-contact">
                 <p><?php echo __('Purchase', 'wm-child-cyclando'); ?></p>
             </div>
         </div>
+    <?php else : ?>
+        <div id="oc-proceed-done-btn" class="oc-proceed-done-btn"><?= __('Proceed','wm-child-cyclando')?></div>
+    <?php endif; ?>
     </div>
 
 

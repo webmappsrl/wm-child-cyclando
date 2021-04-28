@@ -20,9 +20,6 @@ function route_mobile_tab_plan($atts) {
     $has_ebike = false;
     $has_hotel_category = route_has_hotel_category($post_id,$first_departure);
     $has_extra_category = route_has_extra_category($post_id);
-    // echo '<pre>';
-    // print_r(date('Y-m-d'));
-    // echo '</pre>';
     if (count($has_hotel_category['model']) > 1 || count($has_hotel_category['modelseasonal']) > 1) {
         $has_category = true;
     }
@@ -61,7 +58,7 @@ function route_mobile_tab_plan($atts) {
     ?>
     <div class="oc-route-mobile-search-form-container">
         <?php if ($coming_soon) :?>
-            <h4><?php echo __('On riquest','wm-child-cyclando'); ?></h4>
+            <h4><?php echo __('On request','wm-child-cyclando'); ?></h4>
         <?php else:?>
             <?= do_shortcode("[oneclick_route_form_datepicker]")?>
             <?php if ($has_category) { ?>
@@ -94,7 +91,7 @@ function route_mobile_tab_plan($atts) {
         </div>
 	</div>
     <div class="oc-route-mobile-your-reservation-container">
-        <?= do_shortcode("[oneclick_route_your_reservation_panel route='true' ]")?>
+        <?= do_shortcode("[oneclick_route_your_reservation_panel route='true' hotel_product_items='$hotel_product_items']")?>
     </div>
     <?php
 

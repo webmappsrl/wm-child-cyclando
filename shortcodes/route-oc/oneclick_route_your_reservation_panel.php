@@ -6,9 +6,20 @@ function oneclick_route_your_reservation_panel($atts)
 {
     extract(shortcode_atts(array(
         'route' => '',
+        'hotel_product_items' => ''
     ), $atts));
 
-
+    $post_id = get_the_ID();
+    $wm_post_id = wm_get_original_post_it($post_id);
+    $wm_post_id = $wm_post_id['id'];
+    // get the extra fields for extra popup 
+    $has_extra = route_has_extra_category($wm_post_id);
+    if ($has_extra['bike']) {
+        unset($has_extra['bike']);
+    }
+    if ($has_extra['ebike']) {
+        unset($has_extra['ebike']);
+    }
     ob_start();
 
 ?>
@@ -51,14 +62,16 @@ function oneclick_route_your_reservation_panel($atts)
         </div>
     </div>
     
-    <div class="oc-route-extra-row oc-route-extra-header">
-        <div class="oc-route-your-reservation-column-title oc-route-your-reservation-title">
-            <h4><?php echo __('Extra', 'wm-child-cyclando'); ?></h4>
+    <?php if ($hotel_product_items || $has_extra) : ?>
+        <div class="oc-route-extra-row oc-route-extra-header">
+            <div class="oc-route-your-reservation-column-title oc-route-your-reservation-title">
+                <h4><?php echo __('Extra', 'wm-child-cyclando'); ?></h4>
+            </div>
+            <div class="oc-route-extra-column-info oc-route-your-reservation-modify">
+                <p id="oc-route-extra-modify"><span><?php echo __('Modify', 'wm-child-cyclando'); ?></span></p>
+            </div>
         </div>
-        <div class="oc-route-extra-column-info oc-route-your-reservation-modify">
-            <p id="oc-route-extra-modify"><span><?php echo __('Modify', 'wm-child-cyclando'); ?></span></p>
-        </div>
-    </div>
+    <?php endif; ?>
     <div class="oc-route-extra-row oc-route-extra-details">
     </div>
 

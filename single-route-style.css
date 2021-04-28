@@ -2040,6 +2040,10 @@ a:hover.tooltips span {
         background: white!important;
         padding: 0em 10px!important;
     }
+    .oc-route-mobile-search-form-container .oc-proceed-done-btn {
+        min-width: 250px;
+        width: auto;
+    }
 }
 .cyc-route-mobile-taxonomy-container {
     background: var(--color-secondary-background);
