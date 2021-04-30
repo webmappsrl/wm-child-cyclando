@@ -1231,9 +1231,6 @@ table.shop_table.woocommerce-checkout-review-order-table tr:not(.order-total) {
 html:lang(en) .fee {
     display: none;
 }
-html:lang(en) .order-total {
-    background-color: white;
-}
 .woocommerce table th.product-remove, .woocommerce table th.product-thumbnail {
     display: none;
 }

@@ -20,6 +20,11 @@ function oneclick_route_your_reservation_panel($atts)
     if ($has_extra['ebike']) {
         unset($has_extra['ebike']);
     }
+    if (defined('ICL_LANGUAGE_CODE')) {
+        $language = ICL_LANGUAGE_CODE;
+    } else {
+        $language = 'it';
+    }
     ob_start();
 
 ?>
@@ -103,7 +108,8 @@ function oneclick_route_your_reservation_panel($atts)
                 <input type="checkbox" class="checkbox" id="quotewcconditions" name="quotewcconditions">
                 <p class="purchase-form-checkbox-info purchase-form-checkbox-conditions"><?= __("I have read and accept the <a href='/privacy'>terms and conditions</a>", 'wm-child-cyclando') ?><abbr class="required" title="obbligatorio">*</abbr></p>
             </div>
-            <div class="error" style="">
+            <input id="quotewclanguage" name="lang" type="hidden" value="<?= $language;?>">
+            <div class="error">
                 <span></span>
             </div>
             <input type="submit" value="Paga" class="form-submit">
