@@ -112,7 +112,7 @@ function oneclick_route_your_reservation_panel($atts)
             <div class="error">
                 <span></span>
             </div>
-            <input type="submit" value="Paga" class="form-submit">
+            <input type="submit" value="<?= __("Pay", 'wm-child-cyclando') ?>" class="form-submit">
         </form>
     </div>
     <script>
