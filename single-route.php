@@ -870,7 +870,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                 yRSummarytxtRegularComa = ', ';
             }
             if (savedCookie['electric']) {
-                yRSummarytxtElectric =  savedCookie['electric'] + ' ' + '<?= __('electric', 'wm-child-cyclando') ?>';
+                yRSummarytxtElectric =  savedCookie['electric'] + ' ' + '<?= __('Ebike', 'wm-child-cyclando') ?>';
             }
             
             var yRSummarytxtCategory = '';
