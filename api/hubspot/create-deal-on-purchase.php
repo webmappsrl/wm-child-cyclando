@@ -65,12 +65,14 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
 
   // Get route info
   $routePermalink = $cookies['routePermalink'];
+  $routeName = $cookies['routeName'];
 
   $adults_number = $cookies['adults'];
   $kids_number = $cookies['kids'];
+  $kids_age = http_build_query($cookies['ages'],'',',');
 
   $CURLOPT_POSTFIELDS_ARRAY = "{\"properties\":{
-    \"dealname\": \"$billing_first_name $billing_last_name\",
+    \"dealname\": \"$billing_first_name $billing_last_name - $routeName\",
     \"dealstage\": \"presentationscheduled\",
     \"dealtype\": \"newbusiness\",
     \"hubspot_owner_id\": \"40292283\",
@@ -84,7 +86,8 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
     \"url_route\": \"$routePermalink\",
     \"camere_singole\": \"$single_room\",
     \"extra\": \"$extra\",
-    \"supplemento\": \"$supplement\"
+    \"supplemento\": \"$supplement\",
+    \"eta_bambini\": \"$kids_age\"
   }}";
 
   $curl = curl_init();
