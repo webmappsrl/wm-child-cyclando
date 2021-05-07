@@ -2247,6 +2247,9 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
 .oc-route-your-reservation-purchase-form-container .purchase-form-checkbox input:checked{
     background-image: url(assets/images/checkbox-on.png)!important;
 }
+.oc-route-your-reservation-purchase-form-container .required {
+    text-decoration: none;
+}
 .oc-route-your-reservation-title h4 {
     font-size: 18px;
 }

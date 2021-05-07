@@ -102,11 +102,11 @@ function oneclick_route_your_reservation_panel($atts)
             </div>
             <div class="purchase-form-checkbox">
                 <input type="checkbox" class="checkbox" id="quotewcprivacy" name="quotewcprivacy">
-                <p class="purchase-form-checkbox-info purchase-form-checkbox-privacy"><?= __("I have read and accept the terms of the <a href='/privacy'>privacy policy on data processing</a>", 'wm-child-cyclando') ?><abbr class="required" title="obbligatorio">*</abbr></p>
+                <p class="purchase-form-checkbox-info purchase-form-checkbox-privacy"><?= __("I have read and accept the terms of the <a href='/privacy'>privacy policy on data processing</a>", 'wm-child-cyclando') ?> <abbr class="required" title="obbligatorio">*</abbr></p>
             </div>
             <div class="purchase-form-checkbox">
                 <input type="checkbox" class="checkbox" id="quotewcconditions" name="quotewcconditions">
-                <p class="purchase-form-checkbox-info purchase-form-checkbox-conditions"><?= __("I have read and accept the <a href='/privacy'>terms and conditions</a>", 'wm-child-cyclando') ?><abbr class="required" title="obbligatorio">*</abbr></p>
+                <p class="purchase-form-checkbox-info purchase-form-checkbox-conditions"><?= __("I have read and accept the <a href='/privacy'>terms and conditions</a>", 'wm-child-cyclando') ?> <abbr class="required" title="obbligatorio">*</abbr></p>
             </div>
             <input id="quotewclanguage" name="lang" type="hidden" value="<?= $language;?>">
             <div class="error">
