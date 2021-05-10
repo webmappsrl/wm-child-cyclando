@@ -495,14 +495,16 @@ jQuery(document).ready(function () {
             var index = 0;
             selectedMonthNumber++;
             sevenDaysFromToday = yearTodayPlusSevenDays+'-'+selectedMonthNumber+'-'+monthStartDay;
-            while (index < start_arrayYmd.length && !finalDate) {
-                if (!finalDate) {
-                    if (sevenDaysFromToday < start_arrayYmd[index]) { 
-                        finalDate =  start_arrayYmd[index];
-                    } else {
-                        index++;
-                    }
-                }
+            if (typeof start_arrayYmd !== 'undefined' ) {
+              while (index < start_arrayYmd.length && !finalDate) {
+                  if (!finalDate) {
+                      if (sevenDaysFromToday < start_arrayYmd[index]) { 
+                          finalDate =  start_arrayYmd[index];
+                      } else {
+                          index++;
+                      }
+                  }
+              }
             }
         }
         console.log(finalDate);
