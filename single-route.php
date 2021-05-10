@@ -663,6 +663,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         var has_extra = <?php echo json_encode($has_extra)?>;
         var hotel_product_items = <?php echo json_encode($hotel_product_items)?>;
         var first_departure_date_ajax = <?php echo json_encode($first_departure_date_ajax )?>;
+        console.log('first_departure_date_ajax ' + first_departure_date_ajax);
         var route_title = <?php echo json_encode($route_title) ?>;
         var planSummarytxt = '';
 

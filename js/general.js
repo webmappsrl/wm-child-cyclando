@@ -205,7 +205,6 @@ jQuery(document).ready(function () {
   }
   lenteBanner.click(function () {
     str = location.search;
-    console.log(str);
     if (location.search === undefined) {
       location.href = main_url;
     } else {
@@ -454,7 +453,7 @@ jQuery(document).ready(function () {
         var currentMonth = monthNames[d.getMonth()];
 
         // Set the first day of month
-        var monthStartDay = 1;
+        var monthStartDay = '01';
 
         // Calculate the last day of the current month
         d.setDate(1)
@@ -498,7 +497,7 @@ jQuery(document).ready(function () {
             if (typeof start_arrayYmd !== 'undefined' ) {
               while (index < start_arrayYmd.length && !finalDate) {
                   if (!finalDate) {
-                      if (sevenDaysFromToday < start_arrayYmd[index]) { 
+                      if (sevenDaysFromToday <= start_arrayYmd[index]) { 
                           finalDate =  start_arrayYmd[index];
                       } else {
                           index++;
@@ -507,7 +506,6 @@ jQuery(document).ready(function () {
               }
             }
         }
-        console.log(finalDate);
         if (finalDate) {
             finalDate = finalDate.split('-');
             finaleDay = finalDate[2];
@@ -516,9 +514,8 @@ jQuery(document).ready(function () {
             var monthNames = {'1':'01','2':'02','3':'03','4':'04','5':'05','6':'06','7':'07','8':'08','9':'09','1':'10','11':'11','12':'12'};
 
             finaleYear = finalDate[0];
-            first_departure_date_ajax = finaleDay + '-' + monthNames[finaleMonth] + '-' + finaleYear;
-            console.log(first_departure_date_ajax);
-            savedCookie['departureDate'] = first_departure_date_ajax;
+            general_first_departure_date_ajax = finaleDay + '-' + monthNames[finaleMonth] + '-' + finaleYear;
+            savedCookie['departureDate'] = general_first_departure_date_ajax;
             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
         } 
         

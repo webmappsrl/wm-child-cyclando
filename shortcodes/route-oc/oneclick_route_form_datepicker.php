@@ -20,6 +20,7 @@ function oneclick_route_form_datepicker() {
                     $('#oc-route-your-reservation-departure').html(Cookiedate[0]+" "+monthNames[Cookiedate[1]]+" "+Cookiedate[2]);
                 } else {
                     $( "#datepicker" ).val(first_departure_date_ajax);
+                    console.log('#datepicker first_departure_date_ajax ' + first_departure_date_ajax);
                     $('#oc-route-your-reservation-departure').html(first_departure_date_ajax);
                 }
 
