@@ -58,7 +58,13 @@ function oneclick_search_form_participants($atts) {
             <?php endif; ?>
             <div id="ocm-warning-container" class="ocm-warning-container"></div>
             <div id="oc-age-text-container" class="oc-age-text-container"></div>
-            <div id="oc-kid-age-container" class="oc-kid-age-container"></div>
+            <?php if ($route): ?>
+                <?php if ($has_kids ) { ?>
+                    <div id="oc-kid-age-container" class="oc-kid-age-container"></div>
+                <?php } ?>
+            <?php else: ?>
+                    <div id="oc-kid-age-container" class="oc-kid-age-container"></div>
+            <?php endif; ?>
             <div id="oc-participants-done-btn" class="oc-participants-done-btn"><?= __('Done','wm-child-cyclando')?></div>
         </div>
     </div>
@@ -69,7 +75,7 @@ function oneclick_search_form_participants($atts) {
             <?php if ($route) { ?>
             // checks if the kids are not availible and if they are previously selected, adds their value to adults
             var has_kids = <?php echo json_encode($has_kids )?>;
-            if (has_kids == "") {
+            if (has_kids == 0) {
                 var savedCookie = ocmCheckCookie();
                 if (savedCookie) {
                     if (savedCookie['kids']) {

@@ -668,14 +668,22 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 
 
         jQuery(document).ready(function() {
-            if (Cookies.get('oc_participants_cookie')) {
-                var ocCookies = JSON.parse(Cookies.get('oc_participants_cookie'));
-                if (ocCookies['departureMonth']) {
+            var savedCookie = ocmCheckCookie();
+            var departureMonth = '';
+                if (savedCookie['departureMonth']) {
+                    departureMonth = savedCookie['departureMonth'];
+                } else {
+                    var thisday = new Date();
+                    var thismonth = thisday.toLocaleString('<?= $language ?>', { month: 'long' });
+                    departureMonth = thismonth;
+                }
+
+                if (departureMonth) {
 
                     var finalDate = '';
                     var sevenDaysFromToday;
                     var monthNames = {gennaio:0,febbraio:1,marzo:2,aprile:3,maggio:4,giugno:5,luglio:6,agosto:7,settembre:8,ottobre:9,novembre:10,dicembre:11}
-                    var selectedMonthNumber = monthNames[ocCookies['departureMonth'].toLowerCase()];
+                    var selectedMonthNumber = monthNames[departureMonth.toLowerCase()];
                     var d = new Date();
                     var currentMonth = monthNames[d.getMonth()];
 
@@ -738,21 +746,18 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                         finaleYear = finalDate[0];
                         first_departure_date_ajax = finaleDay + '-' + monthNames[finaleMonth] + '-' + finaleYear;
                         console.log(first_departure_date_ajax);
-                        ocCookies['departureDate'] = first_departure_date_ajax;
-                        Cookies.set('oc_participants_cookie', JSON.stringify(ocCookies), { expires: 7, path: '/' });
+                        savedCookie['departureDate'] = first_departure_date_ajax;
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                     } 
                     
                 }
-            }
         });
         function ajaxUpdatePrice(){
-            if (Cookies.get('oc_participants_cookie')) {
-            var ocCookies = JSON.parse(Cookies.get('oc_participants_cookie'));
-            }
+            var savedCookie = ocmCheckCookie();
             var data = {
                 'action': 'oc_ajax_route_price',
                 'postid':  post_id,
-                'cookies':  ocCookies,
+                'cookies':  savedCookie,
             };
             jQuery.ajax({
                 url: '/wp-admin/admin-ajax.php',
@@ -790,8 +795,8 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                         addtocart = obj.addtocart;
                     }
                     calcCategorySelectOptions(obj);
-                    updatePlanSummaryTxt(ocCookies);
-                    updateYourReservationSummaryTxt(ocCookies,obj);
+                    updatePlanSummaryTxt(savedCookie);
+                    updateYourReservationSummaryTxt(savedCookie,obj);
                     jQuery( "#quotewcaddtocart" ).remove();
                     jQuery('#yourReservationPurchaseFrom').prepend('<input type="hidden" id="quotewcaddtocart" name="add-to-cart" value="'+addtocart+'" />');
                 }
@@ -914,12 +919,12 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         // ajax on route purchase / pay button that creates a new hubspot deal 
         function ajaxCreatHubspotDeal(form){
             if (Cookies.get('oc_participants_cookie')) {
-            var ocCookies = JSON.parse(Cookies.get('oc_participants_cookie'));
+            var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
             }
             var data = {
                 'action': 'oc_ajax_create_hs_deal',
                 'postid':  post_id,
-                'cookies':  ocCookies,
+                'cookies':  savedCookie,
             };
             jQuery.ajax({
                 url: '/wp-admin/admin-ajax.php',

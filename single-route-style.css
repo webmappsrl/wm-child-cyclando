@@ -1957,6 +1957,7 @@ a:hover.tooltips span {
 .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-icons p {
     font-size: 25px;
     margin: 5px;
+    cursor: pointer;
 }
 .cyc-route-mobile-introduction-wrapper a.tooltips:hover {
     color: white;
@@ -2729,6 +2730,12 @@ body .ui-datepicker.ui-widget.ui-widget-content {
         animation-duration: var(--modal-duration);
         border-radius: 10px;
         padding: 20px 30px;
+    }
+    .oc-route-select-holder select {
+        background: url(/wp-content/themes/wm-child-cyclando/assets/images/arrow-down.png) 95% / 2% no-repeat #fff!important;
+    }
+    .oc-route-select-holder select:active, .oc-route-select-holder select:hover {
+        background: url(/wp-content/themes/wm-child-cyclando/assets/images/arrow-up.png) 95% / 2% no-repeat #fff!important;
     }
 }
 .cifraajax .w-iconbox-icon i {

@@ -994,6 +994,7 @@ body #iubenda_policy .iub_content.legal_pp p {
     font-weight: 400;
     width: 300px;
     height: 3.4rem;
+    cursor: pointer;
 }
 #cy-search-element-container .facetwp-autocomplete::placeholder{
     color: #888;
@@ -1008,7 +1009,7 @@ select.facetwp-dropdown{
     border: 1px solid black;
     width: 300px;
     background-color: white;
-    
+    cursor: pointer;
 }
 select.facetwp-dropdown:first-child {
     color: #888;
@@ -2261,6 +2262,7 @@ span.route_duration_free {
     div#searchpage-form-holder-mobile {
         left: calc( 50% - 450px)!important;
         max-width: 900px;
+        cursor: pointer;
     }
     .searchpage-form-oneclick-mobile-container {
         max-width: 600px;

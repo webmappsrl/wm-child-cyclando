@@ -75,7 +75,7 @@ function oneclick_search_form_bikes($atts) {
             <?php if ($route) { ?>
                 // checks if the ebikes are not availible and if they are previously selected, adds their value to bikes
                 var has_ebike = <?php echo json_encode($has_ebike )?>;
-                if (has_ebike == "") {
+                if (has_ebike == 0) {
                     if (savedCookie['electric']) {
                         savedCookie['regular'] += parseInt(savedCookie['electric']);
                         delete savedCookie['electric'];
