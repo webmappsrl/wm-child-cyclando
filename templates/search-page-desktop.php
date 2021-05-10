@@ -7,6 +7,9 @@ $when = $_GET['_quando_vuoi_partire'];
 ($where) ? $where_txt = str_replace("%20"," ",$where) : $where_txt = __('Select your destination','wm-child-cyclando');
 if ($when) {
     $when_txt = explode('-',str_replace("%20"," ",$when));
+    if ($when_txt == 'august') {
+        $when_txt = 'agosto';
+    }
 }
 ($when) ? $when_txt = $when_txt[0] : $when_txt = __('Quando','wm-child-cyclando');
 

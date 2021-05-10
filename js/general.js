@@ -205,7 +205,6 @@ jQuery(document).ready(function () {
   }
   lenteBanner.click(function () {
     str = location.search;
-    console.log(str);
     if (location.search === undefined) {
       location.href = main_url;
     } else {
@@ -443,12 +442,11 @@ jQuery(document).ready(function () {
         var thismonth = thisday.toLocaleString(document.documentElement.lang, { month: 'long' });
         departureMonth = thismonth;
     }
-
     if (departureMonth) {
 
         var finalDate = '';
         var sevenDaysFromToday;
-        var monthNames = {gennaio:0,febbraio:1,marzo:2,aprile:3,maggio:4,giugno:5,luglio:6,agosto:7,settembre:8,ottobre:9,novembre:10,dicembre:11}
+        var monthNames = {gennaio:0,febbraio:1,marzo:2,aprile:3,maggio:4,giugno:5,luglio:6,august:7,settembre:8,ottobre:9,novembre:10,dicembre:11}
         var selectedMonthNumber = monthNames[departureMonth.toLowerCase()];
         var d = new Date();
         var currentMonth = monthNames[d.getMonth()];
@@ -477,44 +475,39 @@ jQuery(document).ready(function () {
 
             if (typeof start_arrayYmd !== 'undefined' &&  start_arrayYmd.indexOf(sevenDaysFromToday) > -1) {
                 finalDate = sevenDaysFromToday;
-                console.log('yek finalDate ' + finalDate);
             } else {
                 var index = 0;
                 if (typeof start_arrayYmd !== 'undefined' ) {
                   while (index < start_arrayYmd.length && !finalDate) {
                       if (sevenDaysFromToday < start_arrayYmd[index]) { 
                           finalDate =  start_arrayYmd[index];
-                          console.log('do finalDate ' + finalDate);
                       } else {
                           index++;
                       }
                   }
                 } else {
                   finalDate = sevenDaysFromToday;
-                  console.log('se finalDate ' + finalDate);
                 }
             }
         } else {
             var index = 0;
             selectedMonthNumber++;
             sevenDaysFromToday = yearTodayPlusSevenDays+'-'+selectedMonthNumber+'-'+monthStartDay;
-            console.log('char sevenDaysFromToday ' + sevenDaysFromToday);
             if (typeof start_arrayYmd !== 'undefined' ) {
               while (index < start_arrayYmd.length && !finalDate) {
                   if (!finalDate) {
                       if (sevenDaysFromToday <= start_arrayYmd[index]) { 
-                        console.log('char start_arrayYmd[index] ' + start_arrayYmd[index]);
                           finalDate =  start_arrayYmd[index];
-                          console.log('char finalDate ' + finalDate);
                       } else {
                           index++;
                       }
                   }
               }
+            } else {
+              finalDate = sevenDaysFromToday;
             }
         }
         if (finalDate) {
-          console.log('last finalDate ' + finalDate);
             finalDate = finalDate.split('-');
             finaleDay = finalDate[2];
             finaleMonth = finalDate[1];
@@ -523,7 +516,6 @@ jQuery(document).ready(function () {
 
             finaleYear = finalDate[0];
             general_first_departure_date_ajax = finaleDay + '-' + monthNames[finaleMonth] + '-' + finaleYear;
-            console.log('general_first_departure_date_ajax ' + general_first_departure_date_ajax);
             savedCookie['departureDate'] = general_first_departure_date_ajax;
             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
         } 
