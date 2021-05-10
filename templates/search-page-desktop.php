@@ -51,6 +51,7 @@ echo do_shortcode('[vc_row height="large" us_bg_image_source="featured" us_bg_re
 <script>
 (function($) {
     $(document).ready(function () {
+        calculateDepartureDate();
         $('#searchpage-form-holder-mobile').on('click', function() {
             $('#searchpage-form-oneclick-mobile').show();
         });

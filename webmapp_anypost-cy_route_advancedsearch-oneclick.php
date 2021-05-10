@@ -242,8 +242,8 @@
 <script>
     (function ($) {
         $(document).ready(function () {
-            if (Cookies.get('oc_participants_cookie')) {
-                var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
+            var savedCookie = ocmCheckCookie();
+            if (savedCookie) {
                 var sums = cal_sum_cookies(savedCookie);
                 var text = '<?= __('Lowset price', 'wm-child-cyclando') ?>';
                 if (sums['participants'] !== null) {
@@ -272,7 +272,6 @@
                         $(".cifra-"+post_id).html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
                     },
                     success : function( response ) {
-                        console.log(response.responseText);
                         $(".cifra-"+post_id).html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
                     },
                     complete:function(response){
