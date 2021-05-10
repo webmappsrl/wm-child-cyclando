@@ -256,6 +256,7 @@
             }
         });
         $(document).on("facetwp-loaded", function () {
+            calculateDepartureDate();
             var savedCookie = ocmCheckCookie();
             console.log(savedCookie);
             var post_id = <?= $post_id ?>;
