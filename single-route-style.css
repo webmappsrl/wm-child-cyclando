@@ -1913,7 +1913,7 @@ a:hover.tooltips span {
 }
 .wpb_wrapper.cyc-route-mobile-introduction-wrapper {
     display: grid;
-    grid-template-rows: 1fr 2fr 2.3fr 3fr;
+    grid-template-rows: 1.6fr 2.4fr 2fr;
 }
 .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-title {
     color: white;
@@ -1983,9 +1983,6 @@ a:hover.tooltips span {
         display: grid;
         grid-template-columns: 40% 60%;
         padding: 0 0 30px;
-    }
-    .cyc-route-taxonomy-tab-row-container .cyc-single-route-cta-buttons {
-        flex-direction: row-reverse;
     }
     .cyc-route-taxonomy-tab-row-container .cyc-route-mobile-taxonomy-container {
         display: block!important;
@@ -2853,6 +2850,10 @@ body .ui-datepicker.ui-widget.ui-widget-content {
         justify-content: flex-end;
         align-items: flex-end;
     }
+    .cyc-route-mobile-taxonomy-container-sticky {
+        position: sticky;
+        top: 100px;
+    }
 }
 @media screen and (max-width: 767px) {
     svg#logo-cyclando-route {
@@ -2864,7 +2865,7 @@ body .ui-datepicker.ui-widget.ui-widget-content {
     .cyc-single-route-breadcrumb-wrapper {
         display: none;
     }
-    .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-gallery {
+    .cyc-route-mobile-introduction-gallery {
         display: none;
     }
     .cyc-introduction-days-seperator {

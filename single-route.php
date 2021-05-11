@@ -364,92 +364,94 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
     <div class="cyc-route-taxonomy-tab-row-container">
         <!-- START section taxonomies and difficulty block START  -->
         <div class="cyc-route-mobile-taxonomy-container">
-            <div class="cyc-route-taxonomy-row-wrapper">
-                <div class="cyc-route-mobile-taxonomy-activity-wrapper">
-                    <p class='meta-bar-txt-strong'>
+            <div class="cyc-route-mobile-taxonomy-container-sticky">
+                <div class="cyc-route-taxonomy-row-wrapper">
+                    <div class="cyc-route-mobile-taxonomy-activity-wrapper">
+                        <p class='meta-bar-txt-strong'>
+                            <?php
+                            echo __('Activity', 'wm-child-cyclando')
+                            ?>
+                        </p>
+                        <?php if ($array_activity) { 
+                            foreach ($array_activity as $activity => $icon) { ?>
+                                <div class="meta-bar-taxonomy-container">
+                                    <p class='meta-bar-txt-light'>
+                                        <?php
+                                        echo $activity;
+                                        ?>
+                                    </p>
+                                </div>
+                        <?php }
+                        } ?>
+                    </div>
+                    <div class="cyc-route-mobile-taxonomy-target-wrapper">
+                        <p class='meta-bar-txt-strong'>
+                            <?php
+                            echo __('Target', 'wm-child-cyclando')
+                            ?>
+                        </p>
+                        <?php if ($array_target) { 
+                            foreach ($array_target as $target => $icon) { ?>
+                                <div class="meta-bar-taxonomy-container">
+                                    <p class='meta-bar-txt-light'>
+                                        <?php
+                                        echo $target;
+                                        ?>
+                                    </p>
+                                </div>
+                        <?php }
+                        } ?>
+                    </div>
+                    <div class="cyc-route-mobile-taxonomy-shape-wrapper">
+                        <p class='meta-bar-txt-strong'>
+                            <?php
+                            echo __('Path', 'wm-child-cyclando')
+                            ?>
+                        </p>
+                        <?php if ($shape) { ?>
+                                <div class="meta-bar-taxonomy-container">
+                                    <p class='meta-bar-txt-light'>
+                                        <?php
+                                        $title_path = $array = [
+                                            'daisy' => 'A margherita',
+                                            'linear' => 'Lineare',
+                                            'roundtrip' => 'Ad anello'
+                                        ];
+                                        if ($language == 'it') {
+                                            echo __($title_path[$shape], "wm-child-cyclando");
+                                        } else {
+                                            echo __($shape, "wm-child-cyclando");
+                                        }
+                                        ?>
+                                    </p>
+                                </div>
+                        <?php 
+                        } ?>
+                    </div>
+                    <div class="cyc-route-mobile-taxonomy-difficulty-wrapper">
+                        <p class='meta-bar-txt-strong'>
+                            <?php
+                            echo __('Difficulty', 'wm-child-cyclando')
+                            ?>
+                        </p>
+                        <?php if ($difficulty) { ?>
+                                <div class="meta-bar-taxonomy-container">
+                                    <p class='meta-bar-txt-light'>
+                                        <?php
+                                        echo $difficulty. ' ' . __('out of 5', 'wm-child-cyclando');
+                                        ?>
+                                    </p>
+                                </div>
                         <?php
-                        echo __('Activity', 'wm-child-cyclando')
-                        ?>
-                    </p>
-                    <?php if ($array_activity) { 
-                        foreach ($array_activity as $activity => $icon) { ?>
-                            <div class="meta-bar-taxonomy-container">
-                                <p class='meta-bar-txt-light'>
-                                    <?php
-                                    echo $activity;
-                                    ?>
-                                </p>
-                            </div>
-                    <?php }
-                    } ?>
+                        } ?>
+                    </div>
                 </div>
-                <div class="cyc-route-mobile-taxonomy-target-wrapper">
-                    <p class='meta-bar-txt-strong'>
-                        <?php
-                        echo __('Target', 'wm-child-cyclando')
-                        ?>
-                    </p>
-                    <?php if ($array_target) { 
-                        foreach ($array_target as $target => $icon) { ?>
-                            <div class="meta-bar-taxonomy-container">
-                                <p class='meta-bar-txt-light'>
-                                    <?php
-                                    echo $target;
-                                    ?>
-                                </p>
-                            </div>
-                    <?php }
-                    } ?>
-                </div>
-                <div class="cyc-route-mobile-taxonomy-shape-wrapper">
-                    <p class='meta-bar-txt-strong'>
-                        <?php
-                        echo __('Path', 'wm-child-cyclando')
-                        ?>
-                    </p>
-                    <?php if ($shape) { ?>
-                            <div class="meta-bar-taxonomy-container">
-                                <p class='meta-bar-txt-light'>
-                                    <?php
-                                    $title_path = $array = [
-                                        'daisy' => 'A margherita',
-                                        'linear' => 'Lineare',
-                                        'roundtrip' => 'Ad anello'
-                                    ];
-                                    if ($language == 'it') {
-                                        echo __($title_path[$shape], "wm-child-cyclando");
-                                    } else {
-                                        echo __($shape, "wm-child-cyclando");
-                                    }
-                                    ?>
-                                </p>
-                            </div>
-                    <?php 
-                    } ?>
-                </div>
-                <div class="cyc-route-mobile-taxonomy-difficulty-wrapper">
-                    <p class='meta-bar-txt-strong'>
-                        <?php
-                        echo __('Difficulty', 'wm-child-cyclando')
-                        ?>
-                    </p>
-                    <?php if ($difficulty) { ?>
-                            <div class="meta-bar-taxonomy-container">
-                                <p class='meta-bar-txt-light'>
-                                    <?php
-                                    echo $difficulty. ' ' . __('out of 5', 'wm-child-cyclando');
-                                    ?>
-                                </p>
-                            </div>
-                    <?php
-                    } ?>
-                </div>
-            </div>
-            <div class="cyc-route-mobile-introduction-gallery">
-                <div class="cyc-route-mobile-gallery-container">
-                    <?php if ($gallery_ids) {
-                        echo do_shortcode('[us_image_slider ids="' . implode(',', $gallery_ids) . '" fullscreen="1" img_size="large" arrows="hide" nav="dots"]');
-                    } ?>
+                <div class="cyc-route-mobile-introduction-gallery">
+                    <div class="cyc-route-mobile-gallery-container">
+                        <?php if ($gallery_ids) {
+                            echo do_shortcode('[us_image_slider ids="' . implode(',', $gallery_ids) . '" fullscreen="1" img_size="large" arrows="hide" nav="dots"]');
+                        } ?>
+                    </div>
                 </div>
             </div>
         </div>
