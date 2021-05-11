@@ -778,7 +778,7 @@ a.download-app-link {
     color:var(--color-secondary-hover);
 }
 
-.breadcrumb-rankmath .last {
+.single-route .breadcrumb-rankmath .last {
     font-size: 14px;
     color:var(--color-text-p);
     font-weight: 400;
@@ -2015,6 +2015,12 @@ a:hover.tooltips span {
         border-radius: 16px;
         margin: 1.5rem 1.5rem 7px;
     }
+    .cyc-route-taxonomy-tab-row-container .oc-route-tab-mobile-program-body {
+        padding: 25px!important;
+        box-shadow: 0 3px 6px 0 #dadada;
+        border-radius: 16px;
+        margin: 1.5rem 1.5rem 7px;
+    }
     .cyc-route-taxonomy-tab-row-container .oc-route-mobile-your-reservation-container {
         margin: 1.5rem 1.5rem 7px;
         padding: 40px;
@@ -2853,6 +2859,12 @@ body .ui-datepicker.ui-widget.ui-widget-content {
         position: sticky;
         top: 100px;
     }
+    .cyc-single-route-gallery-information-container img.rsImg.rsMainSlideImage {
+        margin-top: 0!important;
+        margin-left: 0!important;
+        width: 100%!important;
+        height: 100%!important;
+    }
 }
 @media screen and (max-width: 767px) {
     svg#logo-cyclando-route {
@@ -2870,13 +2882,16 @@ body .ui-datepicker.ui-widget.ui-widget-content {
     .cyc-introduction-days-seperator {
         display: none;
     }
+    .cyc-route-mobile-tab-container .w-tabs-list .w-tabs-item.active {
+        background: var(--color-secondary-background)!important;
+    }
 }
 @media screen and (max-width: 900px) {
     .single-route .l-header.bg_transparent:not(.sticky) .at_middle .w-nav>a:hover {
         color: var(--color-primary)!important;
     }
 }
-@media screen and (max-width: 1350px) {
+@media screen and (min-width:768px) and (max-width: 1460px) {
     .cyc-route-taxonomy-tab-row-container {
         padding: 0 2.5rem 30px!important;
     }

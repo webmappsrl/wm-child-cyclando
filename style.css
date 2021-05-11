@@ -73,6 +73,7 @@ ul.w-nav-list.level_1.hover_simple li:nth-child(4) a {
         background: white;
         line-height: 30px;
         margin-top: 32px;
+        color: #333;
     }
     .sticky .l-subheader.at_middle .menu-language-dropdown-wpml .w-dropdown-list {
         background: white;
