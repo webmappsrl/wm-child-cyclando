@@ -1982,7 +1982,7 @@ a:hover.tooltips span {
         margin: auto;
         display: grid;
         grid-template-columns: 40% 60%;
-        padding: 30px 0;
+        padding: 0 0 30px;
     }
     .cyc-route-taxonomy-tab-row-container .cyc-single-route-cta-buttons {
         flex-direction: row-reverse;
@@ -1990,6 +1990,7 @@ a:hover.tooltips span {
     .cyc-route-taxonomy-tab-row-container .cyc-route-mobile-taxonomy-container {
         display: block!important;
         background: white;
+        margin-left: 1.5rem;
     }
     .cyc-route-taxonomy-tab-row-container .oc-route-mobile-plan-price-container {
         padding-bottom: 30px;
