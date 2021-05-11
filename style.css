@@ -119,6 +119,10 @@ ul.w-nav-list.level_1.hover_simple li:nth-child(4) a {
         margin-top: 32px;
         border: 1px solid #f5f5f5;
     }
+    .cyc-single-route-introduction-container.cyc-route-introduction-mobile {
+        background: white!important;
+        box-shadow: none!important;
+    }
 }
 @media screen and (max-width: 767px) {
     svg#logo-cyclando-route {
@@ -126,6 +130,14 @@ ul.w-nav-list.level_1.hover_simple li:nth-child(4) a {
     }
     .single-route svg#logo-cyclando-route .st2{
         fill: white;
+    }
+    .cyc-single-route-breadcrumb-wrapper {
+        display: none;
+    }
+}
+@media screen and (max-width: 900px) {
+    .no-touch .l-header.bg_transparent:not(.sticky) .at_middle .w-nav>a:hover {
+        color: var(--color-primary)!important;
     }
 }
 /* CSS homepage Cyclando */

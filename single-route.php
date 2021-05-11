@@ -322,6 +322,10 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                                 <p><?= ($days) ? $days_info : '' ?></p>
                                 <p><?= ($distance) ? $distance_info : '' ?></p>
                             </div>
+                            <div class="cyc-single-route-breadcrumb-wrapper">
+                                <div class="breadcrumb-rankmath">
+                                    <?php echo do_shortcode('[rank_math_breadcrumb]'); ?></div>
+                            </div>
                             <div class="cyc-route-mobile-introduction-title">
                                 <?php 
                                     if ($places_to_go_list) {

@@ -769,14 +769,16 @@ a.download-app-link {
     color: white!important;
 }
 /* Breadcrumb rank math menu */
-.breadcrumb-rankmath a,
-.breadcrumb-rankmath span {
-    font-size: 13px;
-    color:var(--color-text-p);
+.breadcrumb-rankmath a {
+    color:var(--color-secondary);
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .breadcrumb-rankmath .last {
-    color: var(--color-primary);
+    font-size: 14px;
+    color:var(--color-text-p);
+    font-weight: 400;
 }
 
 /* menu layer 1 featured image*/
