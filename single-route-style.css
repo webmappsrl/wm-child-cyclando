@@ -1987,7 +1987,6 @@ a:hover.tooltips span {
     .cyc-route-taxonomy-tab-row-container .cyc-route-mobile-taxonomy-container {
         display: block!important;
         background: white;
-        margin-left: 1.5rem;
     }
     .cyc-route-taxonomy-tab-row-container .oc-route-mobile-plan-price-container {
         padding-bottom: 30px;
@@ -2875,5 +2874,10 @@ body .ui-datepicker.ui-widget.ui-widget-content {
 @media screen and (max-width: 900px) {
     .single-route .l-header.bg_transparent:not(.sticky) .at_middle .w-nav>a:hover {
         color: var(--color-primary)!important;
+    }
+}
+@media screen and (max-width: 1350px) {
+    .cyc-route-taxonomy-tab-row-container {
+        padding: 0 2.5rem 30px!important;
     }
 }
