@@ -313,6 +313,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                         <div class="wpb_wrapper cyc-route-mobile-introduction-wrapper">
                             <div class="cyc-route-mobile-introduction-days">
                                 <p><?= ($days) ? $days_info : '' ?></p>
+                                <p class="cyc-introduction-days-seperator">-</p>
                                 <p><?= ($distance) ? $distance_info : '' ?></p>
                             </div>
                             <div class="cyc-single-route-breadcrumb-wrapper">
