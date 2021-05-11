@@ -69,6 +69,11 @@ ul.w-nav-list.level_1.hover_simple li:nth-child(4) a {
         color: white;
         box-shadow: 0 0 0;
     }
+    .l-subheader.at_middle .menu-language-dropdown-wpml .w-dropdown-list a {
+        background: white;
+        line-height: 30px;
+        margin-top: 32px;
+    }
     .sticky .l-subheader.at_middle .menu-language-dropdown-wpml .w-dropdown-list {
         background: white;
     }
@@ -79,6 +84,48 @@ ul.w-nav-list.level_1.hover_simple li:nth-child(4) a {
 @media screen and (max-width: 767px) {
     .l-subheader.at_middle .menu-language-dropdown-wpml.opened .w-dropdown-list, .l-subheader.at_middle .menu-language-dropdown-wpml.opened .w-dropdown-item {
         color: #70706E;
+    }
+}
+/* header menu for routes in desktop and mobile */
+@media screen and (min-width: 768px) {  
+    svg#logo-cyclando-route {
+        width: 350px;
+    }
+    .single-route .l-header {
+        background: white;
+        box-shadow: 0 1px 0 rgb(0 0 0 / 8%)!important;
+    }
+    .single-route .l-header.bg_transparent:not(.sticky) .l-subheader.at_top {
+        color: #555;
+        background: white;
+    }
+    .single-route .l-subheader.at_top a:hover,.single-route .l-header.bg_transparent .l-subheader.at_top .w-dropdown.opened a:hover {
+        color: var(--color-primary)!important;
+    }
+    .single-route .l-header.bg_transparent:not(.sticky) .l-subheader.at_middle {
+        color: #555;
+    }
+    .single-route .l-header.bg_transparent:not(.sticky) .at_middle .menu-item.level_1:hover>a {
+        color: var(--color-primary)!important;
+    }
+    .single-route .l-subheader.at_middle .menu-language-dropdown-wpml .w-dropdown-list {
+        background: none;
+        color: #555!important;
+        box-shadow: 0 0 0;
+    }
+    .single-route .l-subheader.at_middle .menu-language-dropdown-wpml .w-dropdown-list a{
+        background: white;
+        line-height: 30px;
+        margin-top: 32px;
+        border: 1px solid #f5f5f5;
+    }
+}
+@media screen and (max-width: 767px) {
+    svg#logo-cyclando-route {
+        width: 100%;
+    }
+    .single-route svg#logo-cyclando-route .st2{
+        fill: white;
     }
 }
 /* CSS homepage Cyclando */

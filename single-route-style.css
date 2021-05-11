@@ -2607,6 +2607,7 @@ body .ui-datepicker.ui-widget.ui-widget-content {
     border: 1px solid #000000;
     font-weight: 400;
     height: 3.4rem;
+    cursor: pointer;
 }
 .ui-widget-header {
     border: 0!important;
