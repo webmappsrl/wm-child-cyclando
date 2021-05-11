@@ -311,13 +311,6 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                 <div class="vc_col-sm-12 wpb_column vc_column_container">
                     <div class="vc_column-inner">
                         <div class="wpb_wrapper cyc-route-mobile-introduction-wrapper">
-                            <div class="cyc-route-mobile-introduction-gallery">
-                                <div class="cyc-route-mobile-gallery-container">
-                                    <?php if ($gallery_ids) {
-                                        echo do_shortcode('[us_image_slider ids="' . implode(',', $gallery_ids) . '" fullscreen="1" img_size="large" arrows="hide" nav="dots"]');
-                                    } ?>
-                                </div>
-                            </div>
                             <div class="cyc-route-mobile-introduction-days">
                                 <p><?= ($days) ? $days_info : '' ?></p>
                                 <p><?= ($distance) ? $distance_info : '' ?></p>
@@ -351,7 +344,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                             </div>
 
                             <div class="cyc-route-mobile-introduction-icons">
-                                <p id="cyc-single-route-monarch-gallery-button" class="cyc-single-route-monarch-share">
+                                <p id="cyc-single-route-mobile-gallery-button" class="cyc-single-route-monarch-share cyc-single-route-gallery-btn">
                                     <i class="wm-icon-cyc_gallery"></i>
                                 </p>
                                 <p id="cyc-single-route-monarch-share-button" class="cyc-single-route-monarch-share">
@@ -448,6 +441,13 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                                 </p>
                             </div>
                     <?php
+                    } ?>
+                </div>
+            </div>
+            <div class="cyc-route-mobile-introduction-gallery">
+                <div class="cyc-route-mobile-gallery-container">
+                    <?php if ($gallery_ids) {
+                        echo do_shortcode('[us_image_slider ids="' . implode(',', $gallery_ids) . '" fullscreen="1" img_size="large" arrows="hide" nav="dots"]');
                     } ?>
                 </div>
             </div>
@@ -1011,7 +1011,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             });
         });
         jQuery(document).ready(function(){
-            jQuery('#cyc-single-route-monarch-gallery-button').click(function(){jQuery('.rsFullscreenBtn').trigger('click')})
+            jQuery('#cyc-single-route-mobile-gallery-button').click(function(){jQuery('.rsFullscreenBtn').trigger('click')})
         });
 
             

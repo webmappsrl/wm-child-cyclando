@@ -774,6 +774,9 @@ a.download-app-link {
     font-size: 14px;
     font-weight: 600;
 }
+.breadcrumb-rankmath a:hover {
+    color:var(--color-secondary-hover);
+}
 
 .breadcrumb-rankmath .last {
     font-size: 14px;
@@ -1925,6 +1928,13 @@ a:hover.tooltips span {
     .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-title h1 { 
         font-size: 14px;
     }
+    .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-days p {
+        color: white!important;
+    }
+    .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-icons {
+        justify-content: space-between;
+        align-items: center;
+    }
 }
 .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-title h1 {
     color: white;
@@ -1934,7 +1944,6 @@ a:hover.tooltips span {
     padding-top: 5px;
 }
 .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-days p{
-    color: white!important;
     font-size: 18px;
     font-family: var(--font-family-primary);
     font-weight: 600;
@@ -1944,8 +1953,6 @@ a:hover.tooltips span {
 }
 .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-icons {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-icons i {
     color: black;
@@ -1967,16 +1974,14 @@ a:hover.tooltips span {
 .cyc-route-mobile-introduction-wrapper a.tooltips {
     color: white;
 }
-.cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-gallery .cyc-route-mobile-gallery-container{
-    display: none;
-}
+
 /* style taxonomy section cyc-route-mobile-taxonomy-activity-wrapper */
 @media screen and (min-width: 768px) { 
     .cyc-route-taxonomy-tab-row-container {
         max-width: 1360px;
         margin: auto;
         display: grid;
-        grid-template-columns: 3fr 9fr;
+        grid-template-columns: 40% 60%;
         padding: 30px 0;
     }
     .cyc-route-taxonomy-tab-row-container .cyc-single-route-cta-buttons {
@@ -1984,6 +1989,7 @@ a:hover.tooltips span {
     }
     .cyc-route-taxonomy-tab-row-container .cyc-route-mobile-taxonomy-container {
         display: block!important;
+        background: white;
     }
     .cyc-route-taxonomy-tab-row-container .oc-route-mobile-plan-price-container {
         padding-bottom: 30px;
@@ -2028,13 +2034,11 @@ a:hover.tooltips span {
         padding-right: 10px;
     }
     .cyc-route-taxonomy-tab-row-container .cyc-route-taxonomy-row-wrapper {
-        position: -webkit-sticky;
-        position: sticky;
         top: 100px;
         height: auto;
-        display: inline-block;
+        display: grid;
+        grid-template-columns: 1fr 1.3fr;
         width: 100%;
-        padding: 15px 25px;
     }
     body .cyc-single-route-main-container .cyc-route-mobile-tab-container .w-tabs-list-h {
         background: white!important;
@@ -2779,4 +2783,92 @@ body .ui-datepicker.ui-widget.ui-widget-content {
 .single-room-select-holder.oc-route-select-holder select:active, .single-room-select-holder.oc-route-select-holder select:hover {
     background-size: 11%;
     background-position: 88%;
+}
+/* header menu for routes in desktop and mobile */
+@media screen and (min-width: 768px) {  
+    
+    .single-route .l-header {
+        background: white;
+        box-shadow: 0 1px 0 rgb(0 0 0 / 8%)!important;
+    }
+    .single-route .l-header.bg_transparent:not(.sticky) .l-subheader.at_top {
+        color: #555;
+        background: white;
+    }
+    .single-route .l-subheader.at_top a:hover,.single-route .l-header.bg_transparent .l-subheader.at_top .w-dropdown.opened a:hover {
+        color: var(--color-primary)!important;
+    }
+    .single-route .l-header.bg_transparent:not(.sticky) .l-subheader.at_middle {
+        color: #555;
+    }
+    .single-route .l-header.bg_transparent:not(.sticky) .at_middle .menu-item.level_1:hover>a {
+        color: var(--color-primary)!important;
+    }
+    .single-route .l-subheader.at_middle .menu-language-dropdown-wpml .w-dropdown-list {
+        background: none;
+        color: #555!important;
+        box-shadow: 0 0 0;
+    }
+    .single-route .l-subheader.at_middle .menu-language-dropdown-wpml .w-dropdown-list a{
+        background: white;
+        line-height: 30px;
+        margin-top: 32px;
+        border: 1px solid #f5f5f5;
+    }
+    .cyc-single-route-introduction-container.cyc-route-introduction-mobile {
+        background: white!important;
+        box-shadow: none!important;
+    }
+    .cyc-single-route-gallery-btn {
+        display: none;
+    }
+    /* introduction section on desktop */
+    .wpb_wrapper.cyc-route-mobile-introduction-wrapper {
+        display: grid;
+        grid-template-rows: repeat(3,1fr)!important;
+    }
+    .cyc-single-route-breadcrumb-wrapper {
+        grid-row: 1;
+    }
+    .cyc-route-mobile-introduction-title {
+        grid-row: 2;
+        grid-column: 1 / 4;
+    }
+    .cyc-route-mobile-introduction-icons {
+        grid-row: 2;
+        grid-column: 4 / 5;
+    }
+    .cyc-route-mobile-introduction-title span,.cyc-route-mobile-introduction-title h1 {
+        color: var(--color-text-strong)!important;
+    }
+    .cyc-route-mobile-introduction-days {
+        grid-row: 3;
+        grid-column: 1 / 5;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-icons {
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+}
+@media screen and (max-width: 767px) {
+    svg#logo-cyclando-route {
+        width: 100%;
+    }
+    .single-route svg#logo-cyclando-route .st2{
+        fill: white;
+    }
+    .cyc-single-route-breadcrumb-wrapper {
+        display: none;
+    }
+    .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-gallery {
+        display: none;
+    }
+}
+@media screen and (max-width: 900px) {
+    .single-route .l-header.bg_transparent:not(.sticky) .at_middle .w-nav>a:hover {
+        color: var(--color-primary)!important;
+    }
 }
