@@ -769,6 +769,9 @@ a.download-app-link {
     color: white!important;
 }
 /* Breadcrumb rank math menu */
+.rank-math-breadcrumb {
+    font-family: var(--font-family-primary);
+}
 .breadcrumb-rankmath a {
     color:var(--color-secondary);
     font-size: 14px;
@@ -2864,6 +2867,10 @@ body .ui-datepicker.ui-widget.ui-widget-content {
         margin-left: 0!important;
         width: 100%!important;
         height: 100%!important;
+        border-radius: 15px;
+    }
+    .cyc-route-mobile-gallery-container {
+        padding-top: 15px;
     }
 }
 @media screen and (max-width: 767px) {
