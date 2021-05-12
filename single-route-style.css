@@ -2032,7 +2032,7 @@ a:hover.tooltips span {
         width: 100%;
         display: flex;
         align-items: center;
-        padding: 10px 0;
+        padding: 5px 0;
     }
     .cyc-route-taxonomy-row-wrapper > div > div {
         float: left;
