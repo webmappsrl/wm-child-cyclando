@@ -4,12 +4,20 @@
     const $el = $('.facetwp-facet-dove_vuoi_andare input[type="text"]');
     $el.on("blur keydown input change keyup focus", () => {
       $(".autocomplete-suggestions").remove();
-	});
-	var facetwpPaged2 = document.querySelectorAll('.facetwp-page');
-	if (FWP.loaded) { 
-		facetwpPagedScrollTop(facetwpPaged2);
-	}
+	  });
+	  var facetwpPaged2 = document.querySelectorAll('.facetwp-page');
+    if (FWP.loaded) { 
+      facetwpPagedScrollTop(facetwpPaged2);
+    }
+    $('.facetwp-dropdown').on('change', function() {
+      if ($(this).val()) {
+        return $(this).css('color', 'black');
+      } else {
+        return $(this).css('color', '#888');
+      }
+    });
   });
+
 })(jQuery);
 
 function facetwpPagedScrollTop (facetwpPaged){
@@ -79,19 +87,18 @@ jQuery(document).ready(function () {
   if (covidCookieValue == 'wm_covid_banner_visited') {
 	clearCookieStyle();
   }
-
-
   // End covid banner
 
-  
+
+
   jQuery(document).one("facetwp-loaded", function () {
     if (lang == "en-US") {
       // Dove vui andare?
-      jQuery('#cy-search-element-container > div:nth-child(1) > div > input.facetwp-autocomplete.ready').attr("placeholder","Choose country or city");
-      jQuery('#page-content > section.l-section.wpb_row.height_small.general-cerca-facetwp-container > div > div > div.vc_col-sm-12.wpb_column.vc_column_container.cerca-facets-container > div > div > div:nth-child(1) > div > div > div > div:nth-child(2) > div > div > div > div > input').attr("placeholder","Choose country or city");
+      jQuery('#cy-search-element-container > div:nth-child(1) > div > input.facetwp-autocomplete.ready').attr("placeholder","Choose a location");
+      jQuery('#page-content > section.l-section.wpb_row.height_small.general-cerca-facetwp-container > div > div > div.vc_col-sm-12.wpb_column.vc_column_container.cerca-facets-container > div > div > div:nth-child(1) > div > div > div > div:nth-child(2) > div > div > div > div > input').attr("placeholder","Choose a location");
       // In quale mese?
-      jQuery('#cy-search-element-container > div:nth-child(2) > div > select > option:nth-child(1)').text("Select month and year");
-      jQuery('#page-content > section.l-section.wpb_row.height_small.general-cerca-facetwp-container > div > div > div.vc_col-sm-12.wpb_column.vc_column_container.cerca-facets-container > div > div > div:nth-child(1) > div > div > div > div:nth-child(3) > div > div > div > div > select > option:nth-child(1)').text("Select month and year");
+      jQuery('#cy-search-element-container > div:nth-child(2) > div > select > option:nth-child(1)').text("Select month");
+      jQuery('#page-content > section.l-section.wpb_row.height_small.general-cerca-facetwp-container > div > div > div.vc_col-sm-12.wpb_column.vc_column_container.cerca-facets-container > div > div > div:nth-child(1) > div > div > div > div:nth-child(3) > div > div > div > div > select > option:nth-child(1)').text("Select month");
       // CERCA
       jQuery(".cy-facetwp-cerca-quando").append(jQuery(".cy-facetwp-cerca-where input.facetwp-autocomplete-update"));
       jQuery('#page-content > section.l-section.wpb_row.height_small.general-cerca-facetwp-container > div > div > div.vc_col-sm-12.wpb_column.vc_column_container.cerca-facets-container > div > div > div:nth-child(1) > div > div > div > div:nth-child(3) > div > div > input').html("Apply");
@@ -102,10 +109,19 @@ jQuery(document).ready(function () {
       jQuery(".cy-facetwp-cerca-quando input.facetwp-autocomplete-update").html("CERCA");
       jQuery(".cy-facetwp-cerca-quando input.facetwp-autocomplete-update").val("CERCA");
     }
+    jQuery(".facetwp-facet-quando_vuoi_partire .facetwp-dropdown").on('change',function(e){
+      var val = this.value;
+      FWP.parse_facets();
+      FWP.set_hash();
+      savedCookie = ocmCheckCookie(); 
+      var split = val.split('-');
+      savedCookie['departureMonth'] = split[0];
+      Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+    });
   });
 
   //mobile and desktop button management on first loading
-  if (jQuery(window).width() >= 700) {
+  if (jQuery(window).width() >= 900) {
     jQuery("#buttonFilterSearch").hide();
     jQuery("#orderSearch").hide();
   } else {
@@ -113,14 +129,29 @@ jQuery(document).ready(function () {
     jQuery("#orderSearch").show();
     //dropdown filtra
     jQuery("#buttonFilterSearch").click(function (event) {
-      jQuery("#filterSearchDropdown").toggle();
+      jQuery(".cerca-facets-container").addClass("cerca-facets-container-modal");
+      jQuery("#filterSearchDropdown").show();
+      jQuery(".cerca-facets-container #filterSearchDropdown > div > div:first-child > .wpb_wrapper").prepend(jQuery("#cerca-facets-container-modal-header"));
+      jQuery(".cerca-facets-container #filterSearchDropdown > div").append(jQuery(".filterSearchDropdownBtn"));
+      jQuery("#cerca-facets-container-modal-header").show();
+
+      // adds box shadow to the apply button on filter mofal facetwp in searchpage
+      jQuery('.filterSearchDropdownBtn').addClass('filterSearchDropdownBtn-shadow');
+      jQuery('.cerca-facets-container-modal').on('scroll', function() {
+        if(jQuery(this).scrollTop() + jQuery(this).innerHeight() >= jQuery(this)[0].scrollHeight) {
+            jQuery('.filterSearchDropdownBtn').removeClass('filterSearchDropdownBtn-shadow');
+          } else {
+            jQuery('.filterSearchDropdownBtn').addClass('filterSearchDropdownBtn-shadow');
+        }
+      })
     });
+    jQuery("#cerca-facets-container-modal-header").hide();
     jQuery("#filterSearchDropdown").hide();
   }
 
   //mobile and desktop button management after window change
   jQuery(window).on("resize", function () {
-    if (jQuery(window).width() >= 700) {
+    if (jQuery(window).width() >= 900) {
       jQuery("#buttonFilterSearch").hide();
       jQuery("#orderSearch").hide();
       jQuery("#filterSearchDropdown").show();
@@ -137,10 +168,10 @@ jQuery(document).ready(function () {
   // configuration for the search in banner homepahe
   // jQuery(".facetwp-facet.facetwp-facet-search_route.facetwp-type-fselect").click(function () {
   jQuery(
-    "#cy-search-element-container .facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-autocomplete"
+    ".facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-autocomplete"
   ).click(function () {
     // var $filter = jQuery(".fs-search input");
-    var $filter = jQuery("#cy-search-element-container input");
+    var $filter = jQuery(".facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-autocomplete input[type=text]");
     //#cy-search-lente
 
     $filter.keyup(function () {
@@ -160,6 +191,7 @@ jQuery(document).ready(function () {
     });
   });
 
+  
   if (lang == 'en-US') {
     main_url =
       window.location.protocol +
@@ -173,22 +205,22 @@ jQuery(document).ready(function () {
   }
   lenteBanner.click(function () {
     str = location.search;
-
     if (location.search === undefined) {
       location.href = main_url;
     } else {
       location.href = main_url + location.search;
     }
   });
-  // upon click on menu search icon lente
-  jQuery("#vn-search-bar-header .facetwp-btn").click(function (event) {
-    // event.preventDefault();
-    location.href = main_url + "?_dove_vuoi_andare=" + filter;
-  });
 
-  jQuery("#vn-menu-search-map").click(function () {
-    location.href = main_url + "?_dove_vuoi_andare=" + filter + "&fwp_map=1";
-  });
+  // // upon click on menu search icon lente
+  // jQuery("#vn-search-bar-header .facetwp-btn").click(function (event) {
+  //   // event.preventDefault();
+  //   location.href = main_url + "?_dove_vuoi_andare=" + filter;
+  // });
+
+  // jQuery("#vn-menu-search-map").click(function () {
+  //   location.href = main_url + "?_dove_vuoi_andare=" + filter + "&fwp_map=1";
+  // });
 
   form.hover(
     function () {
@@ -368,5 +400,125 @@ jQuery(document).ready(function () {
         jQuery("#page-header").removeClass("sticky");
     }
   });
-  
+
 });
+
+  function cal_sum_cookies(savedCookie) {
+    parseInt(savedCookie['kids']) ? k = parseInt(savedCookie['kids']) : k = 0;
+    parseInt(savedCookie['adults']) ? a = parseInt(savedCookie['adults']) : a = 0;
+    if (a || k ){
+        var psum = a + k;
+    } else {
+        var psum = null;
+    }
+    parseInt(savedCookie['regular']) ? r = parseInt(savedCookie['regular']) : r = 0;
+    parseInt(savedCookie['electric']) ? e = parseInt(savedCookie['electric']) : e = 0;
+    if (e || r ){
+        var bsum = e + r;
+    } else {
+        var bsum = null;
+    }
+    var sums = {};
+    sums['participants'] = psum;
+    sums['bikes'] = bsum;
+    return sums;
+  }
+
+  function ocmCheckCookie(){
+    if (Cookies.get('oc_participants_cookie')){
+        return JSON.parse(Cookies.get('oc_participants_cookie'));
+    } else {
+        return {}
+    }
+  }
+
+  function calculateDepartureDate(){
+    var savedCookie = ocmCheckCookie();
+    var departureMonth = '';
+    if (savedCookie['departureMonth']) {
+        departureMonth = savedCookie['departureMonth'];
+    } else {
+        var thisday = new Date();
+        var thismonth = thisday.toLocaleString(document.documentElement.lang, { month: 'long' });
+        departureMonth = thismonth;
+    }
+    if (departureMonth) {
+
+        var finalDate = '';
+        var sevenDaysFromToday;
+        var monthNames = {gennaio:0,febbraio:1,marzo:2,aprile:3,maggio:4,giugno:5,luglio:6,august:7,settembre:8,ottobre:9,novembre:10,dicembre:11}
+        var selectedMonthNumber = monthNames[departureMonth.toLowerCase()];
+        var d = new Date();
+        var currentMonth = monthNames[d.getMonth()];
+
+        // Set the first day of month
+        var monthStartDay = '01';
+
+        // Calculate the last day of the current month
+        d.setDate(1)
+        d.setMonth(d.getMonth() + 1)
+        d.setDate(d.getDate() - 1)
+        var monthLastDay = d.getDate();
+
+        // Calculate the current date + 7 days
+        d = new Date();
+        d.setDate(d.getDate() + 7);
+        var dayTodayPlusSevenDays = d.getDate();
+        var monthTodayPlusSevenDays = d.getMonth();
+        var yearTodayPlusSevenDays = d.getFullYear();
+
+        if (monthTodayPlusSevenDays == selectedMonthNumber  ) {
+            monthTodayPlusSevenDays++;
+            dayTodayPlusSevenDays = '0'+dayTodayPlusSevenDays;
+            dayTodayPlusSevenDays = dayTodayPlusSevenDays.slice(-2);
+            sevenDaysFromToday = yearTodayPlusSevenDays+'-'+monthTodayPlusSevenDays+'-'+dayTodayPlusSevenDays;
+
+            if (typeof start_arrayYmd !== 'undefined' &&  start_arrayYmd.indexOf(sevenDaysFromToday) > -1) {
+                finalDate = sevenDaysFromToday;
+            } else {
+                var index = 0;
+                if (typeof start_arrayYmd !== 'undefined' ) {
+                  while (index < start_arrayYmd.length && !finalDate) {
+                      if (sevenDaysFromToday < start_arrayYmd[index]) { 
+                          finalDate =  start_arrayYmd[index];
+                      } else {
+                          index++;
+                      }
+                  }
+                } else {
+                  finalDate = sevenDaysFromToday;
+                }
+            }
+        } else {
+            var index = 0;
+            selectedMonthNumber++;
+            sevenDaysFromToday = yearTodayPlusSevenDays+'-'+selectedMonthNumber+'-'+monthStartDay;
+            if (typeof start_arrayYmd !== 'undefined' ) {
+              while (index < start_arrayYmd.length && !finalDate) {
+                  if (!finalDate) {
+                      if (sevenDaysFromToday <= start_arrayYmd[index]) { 
+                          finalDate =  start_arrayYmd[index];
+                      } else {
+                          index++;
+                      }
+                  }
+              }
+            } else {
+              finalDate = sevenDaysFromToday;
+            }
+        }
+        if (finalDate) {
+            finalDate = finalDate.split('-');
+            finaleDay = finalDate[2];
+            finaleMonth = finalDate[1];
+            // var monthNames = {'1':'Gennaio','2':'Febbraio','3':'Marzo','4':'Aprile','5':'Maggio','6':'Giugno','7':'Luglio','8':'Agosto','9':'Settembre','1':'Ottobre','11':'Novembre','12':'Dicembre'};
+            var monthNames = {'1':'01','2':'02','3':'03','4':'04','5':'05','6':'06','7':'07','8':'08','9':'09','1':'10','11':'11','12':'12'};
+
+            finaleYear = finalDate[0];
+            general_first_departure_date_ajax = finaleDay + '-' + monthNames[finaleMonth] + '-' + finaleYear;
+            savedCookie['departureDate'] = general_first_departure_date_ajax;
+            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+        } 
+        
+    }
+  }

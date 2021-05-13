@@ -22,12 +22,7 @@ Text Domain: wm-child-verdenatura
 
 /* Start New Style */
 .cyc-single-route-main-container h1 {
-    font-size: 48px;
-    font-weight: bold;
-}
-.cyc-single-route-main-container h1 {
-    font-size: 48px;
-    font-weight: bold;
+    font-size: 28px;
 }
 .cyc-single-route-intro-info-wrapper {
     font-family: var(--font-family-primary);
@@ -214,14 +209,6 @@ Text Domain: wm-child-verdenatura
 .cyc-single-route-description-wrapper {
     font-family: var(--font-family-primary);
 }
-.wpb_wrapper.cyc-single-route-tour-operator-wrapper {
-    padding: 3rem 0;
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    border-top: 1px solid var(--color-border-line);
-    border-bottom: 1px solid var(--color-border-line);
-}
 .wpb_wrapper.cyc-single-route-tour-operator-wrapper h4{
     color:var(--color-text-p);
     margin: 0;
@@ -235,7 +222,7 @@ Text Domain: wm-child-verdenatura
     font-weight: 300;
 }
 .cyc-single-route-cta-text {
-    padding-bottom: 50px;
+    padding-bottom: 20px;
 }
 .cyc-single-route-cta-text p{
     color: var(--color-text-p);
@@ -301,10 +288,6 @@ Text Domain: wm-child-verdenatura
 .cyc-single-route-faq-container {
     border-top: 2px solid var(--color-border-line);
 }
-.cyc-single-route-faq-container h5{
-    padding-bottom: 20px;
-    text-transform: uppercase;
-}
 .cyc-single-route-faq-container h6{
     margin:0!important;
 }
@@ -312,14 +295,11 @@ Text Domain: wm-child-verdenatura
     border-width: 0px!important;
 }
 .cyc-single-route-faq-container .w-tabs-section-header {
-    padding: 15px 0em 0px 0em!important;
+    padding: 20px 0em 0px 0em!important;
     color: var(--color-text-p)!important;
 }
 .cyc-single-route-faq-container .w-tabs-section-header:hover, .cyc-single-route-faq-container .w-tabs-section-header:focus {
     background: none!important;
-}
-.cyc-single-route-faq-container .w-tabs-section-content {
-    padding: 0 0 5px!important;
 }
 .cyc-single-route-faq-container .w-tabs-section-content p{
     color: #616161!important;
@@ -694,9 +674,6 @@ body {
     .grid-container-period-seasonal {
         grid-template-columns: repeat(2, 1fr);
     }
-    .single-route section h2 {
-        font-size: 32px!important;
-    }
     .intro-section .l-sidebar {
         padding: 0!important;
     }
@@ -798,14 +775,22 @@ a.download-app-link {
     color: white!important;
 }
 /* Breadcrumb rank math menu */
-.breadcrumb-rankmath a,
-.breadcrumb-rankmath span {
-    font-size: 13px;
-    color:var(--color-text-p);
+.rank-math-breadcrumb {
+    font-family: var(--font-family-primary);
+}
+.breadcrumb-rankmath a {
+    color:var(--color-secondary);
+    font-size: 14px;
+    font-weight: 600;
+}
+.breadcrumb-rankmath a:hover {
+    color:var(--color-secondary-hover);
 }
 
-.breadcrumb-rankmath .last {
-    color: var(--color-primary);
+.single-route .breadcrumb-rankmath .last {
+    font-size: 14px;
+    color:var(--color-text-p);
+    font-weight: 400;
 }
 
 /* menu layer 1 featured image*/
@@ -1739,6 +1724,10 @@ body #tab-stagioni a:hover {
     transition: 500ms all ease;
     z-index: 2;
 }
+
+.cyc-route-mobile-tab-container .cy-modal-body {
+    border: none;
+}
 #wm-wizards-container {
     display: none;
 }
@@ -1927,4 +1916,1001 @@ a:hover.tooltips span {
 }
 #wpadminbar .quicklinks #wp-admin-bar-edit-content .ab-empty-item {
     display: none;
+}
+
+/* oneclick style mobile verssion */
+/* style introduction section mobile */
+.cyc-single-route-introduction-container.cyc-route-introduction-mobile {
+    background-position: center;
+    background-size: cover;
+    box-shadow: inset 0 0 0 50vw rgb(0 0 0 / 40%);
+}
+.wpb_wrapper.cyc-route-mobile-introduction-wrapper {
+    display: grid;
+    grid-template-rows: 1.6fr 2.4fr 2fr;
+}
+.cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-title {
+    color: white;
+    font-size: 18px;
+    font-family: var(--font-family-primary);
+    letter-spacing: 0;
+}
+.cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-title .meta-txt-strong{
+    font-weight: 600;
+}
+@media screen and (max-width: 767px) {
+    .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-title h1 { 
+        font-size: 14px;
+    }
+    .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-days p {
+        color: white!important;
+    }
+    .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-icons {
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+.cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-title h1 {
+    color: white;
+    font-family: var(--font-family-primary);
+    letter-spacing: 0;
+    font-weight: 600;
+    padding-top: 5px;
+}
+.cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-days p{
+    font-size: 18px;
+    font-family: var(--font-family-primary);
+    font-weight: 600;
+    letter-spacing: 0;
+    margin: 0;
+    text-align: right;
+}
+.cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-icons {
+    display: flex;
+}
+.cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-icons i {
+    color: black;
+    background: white;
+    padding: 5px;
+    border-radius: 20px;
+}
+.cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-icons i.material-icons {
+    padding: 5px 5px;
+}
+.cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-icons p {
+    font-size: 25px;
+    margin: 5px;
+    cursor: pointer;
+}
+.cyc-route-mobile-introduction-wrapper a.tooltips:hover {
+    color: white;
+}
+.cyc-route-mobile-introduction-wrapper a.tooltips {
+    color: white;
+}
+
+/* style taxonomy section cyc-route-mobile-taxonomy-activity-wrapper */
+@media screen and (min-width: 768px) { 
+    .cyc-route-taxonomy-tab-row-container {
+        max-width: 1360px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 40% 60%;
+        padding: 0 0 30px;
+    }
+    .cyc-route-taxonomy-tab-row-container .cyc-route-mobile-taxonomy-container {
+        display: block!important;
+        background: white;
+    }
+    .cyc-route-taxonomy-tab-row-container .oc-route-mobile-plan-price-container {
+        padding-bottom: 30px;
+    }
+    .cyc-route-taxonomy-tab-row-container .oc-route-mobile-search-form-container {
+        padding: 40px;
+        margin: 1.5rem 1.5rem 7px;
+    }
+    .cyc-route-taxonomy-tab-row-container .meta-bar-txt-strong {
+        float: left;
+        min-width: 80px;
+        font-size: 14px!important;
+    }
+    .cyc-route-taxonomy-tab-row-container .meta-bar-txt-light {
+        font-size: 14px!important;
+    }
+    .cyc-route-taxonomy-tab-row-container .oc-route-mobile-plan-summary {
+        padding-left: 0!important;
+    }
+    .cyc-route-taxonomy-tab-row-container .oc-route-mobile-plan-summary-container {
+        padding-top: 20px;
+        margin-top: 15px;
+    }
+    .cyc-route-taxonomy-tab-row-container .oc-mobile-included-not-included-container {
+        box-shadow: 0 3px 6px 0 #dadada;
+        border-radius: 16px;
+        margin: 1.5rem 1.5rem 7px;
+    }
+    .cyc-route-taxonomy-tab-row-container .oc-route-tab-mobile-program-body {
+        padding: 25px!important;
+        box-shadow: 0 3px 6px 0 #dadada;
+        border-radius: 16px;
+        margin: 1.5rem 1.5rem 7px;
+    }
+    .cyc-route-taxonomy-tab-row-container .oc-route-mobile-your-reservation-container {
+        margin: 1.5rem 1.5rem 7px;
+        padding: 40px;
+    }
+    .cyc-route-taxonomy-row-wrapper > div {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 5px 0;
+    }
+    .cyc-route-taxonomy-row-wrapper > div > div {
+        float: left;
+        width: auto;
+        padding-right: 10px;
+    }
+    .cyc-route-taxonomy-tab-row-container .cyc-route-taxonomy-row-wrapper {
+        top: 100px;
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr 1.3fr;
+        width: 100%;
+    }
+    body .cyc-single-route-main-container .cyc-route-mobile-tab-container .w-tabs-list-h {
+        background: white!important;
+    }
+    body .cyc-single-route-main-container .cyc-route-mobile-tab-container .w-tabs-item.active, body .cyc-single-route-main-container .cyc-route-mobile-tab-container .w-tabs-item {
+        background: white!important;
+        padding: 0em 10px!important;
+    }
+    .oc-route-mobile-search-form-container .oc-proceed-done-btn {
+        min-width: 250px;
+        width: auto;
+    }
+}
+.cyc-route-mobile-taxonomy-container {
+    background: var(--color-secondary-background);
+}
+@media screen and (max-width: 767px) {
+    .cyc-route-taxonomy-row-wrapper {
+        display: grid;
+        padding: 15px 25px;
+        grid-template-columns: repeat(4,1fr);
+        column-gap: 5px;
+    }
+}
+.cyc-route-mobile-taxonomy-container .meta-bar-txt-strong{
+    text-transform: inherit;
+    font-weight: 600;
+    font-size: 12px;
+    color: #000000;
+    letter-spacing: 0;
+}
+.cyc-route-mobile-taxonomy-container .meta-bar-txt-light{
+    font-family: var(--font-family-primary);
+    font-size: 12px;
+    color: #000000;
+    letter-spacing: 0;
+    line-height: normal;
+}
+/* style menu tab section  */
+.cyc-route-mobile-tab-container .w-tabs.accordion .w-tabs-section {
+    float: left;
+}
+.cyc-route-mobile-tab-container .w-tabs-section-control {
+    display: none;
+}
+body .cyc-single-route-main-container .cyc-route-mobile-tab-container .w-tabs-list.items_3 {
+    background: var(--color-secondary-background);
+}
+body .cyc-single-route-main-container .cyc-route-mobile-tab-container .w-tabs-item.active,body .cyc-single-route-main-container .cyc-route-mobile-tab-container .w-tabs-item  {
+    background: var(--color-secondary-background);
+    padding: 1em 10px;
+    border-width: 0!important;
+}
+body .cyc-single-route-main-container .cyc-route-mobile-tab-container .w-tabs-list-h {
+    padding: 0 15px;
+    background: var(--color-secondary-background);
+}
+body .cyc-route-mobile-tab-container .w-tabs-item.active .w-tabs-item-title{
+    background: var(--color-tab-background);
+    font-weight: 600;
+    color: white;
+}
+body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
+    border: 1px solid var(--color-tab-background);
+    border-radius: 15px;
+    color: var(--color-tab-background);
+    font-size: 12px;
+    font-family: var(--font-family-primary);
+    padding: 5px 15px;
+}
+.cyc-route-mobile-tab-container .w-tabs-section-content{
+    padding: 0px;
+}
+.oc-route-tab-mobile-program-body {
+    padding: 10px 20px;
+}
+.oc-route-tab-mobile-program-body .w-iconbox-icon i {
+    padding: 0;
+    color: var(--color-tab-background);
+}
+.oc-route-tab-mobile-program-body .w-iconbox-icon {
+    width: 100%;
+}
+.cyc-route-mobile-tab-container .wm-not-included-label {
+    font-size: 18px;
+    font-weight: 600;
+}
+.cyc-route-mobile-tab-container .wm-not-included-label i{
+    color: var(--color-discount);
+}
+.cyc-route-mobile-tab-container .wm-included-label {
+    font-size: 18px;
+    font-weight: 600;
+}
+.cyc-route-mobile-tab-container .wm-included-label i{
+    color: var(--color-tab-background);
+}
+.oc-mobile-included-not-included-container {
+    padding: 25px;
+    font-family: var(--font-family-primary);
+}
+.oc-mobile-included-not-included-container th{
+    display: list-item;
+    list-style: disc inside;
+    padding: 0 0 0 5px;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    border: 0px;
+}
+/* single route tab plan */
+.oc-route-mobile-search-form-container {
+    padding: 15px;
+    box-shadow: 0 3px 6px 0 #dadada;
+    border-radius: 16px;
+    margin: 1.5rem;
+    font-size: 16px;
+    display: grid;
+    grid-row-gap: 15px;
+}
+.oc-route-mobile-your-reservation-container {
+    display: none;
+    padding: 15px;
+    box-shadow: 0 3px 6px 0 #dadada;
+    border-radius: 16px;
+    margin: 1.5rem;
+    font-size: 14px;
+    grid-row-gap: 15px;
+}
+.oc-route-your-reservation-row {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 13px;
+}
+.oc-route-your-reservation-row > div{
+    flex-grow: 1;
+    width: 50%;
+}
+.oc-route-your-reservation-title h4 {
+    font-weight: 600;
+}
+.oc-route-your-reservation-column-info p {
+    text-align: right;
+}
+.oc-route-your-reservation-modify p {
+    font-size: 12px;
+    cursor: pointer;
+}
+.oc-route-your-reservation-modify span {
+    border-bottom: 1px solid;
+    padding: 0 5px;
+}
+.oc-route-your-reservation-purchase-form-container .form-submit {
+    border: 1px solid var(--color-secondary);
+    background-color: var(--color-secondary);
+    width: 100%;
+    padding: 13px;
+    border-radius: 30px;
+    margin-top: 13px;
+    margin-bottom: 10px;
+}
+body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body .oc-route-your-reservation-purchase-form-container .form-submit:focus {
+    border: 1px solid var(--color-secondary-hover);
+    background-color: var(--color-secondary-hover)!important;
+    color: white!important;
+}
+.oc-route-your-reservation-purchase-form-container input.form-input {
+    background-color: white;
+    box-shadow: none;
+    margin-bottom: 13px;
+    border: 1px solid black;
+    border-radius: 30px;
+    line-height: 3rem;
+    min-height: 3rem;
+    padding: 0 1.3rem;
+}
+.oc-route-your-reservation-purchase-form-container input.form-input.error {
+    border: 1px solid var(--color-secondary-hover);
+}
+.oc-route-your-reservation-purchase-form-container label.error {
+    display: none!important;
+}
+.oc-route-your-reservation-purchase-form-container div.error {
+    color: var(--color-secondary-hover);
+}
+.oc-route-your-reservation-purchase-form-container .purchase-form-checkbox input.error {
+    background: none!important;
+    border: 1px solid var(--color-secondary-hover);
+}
+.oc-route-your-reservation-purchase-form-container input.form-input::placeholder {
+    font-size: 14px;
+}
+.oc-route-your-reservation-purchase-form-container {
+    padding-top: 20px;
+}
+.oc-route-your-reservation-purchase-form-container h3{
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+.oc-route-your-reservation-purchase-form-container .purchase-form-checkbox{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+.oc-route-your-reservation-purchase-form-container .purchase-form-checkbox-info{
+    line-height: 20px;
+    width: 100%;
+}
+.oc-route-your-reservation-purchase-form-container .purchase-form-checkbox input{
+    appearance: none;
+    background: url(assets/images/checkbox.png) 0 50% no-repeat!important;
+}
+.oc-route-your-reservation-purchase-form-container .purchase-form-checkbox input:checked{
+    background-image: url(assets/images/checkbox-on.png)!important;
+}
+.oc-route-your-reservation-purchase-form-container .required {
+    text-decoration: none;
+}
+.oc-route-your-reservation-title h4 {
+    font-size: 18px;
+}
+.oc-route-extra-row.oc-route-extra-header,
+.oc-route-extra-row.oc-route-extra-details {
+    display: none;
+}
+.oc-route-extra-row.oc-route-extra-header.display-flex,
+.oc-route-extra-row.oc-route-extra-details.display-flex{
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 13px;
+    row-gap: 10px;
+}
+.oc-route-extra-row.oc-route-extra-header > div {
+    flex-grow: 1;
+    width: 50%;
+}
+.oc-route-extra-row.oc-route-extra-details .oc-route-your-reservation-column-title {
+    width: 50%;
+    line-height: 20px;
+}
+.oc-route-extra-row.oc-route-extra-details .oc-route-your-reservation-column-info {
+    width: 50%;
+    line-height: 20px;
+}
+.oc-route-extra-column-info.oc-route-your-reservation-modify p{
+    text-align: right;
+}
+.oc-route-mobile-search-form-asbb-wrapper {
+    display: grid;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    grid-template-columns:1fr 1fr;
+}
+.w-tabs-section {
+    width: 100%;
+}
+.oc-route-mobile-plan-summary-container h4 {
+    font-size: 18px;
+    margin: 0;
+}
+.oc-route-mobile-plan-summary {
+    font-size: 14px;
+    padding-left: 10px;
+}
+.oc-route-mobile-plan-summary-container {
+    border-top: 1px solid #a7a7a7;
+    padding-top: 15px;
+}
+.oc-route-mobile-plan-price-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.oc-route-mobile-plan-price-container > div {
+    flex-grow: 1;
+    width: 50%;
+}
+.depositajax {
+    text-align: right;
+    font-size: 23px;
+}
+.deposit-title {
+    font-size: 17px;
+}
+.cifraajax {
+    text-align: right;
+    font-size: 24px;
+}
+.cifraajax-title {
+    font-size: 18px;
+}
+.oc-route-mobile-search-form-container .oc-acquista-route.cyc-single-route-cta-buttons .cy-btn-contact {
+    border: 1px solid var(--color-secondary);
+    background-color: var(--color-secondary);
+}
+.oc-route-mobile-search-form-container .oc-acquista-route.cyc-single-route-cta-buttons .cy-btn-contact p {
+    color: white;
+    font-weight: 400;
+    text-transform: initial;
+}
+.oc-route-mobile-search-form-container .oc-acquista-route.cyc-single-route-cta-buttons .cy-btn-contact:hover {
+    background-color: var(--color-secondary-hover);
+}
+.oc-route-mobile-search-form-container .cyc-single-route-cta-buttons .cy-btn-contact {
+    border: 1px solid var(--color-secondary);
+}
+.oc-route-mobile-search-form-container .cyc-single-route-cta-buttons .cy-btn-contact p {
+    color: var(--color-secondary);
+    font-weight: 400;
+    text-transform: initial;
+}
+.oc-route-mobile-search-form-container .cyc-single-route-cta-buttons .cy-btn-contact:hover {
+    background-color: var(--color-secondary-hover);
+}
+.ocm-extras-proceed-summary-container {
+    position: absolute;
+    bottom: 0;
+    padding: 4%;
+    width: 100%;
+}
+.ocm-extras-proceed-detail-container {
+    padding: 4%;
+    width: 100%;
+}
+.ocm-hotel-proceed-detail-container {
+    padding: 0 4% 4%;
+    width: 100%;
+}
+.ocm-proceed-extras-body {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    padding: 10px 0;
+    min-height: 58px;
+}
+.ocm-extras-nocond-title {
+    font-family: var(--font-family-primary);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0;
+    padding: 15px 15px 0;
+}
+.ocm-extras-cond-disclaimer {
+    font-family: var(--font-family-primary);
+    letter-spacing: 0;
+    line-height: 20px;
+    padding: 5px 15px 0px;
+}
+.oc-modal-button-container {
+    display: none;
+}
+.oc-modal-button-container.display-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 5px;
+}
+.ocm-proceed-extras-body .label{
+    padding-left: 25px;
+    height: 100%;
+    line-height: 20px;
+}
+.ocm-extras-proceed-summary-container .oc-route-mobile-plan-price-container {
+    border-top: 1px solid #a7a7a7;
+    padding-top: 15px;
+}
+/* single route mobile description */
+.oc-single-route-mobile-description-container{
+    padding-top: 0px!important;
+}
+.oc-single-route-mobile-description-container .route-excerpt {
+    color: var(--color-text-p);
+    font-family: var(--font-family-primary);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 27px;
+    letter-spacing: 0;
+}
+.oc-single-route-mobile-description-container .cyc-single-route-description-wrapper ul {
+    list-style-type: none;
+    margin-left: 0;
+}
+.oc-single-route-mobile-description-container .cyc-single-route-description-wrapper li {
+    margin: 0 0 1rem;
+    font-size: 14px;
+    list-style-type: none;
+    padding: .25em 0 0 2.5em;
+    position: relative;
+    line-height: 23px;
+}
+.oc-single-route-mobile-description-container .cyc-single-route-description-wrapper li::before {
+    content: " ";
+    display: block;
+    border: solid .8em var(--color-tab-background);
+    border-radius: 17px;
+    height: 0;
+    width: 0;
+    position: absolute;
+    left: .5em;
+    top: 24%;
+    margin-top: -.5em;
+}
+.oc-single-route-mobile-description-container .cyc-single-route-description-wrapper li::after {
+    content: " ";
+    display: block;
+    width: .3em;
+    height: .6em;
+    border: solid #fff;
+    border-width: 0 .2em .2em 0;
+    position: absolute;
+    left: 1em;
+    top: 25%;
+    margin-top: -.2em;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+/* style tour operator single route mobile */
+.oc-single-route-mobile-tour-operator-container {
+    background:  var(--color-secondary-background);
+}
+.oc-single-route-mobile-tour-operator-container .cyc-single-route-tour-operator-wrapper {
+    padding: 0;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-top: 0;
+    border-bottom: 0;
+}
+@media screen and (min-width: 768px) { 
+    .oc-single-route-mobile-tour-operator-container .cyc-single-route-tour-operator-wrapper { 
+        justify-content: initial!important;
+        column-gap: 50px;
+    }
+}
+.oc-single-route-mobile-tour-operator-container .cyc-single-route-tour-operator-wrapper h4{
+    font-size: 18px;
+    letter-spacing: 0;
+    font-weight: 500;
+    font-family: var(--font-family-primary);
+}
+.oc-single-route-mobile-tour-operator-container .cyc-single-route-tour-operator-wrapper i{
+    font-size: 35px;
+}
+.oc-single-route-mobile-tour-operator-container .cyc-single-route-tour-operator-wrapper p{
+    font-size: 18px;
+    font-weight: 600;
+    font-family: var(--font-family-primary);
+}
+.oc-single-route-mobile-cta-container {
+    padding-bottom: 24px!important;
+    background-color: var(--color-tab-background);
+}
+.oc-single-route-mobile-cta-container h2, .oc-single-route-mobile-cta-container p{
+    color: white!important;
+}
+body .oc-single-route-mobile-cta-container h2{
+    font-size: 24px;
+    letter-spacing: 0;
+    font-weight: 500;
+}
+body .oc-single-route-mobile-cta-container p{
+    font-size: 18px;
+    letter-spacing: 0;
+    font-weight: 400;
+}
+.oc-single-route-mobile-cta-container .cy-btn-contact{
+    border: 2px solid #fdfdfd;
+    background: white;
+    width: 90%;
+    margin: auto;
+}
+.oc-single-route-mobile-cta-container .cy-btn-contact:hover{
+    border: 2px solid #fdfdfd;
+    background: var(--color-tab-background);
+}
+body .oc-single-route-mobile-cta-container .cy-btn-contact p{
+    color: var(--color-tab-background)!important;
+    text-transform: initial;
+    font-size: 18px;
+    letter-spacing: 0;
+    font-weight: 400;
+}
+body .oc-single-route-mobile-cta-container .cy-btn-contact:hover p{
+    color: white!important;
+}
+.oc-single-route-mobile-faq-container .oc_faq_heading i {
+    font-size: 34px;
+}
+.oc-single-route-mobile-faq-container .oc_faq_heading  {
+    font-size: 18px;
+    letter-spacing: 0;
+}
+.oc-single-route-mobile-faq-container .oc-faq-accordion-column {
+    margin: 0!important;
+}
+.oc-single-route-mobile-faq-container .oc-faq-accordion-column-inner {
+    padding: 0!important;   
+}
+.oc-single-route-mobile-faq-container .oc-faq-accordion-column-inner h6{
+    padding: 15px 25px;
+    background-color: var(--color-secondary-background);
+}
+.oc-single-route-mobile-faq-container .oc-faq-accordion-column-inner .w-tabs-sections-h{
+    padding: 0px 25px;
+}
+.oc-single-route-mobile-faq-container .oc-faq-accordion-column-inner .w-tabs-section-control{
+    right: 0em!important;
+}
+.oc-single-route-mobile-faq-container .oc-faq-accordion-column-inner .w-tabs-section:not(:last-child) .w-tabs-section-header-h {
+    border-bottom: 1px solid #e2e2e2;
+}
+.oc-single-route-mobile-faq-container .oc-faq-accordion-column-inner .w-tabs-section-header-h {
+    padding: 0px 0 20px 0px;
+    font-size: 14px;
+}
+.oc-single-route-mobile-faq-container .oc-faq-accordion-column-inner .w-tabs-section-content p{
+    font-size: 14px;
+}
+.w-tabs.icon_chevron .w-tabs-section-control:before {
+    content: '\f078'!important;
+    font-family: fontawesome;
+    font-weight: 100!important;
+}
+/*  route page oneclick datepicker */
+body .ui-datepicker.ui-widget.ui-widget-content {
+    display: block;
+    width: 100%;
+    top: auto!important;
+    left: auto!important;
+    border: 0;
+    position: relative!important;
+}
+.datepicker-div-wrapper {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+.ocm-participants-header.datepicker-header-wrapper {
+    display: none;
+}
+.datepicker-content-wrapper .ocm-participants-header.datepicker-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+}
+.datepicker-content-wrapper .ocm-participants-header.datepicker-header-wrapper h2{
+    font-size: 22px!important;
+    letter-spacing: 0;
+}
+.oc-route-mobile-search-form-container .datepicker-holder input {
+    -webkit-tap-highlight-color: rgb(0,0,0);
+    box-sizing: border-box;
+    vertical-align: top;
+    text-transform: none;
+    font: inherit;
+    margin: 0;
+    outline: none!important;
+    -webkit-appearance: none;
+    letter-spacing: 0em;
+    background: #fff;
+    box-shadow: 0px 1px 0px 0px rgb(0 0 0 / 8%) inset;
+    min-height: 2.8rem;
+    padding: 20px 22px 20px 15px!important;
+    transition: all .3s ease;
+    border-radius: 30px!important;
+    width: 100%!important;
+    font-size: 16px;
+    line-height: 3.3rem;
+    color: #000;
+    border: 1px solid #000000;
+    font-weight: 400;
+    height: 3.4rem;
+    cursor: pointer;
+}
+.ui-widget-header {
+    border: 0!important;
+    background: none!important;
+    color: #222222;
+    font-weight: 400!important;
+}
+.ui-datepicker-title span {
+    font-size: 17px;
+    color: #333;
+}
+.ui-datepicker-prev span, .ui-datepicker-next span {
+    background-image: none !important;
+}
+.ui-datepicker-prev span.ui-icon {
+    width: 13px;
+    height: 26px;
+    font-size: 33px;
+    display: block;
+    text-indent: 0;
+    overflow: hidden;
+    background-repeat: no-repeat;
+}
+.ui-datepicker-prev span:before {
+    content: "\f104";
+    font-family: FontAwesome;
+    position: relative;
+}
+.ui-datepicker-prev:hover {
+    color: #fff;
+}
+.ui-datepicker-next span.ui-icon {
+    width: 13px;
+    height: 26px;
+    font-size: 33px;
+    display: block;
+    text-indent: 0;
+    overflow: hidden;
+    background-repeat: no-repeat;
+}
+.ui-datepicker-next span:before {
+    content: "\f105";
+    font-family: FontAwesome;
+    position: relative;
+}
+.ui-datepicker-next:hover {
+    color: #fff;
+}
+.ui-datepicker table {
+    min-height: 278px;
+}
+#ui-datepicker-div > table > thead > tr > th > span {
+    font-weight: 400!important;
+}
+.ui-state-default, .ui-widget-content .ui-state-default {
+    border: 0!important;
+    background: none!important;
+    text-align: center;
+}
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span {
+    margin-top: -15px!important;
+}
+@media screen and (max-width: 767px) {
+    .datepicker-content-wrapper {
+        background: white;
+        position: fixed;
+        bottom: 0;
+        box-shadow: rgb(0 0 0 / 20%) 0px 5px 8px 0px, rgb(0 0 0 / 17%) 0px 7px 20px 0px;
+        margin: 0px;
+        padding: 4%;
+        background-color: rgb(255, 255, 255);
+        animation-name: modalopen;
+        animation-duration: var(--modal-duration);
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        bottom: 0px;
+        z-index: 1;
+        display: block;
+        width: 100%;
+        top: auto!important;
+        left: auto!important;
+    }
+}
+@media screen and (min-width: 768px) { 
+    /* popups design in desktop mode */
+    .ocm-proceed-content {
+        max-width: 600px;
+    }
+    .cy-modal-content {
+        max-width: 600px;
+    }
+    #cy-route-program .cy-modal-header, #cy-route-contact .cy-modal-header {
+        grid-template-columns: 2fr 7fr 2fr!important;
+    }
+    .cy-modal-body {
+        padding: 2% 6% 4% 6% !important;
+    }
+    .ocm-extras-nocond-title {
+        padding: 25px 25px 0!important;
+    }
+    .ocm-extras-proceed-detail-container {
+        padding: 2% 6%;
+    }
+    .ocm-extras-cond-disclaimer {
+        padding: 5px 25px 0px!important;
+    }
+    .ocm-hotel-proceed-detail-container {
+        padding: 0 6% 4%;
+    }
+    .cifraajax-title {
+        font-size: 26px!important;
+    }
+    .datepicker-content-wrapper {
+        position: relative;
+        margin: 23.7vh auto;
+        background-color: #fff;
+        max-width: 600px;
+        height: auto;
+        box-shadow: 0 5px 8px 0 rgb(0 0 0 / 20%), 0 7px 20px 0 rgb(0 0 0 / 17%);
+        animation-name: modalopen;
+        animation-duration: var(--modal-duration);
+        border-radius: 10px;
+        padding: 20px 30px;
+    }
+    .oc-route-select-holder select {
+        background: url(/wp-content/themes/wm-child-cyclando/assets/images/arrow-down.png) 95% / 2% no-repeat #fff!important;
+    }
+    .oc-route-select-holder select:active, .oc-route-select-holder select:hover {
+        background: url(/wp-content/themes/wm-child-cyclando/assets/images/arrow-up.png) 95% / 2% no-repeat #fff!important;
+    }
+}
+.cifraajax .w-iconbox-icon i {
+    padding: 0!important;
+    color: var(--color-tab-background);
+    font-size: 20px;
+}
+/* route form category selector */
+.oc-route-select-holder select {
+    -webkit-tap-highlight-color: rgb(0,0,0);
+    box-sizing: border-box;
+    text-transform: none;
+    font: inherit;
+    letter-spacing: 0em;
+    background: url(/wp-content/themes/wm-child-cyclando/assets/images/arrow-down.png) 95% / 5% no-repeat #fff;
+    box-shadow: 0px 1px 0px 0px rgb(0 0 0 / 8%) inset;
+    min-height: 2.8rem;
+    -webkit-appearance: none;
+    appearance: none;
+    padding: 0 20px 0 15px!important;
+    transition: all .3s ease;
+    border-radius: 30px!important;
+    width: 100%!important;
+    font-size: 16px;
+    color: #000;
+    border: 1px solid #000000;
+    font-weight: 400;
+    height: 3.4rem;
+}
+.oc-route-select-holder select:active, .oc-route-select-holder select:hover {
+    background: url(/wp-content/themes/wm-child-cyclando/assets/images/arrow-up.png) 95% / 5% no-repeat #fff;
+    transition: background-color 0.1ms linear;
+}
+.single-room-select-holder.oc-route-select-holder select {
+    background-size: 11%;
+    background-position: 88%;
+}
+.single-room-select-holder.oc-route-select-holder select:active, .single-room-select-holder.oc-route-select-holder select:hover {
+    background-size: 11%;
+    background-position: 88%;
+}
+/* header menu for routes in desktop and mobile */
+@media screen and (min-width: 768px) {  
+    
+    .single-route .l-header {
+        background: white;
+        box-shadow: 0 1px 0 rgb(0 0 0 / 8%)!important;
+    }
+    .single-route .l-header.bg_transparent:not(.sticky) .l-subheader.at_top {
+        color: #555;
+        background: white;
+    }
+    .single-route .l-subheader.at_top a:hover,.single-route .l-header.bg_transparent .l-subheader.at_top .w-dropdown.opened a:hover {
+        color: var(--color-primary)!important;
+    }
+    .single-route .l-header.bg_transparent:not(.sticky) .l-subheader.at_middle {
+        color: #555;
+    }
+    .single-route .l-header.bg_transparent:not(.sticky) .at_middle .menu-item.level_1:hover>a {
+        color: var(--color-primary)!important;
+    }
+    .single-route .l-subheader.at_middle .menu-language-dropdown-wpml .w-dropdown-list {
+        background: none;
+        color: #555!important;
+        box-shadow: 0 0 0;
+    }
+    .single-route .l-subheader.at_middle .menu-language-dropdown-wpml .w-dropdown-list a{
+        background: white;
+        line-height: 30px;
+        margin-top: 32px;
+        border: 1px solid #f5f5f5;
+    }
+    .cyc-single-route-introduction-container.cyc-route-introduction-mobile {
+        background: white!important;
+        box-shadow: none!important;
+    }
+    .cyc-single-route-gallery-btn {
+        display: none;
+    }
+    /* introduction section on desktop */
+    .wpb_wrapper.cyc-route-mobile-introduction-wrapper {
+        display: grid;
+        grid-template-rows: repeat(3,1fr)!important;
+    }
+    .cyc-single-route-breadcrumb-wrapper {
+        grid-row: 1;
+    }
+    .cyc-route-mobile-introduction-title {
+        grid-row: 2;
+        grid-column: 1 / 4;
+    }
+    .cyc-route-mobile-introduction-icons {
+        grid-row: 2;
+        grid-column: 4 / 5;
+    }
+    .cyc-route-mobile-introduction-title span,.cyc-route-mobile-introduction-title h1 {
+        color: var(--color-text-strong)!important;
+    }
+    .cyc-route-mobile-introduction-days {
+        grid-row: 3;
+        grid-column: 1 / 5;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-icons {
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+    .cyc-route-mobile-taxonomy-container-sticky {
+        position: sticky;
+        top: 100px;
+    }
+    .cyc-route-mobile-introduction-gallery img.rsImg.rsMainSlideImage {
+        margin-top: 0!important;
+        margin-left: 0!important;
+        width: 100%!important;
+        height: 100%!important;
+        border-radius: 15px;
+    }
+    .cyc-route-mobile-gallery-container {
+        padding-top: 15px;
+    }
+}
+@media screen and (max-width: 767px) {
+    svg#logo-cyclando-route {
+        width: 100%;
+    }
+    .single-route svg#logo-cyclando-route .st2{
+        fill: white;
+    }
+    .cyc-single-route-breadcrumb-wrapper {
+        display: none;
+    }
+    .cyc-route-mobile-introduction-gallery {
+        display: none;
+    }
+    .cyc-introduction-days-seperator {
+        display: none;
+    }
+    .cyc-route-mobile-tab-container .w-tabs-list .w-tabs-item.active {
+        background: var(--color-secondary-background)!important;
+    }
+}
+@media screen and (max-width: 900px) {
+    .single-route .l-header.bg_transparent:not(.sticky) .at_middle .w-nav>a:hover {
+        color: var(--color-primary)!important;
+    }
+}
+@media screen and (min-width:768px) and (max-width: 1460px) {
+    .cyc-route-taxonomy-tab-row-container {
+        padding: 0 2.5rem 30px!important;
+    }
 }
