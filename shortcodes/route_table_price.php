@@ -308,7 +308,7 @@ foreach ( $variations_name_price as $var ) {
                         </div>
                     <?php endforeach;?>
                 </div>
-                <div class="quotes-preventivo">
+                <div class="quotes-preventivo 1">
                         <?php 
                         if ($season_products){  //----------- start hotel product table
                             $attributes_name_hotel_seasonal = array();
@@ -406,7 +406,7 @@ foreach ( $variations_name_price as $var ) {
                 <?php   
                     if (empty($low_season_products) && empty($high_season_products ) && $has_hotel){  //----------- start hotel product table
                 ?>
-                <div class="quotes-preventivo"><!------------ quote ---------------------->
+                <div class="quotes-preventivo 2"><!------------ quote ---------------------->
                     <table class="departures-quotes">
                         <thead>
                             <tr>

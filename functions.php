@@ -6,7 +6,24 @@ require ('shortcodes/wm_route_included_not_included.php');
 require ('shortcodes/dashboard_wizard_button.php');
 require ('shortcodes/mobile_menu_quote_form.php');
 require ('shortcodes/menu_search_facetwp_wizard.php');
+require ('shortcodes/oneclick_search_form.php');
+require ('shortcodes/oneclick_search_form_participants_bikes.php');
+require ('shortcodes/oneclick_search_form_participants.php');
+require ('shortcodes/oneclick_search_form_bikes.php');
+require ('shortcodes/route-tabs/route-mobile-tab-includes.php');
+require ('shortcodes/route-tabs/route-mobile-tab-plan.php');
+require ('shortcodes/route-tabs/route-mobile-tab-program.php');
+require ('shortcodes/route-oc/oneclick_route_form_datepicker.php');
+require ('shortcodes/route-oc/oneclick_route_form_category.php');
+require ('shortcodes/route-oc/oneclick_route_form_single_room.php');
+require ('shortcodes/route-oc/oneclick_route_form_purchase.php');
+require ('shortcodes/route-oc/oneclick_route_your_reservation_panel.php');
 require ('api/api-loader.php');
+require ('includes/class_routeProductsOC.php') ;
+require ('includes/oc_ajax_route_price.php');
+require ('includes/wm_has_extra_get_label.php');
+require ('includes/wm_has_hotel_get_label.php');
+
 
 if ( class_exists( 'WP_CLI' ) ) {
     require ('wp-cli/cy-index-routes.php');
@@ -16,8 +33,8 @@ if ( class_exists( 'WP_CLI' ) ) {
 // Uncomment to disable GUTHENBERG
 // add_filter('use_block_editor_for_post_type', '__return_false');
 
-add_action('woocommerce_before_cart', 'preventivi_json_to_text',15);
-add_action('woocommerce_before_checkout_form', 'preventivi_json_to_text',15);
+//add_action('woocommerce_before_cart', 'preventivi_json_to_text',15);
+//add_action('woocommerce_before_checkout_form', 'preventivi_json_to_text',15);
 
 
 /**
@@ -40,10 +57,14 @@ function Divi_parent_theme_enqueue_styles() {
     wp_enqueue_script( 'general_javascript', get_stylesheet_directory_uri() . '/js/general.js', array ('jquery') );
     wp_enqueue_script( 'hightlight', get_stylesheet_directory_uri() . '/js/home_highlight.js');
     wp_enqueue_script('hubspot_contact_form', '//js.hsforms.net/forms/v2.js', array('jquery'));
+    wp_enqueue_script('datepicker', 'https://code.jquery.com/ui/1.12.1/jquery-ui.js', array('jquery'));
     //add hubspot to Browser IE 8
     wp_register_script('hubspot_contact_form_IE8', '//js.hsforms.net/forms/v2-legacy.js', array('jquery'));
     wp_enqueue_script( 'hubspot_contact_form_IE8');
     wp_script_add_data( 'hubspot_contact_form_IE8', 'conditional', 'lt IE 8' );
+    if (is_singular('route')){
+        wp_enqueue_script('jQueryValidate', 'https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.2/jquery.validate.min.js', array('jquery'));
+    }
 }
 
 function admin_css_load() {
@@ -1330,7 +1351,258 @@ add_filter( 'facetwp_facet_filter_posts', function( $return, $params ) {
 				return;
 			}
 		}
+
 	}
 
 	return $return;
 }, 10, 2 );
+
+
+//change header id for mobile version Search page - pagina cerca and Single route page
+//add_filter('us_get_page_area_id','wm_custom_header_id_mobile');
+function wm_custom_header_id_mobile($area_id){
+    // Search page
+    // if ($area_id == 57181 && wm_isMobileDev()) {
+    //     $area_id = 103585;
+    // }
+    // Single route
+    // if ($area_id == 50234 && wm_isMobileDev()) {
+    //     // $area_id = 100474;
+    //     $area_id = 103584;
+    // }
+    return $area_id;
+}
+
+
+function wm_isMobileDev(){
+    if(isset($_SERVER['HTTP_USER_AGENT']) and !empty($_SERVER['HTTP_USER_AGENT'])){
+       $user_ag = $_SERVER['HTTP_USER_AGENT'];
+       if(preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i',$user_ag)||preg_match('/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i',substr($user_ag,0,4))){
+          return true;
+       };
+    };
+    return false;
+}
+
+
+// Disable Facet Auto-Refresh
+function fwp_disable_auto_refresh() {
+?>
+<script>
+(function($) {
+    $(function() {
+        if ('undefined' !== typeof FWP) {
+            FWP.auto_refresh = false;
+        }
+    });
+})(jQuery);
+</script>
+<?php
+}
+add_action( 'wp_head', 'fwp_disable_auto_refresh', 100 );
+
+// Function to get all the dates in given range 
+function getDatesFromRange($start, $end, $format = 'd-m-Y') { 
+      
+    // Declare an empty array 
+    $array = array(); 
+      
+    // Variable that store the date interval 
+    // of period 1 day 
+    $interval = new DateInterval('P1D'); 
+  
+    $realEnd = new DateTime($end); 
+    $realEnd->add($interval); 
+  
+    $period = new DatePeriod(new DateTime($start), $interval, $realEnd); 
+  
+    // Use loop to store date into array 
+    foreach($period as $date) {                  
+        $array[] = $date->format($format);  
+    } 
+  
+    // Return the array elements 
+    return $array; 
+} 
+
+function route_has_extra_category($route_id) { 
+
+    $products = get_field('product',$route_id);
+    $object = array();
+    if( $products ){
+        foreach( $products as $p ){ // variables of each product
+        $product = wc_get_product($p); 
+            if($product->is_type('variable')){
+                $product_with_variables = wc_get_product( $p );
+                $category = $product_with_variables->get_categories();
+                if(strip_tags($category) == 'extra'){
+                    foreach($product->get_available_variations() as $variation ){
+                        // Extra Name
+                        $xattributes = $variation['attributes'];
+                        $xvariation_name = '';
+                        foreach($xattributes as $name_var){
+                            $xvariation_name = $name_var;
+                        }
+                        // Prices
+                        if ($variation['display_price'] == 0){
+                            $xprice = __('Free' ,'wm-child-verdenatura');
+                        }  else {
+                            $xprice = $variation['display_price'];
+                        }
+                        $object[$xvariation_name]['label'] = wm_has_extra_get_label($xvariation_name,$variation['variation_description']);
+                        $object[$xvariation_name]['price'] = str_replace('€','',strip_tags($xprice));
+                    }
+                }
+            }
+        }
+    }
+    return $object;
+}
+function route_has_hotel_category($route_id,$first_departure) {
+    $attributes_name_hotel = array();
+    $variations_name_price = array();
+
+    $attributes_name_hotel_seasonal = array();
+    $variations_name_price_seasonal = array();
+    $list_all_variations_name_seasonal = array();
+
+    $products = get_field('product',$route_id);
+    
+    //check if the route is in boat or not
+    $place = '';
+    $from = '';
+    $to = '';
+    $boat_trip = get_field('trip_with_boat',$route_id);
+    if ($boat_trip) {
+        $place = __('cabin','wm-child-verdenatura');
+    } else {
+        $place = __('room','wm-child-verdenatura');
+    }
+    // get route from and to
+    // get the name of the cities From e To
+    $from = get_field('from',$route_id);
+    $to = get_field('to',$route_id);
+
+    if( $products ){
+        foreach( $products as $p ){ // variables of each product
+        $product = wc_get_product($p); 
+            if($product->is_type('variable')){
+                $product_with_variables = wc_get_product( $p );
+                $category = $product_with_variables->get_categories();
+                $attributes_list = $product_with_variables->get_variation_attributes();
+                foreach ($attributes_list as $value => $key ) {
+                    $product_attribute_name = $value;
+                }
+                if(strip_tags($category) == 'hotel'){
+                    array_push($attributes_name_hotel,$product_attribute_name);
+                    $product_variation_name_price = array();
+                    foreach($product->get_available_variations() as $variation ){
+
+                        // hotel Name
+                        $attributes = $variation['attributes'];
+                        $variation_name = '';
+                        foreach($attributes as $name_var){
+                            $variation_name = $name_var;
+                        }
+                        // Prices
+                        if ($variation['display_price'] == 0){
+                            $price = __('Free' ,'wm-child-verdenatura');
+                        }  else {
+                            $price = $variation['display_price'];
+                        }
+                        $product_variation_name_price[$variation_name]['label'] = wm_has_hotel_get_label($variation_name,$variation['variation_description'],$place,$from,$to);
+                        $product_variation_name_price[$variation_name]['price'] = str_replace('€','',strip_tags($price));
+                    }
+                    $variations_name_price += array( $product_attribute_name =>$product_variation_name_price);
+                }
+            }
+        }
+    }
+    while( have_rows('model_season',$route_id) ): the_row();
+        $season_products = get_sub_field('wm_route_quote_model_season_product'); 
+        $variation_disacitve = get_sub_field('wm_route_quote_model_season_disactive');
+        if (!$variation_disacitve) {
+            if (have_rows('wm_route_quote_model_season_dates_periods_repeater')) {
+                while( have_rows('wm_route_quote_model_season_dates_periods_repeater') ): the_row();
+                $start = get_sub_field('wm_route_quote_model_season_dates_periods_start');
+                $stop = get_sub_field('wm_route_quote_model_season_dates_periods_stop');
+                $start = DateTime::createFromFormat('d/m/Y', $start);
+                $stop = DateTime::createFromFormat('d/m/Y', $stop);
+                $start = $start->format('m/d/Y');
+                $stop = $stop->format('m/d/Y');
+                $days = getDatesFromRange($start, $stop); 
+                foreach ( $days as $day )
+                {
+                    if ( $day == $first_departure ) 
+                    {
+                        if ($season_products){  //----------- start hotel product table
+                            foreach( $season_products as $p ){ // variables of each product
+                            $product = wc_get_product($p); 
+                                if($product->is_type('variable')){
+                                    $product_with_variables = wc_get_product( $p );
+                                    $category = $product_with_variables->get_categories();
+                                    $attributes_list = $product_with_variables->get_variation_attributes();
+                                    foreach ($attributes_list as $value => $key ) {
+                                        $product_attribute_name = $value;
+                                    }
+                                    if(strip_tags($category) == 'hotel'){
+                                        array_push($attributes_name_hotel_seasonal,$product_attribute_name);
+                                        $product_variation_name_price = array();
+                                        foreach($product->get_available_variations() as $variation ){
+            
+                                            // hotel Name
+                                            $attributes = $variation['attributes'];
+                                            $variation_name = '';
+                                            foreach($attributes as $name_var){
+                                                $variation_name = $name_var;
+                                            }
+                                            // Prices
+                                            if ($variation['display_price'] == 0){
+                                                $price = __('Free' ,'wm-child-verdenatura');
+                                            }  else {
+                                                $price = $variation['display_price'];
+                                            }
+                                            $product_variation_name_price[$variation_name]['label'] = wm_has_hotel_get_label($variation_name,$variation['variation_description'],$place,$from,$to);
+                                            $product_variation_name_price[$variation_name]['price'] = str_replace('€','',strip_tags($price));
+                                        }
+                                        $variations_name_price_seasonal += array( $product_attribute_name =>$product_variation_name_price);
+                                    }
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+                endwhile;
+            }
+            
+        }
+    endwhile;
+    $object['model'] = $variations_name_price;
+    $object['modelseasonal'] = $variations_name_price_seasonal;
+    return $object;
+}
+
+// add custom text in checkout page for payment with bank transfer pagamento con bonifico
+function wm_wc_review_order_before_payment(  ) { 
+    ob_start();
+
+    ?>
+    <div class="woocommerce_custom_payment_info">
+    <p><strong><?php echo __('If you prefer you can pay by bank transfer:', 'wm-child-cyclando');?></strong></p>
+    <p><?php echo __('Payable to: Cyclando srl', 'wm-child-cyclando');?></p>
+    <p><?php echo __('IBAN: IT13K0200867019000105916036', 'wm-child-cyclando');?></p>
+    <p><?php echo __('Indicate in the reason: "Surname; Tour; departure date" and send a copy of the bank transfer to <a href="mailto:info@cyclando.com">INFO@CYCLANDO.COM</a>', 'wm-child-cyclando');?></p>
+    </div>
+    <?php
+
+    echo ob_get_clean();
+}; 
+add_action( 'woocommerce_review_order_before_payment', 'wm_wc_review_order_before_payment', 10, 0 );
+
+// change checkout place order button text
+add_filter( 'woocommerce_order_button_text', 'wm_checkout_custom_button_text' );
+ 
+function wm_checkout_custom_button_text( $button_text ) {
+   return __('Pay', 'wm-child-cyclando');
+}

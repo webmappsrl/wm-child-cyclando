@@ -37,50 +37,14 @@ defined( 'ABSPATH' ) || exit;
 			</p>
 
         <?php else : ?>
-            <?php
-            
-            $order_parent_id = $order->get_parent_id();
-            if ($order_parent_id){
-                $order_detail = new WC_Order($order_parent_id);
-                $coupon = $order_detail->get_used_coupons();
-            } else {
-                $order_detail = new WC_Order($order->get_id());
-                $coupon = $order_detail->get_used_coupons();
-            }
-            $coupon_name = $coupon['0'];
-            $post = get_posts( array( 
-                'name' => $coupon_name, 
-                'post_type' => 'shop_coupon'
-            ) );
-            $departure_date = '';
-            $routeid = '';
-            $routCode = '';
-            $routName = '';
-            $routePermalink = '';
-            foreach ( $post as $info) {
-                $description = $info->post_excerpt;
-            }
-            $desc = json_decode($description, JSON_PRETTY_PRINT);
-            foreach ($desc as $val => $key){
-                if ($val == 'routeId') { 
-                    $routeid = $key;
-                    // $routCode = get_field('n7webmapp_route_cod',$routeid);
-                    $routName = get_the_title($routeid);
-                    $routePermalink = get_permalink($routeid);
-                }
-                if ($val == 'departureDate') {
-                    $date = $key;
-                    $departure_date = date("d-m-Y", strtotime($date));
-                }
-            }
-            ?>
+
             <p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received"><?php echo apply_filters( 'woocommerce_thankyou_order_received_text', esc_html__( 'Thanks for choosing us. Your request was successfully received. You will be contacted by our team as soon as possible.', 'wm-child-cyclando' ), $order ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
             
             <?php
                 echo '<div class="tour-general-info" style="display: inline-block;"><p><strong>';
                 echo __('Departure date:' ,'wm-child-verdenatura').' </strong>';
-                echo '<span id="thankyou-data-partenza">'.$departure_date.'</span></p>';
-				echo '<p id="thankyou-route-name"><strong>'.__('Route name:','wm-child-verdenatura').'</strong> <a target="_blank" href="'.$routePermalink.'">'.$routName.'</a></p>';
+                echo '<span id="thankyou-data-partenza"></span></p>';
+				echo '<p><strong>'.__('Route','wm-child-verdenatura').':</strong> <span id="thankyou-route-name"></span></p>';
                 echo '</div>';
             ?>
 
@@ -88,7 +52,7 @@ defined( 'ABSPATH' ) || exit;
 
 				<li class="woocommerce-order-overview__order order">
 					<?php esc_html_e( 'Order number:', 'woocommerce' ); ?>
-                    <span id="thankyou-numero-ordine"><strong><?php echo $order->get_order_number(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></strong></span>
+                    <span id="thankyou-numero-ordine"><strong></strong></span>
 				</li>
 
                 <li class="woocommerce-order-overview__date date">
@@ -129,3 +93,13 @@ defined( 'ABSPATH' ) || exit;
 	<?php endif; ?>
 
 </div>
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        var ocCookies = ocmCheckCookie();
+        departureDate = ocCookies['departureDate'].split('-');
+        jQuery('#thankyou-data-partenza').html(departureDate[0]+'/'+departureDate[1]+'/'+departureDate[2]);
+        jQuery('#thankyou-route-name').html('<a href="'+ocCookies['routePermalink']+'">'+ocCookies['routeName']+'</a>');
+        jQuery('#thankyou-numero-ordine strong').html(ocCookies['hsdealid']);
+    })
+    
+  </script>
