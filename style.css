@@ -1709,6 +1709,9 @@ i.cy-icons.icon-search1 {
     .pagina-cerca-descrizione-container {
         padding-top: 220px!important;
     }
+    .pagina-cerca-descrizione-container .l-section-h.i-cf {
+        padding-top: 0 !important;
+    }
 }
 /*stili pagina di ricerca*/
 .facetwp-page.active {

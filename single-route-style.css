@@ -313,6 +313,12 @@ Text Domain: wm-child-verdenatura
     flex-grow: 1;
     flex-shrink: 0;
 }
+.cyc-single-route-gallery-information-container img.rsImg.rsMainSlideImage {
+    margin-top: 0!important;
+    margin-left: 0!important;
+    width: 100%!important;
+    height: 100%!important;
+}
 /* information container responsive style */
 @media screen and (min-width: 768px) and (max-width:1261px) {
     .cyc-single-route-info-price-wrapper .cy-btn-quote p {
@@ -1722,6 +1728,9 @@ body #tab-stagioni a:hover {
 .cyc-route-mobile-tab-container .cy-modal-body {
     border: none;
 }
+#wm-wizards-container {
+    display: none;
+}
 .cy-modal-body {
     padding: 2% 3% 4% 3% !important;
     background: #fff;
@@ -1730,7 +1739,9 @@ body #tab-stagioni a:hover {
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
 }
-
+.cy-modal-body-program .w-iconbox-icon {
+    width:100%;
+}
 #cy-route-program .cy-modal-body {
     background: #fff;
     border: 1px solid var(--color-primary-paragraph);
