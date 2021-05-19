@@ -126,46 +126,45 @@ foreach ( $variations_name_price as $var ) {
 
     <div id="tabs-4">
         <div class="durata-preventivo"> <!------------ Duration -->
-            <p class="tab-section"> 
+            <p class="tab-section"><strong>
                 <?php
                 if (get_field('vn_durata',$post_id)) {
                     echo __('Duration:' ,'wm-child-verdenatura');
                 }
+                ?></strong>
+                <?php $days = get_field('vn_durata',$post_id);
+                if ( $days )
+                {
+                    $nights = $days - 1;
+                    ?>
+                    <?php
+                    echo "<span class=''>" . "$days " . __( 'days' , 'wm-child-verdenatura' ) . " / $nights " . __( 'nights' , 'wm-child-verdenatura' ) ;
+                    ?>
+                    </span>
+
+                    <?php
+
+                    $vn_note_dur = get_field( 'vn_note_dur',$post_id );
+                    if ( $vn_note_dur )
+                        echo "<span class='webmapp_route_duration_notes'> ($vn_note_dur)</span>";
+                }
                 ?>
             </p>
-            <?php $days = get_field('vn_durata',$post_id);
-            if ( $days )
-            {
-                $nights = $days - 1;
-                ?>
-                <?php
-                echo "<span class=''>" . "$days " . __( 'days' , 'wm-child-verdenatura' ) . " / $nights " . __( 'nights' , 'wm-child-verdenatura' ) ;
-                ?>
-                </span>
-
-                <?php
-
-                $vn_note_dur = get_field( 'vn_note_dur',$post_id );
-                if ( $vn_note_dur )
-                    echo "<span class='webmapp_route_duration_notes'> ($vn_note_dur)</span>";
-            }
-            ?>
+            
         </div> <!------------Fine  Duration -->
         
         <div class="departure-preventivo-aside"><!------------ Departure / Partenze -->
             <span class='durata-txt'>
-                <p class="tab-section">
+                <p class="tab-section"><strong>
                     <?php
                     if (have_rows('departures_periods')) {
                         echo __('Dates:', 'wm-child-verdenatura');
-                    } ?>
+                    } ?></strong>
                 </p>
             </span>
 
             <?php
             if (have_rows('departures_periods')) : ?>
-                <div class="departure_name">
-                </div>
                 <div class="grid-container-period-aside">
 
                     <?php while (have_rows('departures_periods')) : the_row();
@@ -192,9 +191,9 @@ foreach ( $variations_name_price as $var ) {
                         </div>
                         <div class="departure_week_days">
                             <?php if ($week_days) : ?>
-                                <ul>
+                                <table>
                                     <?php if (count($week_days) == 7) { ?>
-                                        <li style="display: inline;"><?php echo __('Every day', 'wm-child-verdenatura'); ?></li>
+                                        <td style="display: inline;"><?php echo __('Every day', 'wm-child-verdenatura'); ?></td>
                                     <?php } else { ?>
                                         <span><?php echo __('Each', 'wm-child-verdenatura') . ' '; ?></span>
                                         <?php
@@ -202,17 +201,17 @@ foreach ( $variations_name_price as $var ) {
                                         $len = count($week_days);
                                         foreach ($week_days as $week_day) :
                                             if ($i == 0) { ?>
-                                                <li style="display: inline;"><?php echo date_i18n($dateformatstring, strtotime($week_day)); ?></li>
+                                                <td style="display: inline;"><?php echo date_i18n($dateformatstring, strtotime($week_day)); ?></td>
                                             <?php } elseif ($i == $len - 1) { ?>
-                                                <?php echo __('and', 'wm-child-verdenatura') . ' '; ?><li style="display: inline;"><?php echo date_i18n($dateformatstring, strtotime($week_day)); ?></li>
+                                                <?php echo __('and', 'wm-child-verdenatura') . ' '; ?><td style="display: inline;"><?php echo date_i18n($dateformatstring, strtotime($week_day)); ?></td>
                                             <?php } else { ?>
                                                 <span><?php echo __(',', 'wm-child-verdenatura') . ' '; ?></span>
-                                                <li style="display: inline;"><?php echo date_i18n($dateformatstring, strtotime($week_day)); ?></li>
+                                                <td style="display: inline;"><?php echo date_i18n($dateformatstring, strtotime($week_day)); ?></td>
                                             <?php }
                                         $i++; ?>
                                         <?php endforeach;
                                 } ?>
-                                </ul>
+                                </table>
                             <?php endif; ?>
                         </div>
 
@@ -228,11 +227,11 @@ foreach ( $variations_name_price as $var ) {
             endwhile;
             if (have_rows('departure_dates') && $date) : ?>
                 <div class="single-departure">
-                    <p class="tab-section"><?php if (have_rows('departures_periods') && !empty($start) && have_rows('departure_dates')) {
+                    <p class="tab-section"><strong><?php if (have_rows('departures_periods') && !empty($start) && have_rows('departure_dates')) {
                                                 echo __('Other dates:', 'wm-child-verdenatura');
                                             } else {
                                                 echo __('Dates:', 'wm-child-verdenatura');
-                                            } ?></p>
+                                            } ?></strong></p>
                 </div>
                 <div class="grid-container-single">
 
@@ -368,7 +367,7 @@ foreach ( $variations_name_price as $var ) {
                         ?>
                     <span class='durata-txt'> <!------------ quote ---------------------->
                     </span>
-                    <table class="departures-quotes" cellspacing="0" cellpadding="6" border="1" style="color: #636363;border: 1px solid #e5e5e5;vertical-align: middle;padding: 12px;text-align: left;max-width: 800px;width: 100%;">
+                    <table class="departures-quotes" cellspacing="0" cellpadding="6" border="1" style="color: #636363;border: 1px solid #e5e5e5;vertical-align: middle;text-align: left;max-width: 800px;width: 100%;">
                         <thead>
                             <tr>
                                 <th>
@@ -411,7 +410,7 @@ foreach ( $variations_name_price as $var ) {
                     if (empty($low_season_products) && empty($high_season_products ) && $has_hotel){  //----------- start hotel product table
                 ?>
                 <div class="quotes-preventivo 2"><!------------ quote ---------------------->
-                    <table class="departures-quotes" cellspacing="0" cellpadding="6" border="1" style="color: #636363;border: 1px solid #e5e5e5;vertical-align: middle;padding: 12px; text-align: left;max-width: 800px;width: 100%;">
+                    <table class="departures-quotes" cellspacing="0" cellpadding="6" border="1" style="color: #636363;border: 1px solid #e5e5e5;vertical-align: middle; text-align: left;max-width: 800px;width: 100%;">
                         <thead>
                             <tr>
                                 <th><p class="tab-section"> 
@@ -455,7 +454,7 @@ foreach ( $variations_name_price as $var ) {
             <?php 
             if ($has_extra){  //----------- start extra product table
             ?>
-            <table class="extra-quotes-table" cellspacing="0" cellpadding="6" border="1" style="color: #636363;border: 1px solid #e5e5e5;vertical-align: middle;padding: 12px;text-align: left;max-width: 800px;width: 100%;">
+            <table class="extra-quotes-table" cellspacing="0" cellpadding="6" border="1" style="color: #636363;border: 1px solid #e5e5e5;vertical-align: middle;text-align: left;max-width: 800px;width: 100%;">
                 <tbody>
                         <?php  // row bike --------------------------------------------------------
                         if(array_key_exists('bike',$extra_variation_name_price)) {           
