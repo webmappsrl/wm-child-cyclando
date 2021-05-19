@@ -861,10 +861,9 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                 success : function( response ) {
                 },
                 complete:function(response){
-                    var obj = JSON.parse(response.responseText);
-                    var res = JSON.parse(obj);
+                    var objDeal = JSON.parse(response.responseText);
                     var savedCookie = ocmCheckCookie();
-                    savedCookie['hsdealid'] = res.id;
+                    savedCookie['hsdealid'] = objDeal.id;
                     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
                     form.submit();
                 }
