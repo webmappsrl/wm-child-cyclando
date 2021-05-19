@@ -368,7 +368,7 @@ foreach ( $variations_name_price as $var ) {
                         ?>
                     <span class='durata-txt'> <!------------ quote ---------------------->
                     </span>
-                    <table class="departures-quotes">
+                    <table class="departures-quotes" cellspacing="0" cellpadding="6" border="1" style="color: #636363;border: 1px solid #e5e5e5;vertical-align: middle;padding: 12px;text-align: left;max-width: 800px;width: 100%;">
                         <thead>
                             <tr>
                                 <th>
@@ -411,7 +411,7 @@ foreach ( $variations_name_price as $var ) {
                     if (empty($low_season_products) && empty($high_season_products ) && $has_hotel){  //----------- start hotel product table
                 ?>
                 <div class="quotes-preventivo 2"><!------------ quote ---------------------->
-                    <table class="departures-quotes">
+                    <table class="departures-quotes" cellspacing="0" cellpadding="6" border="1" style="color: #636363;border: 1px solid #e5e5e5;vertical-align: middle;padding: 12px; text-align: left;max-width: 800px;width: 100%;">
                         <thead>
                             <tr>
                                 <th><p class="tab-section"> 
@@ -455,7 +455,7 @@ foreach ( $variations_name_price as $var ) {
             <?php 
             if ($has_extra){  //----------- start extra product table
             ?>
-            <table class="extra-quotes-table">
+            <table class="extra-quotes-table" cellspacing="0" cellpadding="6" border="1" style="color: #636363;border: 1px solid #e5e5e5;vertical-align: middle;padding: 12px;text-align: left;max-width: 800px;width: 100%;">
                 <tbody>
                         <?php  // row bike --------------------------------------------------------
                         if(array_key_exists('bike',$extra_variation_name_price)) {           
