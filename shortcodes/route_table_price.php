@@ -853,6 +853,286 @@ foreach ( $variations_name_price as $var ) {
                         <?php
                         }
                         ?> <!---- END row boardingtax ---->
+                         <?php  // row bike_plus --------------------------------------------------------
+                        if(array_key_exists('bike_plus',$extra_variation_name_price)) {           
+                        ?>
+                            <tr>  
+                                <th>
+                                    <?php
+                                    echo __('Supplement for bike rental Premium' ,'wm-child-verdenatura');
+                                    ?>
+                                </th>
+                                    
+                                <td>
+                                <?php
+                                    echo $extra_variation_name_price['bike_plus'];
+                                    ?>
+                                </td>
+                                   
+                            </tr>
+                        <?php
+                        }
+                        ?> <!---- END row bike_plus ---->
+                        <?php  // row bike_pluswarranty --------------------------------------------------------
+                        if(array_key_exists('bike_pluswarranty',$extra_variation_name_price)) {           
+                        ?>
+                            <tr>  
+                                <th>
+                                    <?php
+                                    echo __('Supplement for bike coverage Premium' ,'wm-child-verdenatura');
+                                    ?>
+                                </th>
+                                    
+                                <td>
+                                <?php
+                                    echo $extra_variation_name_price['bike_pluswarranty'];
+                                    ?>
+                                </td>
+                                   
+                            </tr>
+                        <?php
+                        }
+                        ?> <!---- END row bike_pluswarranty ---->
+                        <?php  // row bike_mtb --------------------------------------------------------
+                        if(array_key_exists('bike_mtb',$extra_variation_name_price)) {           
+                        ?>
+                            <tr>  
+                                <th>
+                                    <?php
+                                    echo __('Supplement for MTB rental' ,'wm-child-verdenatura');
+                                    ?>
+                                </th>
+                                    
+                                <td>
+                                <?php
+                                    echo $extra_variation_name_price['bike_mtb'];
+                                    ?>
+                                </td>
+                                   
+                            </tr>
+                        <?php
+                        }
+                        ?> <!---- END row bike_mtb ---->
+                        <?php  // row bike_mtbwarranty --------------------------------------------------------
+                        if(array_key_exists('bike_mtbwarranty',$extra_variation_name_price)) {           
+                        ?>
+                            <tr>  
+                                <th>
+                                    <?php
+                                    echo __('Supplement for tandem rental' ,'wm-child-verdenatura');
+                                    ?>
+                                </th>
+                                    
+                                <td>
+                                <?php
+                                    echo $extra_variation_name_price['bike_mtbwarranty'];
+                                    ?>
+                                </td>
+                                   
+                            </tr>
+                        <?php
+                        }
+                        ?> <!---- END row bike_mtbwarranty ---->
+                        <?php  // row bike_ebikemtb --------------------------------------------------------
+                        if(array_key_exists('bike_ebikemtb',$extra_variation_name_price)) {           
+                        ?>
+                            <tr>  
+                                <th>
+                                    <?php
+                                    echo __('Supplemento nolo E-MTB' ,'wm-child-verdenatura');
+                                    ?>
+                                </th>
+                                    
+                                <td>
+                                <?php
+                                    echo $extra_variation_name_price['bike_ebikemtb'];
+                                    ?>
+                                </td>
+                                   
+                            </tr>
+                        <?php
+                        }
+                        ?> <!---- END row bike_ebikemtb ---->
+                        <?php  // row bike_ebikemtbwarranty --------------------------------------------------------
+                        if(array_key_exists('bike_ebikemtbwarranty',$extra_variation_name_price)) {           
+                        ?>
+                            <tr>  
+                                <th>
+                                    <?php
+                                    echo __('Supplement for E-MTB coverage' ,'wm-child-verdenatura');
+                                    ?>
+                                </th>
+                                    
+                                <td>
+                                <?php
+                                    echo $extra_variation_name_price['bike_ebikemtbwarranty'];
+                                    ?>
+                                </td>
+                                   
+                            </tr>
+                        <?php
+                        }
+                        ?> <!---- END row bike_ebikemtbwarranty ---->
+                        <?php  // row bike_ebikeroad --------------------------------------------------------
+                        if(array_key_exists('bike_ebikeroad',$extra_variation_name_price)) {           
+                        ?>
+                            <tr>  
+                                <th>
+                                    <?php
+                                    echo __('Supplement for road e-bike rental' ,'wm-child-verdenatura');
+                                    ?>
+                                </th>
+                                    
+                                <td>
+                                <?php
+                                    echo $extra_variation_name_price['bike_ebikeroad'];
+                                    ?>
+                                </td>
+                                   
+                            </tr>
+                        <?php
+                        }
+                        ?> <!---- END row bike_ebikeroad ---->
+                        <?php  // row bike_ecargo --------------------------------------------------------
+                        if(array_key_exists('bike_ecargo',$extra_variation_name_price)) {           
+                        ?>
+                            <tr>  
+                                <th>
+                                    <?php
+                                    echo __('Supplement for ecargo rental' ,'wm-child-verdenatura');
+                                    ?>
+                                </th>
+                                    
+                                <td>
+                                <?php
+                                    echo $extra_variation_name_price['bike_ecargo'];
+                                    ?>
+                                </td>
+                                   
+                            </tr>
+                        <?php
+                        }
+                        ?> <!---- END row bike_ecargo ---->
+                        <?php  // row bike_ecargowarranty --------------------------------------------------------
+                        if(array_key_exists('bike_ecargowarranty',$extra_variation_name_price)) {           
+                        ?>
+                            <tr>  
+                                <th>
+                                    <?php
+                                    echo __('Supplement for ecago Coverage' ,'wm-child-verdenatura');
+                                    ?>
+                                </th>
+                                    
+                                <td>
+                                <?php
+                                    echo $extra_variation_name_price['bike_ecargowarranty'];
+                                    ?>
+                                </td>
+                                   
+                            </tr>
+                        <?php
+                        }
+                        ?> <!---- END row bike_ecargowarranty ---->
+                        <?php  // row bike_own --------------------------------------------------------
+                        if(array_key_exists('bike_own',$extra_variation_name_price)) {           
+                        ?>
+                            <tr>  
+                                <th>
+                                    <?php
+                                    echo __('Supplement for your own bike' ,'wm-child-verdenatura');
+                                    ?>
+                                </th>
+                                    
+                                <td>
+                                <?php
+                                    echo $extra_variation_name_price['bike_own'];
+                                    ?>
+                                </td>
+                                   
+                            </tr>
+                        <?php
+                        }
+                        ?> <!---- END row bike_own ---->
+                        <?php  // row bike_ownwarranty --------------------------------------------------------
+                        if(array_key_exists('bike_ownwarranty',$extra_variation_name_price)) {           
+                        ?>
+                            <tr>  
+                                <th>
+                                    <?php
+                                    echo __('Supplement for own bike Coverage' ,'wm-child-verdenatura');
+                                    ?>
+                                </th>
+                                    
+                                <td>
+                                <?php
+                                    echo $extra_variation_name_price['bike_ownwarranty'];
+                                    ?>
+                                </td>
+                                   
+                            </tr>
+                        <?php
+                        }
+                        ?> <!---- END row bike_ownwarranty ---->
+                        <?php  // row bike_recumbent --------------------------------------------------------
+                        if(array_key_exists('bike_recumbent',$extra_variation_name_price)) {           
+                        ?>
+                            <tr>  
+                                <th>
+                                    <?php
+                                    echo __('Supplement for recumbent bike' ,'wm-child-verdenatura');
+                                    ?>
+                                </th>
+                                    
+                                <td>
+                                <?php
+                                    echo $extra_variation_name_price['bike_recumbent'];
+                                    ?>
+                                </td>
+                                   
+                            </tr>
+                        <?php
+                        }
+                        ?> <!---- END row bike_recumbent ---->
+                        <?php  // row gps --------------------------------------------------------
+                        if(array_key_exists('gps',$extra_variation_name_price)) {           
+                        ?>
+                            <tr>  
+                                <th>
+                                    <?php
+                                    echo __('Supplement for GPS' ,'wm-child-verdenatura');
+                                    ?>
+                                </th>
+                                    
+                                <td>
+                                <?php
+                                    echo $extra_variation_name_price['gps'];
+                                    ?>
+                                </td>
+                                   
+                            </tr>
+                        <?php
+                        }
+                        ?> <!---- END row gps ---->
+                        <?php  // row weehoo --------------------------------------------------------
+                        if(array_key_exists('weehoo',$extra_variation_name_price)) {           
+                        ?>
+                            <tr>  
+                                <th>
+                                    <?php
+                                    echo __('Supplement for Weehoo trailer' ,'wm-child-verdenatura');
+                                    ?>
+                                </th>
+                                    
+                                <td>
+                                <?php
+                                    echo $extra_variation_name_price['weehoo'];
+                                    ?>
+                                </td>
+                                   
+                            </tr>
+                        <?php
+                        }
+                        ?> <!---- END row weehoo ---->
                         <?php  // row variable extras --------------------------------------------------------
                         foreach ($extra_variation_name_price as $extra_key => $extra_value) {       
                             $name_explode = explode ('_',$extra_key);
