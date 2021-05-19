@@ -19,6 +19,15 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   //Hubspot APIKEY location => wp-config.php
   $hapikey = HUBSPOTAPIKEY;
 
+
+  if ($usernewsletter[0] == '1' ){
+      $newsletter = "true";
+  } else {
+      $newsletter = "false";
+  }
+
+  
+
   // Get the deposit
   $deposit_amount = "0";
   if ($cookies['deposit']) {
@@ -62,7 +71,13 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   $order_total = str_replace(',', '.', $order_total);
   $billing_first_name = $cookies['billingname'];
   $billing_last_name = $cookies['billingsurname'];
-
+  $billing_email = $cookies['billingemail'];
+  $billing_newsletter = $cookies['billingnewsletter'];
+  if ($billing_newsletter == 'on' ){
+    $newsletter = "true";
+  } else {
+      $newsletter = "false";
+  }
   // Get route info
   $routePermalink = $cookies['routePermalink'];
   $routeName = $cookies['routeName'];
@@ -89,6 +104,29 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
     \"supplemento\": \"$supplement\",
     \"eta_bambini\": \"$kids_age\"
   }}";
+
+  // Start creating contact on hub spot
+  $CURLOPT_POSTFIELDS = "{\"properties\":{\"app_user\":\"true\",\"email\":\"$billing_email\",\"firstname\":\"$billing_first_name\",\"lastname\":\"$billing_last_name\",\"app_user_iscritto_newsletter\":\"$newsletter\"}}";
+
+  $curl = curl_init();
+
+  curl_setopt_array($curl, array(
+  CURLOPT_URL => "https://api.hubapi.com/crm/v3/objects/contacts?hapikey=$hapikey",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => $CURLOPT_POSTFIELDS,
+  CURLOPT_HTTPHEADER => array(
+      "accept: application/json",
+      "content-type: application/json"
+  ),
+  ));
+  curl_close($curl);
+  // END creating contact on hub spot
+
 
   $curl = curl_init();
 
