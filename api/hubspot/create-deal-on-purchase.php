@@ -20,14 +20,6 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   $hapikey = HUBSPOTAPIKEY;
 
 
-  if ($usernewsletter[0] == '1' ){
-      $newsletter = "true";
-  } else {
-      $newsletter = "false";
-  }
-
-  
-
   // Get the deposit
   $deposit_amount = "0";
   if ($cookies['deposit']) {
@@ -106,31 +98,80 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   }}";
 
   // Start creating contact on hub spot
-  $CURLOPT_POSTFIELDS = "{\"properties\":{\"app_user\":\"true\",\"email\":\"$billing_email\",\"firstname\":\"$billing_first_name\",\"lastname\":\"$billing_last_name\",\"app_user_iscritto_newsletter\":\"$newsletter\"}}";
 
-  $curl = curl_init();
+  $curl_contact_search = curl_init();
 
-  curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.hubapi.com/crm/v3/objects/contacts?hapikey=$hapikey",
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => $CURLOPT_POSTFIELDS,
-  CURLOPT_HTTPHEADER => array(
+  curl_setopt_array($curl_contact_search, array(
+    CURLOPT_URL => "https://api.hubapi.com/crm/v3/objects/contacts/search?hapikey=$hapikey",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "POST",
+    CURLOPT_POSTFIELDS => "{
+      \"filterGroups\": [
+          {
+              \"filters\": [
+                  {
+                      \"operator\": \"EQ\",
+                      \"propertyName\": \"email\",
+                      \"value\": \"$billing_email\"
+                  }
+              ]
+          }
+      ]
+  }",
+    CURLOPT_HTTPHEADER => array(
       "accept: application/json",
       "content-type: application/json"
-  ),
+    ),
   ));
-  curl_close($curl);
+
+  $response_search = curl_exec($curl_contact_search);
+  $response_search = json_decode($response_search);
+  $response_total = $response_search->total; 
+  $err_search = curl_error($curl_contact_search);
+
+  curl_close($curl_contact_search);
+
+  if ($err_search) {
+    echo "cURL Error #:" . $err_search;
+  } else {
+    if ($response_total && $response_total !== 0 ) {
+      $res_contact_id = $response_search->results[0]->id;
+    } else {
+        // -------
+        $CURLOPT_POSTFIELDS = "{\"properties\":{\"email\":\"$billing_email\",\"firstname\":\"$billing_first_name\",\"lastname\":\"$billing_last_name\",\"app_user_iscritto_newsletter\":\"$newsletter\"}}";
+
+        $curl_contact = curl_init();
+
+        curl_setopt_array($curl_contact, array(
+        CURLOPT_URL => "https://api.hubapi.com/crm/v3/objects/contacts?hapikey=$hapikey",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => $CURLOPT_POSTFIELDS,
+        CURLOPT_HTTPHEADER => array(
+            "accept: application/json",
+            "content-type: application/json"
+        ),
+        ));
+        $response_contact = curl_exec($curl_contact);
+        $response_contact = json_decode($response_contact);
+        $res_contact_id = $response_contact->id;
+        curl_close($curl_contact);
+    }
+  }
   // END creating contact on hub spot
 
+  // START creating Deal on hubspot
+  $curl_deal = curl_init();
 
-  $curl = curl_init();
-
-  curl_setopt_array($curl, array(
+  curl_setopt_array($curl_deal, array(
     CURLOPT_URL => "https://api.hubapi.com/crm/v3/objects/deals?hapikey=$hapikey",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
@@ -145,10 +186,36 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
     ),
   ));
 
-  $response = curl_exec($curl);
-  $err = curl_error($curl);
+  $response = curl_exec($curl_deal);
+  $response = json_decode($response);
+  $res_deal_id = $response->id;
+  $err = curl_error($curl_deal);
 
-  curl_close($curl);
+  curl_close($curl_deal);
+  // END creating Deal on hubspot
+
+  // start Assosiation between contact and deal 
+  $curl_assoc = curl_init();
+
+  curl_setopt_array($curl_assoc, array(
+    CURLOPT_URL => "https://api.hubapi.com/crm/v3/associations/deal/contact/batch/create?hapikey=$hapikey",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "POST",
+    CURLOPT_POSTFIELDS => "{\"inputs\":[{\"from\":{\"id\":\"$res_deal_id\"},\"to\":{\"id\":\"$res_contact_id\"},\"type\":\"deal_to_contact\"}]}",
+    CURLOPT_HTTPHEADER => array(
+      "accept: application/json",
+      "content-type: application/json"
+    ),
+  ));
+
+  $response_assoc = curl_exec($curl_assoc);
+
+  curl_close($curl_assoc); 
+  // start Assosiation between contact and deal  
 
   if ($err) {
     return "cURL Error #:" . $err;

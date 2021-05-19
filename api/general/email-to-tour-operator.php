@@ -42,7 +42,8 @@ function wp_email_to_tour_operator($post_id) {
                         Please check tour’s program, dates and prices and if you find anything wrong, please reply to this email providing details on what we should change<br>
                         <br>
                         Best wishes,<br>
-                        Cyclando content team'; 
+                        Cyclando content team';
+        $html_message .= do_shortcode("[route_table_price post_id='$post_id']");
         
         // Send the email using wordpress mail function
         wp_mail( $TO_email, $subject, $html_message, $headers );
