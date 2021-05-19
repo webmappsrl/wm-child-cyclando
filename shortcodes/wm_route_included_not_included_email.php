@@ -27,7 +27,7 @@ function wm_route_included_not_included_email($post_id) {
             <?php
             echo __('Included: ' ,'wm-child-cyclando');?>
         </p>
-        <table class="extra-quotes-table" cellspacing="0" cellpadding="6" border="1" style="color: #636363;border: 1px solid #e5e5e5;vertical-align: middle;padding: 12px;    text-align: left;max-width: 800px;width: 100%;">
+        <table class="extra-quotes-table" cellspacing="0" cellpadding="6" border="1" style="color: #636363;border: 1px solid #e5e5e5;vertical-align: middle;text-align: left;max-width: 800px;width: 100%;">
             <tbody>
 
             <?php
@@ -75,7 +75,7 @@ function wm_route_included_not_included_email($post_id) {
             <?php
             echo __('Not Included: ' ,'wm-child-cyclando');?>
         </p>
-        <table class="extra-quotes-table" cellspacing="0" cellpadding="6" border="1" style="color: #636363;border: 1px solid #e5e5e5;vertical-align: middle;padding: 12px;    text-align: left;max-width: 800px;width: 100%;">
+        <table class="extra-quotes-table" cellspacing="0" cellpadding="6" border="1" style="color: #636363;border: 1px solid #e5e5e5;vertical-align: middle;text-align: left;max-width: 800px;width: 100%;">
             <tbody>
 
             <?php

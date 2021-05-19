@@ -44,7 +44,7 @@ function wp_email_to_tour_operator($post_id) {
                         Best wishes,<br>
                         Cyclando content team';
         $html_message .= '<br>
-                        Tour details:';
+                        <br>Tour details:';
         $html_message .= do_shortcode("[route_table_price_email post_id='$post_id']");
         
         // Send the email using wordpress mail function
