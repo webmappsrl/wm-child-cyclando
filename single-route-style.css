@@ -127,10 +127,6 @@ Text Domain: wm-child-verdenatura
     grid-template-columns: 1fr 1fr;
     grid-row-gap: 30px;
 }
-.cyc-single-route-info-price-wrapper .prezzo-container .cifra{
-    font-size: 26px;
-    font-weight: 800;
-}
 .cyc-single-route-info-price-wrapper a,.cyc-single-route-info-price-wrapper .coming-soon-button {
     grid-column: auto / span 2;
 }
@@ -194,12 +190,6 @@ Text Domain: wm-child-verdenatura
     border: 1px solid var(--color-border-line);
     border-radius: 25px;
     padding: 15px 25px;
-}
-
-.cyc-sr-sm-items h4{
-    color: var(--color-primary-title);
-    text-transform: uppercase;
-    cursor: pointer;
 }
 .cyc-single-route-second-menu-wrapper h4 {
     font-family: var(--font-family-primary);
@@ -529,15 +519,6 @@ body {
         padding: 0px 5px;
         width: 120px;
     }
-    body .webmapp-featured-meta-info .container .prezzo-container .prezzo .meta-bar-txt-light {
-        font-size: 14px;
-        height: 30px;
-        padding: 0 5px 0px 10px;
-    }
-    body .webmapp-featured-meta-info .container .prezzo-container .prezzo .cifra {
-        font-size: 26px;
-        padding-left: 10px;
-    }
     body .first-departure {
         padding: 0 16px 0 0;
     }
@@ -623,16 +604,6 @@ body {
     body .popup-show-prices .prezzo {
         width: 130px;
     }
-    body .webmapp-featured-meta-info .container .prezzo-container .prezzo .meta-bar-txt-light {
-        font-size: 14px;
-    }
-    body .webmapp-featured-meta-info .container .prezzo-container .prezzo .cifra {
-        font-size: 24px;
-        height: 37px;
-    }
-    body .webmapp-featured-meta-info .container .prezzo-container .prezzo .cifra {
-        line-height: 30px;
-    }
     body .first-departure .first-departure-date {
         font-size: 18px;
         font-weight: bold;
@@ -700,9 +671,6 @@ body {
         height: auto;
         padding: 0 50px;
     }
-    body .webmapp-featured-meta-info .container .prezzo-container .prezzo .cifra {
-        font-size: 21px;
-    }
     .first-departure {
         padding: 0 10px 0 0;
     }
@@ -741,12 +709,6 @@ body {
         font-size: 18px;
     }
     .first-departure .meta-bar-txt-light {
-        font-size: 13px;
-    }
-    body .webmapp-featured-meta-info .container .prezzo-container .prezzo .cifra {
-        font-size: 19px;
-    }
-    body .webmapp-featured-meta-info .container .prezzo-container .prezzo .meta-bar-txt-light {
         font-size: 13px;
     }
     body .popup-show-prices .prezzo {
@@ -990,17 +952,6 @@ i {
     height: 100%;
 }
 
-.webmapp-featured-meta-info .container .prezzo-container .prezzo .meta-bar-txt-light {
-    font-size: 16px;
-    height: 28px;
-}
-
-.webmapp-featured-meta-info .container .prezzo-container .prezzo .cifra {
-    text-align: left;
-    font-size: 30px;
-    height: 30px;
-    line-height: 30px;
-}
 
 .webmapp-featured-meta-info .container .show-price-btn i{
     padding: 7px;
@@ -1025,18 +976,6 @@ i {
     margin-right: 5px;
 }
 
-.webmapp-featured-meta-info .container .prezzo-container .prezzo-text {
-    float: left;
-    font-size: 18px;
-    padding-bottom: 10px;
-}
-
-.webmapp-featured-meta-info .container .prezzo-container>span {
-    float: left;
-    font-size: 18px;
-    padding-bottom: 10px;
-}
-
 .webmapp-featured-meta {
     z-index: 100;
     grid-area: meta;
@@ -1044,9 +983,6 @@ i {
 .first-departure .first-departure-date {
     font-size: 24px;
     font-weight: bold;
-}
-.first-departure .first-departure-date spam4{
-    font-weight: 100;
 }
 .first-departure .first-departure-date span{
     font-weight: 100;
@@ -1410,7 +1346,9 @@ div#popup-show-prices>div {
     line-height: 36px;
     letter-spacing: 0.17px;
 }
-
+.cy-prices-modal .cy-modal-content {
+    max-width: 97vw!important;
+}
 #cy-prices-modal .tab-section {
     font-size: 22px;
     color: var(--color-primary);
@@ -2071,6 +2009,24 @@ a:hover.tooltips span {
 }
 .cyc-route-mobile-taxonomy-container {
     background: var(--color-secondary-background);
+}
+.prezzo-container {
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-primary);
+    border-radius: 24px;
+    padding: 10px 5px;
+    max-width: 200px;
+    text-align: center;
+    margin-bottom: 10px!important;
+    cursor: pointer;
+    transition: 300ms all ease;
+    color: white;
+    font-weight: 400;
+    text-transform: initial;
+}
+.prezzo-container:hover {
+    border: 1px solid var(--color-primary-paragraph);
+    background-color: var(--color-primary-paragraph);
 }
 @media screen and (max-width: 767px) {
     .cyc-route-taxonomy-row-wrapper {

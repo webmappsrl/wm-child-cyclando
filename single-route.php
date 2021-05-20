@@ -364,6 +364,15 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
     <div class="cyc-route-taxonomy-tab-row-container">
         <!-- START section taxonomies and difficulty block START  -->
         <div class="cyc-route-mobile-taxonomy-container">
+            <!-- START PRICE popup only for administrators -->
+            <?php if ( current_user_can('administrator') ) { ?>
+                <div id="popup-show-prices" class="cy-btn-contact">
+                    <p class="prezzo-container">
+                        <?php echo __('Dates & prices', 'wm-child-cyclando') ?>
+                    </p>
+                </div>
+            <?php } ?>
+            <!-- END PRICE popup only for administrators -->
             <div class="cyc-route-mobile-taxonomy-container-sticky">
                 <div class="cyc-route-taxonomy-row-wrapper">
                     <div class="cyc-route-mobile-taxonomy-activity-wrapper">
@@ -591,13 +600,28 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
     <!-- END new template END-->
 
     
-    <?php if (current_user_can('administrator') && get_option('webmapp_show_interactive_route_map')) { ?>
-    <div id="wm-wizards-container">
-        <?php
-				echo do_shortcode("[wmWizards conf='']");
-				?>
+    <!-- HTML modal for prices -->
+    <div id="cy-prices-modal" class="cy-prices-modal">
+        <div class="cy-modal-content">
+            <div class="cy-modal-header">
+                <div class="close-button-container"><span class="cy-close">&times;</span></div>
+                <div class="vedi-prezzi">
+                    <h2><?php echo __('See the prices', 'wm-child-cyclando'); ?></h2>
+                </div>
+                <div class="meta-bar wm-activity"><i class="<?php echo $iconimage_activity; ?>"></i></div>
+                <div id="wm-book-quote" class="meta-bar wm-book long-txt">
+                    <p class='meta-bar-txt-bold'><?php echo __('Prices', 'wm-child-cyclando'); ?></p>
+                </div>
+            </div>
+            <div class="cy-modal-body">
+                <?php echo do_shortcode('[route_table_price]'); ?>
+            </div>
+            <!-- <div class="cy-modal-footer">
+                <h3>Modal Footer</h3>
+            </div> -->
+        </div>
     </div>
-    <?php } ?>
+    <!-- END HTML modal for prices -->
 
     <!-- HTML modal for contact in route -->
     <div id="cy-route-contact" class="cy-route-contact">
