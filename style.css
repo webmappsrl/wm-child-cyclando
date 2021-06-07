@@ -1239,6 +1239,12 @@ table.shop_table.woocommerce-checkout-review-order-table tr:not(.order-total) {
 .woocommerce-checkout #order_review_heading{
     display: none!important;
 }
+.checkout-go-back-btn {
+    padding-top: 20px;
+}
+.checkout-go-back-btn a:hover{
+    text-decoration: underline;
+}
 /* Campi nascosti per per il calcolatore Friendly - end */
 html:lang(en) .fee {
     display: none;

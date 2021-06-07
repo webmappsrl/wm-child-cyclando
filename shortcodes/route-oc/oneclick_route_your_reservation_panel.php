@@ -118,6 +118,35 @@ function oneclick_route_your_reservation_panel($atts)
     <script>
         (function($) {
             $(document).ready(function() {
+                // autocomplete form if exists
+                var savedCookies = ocmCheckCookie();
+                console.log('yek');
+                if (savedCookies['billingname']) {
+                    console.log('do');
+                    jQuery('.oc-form-name').val(savedCookies['billingname']);
+                }
+                if (savedCookies['billingsurname']) {
+                    jQuery('.oc-form-surname').val(savedCookies['billingsurname']);
+                }
+                if (savedCookies['billingemail']) {
+                    jQuery('.oc-form-email').val(savedCookies['billingemail']);
+                }			
+				setTimeout(function() {
+					if (savedCookies['billingprivacy'] && savedCookies['billingprivacy'] == 'on' && jQuery('#quotewcprivacy').prop("checked") == false) {
+						// jQuery('#privacy_policy').trigger( "click" );
+						jQuery('#quotewcprivacy').prop('checked', true);
+					}
+					if (savedCookies['billingconditions'] && savedCookies['billingconditions'] == 'on' && jQuery('#quotewcconditions').prop("checked") == false) {
+						// jQuery('#terms_conditions').trigger( "click" );
+						jQuery('#quotewcconditions').prop('checked', true);
+					}
+					if (savedCookies['billingnewsletter'] && savedCookies['billingnewsletter'] == 'on' && jQuery('#quotewcnewsletter').prop("checked") == false) {
+						// jQuery('#newsletter_acceptance').trigger( "click" );
+						jQuery('#quotewcnewsletter').prop('checked', true);
+					}
+            	}, 5000);
+
+
                 // Selezione form e definizione dei metodi di validazione
                 $("#yourReservationPurchaseFrom").validate({
                     invalidHandler: function (e, validator) {
