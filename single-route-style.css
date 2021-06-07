@@ -2673,6 +2673,10 @@ body .ui-datepicker.ui-widget.ui-widget-content {
         top: auto!important;
         left: auto!important;
     }
+    .oc-route-mobile-search-form-container .datepicker-holder h4 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
 }
 @media screen and (min-width: 768px) { 
     /* popups design in desktop mode */
