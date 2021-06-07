@@ -49,8 +49,44 @@ add_action('after_setup_theme', 'vn_theme_setup');
 
 
 
-add_action( 'wp_enqueue_scripts', 'Divi_parent_theme_enqueue_styles' );
-function Divi_parent_theme_enqueue_styles() {
+add_action( 'wp_enqueue_scripts', 'impreza_theme_enqueue_styles' );
+function impreza_theme_enqueue_styles() {
+    //Google ADS tags
+    wp_register_script( 'home', get_template_directory_uri() . '/js/google-ads/home.js', array('jquery'));
+    wp_register_script( 'tour-in-bici', get_template_directory_uri() . '/js/google-ads/tour-in-bici.js', array('jquery'));
+    wp_register_script( 'tour-in-mtb', get_template_directory_uri() . '/js/google-ads/tour-in-mtb.js', array('jquery'));
+    wp_register_script( 'tour-in-bici-da-corsa', get_template_directory_uri() . '/js/google-ads/tour-in-bici-da-corsa.js', array('jquery'));
+    wp_register_script( 'tour-in-e-bike', get_template_directory_uri() . '/js/google-ads/tour-in-e-bike.js', array('jquery'));
+    wp_register_script( 'tour-in-bici-e-barca', get_template_directory_uri() . '/js/google-ads/tour-in-bici-e-barca.js', array('jquery'));
+    wp_register_script( 'pagamento', get_template_directory_uri() . '/js/google-ads/pagamento.js', array('jquery'));
+    if ($_SERVER['SERVER_NAME'] == 'cyclando.com') { 
+        if( is_page() || is_single() ) {
+            global $post;
+            switch($post->post_name)  {
+                case 'home':
+                    wp_enqueue_script('home');
+                    break;
+                case 'tour-in-bici':
+                    wp_enqueue_script('tour-in-bici');
+                    break;
+                case 'tour-in-mtb':
+                    wp_enqueue_script('tour-in-mtb');
+                    break;
+                case 'tour-in-bici-da-corsa':
+                    wp_enqueue_script('tour-in-bici-da-corsa');
+                    break;
+                case 'tour-in-e-bike':
+                    wp_enqueue_script('tour-in-e-bike');
+                    break;
+                case 'tour-in-bici-e-barca':
+                    wp_enqueue_script('tour-in-bici-e-barca');
+                    break;
+                case 'pagamento':
+                    wp_enqueue_script('pagamento');
+                    break;
+            }
+        } 
+    }
     // wp_enqueue_style( 'divi-style', get_template_directory_uri() . '/style.css' );
     wp_enqueue_style('route-single-post-style', get_stylesheet_directory_uri() . '/single-route-style.css');
     wp_enqueue_style('jqeury-ui-tabs-style', 'https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css');
