@@ -59,9 +59,8 @@ function impreza_theme_enqueue_styles() {
     wp_register_script( 'tour-in-e-bike', get_stylesheet_directory_uri() . '/js/google-ads/tour-in-e-bike.js', array('jquery'));
     wp_register_script( 'tour-in-bici-e-barca', get_stylesheet_directory_uri() . '/js/google-ads/tour-in-bici-e-barca.js', array('jquery'));
     wp_register_script( 'pagamento', get_stylesheet_directory_uri() . '/js/google-ads/pagamento.js', array('jquery'));
-    if ($_SERVER['SERVER_NAME'] == 'cyclando.com') { 
+    if ($_SERVER['SERVER_NAME'] == 'cyclando.it') { 
         global $post;
-        global $wpdb_query;
         if( is_front_page()) {
                 wp_enqueue_script('home');
         }
