@@ -52,20 +52,21 @@ add_action('after_setup_theme', 'vn_theme_setup');
 add_action( 'wp_enqueue_scripts', 'impreza_theme_enqueue_styles' );
 function impreza_theme_enqueue_styles() {
     //Google ADS tags
-    wp_register_script( 'home', get_template_directory_uri() . '/js/google-ads/home.js', array('jquery'));
-    wp_register_script( 'tour-in-bici', get_template_directory_uri() . '/js/google-ads/tour-in-bici.js', array('jquery'));
-    wp_register_script( 'tour-in-mtb', get_template_directory_uri() . '/js/google-ads/tour-in-mtb.js', array('jquery'));
-    wp_register_script( 'tour-in-bici-da-corsa', get_template_directory_uri() . '/js/google-ads/tour-in-bici-da-corsa.js', array('jquery'));
-    wp_register_script( 'tour-in-e-bike', get_template_directory_uri() . '/js/google-ads/tour-in-e-bike.js', array('jquery'));
-    wp_register_script( 'tour-in-bici-e-barca', get_template_directory_uri() . '/js/google-ads/tour-in-bici-e-barca.js', array('jquery'));
-    wp_register_script( 'pagamento', get_template_directory_uri() . '/js/google-ads/pagamento.js', array('jquery'));
+    wp_register_script( 'home', get_stylesheet_directory_uri() . '/js/google-ads/home.js', array('jquery'));
+    wp_register_script( 'tour-in-bici', get_stylesheet_directory_uri() . '/js/google-ads/tour-in-bici.js', array('jquery'));
+    wp_register_script( 'tour-in-mtb', get_stylesheet_directory_uri() . '/js/google-ads/tour-in-mtb.js', array('jquery'));
+    wp_register_script( 'tour-in-bici-da-corsa', get_stylesheet_directory_uri() . '/js/google-ads/tour-in-bici-da-corsa.js', array('jquery'));
+    wp_register_script( 'tour-in-e-bike', get_stylesheet_directory_uri() . '/js/google-ads/tour-in-e-bike.js', array('jquery'));
+    wp_register_script( 'tour-in-bici-e-barca', get_stylesheet_directory_uri() . '/js/google-ads/tour-in-bici-e-barca.js', array('jquery'));
+    wp_register_script( 'pagamento', get_stylesheet_directory_uri() . '/js/google-ads/pagamento.js', array('jquery'));
     if ($_SERVER['SERVER_NAME'] == 'cyclando.com') { 
-        if( is_page() || is_single() ) {
-            global $post;
+        global $post;
+        global $wpdb_query;
+        if( is_front_page()) {
+                wp_enqueue_script('home');
+        }
+        if( is_page() ) {
             switch($post->post_name)  {
-                case 'home':
-                    wp_enqueue_script('home');
-                    break;
                 case 'tour-in-bici':
                     wp_enqueue_script('tour-in-bici');
                     break;
