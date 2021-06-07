@@ -2588,6 +2588,10 @@ body .ui-datepicker.ui-widget.ui-widget-content {
     height: 3.4rem;
     cursor: pointer;
 }
+.datepicker-holder h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
 .ui-widget-header {
     border: 0!important;
     background: none!important;
