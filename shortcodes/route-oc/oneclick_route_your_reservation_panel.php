@@ -120,9 +120,7 @@ function oneclick_route_your_reservation_panel($atts)
             $(document).ready(function() {
                 // autocomplete form if exists
                 var savedCookies = ocmCheckCookie();
-                console.log('yek');
                 if (savedCookies['billingname']) {
-                    console.log('do');
                     jQuery('.oc-form-name').val(savedCookies['billingname']);
                 }
                 if (savedCookies['billingsurname']) {

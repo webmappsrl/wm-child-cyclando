@@ -700,7 +700,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 
 
         jQuery(document).ready(function() {
-            calculateDepartureDate();
+            calculateDepartureDate(start_arrayYmd);
         });
         function ajaxUpdatePrice(){
             var savedCookie = ocmCheckCookie();

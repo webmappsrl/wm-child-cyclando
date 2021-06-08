@@ -432,7 +432,7 @@ jQuery(document).ready(function () {
     }
   }
 
-  function calculateDepartureDate(){
+  function calculateDepartureDate(start_arrayYmd){
     var savedCookie = ocmCheckCookie();
     var departureMonth = '';
     if (savedCookie['departureMonth']) {
