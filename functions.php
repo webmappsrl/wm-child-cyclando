@@ -1644,3 +1644,24 @@ add_filter( 'woocommerce_order_button_text', 'wm_checkout_custom_button_text' );
 function wm_checkout_custom_button_text( $button_text ) {
    return __('Pay', 'wm-child-cyclando');
 }
+
+// writes logs into a file in upload directory
+function wm_write_log_file($entry, $mode = 'a', $file = 'wm_child_cyclando') {
+    // Get WordPress uploads directory.
+    $upload_dir = wp_upload_dir();
+    $upload_dir = $upload_dir['basedir'];
+
+    // If the entry is array, json_encode.
+    $entry = json_encode( $entry ); 
+    if (!file_exists($upload_dir.'/hubspot')) {
+        mkdir($upload_dir.'/hubspot', 0777, true);
+    }
+    // Write the log file.
+    $file  = $upload_dir . '/hubspot/' . $file . '.log';
+    $file  = fopen( $file, $mode );
+    $bytes = fwrite( $file, current_time( 'mysql' ) . "\n" ); 
+    $bytes = fwrite( $file, $entry . "\n\n" ); 
+    fclose( $file ); 
+
+    return $bytes;
+}
