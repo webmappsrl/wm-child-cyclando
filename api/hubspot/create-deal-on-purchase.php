@@ -94,7 +94,11 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   $tax_targets_slug = array();
   if ($tax_targets)
     foreach ($tax_targets as $tax_target) {
-      array_push($tax_targets_slug, $tax_target->slug);
+      if ($tax_target->slug == 'con-guida') {
+        array_push($tax_targets_slug, 'guided');
+      } else {
+        array_push($tax_targets_slug, $tax_target->slug);
+      }
     }
   $st_targets = implode(";", $tax_targets_slug);
   $tax_places_to_go_slug = array();
