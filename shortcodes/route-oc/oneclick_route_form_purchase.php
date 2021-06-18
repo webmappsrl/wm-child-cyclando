@@ -43,7 +43,7 @@ function oneclick_route_form_purchase($atts) {
     <?php if ($hotel_product_items || $has_extra): ?>
         <div id="oc-acquista-route" class="">
             <div class="cy-btn-contact">
-                <p><?php echo __('proceed', 'wm-child-cyclando'); ?></p>
+                <p><?php echo __('Proceed', 'wm-child-cyclando'); ?></p>
             </div>
         </div>
     <?php else : ?>
