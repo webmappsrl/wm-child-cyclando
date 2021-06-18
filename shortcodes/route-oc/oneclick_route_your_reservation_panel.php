@@ -94,7 +94,7 @@ function oneclick_route_your_reservation_panel($atts)
     
 
     <div class="oc-route-your-reservation-purchase-form-container">
-        <h4 class="form-lable"><?php echo __('Purchase', 'wm-child-cyclando'); ?></h4>
+        <h4 class="form-lable"><?php echo __('Proceed to purchase', 'wm-child-cyclando'); ?></h4>
         <form action="/quote-wc" method="get" id="yourReservationPurchaseFrom">
             <input type="text" name="quotewcname" class="form-input oc-form-name" placeholder="<?php echo __('Name', 'wm-child-cyclando'); ?>">
             <input type="text" name="quotewcsurname" class="form-input oc-form-surname" placeholder="<?php echo __('Surname', 'wm-child-cyclando'); ?>">
