@@ -75,6 +75,9 @@ function oneclick_route_form_purchase($atts) {
                 <div class="oc-route-mobile-plan-price-container">
                     <div class="cifraajax-title"><?= __('Total', 'wm-child-cyclando') ?></div><div class="cifraajax"></div>
                 </div>
+                <div class="oc-route-mobile-plan-exclusive-online">
+                    <div class="exclusive-online-title"><?= __('Online Exclusive!', 'wm-child-cyclando') ?></div>
+                </div>
                 <div id="oc-proceed-done-btn" class="oc-proceed-done-btn"><?= __('Proceed','wm-child-cyclando')?></div>
             </div>
         </div>

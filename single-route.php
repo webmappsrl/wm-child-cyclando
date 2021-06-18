@@ -535,9 +535,9 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                                         </p>
                                     </div>
                                     <div class="cyc-single-route-cta-buttons">
-                                        <div id="cy-contact-in-basso" class="">
+                                        <div id="cy-contact-in-basso" class="cy-contact-in-basso">
                                             <div class="cy-btn-contact">
-                                                <p><?php echo __('Contact us', 'wm-child-cyclando'); ?></p>
+                                                <p><?php echo __('Ask a question', 'wm-child-cyclando'); ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -913,7 +913,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             // Get contact elements
             const contactModal = document.querySelector('#cy-route-contact');
             const contactModalBtnAlto = document.querySelectorAll('#cy-contact-in-alto');
-            const contactModalBtnBasso = document.querySelectorAll('#cy-contact-in-basso');
+            const contactModalBtnBasso = document.querySelectorAll('.cy-contact-in-basso');
             const contactModalBtnBassoMobile = document.querySelectorAll('#cy-contact-in-basso-mobile');
             const contactModalBtn = document.querySelectorAll('#cy-contact-modal');
             const closeContactBtn = document.querySelector('.cy-close-contact');

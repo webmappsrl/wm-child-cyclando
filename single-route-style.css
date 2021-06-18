@@ -1940,9 +1940,6 @@ a:hover.tooltips span {
         display: block!important;
         background: white;
     }
-    .cyc-route-taxonomy-tab-row-container .oc-route-mobile-plan-price-container {
-        padding-bottom: 30px;
-    }
     .cyc-route-taxonomy-tab-row-container .oc-route-mobile-search-form-container {
         padding: 40px;
         margin: 1.5rem 1.5rem 7px;
@@ -1961,6 +1958,7 @@ a:hover.tooltips span {
     .cyc-route-taxonomy-tab-row-container .oc-route-mobile-plan-summary-container {
         padding-top: 20px;
         margin-top: 15px;
+        padding-bottom: 20px;
     }
     .cyc-route-taxonomy-tab-row-container .oc-mobile-included-not-included-container {
         box-shadow: 0 3px 6px 0 #dadada;
@@ -2130,7 +2128,7 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     margin: 1.5rem;
     font-size: 16px;
     display: grid;
-    grid-row-gap: 15px;
+    grid-row-gap: 5px;
 }
 .oc-route-mobile-your-reservation-container {
     display: none;
@@ -2157,12 +2155,13 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     text-align: right;
 }
 .oc-route-your-reservation-modify p {
-    font-size: 12px;
+    font-size: 14px;
     cursor: pointer;
+    font-weight: 600;
 }
 .oc-route-your-reservation-modify span {
     border-bottom: 1px solid;
-    padding: 0 5px;
+    padding: 0;
 }
 .oc-route-your-reservation-purchase-form-container .form-submit {
     border: 1px solid var(--color-secondary);
@@ -2172,6 +2171,11 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     border-radius: 30px;
     margin-top: 13px;
     margin-bottom: 10px;
+}
+@media screen and (min-width:768px) {
+    .oc-route-your-reservation-purchase-form-container .form-submit {
+        max-width:215px;
+    }
 }
 body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body .oc-route-your-reservation-purchase-form-container .form-submit:focus {
     border: 1px solid var(--color-secondary-hover);
@@ -2268,6 +2272,15 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
 .w-tabs-section {
     width: 100%;
 }
+.oc-route-mobile-plan-exclusive-online {
+    padding-bottom: 30px;
+}
+.oc-route-mobile-plan-exclusive-online .exclusive-online-title{
+    text-align: right;
+    font-style: italic;
+    font-size: 14px;
+    color: #F16E08;
+}
 .oc-route-mobile-plan-summary-container h4 {
     font-size: 18px;
     margin: 0;
@@ -2279,6 +2292,11 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
 .oc-route-mobile-plan-summary-container {
     border-top: 1px solid #a7a7a7;
     padding-top: 15px;
+}
+@media screen and (max-width: 767px) { 
+    .oc-route-mobile-plan-summary-container {
+        margin-top: 15px;
+    }
 }
 .oc-route-mobile-plan-price-container {
     display: flex;
@@ -2298,6 +2316,7 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
 .cifraajax {
     text-align: right;
     font-size: 24px;
+    font-weight: 600;
 }
 .cifraajax-title {
     font-size: 18px;
@@ -2324,6 +2343,28 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
 }
 .oc-route-mobile-search-form-container .cyc-single-route-cta-buttons .cy-btn-contact:hover {
     background-color: var(--color-secondary-hover);
+}
+.cyc-single-route-contact-button-container .label{
+    margin: 0;
+    font-size: 14px;
+    line-height: 16px;
+}
+.cy-contact-in-plan-tab {
+    width: fit-content;
+}
+#cy-contact-in-plan-tab p {
+    font-size: 15px;
+    color: var(--color-primary);
+    font-weight: bold;
+    line-height: 16px;
+}
+#cy-contact-in-plan-tab p:hover {
+    color: var(--color-primary-paragraph);
+    cursor: pointer;
+}
+.cyc-single-route-contact-button-container {
+    display: block;
+    margin-top: 10px;
 }
 .ocm-extras-proceed-summary-container {
     position: absolute;
@@ -2588,9 +2629,18 @@ body .ui-datepicker.ui-widget.ui-widget-content {
     height: 3.4rem;
     cursor: pointer;
 }
-.datepicker-holder h4 {
+h4.form-lable {
     font-size: 20px;
     margin-bottom: 10px;
+    font-weight: 600;
+    color: #F16E08;
+}
+.oc-route-mobile-search-form-container .datepicker-holder {
+    padding-bottom: 10px;
+}
+.oc-route-mobile-search-form-label-p {
+    margin: 0;
+    font-size: 14px;
 }
 .ui-widget-header {
     border: 0!important;

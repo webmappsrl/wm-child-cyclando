@@ -9,7 +9,6 @@ function oneclick_route_form_datepicker() {
     ?>
     
     <div class="datepicker-holder">
-        <h4><?php echo __('Select the departure date', 'wm-child-cyclando').":"; ?></h4>
         <input type="text" id="datepicker" >
     </div> 
     <script>

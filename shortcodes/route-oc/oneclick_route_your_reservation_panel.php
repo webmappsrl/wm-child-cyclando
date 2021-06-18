@@ -30,7 +30,7 @@ function oneclick_route_your_reservation_panel($atts)
 ?>
     <div class="oc-route-your-reservation-row oc-route-your-reservation-header">
         <div class="oc-route-your-reservation-column-title oc-route-your-reservation-title">
-            <h4><?php echo __('Your reservation', 'wm-child-cyclando'); ?></h4>
+            <h4 class="form-lable"><?php echo __('Your reservation', 'wm-child-cyclando'); ?></h4>
         </div>
         <div class="oc-route-your-reservation-column-info oc-route-your-reservation-modify">
             <p id="oc-route-your-reservation-modify"><span><?php echo __('Modify', 'wm-child-cyclando'); ?></span></p>
@@ -88,10 +88,13 @@ function oneclick_route_your_reservation_panel($atts)
         <div class="cifraajax-title"><?= __('Total', 'wm-child-cyclando') ?></div>
         <div class="cifraajax"></div>
     </div>
+    <div class="oc-route-mobile-plan-exclusive-online">
+        <div class="exclusive-online-title"><?= __('Online Exclusive!', 'wm-child-cyclando') ?></div>
+    </div>
     
 
     <div class="oc-route-your-reservation-purchase-form-container">
-        <h3 class="oc-route-your-reservation-purchase-form-title"><?php echo __('Purchase', 'wm-child-cyclando'); ?></h3>
+        <h4 class="form-lable"><?php echo __('Purchase', 'wm-child-cyclando'); ?></h4>
         <form action="/quote-wc" method="get" id="yourReservationPurchaseFrom">
             <input type="text" name="quotewcname" class="form-input oc-form-name" placeholder="<?php echo __('Name', 'wm-child-cyclando'); ?>">
             <input type="text" name="quotewcsurname" class="form-input oc-form-surname" placeholder="<?php echo __('Surname', 'wm-child-cyclando'); ?>">

@@ -60,10 +60,13 @@ function route_mobile_tab_plan($atts) {
         <?php if ($coming_soon) :?>
             <h4><?php echo __('On request','wm-child-cyclando'); ?></h4>
         <?php else:?>
+            <h4 class="form-lable"><?php echo __('Calculate your quote', 'wm-child-cyclando'); ?></h4>
+            <p class="oc-route-mobile-search-form-label-p"><?php echo __('Select the departure date', 'wm-child-cyclando'); ?></p>
             <?= do_shortcode("[oneclick_route_form_datepicker]")?>
             <?php if ($has_category) { ?>
                 <?= do_shortcode('[oneclick_route_form_category post_id="'.$post_id.'" first_departure="'.$first_departure.'"]')?>
             <?php } ?>
+            <p class="oc-route-mobile-search-form-label-p"><?php echo __('Select the number of participants and bikes', 'wm-child-cyclando'); ?></p>
             <div class="oc-route-mobile-search-form-asbb-wrapper">
                 <?= do_shortcode("[oneclick_search_form_participants route='true' has_kids='$has_kids' min_kid_age='$min_kid_age']")?>
             <?php if ($has_bike || $has_ebike) { ?>
@@ -79,13 +82,17 @@ function route_mobile_tab_plan($atts) {
             <div class="oc-route-mobile-plan-price-container">
                 <div class="cifraajax-title"><?= __('Total', 'wm-child-cyclando') ?></div><div class="cifraajax"></div>
             </div>
+            <div class="oc-route-mobile-plan-exclusive-online">
+                <div class="exclusive-online-title"><?= __('Online Exclusive!', 'wm-child-cyclando') ?></div>
+            </div>
             <?= do_shortcode("[oneclick_route_form_purchase route='true' hotel_product_items='$hotel_product_items' first_departure='$first_departure']")?>
         <?php endif;?>
         
-        <div class="cyc-single-route-cta-buttons">
-            <div id="cy-contact-in-basso" class="">
-                <div class="cy-btn-contact">
-                    <p><?php echo __('Contact us', 'wm-child-cyclando'); ?></p>
+        <div class="cyc-single-route-contact-button-container">
+            <p class="label"><?php echo __('Do you have doubts about your quote?', 'wm-child-cyclando'); ?></p>
+            <div id="cy-contact-in-plan-tab" class="cy-contact-in-basso cy-contact-in-plan-tab">
+                <div class="cy-btn-plan-contact">
+                    <p><?php echo __('Contact us!', 'wm-child-cyclando'); ?></p>
                 </div>
             </div>
         </div>
