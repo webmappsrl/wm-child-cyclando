@@ -172,6 +172,8 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
     echo "cURL Error #:" . $err_contact_search;
   } else {
     wm_write_log_file($response_search,'a+','contactHS_success_search');
+    $search_log = $billing_email . '->' . $CURLOPT_POSTFIELDS_ARRAY;
+    wm_write_log_file($search_log,'a+','contactHS_success_search_email_with_properties');
     if ($response_total && $response_total !== 0 ) {
       $res_contact_id = $response_search->results[0]->id;
 
