@@ -258,7 +258,7 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
           \"firstname\":\"$billing_first_name\",
           \"lastname\":\"$billing_last_name\",
           \"app_user_iscritto_newsletter\":\"$newsletter\",
-          \"lifecycle_stage\":\"opportunity\",
+          \"lifecyclestage\":\"opportunity\",
           \"tour_operator\":\"Privati\",
           \"target\":\"$st_targets\",
           \"activities\":\"$st_activities\",
