@@ -177,11 +177,7 @@ jQuery(document).ready(function () {
     $filter.keyup(function () {
       // Retrieve the input field text
       filter = jQuery(this).val();
-      // newTemp = filter.replace(/’/g, "'");
-      // newTemp = newTemp.replace(/‘/g, "'");
-      // jQuery(this).val(jQuery(this).val(newTemp));
       jQuery(this).val(jQuery(this).val().replace(/[’]/g, "'"));
-      console.log(filter)
       FWP.parse_facets();
       FWP.set_hash();
     });
