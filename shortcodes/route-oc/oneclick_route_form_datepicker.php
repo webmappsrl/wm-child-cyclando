@@ -18,7 +18,7 @@ function oneclick_route_form_datepicker() {
                 var savedCookie = ocmCheckCookie();
                 if (savedCookie['departureDate']) {
                     var Cookiedate = savedCookie['departureDate'].split('-');
-                    if (document.documentElement.lang == 'it_IT') {
+                    if (document.documentElement.lang == 'it-IT') {
                         var monthNames = {'01':'Gennaio','02':'Febbraio','03':'Marzo','04':'Aprile','05':'Maggio','06':'Giugno','07':'Luglio','08':'august','09':'Settembre','10':'Ottobre','11':'Novembre','12':'Dicembre'};
                     } else {
                         var monthNames = {'01':'January','02':'February','03':'March','04':'April','05':'May','06':'June','07':'July','08':'August','09':'September','10':'October','11':'November','12':'December'};
