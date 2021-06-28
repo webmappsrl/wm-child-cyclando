@@ -27,6 +27,7 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
     $deposit_amount = str_replace(',', '.', $deposit_amount);
   }
   $single_room = '';
+  $hotel_category = '';
   $extra = array();
   $supplement = array();
   if ($cookies['supplement']) {
@@ -48,6 +49,9 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   }
   if ($cookies['electric']) {
     $extra += array('electric' => $cookies['electric']);
+  }
+  if ($cookies['category']) {
+    $hotel_category = $cookies['category'];
   }
   $extra = http_build_query($extra,'',',');
   $supplement = http_build_query($supplement,'',',');
@@ -125,7 +129,8 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
     \"camere_singole\": \"$single_room\",
     \"extra\": \"$extra\",
     \"supplemento\": \"$supplement\",
-    \"eta_bambini\": \"$kids_age\"
+    \"eta_bambini\": \"$kids_age\",
+    \"categoria_hotel\": \"$hotel_category\"
   }}";
 
   // Start creating contact on hub spot
