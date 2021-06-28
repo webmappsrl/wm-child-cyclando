@@ -67,7 +67,7 @@ function oneclick_route_form_datepicker() {
                     dayNamesMin: ['D','L','M','M','G','V','S'], // set more short days names
                 };
 
-                if (document.documentElement.lang == 'it_IT') {
+                if (document.documentElement.lang == 'it-IT') {
                     $.datepicker.setDefaults($.datepicker.regional['it']);
                 }
                 $( "#datepicker" ).datepicker({
