@@ -505,7 +505,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                     <div class="vc_column-inner">
                         <div class="wpb_wrapper">
                             <div class="wpb_text_column">
-                                <div class="wpb_wrapper cyc-single-route-tour-operator-wrapper">
+                                <div ondragstart="return false;" class="wpb_wrapper noselect cyc-single-route-tour-operator-wrapper">
                                     <?php
 										echo "<h4><i class='wm-icon-cyc_bici'></i> " .__('Tour operator', 'wm-child-cyclando'). "</h4>" . "<p>" . $touroperator . "</p>";
 										?>
@@ -1038,6 +1038,15 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         });
         jQuery(document).ready(function(){
             jQuery('#cyc-single-route-mobile-gallery-button').click(function(){jQuery('.rsFullscreenBtn').trigger('click')})
+
+            // function to disable right click on tour operator section
+            jQuery(".cyc-single-route-tour-operator-wrapper").on("contextmenu",function(e){
+                return false;
+            });
+            // function disables Copy and Paste and drag
+            jQuery(".cyc-single-route-tour-operator-wrapper").bind('cut copy paste', function (e) {
+                e.preventDefault();
+            });
         });
 
             

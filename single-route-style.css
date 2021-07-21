@@ -2469,6 +2469,15 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
     transform: rotate(45deg);
 }
 /* style tour operator single route mobile */
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
 .oc-single-route-mobile-tour-operator-container {
     background:  var(--color-secondary-background);
 }
