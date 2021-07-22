@@ -51,44 +51,8 @@ add_action('after_setup_theme', 'vn_theme_setup');
 
 add_action( 'wp_enqueue_scripts', 'impreza_theme_enqueue_styles' );
 function impreza_theme_enqueue_styles() {
-    //Google ADS tags
-    wp_register_script( 'home', get_stylesheet_directory_uri() . '/js/google-ads/home.js', array('jquery'));
-    wp_register_script( 'tour-in-bici', get_stylesheet_directory_uri() . '/js/google-ads/tour-in-bici.js', array('jquery'));
-    wp_register_script( 'tour-in-mtb', get_stylesheet_directory_uri() . '/js/google-ads/tour-in-mtb.js', array('jquery'));
-    wp_register_script( 'tour-in-bici-da-corsa', get_stylesheet_directory_uri() . '/js/google-ads/tour-in-bici-da-corsa.js', array('jquery'));
-    wp_register_script( 'tour-in-e-bike', get_stylesheet_directory_uri() . '/js/google-ads/tour-in-e-bike.js', array('jquery'));
-    wp_register_script( 'tour-in-bici-e-barca', get_stylesheet_directory_uri() . '/js/google-ads/tour-in-bici-e-barca.js', array('jquery'));
-    wp_register_script( 'pagamento', get_stylesheet_directory_uri() . '/js/google-ads/pagamento.js', array('jquery'));
-    if ($_SERVER['SERVER_NAME'] == 'test.cyclando.com') { 
-        global $post;
-        if( is_front_page()) {
-                wp_enqueue_script('home');
-        }
-        if( is_page() ) {
-            switch($post->post_name)  {
-                case 'tour-in-bici':
-                    wp_enqueue_script('tour-in-bici');
-                    break;
-                case 'tour-in-mtb':
-                    wp_enqueue_script('tour-in-mtb');
-                    break;
-                case 'tour-in-bici-da-corsa':
-                    wp_enqueue_script('tour-in-bici-da-corsa');
-                    break;
-                case 'tour-in-e-bike':
-                    wp_enqueue_script('tour-in-e-bike');
-                    break;
-                case 'tour-in-bici-e-barca':
-                    wp_enqueue_script('tour-in-bici-e-barca');
-                    break;
-                case 'pagamento':
-                    wp_enqueue_script('pagamento');
-                    break;
-            }
-        } 
-    }
+    
     // wp_enqueue_style( 'divi-style', get_template_directory_uri() . '/style.css' );
-    wp_enqueue_style('route-single-post-style', get_stylesheet_directory_uri() . '/single-route-style.css');
     wp_enqueue_style('jqeury-ui-tabs-style', 'https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css');
     wp_enqueue_script('jquery-ui-core');
     wp_enqueue_script('jquery-ui-tabs');
@@ -101,6 +65,7 @@ function impreza_theme_enqueue_styles() {
     wp_enqueue_script( 'hubspot_contact_form_IE8');
     wp_script_add_data( 'hubspot_contact_form_IE8', 'conditional', 'lt IE 8' );
     if (is_singular('route')){
+        wp_enqueue_style('route-single-post-style', get_stylesheet_directory_uri() . '/single-route-style.css');
         wp_enqueue_script('jQueryValidate', 'https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.2/jquery.validate.min.js', array('jquery'));
     }
 }
@@ -179,168 +144,6 @@ function custom_ccchildpage_inner_template($template) {
 }
 add_filter( 'ccchildpages_inner_template' ,'custom_ccchildpage_inner_template' );
 
-
-
-
-// /**
-//  * exclude the test page from search
-//  */
-// // if ( !$query->is_admin ) {
-// //     $query->set('post__not_in', array(49693) ); // id of page or post
-// // }  && $query->is_main_query()
-// function fb_search_filter( $query ) {
-    
-//     if ( is_post_type_archive('route') && $query->is_main_query()) {
-//         if ( isset($_GET['wm_route_code']) ) {
-
-//             global $wpdb;
-//             $get_value = $_GET['wm_route_code'];
-            
-//             $result = $wpdb->get_results("SELECT DISTINCT ID FROM vn_posts AS posts INNER JOIN vn_postmeta AS postmeta ON posts.ID = postmeta.post_id AND ( posts.post_title LIKE '%$get_value%' OR ( postmeta.meta_value = '$get_value' AND postmeta.meta_key = 'n7webmapp_route_cod' ) ) WHERE posts.post_type = 'route'", ARRAY_A);
-            
-//             if ( !empty($result )) {
-//                 $result = array_map( function ($e){
-//                     return isset($e['ID']) ? $e['ID'] : 0 ;
-//                 }, $result);
-//                 $query->set( 'post__in', $result );
-//             }
-    
-//         }
-//         $query->set('order_by', 'meta_value' );
-//         $query->set('meta_key', 'vn_ordine' );
-//         $query->set('order', 'DESC' );
-//     }
-// }
-// add_action( 'pre_get_posts', 'fb_search_filter' );
-
-
-// //change query args of wpfacet template in home page dove vuoi andare adding the route_code 
-// add_filter( 'facetwp_indexer_row_data', function( $rows, $params ) {
-//     if ( 'search_route' == $params['facet']['name'] ) {
-//         $rows = [];
-//         // $term_id = (int) $params['defaults']['term_id'];
-//         // $term = get_term( $term_id, 'where' );
-//         $terms = get_terms( array( 
-//             'taxonomy' => 'where',
-//             'hide_empty' => true
-//         ) );
-//         foreach ( $terms as $term ) {
-//             $name = $term->name;
-//             $new_row = $params['defaults'];
-//             $new_row['facet_value'] = $term->slug; ; // value gets the post id
-//             $new_row['facet_display_value'] = $term->name;; // label
-//             $rows[] = $new_row;
-//         }
-
-//     }
-//     return $rows;
-// }, 10, 2 );
-
-
-// /**
-//  * exclude the taxonomy Bici e barca from tipologia
-//  */
-// add_filter( 'facetwp_index_row', function( $params, $class ) {
-//     if ( 'tipologia' == $params['facet_name'] ) {
-//         print_r($params);
-//         $excluded_terms = array( 'in-bici-e-barca' );
-//         if ( in_array( $params['facet_display_value'], $excluded_terms ) ) {
-//             return false;
-//         }
-//     }
-//     return $params;
-// }, 10, 2 );
-
-
-
-/**
- * Material Icons
- */
-// //add_action( 'wp_head' , 'aggiungi_material_icons' );
-// function aggiungi_material_icons(){
-//     // echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
-//     //load jquery ui theme css
-//     echo '<link href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" rel="stylesheet">';
-//     echo '<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>';
-// }
-
-
-/**
- * Search bar e map search
- */
-
-//  add_action ('et_header_top', 'vn_search_bar');
-// function vn_search_bar() {
-//     $lang = $_GET['lang'];
-//     echo '<div id="vn-search-bar-header"><form id="searchform" action="/route/"  method="get">
-// 	<input type="search" placeholder="' . __( 'Search &hellip;','wm-child-verdenatura' ) . '" value="" name="wm_route_code"><input type="hidden" name="lang" value="'.$lang.'"/>
-// 	<button id="vn-search-lente" type="submit"><i class="fa fa-search"></i></button>
-//     </form></div>';
-
-// }
-
-
-// add_action( 'et_header_top', 'vn_search_map' );
-// function vn_search_map() {
-//     echo '<div id="vn-search-map"><i class="material-icons">language</i></div>';
-// }
-
-
-// function my_search_form( $form ) {
-//     $form = '<form role="search" method="get" id="searchform" class="searchform" action="' . home_url( 'http://vnpreprod.webmapp.it/route/?fwp_search_box' ) . '" >
-//     <div><label class="screen-reader-text" for="s">' . __( 'Cerca:' ) . '</label>
-//     <input type="text" value="' . get_search_query() . '" name="s" id="s" />
-//     <input type="submit" id="searchsubmit" value="'. esc_attr__( 'Cerca' ) .'" />
-//     </div>
-//     </form>';
-
-//     return $form;
-// }
-
-// add_filter( 'get_search_form', 'my_search_form' );
-
-
-
-/**
- * Comments in single route
- */
-
-// add_filter( 'comment_text' , 'filtra_commento' , 10 , 3 );
-
-// function filtra_commento( $comment_text, $comment , $args )
-// {
-//     $date_html = '';
-//     $date = get_field('wm_comment_journey_date', $comment);
-//     if ( $date )
-//     {
-//         $date_html = "<div class='journey-comment'>" . __('Journey from' , 'wm_comment_journey_date' ) . " $date</div>";
-//     }
-
-//     $gallery = '';
-
-//     $vn_gallery = get_field ('wm_comment_gallery' , $comment );
-//     if ( is_array( $vn_gallery) && ! empty( $vn_gallery ) )
-//     {
-//         $vn_gallery_ids =  array_map(
-//             function ($i) {
-//                 return $i ['ID'];
-//             },
-//             $vn_gallery );
-
-//         $gallery = "<div class='wm-comment-images'>";
-//         foreach ( $vn_gallery_ids  as $id)
-//         {
-//             $gallery .= '<span class="wm-comment-image">';
-//             $gallery .= wp_get_attachment_image( $id, 'thumbnail');
-//             $gallery .= '</span>';
-//         }
-//         $gallery = "</div>";
-
-//     }
-
-
-//     return "$date_html<div class='my_comment_text'>$comment_text</div>$gallery";
-// }
 
 // remove comments in Barche custom post type
 add_action( 'init', 'remove_custom_post_comment' );
@@ -680,37 +483,7 @@ add_filter( 'facetwp_facet_render_args', function( $args ) {
     return $args;
 });
 
-// /**
-//  * Filter the upload size limit for non-administrators.
-//  *
-//  * @param string $size Upload size limit (in bytes).
-//  * @return int (maybe) Filtered size limit.
-//  */
-// function filter_site_upload_size_limit( $size ) {
-//     // Set the upload size limit to 60 MB for users lacking the 'manage_options' capability.
-//     // if ( ! current_user_can( 'manage_options' ) ) {
-//         // 60 MB.
-//         $size = 60 * 1024 * 1024;
-//     // }
-//     return $size;
-// }
-// add_filter( 'upload_size_limit', 'filter_site_upload_size_limit', 20 );
 
-
-// validation on codice fiscale for a correct format
-// add_action( 'woocommerce_after_checkout_validation', 'misha_validate_fname_lname', 10, 2);
- 
-// function misha_validate_fname_lname( $fields, $errors ){
- 
-//     // if ( preg_match( '/\\d/', $fields[ 'billing_last_name' ] )  ){
-//     //     $errors->add( 'validation', 'Your first or last name contains a number. Really?' );
-//     // }
-//     // if ($fields['billing_codice_fiscale'] == 'privato') {
-//         if ( preg_match( '/[A-Za-z]{6}[0-9LMNPQRSTUV]{2}[A-Za-z]{1}[0-9LMNPQRSTUV]{2}[A-Za-z]{1}[0-9LMNPQRSTUV]{3}[A-Za-z]{1}/', $fields[ 'billing_codice_fiscale' ] ) !== 1 ){
-//             $errors->add( 'validation', __('Your Tax code is incorrect!','wm-child-verdnatura') );
-//         }
-//     // }
-// }
 
 
 function wm_weekDayToWeekNumber( $days_of_week ){
