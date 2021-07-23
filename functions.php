@@ -57,9 +57,10 @@ function impreza_theme_enqueue_styles() {
     wp_enqueue_script('jquery-ui-core');
     wp_enqueue_script('jquery-ui-tabs');
     wp_enqueue_script( 'general_javascript', get_stylesheet_directory_uri() . '/js/general.js', array ('jquery') );
-    wp_enqueue_script( 'hightlight', get_stylesheet_directory_uri() . '/js/home_highlight.js');
+    // wp_enqueue_script( 'hightlight', get_stylesheet_directory_uri() . '/js/home_highlight.js');
     wp_enqueue_script('hubspot_contact_form', '//js.hsforms.net/forms/v2.js', array('jquery'));
-    wp_enqueue_script('datepicker', 'https://code.jquery.com/ui/1.12.1/jquery-ui.js', array('jquery'));
+    // wp_enqueue_script('datepicker', 'https://code.jquery.com/ui/1.12.1/jquery-ui.js', array('jquery'));
+    wp_enqueue_script('datepicker', 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', array('jquery'));
     //add hubspot to Browser IE 8
     wp_register_script('hubspot_contact_form_IE8', '//js.hsforms.net/forms/v2-legacy.js', array('jquery'));
     wp_enqueue_script( 'hubspot_contact_form_IE8');
