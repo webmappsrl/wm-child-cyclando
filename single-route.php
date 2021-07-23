@@ -8,8 +8,7 @@ $us_layout = US_Layout::instance();
 
 get_header();
 
-wp_enqueue_style('route-single-post-style', get_stylesheet_directory_uri() . '/single-route-style.css');
-wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_uri() . '/jquery/child-main.js', array('jquery'));
+
 ?>
 <main id="page-content" class="l-main cyc-single-route-main-container"
     <?php echo (us_get_option('schema_markup')) ? ' itemprop="mainContentOfPage"' : ''; ?>>

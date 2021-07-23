@@ -2552,6 +2552,7 @@ body .oc-single-route-mobile-cta-container .cy-btn-contact:hover p{
 .oc-single-route-mobile-faq-container .oc_faq_heading  {
     font-size: 18px;
     letter-spacing: 0;
+    margin-bottom: 20px;
 }
 .oc-single-route-mobile-faq-container .oc-faq-accordion-column {
     margin: 0!important;
