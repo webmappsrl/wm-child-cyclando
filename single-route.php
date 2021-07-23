@@ -345,7 +345,7 @@ get_header();
 
                             <div class="cyc-route-mobile-introduction-icons">
                                 <p id="cyc-single-route-mobile-gallery-button" class="cyc-single-route-monarch-share cyc-single-route-gallery-btn">
-                                    <i class="wm-icon-cyc_gallery"></i>
+                                    <i class="fal fa-images"></i>
                                 </p>
                                 <p id="cyc-single-route-monarch-share-button" class="cyc-single-route-monarch-share">
                                     <i class="material-icons">ios_share</i>
