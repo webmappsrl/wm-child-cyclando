@@ -2849,6 +2849,12 @@ h4.form-lable {
         color: #555!important;
         box-shadow: 0 0 0;
     }
+    .single-route .l-subheader.at_middle .menu-language-dropdown-wpml .w-dropdown-item-title {
+        line-height: inherit;
+    }
+    .single-route .l-subheader.at_middle .menu-language-dropdown-wpml .w-dropdown-current .w-dropdown-item:after{
+        line-height: inherit;
+    }
     .single-route .l-subheader.at_middle .menu-language-dropdown-wpml .w-dropdown-list a{
         background: white;
         line-height: 30px;
