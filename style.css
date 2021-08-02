@@ -1883,6 +1883,9 @@ h4.tripSearch {
 .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .webmapp_post_image {
     height: 300px !important;
     border-radius: 20px 0 0 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .webmapp_post_image .webmapp_post_meta {
     height: 100%;
