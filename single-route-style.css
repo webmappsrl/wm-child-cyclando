@@ -2163,7 +2163,7 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     border-bottom: 1px solid;
     padding: 0;
 }
-.oc-route-your-reservation-purchase-form-container .form-submit {
+.oc-route-your-reservation-purchase-form-container .form-submit,.oc-route-your-reservation-purchase-form-container .form-submit:disabled,.oc-route-your-reservation-purchase-form-container .form-submit[disabled] {
     border: 1px solid var(--color-secondary);
     background-color: var(--color-secondary);
     width: 100%;
@@ -2171,6 +2171,10 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     border-radius: 30px;
     margin-top: 13px;
     margin-bottom: 10px;
+}
+.oc-route-your-reservation-purchase-form-container .form-submit:disabled:hover, .oc-route-your-reservation-purchase-form-container .form-submit[disabled]:hover {
+    background-color: var(--color-secondary)!important;
+    color: white!important;
 }
 @media screen and (min-width:768px) {
     .oc-route-your-reservation-purchase-form-container .form-submit {
@@ -2787,10 +2791,17 @@ h4.form-lable {
         background: url(/wp-content/themes/wm-child-cyclando/assets/images/arrow-up.png) 95% / 2% no-repeat #fff!important;
     }
 }
-.cifraajax .w-iconbox-icon i {
+.cifraajax .w-iconbox-icon i,.submit-loader .w-iconbox-icon i {
     padding: 0!important;
     color: var(--color-tab-background);
     font-size: 20px;
+}
+.submit-loader {
+    display: inline-block;
+    margin-top: 13px;
+    margin-bottom: 10px;
+    line-height: 43px;
+    margin-left: 30px;
 }
 /* route form category selector */
 .oc-route-select-holder select {

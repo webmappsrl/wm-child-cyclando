@@ -116,6 +116,7 @@ function oneclick_route_your_reservation_panel($atts)
                 <span></span>
             </div>
             <input type="submit" value="<?= __("Pay", 'wm-child-cyclando') ?>" class="form-submit">
+            <div class="submit-loader"></div>
         </form>
     </div>
     <script>
@@ -211,6 +212,8 @@ function oneclick_route_your_reservation_panel($atts)
                         savedCookies['routePermalink'] = window.location.href;
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookies), { expires: 7, path: '/' });
                         ajaxCreatHubspotDeal(form);
+                        $(".oc-route-your-reservation-purchase-form-container .form-submit").prop('disabled', true);
+                        $(".submit-loader").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
                     }
                 });
                 // hide and show the plan Tab
