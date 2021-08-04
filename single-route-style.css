@@ -2130,6 +2130,11 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     display: grid;
     grid-row-gap: 5px;
 }
+.oc-route-mobile-search-form-container h4{
+    font-weight: 600;
+    font-size: 20px;
+    color: #F16E08;
+}
 .oc-route-mobile-your-reservation-container {
     display: none;
     padding: 15px;
