@@ -37,7 +37,7 @@ if ($when) {
                         <div class="vc_col-sm-12 wpb_column vc_column_container oc-searchpage-info-container-mobile">
                             <div class="vc_column-inner">
                                 <div class="wpb_wrapper">
-                                    <div id="searchpage-form-holder-mobile" class="searchpage-form-holder-mobile">
+                                    <div id="searchpage-form-holder-mobile" class="searchpage-form-holder-mobile" style="position: inherit;margin: auto;">
                                         <div class="search-form-holder-mobile-where"><i class="fal fa-map-marker-alt"></i><div class="searchpage-form-mobile-where-text"><?= $where_txt ?></div></div>
                                         <div class="search-form-holder-mobile-when"><i class="wm-icon-cyc_weekend"></i><div class="searchpage-form-mobile-when-text"><?= $when_txt ?></div></div>
                                         <div class="search-form-holder-mobile-participants"><i class="fal fa-user-friends"></i><div class="searchpage-form-mobile-participants-text"></div></div>
@@ -60,11 +60,12 @@ if ($when) {
                         <div class="searchpage-form-close-button-container"><span class="searchpage-form-close">&times;</span></div>
                     </div>
                     <div class="searchpage-form-oneclick-body">
-                        <?= do_shortcode("[facetwp facet='dove_vuoi_andare'][facetwp facet='quando_vuoi_partire']")?><?= do_shortcode("[oneclick_search_form_participants_bikes][facetwp template='home_dove_vuoi_andare']")?>
+                        <?= do_shortcode("[facetwp facet='dove_vuoi_andare'][facetwp facet='quando_vuoi_partire']")?><?= do_shortcode("[oneclick_search_form_participants_bikes]")?>
                         <div id="cy-search-lente"><i class="cy-icons icon-search1"></i><?= __('Find a trip','wm-child-cyclando')?></div>
                     </div>
                 </div>
             </div>
+            
             <script>
             (function($) {
                 $(document).ready(function () {
@@ -150,5 +151,6 @@ if ($when) {
 	}
 	?>
 </main>
+<div id="cy-search-template-container"><?= do_shortcode("[facetwp template='home_dove_vuoi_andare']")?></div>
 <!-- filter popup modal header -->
 <?php get_footer() ?>
