@@ -2130,11 +2130,6 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     display: grid;
     grid-row-gap: 5px;
 }
-.oc-route-mobile-search-form-container h4{
-    font-weight: 600;
-    font-size: 20px;
-    color: #F16E08;
-}
 .oc-route-mobile-your-reservation-container {
     display: none;
     padding: 15px;
@@ -2198,17 +2193,18 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
     padding: 0 1.3rem;
 }
 .oc-route-your-reservation-purchase-form-container input.form-input.error {
-    border: 1px solid var(--color-secondary-hover);
+    border: 2px solid var(--color-error);
 }
 .oc-route-your-reservation-purchase-form-container label.error {
     display: none!important;
 }
 .oc-route-your-reservation-purchase-form-container div.error {
-    color: var(--color-secondary-hover);
+    color: var(--color-error);
+    font-weight: bold;
 }
 .oc-route-your-reservation-purchase-form-container .purchase-form-checkbox input.error {
     background: none!important;
-    border: 1px solid var(--color-secondary-hover);
+    border: 2px solid var(--color-error);
 }
 .oc-route-your-reservation-purchase-form-container input.form-input::placeholder {
     font-size: 14px;

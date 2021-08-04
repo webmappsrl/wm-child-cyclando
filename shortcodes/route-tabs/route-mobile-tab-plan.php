@@ -58,7 +58,7 @@ function route_mobile_tab_plan($atts) {
     ?>
     <div class="oc-route-mobile-search-form-container">
         <?php if ($coming_soon) :?>
-            <h4><?php echo __('On request','wm-child-cyclando'); ?></h4>
+            <h4 class="form-lable"><?php echo __('On request','wm-child-cyclando'); ?></h4>
         <?php else:?>
             <h4 class="form-lable"><?php echo __('Calculate your quote', 'wm-child-cyclando'); ?></h4>
             <p class="oc-route-mobile-search-form-label-p"><?php echo __('Select the departure date', 'wm-child-cyclando'); ?></p>

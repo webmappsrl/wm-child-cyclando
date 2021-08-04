@@ -24,7 +24,8 @@ Text Domain:    wm-child-cyclando
     --color-text-strong: #333;
     --color-text-shadow-dark: #212121;
     --color-text-light: rgb(124, 124, 124);
-    --color-discount: #f55442;;
+    --color-discount: #f55442;
+    --color-error: #FF0000;
     --color-promotion: white;
     --font-family-paragraph: "Lato";
     --font-family-primary: "Montserrat";
@@ -2725,4 +2726,9 @@ div#searchpage-form-holder-mobile {
         box-shadow: 0px -1px 7px -1px rgb(50 50 50 / 70%);
         transition: all .3s ease;
     }
+}
+
+.ui-datepicker-calendar td:not(.ui-datepicker-other-month).ui-state-disabled {
+    text-decoration: line-through;
+    text-decoration-color: #555;
 }
