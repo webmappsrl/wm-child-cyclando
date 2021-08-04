@@ -22,7 +22,7 @@ if ($when) {
         $when_txt = 'agosto';
     }
 }
-($when) ? $when_txt = $when_txt[0] : $when_txt = __('Quando','wm-child-cyclando');
+($when) ? $when_txt = $when_txt[0] : $when_txt = __('When','wm-child-cyclando');
 ?>
 <main id="page-content" class="l-main"<?php echo ( us_get_option( 'schema_markup' ) ) ? ' itemprop="mainContentOfPage"' : ''; ?>>
 	<?php

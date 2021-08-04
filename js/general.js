@@ -98,6 +98,7 @@ jQuery(document).ready(function () {
       jQuery('#page-content > section.l-section.wpb_row.height_small.general-cerca-facetwp-container > div > div > div.vc_col-sm-12.wpb_column.vc_column_container.cerca-facets-container > div > div > div:nth-child(1) > div > div > div > div:nth-child(2) > div > div > div > div > input').attr("placeholder","Choose a location");
       // In quale mese?
       jQuery('#cy-search-element-container > div:nth-child(2) > div > select > option:nth-child(1)').text("Select month");
+      jQuery('.facetwp-facet-quando_vuoi_partire > select > option:nth-child(1)').text("Select month");
       jQuery('#page-content > section.l-section.wpb_row.height_small.general-cerca-facetwp-container > div > div > div.vc_col-sm-12.wpb_column.vc_column_container.cerca-facets-container > div > div > div:nth-child(1) > div > div > div > div:nth-child(3) > div > div > div > div > select > option:nth-child(1)').text("Select month");
       // CERCA
       jQuery(".cy-facetwp-cerca-quando").append(jQuery(".cy-facetwp-cerca-where input.facetwp-autocomplete-update"));
