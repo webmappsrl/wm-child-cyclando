@@ -100,6 +100,8 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
     foreach ($tax_targets as $tax_target) {
       if ($tax_target->slug == 'con-guida') {
         array_push($tax_targets_slug, 'guided');
+      } elseif ($tax_target->slug == 'di-gruppo') {
+        array_push($tax_targets_slug, 'di gruppo');
       } else {
         array_push($tax_targets_slug, $tax_target->slug);
       }
