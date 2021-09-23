@@ -403,6 +403,20 @@ jQuery(document).ready(function () {
     }
   });
 
+  // fix for search page on facet dropdown change that did not refreshed the URL 
+  jQuery('.facetwp-dropdown').on('change', function()
+  {
+      setGetParam('_quando_vuoi_partire',this.value);
+  });
+  function setGetParam(key,value) {
+    if (history.pushState) {
+      var params = new URLSearchParams(window.location.search);
+      params.set(key, value);
+      var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + params.toString();
+      window.history.pushState({path:newUrl},'',newUrl);
+    }
+  }
+
 });
 
   function cal_sum_cookies(savedCookie) {
