@@ -61,7 +61,6 @@ echo do_shortcode('[vc_row height="large" us_bg_image_source="featured" us_bg_re
             $('#searchpage-form-oneclick-mobile').hide();
             $(".cerca-facets-container").removeClass("cerca-facets-container-modal");
             $("#cerca-facets-container-modal-header").show();
-            $("#filterSearchDropdown").hide();
         });
         if ($(window).width() < 768) {
             $('#searchpage-facets-filter-btn').on('click', function() {
