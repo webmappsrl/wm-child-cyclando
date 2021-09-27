@@ -394,11 +394,22 @@ add_filter( 'facetwp_index_row', function( $params, $class ) {
 
 /**changes the breadcrumb link of POI and blog in Math rank breadcrumb */
 add_filter( 'rank_math/frontend/breadcrumb/items', function( $crumbs, $class ) {
+    if (defined('ICL_LANGUAGE_CODE')) {
+        $language = ICL_LANGUAGE_CODE;
+    }
     if ( is_singular( 'route' ) ) {
-        $breadcrumb[] = array(
-            '0' => __('Routes', 'wm-child-cyclando'),
-            '1' => site_url( '/cerca/' ),
-        );
+        if ($language == 'it') { 
+            $breadcrumb[] = array(
+                '0' => __('Routes', 'wm-child-cyclando'),
+                '1' => site_url( '/cerca/' ),
+            );
+        } else {
+            $breadcrumb[] = array(
+                '0' => __('Routes', 'wm-child-cyclando'),
+                '1' => site_url( '/en/tours/' ),
+            );
+        }
+        
         array_splice( $crumbs, 1,1, $breadcrumb );
     }
     if ( is_singular( 'post' ) ) {
