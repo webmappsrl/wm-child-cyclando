@@ -395,7 +395,7 @@ get_header();
                     <div class="cyc-route-mobile-taxonomy-target-wrapper">
                         <p class='meta-bar-txt-strong'>
                             <?php
-                            echo __('Target', 'wm-child-cyclando')
+                            echo __('Tour', 'wm-child-cyclando')
                             ?>
                         </p>
                         <?php if ($array_target) { 
@@ -413,7 +413,7 @@ get_header();
                     <div class="cyc-route-mobile-taxonomy-shape-wrapper">
                         <p class='meta-bar-txt-strong'>
                             <?php
-                            echo __('Path', 'wm-child-cyclando')
+                            echo __('Itinerary', 'wm-child-cyclando')
                             ?>
                         </p>
                         <?php if ($shape) { ?>
