@@ -48,6 +48,13 @@ function wmScrollTop() {
 jQuery(window).on('load', function() {
 	var facetwpPaged = document.querySelectorAll('.facetwp-page');
 	facetwpPagedScrollTop(facetwpPaged);
+  
+  if (document.documentElement.lang == "en-US") {
+    // Dove vui andare?
+    jQuery('#cy-search-element-container > div:nth-child(1) > div > input.facetwp-autocomplete.fcomplete-enabled').attr("placeholder","Choose a location");
+    jQuery('#searchpage-form-oneclick-mobile > div > div.searchpage-form-oneclick-body > div:nth-child(1) > div > input.facetwp-autocomplete.fcomplete-enabled').attr("placeholder","Choose a location");
+    jQuery('#page-content > section.l-section.wpb_row.height_small.general-cerca-facetwp-container > div > div > div.vc_col-sm-12.wpb_column.vc_column_container.cerca-facets-container > div > div > div:nth-child(1) > div > div > div > div:nth-child(2) > div > div > div > div > input').attr("placeholder","Choose a location");
+  } 
 });
 
 jQuery(document).ready(function () {
@@ -71,7 +78,10 @@ jQuery(document).ready(function () {
   // Covid banner
   if (lang == "en-US") {
     jQuery("<div class='covidbanner'><div class='covidbanner-container'><span> NOTICE FOR TRAVELERS: <a href='https://cyclando.com/assicurazione-covid/'>find out more about COVID-19</a></span> <span class='cy-close-covidbanner'>&times;</span></div></div>").insertBefore(".l-canvas.type_wide");
-    jQuery('#searchpage-form-oneclick-mobile > div > div.searchpage-form-oneclick-body > div:nth-child(1) > div > input.facetwp-autocomplete.fcomplete-enabled').attr("placeholder","Select your destination");
+    // Dove vui andare?
+    jQuery('#cy-search-element-container > div:nth-child(1) > div > input.facetwp-autocomplete.fcomplete-enabled').attr("placeholder","Choose a location");
+    jQuery('#searchpage-form-oneclick-mobile > div > div.searchpage-form-oneclick-body > div:nth-child(1) > div > input.facetwp-autocomplete.fcomplete-enabled').attr("placeholder","Choose a location");
+    jQuery('#page-content > section.l-section.wpb_row.height_small.general-cerca-facetwp-container > div > div > div.vc_col-sm-12.wpb_column.vc_column_container.cerca-facets-container > div > div > div:nth-child(1) > div > div > div > div:nth-child(2) > div > div > div > div > input').attr("placeholder","Choose a location");
   } else {
     jQuery("<div class='covidbanner'><div class='covidbanner-container'><span> AVVISO PER CHI VIAGGIA: <a href='https://cyclando.com/assicurazione-covid/'>scopri di più sul COVID-19</a></span> <span class='cy-close-covidbanner'>&times;</span></div></div>").insertBefore(".l-canvas.type_wide");
   }
@@ -109,9 +119,9 @@ jQuery(document).ready(function () {
   jQuery(document).one("facetwp-loaded", function () {
     if (lang == "en-US") {
       // Dove vui andare?
-      jQuery('#cy-search-element-container > div:nth-child(1) > div > input.facetwp-autocomplete.fcomplete-enabled').attr("placeholder","Select your destination");
-      jQuery('#searchpage-form-oneclick-mobile > div > div.searchpage-form-oneclick-body > div:nth-child(1) > div > input.facetwp-autocomplete.fcomplete-enabled').attr("placeholder","Select your destination");
-      jQuery('#page-content > section.l-section.wpb_row.height_small.general-cerca-facetwp-container > div > div > div.vc_col-sm-12.wpb_column.vc_column_container.cerca-facets-container > div > div > div:nth-child(1) > div > div > div > div:nth-child(2) > div > div > div > div > input').attr("placeholder","Select your destination");
+      jQuery('#cy-search-element-container > div:nth-child(1) > div > input.facetwp-autocomplete.fcomplete-enabled').attr("placeholder","Choose a location");
+      jQuery('#searchpage-form-oneclick-mobile > div > div.searchpage-form-oneclick-body > div:nth-child(1) > div > input.facetwp-autocomplete.fcomplete-enabled').attr("placeholder","Choose a location");
+      jQuery('#page-content > section.l-section.wpb_row.height_small.general-cerca-facetwp-container > div > div > div.vc_col-sm-12.wpb_column.vc_column_container.cerca-facets-container > div > div > div:nth-child(1) > div > div > div > div:nth-child(2) > div > div > div > div > input').attr("placeholder","Choose a location");
       // In quale mese?
       jQuery('#cy-search-element-container > div:nth-child(2) > div > select > option:nth-child(1)').text("Select month");
       jQuery('.facetwp-facet-quando_vuoi_partire > select > option:nth-child(1)').text("Select month");
