@@ -23,6 +23,7 @@ require ('shortcodes/route-oc/oneclick_route_your_reservation_panel.php');
 require ('api/api-loader.php');
 require ('includes/class_routeProductsOC.php') ;
 require ('includes/oc_ajax_route_price.php');
+require ('includes/oc_ajax_variation_price_update.php');
 require ('includes/wm_has_extra_get_label.php');
 require ('includes/wm_has_hotel_get_label.php');
 

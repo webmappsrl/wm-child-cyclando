@@ -1699,6 +1699,39 @@ body #tab-stagioni a:hover {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
+/* price inline edit css start */
+div#cy-prices-modal td {
+    display: flex;
+}
+div#cy-prices-modal td div {
+    width: auto;
+    display: inline-block;
+    margin: auto 0!important;
+}
+div#cy-prices-modal input {
+    width: auto;
+    background: none;
+    box-shadow: 0 0 0;
+    height: 2rem;
+}
+div#cy-prices-modal input:focus {
+    background: #f5f5f5;
+    border-color: #e8e8e8;
+    box-shadow: 0px 1px 0px 0px rgb(0 0 0 / 8%) inset;
+    height: 2.5rem;
+}
+div#cy-prices-modal td .w-iconbox-icon i {
+    padding: 0!important;
+}
+div#cy-prices-modal td .w-iconbox-icon {
+    height: 100%;
+    margin-right: 10px!important;
+}
+div#cy-prices-modal input::placeholder {
+    color: var(--color-primary-paragraph);
+    opacity: 1;
+}
+/* price inline edit css end */
 
 .cy-close {
     color: #ccc;
@@ -2351,14 +2384,14 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
 }
 .cyc-single-route-contact-button-container .label{
     margin: 0;
-    font-size: 14px;
+    font-size: 17px;
     line-height: 16px;
 }
 .cy-contact-in-plan-tab {
     width: fit-content;
 }
 #cy-contact-in-plan-tab p {
-    font-size: 15px;
+    font-size: 18px;
     color: var(--color-primary);
     font-weight: bold;
     line-height: 16px;

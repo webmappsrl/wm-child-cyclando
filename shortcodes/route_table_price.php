@@ -3,7 +3,19 @@
 include ('vn_route_tabs_td.php');
 include ('wm_product_attribute_mapping.php');
 add_shortcode( 'route_table_price', 'cyclando_render_route_tabs_shortcode' );
-// [bartag foo="foo-value"]
+
+function output_price_input($name,$extra_variation_name_price) {
+    $id = $extra_variation_name_price[$name.'_id'];
+    $price = $extra_variation_name_price[$name];
+    echo "<div class='input-$name-$id'></div><input type='text' id='$id' placeholder='$price' name='$name'>";
+}
+function output_hotel_price_input($name,$value) {
+    $id = $value['id'];
+    $price = $value['price'];
+    echo "<div class='input-$name-$id'></div><input type='text' id='$id' placeholder='$price' name='$name'>";
+}
+
+
 function cyclando_render_route_tabs_shortcode() {
 
 ob_start();
@@ -39,6 +51,9 @@ $list_all_variations_name = array();
 $has_hotel = false;
 $has_extra = false;
 
+
+
+
 $products = get_field('product');
 if( $products ){
     foreach( $products as $p ){ // variables of each product
@@ -65,22 +80,21 @@ if( $products ){
                     // Prices
                     if ($variation['display_price'] == 0){
                         $price = __('Free' ,'wm-child-verdenatura');
-                    } 
-                    elseif (!empty($variation['price_html'])){
-                        $price = $variation['price_html'];
                     } else {
-                        $price = $variation['display_price'].'€';
+                        $variation_obj = wc_get_product($variation['variation_id']);
+                        $price = $variation_obj->regular_price;
                     }
-                    $variation_name_price = array($variation_name => $price);
                     $list_all_variations_name += array($variation_name => $variation['price_html']);
-                    $product_variation_name_price += $variation_name_price;
+                    $variation_name_price = array($variation_name => array('id'=>$variation['variation_id'],'price'=>intval($price)));
+                    $variations_name_price += $variation_name_price;
                 }
-                array_push($variations_name_price,$product_variation_name_price);
+                // array_push($variations_name_price,$variation_name_price);
             }
             if(strip_tags($category) == 'extra'){
                 $has_extra = true;
                 foreach($product->get_available_variations() as $variation ){
                     // Extra Name
+                    // print_r($variation);
                     $xattributes = $variation['attributes'];
                     $xvariation_name = '';
                     foreach($xattributes as $name_var){
@@ -89,14 +103,14 @@ if( $products ){
                     // Prices
                     if ($variation['display_price'] == 0){
                         $xprice = __('Free' ,'wm-child-verdenatura');
-                    } 
-                    elseif (!empty($variation['price_html'])){
-                        $xprice = $variation['price_html'];
                     } else {
-                        $xprice = $variation['display_price'].'€';
+                        $variation_obj = wc_get_product($variation['variation_id']);
+                        $xprice = $variation_obj->regular_price;
                     }
                     $extra_name_price = array($xvariation_name => $xprice);
+                    $extra_id_array = array($xvariation_name.'_id' => $variation['variation_id']);
                     $extra_variation_name_price += $extra_name_price;
+                    $extra_variation_name_price += $extra_id_array;
                     $extra_name_description = array($xvariation_name => $variation['variation_description']);
                     $extra_variation_name_description += $extra_name_description;
                 }
@@ -105,21 +119,7 @@ if( $products ){
     }
     
 }
-//  add the lowest price to vn_prezzp ACF : price from... 
-$lowest_price_list = array();
-foreach ( $variations_name_price as $var ) {
-    $price = preg_replace('/&.*?;/', '', $var['adult']);
-    $price = preg_replace('/€/', '', $price);
-    $price = strip_tags($price);
-    $price_e = explode(',',$price);
-    $price_e = str_replace('.', '', $price_e[0]);
-    array_push($lowest_price_list , $price_e);
-}
 ?>
-
-
-
-
     <div id="tabs-4">
         <div class="durata-preventivo"> <!------------ Duration -->
             <p class="tab-section"> 
@@ -337,29 +337,20 @@ foreach ( $variations_name_price as $var ) {
                                                 // Prices
                                                 if ($variation['display_price'] == 0){
                                                     $price = __('Free' ,'wm-child-verdenatura');
-                                                } 
-                                                elseif (!empty($variation['price_html'])){
-                                                    $price = $variation['price_html'];
                                                 } else {
-                                                    $price = $variation['display_price'].'€';
+                                                    $variation_obj = wc_get_product($variation['variation_id']);
+                                                    $price = $variation_obj->regular_price;
                                                 }
-                                                $variation_name_price = array($variation_name => $price);
+                                                $variation_name_price = array($variation_name => array('id'=>$variation['variation_id'],'price'=>intval($price)));
+
                                                 $list_all_variations_name_seasonal += array($variation_name => $variation['price_html']);
-                                                $product_variation_name_price += $variation_name_price;
+                                                $variations_name_price_seasonal += $variation_name_price;
+                                                // array_push($variations_name_price_seasonal,$variation_name_price);
                                             }
-                                            array_push($variations_name_price_seasonal,$product_variation_name_price);
                                         }
                                     }
                                 }
                                 
-                                foreach ( $variations_name_price_seasonal as $var ) {
-                                    $price = preg_replace('/&.*?;/', '', $var['adult']);
-                                    $price = preg_replace('/€/', '', $price);
-                                    $price = strip_tags($price);
-                                    $price_e = explode(',',$price);
-                                    $price_e = str_replace('.', '', $price_e[0]);
-                                    array_push($lowest_price_list , $price_e);
-                                }
                             }
                         ?>
                     <span class='durata-txt'> <!------------ quote ---------------------->
@@ -434,7 +425,7 @@ foreach ( $variations_name_price as $var ) {
                             </tr>
                         </thead>
                         <tbody>
-                        <?php vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$place,$from,$to)?>
+                        <?php vn_route_tabs_body($list_all_variations_name,$variations_name_price,$place,$from,$to)?>
                         </tbody>       
                     </table>
                 </div> <!---- END  -------- quote hotel alberghi -->
@@ -464,9 +455,7 @@ foreach ( $variations_name_price as $var ) {
                                 </th>
                                     
                                 <td>
-                                <?php
-                                    echo $extra_variation_name_price['bike'];
-                                    ?>
+                                    <?php output_price_input('bike',$extra_variation_name_price);?>
                                 </td>
                                    
                             </tr>
@@ -484,9 +473,7 @@ foreach ( $variations_name_price as $var ) {
                                 </th>
                                     
                                 <td>
-                                <?php
-                                    echo $extra_variation_name_price['ebike'];
-                                    ?>
+                                <?php output_price_input('ebike',$extra_variation_name_price);?>
                                 </td>
                                    
                             </tr>
@@ -505,7 +492,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['kidbike'];
+                                    output_price_input('kidbike',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -525,7 +512,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['bike_tandem'];
+                                    output_price_input('bike_tandem',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -545,7 +532,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['bike_road'];
+                                    output_price_input('bike_road',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -565,7 +552,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['babyseat'];
+                                    output_price_input('babyseat',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -585,7 +572,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['trailer'];
+                                    output_price_input('trailer',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -605,7 +592,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['trailgator'];
+                                    output_price_input('trailgator',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -625,7 +612,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['tagalong'];
+                                    output_price_input('tagalong',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -645,7 +632,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['bikewarranty'];
+                                    output_price_input('bikewarranty',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -665,7 +652,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['ebikewarranty'];
+                                    output_price_input('ebikewarranty',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -685,7 +672,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['bike_tandemwarranty'];
+                                    output_price_input('bike_tandemwarranty',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -705,7 +692,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['bike_roadwarranty'];
+                                    output_price_input('bike_roadwarranty',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -725,7 +712,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['helmet'];
+                                    output_price_input('helmet',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -745,7 +732,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['kidhelmet'];
+                                    output_price_input('kidhelmet',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -765,7 +752,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['roadbook'];
+                                    output_price_input('roadbook',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -785,7 +772,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['cookingclass'];
+                                    output_price_input('cookingclass',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -805,7 +792,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['transferBefore'];
+                                    output_price_input('transferBefore',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -825,7 +812,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['transferAfter'];
+                                    output_price_input('transferAfter',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -845,7 +832,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['boardingtax'];
+                                    output_price_input('boardingtax',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -865,7 +852,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['bike_plus'];
+                                    output_price_input('bike_plus',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -885,7 +872,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['bike_pluswarranty'];
+                                    output_price_input('bike_pluswarranty',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -905,7 +892,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['bike_mtb'];
+                                    output_price_input('bike_mtb',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -925,7 +912,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['bike_mtbwarranty'];
+                                    output_price_input('bike_mtbwarranty',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -945,7 +932,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['bike_ebikemtb'];
+                                    output_price_input('bike_ebikemtb',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -965,7 +952,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['bike_ebikemtbwarranty'];
+                                    output_price_input('bike_ebikemtbwarranty',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -985,7 +972,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['bike_ebikeroad'];
+                                    output_price_input('bike_ebikeroad',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -1005,7 +992,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['bike_ecargo'];
+                                    output_price_input('bike_ecargo',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -1025,7 +1012,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['bike_ecargowarranty'];
+                                    output_price_input('bike_ecargowarranty',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -1045,7 +1032,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['bike_own'];
+                                    output_price_input('bike_own',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -1065,7 +1052,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['bike_ownwarranty'];
+                                    output_price_input('bike_ownwarranty',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -1085,7 +1072,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['bike_recumbent'];
+                                   output_price_input('bike_recumbent',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -1105,7 +1092,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['gps'];
+                                    output_price_input('gps',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -1125,7 +1112,7 @@ foreach ( $variations_name_price as $var ) {
                                     
                                 <td>
                                 <?php
-                                    echo $extra_variation_name_price['weehoo'];
+                                    output_price_input('weehoo',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -1136,7 +1123,7 @@ foreach ( $variations_name_price as $var ) {
                         <?php  // row variable extras --------------------------------------------------------
                         foreach ($extra_variation_name_price as $extra_key => $extra_value) {       
                             $name_explode = explode ('_',$extra_key);
-                            if (!empty($name_explode) && $name_explode[0] == 'extra') {
+                            if (!empty($name_explode) && $name_explode[0] == 'extra' && !in_array('id',$name_explode)) {
                                 $extra_name = $extra_variation_name_description[$extra_key]
                             ?>
                             <tr>  
@@ -1147,7 +1134,7 @@ foreach ( $variations_name_price as $var ) {
                                 </th>
                                 <td>
                                     <?php
-                                    echo $extra_value;
+                                    output_price_input($extra_key,$extra_variation_name_price);
                                     ?>
                                 </td>
                             </tr>
@@ -1159,11 +1146,6 @@ foreach ( $variations_name_price as $var ) {
             </table>
             <?php
             }  //----------- END hotel product table
-            //  add the lowest price to vn_prezzp ACF : price from... 
-            if ($lowest_price_list) {
-                $lowest_price = min($lowest_price_list);
-                //update_field('wm_route_price', $lowest_price);
-            }
             ?>
         </div><!---- END  -------- quote extra -->
         <!-- IF Included and Not Included is activated show the options -->
@@ -1185,6 +1167,46 @@ foreach ( $variations_name_price as $var ) {
 
     <script>
         jQuery(document).ready( function($) {
+
+            $( "input" ).keypress(function(e) {
+                if(e.which == 13){
+                    var price = $(this).val();
+
+                    if (!$.isNumeric(price) || price == "") {
+                        console.log('Niente lettere per favore!')
+                    } else {
+                        console.log($(this).attr("name") + "You've entered: " + price);
+                        ajaxUpdateProductVariationPrice($(this).attr("name"),$(this).attr("id"),price);
+                    }
+                }
+            });
+
+
+            function ajaxUpdateProductVariationPrice(name,id,price){
+                var data = {
+                    'action': 'oc_ajax_variation_price_update',
+                    'variationid':  id,
+                    'variationprice':  price,
+                };
+                jQuery.ajax({
+                    url: '/wp-admin/admin-ajax.php',
+                    type : 'post',
+                    data: data,
+                    beforeSend: function(){
+                        jQuery(".input-"+name+"-"+id).html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
+                    },
+                    success : function( response ) {
+                        console.log('responsesuccess:');
+                        objs = JSON.parse(response);
+                        console.log(objs);
+                        if (objs == true) {
+                            jQuery(".input-"+name+"-"+id).html('<i class="wm-icon-checkmark-circled"></i>');
+                            jQuery("input#"+id).attr('placeholder',price);
+                        }
+                    }
+                });
+            }
+
             $( "#tabs" ).tabs({
                 activate: function( event, ui ) {
                     ui.newPanel.find('.webmapp_post_image').each(function(i,e){
@@ -1214,3 +1236,4 @@ foreach ( $variations_name_price as $var ) {
     $html = ob_get_clean();
     return $html;
 }
+

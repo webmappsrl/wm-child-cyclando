@@ -1,6 +1,6 @@
 <?php
 
-// include ('vn_route_tabs_td.php');
+include ('vn_route_tabs_td_email.php');
 // include ('wm_product_attribute_mapping.php');
 add_shortcode( 'route_table_price_email', 'cyclando_render_route_tabs_shortcode_email' );
 // [bartag foo="foo-value"]
@@ -396,7 +396,7 @@ foreach ( $variations_name_price as $var ) {
                             </tr>
                         </thead>
                         <tbody>
-                        <?php vn_route_tabs_body ($list_all_variations_name_seasonal,$variations_name_price_seasonal,$place,$from,$to)?>
+                        <?php vn_route_tabs_body_email($list_all_variations_name_seasonal,$variations_name_price_seasonal,$place,$from,$to)?>
                         </tbody>       
                     </table>
                 </div> <!---- END  -------- quote hotel alberghi -->
@@ -437,7 +437,7 @@ foreach ( $variations_name_price as $var ) {
                             </tr>
                         </thead>
                         <tbody>
-                        <?php vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$place,$from,$to)?>
+                        <?php vn_route_tabs_body_email($list_all_variations_name,$variations_name_price,$place,$from,$to)?>
                         </tbody>       
                     </table>
                 </div> <!---- END  -------- quote hotel alberghi -->
