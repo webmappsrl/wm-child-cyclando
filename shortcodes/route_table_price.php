@@ -1172,8 +1172,6 @@ if( $products ){
                 if(e.which == 13){
                     var price = $(this).val();
 
-                    console.log(price);
-                    console.log($(this).attr("placeholder"));
                     if (!$.isNumeric(price) ) {
                         alert('Andre niente lettere!')
                     } else if ( !price ) {
@@ -1181,7 +1179,7 @@ if( $products ){
                     } else if ($(this).attr("placeholder") == price) {
                         alert('Il prezzo non può essere uguale a prima!')
                     } else {
-                        // ajaxUpdateProductVariationPrice($(this).attr("name"),$(this).attr("id"),price);
+                        ajaxUpdateProductVariationPrice($(this).attr("name"),$(this).attr("id"),price);
                     }
                 }
             });
