@@ -1172,11 +1172,16 @@ if( $products ){
                 if(e.which == 13){
                     var price = $(this).val();
 
-                    if (!$.isNumeric(price) || price == "") {
-                        console.log('Niente lettere per favore!')
+                    console.log(price);
+                    console.log($(this).attr("placeholder"));
+                    if (!$.isNumeric(price) ) {
+                        alert('Andre niente lettere!')
+                    } else if ( !price ) {
+                        alert('Inserire il prezzo!')
+                    } else if ($(this).attr("placeholder") == price) {
+                        alert('Il prezzo non può essere uguale a prima!')
                     } else {
-                        console.log($(this).attr("name") + "You've entered: " + price);
-                        ajaxUpdateProductVariationPrice($(this).attr("name"),$(this).attr("id"),price);
+                        // ajaxUpdateProductVariationPrice($(this).attr("name"),$(this).attr("id"),price);
                     }
                 }
             });
@@ -1196,9 +1201,7 @@ if( $products ){
                         jQuery(".input-"+name+"-"+id).html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
                     },
                     success : function( response ) {
-                        console.log('responsesuccess:');
                         objs = JSON.parse(response);
-                        console.log(objs);
                         if (objs == true) {
                             jQuery(".input-"+name+"-"+id).html('<i class="wm-icon-checkmark-circled"></i>');
                             jQuery("input#"+id).attr('placeholder',price);
