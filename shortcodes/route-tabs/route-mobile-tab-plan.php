@@ -93,7 +93,7 @@ function route_mobile_tab_plan($atts) {
                 if ($coming_soon) {
                     echo __('Do you want to request a quote for this tour?', 'wm-child-cyclando');
                 } else {
-                    echo __('Do you have doubts about your quote?', 'wm-child-cyclando');
+                    // echo __('Do you have doubts about your quote?', 'wm-child-cyclando');
                 } 
             ?></p>
             <div id="cy-contact-in-plan-tab" class="cy-contact-in-basso cy-contact-in-plan-tab">

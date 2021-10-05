@@ -1893,6 +1893,7 @@ h4.tripSearch {
     display: grid;
     align-items: end;
     background-color: rgb(0 0 0 / 20%);
+    border-radius: 20px 0 0 20px;
 }
 
 .wm_template_advancedsearch .single-post-wm {

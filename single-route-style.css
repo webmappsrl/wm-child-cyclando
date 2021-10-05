@@ -2335,6 +2335,9 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
     .oc-route-mobile-plan-summary-container {
         margin-top: 15px;
     }
+    .cy-contact-in-plan-tab {
+        width: auto!important;
+    }
 }
 .oc-route-mobile-plan-price-container {
     display: flex;
@@ -2365,7 +2368,7 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
 }
 .oc-route-mobile-search-form-container .oc-acquista-route.cyc-single-route-cta-buttons .cy-btn-contact p {
     color: white;
-    font-weight: 400;
+    font-weight: 600;
     text-transform: initial;
 }
 .oc-route-mobile-search-form-container .oc-acquista-route.cyc-single-route-cta-buttons .cy-btn-contact:hover {
@@ -2386,19 +2389,30 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
     margin: 0;
     font-size: 17px;
     line-height: 16px;
+    padding-bottom: 30px;
 }
 .cy-contact-in-plan-tab {
     width: fit-content;
 }
-#cy-contact-in-plan-tab p {
-    font-size: 18px;
-    color: var(--color-primary);
-    font-weight: bold;
-    line-height: 16px;
-}
-#cy-contact-in-plan-tab p:hover {
-    color: var(--color-primary-paragraph);
+.cy-contact-in-plan-tab .cy-btn-plan-contact{
+    border: 1px solid #F16E08;
+    border-radius: 25px;
+    padding: 10px 5px;
+    min-width: 250px;
     cursor: pointer;
+    transition: 300ms all ease;
+}
+.cy-contact-in-plan-tab .cy-btn-plan-contact p{
+    color: var(--color-secondary);
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+}
+.cy-contact-in-plan-tab .cy-btn-plan-contact:hover{
+    background-color: var(--color-secondary-hover);
+}
+.cy-contact-in-plan-tab .cy-btn-plan-contact:hover p{
+    color: white;
 }
 .cyc-single-route-contact-button-container {
     display: block;
