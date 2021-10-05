@@ -98,7 +98,7 @@ function route_mobile_tab_plan($atts) {
             ?></p>
             <div id="cy-contact-in-plan-tab" class="cy-contact-in-basso cy-contact-in-plan-tab">
                 <div class="cy-btn-plan-contact">
-                    <p><?php echo __('Contact us!', 'wm-child-cyclando'); ?></p>
+                    <p><?php echo __('Request information', 'wm-child-cyclando'); ?></p>
                 </div>
             </div>
         </div>
