@@ -10,18 +10,20 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 echo sprintf(__('Basic price in double %s' ,'wm-child-verdenatura'),$place);
                 ?>
             </th>
-                <td>
+                <?php foreach ($variations_name_price as $catname => $array) { ?>
+                    <td>
                 <?php
                     $not_exist = false;
-                    if ($variations_name_price['adult']) {
-                            output_hotel_price_input('adult',$variations_name_price['adult']);
-                            $not_exist = true;
-                    }
-                    if ($not_exist == false) {
-                        echo '<span>-</span>';
-                    }
-                ?>
+                        if ($variations_name_price[$catname]['adult']) {
+                                output_hotel_price_input('adult',$variations_name_price[$catname]['adult']);
+                                $not_exist = true;
+                        }
+                        if ($not_exist == false) {
+                            echo '<span>-</span>';
+                        }
+                        ?>
                 </td>
+            <?php } ?>
         </tr>
     <?php
     }
@@ -35,11 +37,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 echo sprintf(__('Supplement for single %s' ,'wm-child-verdenatura'),$place);
                 ?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price['adult-single']) {
-                        output_hotel_price_input('adult-single',$variations_name_price['adult-single']);
+                if ($variations_name_price[$catname]['adult-single']) {
+                        output_hotel_price_input('adult-single',$variations_name_price[$catname]['adult-single']);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -47,6 +50,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
     }
@@ -60,11 +64,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 echo sprintf(__('Supplement for single traveller' ,'wm-child-verdenatura'),$place);
                 ?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price['single-traveller']) {
-                        output_hotel_price_input('single-traveller',$variations_name_price['single-traveller']);
+                if ($variations_name_price[$catname]['single-traveller']) {
+                        output_hotel_price_input('single-traveller',$variations_name_price[$catname]['single-traveller']);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -72,6 +77,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
     }
@@ -85,11 +91,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 echo __('Basic price in 3rd bed adult' ,'wm-child-verdenatura');
                 ?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price['adult-extra']) {
-                        output_hotel_price_input('adult-extra',$variations_name_price['adult-extra']);
+                if ($variations_name_price[$catname]['adult-extra']) {
+                        output_hotel_price_input('adult-extra',$variations_name_price[$catname]['adult-extra']);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -97,6 +104,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
     }
@@ -114,11 +122,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 echo sprintf(__('3rd/4th bed child price 0/%s yo' ,'wm-child-verdenatura'),$kid1_max_range);
                 ?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price[$var_name]) {
-                        output_hotel_price_input($var_name,$variations_name_price[$var_name]);
+                if ($variations_name_price[$catname][$var_name]) {
+                        output_hotel_price_input($var_name,$variations_name_price[$catname][$var_name]);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -126,6 +135,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
         }
@@ -144,11 +154,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 echo sprintf(__('3rd/4th bed child price %d/%s yo' ,'wm-child-verdenatura'), $kid1_max_range+1, $kid2_max_range);
                 ?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price[$var_name]) {
-                        output_hotel_price_input($var_name,$variations_name_price[$var_name]);
+                if ($variations_name_price[$catname][$var_name]) {
+                        output_hotel_price_input($var_name,$variations_name_price[$catname][$var_name]);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -156,6 +167,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
         }
@@ -174,11 +186,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 echo sprintf(__('3rd/4th bed child price %d/%s yo' ,'wm-child-verdenatura'), $kid2_max_range+1, $kid3_max_range);
                 ?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price[$var_name]) {
-                        output_hotel_price_input($var_name,$variations_name_price[$var_name]);
+                if ($variations_name_price[$catname][$var_name]) {
+                        output_hotel_price_input($var_name,$variations_name_price[$catname][$var_name]);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -186,6 +199,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
         }
@@ -204,11 +218,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 echo sprintf(__('Child price 0/%d yo, in twin %s with adult' ,'wm-child-verdenatura'), $kid4_max_range, $place);
                 ?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price[$var_name]) {
-                        output_hotel_price_input($var_name,$variations_name_price[$var_name]);
+                if ($variations_name_price[$catname][$var_name]) {
+                        output_hotel_price_input($var_name,$variations_name_price[$catname][$var_name]);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -216,6 +231,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
         }
@@ -230,11 +246,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 echo __('Supplement for half board' ,'wm-child-verdenatura');
                 ?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price['halfboard_adult']) {
-                        output_hotel_price_input('halfboard_adult',$variations_name_price['halfboard_adult']);
+                if ($variations_name_price[$catname]['halfboard_adult']) {
+                        output_hotel_price_input('halfboard_adult',$variations_name_price[$catname]['halfboard_adult']);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -242,6 +259,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
     }
@@ -255,11 +273,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 echo sprintf(__('Supplement for half board child 0/%s yo' ,'wm-child-verdenatura'),$kid1_max_range);
                 ?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price['halfboard_kid1']) {
-                        output_hotel_price_input('halfboard_kid1',$variations_name_price['halfboard_kid1']);
+                if ($variations_name_price[$catname]['halfboard_kid1']) {
+                        output_hotel_price_input('halfboard_kid1',$variations_name_price[$catname]['halfboard_kid1']);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -267,6 +286,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
     }
@@ -280,11 +300,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 echo sprintf(__('Supplement for half board child %d/%s yo' ,'wm-child-verdenatura'),$kid1_max_range, $kid2_max_range);
                 ?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price['halfboard_kid2']) {
-                        output_hotel_price_input('halfboard_kid2',$variations_name_price['halfboard_kid2']);
+                if ($variations_name_price[$catname]['halfboard_kid2']) {
+                        output_hotel_price_input('halfboard_kid2',$variations_name_price[$catname]['halfboard_kid2']);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -292,6 +313,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
     }
@@ -305,11 +327,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 echo sprintf(__('Supplement for half board child %d/%s yo' ,'wm-child-verdenatura'),$kid2_max_range, $kid3_max_range);
                 ?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price['halfboard_kid3']) {
-                        output_hotel_price_input('halfboard_kid3',$variations_name_price['halfboard_kid3']);
+                if ($variations_name_price[$catname]['halfboard_kid3']) {
+                        output_hotel_price_input('halfboard_kid3',$variations_name_price[$catname]['halfboard_kid3']);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -317,6 +340,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
     }
@@ -328,11 +352,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
             <th>
                 <?php echo sprintf(__('Extra night in %s (Double %s)' ,'wm-child-verdenatura'),$from, $place); ?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price['nightsBefore_adult']) {
-                        output_hotel_price_input('nightsBefore_adult',$variations_name_price['nightsBefore_adult']);
+                if ($variations_name_price[$catname]['nightsBefore_adult']) {
+                        output_hotel_price_input('nightsBefore_adult',$variations_name_price[$catname]['nightsBefore_adult']);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -340,6 +365,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
     }
@@ -351,11 +377,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
             <th>
                 <?php echo sprintf(__('Supplement for extra night in %s (Single %s)' ,'wm-child-verdenatura'),$from, $place); ?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price['nightsBefore_adult-single']) {
-                        output_hotel_price_input('nightsBefore_adult-single',$variations_name_price['nightsBefore_adult-single']);
+                if ($variations_name_price[$catname]['nightsBefore_adult-single']) {
+                        output_hotel_price_input('nightsBefore_adult-single',$variations_name_price[$catname]['nightsBefore_adult-single']);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -363,6 +390,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
     }
@@ -374,11 +402,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
             <th>
                 <?php echo sprintf(__('Extra night in %s (extra bed)' ,'wm-child-verdenatura'),$from); ?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price['nightsBefore_adult-extra']) {
-                        output_hotel_price_input('nightsBefore_adult-extra',$variations_name_price['nightsBefore_adult-extra']);
+                if ($variations_name_price[$catname]['nightsBefore_adult-extra']) {
+                        output_hotel_price_input('nightsBefore_adult-extra',$variations_name_price[$catname]['nightsBefore_adult-extra']);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -386,6 +415,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
     }
@@ -397,11 +427,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
             <th>
             <?php echo sprintf(__('Extra night in %s (child 0/%s yo)' ,'wm-child-verdenatura'),$from,$kid1_max_range);?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price['nightsBefore_kid1']) {
-                        output_hotel_price_input('nightsBefore_kid1',$variations_name_price['nightsBefore_kid1']);
+                if ($variations_name_price[$catname]['nightsBefore_kid1']) {
+                        output_hotel_price_input('nightsBefore_kid1',$variations_name_price[$catname]['nightsBefore_kid1']);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -409,6 +440,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
     }
@@ -420,11 +452,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
             <th>
             <?php echo sprintf(__('Extra night in %s (child %s/%s yo)' ,'wm-child-verdenatura'),$from,$kid1_max_range,$kid2_max_range);?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price['nightsBefore_kid2']) {
-                        output_hotel_price_input('nightsBefore_kid2',$variations_name_price['nightsBefore_kid2']);
+                if ($variations_name_price[$catname]['nightsBefore_kid2']) {
+                        output_hotel_price_input('nightsBefore_kid2',$variations_name_price[$catname]['nightsBefore_kid2']);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -432,6 +465,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
     }
@@ -443,11 +477,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
             <th>
             <?php echo sprintf(__('Extra night in %s (child %s/%s yo)' ,'wm-child-verdenatura'),$from,$kid2_max_range,$kid3_max_range);?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price['nightsBefore_kid3']) {
-                        output_hotel_price_input('nightsBefore_kid3',$variations_name_price['nightsBefore_kid3']);
+                if ($variations_name_price[$catname]['nightsBefore_kid3']) {
+                        output_hotel_price_input('nightsBefore_kid3',$variations_name_price[$catname]['nightsBefore_kid3']);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -455,6 +490,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
     }
@@ -466,11 +502,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
             <th>
                 <?php echo sprintf(__('Extra night in %s (Child in extra bed)' ,'wm-child-verdenatura'),$from); ?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price['nightsBefore_kid4']) {
-                        output_hotel_price_input('nightsBefore_kid4',$variations_name_price['nightsBefore_kid4']);
+                if ($variations_name_price[$catname]['nightsBefore_kid4']) {
+                        output_hotel_price_input('nightsBefore_kid4',$variations_name_price[$catname]['nightsBefore_kid4']);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -478,6 +515,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
     }
@@ -489,11 +527,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
             <th>
             <?php echo sprintf(__('Extra night in %s (Double %s)' ,'wm-child-verdenatura'),$to, $place); ?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price['nightsAfter_adult']) {
-                        output_hotel_price_input('nightsAfter_adult',$variations_name_price['nightsAfter_adult']);
+                if ($variations_name_price[$catname]['nightsAfter_adult']) {
+                        output_hotel_price_input('nightsAfter_adult',$variations_name_price[$catname]['nightsAfter_adult']);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -501,6 +540,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
     }
@@ -512,11 +552,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
             <th>
             <?php echo sprintf(__('Supplement for extra night in %s (Single %s)' ,'wm-child-verdenatura'),$to, $place); ?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price['nightsAfter_adult-single']) {
-                        output_hotel_price_input('nightsAfter_adult-single',$variations_name_price['nightsAfter_adult-single']);
+                if ($variations_name_price[$catname]['nightsAfter_adult-single']) {
+                        output_hotel_price_input('nightsAfter_adult-single',$variations_name_price[$catname]['nightsAfter_adult-single']);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -524,6 +565,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
     }
@@ -535,11 +577,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
             <th>
                 <?php echo sprintf(__('Extra night in %s (extra bed)' ,'wm-child-verdenatura'),$to); ?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price['nightsAfter_adult-extra']) {
-                        output_hotel_price_input('nightsAfter_adult-extra',$variations_name_price['nightsAfter_adult-extra']);
+                if ($variations_name_price[$catname]['nightsAfter_adult-extra']) {
+                        output_hotel_price_input('nightsAfter_adult-extra',$variations_name_price[$catname]['nightsAfter_adult-extra']);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -547,6 +590,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
     }
@@ -558,11 +602,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
             <th>
             <?php echo sprintf(__('Extra night in %s (child 0/%s yo)' ,'wm-child-verdenatura'),$to,$kid1_max_range);?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price['nightsAfter_kid1']) {
-                        output_hotel_price_input('nightsAfter_kid1',$variations_name_price['nightsAfter_kid1']);
+                if ($variations_name_price[$catname]['nightsAfter_kid1']) {
+                        output_hotel_price_input('nightsAfter_kid1',$variations_name_price[$catname]['nightsAfter_kid1']);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -570,6 +615,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
     }
@@ -581,11 +627,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
             <th>
             <?php echo sprintf(__('Extra night in %s (child %s/%s yo)' ,'wm-child-verdenatura'),$to,$kid1_max_range,$kid2_max_range);?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price['nightsAfter_kid2']) {
-                        output_hotel_price_input('nightsAfter_kid2',$variations_name_price['nightsAfter_kid2']);
+                if ($variations_name_price[$catname]['nightsAfter_kid2']) {
+                        output_hotel_price_input('nightsAfter_kid2',$variations_name_price[$catname]['nightsAfter_kid2']);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -593,6 +640,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
     }
@@ -604,11 +652,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
             <th>
             <?php echo sprintf(__('Extra night in %s (child %s/%s yo)' ,'wm-child-verdenatura'),$to,$kid2_max_range,$kid3_max_range);?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price['nightsAfter_kid3']) {
-                        output_hotel_price_input('nightsAfter_kid3',$variations_name_price['nightsAfter_kid3']);
+                if ($variations_name_price[$catname]['nightsAfter_kid3']) {
+                        output_hotel_price_input('nightsAfter_kid3',$variations_name_price[$catname]['nightsAfter_kid3']);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -616,6 +665,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
     }
@@ -627,11 +677,12 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
             <th>
                 <?php echo sprintf(__('Extra night in %s (Child in extra bed)' ,'wm-child-verdenatura'),$to); ?>
             </th>
+            <?php foreach ($variations_name_price as $catname => $array) { ?>
             <td>
             <?php
                 $not_exist = false;
-                if ($variations_name_price['nightsAfter_kid4']) {
-                        output_hotel_price_input('nightsAfter_kid4',$variations_name_price['nightsAfter_kid4']);
+                if ($variations_name_price[$catname]['nightsAfter_kid4']) {
+                        output_hotel_price_input('nightsAfter_kid4',$variations_name_price[$catname]['nightsAfter_kid4']);
                         $not_exist = true;
                 }
                 if ($not_exist == false) {
@@ -639,6 +690,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
                 }
             ?>
             </td>
+            <?php } ?>
         </tr>
     <?php
     }

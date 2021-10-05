@@ -86,9 +86,9 @@ if( $products ){
                     }
                     $list_all_variations_name += array($variation_name => $variation['price_html']);
                     $variation_name_price = array($variation_name => array('id'=>$variation['variation_id'],'price'=>intval($price)));
-                    $variations_name_price += $variation_name_price;
+                    $product_variation_name_price += $variation_name_price;
                 }
-                // array_push($variations_name_price,$variation_name_price);
+                $variations_name_price[$product_attribute_name] = $product_variation_name_price;
             }
             if(strip_tags($category) == 'extra'){
                 $has_extra = true;
@@ -344,13 +344,12 @@ if( $products ){
                                                 $variation_name_price = array($variation_name => array('id'=>$variation['variation_id'],'price'=>intval($price)));
 
                                                 $list_all_variations_name_seasonal += array($variation_name => $variation['price_html']);
-                                                $variations_name_price_seasonal += $variation_name_price;
-                                                // array_push($variations_name_price_seasonal,$variation_name_price);
+                                                $product_variation_name_price += $variation_name_price;
                                             }
+                                            $variations_name_price_seasonal[$product_attribute_name] = $product_variation_name_price;
                                         }
                                     }
                                 }
-                                
                             }
                         ?>
                     <span class='durata-txt'> <!------------ quote ---------------------->
@@ -1173,7 +1172,7 @@ if( $products ){
                     var price = $(this).val();
 
                     if (!$.isNumeric(price) ) {
-                        alert('Andre niente lettere!')
+                        alert('Non usare le lettere!')
                     } else if ( !price ) {
                         alert('Inserire il prezzo!')
                     } else if ($(this).attr("placeholder") == price) {
