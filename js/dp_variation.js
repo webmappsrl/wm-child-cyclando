@@ -68,11 +68,11 @@ jQuery(document).ready( function($) {
                 jQuery(".input-"+name+"-"+id).html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
             },
             success : function( response ) {
+                catnamer = catname.replace(' ','');
                 objs = JSON.parse(response);
                 var prductoid = objs['productid']
-                if (objs['response'] == true) {
-                    jQuery(".input-"+name+"-"+id).html('<i class="fas fa-check-circle"></i>');
-                    jQuery("#dp_variation_"+name+" #dp_variation_category_"+catname+"").html("<div></div><input type='text' placeholder='-' productid="+prductoid+">")
+                if (objs['response'] == 'true') {
+                    jQuery("#dp_variation_"+name+" #dp_variation_category_"+catnamer+"").html("<div class='.input-"+name+"-"+id+"'><i class='fas fa-times-circle'></i></div><input type='text' placeholder='-' productid="+prductoid+">")
                 }
             }
         });

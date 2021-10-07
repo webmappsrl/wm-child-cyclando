@@ -183,11 +183,11 @@ function wm_route_tabs_body_tr($variation,$title,$variations_name_price){
         <tr id="dp_variation_<?= $variation ?>">  
             <th><?= $title; ?></th>
                 <?php foreach ($variations_name_price as $catname => $array) { ?>
-                    <td id="dp_variation_category_<?= $catname ?>">
+                    <td id="dp_variation_category_<?= str_replace(' ', '', $catname);?>">
                 <?php
                     $not_exist = false;
                         if ($variations_name_price[$catname][$variation]) {
-                                output_hotel_price_input($variation,$variations_name_price[$catname][$variation]);
+                                output_hotel_price_input($variation,$variations_name_price[$catname][$variation],$catname);
                                 $not_exist = true;
                         }
                         if ($not_exist == false) {
