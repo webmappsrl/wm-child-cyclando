@@ -24,6 +24,7 @@ require ('api/api-loader.php');
 require ('includes/class_routeProductsOC.php') ;
 require ('includes/oc_ajax_route_price.php');
 require ('includes/oc_ajax_variation_price_update.php');
+require ('includes/oc_ajax_variation_delete.php');
 require ('includes/wm_has_extra_get_label.php');
 require ('includes/wm_has_hotel_get_label.php');
 
@@ -70,6 +71,10 @@ function impreza_theme_enqueue_styles() {
         wp_enqueue_style('route-single-post-style', get_stylesheet_directory_uri() . '/single-route-style.css');
         wp_enqueue_script('jQueryValidate', 'https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.2/jquery.validate.min.js', array('jquery'));
     }
+    if (is_singular('route') && current_user_can('administrator')){
+        wp_enqueue_script( 'dp_javascript', get_stylesheet_directory_uri() . '/js/dp_variation.js', array ('jquery') );
+    }
+
 }
 
 function admin_css_load() {

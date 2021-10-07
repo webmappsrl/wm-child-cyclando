@@ -4,15 +4,16 @@ include ('vn_route_tabs_td.php');
 include ('wm_product_attribute_mapping.php');
 add_shortcode( 'route_table_price', 'cyclando_render_route_tabs_shortcode' );
 
-function output_price_input($name,$extra_variation_name_price) {
+function output_extra_price_input($name,$extra_variation_name_price) {
     $id = $extra_variation_name_price[$name.'_id'];
     $price = $extra_variation_name_price[$name];
-    echo "<div class='input-$name-$id'></div><input type='text' id='$id' placeholder='$price' name='$name'>";
+    echo "<div class='input-$name-$id'></div><input type='text' id='$id' placeholder='$price' name='$name'><div class='dp-delete-icon-wrapper'><i class='fal fa-trash-alt dp-delete-icon' id='$id' name='$name'></i></div>";
 }
 function output_hotel_price_input($name,$value) {
     $id = $value['id'];
+    // $parent_id = wp_get_post_parent_id($id);
     $price = $value['price'];
-    echo "<div class='input-$name-$id'></div><input type='text' id='$id' placeholder='$price' name='$name'>";
+    echo "<div class='input-$name-$id'></div><input type='text' id='$id' placeholder='$price' name='$name'><div class='dp-delete-icon-wrapper'><i class='fal fa-trash-alt dp-delete-icon' id='$id' name='$name'></i></div>";
 }
 
 
@@ -454,7 +455,7 @@ if( $products ){
                                 </th>
                                     
                                 <td>
-                                    <?php output_price_input('bike',$extra_variation_name_price);?>
+                                    <?php output_extra_price_input('bike',$extra_variation_name_price);?>
                                 </td>
                                    
                             </tr>
@@ -472,7 +473,7 @@ if( $products ){
                                 </th>
                                     
                                 <td>
-                                <?php output_price_input('ebike',$extra_variation_name_price);?>
+                                <?php output_extra_price_input('ebike',$extra_variation_name_price);?>
                                 </td>
                                    
                             </tr>
@@ -491,7 +492,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('kidbike',$extra_variation_name_price);
+                                    output_extra_price_input('kidbike',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -511,7 +512,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('bike_tandem',$extra_variation_name_price);
+                                    output_extra_price_input('bike_tandem',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -531,7 +532,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('bike_road',$extra_variation_name_price);
+                                    output_extra_price_input('bike_road',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -551,7 +552,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('babyseat',$extra_variation_name_price);
+                                    output_extra_price_input('babyseat',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -571,7 +572,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('trailer',$extra_variation_name_price);
+                                    output_extra_price_input('trailer',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -591,7 +592,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('trailgator',$extra_variation_name_price);
+                                    output_extra_price_input('trailgator',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -611,7 +612,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('tagalong',$extra_variation_name_price);
+                                    output_extra_price_input('tagalong',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -631,7 +632,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('bikewarranty',$extra_variation_name_price);
+                                    output_extra_price_input('bikewarranty',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -651,7 +652,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('ebikewarranty',$extra_variation_name_price);
+                                    output_extra_price_input('ebikewarranty',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -671,7 +672,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('bike_tandemwarranty',$extra_variation_name_price);
+                                    output_extra_price_input('bike_tandemwarranty',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -691,7 +692,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('bike_roadwarranty',$extra_variation_name_price);
+                                    output_extra_price_input('bike_roadwarranty',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -711,7 +712,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('helmet',$extra_variation_name_price);
+                                    output_extra_price_input('helmet',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -731,7 +732,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('kidhelmet',$extra_variation_name_price);
+                                    output_extra_price_input('kidhelmet',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -751,7 +752,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('roadbook',$extra_variation_name_price);
+                                    output_extra_price_input('roadbook',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -771,7 +772,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('cookingclass',$extra_variation_name_price);
+                                    output_extra_price_input('cookingclass',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -791,7 +792,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('transferBefore',$extra_variation_name_price);
+                                    output_extra_price_input('transferBefore',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -811,7 +812,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('transferAfter',$extra_variation_name_price);
+                                    output_extra_price_input('transferAfter',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -831,7 +832,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('boardingtax',$extra_variation_name_price);
+                                    output_extra_price_input('boardingtax',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -851,7 +852,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('bike_plus',$extra_variation_name_price);
+                                    output_extra_price_input('bike_plus',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -871,7 +872,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('bike_pluswarranty',$extra_variation_name_price);
+                                    output_extra_price_input('bike_pluswarranty',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -891,7 +892,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('bike_mtb',$extra_variation_name_price);
+                                    output_extra_price_input('bike_mtb',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -911,7 +912,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('bike_mtbwarranty',$extra_variation_name_price);
+                                    output_extra_price_input('bike_mtbwarranty',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -931,7 +932,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('bike_ebikemtb',$extra_variation_name_price);
+                                    output_extra_price_input('bike_ebikemtb',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -951,7 +952,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('bike_ebikemtbwarranty',$extra_variation_name_price);
+                                    output_extra_price_input('bike_ebikemtbwarranty',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -971,7 +972,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('bike_ebikeroad',$extra_variation_name_price);
+                                    output_extra_price_input('bike_ebikeroad',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -991,7 +992,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('bike_ecargo',$extra_variation_name_price);
+                                    output_extra_price_input('bike_ecargo',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -1011,7 +1012,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('bike_ecargowarranty',$extra_variation_name_price);
+                                    output_extra_price_input('bike_ecargowarranty',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -1031,7 +1032,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('bike_own',$extra_variation_name_price);
+                                    output_extra_price_input('bike_own',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -1051,7 +1052,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('bike_ownwarranty',$extra_variation_name_price);
+                                    output_extra_price_input('bike_ownwarranty',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -1071,7 +1072,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                   output_price_input('bike_recumbent',$extra_variation_name_price);
+                                   output_extra_price_input('bike_recumbent',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -1091,7 +1092,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('gps',$extra_variation_name_price);
+                                    output_extra_price_input('gps',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -1111,7 +1112,7 @@ if( $products ){
                                     
                                 <td>
                                 <?php
-                                    output_price_input('weehoo',$extra_variation_name_price);
+                                    output_extra_price_input('weehoo',$extra_variation_name_price);
                                     ?>
                                 </td>
                                    
@@ -1133,7 +1134,7 @@ if( $products ){
                                 </th>
                                 <td>
                                     <?php
-                                    output_price_input($extra_key,$extra_variation_name_price);
+                                    output_extra_price_input($extra_key,$extra_variation_name_price);
                                     ?>
                                 </td>
                             </tr>
@@ -1161,73 +1162,6 @@ if( $products ){
                 ?>
             </div>
     </div>
-
-
-
-    <script>
-        jQuery(document).ready( function($) {
-
-            $( "input" ).keypress(function(e) {
-                if(e.which == 13){
-                    var price = $(this).val();
-
-                    if (!$.isNumeric(price) ) {
-                        alert('Non usare le lettere!')
-                    } else if ( !price ) {
-                        alert('Inserire il prezzo!')
-                    } else if ($(this).attr("placeholder") == price) {
-                        alert('Il prezzo non può essere uguale a prima!')
-                    } else {
-                        ajaxUpdateProductVariationPrice($(this).attr("name"),$(this).attr("id"),price);
-                    }
-                }
-            });
-
-
-            function ajaxUpdateProductVariationPrice(name,id,price){
-                var data = {
-                    'action': 'oc_ajax_variation_price_update',
-                    'variationid':  id,
-                    'variationprice':  price,
-                };
-                jQuery.ajax({
-                    url: '/wp-admin/admin-ajax.php',
-                    type : 'post',
-                    data: data,
-                    beforeSend: function(){
-                        jQuery(".input-"+name+"-"+id).html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
-                    },
-                    success : function( response ) {
-                        objs = JSON.parse(response);
-                        if (objs == true) {
-                            jQuery(".input-"+name+"-"+id).html('<i class="wm-icon-checkmark-circled"></i>');
-                            jQuery("input#"+id).attr('placeholder',price);
-                        }
-                    }
-                });
-            }
-
-            $( "#tabs" ).tabs({
-                activate: function( event, ui ) {
-                    ui.newPanel.find('.webmapp_post_image').each(function(i,e){
-                        force_aspect_ratio($(e));
-                    } );
-                }
-            });
-            $( "#tab-stagioni" ).tabs({
-                activate: function( event, ui ) {
-                    ui.newPanel.find('.webmapp_post_image').each(function(i,e){
-                        force_aspect_ratio($(e));
-                    } );
-                }
-            });
-        } );
-
-        jQuery(function(){
-            window.et_pb_smooth_scroll = () => {};
-        });
-
-    </script>
 
 
 
