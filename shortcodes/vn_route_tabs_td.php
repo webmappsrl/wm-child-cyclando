@@ -190,7 +190,7 @@ function wm_route_tabs_body_tr($variation,$title,$variations_name_price,$season_
                 <?php
                     $not_exist = false;
                         if ($variations_name_price[$catname][$variation]) {
-                                output_hotel_price_input($variation,$variations_name_price[$catname][$variation],$catname,$season_name_id);
+                                output_hotel_price_input($variation,$variations_name_price[$catname][$variation],$catname_replace,$season_name_id);
                                 $not_exist = true;
                         }
                         if ($not_exist == false) {

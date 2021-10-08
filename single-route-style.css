@@ -1705,7 +1705,7 @@ body #tab-stagioni a:hover {
 } */
 div#cy-prices-modal td div {
     width: auto;
-    display: inline-block;
+    display: initial;
     margin: auto 0!important;
     line-height: 40px;
 }
@@ -1751,6 +1751,9 @@ div#cy-prices-modal input::placeholder {
 }
 .dp-row-delete-icon:hover {
     box-shadow: 2px 5px 9px #464646;
+}
+.cell-status-icon-wrapper {
+    width: 42px!important;
 }
 /* price inline edit css end */
 
