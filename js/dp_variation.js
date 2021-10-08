@@ -46,16 +46,28 @@ jQuery(document).ready( function($) {
         var id = $(this).attr("id");
         var name = $(this).attr("name");
         var catname = $(this).attr("catname");
-        var confirm = window.confirm('Sei sicuro di voler cancellare questo prodotto?'); 
-        if (confirm) {
-            console.log('true');
-            ajaxDeleteProductVariationPrice(name,id,catname)
+        var seasonname = $(this).attr("seasonname");
+        var tr = $(this).closest("tr");
+        var variationcells = tr.find(".dp-delete-icon");
+        var deleterow = 'false';
+        if (variationcells.length == 1) {
+            var confirmdelrow = window.confirm('Questa riga verrà eliminata, sei sicuro di voler procedere?'); 
+            if (confirmdelrow) {
+                deleterow = tr.attr('id');
+                ajaxDeleteProductVariationPrice(name,id,catname,seasonname,deleterow)
+                
+            } else {
+            }
         } else {
-            console.log('false');
+            var confirm = window.confirm('Sei sicuro di voler cancellare questo prodotto?'); 
+            if (confirm) {
+                ajaxDeleteProductVariationPrice(name,id,catname,seasonname,deleterow)
+            } else {
+            }
         }
     });
     // product elimination ajax
-    function ajaxDeleteProductVariationPrice(name,id,catname){
+    function ajaxDeleteProductVariationPrice(name,id,catname,seasonname,deleterow){
         var data = {
             'action': 'oc_ajax_variation_delete',
             'variationid':  id,
@@ -68,11 +80,21 @@ jQuery(document).ready( function($) {
                 jQuery(".input-"+name+"-"+id).html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
             },
             success : function( response ) {
-                catnamer = catname.replace(' ','');
+                catnamer = catname.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '')
                 objs = JSON.parse(response);
                 var prductoid = objs['productid']
                 if (objs['response'] == 'true') {
-                    jQuery("#dp_variation_"+name+" #dp_variation_category_"+catnamer+"").html("<div class='.input-"+name+"-"+id+"'><i class='fas fa-times-circle'></i></div><input type='text' placeholder='-' productid="+prductoid+">")
+                    if (deleterow !== 'false') {
+                        jQuery("#dp_"+seasonname+"_variation_"+name+" #dp_category_"+catnamer+"_variation_"+id+"").html("<div class='.input-"+name+"-"+id+"'><i class='fas fa-times-circle'></i></div><input type='text' placeholder='-' productid="+prductoid+">")
+                        setTimeout(function(){ 
+                            $("#"+deleterow).fadeOut(1000,function() {
+                                $("#"+deleterow).remove();
+                            }); 
+                        }, 1000);
+                        
+                    } else {
+                        jQuery("#dp_"+seasonname+"_variation_"+name+" #dp_category_"+catnamer+"_variation_"+id+"").html("<div class='.input-"+name+"-"+id+"'><i class='fas fa-times-circle'></i></div><input type='text' placeholder='-' productid="+prductoid+">")
+                    }
                 }
             }
         });

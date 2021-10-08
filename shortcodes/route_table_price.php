@@ -9,11 +9,16 @@ function output_extra_price_input($name,$extra_variation_name_price) {
     $price = $extra_variation_name_price[$name];
     echo "<div class='input-$name-$id'></div><input type='text' id='$id' placeholder='$price' name='$name'><div class='dp-delete-icon-wrapper'><i class='fal fa-trash-alt dp-delete-icon' id='$id' name='$name'></i></div>";
 }
-function output_hotel_price_input($name,$value,$catname) {
+function output_hotel_price_input($name,$value,$catname,$seasonname) {
     $id = $value['id'];
     // $parent_id = wp_get_post_parent_id($id);
     $price = $value['price'];
-    echo "<div class='input-$name-$id'></div><input type='text' id='$id' placeholder='$price' name='$name'><div class='dp-delete-icon-wrapper'><i class='fal fa-trash-alt dp-delete-icon' id='$id' name='$name' catname='$catname'></i></div>";
+    $output = '';
+    $output .= "<div class='input-$name-$id'></div><input type='text' id='$id' placeholder='$price' name='$name'>";
+    if ($name !== 'adult') {
+        $output .= "<div class='dp-delete-icon-wrapper'><i class='fal fa-trash-alt dp-delete-icon' id='$id' name='$name' catname='$catname' seasonname='$seasonname'></i></div>";
+    }
+    echo $output;
 }
 
 
@@ -358,6 +363,7 @@ if( $products ){
                     <table class="departures-quotes">
                         <thead>
                             <tr>
+                                <td style="width:10%"></td>
                                 <th>
                                     <p class="tab-section"> 
                                         <?php 
@@ -384,7 +390,7 @@ if( $products ){
                             </tr>
                         </thead>
                         <tbody>
-                        <?php vn_route_tabs_body ($list_all_variations_name_seasonal,$variations_name_price_seasonal,$place,$from,$to)?>
+                        <?php vn_route_tabs_body ($list_all_variations_name_seasonal,$variations_name_price_seasonal,$place,$from,$to,$season_name_id)?>
                         </tbody>       
                     </table>
                 </div> <!---- END  -------- quote hotel alberghi -->
@@ -401,6 +407,7 @@ if( $products ){
                     <table class="departures-quotes">
                         <thead>
                             <tr>
+                                <td style="width:10%"></td>
                                 <th><p class="tab-section"> 
                                     <?php
                                     if( empty($season_products) && $has_hotel ){
@@ -425,7 +432,7 @@ if( $products ){
                             </tr>
                         </thead>
                         <tbody>
-                        <?php vn_route_tabs_body($list_all_variations_name,$variations_name_price,$place,$from,$to)?>
+                        <?php vn_route_tabs_body($list_all_variations_name,$variations_name_price,$place,$from,$to,$season_name_id)?>
                         </tbody>       
                     </table>
                 </div> <!---- END  -------- quote hotel alberghi -->

@@ -1742,7 +1742,16 @@ div#cy-prices-modal input::placeholder {
 .dp-delete-icon:hover {
     box-shadow: 2px 5px 9px #464646;
 }
-
+.dp-row-delete-icon {
+    color: var(--color-error);
+    padding: 0px;
+    vertical-align: middle;
+    font-size: 18px;
+    cursor: pointer;
+}
+.dp-row-delete-icon:hover {
+    box-shadow: 2px 5px 9px #464646;
+}
 /* price inline edit css end */
 
 .cy-close {
