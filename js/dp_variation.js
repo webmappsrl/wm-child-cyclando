@@ -66,6 +66,7 @@ jQuery(document).ready( function($) {
             }
         }
     });
+
     // product elimination ajax
     function ajaxDeleteProductVariationPrice(name,id,catname,seasonname,deleterow){
         var data = {
@@ -99,6 +100,31 @@ jQuery(document).ready( function($) {
             }
         });
     }
+
+    // delete all products in a row 
+    $( ".dp-row-delete-icon" ).click(function(e) { 
+        var delRawAllVariations = window.confirm('Tutte le variazioni di questa riga verrano eliminte, sei sicuro di voler procedere?');
+        if (delRawAllVariations) {
+            var tr = $(this).closest("tr");
+            var variationcells = tr.find(".dp-delete-icon");
+            variationcells.each(function(index){
+                var id = $(this).attr("id");
+                var name = $(this).attr("name");
+                var catname = $(this).attr("catname");
+                var seasonname = $(this).attr("seasonname");
+                var deleterow = 'false';
+                if (index == (variationcells.length - 1)) {
+                    deleterow = tr.attr('id');
+                    ajaxDeleteProductVariationPrice(name,id,catname,seasonname,deleterow)
+                        
+                } else {
+                    ajaxDeleteProductVariationPrice(name,id,catname,seasonname,deleterow)
+                }
+            })
+        } else {
+        }
+    });
+    
 
     $( "#tabs" ).tabs({
         activate: function( event, ui ) {

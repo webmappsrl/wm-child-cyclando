@@ -181,7 +181,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
 function wm_route_tabs_body_tr($variation,$title,$variations_name_price,$season_name_id){
     ?>
         <tr id="dp_<?= $season_name_id ?>_variation_<?= $variation ?>">
-            <td style="width: 100px;"><div class='dp-delete-icon-wrapper'><i class='fal fa-trash-alt dp-row-delete-icon'></i></div></td>
+            <td style="width: 70px;"><div class='dp-delete-icon-wrapper'><i class='fal fa-trash-alt dp-row-delete-icon'></i></div></td>
             <th><?= $title; ?></th>
                 <?php foreach ($variations_name_price as $catname => $array) { 
                     $catname_replace = preg_replace("/[^A-Za-z0-9]/", '', $catname);
