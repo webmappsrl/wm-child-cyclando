@@ -1755,6 +1755,27 @@ div#cy-prices-modal input::placeholder {
 .cell-status-icon-wrapper {
     width: 42px!important;
 }
+.addVariant_button_wrapper {
+    text-align: right;
+}
+.addVariantbtn {
+    width: auto;
+    border: 2px solid;
+    display: inline-block;
+    padding: 5px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    color: var(--color-secondary);
+}
+.addVariantbtn:hover {
+    color: white;
+    border-color: var(--color-secondary-hover);
+    background-color: var(--color-secondary-hover);
+}
+.dp_add_variation_body {
+    display: grid;
+    padding: 10px 0;
+}
 /* price inline edit css end */
 
 .cy-close {

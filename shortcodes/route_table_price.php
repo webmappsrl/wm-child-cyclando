@@ -56,7 +56,7 @@ $extra_variation_name_description = array();
 $list_all_variations_name = array();
 $has_hotel = false;
 $has_extra = false;
-
+$product_id_model_hotel = '';
 
 
 
@@ -72,6 +72,7 @@ if( $products ){
                 $product_attribute_name = $value;
             }
             if(strip_tags($category) == 'hotel'){
+                $product_id_model_hotel = $p;
                 $has_hotel = true;
                 array_push($attributes_name_hotel,$product_attribute_name);
                 $product_variation_name_price = array();
@@ -318,6 +319,7 @@ if( $products ){
                         <?php 
                         if ($season_products){  //----------- start hotel product table
                             $attributes_name_hotel_seasonal = array();
+                            $attributes_name_hotel_seasonal_modal = array();
                             $variations_name_price_seasonal = array();
                             $list_all_variations_name_seasonal = array();
                                 foreach( $season_products as $p ){ // variables of each product
@@ -328,9 +330,11 @@ if( $products ){
                                         $attributes_list = $product->get_variation_attributes();
                                         foreach ($attributes_list as $value => $key ) {
                                             $product_attribute_name = $value;
+                                            $product_attribute_name_modal = array($p => $value);
                                         }
                                         if(strip_tags($category) == 'hotel'){
                                             array_push($attributes_name_hotel_seasonal,$product_attribute_name);
+                                            array_push($attributes_name_hotel_seasonal_modal,$product_attribute_name_modal);
                                             $product_variation_name_price = array();
                                             foreach($product->get_available_variations() as $variation ){
     
@@ -356,10 +360,13 @@ if( $products ){
                                         }
                                     }
                                 }
+                                ?>
+                                <div class="addVariant_button_wrapper">
+                                    <div class="addVariant addVariantbtn" data-productarray='<?= json_encode($attributes_name_hotel_seasonal_modal) ?>' data-routeid="<?= $post_id ?>"><?= __('Add raw' ,'wm-child-cyclando'); ?> <i class="fas fa-plus"></i></div>
+                                </div>
+                                <?php
                             }
                         ?>
-                    <span class='durata-txt'> <!------------ quote ---------------------->
-                    </span>
                     <table class="departures-quotes">
                         <thead>
                             <tr>
@@ -404,6 +411,9 @@ if( $products ){
                     if (empty($low_season_products) && empty($high_season_products ) && $has_hotel){  //----------- start hotel product table
                 ?>
                 <div class="quotes-preventivo 2"><!------------ quote ---------------------->
+                    <div class="addVariant_button_wrapper">
+                        <div class="addVariant addVariantbtn" data-productid="<?= $product_id_model_hotel ?>" data-routeid="<?= $post_id ?>"><?= __('Add raw' ,'wm-child-cyclando'); ?> <i class="fas fa-plus"></i></div>
+                    </div>
                     <table class="departures-quotes">
                         <thead>
                             <tr>
@@ -685,7 +695,20 @@ if( $products ){
             </div>
     </div>
 
-
+    
+    <!-- Modal add raw html -->
+    <div id="dp_add_variation-modal" class="dp_add_variation_container">
+        <div class="ocm-participants-content">
+            <div class="ocm-participants-header">
+                <div class="">
+                    <h2><?= __('Add a new variant' ,'wm-child-cyclando'); ?></h2>
+                </div>
+                <div class="ocm-close-button-container"><span class="dp_add_variation_container_close">×</span></div>
+            </div>
+            <div class="dp_add_variation_body">
+            </div>                            
+        </div>
+    </div>
 
     <?php
 

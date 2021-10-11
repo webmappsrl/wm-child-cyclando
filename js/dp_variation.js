@@ -125,6 +125,58 @@ jQuery(document).ready( function($) {
         }
     });
     
+    // Add variation modal (popup) eventlistener
+    $('.addVariant').on('click',function(){
+        var productarray = $(this).data('productarray');
+        var routeid = $(this).data('routeid');
+        console.log(productarray);
+        console.log(routeid);
+        $('.dp_add_variation_container').show();
+        ajaxAddProductVariationModal(productarray,routeid)
+    });
+    $('.dp_add_variation_container_close').on('click',function(){
+        $('.dp_add_variation_container').hide();
+    });
+
+   
+
+    // product add variation ajax for add raw modal
+    function ajaxAddProductVariationModal(productarray,routeid){
+        var data = {
+            'action': 'oc_ajax_variation_add_modal',
+            'productarray':  productarray,
+            'routeid':  routeid,
+        };
+        jQuery.ajax({
+            url: '/wp-admin/admin-ajax.php',
+            type : 'post',
+            data: data,
+            beforeSend: function(){
+                jQuery(".dp_add_variation_body").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
+            },
+            success : function( response ) {
+                catnamer = catname.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '')
+                objs = JSON.parse(response);
+                var prductoid = objs['productid']
+                if (objs['response'] == 'true') {
+                    jQuery(".dp_add_variation_body").html(prductoid);
+                } else {
+                    jQuery(".dp_add_variation_body").html('Sorry something went wrong! Call Pedram');
+                }
+            }
+        });
+    }
+
+
+     
+    window.addEventListener('click', dp_outsideClick);
+    // Close If Outside Click
+    function dp_outsideClick(e) {
+        if (e.target.id == 'dp_add_variation-modal') {
+            $('.dp_add_variation_container').hide();
+        }
+    }
+
 
     $( "#tabs" ).tabs({
         activate: function( event, ui ) {
@@ -140,7 +192,7 @@ jQuery(document).ready( function($) {
             } );
         }
     });
-} );
+});
 
 jQuery(function(){
     window.et_pb_smooth_scroll = () => {};

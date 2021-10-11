@@ -2222,10 +2222,10 @@ span.route_duration_free {
 /* Oneclick form modals */
 
 
-.ocm-participants-container, .ocm-bikes-container {
+.ocm-participants-container, .ocm-bikes-container, .dp_add_variation_container {
     display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 1100;
     left: 0;
     top: 0;
     height: 100%;
