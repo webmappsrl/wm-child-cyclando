@@ -46,6 +46,8 @@ function wmScrollTop() {
   }
 
 jQuery(window).on('load', function() {
+
+
 	var facetwpPaged = document.querySelectorAll('.facetwp-page');
 	facetwpPagedScrollTop(facetwpPaged);
   
@@ -58,6 +60,8 @@ jQuery(window).on('load', function() {
 });
 
 jQuery(document).ready(function () {
+  jQuery("img").removeAttr("src");
+  
   var main_url;
   var filter;
   // var pathname = window.location.href;

@@ -3,24 +3,25 @@
 add_action( 'wp_ajax_nopriv_oc_ajax_variation_create_modal', 'oc_ajax_variation_create_modal' );
 add_action( 'wp_ajax_oc_ajax_variation_create_modal', 'oc_ajax_variation_create_modal' );
 function oc_ajax_variation_create_modal(){
-    $productid = $_POST['productid']; 
+    $products = $_POST['products']; 
     $varname = $_POST['varname']; 
-    $price = $_POST['price']; 
     $seasonname = $_POST['seasonname']; 
-    $res = oc_ajax_variation_create_modal_request($productid,$varname,$price,$seasonname);    
+    $res = oc_ajax_variation_create_modal_request($products,$varname,$seasonname);    
     
     echo json_encode($res);
     wp_die();
 }
 
-function oc_ajax_variation_create_modal_request($productid,$varname,$price,$seasonname){
+function oc_ajax_variation_create_modal_request($products,$varname,$seasonname){
 
     $res = false;
 
-    $variation_data =  array(
-        'regular_price' => $price,
-    );
-    $res = create_product_variation( $productid, $variation_data ,$varname);
+    foreach (json_decode($products) as $id => $price) {
+        $variation_data =  array(
+            'regular_price' => $price,
+        );
+        $res = create_product_variation( $id, $variation_data ,$varname);
+    }
 
 
     $outcome = 'false';

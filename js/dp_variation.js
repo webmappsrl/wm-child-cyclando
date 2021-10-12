@@ -165,26 +165,32 @@ jQuery(document).ready( function($) {
                 var output = objs['output']
                 if (objs['response'] == 'true') {
                     jQuery(".dp_add_variation_body").html(output);
-
+                    
+                    
                     // Create product variants modal (popup)
                     $(".createVariantbtn").on('click',function(){
+                        var products = {};
+                        var varname = $("#dpvariationsmodal").val();
+                        var seasonname = $(".dpseasonnamemodal").attr("id");
                         if (hasValue("input.dpcatinputsmodal")) {
                             $("input.dpcatinputsmodal").each(function(e){	
                                 var productid = $(this).attr("id");
-                                var varname = $("#dpvariationsmodal").val();
-                                var seasonname = $(".dpseasonnamemodal").attr("id");
                                 var price = $(this).val();
     
                                 if ( !$.isNumeric(price) ) {
                                     console.log('senza un valore valido')
                                 } else {
-                                    ajaxCreateProductVariation(productid,varname,price,seasonname);
+                                    products[productid]= price;
                                 }
                             });
                         } else {
                             alert('Aggiungi almeno un prezzo a una categoria')
                         }
+                        if (!$.isEmptyObject(products)) {
+                            ajaxCreateProductVariation(products,varname,seasonname);
+                        }
                     })
+
                 } else {
                     jQuery(".dp_add_variation_body").html('Sorry something went wrong! Call Pedram');
                 }
@@ -193,12 +199,12 @@ jQuery(document).ready( function($) {
     }
 
     // product variation Create ajax modal (popup)
-    function ajaxCreateProductVariation(productid,varname,price,seasonname){
+    function ajaxCreateProductVariation(products,varname,seasonname){
         var data = {
             'action': 'oc_ajax_variation_create_modal',
-            'productid':  productid,
+            'products':  JSON.stringify(products),
             'varname':  varname,
-            'price':  price,
+            'seasonname':  seasonname,
         };
         jQuery.ajax({
             url: '/wp-admin/admin-ajax.php',
