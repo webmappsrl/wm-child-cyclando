@@ -25,6 +25,7 @@ require ('includes/class_routeProductsOC.php') ;
 require ('includes/oc_ajax_route_price.php');
 require ('includes/oc_ajax_variation_price_update.php');
 require ('includes/oc_ajax_variation_delete.php');
+require ('includes/oc_ajax_variation_add_modal.php');
 require ('includes/wm_has_extra_get_label.php');
 require ('includes/wm_has_hotel_get_label.php');
 

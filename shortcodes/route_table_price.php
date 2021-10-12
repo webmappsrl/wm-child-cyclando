@@ -330,11 +330,12 @@ if( $products ){
                                         $attributes_list = $product->get_variation_attributes();
                                         foreach ($attributes_list as $value => $key ) {
                                             $product_attribute_name = $value;
-                                            $product_attribute_name_modal = array($p => $value);
+                                            // $product_attribute_name_modal = array($p => $value);
+                                            $attributes_name_hotel_seasonal_modal[$p] = $value;
                                         }
                                         if(strip_tags($category) == 'hotel'){
                                             array_push($attributes_name_hotel_seasonal,$product_attribute_name);
-                                            array_push($attributes_name_hotel_seasonal_modal,$product_attribute_name_modal);
+                                            // array_push($attributes_name_hotel_seasonal_modal,$product_attribute_name_modal);
                                             $product_variation_name_price = array();
                                             foreach($product->get_available_variations() as $variation ){
     
@@ -362,7 +363,7 @@ if( $products ){
                                 }
                                 ?>
                                 <div class="addVariant_button_wrapper">
-                                    <div class="addVariant addVariantbtn" data-productarray='<?= json_encode($attributes_name_hotel_seasonal_modal) ?>' data-routeid="<?= $post_id ?>"><?= __('Add raw' ,'wm-child-cyclando'); ?> <i class="fas fa-plus"></i></div>
+                                    <div class="addVariant addVariantbtn" data-productarray='<?= json_encode($attributes_name_hotel_seasonal_modal) ?>' data-routeid="<?= $post_id ?>" data-place="<?= $place ?>" data-from="<?= $from ?>" data-to="<?= $to ?>" data-seasonname="<?= $season_name_id ?>"><?= __('Add raw' ,'wm-child-cyclando'); ?> <i class="fas fa-plus"></i></div>
                                 </div>
                                 <?php
                             }
@@ -412,7 +413,7 @@ if( $products ){
                 ?>
                 <div class="quotes-preventivo 2"><!------------ quote ---------------------->
                     <div class="addVariant_button_wrapper">
-                        <div class="addVariant addVariantbtn" data-productid="<?= $product_id_model_hotel ?>" data-routeid="<?= $post_id ?>"><?= __('Add raw' ,'wm-child-cyclando'); ?> <i class="fas fa-plus"></i></div>
+                        <div class="addVariant addVariantbtn" data-productid="<?= $product_id_model_hotel ?>" data-routeid="<?= $post_id ?>" data-place="<?= $place ?>" data-from="<?= $from ?>" data-to="<?= $to ?>" data-seasonname="<?= $season_name_id ?>"><?= __('Add raw' ,'wm-child-cyclando'); ?> <i class="fas fa-plus"></i></div>
                     </div>
                     <table class="departures-quotes">
                         <thead>
@@ -706,6 +707,7 @@ if( $products ){
                 <div class="ocm-close-button-container"><span class="dp_add_variation_container_close">×</span></div>
             </div>
             <div class="dp_add_variation_body">
+                
             </div>                            
         </div>
     </div>

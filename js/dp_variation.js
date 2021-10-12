@@ -129,10 +129,12 @@ jQuery(document).ready( function($) {
     $('.addVariant').on('click',function(){
         var productarray = $(this).data('productarray');
         var routeid = $(this).data('routeid');
-        console.log(productarray);
-        console.log(routeid);
+        var place = $(this).data('place');
+        var from = $(this).data('from');
+        var to = $(this).data('to');
+        var seasonname = $(this).data('seasonname');
         $('.dp_add_variation_container').show();
-        ajaxAddProductVariationModal(productarray,routeid)
+        ajaxAddProductVariationModal(productarray,routeid,place,from,to,seasonname)
     });
     $('.dp_add_variation_container_close').on('click',function(){
         $('.dp_add_variation_container').hide();
@@ -141,11 +143,15 @@ jQuery(document).ready( function($) {
    
 
     // product add variation ajax for add raw modal
-    function ajaxAddProductVariationModal(productarray,routeid){
+    function ajaxAddProductVariationModal(productarray,routeid,place,from,to,seasonname){
         var data = {
             'action': 'oc_ajax_variation_add_modal',
             'productarray':  productarray,
             'routeid':  routeid,
+            'place':  place,
+            'from':  from,
+            'to':  to,
+            'seasonname':  seasonname,
         };
         jQuery.ajax({
             url: '/wp-admin/admin-ajax.php',
@@ -155,11 +161,30 @@ jQuery(document).ready( function($) {
                 jQuery(".dp_add_variation_body").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
             },
             success : function( response ) {
-                catnamer = catname.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '')
                 objs = JSON.parse(response);
-                var prductoid = objs['productid']
+                var output = objs['output']
                 if (objs['response'] == 'true') {
-                    jQuery(".dp_add_variation_body").html(prductoid);
+                    jQuery(".dp_add_variation_body").html(output);
+
+                    // Create product variants modal (popup)
+                    $(".createVariantbtn").on('click',function(){
+                        if (hasValue("input.dpcatinputsmodal")) {
+                            $("input.dpcatinputsmodal").each(function(e){	
+                                var productid = $(this).attr("id");
+                                var varname = $("#dpvariationsmodal").val();
+                                var seasonname = $(".dpseasonnamemodal").attr("id");
+                                var price = $(this).val();
+    
+                                if ( !$.isNumeric(price) ) {
+                                    console.log('senza un valore valido')
+                                } else {
+                                    ajaxCreateProductVariation(productid,varname,price,seasonname);
+                                }
+                            });
+                        } else {
+                            alert('Aggiungi almeno un prezzo a una categoria')
+                        }
+                    })
                 } else {
                     jQuery(".dp_add_variation_body").html('Sorry something went wrong! Call Pedram');
                 }
@@ -167,7 +192,43 @@ jQuery(document).ready( function($) {
         });
     }
 
+    // product variation Create ajax modal (popup)
+    function ajaxCreateProductVariation(productid,varname,price,seasonname){
+        var data = {
+            'action': 'oc_ajax_variation_create_modal',
+            'productid':  productid,
+            'varname':  varname,
+            'price':  price,
+        };
+        jQuery.ajax({
+            url: '/wp-admin/admin-ajax.php',
+            type : 'post',
+            data: data,
+            beforeSend: function(){
+                jQuery(".dp_loader_modal").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
+            },
+            success : function( response ) {
+                catnamer = catname.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '')
+                objs = JSON.parse(response);
+                var output = objs['output']
+                if (objs['response'] == 'true') {
+                    $('.dp_add_variation_container').hide();
+                    $("#tab-"+seasonname+" tbody").append(output);
+                }
+            }
+        });
+    }
 
+    function hasValue(elem) {
+        var result = false;
+        $(elem).each(function(e){
+            var price = $(this).val();	
+            if (price && $.isNumeric(price)) {
+                result = true;
+            }
+        })
+        return result;
+    }
      
     window.addEventListener('click', dp_outsideClick);
     // Close If Outside Click
