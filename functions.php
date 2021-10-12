@@ -933,6 +933,7 @@ function return_route_targets_has_cyclando($post_id){
 
 // Check if url exists / route has geojson
 function URL_exists($url){
+    return false;
     $headers=get_headers($url);
     return stripos($headers[0],"200 OK")?true:false;
 }

@@ -23,14 +23,14 @@ function oc_ajax_variation_create_modal_request($products,$varname,$seasonname){
         $res = create_product_variation( $id, $variation_data ,$varname);
     }
 
-
+    $res = true;
     $outcome = 'false';
     if ($res !== false || $res !== null) {
         $outcome = 'true';
     }
 
     $output = `<tr>
-    $res
+    dawdawdawdaw
     </tr>`;
     $response = array(
         'response'=>$outcome,

@@ -60,7 +60,6 @@ jQuery(window).on('load', function() {
 });
 
 jQuery(document).ready(function () {
-  jQuery("img").removeAttr("src");
   
   var main_url;
   var filter;

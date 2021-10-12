@@ -145,13 +145,13 @@ get_header();
         if (is_array($has_track) && $has_track) {
             $has_track_program = true;
         }
-		$headers = get_headers("https://a.webmapp.it/cyclando.com/route/{$post_id}_map_1000x1000.png", 1);
-		$interactive_route_map = "https://a.webmapp.it/cyclando.com/route/{$post_id}_map_1000x1000.png";
-		if ($has_track && get_option('webmapp_show_interactive_route_map') && strpos($headers['Content-Type'], 'image/') !== false) {
-			$featured_map = $interactive_route_map;
-		} else {
+		// $headers = get_headers("https://a.webmapp.it/cyclando.com/route/{$post_id}_map_1000x1000.png", 1);
+		// $interactive_route_map = "https://a.webmapp.it/cyclando.com/route/{$post_id}_map_1000x1000.png";
+		// if ($has_track && get_option('webmapp_show_interactive_route_map') && strpos($headers['Content-Type'], 'image/') !== false) {
+		// 	$featured_map = $interactive_route_map;
+		// } else {
 			$featured_map = '/wp-content/themes/wm-child-cyclando/images/map-logo-osm.jpg';
-		}
+		// }
 		$first_departure_date = '';
 		$first_departure_date_ajax = '';
 		$first_departure_date_ajax_dormatdmY = '';
