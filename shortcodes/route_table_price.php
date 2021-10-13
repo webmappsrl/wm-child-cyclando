@@ -61,6 +61,7 @@ $product_id_model_hotel = '';
 
 $products = get_field('product');
 if( $products ){
+    $attributes_name_hotel_modal = array();
     foreach( $products as $p ){ // variables of each product
     $product = wc_get_product($p); 
         if($product->is_type('variable')){
@@ -69,6 +70,7 @@ if( $products ){
             $attributes_list = $product_with_variables->get_variation_attributes();
             foreach ($attributes_list as $value => $key ) {
                 $product_attribute_name = $value;
+                $attributes_name_hotel_modal[$p] = $value;
             }
             if(strip_tags($category) == 'hotel'){
                 $product_id_model_hotel = $p;
@@ -412,7 +414,7 @@ if( $products ){
                 ?>
                 <div class="quotes-preventivo 2"><!------------ quote ---------------------->
                     <div class="addVariant_button_wrapper">
-                        <div class="addVariant addVariantbtn" data-productid="<?= $product_id_model_hotel ?>" data-routeid="<?= $post_id ?>" data-place="<?= $place ?>" data-from="<?= $from ?>" data-to="<?= $to ?>" data-seasonname="<?= $season_name_id ?>"><?= __('Add raw' ,'wm-child-cyclando'); ?> <i class="fas fa-plus"></i></div>
+                        <div class="addVariant addVariantbtn" data-productarray='<?= json_encode($attributes_name_hotel_modal) ?>' data-routeid="<?= $post_id ?>" data-place="<?= $place ?>" data-from="<?= $from ?>" data-to="<?= $to ?>" data-seasonname="<?= $season_name_id ?>"><?= __('Add raw' ,'wm-child-cyclando'); ?> <i class="fas fa-plus"></i></div>
                     </div>
                     <table class="departures-quotes">
                         <thead>
