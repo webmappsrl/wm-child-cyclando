@@ -59,7 +59,6 @@ $has_extra = false;
 $product_id_model_hotel = '';
 
 
-
 $products = get_field('product');
 if( $products ){
     foreach( $products as $p ){ // variables of each product

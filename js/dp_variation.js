@@ -187,7 +187,7 @@ jQuery(document).ready( function($) {
                             alert('Aggiungi almeno un prezzo a una categoria')
                         }
                         if (!$.isEmptyObject(products)) {
-                            ajaxCreateProductVariation(products,varname,seasonname);
+                            ajaxCreateProductVariation(products,varname,seasonname,place,from,to,productarray);
                         }
                     })
 
@@ -199,12 +199,16 @@ jQuery(document).ready( function($) {
     }
 
     // product variation Create ajax modal (popup)
-    function ajaxCreateProductVariation(products,varname,seasonname){
+    function ajaxCreateProductVariation(products,varname,seasonname,place,from,to,productarray){
         var data = {
             'action': 'oc_ajax_variation_create_modal',
-            'products':  JSON.stringify(products),
+            'products':  products,
             'varname':  varname,
             'seasonname':  seasonname,
+            'place':  place,
+            'from':  from,
+            'to':  to,
+            'productarray': productarray
         };
         jQuery.ajax({
             url: '/wp-admin/admin-ajax.php',
@@ -214,9 +218,8 @@ jQuery(document).ready( function($) {
                 jQuery(".dp_loader_modal").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
             },
             success : function( response ) {
-                catnamer = catname.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '')
                 objs = JSON.parse(response);
-                var output = objs['output']
+                var output = objs['output'];
                 if (objs['response'] == 'true') {
                     $('.dp_add_variation_container').hide();
                     $("#tab-"+seasonname+" tbody").append(output);
