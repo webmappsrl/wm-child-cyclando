@@ -178,7 +178,7 @@ jQuery(document).ready( function($) {
                                 var price = $(this).val();
     
                                 if ( !$.isNumeric(price) ) {
-                                    console.log('senza un valore valido')
+                                    products[productid]= 0;
                                 } else {
                                     products[productid]= price;
                                 }

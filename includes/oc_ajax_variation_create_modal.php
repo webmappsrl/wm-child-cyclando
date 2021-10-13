@@ -22,30 +22,35 @@ function oc_ajax_variation_create_modal_request($products,$varname,$seasonname,$
     $output = "<tr id='dp_".$seasonname."_variation_".$varname."'><td style='width: 70px;'><div class='dp-delete-icon-wrapper'><i class='fal fa-trash-alt dp-row-delete-icon'></i></div></td><th>".$th_txt[$varname]."</th>";
     // $products = json_decode($products,true);
     foreach ($products as $id => $price) {
-        $id = intval($id);
-        $price = intval($price);
-        $catname = $productarray[$id];
-        $variation_data =  array(
-            'attributes' => array(
-                $catname  => $varname,
-            ),
-            'regular_price' => $price,
-        );
-
-        $varnameall = array();
-        $product = wc_get_product($id);
-        $variations = $product->get_available_variations();
-        foreach($variations as $var){
-            foreach($var['attributes'] as $attr) {
-                array_push($varnameall,$attr);
+        if ($price != 0 ) {
+            $id = intval($id);
+            $price = intval($price);
+            $catname = $productarray[$id];
+            $variation_data =  array(
+                'attributes' => array(
+                    $catname  => $varname,
+                ),
+                'regular_price' => $price,
+            );
+    
+            $varnameall = array();
+            $product = wc_get_product($id);
+            $variations = $product->get_available_variations();
+            foreach($variations as $var){
+                foreach($var['attributes'] as $attr) {
+                    array_push($varnameall,$attr);
+                }
             }
+            array_push($varnameall,$varname);
+            $res = create_product_variation( $id, $variation_data ,$varnameall,$catname,$varname);
+            
+            $catname_replace = preg_replace("/[^A-Za-z0-9]/", '', $catname);
+    
+            $output .= "<td id='dp_category_".$catname_replace."_variation_".$res."'><div class='cell-status-icon-wrapper input-".$varname."-".$res."'></div><input type='text' id='".$res."' placeholder='".$price."' me='".$varname."'><div class='dp-delete-icon-wrapper'><i class='fal fa-trash-alt dp-delete-icon' id='".$res."' name='".$varname."' catname='".$catname_replace."' seasonname='".$seasonname."'></i></div></td>";
+        } else {
+            $output .= "<td id='dp_category__variation_'><span>0</span></td>";
         }
-        array_push($varnameall,$varname);
-        $res = create_product_variation( $id, $variation_data ,$varnameall,$catname,$varname);
         
-        $catname_replace = preg_replace("/[^A-Za-z0-9]/", '', $catname);
-
-        $output .= "<td id='dp_category_".$catname_replace."_variation_".$res."'><div class='cell-status-icon-wrapper input-".$varname."-".$res."'></div><input type='text' id='".$res."' placeholder='".$price."' me='".$varname."'><div class='dp-delete-icon-wrapper'><i class='fal fa-trash-alt dp-delete-icon' id='".$res."' name='".$varname."' catname='".$catname_replace."' seasonname='".$seasonname."'></i></div></td>";
     }
     $output .= "</tr>";
 
