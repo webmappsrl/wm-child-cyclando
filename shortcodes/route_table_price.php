@@ -316,7 +316,7 @@ if( $products ){
                         </div>
                     <?php endforeach;?>
                 </div>
-                <div class="quotes-preventivo 1">
+                <div class="quotes-preventivo seasonal">
                         <?php 
                         if ($season_products){  //----------- start hotel product table
                             $attributes_name_hotel_seasonal = array();
@@ -412,9 +412,9 @@ if( $products ){
                 <?php   
                     if (empty($low_season_products) && empty($high_season_products ) && $has_hotel){  //----------- start hotel product table
                 ?>
-                <div class="quotes-preventivo 2"><!------------ quote ---------------------->
+                <div id="tab-monoSeason" class="quotes-preventivo simple"><!------------ quote ---------------------->
                     <div class="addVariant_button_wrapper">
-                        <div class="addVariant addVariantbtn" data-productarray='<?= json_encode($attributes_name_hotel_modal) ?>' data-routeid="<?= $post_id ?>" data-place="<?= $place ?>" data-from="<?= $from ?>" data-to="<?= $to ?>" data-seasonname="<?= $season_name_id ?>"><?= __('Add raw' ,'wm-child-cyclando'); ?> <i class="fas fa-plus"></i></div>
+                        <div class="addVariant addVariantbtn" data-productarray='<?= json_encode($attributes_name_hotel_modal) ?>' data-routeid="<?= $post_id ?>" data-place="<?= $place ?>" data-from="<?= $from ?>" data-to="<?= $to ?>" data-seasonname="monoSeason"><?= __('Add raw' ,'wm-child-cyclando'); ?> <i class="fas fa-plus"></i></div>
                     </div>
                     <table class="departures-quotes">
                         <thead>
