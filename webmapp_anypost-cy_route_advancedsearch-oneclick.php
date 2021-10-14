@@ -269,6 +269,7 @@
                     'action': 'oc_ajax_route_price',
                     'postid':  post_id,
                     'cookies':  savedCookie,
+                    'searchpage' : true
                 };
                 $.ajax({
                     url: '/wp-admin/admin-ajax.php',

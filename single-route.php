@@ -145,13 +145,6 @@ get_header();
         if (is_array($has_track) && $has_track) {
             $has_track_program = true;
         }
-		$headers = get_headers("https://a.webmapp.it/cyclando.com/route/{$post_id}_map_1000x1000.png", 1);
-		$interactive_route_map = "https://a.webmapp.it/cyclando.com/route/{$post_id}_map_1000x1000.png";
-		if ($has_track && get_option('webmapp_show_interactive_route_map') && strpos($headers['Content-Type'], 'image/') !== false) {
-			$featured_map = $interactive_route_map;
-		} else {
-			$featured_map = '/wp-content/themes/wm-child-cyclando/images/map-logo-osm.jpg';
-		}
 		$first_departure_date = '';
 		$first_departure_date_ajax = '';
 		$first_departure_date_ajax_dormatdmY = '';
@@ -686,7 +679,7 @@ get_header();
     </div>
     <!-- END HTML modal for contact in route -->
     <script>
-        var post_id = <?= $post_id ?>;
+        var post_id = '<?= $post_id ?>';
         var departureArrays = <?php echo json_encode($start_array)?>;
         var start_arraydFY = <?php echo json_encode($start_arraydFY)?>;
         var start_arrayYmd = <?php echo json_encode($start_arrayYmd)?>;
@@ -726,17 +719,17 @@ get_header();
                     var savedCookie = ocmCheckCookie();
                     savedCookie['price'] = obj.price;
                     savedCookie['routeName'] = route_title;
-                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                     jQuery( ".deposit-title" ).remove();
                     jQuery( ".depositajax" ).remove();
                     delete savedCookie['deposit'];
-                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                     if (obj.deposit) {
                         jQuery( ".oc-route-mobile-plan-price-container" ).prepend( 
                             `<div class="deposit-title"><?= __('Deposit', 'wm-child-cyclando') ?></div><div class="depositajax">`+obj.deposit+`€</div>`
                         );
                         savedCookie['deposit'] = obj.deposit;
-                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                     }
                     if (obj.depositaddtocart) {
                         addtocart = obj.depositaddtocart;
@@ -759,7 +752,7 @@ get_header();
                 if (obj.categoryname == value) {
                     selected = 'selected="selected"';
                     savedCookie['category'] = value;
-                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                 }
                 options += "<option "+selected+" value='"+ value + "'>" + value + "</option>";
             });
@@ -887,7 +880,7 @@ get_header();
                     var objDeal = JSON.parse(response.responseText);
                     var savedCookie = ocmCheckCookie();
                     savedCookie['hsdealid'] = objDeal.id;
-                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                     form.submit();
                 }
             });

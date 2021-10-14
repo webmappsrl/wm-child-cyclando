@@ -1,5 +1,10 @@
 <?php
 
+require ('includes/oc_ajax_route_price.php');
+require ('includes/oc_ajax_variation_price_update.php');
+require ('includes/oc_ajax_variation_delete.php');
+require ('includes/oc_ajax_variation_add_modal.php');
+require ('includes/oc_ajax_variation_create_modal.php');
 require ('import_data.php');
 require ('shortcodes/route_table_price.php');
 require ('shortcodes/route_table_price_email.php');
@@ -22,11 +27,7 @@ require ('shortcodes/route-oc/oneclick_route_form_purchase.php');
 require ('shortcodes/route-oc/oneclick_route_your_reservation_panel.php');
 require ('api/api-loader.php');
 require ('includes/class_routeProductsOC.php') ;
-require ('includes/oc_ajax_route_price.php');
-require ('includes/oc_ajax_variation_price_update.php');
-require ('includes/oc_ajax_variation_delete.php');
-require ('includes/oc_ajax_variation_add_modal.php');
-require ('includes/oc_ajax_variation_create_modal.php');
+
 require ('includes/wm_has_extra_get_label.php');
 require ('includes/wm_has_hotel_get_label.php');
 

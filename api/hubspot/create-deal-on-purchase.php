@@ -30,8 +30,8 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   $hotel_category = '';
   $extra = array();
   $supplement = array();
-  if ($cookies['supplement']) {
-    foreach ($cookies['supplement'] as $supp => $num) {
+  if ($cookies[$post_id]['supplement']) {
+    foreach ($cookies[$post_id]['supplement'] as $supp => $num) {
       if ($supp == 'single_room') {
         $single_room = $num;
       } else {
@@ -39,8 +39,8 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
       }
     }
   }
-  if ($cookies['extra']) {
-    foreach ($cookies['extra'] as $supp => $num) {
+  if ($cookies[$post_id]['extra']) {
+    foreach ($cookies[$post_id]['extra'] as $supp => $num) {
         $extra += array($supp => $num);
     }
   }

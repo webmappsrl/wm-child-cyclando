@@ -84,7 +84,7 @@ function oneclick_route_form_datepicker() {
                         console.log(savedCookie);
                         savedCookie['departureDate'] = $("#datepicker").datepicker("option", "dateFormat", "dd-mm-yy" ).val();
                         console.log(savedCookie['departureDate']);
-                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         $("#datepicker").datepicker("option", "dateFormat", "d MM yy" );
                         $('#oc-route-your-reservation-departure').html(dateText);
                         ajaxUpdatePrice();
@@ -98,7 +98,7 @@ function oneclick_route_form_datepicker() {
                 var savedCookie = ocmCheckCookie();
                 if (!savedCookie['departureDate']) {
                     savedCookie['departureDate'] = $("#datepicker").datepicker("option", "dateFormat", "dd-mm-yy" ).val();
-                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                     $("#datepicker").datepicker("option", "dateFormat", "d MM yy" );
                 }
                 ajaxUpdatePrice();

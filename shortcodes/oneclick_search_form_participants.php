@@ -83,7 +83,7 @@ function oneclick_search_form_participants($atts) {
                     }
                     delete savedCookie['ages'];
                     delete savedCookie['kids'];
-                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                     $("#ocm-warning-container").append(
                                 '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Kids participation is not available for this route. Their number is added to adults','wm-child-cyclando'); ?></div>'
                             );
@@ -101,7 +101,7 @@ function oneclick_search_form_participants($atts) {
                     $('#adult-participants').text(2);
                     $('#ocm-partecipants-adult-number').text(2 + ' ');
                     $("#oc-participants-adult").addClass('selected');
-                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                 }
                 if (parseInt(savedCookie['kids']) > 0) {
                     $('#kid-participants').text(parseInt(savedCookie['kids']));
@@ -133,7 +133,7 @@ function oneclick_search_form_participants($atts) {
                 $("#oc-participants").addClass('selected');
                 $('#ocm-partecipants-adult-number').text(2 + ' ');
                 $("#ocm-partecipants-adult-number").addClass('selected');
-                Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
             }
             //Add button
             $( ".oc-add-btn" ).each(function(index,element) {
@@ -146,7 +146,7 @@ function oneclick_search_form_participants($atts) {
                         counter.text(count +1);
                         savedCookie['adults'] = num;
                         $("#ocm-warning-container").empty();
-                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                     }
                     if ($(e.target).attr('name') == 'kid-participants') {
                         if (count + 1 <= parseInt($('#adult-participants').text()) * 3) {
@@ -166,12 +166,12 @@ function oneclick_search_form_participants($atts) {
                                 savedCookie['ages'] = {}; 
                             }
                             savedCookie['ages'][num] = 1;
-                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                             //Age Select
                             $('#oc-kid-age-select-'+num).on('change', function(e) {
                                 savedCookie = ocmCheckCookie(); 
                                 savedCookie['ages'][e.target.id.split('-').pop()] = parseInt(this.value);
-                                Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                                Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                             });
                             $("#ocm-warning-container").empty();
                         } else {
@@ -195,11 +195,11 @@ function oneclick_search_form_participants($atts) {
                         if (count < 1) {
                             counter.text(1);
                             savedCookie['adults'] = 1;
-                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         } else { 
                             counter.text(count);
                             savedCookie['adults'] = count;
-                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         }
                         $("#ocm-warning-container").empty();
                     }
@@ -212,7 +212,7 @@ function oneclick_search_form_participants($atts) {
                             if ($(".oc-kid-age-input-wrapper").children().length == 0) {
                                 $("#oc-age-text-container").empty();
                             }
-                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                             $("#ocm-warning-container").empty();
                         } else {
                             $("#ocm-warning-container").empty();
@@ -232,7 +232,7 @@ function oneclick_search_form_participants($atts) {
                 $(element).on('change', function(e){
                     savedCookie = ocmCheckCookie(); 
                     savedCookie['ages'][e.target.id.split('-').pop()] = parseInt(this.value);
-                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                 });
             });
 
@@ -274,7 +274,7 @@ function oneclick_search_form_participants($atts) {
                         '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Bikes number can not be more than participants','wm-child-cyclando'); ?></div>'
                     );
                 } else if (savedCookie) {
-                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                     console.log('savedcookie'+JSON.stringify(savedCookie));
                     $('.ocm-participants-container').hide();
                     $('#ocm-partecipants-number').text(sum);

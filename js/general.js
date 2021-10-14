@@ -146,7 +146,7 @@ jQuery(document).ready(function () {
       savedCookie = ocmCheckCookie(); 
       var split = val.split('-');
       savedCookie['departureMonth'] = split[0];
-      Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+      Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
     });
   });
 
@@ -548,7 +548,7 @@ jQuery(document).ready(function () {
             finaleYear = finalDate[0];
             general_first_departure_date_ajax = finaleDay + '-' + monthNames[finaleMonth] + '-' + finaleYear;
             savedCookie['departureDate'] = general_first_departure_date_ajax;
-            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
         } 
         
     }

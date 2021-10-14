@@ -115,7 +115,7 @@ function route_mobile_tab_plan($atts) {
                     var savedCookie = ocmCheckCookie();
                     delete savedCookie['electric'];
                     delete savedCookie['regular'];
-                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                 }
             });
         })(jQuery);

@@ -6,10 +6,12 @@ class routeProductsOC {
     protected $cookies;
     protected $post_id;
     protected $price;
+    protected $searchpage;
 
-    public function __construct($cookies,$post_id){
+    public function __construct($cookies,$post_id,$searchpage){
         $this->cookies = $cookies;
         $this->post_id = $post_id;
+        $this->searchpage = $searchpage;
     }
 
     public function getHotelProducts () {
@@ -113,7 +115,9 @@ class routeProductsOC {
 
     public function calculatePrice () {
         $hotel = $this->getHotelProducts();
-        $extra = $this->getExtraProducts();
+        if (!$this->searchpage) {
+            $extra = $this->getExtraProducts();
+        }
 
         $adults = intval($this->cookies['adults']);
         
@@ -129,9 +133,11 @@ class routeProductsOC {
         if ($this->cookies['electric'])
             $electric = intval($this->cookies['electric']);
 
-        if ($this->cookies['extra'])
-            $has_extra = $this->cookies['extra'];
-        
+        if (!$this->searchpage) {
+            if ($this->cookies[$this->post_id]['extra'])
+                $has_extra = $this->cookies[$this->post_id]['extra'];
+        }
+
         $addToCart = array();
         $deposit = 0;
         $percentToGet = 25;
@@ -181,10 +187,12 @@ class routeProductsOC {
             $this->price += $extra['ebike']['price'] * intval($electric);
             $addToCart[] = $extra['ebike']['id'] . ':' . $electric;
         }
-        if ($has_extra && $extra) {
-            foreach ($has_extra as $label => $num) {
-                $this->price += $extra[$label]['price'] * intval($num);
-                $addToCart[] = $extra[$label]['id'] . ':' . $num;
+        if (!$this->searchpage) {
+            if ($has_extra && $extra) {
+                foreach ($has_extra as $label => $num) {
+                    $this->price += $extra[$label]['price'] * intval($num);
+                    $addToCart[] = $extra[$label]['id'] . ':' . $num;
+                }
             }
         }
         if ($departureDateFormated > $todayPlus30) {
