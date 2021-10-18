@@ -120,6 +120,9 @@ class routeProductsOC {
         }
 
         $adults = intval($this->cookies['adults']);
+
+        if ($this->cookies[$this->post_id]['extra']['single_room_paid'])
+            $single_rooms = intval($this->cookies[$this->post_id]['extra']['single_room_paid']);
         
         if ($this->cookies['kids'])
             $kids = intval($this->cookies['kids']);
@@ -170,7 +173,14 @@ class routeProductsOC {
             $category = $categoryName;
         }
 
-        if ($adults) {
+        if ($single_rooms) {
+            // Calculate how many in single
+            $this->price += $hotel[$category]['adult-single']['price'] * intval($single_rooms);
+            $addToCart[] = $hotel[$category]['adult-single']['id'] . ':' . intval($single_rooms);
+
+            $this->price += $hotel[$category]['adult']['price'] * intval($adults);
+            $addToCart[] = $hotel[$category]['adult']['id'] . ':' . intval($adults);
+        } else {
             $this->price += $hotel[$category]['adult']['price'] * intval($adults);
             $addToCart[] = $hotel[$category]['adult']['id'] . ':' . intval($adults);
         }
@@ -190,8 +200,10 @@ class routeProductsOC {
         if (!$this->searchpage) {
             if ($has_extra && $extra) {
                 foreach ($has_extra as $label => $num) {
-                    $this->price += $extra[$label]['price'] * intval($num);
-                    $addToCart[] = $extra[$label]['id'] . ':' . $num;
+                    if ($label !== 'single_room_paid') {
+                        $this->price += $extra[$label]['price'] * intval($num);
+                        $addToCart[] = $extra[$label]['id'] . ':' . $num;
+                    }
                 }
             }
         }

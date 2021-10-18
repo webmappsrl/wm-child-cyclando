@@ -179,7 +179,6 @@ function oneclick_search_form_bikes($atts) {
                     ajaxUpdatePrice();
                     <?php } ?>
                 } else {
-                    Cookies.set('oc_participants_cookie', JSON.stringify(bCookie), { expires: 7, path: '/' });
                     $("#ocm-warning-bikes-container").empty();
                     $('.ocm-bikes-container').hide();
                     $('#ocm-bikes-number').text(sum);

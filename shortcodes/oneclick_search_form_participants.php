@@ -149,6 +149,7 @@ function oneclick_search_form_participants($atts) {
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                     }
                     if ($(e.target).attr('name') == 'kid-participants') {
+
                         if (count + 1 <= parseInt($('#adult-participants').text()) * 3) {
                             num = count + 1;
                             counter.text(count +1);
@@ -245,12 +246,6 @@ function oneclick_search_form_participants($atts) {
             });
     
             $('.oc-participants-done-btn').click( function(){
-                // console.log(pCookie);
-                // var string = JSON.stringify(pCookie); 
-                // console.log(parseInt(pCookie['kids']));
-                // console.log(parseInt(pCookie['adults']));
-                // var string = JSON.stringify(pCookie); 
-                // console.log(string);
                 savedCookie = ocmCheckCookie(); 
                 parseInt(savedCookie['kids']) ? k = parseInt(savedCookie['kids']) : k = 0;
                 parseInt(savedCookie['adults']) ? a = parseInt(savedCookie['adults']) : a = 0;
@@ -259,8 +254,15 @@ function oneclick_search_form_participants($atts) {
                 } else {
                     var sum = '';
                 }
+                // disable or enable single room btn
+                if (k == 0) {
+                    enableSinglebtn()
+                } 
+                if ( k > 0 ) {
+                    disableSinglebtn()
+                }
+                savedCookie = ocmCheckCookie(); 
                 var sums = cal_sum_cookies(savedCookie);
-                // console.log('sums'+JSON.stringify(sums));
                 if (!("adults" in savedCookie)) {
                     $("#ocm-warning-container").append(
                         '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('There should be at least one adult','wm-child-cyclando'); ?></div>'
@@ -311,6 +313,9 @@ function oneclick_search_form_participants($atts) {
             }
             if (e.target.id == 'oc-bikes-modal') {
                 $('.ocm-bikes-container').hide();
+            }
+            if (e.target.id == 'oc-single-modal') {
+                $('.ocm-single-container').hide();
             }
         }
 

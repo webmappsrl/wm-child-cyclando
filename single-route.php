@@ -835,6 +835,11 @@ get_header();
             yRSummarytxtBikes =  yRSummarytxtRegular + yRSummarytxtRegularComa + yRSummarytxtElectric ;
             jQuery("#oc-route-your-reservation-participants").html(yRSummarytxtParticipants);
             jQuery("#oc-route-your-reservation-bikes").html(yRSummarytxtBikes);
+
+            // Update single room number in your resarvation summary
+            if (savedCookie[post_id]['extra']['single_room_paid']) {
+                jQuery("#oc-route-your-reservation-singleroompaid").html(savedCookie[post_id]['extra']['single_room_paid']);
+            }
         }
 
         function cal_sum_cookies(savedCookie) {

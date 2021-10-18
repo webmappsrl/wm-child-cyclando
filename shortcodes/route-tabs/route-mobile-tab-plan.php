@@ -18,6 +18,7 @@ function route_mobile_tab_plan($atts) {
     $min_kid_age = '';
     $has_bike = 0;
     $has_ebike = 0;
+    $has_single = false;
     $has_hotel_category = route_has_hotel_category($post_id,$first_departure);
     $has_extra_category = route_has_extra_category($post_id);
     if (count($has_hotel_category['model']) > 1 || count($has_hotel_category['modelseasonal']) > 1) {
@@ -40,6 +41,10 @@ function route_mobile_tab_plan($atts) {
                 if ($ageSplit[2]) {
                     $min_kid_age = $ageSplit[2];
                 }
+            }
+            // Activate single room select if there is any
+            if ($key == 'adult-single') {
+                $has_single = true;
             }
         }
     }
@@ -69,6 +74,9 @@ function route_mobile_tab_plan($atts) {
             <p class="oc-route-mobile-search-form-label-p"><?php echo __('Select the number of participants and bikes', 'wm-child-cyclando'); ?></p>
             <div class="oc-route-mobile-search-form-asbb-wrapper">
                 <?= do_shortcode("[oneclick_search_form_participants route='true' has_kids='$has_kids' min_kid_age='$min_kid_age']")?>
+            <?php if ($has_single) { ?>
+                <?= do_shortcode("[oneclick_search_form_single route='true']")?>
+            <?php } ?>
             <?php if ($has_bike || $has_ebike) { ?>
                 <?= do_shortcode("[oneclick_search_form_bikes route='true' has_bike='$has_bike' has_ebike='$has_ebike' ]")?>
             <?php } else { ?>

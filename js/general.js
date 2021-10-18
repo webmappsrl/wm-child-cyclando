@@ -60,7 +60,7 @@ jQuery(window).on('load', function() {
 });
 
 jQuery(document).ready(function () {
-  
+  var rooms = [];
   var main_url;
   var filter;
   // var pathname = window.location.href;
@@ -551,5 +551,91 @@ jQuery(document).ready(function () {
             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
         } 
         
+    }
+  }
+
+  function disableSinglebtn() {
+    // disable single btn in plan interface
+    if (!jQuery('#oc-single i').length ) {
+      jQuery('#oc-single').prepend('<i class="fas fa-do-not-enter"></i>');
+    }
+    jQuery('#oc-single').addClass('disable');
+    jQuery('#oc-single').off('click');
+    jQuery('#ocm-single-number').text('');
+    jQuery('#oc-single').removeClass("selected");
+    var savedCookie = ocmCheckCookie();
+    if (!!savedCookie[post_id]['extra']['single_room_paid']) {
+      delete savedCookie[post_id]['extra']['single_room_paid'];
+      Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+    }
+
+    // Enable single section in extra popup
+    jQuery('.single_room-section-modal').show();
+    jQuery('#single_room_paid').text(0);
+    jQuery('.facetwp-checkbox-single_room').removeClass("checked");
+    jQuery('.oc-modal-button-container-single_room').removeClass("display-grid");
+    
+    // Disable single room row from Your Reserveation 
+    jQuery('.oc-route-your-reservation-singleroompaid-title').hide();
+    jQuery('.oc-route-your-reservation-singleroompaid-info').hide();
+  }
+  function enableSinglebtn() {
+    var savedCookie = ocmCheckCookie();
+
+    // Enable single btn in plan interface
+    jQuery('#oc-single i').remove();
+    jQuery('#oc-single').removeClass('disable');
+    jQuery('#oc-single').on('click',function(){
+      if (!savedCookie['kids']) { 
+        jQuery('.ocm-single-container').show();
+        rooms = [];
+        rooms = calculateSingleRoomNum(savedCookie['adults']);
+      }
+    });
+    // Disable single section in extra popup
+    jQuery('.single_room-section-modal').hide();
+    if (savedCookie[post_id]['supplement']['single_room']) {
+      delete savedCookie[post_id]['supplement']['single_room'];
+      Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+    }
+    jQuery('#single_room').text(0);
+    jQuery( ".facetwp-checkbox-single_room").removeClass('checked');
+    jQuery('.oc-modal-button-container-single_room').removeClass("display-grid");
+    jQuery('#ocm-single-number').text('');
+    jQuery('#oc-single').removeClass("selected");
+    jQuery('#single_room_paid').text(0);
+
+    // Enable single room row from Your Reserveation 
+    jQuery('.oc-route-your-reservation-singleroompaid-title').show();
+    jQuery('.oc-route-your-reservation-singleroompaid-info').show();
+  }
+
+
+  function calculateSingleRoomNum (adults) {
+    var rooms = ['0'];
+    var adults = parseInt(adults);
+    if (adults == 1) {
+      rooms.push('1');
+      return rooms;
+    }
+    if (adults == 2) {
+      rooms.push('2');
+      return rooms;
+    }
+    //check result for Even 
+    if (adults%2 == 0) {
+      for (let i = 1; i <= adults; i++) {
+        if (i%2 == 0)
+          rooms.push(String(i))
+      }
+      return rooms
+    }
+    //check result for Odd 
+    if (adults%2 == 1) {
+      for (let i = 1; i <= adults; i++) {
+        if (i%2 == 1)
+          rooms.push(String(i))
+      }
+      return rooms
     }
   }

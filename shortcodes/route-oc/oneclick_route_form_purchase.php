@@ -21,21 +21,9 @@ function oneclick_route_form_purchase($atts) {
     if ($has_extra['ebike']) {
         unset($has_extra['ebike']);
     }
-    $has_single = 0;
     $has_hotel_category = route_has_hotel_category($post_id,$first_departure);
-    if (count($has_hotel_category['modelseasonal']) >= 1) {
-        $product_sample = $has_hotel_category['modelseasonal'][array_key_first($has_hotel_category['modelseasonal'])];
-    } else {
-        $product_sample = $has_hotel_category['model'][array_key_first($has_hotel_category['model'])];
-    }
-    if ($product_sample) {
-        foreach ($product_sample as $key => $value) {
-            // Activate single room select if there is any
-            if ($key == 'adult-single') {
-                $has_single = true;
-            }
-        }
-    }
+    $has_single = route_has_single($has_hotel_category);
+
     ob_start();
 
     ?>
@@ -168,6 +156,10 @@ function oneclick_route_form_purchase($atts) {
                 //checkbox interactions
                 $( ".facetwp-checkbox" ).each(function(index,element) {
                     var savedCookie = ocmCheckCookie();
+                    if ( !savedCookie[post_id]) {
+                        savedCookie[post_id] = {};
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+                    }
                     if (!savedCookie[post_id]['extra']) {
                         savedCookie[post_id]['extra'] = {};
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
@@ -303,7 +295,7 @@ function oneclick_route_form_purchase($atts) {
                 function updateYourReservationHotelSummaryTxt (savedCookie,has_extra) {
                     $('.oc-route-extra-row.oc-route-extra-header').addClass("display-flex");
                     $('.oc-route-extra-row.oc-route-extra-details').addClass("display-flex");
-                    var has_single = <?= $has_single ?>;
+                    var has_single = '<?= $has_single ?>';
                     $.each(savedCookie[post_id]['supplement'],function(index,value){
                         var extra = has_extra[index];
                         if (index == 'single_room' && has_single) {

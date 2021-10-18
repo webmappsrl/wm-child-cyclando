@@ -65,6 +65,13 @@ function oneclick_route_your_reservation_panel($atts)
         <div class="oc-route-your-reservation-column-info oc-route-your-reservation-category-info">
             <p id="oc-route-your-reservation-category"></p>
         </div>
+
+        <div class="oc-route-your-reservation-column-title oc-route-your-reservation-singleroompaid-title">
+            <p><?php echo __('Single room', 'wm-child-cyclando'); ?></p>
+        </div>
+        <div class="oc-route-your-reservation-column-info oc-route-your-reservation-singleroompaid-info">
+            <p id="oc-route-your-reservation-singleroompaid"></p>
+        </div>
     </div>
     
     <?php if ($hotel_product_items || $has_extra) : ?>

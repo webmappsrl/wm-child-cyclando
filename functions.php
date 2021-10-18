@@ -17,6 +17,7 @@ require ('shortcodes/oneclick_search_form.php');
 require ('shortcodes/oneclick_search_form_participants_bikes.php');
 require ('shortcodes/oneclick_search_form_participants.php');
 require ('shortcodes/oneclick_search_form_bikes.php');
+require ('shortcodes/oneclick_search_form_single.php');
 require ('shortcodes/route-tabs/route-mobile-tab-includes.php');
 require ('shortcodes/route-tabs/route-mobile-tab-plan.php');
 require ('shortcodes/route-tabs/route-mobile-tab-program.php');
@@ -1459,4 +1460,22 @@ function wm_write_log_file($entry, $mode = 'a', $file = 'wm_child_cyclando') {
     fclose( $file ); 
 
     return $bytes;
+}
+
+function route_has_single($has_hotel_category) {
+    $has_single = '';
+    if (count($has_hotel_category['modelseasonal']) >= 1) {
+        $product_sample = $has_hotel_category['modelseasonal'][array_key_first($has_hotel_category['modelseasonal'])];
+    } else {
+        $product_sample = $has_hotel_category['model'][array_key_first($has_hotel_category['model'])];
+    }
+    if ($product_sample) {
+        foreach ($product_sample as $key => $value) {
+            // Activate single room select if there is any
+            if ($key == 'adult-single') {
+                $has_single = true;
+            }
+        }
+    }
+    return $has_single;
 }
