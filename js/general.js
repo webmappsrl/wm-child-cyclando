@@ -565,7 +565,6 @@ jQuery(document).ready(function () {
     jQuery('#oc-single').removeClass("selected");
     var savedCookie = ocmCheckCookie();
     if (!!savedCookie[post_id]['extra']['single_room_paid']) {
-      console.warn('Sono in disableSinglebtn');
       delete savedCookie[post_id]['extra']['single_room_paid'];
       Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
     }
@@ -606,9 +605,6 @@ jQuery(document).ready(function () {
     jQuery('#oc-single').removeClass("selected");
     jQuery('#single_room_paid').text(0);
 
-    // Enable single room row from Your Reserveation 
-    jQuery('.oc-route-your-reservation-singleroompaid-title').show();
-    jQuery('.oc-route-your-reservation-singleroompaid-info').show();
   }
 
 

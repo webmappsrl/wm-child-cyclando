@@ -90,7 +90,6 @@ function oneclick_search_form_single($atts) {
                             num = parseInt(val);
                         }
                         else {
-                            console.log("No More Item Exist add");
                         }
                         
 
@@ -98,7 +97,6 @@ function oneclick_search_form_single($atts) {
                             savedCookie[post_id]['extra']['single_room_paid'] = num;
                             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         } else {
-                            console.warn('Sono in Add button');
                             delete savedCookie[post_id]['extra']['single_room_paid'];
                             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         }
@@ -120,16 +118,12 @@ function oneclick_search_form_single($atts) {
                             num = parseInt(val);
                         }
                         else {
-                            console.log("No More Item Exist Sub");
                         }
-                        
-
 
                         if (num != 0 ) {
                             savedCookie[post_id]['extra']['single_room_paid'] = num;
                             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         } else {
-                            console.warn('Sono in SUB button');
                             delete savedCookie[post_id]['extra']['single_room_paid'];
                             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         }
