@@ -565,6 +565,7 @@ jQuery(document).ready(function () {
     jQuery('#oc-single').removeClass("selected");
     var savedCookie = ocmCheckCookie();
     if (!!savedCookie[post_id]['extra']['single_room_paid']) {
+      console.warn('Sono in disableSinglebtn');
       delete savedCookie[post_id]['extra']['single_room_paid'];
       Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
     }

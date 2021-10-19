@@ -57,7 +57,7 @@ function oneclick_search_form_single($atts) {
                 $('#single_room_paid').text(parseInt(savedCookie[post_id]['extra']['single_room_paid']));
             }
 
-            if (savedCookie['kids']) { 
+            if (savedCookie['kids'] && savedCookie['kids'] > 0) { 
                 disableSinglebtn();
             } else {
                 enableSinglebtn();
@@ -98,6 +98,7 @@ function oneclick_search_form_single($atts) {
                             savedCookie[post_id]['extra']['single_room_paid'] = num;
                             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         } else {
+                            console.warn('Sono in Add button');
                             delete savedCookie[post_id]['extra']['single_room_paid'];
                             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         }
@@ -128,6 +129,7 @@ function oneclick_search_form_single($atts) {
                             savedCookie[post_id]['extra']['single_room_paid'] = num;
                             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         } else {
+                            console.warn('Sono in SUB button');
                             delete savedCookie[post_id]['extra']['single_room_paid'];
                             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         }

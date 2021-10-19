@@ -28,7 +28,11 @@ function oneclick_route_form_purchase($atts) {
 
     ?>
     <div class="cyc-single-route-cta-buttons oc-acquista-route">
-    <?php if ($hotel_product_items || $has_extra || $has_single): ?>
+    <?php 
+    // This line is substitued with next line to hide Supplement section until it becomes calculable
+    // if ($hotel_product_items || $has_extra || $has_single): 
+    ?>
+    <?php if ($has_extra): ?>
         <div id="oc-acquista-route" class="">
             <div class="cy-btn-contact">
                 <p><?php echo __('Proceed', 'wm-child-cyclando'); ?></p>
@@ -50,7 +54,11 @@ function oneclick_route_form_purchase($atts) {
             </div>
             <?php } ?>
             
-            <?php if ($has_single || $hotel_product_items) { ?>
+            <?php 
+            // This line is substitued with next line to hide Supplement section until it becomes calculable
+            // if ($has_single || $hotel_product_items) { 
+            ?>
+            <?php if ( false) { ?>
             <div class="ocm-extras-nocond-title"><?php echo __('Supplements', 'wm-child-cyclando'); ?></div>
             <div class="ocm-extras-cond-disclaimer"><?php echo __('Subject to availability check. We will send you an email with the confirmation of availability and the price of the supplement', 'wm-child-cyclando'); ?></div>
             <div class="ocm-hotel-proceed-detail-container">
@@ -287,8 +295,10 @@ function oneclick_route_form_purchase($atts) {
                                 '<div class="oc-route-your-reservation-column-title"><p>'+label+'</p></div><div class="oc-route-your-reservation-column-info"><p>'+value+'</p></div>'
                             )
                         } else {
-                            delete savedCookie[post_id]['extra'][index];
-                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+                            if ( index !== 'single_room_paid') {
+                                delete savedCookie[post_id]['extra'][index];
+                                Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+                            }
                         }
                     });
                 }

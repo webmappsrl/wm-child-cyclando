@@ -32,16 +32,16 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   $supplement = array();
   if ($cookies[$post_id]['supplement']) {
     foreach ($cookies[$post_id]['supplement'] as $supp => $num) {
-      if ($supp == 'single_room') {
-        $single_room = $num;
-      } else {
         $supplement += array($supp => $num);
-      }
     }
   }
   if ($cookies[$post_id]['extra']) {
     foreach ($cookies[$post_id]['extra'] as $supp => $num) {
+      if ($supp == 'single_room_paid') {
+        $single_room = $num;
+      } else {
         $extra += array($supp => $num);
+      }
     }
   }
   if ($cookies['regular']) {
