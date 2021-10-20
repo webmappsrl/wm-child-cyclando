@@ -1756,6 +1756,12 @@ div#cy-prices-modal input::placeholder {
     width: 42px!important;
 }
 .addVariant_button_wrapper {
+    float: right;
+    margin-left: 30px;
+    text-align: right;
+}
+.addVariant_button_wrapper_modal {
+    padding-top: 10px;
     text-align: right;
 }
 .addVariantbtn {
@@ -1776,8 +1782,14 @@ div#cy-prices-modal input::placeholder {
     display: grid;
     padding: 10px 0;
 }
-.dpcatinputsmodal {
+.dpcatinputsmodal, .dpproductsoptionsmodal {
     background: #f5f5f5!important;
+}
+.modalinputlabel {
+    width: 60%;
+    display: inline-block;
+    line-height: 43px;
+    padding-bottom: 5px;
 }
 /* price inline edit css end */
 

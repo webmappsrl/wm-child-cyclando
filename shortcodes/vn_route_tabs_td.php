@@ -198,8 +198,8 @@ function wm_route_tabs_body_tr($variation,$title,$variations_name_price,$season_
                                 $not_exist = true;
                         }
                         if ($not_exist == false) {
-                            $parent_id = wp_get_post_parent_id($variations_name_price[$catname][$variation]['id']);
-                            echo "<span>$parent_id</span>";
+                            //$parent_id = wp_get_post_parent_id($variations_name_price[$catname][$variation]['id']);
+                            echo "<span>-</span>";
                         }
                         ?>
                 </td>

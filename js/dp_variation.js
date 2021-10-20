@@ -2,20 +2,23 @@ jQuery(document).ready( function($) {
 
     // product update eventlistener
     $( "input" ).keypress(function(e) {
+        inputKeypressUpdateProduct(e,$(this));
+    });
+    function inputKeypressUpdateProduct(e,element) {
         if(e.which == 13){
-            var price = $(this).val();
+            var price = element.val();
 
             if (!$.isNumeric(price) ) {
                 alert('Non usare le lettere!')
             } else if ( !price ) {
                 alert('Inserire il prezzo!')
-            } else if ($(this).attr("placeholder") == price) {
+            } else if (element.attr("placeholder") == price) {
                 alert('Il prezzo non può essere uguale a prima!')
             } else {
-                ajaxUpdateProductVariationPrice($(this).attr("name"),$(this).attr("id"),price);
+                ajaxUpdateProductVariationPrice(element.attr("name"),element.attr("id"),price);
             }
         }
-    });
+    }
 
     // product update ajax
     function ajaxUpdateProductVariationPrice(name,id,price){
@@ -43,11 +46,14 @@ jQuery(document).ready( function($) {
 
     // product elimination eventlistner
     $( ".dp-delete-icon" ).click(function(e) { 
-        var id = $(this).attr("id");
-        var name = $(this).attr("name");
-        var catname = $(this).attr("catname");
-        var seasonname = $(this).attr("seasonname");
-        var tr = $(this).closest("tr");
+        dpDeleteIconFunction($(this));
+    });
+    function dpDeleteIconFunction(e) {
+        var id = e.attr("id");
+        var name = e.attr("name");
+        var catname = e.attr("catname");
+        var seasonname = e.attr("seasonname");
+        var tr = e.closest("tr");
         var variationcells = tr.find(".dp-delete-icon");
         var deleterow = 'false';
         if (variationcells.length == 1) {
@@ -65,7 +71,7 @@ jQuery(document).ready( function($) {
             } else {
             }
         }
-    });
+    }
 
     // product elimination ajax
     function ajaxDeleteProductVariationPrice(name,id,catname,seasonname,deleterow){
@@ -103,9 +109,12 @@ jQuery(document).ready( function($) {
 
     // delete all products in a row 
     $( ".dp-row-delete-icon" ).click(function(e) { 
+        dpRawDeleteIconFunction($(this));
+    });
+    function dpRawDeleteIconFunction(e){
         var delRawAllVariations = window.confirm('Tutte le variazioni di questa riga verrano eliminte, sei sicuro di voler procedere?');
         if (delRawAllVariations) {
-            var tr = $(this).closest("tr");
+            var tr = e.closest("tr");
             var variationcells = tr.find(".dp-delete-icon");
             variationcells.each(function(index){
                 var id = $(this).attr("id");
@@ -123,7 +132,7 @@ jQuery(document).ready( function($) {
             })
         } else {
         }
-    });
+    }
     
     // Add variation modal (popup) eventlistener
     $('.addVariant').on('click',function(){
@@ -224,9 +233,135 @@ jQuery(document).ready( function($) {
                     $('.dp_add_variation_container').hide();
                     $("#tab-"+seasonname+" tbody").append(output);
                 }
+                // delete one product
+                $( ".dp-delete-icon" ).click(function(e) { 
+                    dpDeleteIconFunction($(this));
+                });
+                // delete all products in a row 
+                $( ".dp-row-delete-icon" ).click(function(e) { 
+                    dpRawDeleteIconFunction($(this));
+                });
+                // product update eventlistener
+                $( "input" ).keypress(function(e) {
+                    inputKeypressUpdateProduct(e,$(this))
+                });
             }
         });
     }
+
+    // --------------- START ADD PRODUCT ------------------- // 
+
+    // Add Product modal (popup) eventlistener
+    $('.addProduct').on('click',function(){
+        var productarray = $(this).data('productarray');
+        var routeid = $(this).data('routeid');
+        var place = $(this).data('place');
+        var from = $(this).data('from');
+        var to = $(this).data('to');
+        var seasonname = $(this).data('seasonname');
+        var seasonnameid = $(this).data('seasonnameid');
+        var repeaterrawid = $(this).data('repeaterrawid');
+        var subfieldkey = $(this).data('subfieldkey');
+        var repeatername = $(this).data('repeatername');
+        $('.dp_add_product_container').show();
+        ajaxAddProductOptionsModal(productarray,routeid,place,from,to,seasonname,seasonnameid,repeaterrawid,subfieldkey,repeatername)
+    });
+    $('.dp_add_product_container_close').on('click',function(){
+        $('.dp_add_product_container').hide();
+    });
+
+    // Add product options ajax for add product modal
+    function ajaxAddProductOptionsModal(productarray,routeid,place,from,to,seasonname,seasonnameid,repeaterrawid,subfieldkey,repeatername){
+        var data = {
+            'action': 'oc_ajax_product_options_add_modal',
+            'productarray':  productarray,
+            'routeid':  routeid,
+            'place':  place,
+            'from':  from,
+            'to':  to,
+            'seasonname':  seasonname,
+            'seasonnameid':  seasonnameid,
+            'repeaterrawid':  repeaterrawid,
+            'subfieldkey':  subfieldkey,
+            'repeatername':  repeatername,
+        };
+        jQuery.ajax({
+            url: '/wp-admin/admin-ajax.php',
+            type : 'post',
+            data: data,
+            beforeSend: function(){
+                jQuery(".dp_add_product_body").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
+            },
+            success : function( response ) {
+                objs = JSON.parse(response);
+                var output = objs['output']
+                if (objs['response'] == 'true') {
+                    jQuery(".dp_add_product_body").html(output);
+                    
+                    // Create product variants modal (popup)
+                    $(".createProductbtn").on('click',function(){
+                        var products = {};
+                        var seasonname = $(".dpseasonnamemodal").attr("id");
+                        if (!hasValue("input.dpproductattributename") && !hasValue("input.dpproductsoptionsmodal[name='adult']")) {
+                            alert('errrrrr')
+                        } else {
+                            if (hasValue("input.dpproductsoptionsmodal")) {
+                                $("input.dpproductsoptionsmodal").each(function(e){	
+                                    var productid = $(this).attr("id");
+                                    var price = $(this).val();
+        
+                                    if ( !$.isNumeric(price) ) {
+                                        products[productid]= 0;
+                                    } else {
+                                        products[productid]= price;
+                                    }
+                                });
+                            } else {
+                                alert('Aggiungi almeno un prezzo a una categoria')
+                            }
+                        }
+                        if (!$.isEmptyObject(products)) {
+                            ajaxCreateProductWithOptions(products,productarray,routeid,seasonname,seasonnameid,repeaterrawid,subfieldkey,repeatername);
+                        }
+                    })
+
+                } else {
+                    jQuery(".dp_add_product_body").html('Sorry something went wrong! Call Pedram');
+                }
+            }
+        });
+    }
+
+    // product variation Create ajax modal (popup)
+    function ajaxCreateProductWithOptions(products,productarray,routeid,seasonname,seasonnameid,repeaterrawid,subfieldkey,repeatername){
+        var data = {
+            'action': 'oc_ajax_product_create_modal',
+            'products':  products,
+            'productarray':  productarray,
+            'routeid':  routeid,
+            'seasonname':  seasonname,
+            'seasonnameid':  seasonnameid,
+            'repeaterrawid':  repeaterrawid,
+            'subfieldkey':  subfieldkey,
+            'repeatername':  repeatername,
+        };
+        jQuery.ajax({
+            url: '/wp-admin/admin-ajax.php',
+            type : 'post',
+            data: data,
+            beforeSend: function(){
+                jQuery(".dp_loader_modal").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
+            },
+            success : function( response ) {
+                objs = JSON.parse(response);
+                var output = objs['output'];
+                if (objs['response'] == 'true') {
+                    location.href = output;
+                }
+            }
+        });
+    }
+
 
     function hasValue(elem) {
         var result = false;
@@ -244,6 +379,9 @@ jQuery(document).ready( function($) {
     function dp_outsideClick(e) {
         if (e.target.id == 'dp_add_variation-modal') {
             $('.dp_add_variation_container').hide();
+        }
+        if (e.target.id == 'dp_add_product-modal') {
+            $('.dp_add_product_container').hide();
         }
     }
 

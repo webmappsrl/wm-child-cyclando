@@ -21,7 +21,7 @@ function oc_ajax_variation_add_modal_request($productarray,$routeid,$place,$from
     $cat_inputs = '<div class="dp-catinputs-wrapper">';
     $variations_name_array = array();
     foreach($productarray as $id => $name) {
-        $cat_inputs .= "<div>$name</div><input class='dpcatinputsmodal' type='text' id='$id' placeholder='0' name='$id'>";
+        $cat_inputs .= "<div>$name</div><input class='dpcatinputsmodal' type='text' id='$id' placeholder='€' name='$id'>";
         $product = wc_get_product($id); 
         $variations = $product->get_available_variations();
         foreach($variations as $var){
@@ -44,7 +44,7 @@ function oc_ajax_variation_add_modal_request($productarray,$routeid,$place,$from
     $res .= "</select>";
     $res .= $cat_inputs;
     $savetxt = __('Save' ,'wm-child-cyclando');
-    $res .= "<div style='display:none;' class='dpseasonnamemodal' id='$seasonname'></div><div class='addVariant_button_wrapper'><div class='dp_loader_modal'></div><div class='createVariantbtn addVariantbtn'>$savetxt</div></div>";
+    $res .= "<div style='display:none;' class='dpseasonnamemodal' id='$seasonname'></div><div class='addVariant_button_wrapper_modal'><div class='dp_loader_modal'></div><div class='createVariantbtn addVariantbtn'>$savetxt</div></div>";
     $outcome = 'false';
     if ($res !== false || $res !== null) {
         $outcome = 'true';
@@ -56,19 +56,3 @@ function oc_ajax_variation_add_modal_request($productarray,$routeid,$place,$from
     return $response;
 };
 
-function wm_create_hotel_variation_mapping($place,$from,$to){
-    $array = $variations = [
-        'adult' => sprintf(__('Basic price in double %s' ,'wm-child-verdenatura'),$place),
-        'adult-single' => sprintf(__('Supplement for single %s' ,'wm-child-verdenatura'),$place),
-        'single-traveller' => sprintf(__('Supplement for single traveller' ,'wm-child-verdenatura'),$place),
-        'adult-extra' => __('Basic price in 3rd bed adult' ,'wm-child-verdenatura'),
-        'halfboard_adult' => __('Supplement for half board' ,'wm-child-verdenatura'),
-        'nightsBefore_adult' => sprintf(__('Extra night in %s (Double %s)' ,'wm-child-verdenatura'),$from, $place),
-        'nightsBefore_adult-single' => sprintf(__('Supplement for extra night in %s (Single %s)' ,'wm-child-verdenatura'),$from, $place),
-        'nightsBefore_adult-extra' => sprintf(__('Extra night in %s (extra bed)' ,'wm-child-verdenatura'),$from),
-        'nightsAfter_adult' => sprintf(__('Extra night in %s (Double %s)' ,'wm-child-verdenatura'),$to, $place),
-        'nightsAfter_adult-single' => sprintf(__('Supplement for extra night in %s (Single %s)' ,'wm-child-verdenatura'),$to, $place),
-        'nightsAfter_adult-extra' => sprintf(__('Extra night in %s (extra bed)' ,'wm-child-verdenatura'),$to),
-    ];
-    return $array;
-}

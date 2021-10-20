@@ -4,7 +4,9 @@ require ('includes/oc_ajax_route_price.php');
 require ('includes/oc_ajax_variation_price_update.php');
 require ('includes/oc_ajax_variation_delete.php');
 require ('includes/oc_ajax_variation_add_modal.php');
+require ('includes/oc_ajax_product_options_add_modal.php');
 require ('includes/oc_ajax_variation_create_modal.php');
+require ('includes/oc_ajax_product_create_modal.php');
 require ('import_data.php');
 require ('shortcodes/route_table_price.php');
 require ('shortcodes/route_table_price_email.php');
@@ -1478,4 +1480,22 @@ function route_has_single($has_hotel_category) {
         }
     }
     return $has_single;
+}
+
+// function used in ajax route variation and product creation fronend
+function wm_create_hotel_variation_mapping($place,$from,$to){
+    $array = $variations = [
+        'adult' => sprintf(__('Basic price in double %s' ,'wm-child-verdenatura'),$place),
+        'adult-single' => sprintf(__('Supplement for single %s' ,'wm-child-verdenatura'),$place),
+        'single-traveller' => sprintf(__('Supplement for single traveller' ,'wm-child-verdenatura'),$place),
+        'adult-extra' => __('Basic price in 3rd bed adult' ,'wm-child-verdenatura'),
+        'halfboard_adult' => __('Supplement for half board' ,'wm-child-verdenatura'),
+        'nightsBefore_adult' => sprintf(__('Extra night in %s (Double %s)' ,'wm-child-verdenatura'),$from, $place),
+        'nightsBefore_adult-single' => sprintf(__('Supplement for extra night in %s (Single %s)' ,'wm-child-verdenatura'),$from, $place),
+        'nightsBefore_adult-extra' => sprintf(__('Extra night in %s (extra bed)' ,'wm-child-verdenatura'),$from),
+        'nightsAfter_adult' => sprintf(__('Extra night in %s (Double %s)' ,'wm-child-verdenatura'),$to, $place),
+        'nightsAfter_adult-single' => sprintf(__('Supplement for extra night in %s (Single %s)' ,'wm-child-verdenatura'),$to, $place),
+        'nightsAfter_adult-extra' => sprintf(__('Extra night in %s (extra bed)' ,'wm-child-verdenatura'),$to),
+    ];
+    return $array;
 }

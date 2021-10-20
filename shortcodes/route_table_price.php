@@ -70,7 +70,9 @@ if( $products ){
             $attributes_list = $product_with_variables->get_variation_attributes();
             foreach ($attributes_list as $value => $key ) {
                 $product_attribute_name = $value;
-                $attributes_name_hotel_modal[$p] = $value;
+                if(strip_tags($category) == 'hotel'){
+                    $attributes_name_hotel_modal[$p] = $value;
+                }
             }
             if(strip_tags($category) == 'hotel'){
                 $product_id_model_hotel = $p;
@@ -289,8 +291,11 @@ if( $products ){
                     <?php endif; 
                 endwhile; ?>
             </ul>
-            <?php while( have_rows('model_season') ): the_row(); ?> <!-- starti TABS stagionalita -->
+            <?php 
+            $model_season_raw_i = 0;
+            while( have_rows('model_season') ): the_row(); ?> <!-- starti TABS stagionalita -->
             <?php
+            $model_season_raw_i++;
             $season_name = get_sub_field('season_name');
             $season_disactive = get_sub_field('season_disactive');
             $season_name_id = preg_replace('/\s*/', '', $season_name); 
@@ -332,7 +337,9 @@ if( $products ){
                                         foreach ($attributes_list as $value => $key ) {
                                             $product_attribute_name = $value;
                                             // $product_attribute_name_modal = array($p => $value);
-                                            $attributes_name_hotel_seasonal_modal[$p] = $value;
+                                            if(strip_tags($category) == 'hotel'){
+                                                $attributes_name_hotel_seasonal_modal[$p] = $value;
+                                            }
                                         }
                                         if(strip_tags($category) == 'hotel'){
                                             array_push($attributes_name_hotel_seasonal,$product_attribute_name);
@@ -365,6 +372,9 @@ if( $products ){
                                 ?>
                                 <div class="addVariant_button_wrapper">
                                     <div class="addVariant addVariantbtn" data-productarray='<?= json_encode($attributes_name_hotel_seasonal_modal) ?>' data-routeid="<?= $post_id ?>" data-place="<?= $place ?>" data-from="<?= $from ?>" data-to="<?= $to ?>" data-seasonname="<?= $season_name_id ?>"><?= __('Add raw' ,'wm-child-cyclando'); ?> <i class="fas fa-plus"></i></div>
+                                </div>
+                                <div class="addVariant_button_wrapper">
+                                    <div class="addProduct addVariantbtn" data-productarray='<?= json_encode($variations_name_price_seasonal) ?>' data-routeid="<?= $post_id ?>" data-place="<?= $place ?>" data-from="<?= $from ?>" data-to="<?= $to ?>" data-seasonnameid="<?= $season_name_id ?>" data-seasonname="<?= $season_name ?>" data-repeaterrawid="<?= $model_season_raw_i ?>" data-subfieldkey="wm_route_quote_model_season_product" data-repeatername="model_season"><?= __('Add category' ,'wm-child-cyclando'); ?> <i class="fas fa-plus"></i></div>
                                 </div>
                                 <?php
                             }
@@ -415,6 +425,9 @@ if( $products ){
                 <div id="tab-monoSeason" class="quotes-preventivo simple"><!------------ quote ---------------------->
                     <div class="addVariant_button_wrapper">
                         <div class="addVariant addVariantbtn" data-productarray='<?= json_encode($attributes_name_hotel_modal) ?>' data-routeid="<?= $post_id ?>" data-place="<?= $place ?>" data-from="<?= $from ?>" data-to="<?= $to ?>" data-seasonname="monoSeason"><?= __('Add raw' ,'wm-child-cyclando'); ?> <i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="addVariant_button_wrapper">
+                        <div class="addProduct addVariantbtn" data-productarray='<?= json_encode($variations_name_price) ?>' data-routeid="<?= $post_id ?>" data-place="<?= $place ?>" data-from="<?= $from ?>" data-to="<?= $to ?>" data-seasonnameid="false" data-seasonname="false" data-repeaterrawid="false" data-subfieldkey="wm_route_quote_product" data-repeatername="false"><?= __('Add category' ,'wm-child-cyclando'); ?> <i class="fas fa-plus"></i></div>
                     </div>
                     <table class="departures-quotes">
                         <thead>
@@ -708,6 +721,20 @@ if( $products ){
                 <div class="ocm-close-button-container"><span class="dp_add_variation_container_close">×</span></div>
             </div>
             <div class="dp_add_variation_body">
+                
+            </div>                            
+        </div>
+    </div>
+    <!-- Modal add raw html -->
+    <div id="dp_add_product-modal" class="dp_add_product_container">
+        <div class="ocm-participants-content">
+            <div class="ocm-participants-header">
+                <div class="">
+                    <h2><?= __('Add a new category' ,'wm-child-cyclando'); ?></h2>
+                </div>
+                <div class="ocm-close-button-container"><span class="dp_add_product_container_close">×</span></div>
+            </div>
+            <div class="dp_add_product_body">
                 
             </div>                            
         </div>

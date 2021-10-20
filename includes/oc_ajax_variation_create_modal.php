@@ -46,9 +46,9 @@ function oc_ajax_variation_create_modal_request($products,$varname,$seasonname,$
             
             $catname_replace = preg_replace("/[^A-Za-z0-9]/", '', $catname);
     
-            $output .= "<td id='dp_category_".$catname_replace."_variation_".$res."'><div class='cell-status-icon-wrapper input-".$varname."-".$res."'></div><input type='text' id='".$res."' placeholder='".$price."' me='".$varname."'><div class='dp-delete-icon-wrapper'><i class='fal fa-trash-alt dp-delete-icon' id='".$res."' name='".$varname."' catname='".$catname_replace."' seasonname='".$seasonname."'></i></div></td>";
+            $output .= "<td id='dp_category_".$catname_replace."_variation_".$res."'><div class='cell-status-icon-wrapper input-".$varname."-".$res."'></div><input type='text' id='".$res."' placeholder='".$price."' name='".$varname."'><div class='dp-delete-icon-wrapper'><i class='fal fa-trash-alt dp-delete-icon' id='".$res."' name='".$varname."' catname='".$catname_replace."' seasonname='".$seasonname."'></i></div></td>";
         } else {
-            $output .= "<td id='dp_category__variation_'><span>0</span></td>";
+            $output .= "<td id='dp_category__variation_'><span>-</span></td>";
         }
         
     }
