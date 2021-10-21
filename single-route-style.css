@@ -2289,7 +2289,7 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
     min-height: 3rem;
     padding: 0 1.3rem;
 }
-.oc-route-your-reservation-purchase-form-container input.form-input.error {
+.oc-route-your-reservation-purchase-form-container input.form-input.error, .ocm-participants-content input.error {
     border: 2px solid var(--color-error);
 }
 .oc-route-your-reservation-purchase-form-container label.error {

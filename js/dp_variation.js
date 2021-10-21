@@ -303,22 +303,19 @@ jQuery(document).ready( function($) {
                         var products = {};
                         var seasonname = $(".dpseasonnamemodal").attr("id");
                         if (!hasValue("input.dpproductattributename") && !hasValue("input.dpproductsoptionsmodal[name='adult']")) {
-                            alert('errrrrr')
+                            alert('I campi Nome categoria e il prezzo della camera doppia sono obbligatori!')
+                            $(".dpproductsoptionsmodal[name='adult']").addClass('error');
+                            $(".dpproductattributename").addClass('error');
                         } else {
-                            if (hasValue("input.dpproductsoptionsmodal")) {
-                                $("input.dpproductsoptionsmodal").each(function(e){	
-                                    var productid = $(this).attr("id");
-                                    var price = $(this).val();
-        
-                                    if ( !$.isNumeric(price) ) {
-                                        products[productid]= 0;
-                                    } else {
-                                        products[productid]= price;
-                                    }
-                                });
-                            } else {
-                                alert('Aggiungi almeno un prezzo a una categoria')
-                            }
+                            $(".dpproductsoptionsmodal[name='adult']").removeClass('error');
+                            $(".dpproductattributename").removeClass('error');
+                            $("input.dpproductsoptionsmodal").each(function(e){	
+                                var productid = $(this).attr("id");
+                                var price = $(this).val();
+                                if(price) {
+                                    products[productid]= price;
+                                }
+                            });
                         }
                         if (!$.isEmptyObject(products)) {
                             ajaxCreateProductWithOptions(products,productarray,routeid,seasonname,seasonnameid,repeaterrawid,subfieldkey,repeatername);
@@ -400,6 +397,30 @@ jQuery(document).ready( function($) {
             } );
         }
     });
+
+    // if get parameters exists open date price modal
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+    
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+    
+            if (sParameterName[0] === sParam) {
+                return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+        return false;
+    };
+    var dateprices = getUrlParameter('dateprices');
+    var seasonid = getUrlParameter('seasonid');
+    console.log(dateprices);
+    console.log(seasonid);
+    if (!!dateprices) {
+        setTimeout(function(){ $("#popup-show-prices").click(); }, 500);
+    }
 });
 
 jQuery(function(){

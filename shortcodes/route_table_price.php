@@ -391,7 +391,6 @@ if( $products ){
                                     </p>
                                 </th>
                                 <?php
-                                if (count($attributes_name_hotel_seasonal) > 1) {
                                     foreach ($attributes_name_hotel_seasonal as $hotel){
                                         if ($language == 'en') {
                                             ?>
@@ -404,7 +403,6 @@ if( $products ){
                                         }
                                         
                                     }
-                                }
                                 ?>
                             </tr>
                         </thead>
@@ -440,7 +438,6 @@ if( $products ){
                                     </p>
                                 </th>
                                 <?php
-                                if (count($attributes_name_hotel) > 1) {
                                     foreach ($attributes_name_hotel as $hotel){
                                         if ($language == 'en') {
                                             ?>
@@ -452,7 +449,6 @@ if( $products ){
                                             <?php
                                         }
                                     }
-                                }
                                 ?>
                             </tr>
                         </thead>

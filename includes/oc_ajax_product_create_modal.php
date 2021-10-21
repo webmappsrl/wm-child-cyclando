@@ -19,14 +19,31 @@ function oc_ajax_product_create_modal(){
 
 function oc_ajax_product_create_modal_request($products,$productarray,$routeid,$seasonname,$seasonnameid,$repeaterrawid,$subfieldkey,$repeatername){
 
-    $res = 'true';
+    // hotel = 454 , extra = 453
+    $category = 'hotel';
+    $output = get_permalink($routeid).'?dateprices=true#tab-'.$seasonnameid;
+    $attributeName = '';
+    $varnames = array();
+    foreach ($products as $p => $val) {
+        if ($p == 'attribute_name') {
+            $attributeName = $val;
+        } else {
+            array_push($varnames,$p);
+        }
+    }
+    
+    $product_name = $routeid.'-hotel-'.$seasonnameid.'-'.$attributeName;
+    $product_id = create_variable_product_with_variations( $product_name, $products, $category, $attributeName,$varnames );
+
+    // function sync ACF product
+    $acf_res = sync_route_acf_with_new_product($repeatername,$repeaterrawid,$subfieldkey,$routeid,$product_id);
+    
 
     $outcome = 'false';
-    if ($res) {
+    if ($acf_res) {
         $outcome = 'true';
     }
 
-    $output = get_permalink($routeid).'?dateprices=true&seasonid='.$seasonnameid;
     $response = array(
         'response'=>$outcome,
         'output'=> $output
@@ -34,53 +51,103 @@ function oc_ajax_product_create_modal_request($products,$productarray,$routeid,$
     return $response;
 };
 
+function create_variable_product_with_variations( $product_name, $products, $category, $attributeName,$varnames ){
 
-function create_product( $product_id, $variation_data ,$varname, $catname, $newvarname){
-    // Get the Variable product object (parent)
-    $product = wc_get_product($product_id);
+    $product_id = wp_insert_post( array(
+        'post_title' => $product_name,
+        'post_status' => 'publish',
+        'post_type' => "product",
+        ) );
+    wp_set_object_terms( $product_id, 'variable', 'product_type' );
+    
+    $product = new WC_Product_Variable( $product_id );
 
-    $attr_label = $catname;
-    $attr_slug = sanitize_title($attr_label);
+    // Add category to product
+    wp_set_object_terms( $product_id, $category, 'product_cat' );
+
+    // Visibility ('hidden', 'visible', 'search' or 'catalog')
+    $product->set_catalog_visibility( 'visible' );
+    $product->save();
+    
+    //------------------------------------------------------------------------
+    $attr_slug = sanitize_title($attributeName);
 
     $attributes_array[$attr_slug] = array(
-        'name' => $attr_label,
-        'value' => implode('|',$varname),
+        'name' => $attributeName,
+        'value' => implode('|',$varnames),
         'is_visible' => '1',
         'is_variation' => '1',
         'is_taxonomy' => '0' // for some reason, this is really important       
     );
     update_post_meta( $product_id, '_product_attributes', $attributes_array );
     $product->save();
-
-    $variation_post = array(
-        'post_title'  => $product->get_name(),
-        'post_name'   => 'product-'.$product_id.'-variation',
-        'post_status' => 'publish',
-        'post_parent' => $product_id,
-        'post_type'   => 'product_variation',
-        'guid'        => $product->get_permalink()
-    );
-
-    // Creating the product variation
-    $variation_id = wp_insert_post( $variation_post );
-
-    // Get an instance of the WC_Product_Variation object
-    $variation = new WC_Product_Variation( $variation_id );
-
-    $variation->set_attributes([$attr_slug => $newvarname]);
-    
-    // Prices
-    if( empty( $variation_data['sale_price'] ) ){
-        $variation->set_price( $variation_data['regular_price'] );
-    } else {
-        $variation->set_price( $variation_data['sale_price'] );
-        $variation->set_sale_price( $variation_data['sale_price'] );
-    }
-    $variation->set_regular_price( $variation_data['regular_price'] );
-
-    // Stock
-    $variation->set_manage_stock(false);
     WC_Product_Variable::sync( $product_id );
 
-    return $variation->save(); // Save the data
+    foreach( $products as $variationname => $price) {
+        if ($variationname !== 'attribute_name') {
+            $variation_post = array(
+                'post_title'  => $product->get_name(),
+                'post_name'   => 'product-'.$product_id.'-variation',
+                'post_status' => 'publish',
+                'post_parent' => $product_id,
+                'post_type'   => 'product_variation',
+            );
+        
+            // Creating the product variation
+            $variation_id = wp_insert_post( $variation_post );
+        
+            // Get an instance of the WC_Product_Variation object
+            $variation = new WC_Product_Variation( $variation_id );
+        
+            $variation->set_attributes([$attr_slug => $variationname]);
+            
+            // Prices
+            $variation->set_price( intval($price) );
+            $variation->set_regular_price( intval($price) );
+        
+            // Stock
+            $variation->set_manage_stock(false);
+        
+            WC_Product_Variable::sync( $product_id );
+        
+            $variation->save(); // Save the data
+        }
+    }
+    
+    //------------------------------------------------------------------------
+
+
+
+    $product_id = $product->save();
+
+    return $product_id;
+}
+
+
+function sync_route_acf_with_new_product($repeatername,$repeaterrawid,$subfieldkey,$routeid,$product_id) {
+    if ( $repeatername == 'false') {
+        // get current value of acf 
+        $values = get_field($subfieldkey,$routeid, false);
+        $new_values = array();
+        foreach ($values as $val)   {
+            array_push($new_values,intval($val));
+        }
+        // add new id to the array
+        $new_values[] = $product_id;
+
+        return update_field( $subfieldkey, $new_values, $routeid );
+    } else {
+        // get current value of acf 
+        $rows = get_field($repeatername,$routeid, false);
+        $rawid = intval($repeaterrawid) - 1;
+        $values = $rows[$rawid][$subfieldkey];
+        $new_values = array();
+        foreach ($values as $val)   {
+            array_push($new_values,intval($val));
+        }
+        // add new id to the array
+        $new_values[] = $product_id;
+    
+        return update_sub_field( array($repeatername, intval($repeaterrawid), $subfieldkey), $new_values, $routeid );
+    }
 }
