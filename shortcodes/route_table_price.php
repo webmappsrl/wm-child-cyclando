@@ -394,11 +394,11 @@ if( $products ){
                                     foreach ($attributes_name_hotel_seasonal as $hotel){
                                         if ($language == 'en') {
                                             ?>
-                                            <th class="tab-section-quotes"><?php echo product_attr_map($hotel);?></th>
+                                            <th class="tab-section-quotes"><p><?php echo product_attr_map($hotel);?></p><div class="dp-delete-icon-wrapper"><i class='fal fa-trash-alt dp-category-delete-icon'></i></div></th>
                                             <?php
                                         } else {
                                             ?>
-                                            <th class="tab-section-quotes"><?php echo $hotel;?></th>
+                                            <th class="tab-section-quotes"><p><?php echo $hotel;?></p><div class="dp-delete-icon-wrapper"><i class='fal fa-trash-alt dp-category-delete-icon'></i></div></th>
                                             <?php
                                         }
                                         
@@ -441,11 +441,11 @@ if( $products ){
                                     foreach ($attributes_name_hotel as $hotel){
                                         if ($language == 'en') {
                                             ?>
-                                            <th class="tab-section-quotes"><?php echo product_attr_map($hotel);?></th>
+                                            <th class="tab-section-quotes"><p><?php echo product_attr_map($hotel);?></p><div class="dp-delete-icon-wrapper"><i class='fal fa-trash-alt dp-category-delete-icon'></i></div></th>
                                             <?php
                                         } else {
                                             ?>
-                                            <th class="tab-section-quotes"><?php echo $hotel;?></th>
+                                            <th class="tab-section-quotes"><p><?php echo $hotel;?></p><div class="dp-delete-icon-wrapper"><i class='fal fa-trash-alt dp-category-delete-icon'></i></div></th>
                                             <?php
                                         }
                                     }

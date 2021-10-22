@@ -1360,6 +1360,9 @@ div#popup-show-prices>div {
 #cy-prices-modal .departures-quotes .tab-section {
     padding-left: 13px;
 }
+#cy-prices-modal .departures-quotes {
+    padding-top: 20px;
+}
 
 #cy-prices-modal .durata-preventivo {
     margin-bottom: 25px;
@@ -1394,6 +1397,11 @@ div#popup-show-prices>div {
     font-size: 18px;
     font-weight: 600;
     font-family: var(--font-family-primary);
+}
+#cy-prices-modal .tab-section-quotes p{
+    margin: 0;
+    width: 70%;
+    float: left;
 }
 
 #cy-prices-modal tbody tr {
@@ -1742,14 +1750,14 @@ div#cy-prices-modal input::placeholder {
 .dp-delete-icon:hover {
     box-shadow: 2px 5px 9px #464646;
 }
-.dp-row-delete-icon {
+.dp-row-delete-icon, .dp-category-delete-icon {
     color: var(--color-error);
     padding: 0px;
     vertical-align: middle;
     font-size: 18px;
     cursor: pointer;
 }
-.dp-row-delete-icon:hover {
+.dp-row-delete-icon:hover, .dp-category-delete-icon:hover {
     box-shadow: 2px 5px 9px #464646;
 }
 .cell-status-icon-wrapper {
@@ -1759,6 +1767,7 @@ div#cy-prices-modal input::placeholder {
     float: right;
     margin-left: 30px;
     text-align: right;
+    padding-bottom: 20px;
 }
 .addVariant_button_wrapper_modal {
     padding-top: 10px;

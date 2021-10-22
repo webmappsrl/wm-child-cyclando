@@ -78,7 +78,7 @@ function vn_route_tabs_body ($list_all_variations_name,$variations_name_price,$p
     <?php  // row halfboard_kid1 --------------------------------------------------------
     if(array_key_exists('halfboard_kid1',$list_all_variations_name)) {           
         $title = sprintf(__('Supplement for half board child 0/%s yo' ,'wm-child-verdenatura'),$kid1_max_range);
-        wm_route_tabs_body_tr('halfboard_adult',$title,$variations_name_price,$season_name_id);
+        wm_route_tabs_body_tr('halfboard_kid1',$title,$variations_name_price,$season_name_id);
     }
     ?> <!---- END row halfboard_kid1 ---->
     <?php  // row halfboard_kid2 --------------------------------------------------------
