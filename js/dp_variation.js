@@ -353,13 +353,19 @@ jQuery(document).ready( function($) {
                 objs = JSON.parse(response);
                 var output = objs['output'];
                 if (objs['response'] == 'true') {
-                    location.href = output;
+                    if (location.href == output) {
+                        location.reload()
+                    } else {
+                        location.href = output;
+                    }
                 }
             }
         });
     }
     // --------------- END ADD PRODUCT ------------------- //     
 
+
+    // --------------- START DELETE PRODUCT ------------------- // 
     // complete product elimination eventlistner
     $( ".dp-category-delete-icon" ).click(function(e) { 
         dpProductDeleteIconFunction($(this));
@@ -400,12 +406,15 @@ jQuery(document).ready( function($) {
                 objs = JSON.parse(response);
                 var output = objs['output'];
                 if (objs['response'] == 'true') {
-                    location.href = output;
+                    if (location.href == output) {
+                        location.reload()
+                    } else {
+                        location.href = output;
+                    }
                 }
             }
         });
     }
-    // --------------- START DELETE PRODUCT ------------------- // 
 
 
 
