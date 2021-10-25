@@ -1400,10 +1400,20 @@ div#popup-show-prices>div {
 }
 #cy-prices-modal .tab-section-quotes p{
     margin: 0;
-    width: 70%;
+    width: 220px;
     float: left;
 }
-
+i.fas.fa-spinner.fa-spin {
+    padding: 0;
+}
+th.tab-section-quotes .dp-delete-icon-wrapper {
+    width: 38px;
+    margin: 0;
+    float: left;
+    text-align: right;
+    display: flex;
+    gap: 5px;
+}
 #cy-prices-modal tbody tr {
     color: var(--color-primary-paragraph);
     font-size: 15px;
@@ -1772,6 +1782,12 @@ div#cy-prices-modal input::placeholder {
 .addVariant_button_wrapper_modal {
     padding-top: 10px;
     text-align: right;
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+}
+.dp_loader_modal {
+    align-self: end;
 }
 .addVariantbtn {
     width: auto;
@@ -1787,7 +1803,7 @@ div#cy-prices-modal input::placeholder {
     border-color: var(--color-secondary-hover);
     background-color: var(--color-secondary-hover);
 }
-.dp_add_variation_body {
+.dp_add_variation_body,.dp_add_product_body {
     display: grid;
     padding: 10px 0;
 }

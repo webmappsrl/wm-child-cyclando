@@ -48,7 +48,6 @@ $to = get_field('to');
 //var
 $post_id = get_the_ID();
 $ini_activated = get_field('ini_activated',$post_id);
-$prduct_list_hotel = array();
 $attributes_name_hotel = array();
 $variations_name_price = array();
 $extra_variation_name_price = array();
@@ -56,7 +55,6 @@ $extra_variation_name_description = array();
 $list_all_variations_name = array();
 $has_hotel = false;
 $has_extra = false;
-$product_id_model_hotel = '';
 
 
 $products = get_field('product');
@@ -75,9 +73,8 @@ if( $products ){
                 }
             }
             if(strip_tags($category) == 'hotel'){
-                $product_id_model_hotel = $p;
                 $has_hotel = true;
-                array_push($attributes_name_hotel,$product_attribute_name);
+                $attributes_name_hotel[$p] = $product_attribute_name;
                 $product_variation_name_price = array();
                 foreach($product->get_available_variations() as $variation ){
 
@@ -142,7 +139,7 @@ if( $products ){
             <?php $days = get_field('vn_durata');
             if ( $days )
             {
-                $nights = $days - 1;
+                $nights = intval($days) - 1;
                 ?>
                 <?php
                 echo "<span class=''>" . "$days " . __( 'days' , 'wm-child-verdenatura' ) . " / $nights " . __( 'nights' , 'wm-child-verdenatura' ) ;
@@ -336,14 +333,12 @@ if( $products ){
                                         $attributes_list = $product->get_variation_attributes();
                                         foreach ($attributes_list as $value => $key ) {
                                             $product_attribute_name = $value;
-                                            // $product_attribute_name_modal = array($p => $value);
                                             if(strip_tags($category) == 'hotel'){
                                                 $attributes_name_hotel_seasonal_modal[$p] = $value;
                                             }
                                         }
                                         if(strip_tags($category) == 'hotel'){
-                                            array_push($attributes_name_hotel_seasonal,$product_attribute_name);
-                                            // array_push($attributes_name_hotel_seasonal_modal,$product_attribute_name_modal);
+                                            $attributes_name_hotel_seasonal[$p] = $product_attribute_name;
                                             $product_variation_name_price = array();
                                             foreach($product->get_available_variations() as $variation ){
     
@@ -391,23 +386,28 @@ if( $products ){
                                     </p>
                                 </th>
                                 <?php
-                                    foreach ($attributes_name_hotel_seasonal as $hotel){
+                                if ($attributes_name_hotel_seasonal) {
+                                    foreach ($attributes_name_hotel_seasonal as $id => $hotel){
                                         if ($language == 'en') {
                                             ?>
-                                            <th class="tab-section-quotes"><p><?php echo product_attr_map($hotel);?></p><div class="dp-delete-icon-wrapper"><i class='fal fa-trash-alt dp-category-delete-icon'></i></div></th>
+                                            <th class="tab-section-quotes"><p><?php echo product_attr_map($hotel);?></p><div class="dp-delete-icon-wrapper"><i class='fal fa-trash-alt dp-category-delete-icon' data-id='<?= $id?>' data-routeid="<?= $post_id ?>" data-seasonnameid="<?= $season_name_id ?>" data-repeaterrawid="<?= $model_season_raw_i ?>" data-subfieldkey="wm_route_quote_model_season_product" data-repeatername="model_season"></i></div></th>
                                             <?php
                                         } else {
                                             ?>
-                                            <th class="tab-section-quotes"><p><?php echo $hotel;?></p><div class="dp-delete-icon-wrapper"><i class='fal fa-trash-alt dp-category-delete-icon'></i></div></th>
+                                            <th class="tab-section-quotes"><p><?php echo $hotel;?></p><div class="dp-delete-icon-wrapper"><i class='fal fa-trash-alt dp-category-delete-icon' data-id='<?= $id?>' data-routeid="<?= $post_id ?>" data-seasonnameid="<?= $season_name_id ?>" data-repeaterrawid="<?= $model_season_raw_i ?>" data-subfieldkey="wm_route_quote_model_season_product" data-repeatername="model_season"></i></div></th>
                                             <?php
                                         }
-                                        
                                     }
+                                }
                                 ?>
                             </tr>
                         </thead>
                         <tbody>
-                        <?php vn_route_tabs_body ($list_all_variations_name_seasonal,$variations_name_price_seasonal,$place,$from,$to,$season_name_id)?>
+                        <?php 
+                        if ($attributes_name_hotel_seasonal) {
+                            vn_route_tabs_body ($list_all_variations_name_seasonal,$variations_name_price_seasonal,$place,$from,$to,$season_name_id);
+                        }
+                        ?>
                         </tbody>       
                     </table>
                 </div> <!---- END  -------- quote hotel alberghi -->
@@ -418,7 +418,7 @@ if( $products ){
         <?php endif; ?>
 
                 <?php   
-                    if (empty($low_season_products) && empty($high_season_products ) && $has_hotel){  //----------- start hotel product table
+                if (empty($low_season_products) && empty($high_season_products ) && $has_hotel){  //----------- start hotel product table
                 ?>
                 <div id="tab-monoSeason" class="quotes-preventivo simple"><!------------ quote ---------------------->
                     <div class="addVariant_button_wrapper">
@@ -438,14 +438,14 @@ if( $products ){
                                     </p>
                                 </th>
                                 <?php
-                                    foreach ($attributes_name_hotel as $hotel){
+                                    foreach ($attributes_name_hotel as $id => $hotel){
                                         if ($language == 'en') {
                                             ?>
-                                            <th class="tab-section-quotes"><p><?php echo product_attr_map($hotel);?></p><div class="dp-delete-icon-wrapper"><i class='fal fa-trash-alt dp-category-delete-icon'></i></div></th>
+                                            <th class="tab-section-quotes"><p><?php echo product_attr_map($hotel);?></p><div class="dp-delete-icon-wrapper"><i class='fal fa-trash-alt dp-category-delete-icon' data-id='<?= $id?>' data-routeid="<?= $post_id ?>" data-seasonnameid="false" data-repeaterrawid="false" data-subfieldkey="wm_route_quote_product" data-repeatername="false"></i></div></th>
                                             <?php
                                         } else {
                                             ?>
-                                            <th class="tab-section-quotes"><p><?php echo $hotel;?></p><div class="dp-delete-icon-wrapper"><i class='fal fa-trash-alt dp-category-delete-icon'></i></div></th>
+                                            <th class="tab-section-quotes"><p><?php echo $hotel;?></p><div class="dp-delete-icon-wrapper"><i class='fal fa-trash-alt dp-category-delete-icon' data-id='<?= $id?>' data-routeid="<?= $post_id ?>" data-seasonnameid="false" data-repeaterrawid="false" data-subfieldkey="wm_route_quote_product" data-repeatername="false"></i></div></th>
                                             <?php
                                         }
                                     }

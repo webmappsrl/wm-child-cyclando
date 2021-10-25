@@ -44,7 +44,7 @@ jQuery(document).ready( function($) {
         });
     }
 
-    // product elimination eventlistner
+    // product variation elimination eventlistner
     $( ".dp-delete-icon" ).click(function(e) { 
         dpDeleteIconFunction($(this));
     });
@@ -73,7 +73,7 @@ jQuery(document).ready( function($) {
         }
     }
 
-    // product elimination ajax
+    // product variation elimination ajax
     function ajaxDeleteProductVariationPrice(name,id,catname,seasonname,deleterow){
         var data = {
             'action': 'oc_ajax_variation_delete',
@@ -358,8 +358,58 @@ jQuery(document).ready( function($) {
             }
         });
     }
+    // --------------- END ADD PRODUCT ------------------- //     
+
+    // complete product elimination eventlistner
+    $( ".dp-category-delete-icon" ).click(function(e) { 
+        dpProductDeleteIconFunction($(this));
+    });
+    function dpProductDeleteIconFunction(e) {
+        var id = e.data("id");
+        var seasonnameid = e.data("seasonnameid");
+        var routeid = e.data("routeid");
+        var wrapper = e.closest(".dp-delete-icon-wrapper");
+        var repeaterrawid = e.data('repeaterrawid');
+        var subfieldkey = e.data('subfieldkey');
+        var repeatername = e.data('repeatername');
+        var confirmdelrow = window.confirm('Questa categoria verrà eliminata, sei sicuro di voler procedere?'); 
+        if (confirmdelrow) {
+            ajaxDeleteCompleteProduct(id,seasonnameid,routeid,wrapper,repeaterrawid,subfieldkey,repeatername)
+        } else {
+        }
+    }
+    // product elimination ajax
+    function ajaxDeleteCompleteProduct(id,seasonnameid,routeid,wrapper,repeaterrawid,subfieldkey,repeatername){
+        var data = {
+            'action': 'oc_ajax_product_delete',
+            'productid':  id,
+            'seasonnameid':  seasonnameid,
+            'routeid':  routeid,
+            'repeaterrawid':  repeaterrawid,
+            'subfieldkey':  subfieldkey,
+            'repeatername':  repeatername,
+        };
+        jQuery.ajax({
+            url: '/wp-admin/admin-ajax.php',
+            type : 'post',
+            data: data,
+            beforeSend: function(){
+                wrapper.append('<i class="fas fa-spinner fa-spin"></i>');
+            },
+            success : function( response ) {
+                objs = JSON.parse(response);
+                var output = objs['output'];
+                if (objs['response'] == 'true') {
+                    location.href = output;
+                }
+            }
+        });
+    }
+    // --------------- START DELETE PRODUCT ------------------- // 
 
 
+
+    // --------------- END DELETE PRODUCT ------------------- // 
     function hasValue(elem) {
         var result = false;
         $(elem).each(function(e){
@@ -415,9 +465,6 @@ jQuery(document).ready( function($) {
         return false;
     };
     var dateprices = getUrlParameter('dateprices');
-    var seasonid = getUrlParameter('seasonid');
-    console.log(dateprices);
-    console.log(seasonid);
     if (!!dateprices) {
         setTimeout(function(){ $("#popup-show-prices").click(); }, 500);
     }

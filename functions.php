@@ -3,6 +3,7 @@
 require ('includes/oc_ajax_route_price.php');
 require ('includes/oc_ajax_variation_price_update.php');
 require ('includes/oc_ajax_variation_delete.php');
+require ('includes/oc_ajax_product_delete.php');
 require ('includes/oc_ajax_variation_add_modal.php');
 require ('includes/oc_ajax_product_options_add_modal.php');
 require ('includes/oc_ajax_variation_create_modal.php');
