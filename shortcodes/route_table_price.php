@@ -55,6 +55,7 @@ $extra_variation_name_description = array();
 $list_all_variations_name = array();
 $has_hotel = false;
 $has_extra = false;
+$product_extra_id = 'false';
 
 
 $products = get_field('product');
@@ -99,6 +100,7 @@ if( $products ){
             }
             if(strip_tags($category) == 'extra'){
                 $has_extra = true;
+                $product_extra_id = $p;
                 foreach($product->get_available_variations() as $variation ){
                     // Extra Name
                     // print_r($variation);
@@ -462,15 +464,19 @@ if( $products ){
                 ?>
 
         <div class="extra-quotes"> <!------------ quote extra ---------------------->
-            <p class="tab-section"> 
-                <?php
-                if( $has_extra ){ //have_rows('product')
-                echo __('Extra rates: ' ,'wm-child-verdenatura');}?>
-            </p>
+            <div class="addExtra_button_wrapper">
+                <div class="addExtra addVariantbtn" data-productextra='<?= $product_extra_id ?>' data-routeid="<?= $post_id ?>" data-place="<?= $place ?>" data-from="<?= $from ?>" data-to="<?= $to ?>"><?= __('Add Extra' ,'wm-child-cyclando'); ?> <i class="fas fa-plus"></i></div>
+            </div>
+            <?php
+                if( $has_extra ){ //have_rows('product') ?>
+                <p class="tab-section"> 
+                    <?php echo __('Extra rates: ' ,'wm-child-verdenatura');?>
+                </p>
+                <?php }?>
             <?php 
             if ($has_extra){  //----------- start extra product table
             ?>
-            <table class="extra-quotes-table">
+            <table class="extra-quotes-table extra-quotes-table-only">
                 <tbody>
                         <?php  // row bike --------------------------------------------------------
                         if(array_key_exists('bike',$extra_variation_name_price)) {           
@@ -731,6 +737,20 @@ if( $products ){
                 <div class="ocm-close-button-container"><span class="dp_add_product_container_close">×</span></div>
             </div>
             <div class="dp_add_product_body">
+                
+            </div>                            
+        </div>
+    </div>
+    <!-- Modal add EXTRA html -->
+    <div id="dp_add_extra-modal" class="dp_add_extra_container">
+        <div class="ocm-participants-content">
+            <div class="ocm-participants-header">
+                <div class="">
+                    <h2><?= __('Add a new extra' ,'wm-child-cyclando'); ?></h2>
+                </div>
+                <div class="ocm-close-button-container"><span class="dp_add_extra_container_close">×</span></div>
+            </div>
+            <div class="dp_add_extra_body">
                 
             </div>                            
         </div>

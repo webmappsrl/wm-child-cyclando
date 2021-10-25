@@ -2222,7 +2222,7 @@ span.route_duration_free {
 /* Oneclick form modals */
 
 
-.ocm-participants-container, .ocm-bikes-container, .dp_add_variation_container, .dp_add_product_container, .ocm-single-container {
+.ocm-participants-container, .ocm-bikes-container, .dp_add_variation_container, .dp_add_product_container, .ocm-single-container, .dp_add_extra_container {
     display: none;
     position: fixed;
     z-index: 1100;

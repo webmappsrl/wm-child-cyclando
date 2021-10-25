@@ -1779,6 +1779,11 @@ div#cy-prices-modal input::placeholder {
     text-align: right;
     padding-bottom: 20px;
 }
+.addExtra_button_wrapper {
+    margin-left: 30px;
+    text-align: right;
+    padding-bottom: 20px;
+}
 .addVariant_button_wrapper_modal {
     padding-top: 10px;
     text-align: right;
@@ -1803,11 +1808,11 @@ div#cy-prices-modal input::placeholder {
     border-color: var(--color-secondary-hover);
     background-color: var(--color-secondary-hover);
 }
-.dp_add_variation_body,.dp_add_product_body {
+.dp_add_variation_body, .dp_add_product_body, .dp_add_extra_body {
     display: grid;
     padding: 10px 0;
 }
-.dpcatinputsmodal, .dpproductsoptionsmodal {
+.dpcatinputsmodal, .dpproductsoptionsmodal, .dpextrainputmodal {
     background: #f5f5f5!important;
 }
 .modalinputlabel {

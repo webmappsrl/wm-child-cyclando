@@ -5,6 +5,8 @@ require ('includes/oc_ajax_variation_price_update.php');
 require ('includes/oc_ajax_variation_delete.php');
 require ('includes/oc_ajax_product_delete.php');
 require ('includes/oc_ajax_variation_add_modal.php');
+require ('includes/oc_ajax_extra_variation_create_modal.php');
+require ('includes/oc_ajax_extra_add_modal.php');
 require ('includes/oc_ajax_product_options_add_modal.php');
 require ('includes/oc_ajax_variation_create_modal.php');
 require ('includes/oc_ajax_product_create_modal.php');
@@ -1499,4 +1501,143 @@ function wm_create_hotel_variation_mapping($place,$from,$to){
         'nightsAfter_adult-extra' => sprintf(__('Extra night in %s (extra bed)' ,'wm-child-verdenatura'),$to),
     ];
     return $array;
+}
+
+// function used in ajax route variations for Extra creation in fronend
+function wm_create_extra_variation_mapping(){
+    $array = $variations = [
+        'bike' => __('Supplement for bike rental' ,'wm-child-verdenatura'),
+        'ebike' => __('Supplement for e-bike rental' ,'wm-child-verdenatura'),
+        'kidbike' => __('Supplement for children bike' ,'wm-child-verdenatura'),
+        'bike_tandem' => __('Supplement for tandem bike' ,'wm-child-verdenatura'),
+        'bike_road' => __('Supplement for road bike rental' ,'wm-child-verdenatura'),
+        'babyseat' => __('Supplement for child back seat rental' ,'wm-child-verdenatura'),
+        'trailer' => __('Supplement for children trailer rental' ,'wm-child-verdenatura'),
+        'trailgator' => __('Supplement for children trailgator' ,'wm-child-verdenatura'),
+        'tagalong' => __('Supplement for follow-me rental' ,'wm-child-verdenatura'),
+        'bikewarranty' => __('Bike Coverage' ,'wm-child-verdenatura'),
+        'ebikewarranty' => __('E-bike Coverage' ,'wm-child-verdenatura'),
+        'bike_tandemwarranty' => __('Tandem bike Coverage' ,'wm-child-verdenatura'),
+        'bike_roadwarranty' => __('Road bike Coverage' ,'wm-child-verdenatura'),
+        'helmet' => __('Supplement for adult helmet rental' ,'wm-child-verdenatura'),
+        'kidhelmet' => __('Supplement for kid helmet rental' ,'wm-child-verdenatura'),
+        'roadbook' => __('Printed road book maps' ,'wm-child-verdenatura'),
+        'cookingclass' => __('Supplement for cooking class' ,'wm-child-verdenatura'),
+        'transferBefore' => __('Supplement for transfer before the trip' ,'wm-child-verdenatura'),
+        'transferAfter' => __('Supplement transfer after the trip' ,'wm-child-verdenatura'),
+        'boardingtax' => __('Port charges (to be paid in advance)' ,'wm-child-verdenatura'),
+        'bike_plus' => __('Supplement for bike rental Premium' ,'wm-child-verdenatura'),
+        'bike_pluswarranty' => __('Supplement for bike coverage Premium' ,'wm-child-verdenatura'),
+        'bike_mtb' => __('Supplement for MTB rental' ,'wm-child-verdenatura'),
+        'bike_mtbwarranty' => __('Supplement for tandem rental' ,'wm-child-verdenatura'),
+        'bike_ebikemtb' => __('Supplemento nolo E-MTB' ,'wm-child-verdenatura'),
+        'bike_ebikemtbwarranty' => __('Supplement for E-MTB coverage' ,'wm-child-verdenatura'),
+        'bike_ebikeroad' => __('Supplement for road e-bike rental' ,'wm-child-verdenatura'),
+        'bike_ecargo' => __('Supplement for ecargo rental' ,'wm-child-verdenatura'),
+        'bike_ecargowarranty' => __('Supplement for ecago Coverage' ,'wm-child-verdenatura'),
+        'bike_own' => __('Supplement for your own bike' ,'wm-child-verdenatura'),
+        'bike_ownwarranty' => __('Supplement for own bike Coverage' ,'wm-child-verdenatura'),
+        'bike_recumbent' => __('Supplement for recumbent bike' ,'wm-child-verdenatura'),
+        'gps' => __('Supplement for GPS' ,'wm-child-verdenatura'),
+        'weehoo' => __('Supplement for Weehoo trailer' ,'wm-child-verdenatura'),
+    ];
+    return $array;
+}
+
+
+function create_variable_product_with_variations( $product_name, $products, $category, $attributeName,$varnames ){
+
+    $product_id = wp_insert_post( array(
+        'post_title' => $product_name,
+        'post_status' => 'publish',
+        'post_type' => "product",
+        ) );
+    wp_set_object_terms( $product_id, 'variable', 'product_type' );
+    
+    $product = new WC_Product_Variable( $product_id );
+
+    // Add category to product
+    wp_set_object_terms( $product_id, $category, 'product_cat' );
+
+    // Visibility ('hidden', 'visible', 'search' or 'catalog')
+    $product->set_catalog_visibility( 'visible' );
+    $product->save();
+    
+    
+    $attr_slug = sanitize_title($attributeName);
+
+    $attributes_array[$attr_slug] = array(
+        'name' => $attributeName,
+        'value' => implode('|',$varnames),
+        'is_visible' => '1',
+        'is_variation' => '1',
+        'is_taxonomy' => '0' // for some reason, this is really important       
+    );
+    update_post_meta( $product_id, '_product_attributes', $attributes_array );
+    $product->save();
+    WC_Product_Variable::sync( $product_id );
+
+    foreach( $products as $variationname => $price) {
+        if ($variationname !== 'attribute_name') {
+            $variation_post = array(
+                'post_title'  => $product->get_name(),
+                'post_name'   => 'product-'.$product_id.'-variation',
+                'post_status' => 'publish',
+                'post_parent' => $product_id,
+                'post_type'   => 'product_variation',
+            );
+        
+            // Creating the product variation
+            $variation_id = wp_insert_post( $variation_post );
+        
+            // Get an instance of the WC_Product_Variation object
+            $variation = new WC_Product_Variation( $variation_id );
+        
+            $variation->set_attributes([$attr_slug => $variationname]);
+            
+            // Prices
+            $variation->set_price( intval($price) );
+            $variation->set_regular_price( intval($price) );
+        
+            // Stock
+            $variation->set_manage_stock(false);
+        
+            WC_Product_Variable::sync( $product_id );
+        
+            $variation->save(); // Save the data
+        }
+    }
+    
+    $product_id = $product->save();
+
+    return $product_id;
+}
+
+
+function sync_route_acf_with_new_product($repeatername,$repeaterrawid,$subfieldkey,$routeid,$product_id) {
+    if ( $repeatername == 'false') {
+        // get current value of acf 
+        $values = get_field($subfieldkey,$routeid, false);
+        $new_values = array();
+        foreach ($values as $val)   {
+            array_push($new_values,intval($val));
+        }
+        // add new id to the array
+        $new_values[] = $product_id;
+
+        return update_field( $subfieldkey, $new_values, $routeid );
+    } else {
+        // get current value of acf 
+        $rows = get_field($repeatername,$routeid, false);
+        $rawid = intval($repeaterrawid) - 1;
+        $values = $rows[$rawid][$subfieldkey];
+        $new_values = array();
+        foreach ($values as $val)   {
+            array_push($new_values,intval($val));
+        }
+        // add new id to the array
+        $new_values[] = $product_id;
+    
+        return update_sub_field( array($repeatername, intval($repeaterrawid), $subfieldkey), $new_values, $routeid );
+    }
 }

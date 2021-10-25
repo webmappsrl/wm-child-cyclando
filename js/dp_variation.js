@@ -415,10 +415,102 @@ jQuery(document).ready( function($) {
             }
         });
     }
-
-
-
     // --------------- END DELETE PRODUCT ------------------- // 
+
+
+    // --------------- START ADD EXTRA ------------------- // 
+
+    // Add Extra modal (popup) eventlistener
+    $('.addExtra').on('click',function(){
+        var productextra = $(this).data('productextra');
+        var routeid = $(this).data('routeid');
+        $('.dp_add_extra_container').show();
+        ajaxAddExtraOptionsModal(productextra,routeid)
+    });
+    $('.dp_add_extra_container_close').on('click',function(){
+        $('.dp_add_extra_container').hide();
+    });
+
+    // Add extra options ajax for add extra modal
+    function ajaxAddExtraOptionsModal(productextra,routeid){
+        var data = {
+            'action': 'oc_ajax_extra_add_modal',
+            'productextra':  productextra,
+        };
+        jQuery.ajax({
+            url: '/wp-admin/admin-ajax.php',
+            type : 'post',
+            data: data,
+            beforeSend: function(){
+                jQuery(".dp_add_extra_body").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
+            },
+            success : function( response ) {
+                objs = JSON.parse(response);
+                var output = objs['output']
+                if (objs['response'] == 'true') {
+                    jQuery(".dp_add_extra_body").html(output);
+                    
+                    // Create Extra variants modal (popup)
+                    $(".createExtrabtn").on('click',function(){
+                        var varname = $("#dpextrasmodal").val();
+                        var price;
+                        if (hasValue("input.dpextrainputmodal")) {
+                            $("input.dpextrainputmodal").each(function(e){	
+                                price = $(this).val();
+                            });
+                            ajaxCreateExtraVariation(productextra,varname,price,routeid);
+                        } else {
+                            alert('Aggiungi il prezzo!')
+                        }
+                    })
+
+                } else {
+                    jQuery(".dp_add_extra_body").html('Sorry something went wrong! Call Pedram');
+                }
+            }
+        });
+    }
+    // product EXTRA variation Create ajax modal (popup)
+    function ajaxCreateExtraVariation(productextra,varname,price,routeid){
+        var data = {
+            'action': 'oc_ajax_extra_variation_create_modal',
+            'productextra':  productextra,
+            'varname':  varname,
+            'price':  price,
+            'routeid':  routeid,
+        };
+        jQuery.ajax({
+            url: '/wp-admin/admin-ajax.php',
+            type : 'post',
+            data: data,
+            beforeSend: function(){
+                jQuery(".dp_loader_modal").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
+            },
+            success : function( response ) {
+                objs = JSON.parse(response);
+                var output = objs['output'];
+                if (objs['response'] == 'true') {
+                    if (productextra == 'false') {
+                        $(".addExtra_button_wrapper").append('<p class="tab-section">Extra:</p><table class="extra-quotes-table"><tbody></tbody></table>');
+                    }
+
+                    $('.dp_add_extra_container').hide();
+                    $(".extra-quotes-table-only tbody").append(output);
+                }
+                // delete one product
+                $( ".dp-delete-icon" ).click(function(e) { 
+                    dpDeleteIconFunction($(this));
+                });
+                // product update eventlistener
+                $( "input" ).keypress(function(e) {
+                    inputKeypressUpdateProduct(e,$(this))
+                });
+            }
+        });
+    }
+    // --------------- END ADD EXTRA ------------------- //     
+
+
     function hasValue(elem) {
         var result = false;
         $(elem).each(function(e){
@@ -438,6 +530,9 @@ jQuery(document).ready( function($) {
         }
         if (e.target.id == 'dp_add_product-modal') {
             $('.dp_add_product_container').hide();
+        }
+        if (e.target.id == 'dp_add_extra-modal') {
+            $('.dp_add_extra_container').hide();
         }
     }
 
