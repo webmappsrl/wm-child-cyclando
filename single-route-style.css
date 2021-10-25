@@ -2477,9 +2477,12 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
 }
 .cyc-single-route-contact-button-container .label{
     margin: 0;
-    font-size: 17px;
+    font-size: 17px!important;
     line-height: 16px;
     padding-bottom: 30px;
+}
+#cy-contact-in-plan-tab p {
+    font-size: 18px!important;
 }
 .cy-contact-in-plan-tab {
     width: fit-content;

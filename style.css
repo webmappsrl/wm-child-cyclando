@@ -736,9 +736,14 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
 
 .footer-copyright-info p {
     font-family: var(--font-family-primary-alternate);
-    font-size: 18px;
+    font-size: 16px;
 }
-
+@media screen and (min-width: 768px) {
+    ul#menu-menu-secondario li:not(:last-child),#menu-menu-secondario-inglese-2 li:not(:last-child) {
+        border-right: 1px solid white;
+        padding-right: 2rem;
+    }
+}
 /* info footer*/
 
 
@@ -1361,7 +1366,6 @@ body .checkout-button.button.alt.wc-forward,body .woocommerce .button.alt {
 .newsletter-cta > .vc_column-inner >.wpb_wrapper{
     background: var(--color-primary);
     /* background: linear-gradient(94deg, #9ac250 0%, #749D27 100%)!important; */
-    border-radius: 5px;
     padding: 40px;
     background-image: url(/wp-content/uploads/2021/01/Cyc_newsletter_background.png);
     background-position: left;
