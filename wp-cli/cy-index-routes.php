@@ -17,7 +17,7 @@ $cy_index_routes = function( $args, $assoc_args ) {
     $time = time();
     system( "echo $(date) > \"$logpath\"" );
     system("wp term list when --field=term_id | xargs wp term delete when | tee -a \"$logpath\"");
-    system("wp wm-save-routes | tee -a \"$logpath\"");
+    system("wp wm-save-routes-cyc | tee -a \"$logpath\"");
     system("wp facet index route | tee -a \"$logpath\"");
 
     $endTime = time();

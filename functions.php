@@ -40,6 +40,7 @@ require ('includes/wm_has_hotel_get_label.php');
 
 if ( class_exists( 'WP_CLI' ) ) {
     require ('wp-cli/cy-index-routes.php');
+    require ('wp-cli/wm-save-routes-cyc.php');
 }
 
 
@@ -772,8 +773,8 @@ add_filter( 'facetwp_indexer_row_data', function( $rows, $params ) {
 }, 10, 2 );
 
 
-add_action( 'save_post' , function( $post_id, $post, $update )
-{
+add_action( 'save_post' , 'sync_route_dates_with_when',10,3);
+function sync_route_dates_with_when( $post_id, $post, $update ){
     if ( $post->post_type != 'route' )
         return;
 
