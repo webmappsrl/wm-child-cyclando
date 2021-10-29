@@ -862,7 +862,7 @@ function sync_route_dates_with_when( $post_id, $post, $update ){
         wp_set_post_terms( $post_id , $toRegister , 'when');
     }
         
-} , 10 , 3);
+};
 
 
 add_filter( "views_edit-route", function($views){
