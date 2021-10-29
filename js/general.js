@@ -47,7 +47,7 @@ function wmScrollTop() {
   }
 
 jQuery(window).on('load', function() {
-
+  FWP.refresh();
 
 	var facetwpPaged = document.querySelectorAll('.facetwp-page');
 	facetwpPagedScrollTop(facetwpPaged);
@@ -61,6 +61,8 @@ jQuery(window).on('load', function() {
 });
 
 jQuery(document).ready(function () {
+  
+
   var rooms = [];
   var main_url;
   var filter;
