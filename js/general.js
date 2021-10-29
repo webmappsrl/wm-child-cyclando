@@ -1,6 +1,7 @@
 //removes autocomplete dropdown dove_vuoi_andare facet
 (function ($) {
-  $(document).on("facetwp-loaded", function () {
+  $(document).on("facetwp-loaded", function (e) {
+    console.log("facetwp-loaded",e);
     const $el = $('.facetwp-facet-dove_vuoi_andare input[type="text"]');
     $el.on("blur keydown input change keyup focus", () => {
       $(".autocomplete-suggestions").remove();
@@ -564,10 +565,15 @@ jQuery(document).ready(function () {
     jQuery('#ocm-single-number').text('');
     jQuery('#oc-single').removeClass("selected");
     var savedCookie = ocmCheckCookie();
-    if (!!savedCookie[post_id]['extra']['single_room_paid']) {
-      delete savedCookie[post_id]['extra']['single_room_paid'];
-      Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+    try{
+      if (!!savedCookie[post_id]['extra']['single_room_paid']) {
+        delete savedCookie[post_id]['extra']['single_room_paid'];
+        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+      }
+    }catch(e){
+      console.log(e)
     }
+    
 
     // Enable single section in extra popup
     jQuery('.single_room-section-modal').show();
@@ -594,10 +600,15 @@ jQuery(document).ready(function () {
     });
     // Disable single section in extra popup
     jQuery('.single_room-section-modal').hide();
-    if (savedCookie[post_id]['supplement']['single_room']) {
-      delete savedCookie[post_id]['supplement']['single_room'];
-      Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+    try {
+      if (savedCookie[post_id]['supplement']['single_room']) {
+        delete savedCookie[post_id]['supplement']['single_room'];
+        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+      }
+    } catch(e){
+      console.log(e);
     }
+    
     jQuery('#single_room').text(0);
     jQuery( ".facetwp-checkbox-single_room").removeClass('checked');
     jQuery('.oc-modal-button-container-single_room').removeClass("display-grid");

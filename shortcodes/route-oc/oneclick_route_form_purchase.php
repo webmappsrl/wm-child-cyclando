@@ -96,15 +96,26 @@ function oneclick_route_form_purchase($atts) {
                 $('.oc-proceed-done-btn').on('click',function(){
                     // populate extra section in your reservation if any extra is selected
                     var savedCookie = ocmCheckCookie();
-                    if (!!savedCookie[post_id]['extra']['single_room_paid']) {
+                    try{
+                        if (!!savedCookie[post_id]['extra']['single_room_paid']) {
                         jQuery('.oc-route-your-reservation-singleroompaid-title').show();
                         jQuery('.oc-route-your-reservation-singleroompaid-info').show();
                         jQuery('.oc-route-your-reservation-singleroompaid-info p').html(savedCookie[post_id]['extra']['single_room_paid']);
-                    } else {
+                    }
+                    } catch(e) {
                         jQuery('.oc-route-your-reservation-singleroompaid-title').hide();
                         jQuery('.oc-route-your-reservation-singleroompaid-info').hide();
                         jQuery('.oc-route-your-reservation-singleroompaid-info p').html('');
                     }
+                    // if (!!savedCookie[post_id]['extra']['single_room_paid']) {
+                    //     jQuery('.oc-route-your-reservation-singleroompaid-title').show();
+                    //     jQuery('.oc-route-your-reservation-singleroompaid-info').show();
+                    //     jQuery('.oc-route-your-reservation-singleroompaid-info p').html(savedCookie[post_id]['extra']['single_room_paid']);
+                    // } else {
+                    //     jQuery('.oc-route-your-reservation-singleroompaid-title').hide();
+                    //     jQuery('.oc-route-your-reservation-singleroompaid-info').hide();
+                    //     jQuery('.oc-route-your-reservation-singleroompaid-info p').html('');
+                    // }
                     if ( !!savedCookie[post_id] && !!savedCookie[post_id]['extra'] && !!savedCookie[post_id]['supplement']) {
                         $('.oc-route-extra-row.oc-route-extra-details').empty();
                         if (!!savedCookie[post_id]['extra']) {
