@@ -2745,3 +2745,14 @@ div#searchpage-form-holder-mobile {
     text-decoration: line-through;
     text-decoration-color: #555;
 }
+
+/* custom css for cerca page spinner preload */
+.cerca-results-preload-spinner {
+    text-align: center;
+    font-size: 25px;
+    color: var(--color-primary);
+    height: 600px;
+}
+.general-cerca-facetwp-container {
+    display: none;
+}

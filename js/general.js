@@ -48,6 +48,10 @@ function wmScrollTop() {
 
 jQuery(window).on('load', function() {
   FWP.refresh();
+  setTimeout(function(){ 
+    jQuery('.cerca-results-preload-spinner').hide();
+    jQuery('.general-cerca-facetwp-container').show();
+  }, 3000);
 
 	var facetwpPaged = document.querySelectorAll('.facetwp-page');
 	facetwpPagedScrollTop(facetwpPaged);
