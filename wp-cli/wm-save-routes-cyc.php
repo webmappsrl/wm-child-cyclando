@@ -11,7 +11,7 @@
  *
  * @when after_wp_load
  */
-$wm_save_routes = function( $args, $assoc_args )
+$wm_save_routes_cyc = function( $args, $assoc_args )
 {
     global $sitepress;
     $default_lang = $sitepress->get_default_language();
@@ -34,4 +34,4 @@ $wm_save_routes = function( $args, $assoc_args )
 
 };
 
-WP_CLI::add_command( 'wm-save-routes-cyc', $wm_save_routes );
+WP_CLI::add_command( 'wm-save-routes-cyc', $wm_save_routes_cyc );
