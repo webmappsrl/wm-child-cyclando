@@ -773,7 +773,7 @@ add_filter( 'facetwp_indexer_row_data', function( $rows, $params ) {
 }, 10, 2 );
 
 
-add_action( 'save_post' , 'sync_route_dates_with_when');
+add_action( 'save_post' , 'sync_route_dates_with_when',20,3);
 function sync_route_dates_with_when( $post_id, $post, $update ){
     if ( $post->post_type != 'route' )
         return;
