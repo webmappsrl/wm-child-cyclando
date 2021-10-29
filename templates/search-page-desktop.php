@@ -3,7 +3,9 @@
 
 $where = $_GET['_dove_vuoi_andare'];
 $when = $_GET['_quando_vuoi_partire'];
+
 //[facetwp facet='quando_vuoi_partire']
+
 ($where) ? $where_txt = str_replace("%20"," ",$where) : $where_txt = __('Select your destination','wm-child-cyclando');
 if ($when) {
     $when_txt = explode('-',str_replace("%20"," ",$when));
