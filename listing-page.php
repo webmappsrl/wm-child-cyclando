@@ -60,7 +60,7 @@ if ($when) {
                         <div class="searchpage-form-close-button-container"><span class="searchpage-form-close">&times;</span></div>
                     </div>
                     <div class="searchpage-form-oneclick-body">
-                        <?= do_shortcode("[facetwp facet='dove_vuoi_andare']")?><?= do_shortcode("[oneclick_search_form_participants_bikes]")?>
+                        <?= do_shortcode("[facetwp facet='dove_vuoi_andare'][facetwp facet='quando_vuoi_partire']")?><?= do_shortcode("[oneclick_search_form_participants_bikes]")?>
                         <div id="cy-search-lente"><i class="cy-icons icon-search1"></i><?= __('Find a trip','wm-child-cyclando')?></div>
                     </div>
                 </div>

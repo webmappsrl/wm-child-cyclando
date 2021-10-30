@@ -47,25 +47,25 @@ function wmScrollTop() {
   }
 
 jQuery(window).on('load', function() {
-  FWP.refresh();
-  setTimeout(function(){ 
+  FWP.fetch_data();
+  setTimeout(function(){
     jQuery('.cerca-results-preload-spinner').hide();
     jQuery('.general-cerca-facetwp-container').show();
   }, 3000);
 
 	var facetwpPaged = document.querySelectorAll('.facetwp-page');
 	facetwpPagedScrollTop(facetwpPaged);
-  
+
   if (document.documentElement.lang == "en-US") {
     // Dove vui andare?
     jQuery('#cy-search-element-container > div:nth-child(1) > div > input.facetwp-autocomplete.fcomplete-enabled').attr("placeholder","Choose a location");
     jQuery('#searchpage-form-oneclick-mobile > div > div.searchpage-form-oneclick-body > div:nth-child(1) > div > input.facetwp-autocomplete.fcomplete-enabled').attr("placeholder","Choose a location");
     jQuery('#page-content > section.l-section.wpb_row.height_small.general-cerca-facetwp-container > div > div > div.vc_col-sm-12.wpb_column.vc_column_container.cerca-facets-container > div > div > div:nth-child(1) > div > div > div > div:nth-child(2) > div > div > div > div > input').attr("placeholder","Choose a location");
-  } 
+  }
 });
 
 jQuery(document).ready(function () {
-  
+
 
   var rooms = [];
   var main_url;
