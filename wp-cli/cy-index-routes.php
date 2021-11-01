@@ -58,7 +58,10 @@ $cy_index_routes = function( $args, $assoc_args ) {
     /**
      * Saves routes to generate when terms
      */
+    //save it routes
     system("wp wm-save-routes-cyc | tee -a \"$logpath\"");
+    //save en routes
+    system("wp wm-save-routes-cyc en | tee -a \"$logpath\"");
 
     /**
      * Index all on facetwp db table
