@@ -1642,3 +1642,52 @@ function sync_route_acf_with_new_product($repeatername,$repeaterrawid,$subfieldk
         return update_sub_field( array($repeatername, intval($repeaterrawid), $subfieldkey), $new_values, $routeid );
     }
 }
+
+// get the json file of promotion detail in root folder
+function getPromoJsonContent(){
+    return json_decode(file_get_contents(get_site_url().'/promo.json'));
+    // $path = get_site_url().'/promo.json';
+    // if (file_exists($path)) {
+    // } else {
+    //     return (object) [
+    //         "price" => 50,
+    //         "start" => "2021-11-01",
+    //         "stop" => "2021-11-04"
+    //     ];
+    // }
+}
+
+// a function that checks if the promo is between the opening and closing dates
+function isPromoActive($promo){
+    $start = date( "d/m/Y",strtotime($promo->start));
+    $stop = date( "d/m/Y",strtotime($promo->stop));
+    $today = date("d/m/Y");
+    if ($today >= $start && $today <= $stop) {
+        return true;
+    }
+    return false;
+}
+
+// Adds the promo banner to header of all pages
+add_action('us_before_canvas','add_cyc_promo_banner_header');
+function add_cyc_promo_banner_header(){
+    $promo = getPromoJsonContent();
+    $stop = date( "d/m",strtotime($promo->stop));
+    if (isPromoActive($promo)) {
+        $output = '<div class="active-promo"><div class="promo-wrapper"><div class="promo-icon"><i class="fas fa-bullhorn"></i></div><div class="promo-text">';
+        $output .= sprintf(__('UNTIL %s you can block your trip with just %s$ down payment!' ,'wm-child-verdenatura'),$stop, $promo->price);
+        $output .= '</div></div></div>';
+        echo $output;
+    }
+}
+
+function promoBannerOnRouteSummary(){
+    $promoacconto = getPromoJsonContent();
+    if (isPromoActive($promoacconto)) {
+        $promoaccontostop = date( "d/m",strtotime($promoacconto->stop));
+        $output = '<div class="route-active-promo"><p>';
+        $output .= sprintf(__('Promo acconto bloccato fino al %s' ,'wm-child-verdenatura'),$promoaccontostop);
+        $output .= '</p></div>';
+        echo $output;
+    }
+}

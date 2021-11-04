@@ -47,7 +47,7 @@ function wmScrollTop() {
   }
 
 jQuery(window).on('load', function() {
-  FWP.fetch_data();
+  FWP.fetchData();
   setTimeout(function(){
     jQuery('.cerca-results-preload-spinner').hide();
     jQuery('.general-cerca-facetwp-container').show();

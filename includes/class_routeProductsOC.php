@@ -208,7 +208,11 @@ class routeProductsOC {
             }
         }
         if ($departureDateFormated > $todayPlus30) {
+            $promoacconto = getPromoJsonContent();
             $deposit = $percentInDecimal * $this->price;
+            if (isPromoActive($promoacconto) && $deposit > 100) {
+                $deposit = 100;
+            }
         }
 
         $object['departureDateFormated'] = $departureDateFormated;

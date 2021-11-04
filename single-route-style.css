@@ -3097,3 +3097,14 @@ h4.form-lable {
         padding: 0 2.5rem 30px!important;
     }
 }
+/* route promo text section */
+.route-active-promo {
+    display: none;
+    font-family: var(--font-family-primary);
+    font-style: italic;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--color-secondary-hover);
+    text-align: right;
+}

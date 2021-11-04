@@ -24,7 +24,7 @@ function oneclick_route_your_reservation_panel($atts)
         $language = ICL_LANGUAGE_CODE;
     } else {
         $language = 'it';
-    }
+    }    
     ob_start();
 
 ?>
@@ -91,6 +91,7 @@ function oneclick_route_your_reservation_panel($atts)
         <h4><?= __('Best price for', 'wm-child-cyclando') ?></h4>
         <div class="oc-route-mobile-plan-summary"></div>
     </div>
+    <?php promoBannerOnRouteSummary();?>
     <div class="oc-route-mobile-plan-price-container">
         <div class="cifraajax-title"><?= __('Total', 'wm-child-cyclando') ?></div>
         <div class="cifraajax"></div>

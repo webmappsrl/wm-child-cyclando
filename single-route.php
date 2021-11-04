@@ -725,6 +725,9 @@ get_header();
                     delete savedCookie['deposit'];
                     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                     if (obj.deposit) {
+                        if (parseInt(obj.deposit) >= 100) {
+                            jQuery('.route-active-promo').show();
+                        }
                         jQuery( ".oc-route-mobile-plan-price-container" ).prepend( 
                             `<div class="deposit-title"><?= __('Deposit', 'wm-child-cyclando') ?></div><div class="depositajax">`+obj.deposit+`€</div>`
                         );

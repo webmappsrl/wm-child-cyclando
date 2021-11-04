@@ -1461,6 +1461,7 @@ header#page-header.sticky {
     margin: 0 auto;
     width: 100%;
     font-size: 13px;
+    font-family: Montserrat;
     padding: 5px 0;
 }
 .covidbanner-container a {
@@ -2755,4 +2756,28 @@ div#searchpage-form-holder-mobile {
 }
 .general-cerca-facetwp-container {
     display: none;
+}
+
+/* active promo cyclando */
+.active-promo {
+    background-color: var(--color-secondary);
+    box-shadow: 0px 2px 10px rgb(0 0 0 / 30%);
+}
+.active-promo .promo-wrapper{
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    padding: 10px 0;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    justify-content: center;
+    font-family: var(--font-family-primary);
+}
+.active-promo i{
+    padding: 0 10px;
+}
+.active-promo .promo-icon{
+    align-items: center;
+    display: flex;
 }

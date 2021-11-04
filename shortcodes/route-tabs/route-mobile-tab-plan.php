@@ -57,6 +57,7 @@ function route_mobile_tab_plan($atts) {
         }
     }
     $coming_soon = get_field('not_salable',$post_id);
+
     ob_start();
 
 
@@ -87,6 +88,7 @@ function route_mobile_tab_plan($atts) {
                 <h4><?= __('Best price for', 'wm-child-cyclando') ?></h4>
                 <div class="oc-route-mobile-plan-summary"></div>
             </div>
+            <?php promoBannerOnRouteSummary();?>
             <div class="oc-route-mobile-plan-price-container">
                 <div class="cifraajax-title"><?= __('Total', 'wm-child-cyclando') ?></div><div class="cifraajax"></div>
             </div>
