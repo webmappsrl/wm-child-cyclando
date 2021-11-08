@@ -439,6 +439,9 @@ jQuery(document).ready(function () {
     }
   });
 
+  if (jQuery(".active-promo")[0]){
+    jQuery('header#page-header').addClass('headerwithpromo');
+  }
 });
 
   function cal_sum_cookies(savedCookie) {

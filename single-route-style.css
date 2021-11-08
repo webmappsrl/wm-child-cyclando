@@ -1910,24 +1910,24 @@ a.tooltips:hover {
 a.tooltips span {
     position: absolute;
     padding: 10px;
-    width: auto;
-    color: #FFFFFF;
-    background: var(--color-secondary);
+    color: #FFFFFF!important;
+    background: #5F5F5F;
     height: auto;
-    line-height: 30px;
+    line-height: 25px;
     text-align: center;
     visibility: hidden;
     border-radius: 6px;
-    min-width: 140px;
+    width: max-content;
+    max-width: 400px;
 }
 a.tooltips span:after {
     content: '';
     position: absolute;
     top: 100%;
-    left: 50%;
+    left: 22%;
     margin-left: -8px;
     width: 0; height: 0;
-    border-top: 8px solid var(--color-secondary);
+    border-top: 8px solid #5F5F5F;
     border-right: 8px solid transparent;
     border-left: 8px solid transparent;
 }
@@ -1936,7 +1936,7 @@ a:hover.tooltips span {
     opacity: 1;
     bottom: 30px;
     left: 100%;
-    margin-left: -76px;
+    margin-left: -100px;
     z-index: 9990;
 }
 .et_social_mobile_button.et_social_active_button {
@@ -2044,10 +2044,10 @@ a:hover.tooltips span {
     cursor: pointer;
 }
 .cyc-route-mobile-introduction-wrapper a.tooltips:hover {
-    color: white;
+    color: var(--color-text-p);
 }
 .cyc-route-mobile-introduction-wrapper a.tooltips {
-    color: white;
+    color: var(--color-text-p);
 }
 
 /* style taxonomy section cyc-route-mobile-taxonomy-activity-wrapper */

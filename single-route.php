@@ -729,7 +729,7 @@ get_header();
                             jQuery('.route-active-promo').show();
                         }
                         jQuery( ".oc-route-mobile-plan-price-container" ).prepend( 
-                            `<div class="deposit-title"><?= __('Deposit', 'wm-child-cyclando') ?></div><div class="depositajax">`+obj.deposit+`€</div>`
+                            `<div class="deposit-title"><a class="tooltips" href="#!"><?= __('Deposit', 'wm-child-cyclando') ?> <sup><i class="fas fa-info-circle"></i></sup><span><?= __('Please check terms and conditions that apply by clicking on "Proceed"', 'wm-child-cyclando') ?></span></a></div><div class="depositajax">`+obj.deposit+`€</div>`
                         );
                         savedCookie['deposit'] = obj.deposit;
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });

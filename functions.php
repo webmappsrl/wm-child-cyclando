@@ -1675,7 +1675,7 @@ function add_cyc_promo_banner_header(){
     $stop = date( "d/m",strtotime($promo->stop));
     if (isPromoActive($promo)) {
         $output = '<div class="active-promo"><div class="promo-wrapper"><div class="promo-icon"><i class="fas fa-bullhorn"></i></div><div class="promo-text">';
-        $output .= sprintf(__('UNTIL %s you can block your trip with just %s$ down payment!' ,'wm-child-verdenatura'),$stop, $promo->price);
+        $output .= sprintf(__('Block your trip with just %s€ down payment until %s!' ,'wm-child-cyclando'),$promo->price, $stop);
         $output .= '</div></div></div>';
         echo $output;
     }
@@ -1686,7 +1686,7 @@ function promoBannerOnRouteSummary(){
     if (isPromoActive($promoacconto)) {
         $promoaccontostop = date( "d/m",strtotime($promoacconto->stop));
         $output = '<div class="route-active-promo"><p>';
-        $output .= sprintf(__('Promo acconto bloccato fino al %s' ,'wm-child-verdenatura'),$promoaccontostop);
+        $output .= sprintf(__('Promo: Trip blocked by deposit until %s' ,'wm-child-cyclando'),$promoaccontostop);
         $output .= '</p></div>';
         echo $output;
     }
