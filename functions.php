@@ -1672,10 +1672,14 @@ function isPromoActive($promo){
 add_action('us_before_canvas','add_cyc_promo_banner_header');
 function add_cyc_promo_banner_header(){
     $promo = getPromoJsonContent();
+    // switch the month and date for english translation
     $stop = date( "d/m",strtotime($promo->stop));
+    $stop = explode('/',$stop);
+    $stop_day = $stop[0];
+    $stop_month = $stop[1];
     if (isPromoActive($promo)) {
         $output = '<div class="active-promo"><div class="promo-wrapper"><div class="promo-icon"><i class="fas fa-bullhorn"></i></div><div class="promo-text">';
-        $output .= sprintf(__('Block your trip with just %s€ down payment until %s!' ,'wm-child-cyclando'),$promo->price, $stop);
+        $output .= sprintf(__('Block your trip with just %s€ down payment until %3$s/%2$s!' ,'wm-child-cyclando'),$promo->price, $stop_day,$stop_month);
         $output .= '</div></div></div>';
         echo $output;
     }
@@ -1685,8 +1689,11 @@ function promoBannerOnRouteSummary(){
     $promoacconto = getPromoJsonContent();
     if (isPromoActive($promoacconto)) {
         $promoaccontostop = date( "d/m",strtotime($promoacconto->stop));
+        $stop = explode('/',$promoaccontostop);
+        $stop_day = $stop[0];
+        $stop_month = $stop[1];
         $output = '<div class="route-active-promo"><p>';
-        $output .= sprintf(__('Promo: Trip blocked by deposit until %s' ,'wm-child-cyclando'),$promoaccontostop);
+        $output .= sprintf(__('Promo: Trip blocked by deposit until %2$s/%1$s' ,'wm-child-cyclando'),$stop_day,$stop_month);
         $output .= '</p></div>';
         echo $output;
     }
