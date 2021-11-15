@@ -41,7 +41,7 @@ function oneclick_route_form_category($atts) {
                 $('.category-select-holder select').on('change', function() {
                     var savedCookie = ocmCheckCookie();
                     savedCookie['category'] = this.value;
-                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                     ajaxUpdatePrice();
                 });
             });

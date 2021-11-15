@@ -21,29 +21,21 @@ function oneclick_route_form_purchase($atts) {
     if ($has_extra['ebike']) {
         unset($has_extra['ebike']);
     }
-    $has_single = 0;
     $has_hotel_category = route_has_hotel_category($post_id,$first_departure);
-    if (count($has_hotel_category['modelseasonal']) >= 1) {
-        $product_sample = $has_hotel_category['modelseasonal'][array_key_first($has_hotel_category['modelseasonal'])];
-    } else {
-        $product_sample = $has_hotel_category['model'][array_key_first($has_hotel_category['model'])];
-    }
-    if ($product_sample) {
-        foreach ($product_sample as $key => $value) {
-            // Activate single room select if there is any
-            if ($key == 'adult-single') {
-                $has_single = true;
-            }
-        }
-    }
+    $has_single = route_has_single($has_hotel_category);
+
     ob_start();
 
     ?>
     <div class="cyc-single-route-cta-buttons oc-acquista-route">
-    <?php if ($hotel_product_items || $has_extra): ?>
+    <?php 
+    // This line is substitued with next line to hide Supplement section until it becomes calculable
+    // if ($hotel_product_items || $has_extra || $has_single): 
+    ?>
+    <?php if ($has_extra): ?>
         <div id="oc-acquista-route" class="">
             <div class="cy-btn-contact">
-                <p><?php echo __('Purchase', 'wm-child-cyclando'); ?></p>
+                <p><?php echo __('Proceed', 'wm-child-cyclando'); ?></p>
             </div>
         </div>
     <?php else : ?>
@@ -62,7 +54,11 @@ function oneclick_route_form_purchase($atts) {
             </div>
             <?php } ?>
             
-            <?php if ($has_single || $hotel_product_items) { ?>
+            <?php 
+            // This line is substitued with next line to hide Supplement section until it becomes calculable
+            // if ($has_single || $hotel_product_items) { 
+            ?>
+            <?php if ( false) { ?>
             <div class="ocm-extras-nocond-title"><?php echo __('Supplements', 'wm-child-cyclando'); ?></div>
             <div class="ocm-extras-cond-disclaimer"><?php echo __('Subject to availability check. We will send you an email with the confirmation of availability and the price of the supplement', 'wm-child-cyclando'); ?></div>
             <div class="ocm-hotel-proceed-detail-container">
@@ -75,6 +71,9 @@ function oneclick_route_form_purchase($atts) {
                 <div class="oc-route-mobile-plan-price-container">
                     <div class="cifraajax-title"><?= __('Total', 'wm-child-cyclando') ?></div><div class="cifraajax"></div>
                 </div>
+                <div class="oc-route-mobile-plan-exclusive-online">
+                    <div class="exclusive-online-title"><?= __('Online Exclusive!', 'wm-child-cyclando') ?></div>
+                </div>
                 <div id="oc-proceed-done-btn" class="oc-proceed-done-btn"><?= __('Proceed','wm-child-cyclando')?></div>
             </div>
         </div>
@@ -85,12 +84,10 @@ function oneclick_route_form_purchase($atts) {
                 $('#oc-acquista-route .cy-btn-contact').on('click',function(){
                     $('.ocm-proceed-container').show();
                     $( ".facetwp-checkbox" ).each(function(index,element) {
-                        if (Cookies.get('oc_participants_cookie')) {
-                            savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
-                        }
-                        if ( !!savedCookie['extra'] && savedCookie['extra'][$(this).attr('name')] > 0) {
+                        var savedCookie = ocmCheckCookie();
+                        if ( !!savedCookie[post_id] && !!savedCookie[post_id]['extra'] && savedCookie[post_id]['extra'][$(this).attr('name')] > 0) {
                             var sums = cal_sum_cookies(savedCookie);
-                            if (savedCookie['extra'][$(this).attr('name')] < sums['participants']) {
+                            if (savedCookie[post_id]['extra'][$(this).attr('name')] < sums['participants']) {
                                 $('.oc-modal-button-container-'+$(this).attr('name')+' .oc-extra-add-btn').prop("disabled", false);
                             }
                         }
@@ -99,12 +96,32 @@ function oneclick_route_form_purchase($atts) {
                 $('.oc-proceed-done-btn').on('click',function(){
                     // populate extra section in your reservation if any extra is selected
                     var savedCookie = ocmCheckCookie();
-                    if ( !!savedCookie['extra'] || !!savedCookie['supplement']) {
+                    try{
+                        if (!!savedCookie[post_id]['extra']['single_room_paid']) {
+                        jQuery('.oc-route-your-reservation-singleroompaid-title').show();
+                        jQuery('.oc-route-your-reservation-singleroompaid-info').show();
+                        jQuery('.oc-route-your-reservation-singleroompaid-info p').html(savedCookie[post_id]['extra']['single_room_paid']);
+                    }
+                    } catch(e) {
+                        jQuery('.oc-route-your-reservation-singleroompaid-title').hide();
+                        jQuery('.oc-route-your-reservation-singleroompaid-info').hide();
+                        jQuery('.oc-route-your-reservation-singleroompaid-info p').html('');
+                    }
+                    // if (!!savedCookie[post_id]['extra']['single_room_paid']) {
+                    //     jQuery('.oc-route-your-reservation-singleroompaid-title').show();
+                    //     jQuery('.oc-route-your-reservation-singleroompaid-info').show();
+                    //     jQuery('.oc-route-your-reservation-singleroompaid-info p').html(savedCookie[post_id]['extra']['single_room_paid']);
+                    // } else {
+                    //     jQuery('.oc-route-your-reservation-singleroompaid-title').hide();
+                    //     jQuery('.oc-route-your-reservation-singleroompaid-info').hide();
+                    //     jQuery('.oc-route-your-reservation-singleroompaid-info p').html('');
+                    // }
+                    if ( !!savedCookie[post_id] && !!savedCookie[post_id]['extra'] && !!savedCookie[post_id]['supplement']) {
                         $('.oc-route-extra-row.oc-route-extra-details').empty();
-                        if (!!savedCookie['extra']) {
+                        if (!!savedCookie[post_id]['extra']) {
                             updateYourReservationExtraSummaryTxt(savedCookie,has_extra);
                         }
-                        if (!!savedCookie['supplement']) {
+                        if (!!savedCookie[post_id]['supplement']) {
                             updateYourReservationHotelSummaryTxt(savedCookie,hotel_product_items);
                         }
                     } else {
@@ -127,16 +144,15 @@ function oneclick_route_form_purchase($atts) {
                 if (has_extra) {
                     $.each(has_extra,function(index,value){
                         var defaulnum = 0;
-                        if (Cookies.get('oc_participants_cookie')) {
-                            var savedCookie = JSON.parse(Cookies.get('oc_participants_cookie'));
-                            if (!savedCookie['extra']) {
-                                savedCookie['extra'] = {};
-                                Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
-                            } 
-                        }
-                        if (savedCookie['extra']) {
-                            if (savedCookie['extra'][index] > 0) {
-                                defaulnum = savedCookie['extra'][index];
+                        var savedCookie = ocmCheckCookie();
+                        if (!savedCookie[post_id] || !savedCookie[post_id]['extra']) {
+                            savedCookie[post_id] = savedCookie[post_id] || {};
+                            savedCookie[post_id]['extra'] = {};
+                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+                        } 
+                        if (savedCookie[post_id] && savedCookie[post_id]['extra']) {
+                            if (savedCookie[post_id]['extra'][index] > 0) {
+                                defaulnum = savedCookie[post_id]['extra'][index];
                             }
                         }
                         $(".ocm-extras-proceed-detail-container").append(
@@ -150,13 +166,14 @@ function oneclick_route_form_purchase($atts) {
                 $.each(hotel_product_items,function(index,value){ 
                     var defaulnum = 0;
                     var savedCookie = ocmCheckCookie();
-                    if (!savedCookie['supplement']) {
-                        savedCookie['supplement'] = {};
-                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    if (!savedCookie[post_id] || !savedCookie[post_id]['supplement']) {
+                        savedCookie[post_id] = savedCookie[post_id] || {};
+                        savedCookie[post_id]['supplement'] = {};
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                     }
-                    if (savedCookie['supplement']) {
-                        if (savedCookie['supplement'][index] > 0) {
-                            defaulnum = savedCookie['supplement'][index];
+                    if (savedCookie[post_id]['supplement']) {
+                        if (savedCookie[post_id]['supplement'][index] > 0) {
+                            defaulnum = savedCookie[post_id]['supplement'][index];
                         }
                     }
                     $(".ocm-hotel-proceed-detail-container").append(
@@ -167,29 +184,33 @@ function oneclick_route_form_purchase($atts) {
                 //checkbox interactions
                 $( ".facetwp-checkbox" ).each(function(index,element) {
                     var savedCookie = ocmCheckCookie();
-                    if (!savedCookie['extra']) {
-                        savedCookie['extra'] = {};
-                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
-                    } 
-                    if (!savedCookie['supplement']) {
-                        savedCookie['supplement'] = {};
-                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    if ( !savedCookie[post_id]) {
+                        savedCookie[post_id] = {};
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                     }
-                    if (!!savedCookie['extra'] && savedCookie['extra'][$(this).attr('name')] > 0) {
+                    if (!savedCookie[post_id]['extra']) {
+                        savedCookie[post_id]['extra'] = {};
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+                    } 
+                    if (!savedCookie[post_id]['supplement']) {
+                        savedCookie[post_id]['supplement'] = {};
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+                    }
+                    if (!!savedCookie[post_id]['extra'] && savedCookie[post_id]['extra'][$(this).attr('name')] > 0) {
                         $( this ).toggleClass( "checked" );
                         $('.oc-modal-button-container-'+$(this).attr('name')).toggleClass("display-grid");
-                        $('#'+$(this).attr('name')).text(savedCookie['extra'][$(this).attr('name')]);
+                        $('#'+$(this).attr('name')).text(savedCookie[post_id]['extra'][$(this).attr('name')]);
                         var sums = cal_sum_cookies(savedCookie);
-                        if (savedCookie['extra'][$(this).attr('name')] == sums['participants']) {
+                        if (savedCookie[post_id]['extra'][$(this).attr('name')] == sums['participants']) {
                             $('.oc-modal-button-container-'+$(this).attr('name')+' .oc-extra-add-btn').prop("disabled", true);
                         }
                     }
-                    if (!!savedCookie['supplement'] && savedCookie['supplement'][$(this).attr('name')] > 0) {
+                    if (!!savedCookie[post_id]['supplement'] && savedCookie[post_id]['supplement'][$(this).attr('name')] > 0) {
                         $( this ).toggleClass( "checked" );
                         $('.oc-modal-button-container-'+$(this).attr('name')).toggleClass("display-grid");
-                        $('#'+$(this).attr('name')).text(savedCookie['supplement'][$(this).attr('name')]);
+                        $('#'+$(this).attr('name')).text(savedCookie[post_id]['supplement'][$(this).attr('name')]);
                         var sums = cal_sum_cookies(savedCookie);
-                        if (savedCookie['supplement'][$(this).attr('name')] == sums['participants']) {
+                        if (savedCookie[post_id]['supplement'][$(this).attr('name')] == sums['participants']) {
                             $('.oc-modal-button-container-'+$(this).attr('name')+' .oc-extra-add-btn').prop("disabled", true);
                         }
                     }
@@ -202,22 +223,22 @@ function oneclick_route_form_purchase($atts) {
                         if (!$(this).attr('conditional')){
                             if ($(this).hasClass("checked")) {
                             counter.text(1);
-                            savedCookie['extra'][$(this).attr('name')] = 1;
+                            savedCookie[post_id]['extra'][$(this).attr('name')] = 1;
                             } else {
                                 counter.text(0);
-                                delete savedCookie['extra'][$(this).attr('name')];
+                                delete savedCookie[post_id]['extra'][$(this).attr('name')];
                             }
                         } else {
                             if ($(this).hasClass("checked")) {
                             counter.text(1);
-                            savedCookie['supplement'][$(this).attr('name')] = 1;
+                            savedCookie[post_id]['supplement'][$(this).attr('name')] = 1;
                             } else {
                                 counter.text(0);
-                                delete savedCookie['supplement'][$(this).attr('name')];
+                                delete savedCookie[post_id]['supplement'][$(this).attr('name')];
                             }
                         }
                         
-                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         if (!$(this).attr('conditional')){
                             ajaxUpdatePrice();
                         }
@@ -236,12 +257,12 @@ function oneclick_route_form_purchase($atts) {
                         }
                         counter.text(num);
                         if (!$(this).attr('conditional')){
-                            savedCookie['extra'][$(this).attr('name')] = num;
+                            savedCookie[post_id]['extra'][$(this).attr('name')] = num;
                         } else {
-                            savedCookie['supplement'][$(this).attr('name')] = num;
+                            savedCookie[post_id]['supplement'][$(this).attr('name')] = num;
                         }
                         var countplus = parseInt(counter.text());
-                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         if (!$(this).attr('conditional')){
                             ajaxUpdatePrice();
                         }
@@ -258,12 +279,12 @@ function oneclick_route_form_purchase($atts) {
                         if (num < 1) {
                             counter.text(0);
                             if (!$(this).attr('conditional')){
-                                delete savedCookie['extra'][$(this).attr('name')];
+                                delete savedCookie[post_id]['extra'][$(this).attr('name')];
                             } else {
-                                delete savedCookie['supplement'][$(this).attr('name')];
+                                delete savedCookie[post_id]['supplement'][$(this).attr('name')];
                             }
                             
-                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                             if (!$(this).attr('conditional')){
                                 ajaxUpdatePrice();
                             }
@@ -272,11 +293,11 @@ function oneclick_route_form_purchase($atts) {
                         } else { 
                             counter.text(num);
                             if (!$(this).attr('conditional')){
-                            savedCookie['extra'][$(this).attr('name')] = num;
+                            savedCookie[post_id]['extra'][$(this).attr('name')] = num;
                             } else {
-                                savedCookie['supplement'][$(this).attr('name')] = num;
+                                savedCookie[post_id]['supplement'][$(this).attr('name')] = num;
                             }
-                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                             if (!$(this).attr('conditional')){
                                 ajaxUpdatePrice();
                             }
@@ -286,7 +307,7 @@ function oneclick_route_form_purchase($atts) {
                 function updateYourReservationExtraSummaryTxt (savedCookie,has_extra) {
                     $('.oc-route-extra-row.oc-route-extra-header').addClass("display-flex");
                     $('.oc-route-extra-row.oc-route-extra-details').addClass("display-flex");
-                    $.each(savedCookie['extra'],function(index,value){
+                    $.each(savedCookie[post_id]['extra'],function(index,value){
                         var extra = has_extra[index];
                         if (extra) {
                             var label = extra.label;
@@ -294,16 +315,18 @@ function oneclick_route_form_purchase($atts) {
                                 '<div class="oc-route-your-reservation-column-title"><p>'+label+'</p></div><div class="oc-route-your-reservation-column-info"><p>'+value+'</p></div>'
                             )
                         } else {
-                            delete savedCookie['extra'][index];
-                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                            if ( index !== 'single_room_paid') {
+                                delete savedCookie[post_id]['extra'][index];
+                                Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+                            }
                         }
                     });
                 }
                 function updateYourReservationHotelSummaryTxt (savedCookie,has_extra) {
                     $('.oc-route-extra-row.oc-route-extra-header').addClass("display-flex");
                     $('.oc-route-extra-row.oc-route-extra-details').addClass("display-flex");
-                    var has_single = <?= $has_single ?>;
-                    $.each(savedCookie['supplement'],function(index,value){
+                    var has_single = '<?= $has_single ?>';
+                    $.each(savedCookie[post_id]['supplement'],function(index,value){
                         var extra = has_extra[index];
                         if (index == 'single_room' && has_single) {
                             var label = '<?php echo __('Single room', 'wm-child-cyclando'); ?>'
@@ -314,8 +337,8 @@ function oneclick_route_form_purchase($atts) {
                             $('.oc-route-extra-row.oc-route-extra-details').append(
                             '<div class="oc-route-your-reservation-column-title"><p>'+label+'</p></div><div class="oc-route-your-reservation-column-info"><p>'+value+'</p></div>')
                         } else {
-                            delete savedCookie['supplement'][index];
-                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                            delete savedCookie[post_id]['supplement'][index];
+                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         }
                     });
                 }

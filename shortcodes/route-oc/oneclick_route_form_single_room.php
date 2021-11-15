@@ -9,7 +9,7 @@ function oneclick_route_form_single_room()
 
 ?>
     
-    <div class="ocm-proceed-extras-body ">
+    <div class="ocm-proceed-extras-body single_room-section-modal">
         <div class="facetwp-checkbox facetwp-checkbox-single_room" name="single_room" conditional="true">
             <div class="label"><?= __('Single room', 'wm-child-cyclando') ?></div>
         </div>

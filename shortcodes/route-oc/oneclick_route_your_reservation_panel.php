@@ -24,13 +24,13 @@ function oneclick_route_your_reservation_panel($atts)
         $language = ICL_LANGUAGE_CODE;
     } else {
         $language = 'it';
-    }
+    }    
     ob_start();
 
 ?>
     <div class="oc-route-your-reservation-row oc-route-your-reservation-header">
         <div class="oc-route-your-reservation-column-title oc-route-your-reservation-title">
-            <h4><?php echo __('Your reservation', 'wm-child-cyclando'); ?></h4>
+            <h4 class="form-lable"><?php echo __('Your reservation', 'wm-child-cyclando'); ?></h4>
         </div>
         <div class="oc-route-your-reservation-column-info oc-route-your-reservation-modify">
             <p id="oc-route-your-reservation-modify"><span><?php echo __('Modify', 'wm-child-cyclando'); ?></span></p>
@@ -65,6 +65,13 @@ function oneclick_route_your_reservation_panel($atts)
         <div class="oc-route-your-reservation-column-info oc-route-your-reservation-category-info">
             <p id="oc-route-your-reservation-category"></p>
         </div>
+
+        <div class="oc-route-your-reservation-column-title oc-route-your-reservation-singleroompaid-title">
+            <p><?php echo __('Single room', 'wm-child-cyclando'); ?></p>
+        </div>
+        <div class="oc-route-your-reservation-column-info oc-route-your-reservation-singleroompaid-info">
+            <p id="oc-route-your-reservation-singleroompaid"></p>
+        </div>
     </div>
     
     <?php if ($hotel_product_items || $has_extra) : ?>
@@ -84,14 +91,18 @@ function oneclick_route_your_reservation_panel($atts)
         <h4><?= __('Best price for', 'wm-child-cyclando') ?></h4>
         <div class="oc-route-mobile-plan-summary"></div>
     </div>
+    <?php promoBannerOnRouteSummary();?>
     <div class="oc-route-mobile-plan-price-container">
         <div class="cifraajax-title"><?= __('Total', 'wm-child-cyclando') ?></div>
         <div class="cifraajax"></div>
     </div>
+    <div class="oc-route-mobile-plan-exclusive-online">
+        <div class="exclusive-online-title"><?= __('Online Exclusive!', 'wm-child-cyclando') ?></div>
+    </div>
     
 
     <div class="oc-route-your-reservation-purchase-form-container">
-        <h3 class="oc-route-your-reservation-purchase-form-title"><?php echo __('Purchase', 'wm-child-cyclando'); ?></h3>
+        <h4 class="form-lable"><?php echo __('Proceed to purchase', 'wm-child-cyclando'); ?></h4>
         <form action="/quote-wc" method="get" id="yourReservationPurchaseFrom">
             <input type="text" name="quotewcname" class="form-input oc-form-name" placeholder="<?php echo __('Name', 'wm-child-cyclando'); ?>">
             <input type="text" name="quotewcsurname" class="form-input oc-form-surname" placeholder="<?php echo __('Surname', 'wm-child-cyclando'); ?>">
@@ -106,18 +117,46 @@ function oneclick_route_your_reservation_panel($atts)
             </div>
             <div class="purchase-form-checkbox">
                 <input type="checkbox" class="checkbox" id="quotewcconditions" name="quotewcconditions">
-                <p class="purchase-form-checkbox-info purchase-form-checkbox-conditions"><?= __("I have read and accept the <a href='/privacy'>terms and conditions</a>", 'wm-child-cyclando') ?> <abbr class="required" title="obbligatorio">*</abbr></p>
+                <p class="purchase-form-checkbox-info purchase-form-checkbox-conditions"><?= __("I have read and accept the <a href='/condizioni-generali/'>terms and conditions</a>", 'wm-child-cyclando') ?> <abbr class="required" title="obbligatorio">*</abbr></p>
             </div>
             <input id="quotewclanguage" name="lang" type="hidden" value="<?= $language;?>">
             <div class="error">
                 <span></span>
             </div>
             <input type="submit" value="<?= __("Pay", 'wm-child-cyclando') ?>" class="form-submit">
+            <div class="submit-loader"></div>
         </form>
     </div>
     <script>
         (function($) {
             $(document).ready(function() {
+                // autocomplete form if exists
+                var savedCookies = ocmCheckCookie();
+                if (savedCookies['billingname']) {
+                    jQuery('.oc-form-name').val(savedCookies['billingname']);
+                }
+                if (savedCookies['billingsurname']) {
+                    jQuery('.oc-form-surname').val(savedCookies['billingsurname']);
+                }
+                if (savedCookies['billingemail']) {
+                    jQuery('.oc-form-email').val(savedCookies['billingemail']);
+                }			
+				setTimeout(function() {
+					if (savedCookies['billingprivacy'] && savedCookies['billingprivacy'] == 'on' && jQuery('#quotewcprivacy').prop("checked") == false) {
+						// jQuery('#privacy_policy').trigger( "click" );
+						jQuery('#quotewcprivacy').prop('checked', true);
+					}
+					if (savedCookies['billingconditions'] && savedCookies['billingconditions'] == 'on' && jQuery('#quotewcconditions').prop("checked") == false) {
+						// jQuery('#terms_conditions').trigger( "click" );
+						jQuery('#quotewcconditions').prop('checked', true);
+					}
+					if (savedCookies['billingnewsletter'] && savedCookies['billingnewsletter'] == 'on' && jQuery('#quotewcnewsletter').prop("checked") == false) {
+						// jQuery('#newsletter_acceptance').trigger( "click" );
+						jQuery('#quotewcnewsletter').prop('checked', true);
+					}
+            	}, 5000);
+
+
                 // Selezione form e definizione dei metodi di validazione
                 $("#yourReservationPurchaseFrom").validate({
                     invalidHandler: function (e, validator) {
@@ -181,6 +220,8 @@ function oneclick_route_your_reservation_panel($atts)
                         savedCookies['routePermalink'] = window.location.href;
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookies), { expires: 7, path: '/' });
                         ajaxCreatHubspotDeal(form);
+                        $(".oc-route-your-reservation-purchase-form-container .form-submit").prop('disabled', true);
+                        $(".submit-loader").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
                     }
                 });
                 // hide and show the plan Tab

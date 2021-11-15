@@ -1,6 +1,7 @@
 //removes autocomplete dropdown dove_vuoi_andare facet
 (function ($) {
-  $(document).on("facetwp-loaded", function () {
+  $(document).on("facetwp-loaded", function (e) {
+    console.log("facetwp-loaded",e);
     const $el = $('.facetwp-facet-dove_vuoi_andare input[type="text"]');
     $el.on("blur keydown input change keyup focus", () => {
       $(".autocomplete-suggestions").remove();
@@ -16,6 +17,20 @@
         return $(this).css('color', '#888');
       }
     });
+
+    // fix for search page on facet dropdown change that did not refreshed the URL 
+    jQuery('.facetwp-dropdown').on('change', function()
+    {
+        setGetParam('_quando_vuoi_partire',this.value);
+    });
+    function setGetParam(key,value) {
+      if (history.pushState) {
+        var params = new URLSearchParams(window.location.search);
+        params.set(key, value);
+        var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + params.toString();
+        window.history.pushState({path:newUrl},'',newUrl);
+      }
+    }
   });
 
 })(jQuery);
@@ -32,11 +47,27 @@ function wmScrollTop() {
   }
 
 jQuery(window).on('load', function() {
+  FWP.fetch_data();
+  setTimeout(function(){
+    jQuery('.cerca-results-preload-spinner').hide();
+    jQuery('.general-cerca-facetwp-container').show();
+  }, 3000);
+
 	var facetwpPaged = document.querySelectorAll('.facetwp-page');
 	facetwpPagedScrollTop(facetwpPaged);
+
+  if (document.documentElement.lang == "en-US") {
+    // Dove vui andare?
+    jQuery('#cy-search-element-container > div:nth-child(1) > div > input.facetwp-autocomplete.fcomplete-enabled').attr("placeholder","Choose a location");
+    jQuery('#searchpage-form-oneclick-mobile > div > div.searchpage-form-oneclick-body > div:nth-child(1) > div > input.facetwp-autocomplete.fcomplete-enabled').attr("placeholder","Choose a location");
+    jQuery('#page-content > section.l-section.wpb_row.height_small.general-cerca-facetwp-container > div > div > div.vc_col-sm-12.wpb_column.vc_column_container.cerca-facets-container > div > div > div:nth-child(1) > div > div > div > div:nth-child(2) > div > div > div > div > input').attr("placeholder","Choose a location");
+  }
 });
 
 jQuery(document).ready(function () {
+
+
+  var rooms = [];
   var main_url;
   var filter;
   // var pathname = window.location.href;
@@ -57,6 +88,10 @@ jQuery(document).ready(function () {
   // Covid banner
   if (lang == "en-US") {
     jQuery("<div class='covidbanner'><div class='covidbanner-container'><span> NOTICE FOR TRAVELERS: <a href='https://cyclando.com/assicurazione-covid/'>find out more about COVID-19</a></span> <span class='cy-close-covidbanner'>&times;</span></div></div>").insertBefore(".l-canvas.type_wide");
+    // Dove vui andare?
+    jQuery('#cy-search-element-container > div:nth-child(1) > div > input.facetwp-autocomplete.fcomplete-enabled').attr("placeholder","Choose a location");
+    jQuery('#searchpage-form-oneclick-mobile > div > div.searchpage-form-oneclick-body > div:nth-child(1) > div > input.facetwp-autocomplete.fcomplete-enabled').attr("placeholder","Choose a location");
+    jQuery('#page-content > section.l-section.wpb_row.height_small.general-cerca-facetwp-container > div > div > div.vc_col-sm-12.wpb_column.vc_column_container.cerca-facets-container > div > div > div:nth-child(1) > div > div > div > div:nth-child(2) > div > div > div > div > input').attr("placeholder","Choose a location");
   } else {
     jQuery("<div class='covidbanner'><div class='covidbanner-container'><span> AVVISO PER CHI VIAGGIA: <a href='https://cyclando.com/assicurazione-covid/'>scopri di più sul COVID-19</a></span> <span class='cy-close-covidbanner'>&times;</span></div></div>").insertBefore(".l-canvas.type_wide");
   }
@@ -94,10 +129,12 @@ jQuery(document).ready(function () {
   jQuery(document).one("facetwp-loaded", function () {
     if (lang == "en-US") {
       // Dove vui andare?
-      jQuery('#cy-search-element-container > div:nth-child(1) > div > input.facetwp-autocomplete.ready').attr("placeholder","Choose a location");
+      jQuery('#cy-search-element-container > div:nth-child(1) > div > input.facetwp-autocomplete.fcomplete-enabled').attr("placeholder","Choose a location");
+      jQuery('#searchpage-form-oneclick-mobile > div > div.searchpage-form-oneclick-body > div:nth-child(1) > div > input.facetwp-autocomplete.fcomplete-enabled').attr("placeholder","Choose a location");
       jQuery('#page-content > section.l-section.wpb_row.height_small.general-cerca-facetwp-container > div > div > div.vc_col-sm-12.wpb_column.vc_column_container.cerca-facets-container > div > div > div:nth-child(1) > div > div > div > div:nth-child(2) > div > div > div > div > input').attr("placeholder","Choose a location");
       // In quale mese?
       jQuery('#cy-search-element-container > div:nth-child(2) > div > select > option:nth-child(1)').text("Select month");
+      jQuery('.facetwp-facet-quando_vuoi_partire > select > option:nth-child(1)').text("Select month");
       jQuery('#page-content > section.l-section.wpb_row.height_small.general-cerca-facetwp-container > div > div > div.vc_col-sm-12.wpb_column.vc_column_container.cerca-facets-container > div > div > div:nth-child(1) > div > div > div > div:nth-child(3) > div > div > div > div > select > option:nth-child(1)').text("Select month");
       // CERCA
       jQuery(".cy-facetwp-cerca-quando").append(jQuery(".cy-facetwp-cerca-where input.facetwp-autocomplete-update"));
@@ -116,7 +153,7 @@ jQuery(document).ready(function () {
       savedCookie = ocmCheckCookie(); 
       var split = val.split('-');
       savedCookie['departureMonth'] = split[0];
-      Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+      Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
     });
   });
 
@@ -177,6 +214,7 @@ jQuery(document).ready(function () {
     $filter.keyup(function () {
       // Retrieve the input field text
       filter = jQuery(this).val();
+      jQuery(this).val(jQuery(this).val().replace(/[’]/g, "'"));
       FWP.parse_facets();
       FWP.set_hash();
     });
@@ -401,6 +439,9 @@ jQuery(document).ready(function () {
     }
   });
 
+  if (jQuery(".active-promo")[0]){
+    jQuery('header#page-header').addClass('headerwithpromo');
+  }
 });
 
   function cal_sum_cookies(savedCookie) {
@@ -432,7 +473,7 @@ jQuery(document).ready(function () {
     }
   }
 
-  function calculateDepartureDate(){
+  function calculateDepartureDate(start_arrayYmd){
     var savedCookie = ocmCheckCookie();
     var departureMonth = '';
     if (savedCookie['departureMonth']) {
@@ -512,13 +553,106 @@ jQuery(document).ready(function () {
             finaleDay = finalDate[2];
             finaleMonth = finalDate[1];
             // var monthNames = {'1':'Gennaio','2':'Febbraio','3':'Marzo','4':'Aprile','5':'Maggio','6':'Giugno','7':'Luglio','8':'Agosto','9':'Settembre','1':'Ottobre','11':'Novembre','12':'Dicembre'};
-            var monthNames = {'1':'01','2':'02','3':'03','4':'04','5':'05','6':'06','7':'07','8':'08','9':'09','1':'10','11':'11','12':'12'};
+            var monthNames = {'1':'01','2':'02','3':'03','4':'04','5':'05','6':'06','7':'07','8':'08','9':'09','10':'10','11':'11','12':'12'};
 
             finaleYear = finalDate[0];
             general_first_departure_date_ajax = finaleDay + '-' + monthNames[finaleMonth] + '-' + finaleYear;
             savedCookie['departureDate'] = general_first_departure_date_ajax;
-            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
         } 
         
+    }
+  }
+
+  function disableSinglebtn() {
+    // disable single btn in plan interface
+    if (!jQuery('#oc-single i').length ) {
+      jQuery('#oc-single').prepend('<i class="fas fa-do-not-enter"></i>');
+    }
+    jQuery('#oc-single').addClass('disable');
+    jQuery('#oc-single').off('click');
+    jQuery('#ocm-single-number').text('');
+    jQuery('#oc-single').removeClass("selected");
+    var savedCookie = ocmCheckCookie();
+    try{
+      if (!!savedCookie[post_id]['extra']['single_room_paid']) {
+        delete savedCookie[post_id]['extra']['single_room_paid'];
+        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+      }
+    }catch(e){
+      console.log(e)
+    }
+    
+
+    // Enable single section in extra popup
+    jQuery('.single_room-section-modal').show();
+    jQuery('#single_room_paid').text(0);
+    jQuery('.facetwp-checkbox-single_room').removeClass("checked");
+    jQuery('.oc-modal-button-container-single_room').removeClass("display-grid");
+    
+    // Disable single room row from Your Reserveation 
+    jQuery('.oc-route-your-reservation-singleroompaid-title').hide();
+    jQuery('.oc-route-your-reservation-singleroompaid-info').hide();
+  }
+  function enableSinglebtn() {
+    var savedCookie = ocmCheckCookie();
+
+    // Enable single btn in plan interface
+    jQuery('#oc-single i').remove();
+    jQuery('#oc-single').removeClass('disable');
+    jQuery('#oc-single').on('click',function(){
+      if (!savedCookie['kids']) { 
+        jQuery('.ocm-single-container').show();
+        rooms = [];
+        rooms = calculateSingleRoomNum(savedCookie['adults']);
+      }
+    });
+    // Disable single section in extra popup
+    jQuery('.single_room-section-modal').hide();
+    try {
+      if (savedCookie[post_id]['supplement']['single_room']) {
+        delete savedCookie[post_id]['supplement']['single_room'];
+        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+      }
+    } catch(e){
+      console.log(e);
+    }
+    
+    jQuery('#single_room').text(0);
+    jQuery( ".facetwp-checkbox-single_room").removeClass('checked');
+    jQuery('.oc-modal-button-container-single_room').removeClass("display-grid");
+    jQuery('#ocm-single-number').text('');
+    jQuery('#oc-single').removeClass("selected");
+    jQuery('#single_room_paid').text(0);
+
+  }
+
+
+  function calculateSingleRoomNum (adults) {
+    var rooms = ['0'];
+    var adults = parseInt(adults);
+    if (adults == 1) {
+      rooms.push('1');
+      return rooms;
+    }
+    if (adults == 2) {
+      rooms.push('2');
+      return rooms;
+    }
+    //check result for Even 
+    if (adults%2 == 0) {
+      for (let i = 1; i <= adults; i++) {
+        if (i%2 == 0)
+          rooms.push(String(i))
+      }
+      return rooms
+    }
+    //check result for Odd 
+    if (adults%2 == 1) {
+      for (let i = 1; i <= adults; i++) {
+        if (i%2 == 1)
+          rooms.push(String(i))
+      }
+      return rooms
     }
   }

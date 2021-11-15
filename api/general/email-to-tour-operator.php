@@ -14,7 +14,11 @@ function send_email_to_tour_operato($post_id) {
     $new_stato = $_POST['acf']['wm_route_stato_pubblicazione'];
 
     // Check if a specific value was updated.
-    if( isset($new_stato) && $new_stato == 'done21' && $new_stato != $prev_stato) {
+    $valid_status_array = [
+        'done21',
+        'done22'
+    ];
+    if( isset($new_stato) && in_array($new_stato, $valid_status_array) && $new_stato != $prev_stato) {
         wp_email_to_tour_operator($post_id);
     }
     
@@ -42,7 +46,10 @@ function wp_email_to_tour_operator($post_id) {
                         Please check tour’s program, dates and prices and if you find anything wrong, please reply to this email providing details on what we should change<br>
                         <br>
                         Best wishes,<br>
-                        Cyclando content team'; 
+                        Cyclando content team';
+        $html_message .= '<br>
+                        <br>Tour details:';
+        $html_message .= do_shortcode("[route_table_price_email post_id='$post_id']");
         
         // Send the email using wordpress mail function
         wp_mail( $TO_email, $subject, $html_message, $headers );

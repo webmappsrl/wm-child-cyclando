@@ -8,8 +8,7 @@ $us_layout = US_Layout::instance();
 
 get_header();
 
-wp_enqueue_style('route-single-post-style', get_stylesheet_directory_uri() . '/single-route-style.css');
-wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_uri() . '/jquery/child-main.js', array('jquery'));
+
 ?>
 <main id="page-content" class="l-main cyc-single-route-main-container"
     <?php echo (us_get_option('schema_markup')) ? ' itemprop="mainContentOfPage"' : ''; ?>>
@@ -146,13 +145,6 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         if (is_array($has_track) && $has_track) {
             $has_track_program = true;
         }
-		$headers = get_headers("https://a.webmapp.it/cyclando.com/route/{$post_id}_map_1000x1000.png", 1);
-		$interactive_route_map = "https://a.webmapp.it/cyclando.com/route/{$post_id}_map_1000x1000.png";
-		if ($has_track && get_option('webmapp_show_interactive_route_map') && strpos($headers['Content-Type'], 'image/') !== false) {
-			$featured_map = $interactive_route_map;
-		} else {
-			$featured_map = '/wp-content/themes/wm-child-cyclando/images/map-logo-osm.jpg';
-		}
 		$first_departure_date = '';
 		$first_departure_date_ajax = '';
 		$first_departure_date_ajax_dormatdmY = '';
@@ -346,7 +338,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 
                             <div class="cyc-route-mobile-introduction-icons">
                                 <p id="cyc-single-route-mobile-gallery-button" class="cyc-single-route-monarch-share cyc-single-route-gallery-btn">
-                                    <i class="wm-icon-cyc_gallery"></i>
+                                    <i class="fal fa-images"></i>
                                 </p>
                                 <p id="cyc-single-route-monarch-share-button" class="cyc-single-route-monarch-share">
                                     <i class="material-icons">ios_share</i>
@@ -364,6 +356,15 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
     <div class="cyc-route-taxonomy-tab-row-container">
         <!-- START section taxonomies and difficulty block START  -->
         <div class="cyc-route-mobile-taxonomy-container">
+            <!-- START PRICE popup only for administrators -->
+            <?php if ( current_user_can('administrator') ) { ?>
+                <div id="popup-show-prices" class="cy-btn-contact">
+                    <p class="prezzo-container">
+                        <?php echo __('Dates & prices', 'wm-child-cyclando') ?>
+                    </p>
+                </div>
+            <?php } ?>
+            <!-- END PRICE popup only for administrators -->
             <div class="cyc-route-mobile-taxonomy-container-sticky">
                 <div class="cyc-route-taxonomy-row-wrapper">
                     <div class="cyc-route-mobile-taxonomy-activity-wrapper">
@@ -387,7 +388,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                     <div class="cyc-route-mobile-taxonomy-target-wrapper">
                         <p class='meta-bar-txt-strong'>
                             <?php
-                            echo __('Target', 'wm-child-cyclando')
+                            echo __('Tour', 'wm-child-cyclando')
                             ?>
                         </p>
                         <?php if ($array_target) { 
@@ -405,7 +406,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                     <div class="cyc-route-mobile-taxonomy-shape-wrapper">
                         <p class='meta-bar-txt-strong'>
                             <?php
-                            echo __('Path', 'wm-child-cyclando')
+                            echo __('Itinerary', 'wm-child-cyclando')
                             ?>
                         </p>
                         <?php if ($shape) { ?>
@@ -460,7 +461,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         <!-- START section Second menu Tab START  -->
         <div class="cyc-route-mobile-tab-container">
             <?php 
-            echo do_shortcode('[vc_tta_tabs][vc_tta_section active="1" tab_id="1615221700207-6345d186-4e71" el_class="oc-tab-plan" title="'.__('Plan', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_plan post_id="'.$wm_post_id.'" hotel_product_items="'.$json_hotel_product_items.'" has_extra="'.$has_extra.'" first_departure="'.$first_departure_date_ajax_dormatdmY.'"][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221700263-b2f1f133-a833" el_class="oc-tab-program" title="'.__('Program', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_program program="'.$program.'" has_track="'.$has_track_program.'" route_has_geojson="'.$route_has_geojson.'" home_site="'.$home_site.'" post_id="'.$wm_post_id.'" language="'.$language.'"][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221704269-1b7373dd-65c0" el_class="oc-tab-includes" title="'.__('Includes', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_includes post_id="'.$wm_post_id.'"][/vc_column_text][/vc_tta_section][/vc_tta_tabs]');
+            echo do_shortcode('[vc_tta_tabs][vc_tta_section active="1" tab_id="1615221700207-6345d186-4e71" el_class="oc-tab-plan" title="'.__('Plan', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_plan post_id="'.$wm_post_id.'" hotel_product_items="'.$json_hotel_product_items.'" has_extra="'.$has_extra.'" first_departure="'.$first_departure_date_ajax_dormatdmY.'"][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221700263-b2f1f133-a833" el_class="oc-tab-program" title="'.__('Program', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_program program="'.$program.'" has_track="'.$has_track_program.'" route_has_geojson="'.$route_has_geojson.'" home_site="'.$home_site.'" post_id="'.$wm_post_id.'" language="'.$language.'"][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221704269-1b7373dd-65c0" el_class="oc-tab-includes" title="'.__('Includes', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_includes post_id="'.$post_id.'"][/vc_column_text][/vc_tta_section][/vc_tta_tabs]');
             ?>
         </div>
         <!-- END section Second menu Tab END  -->
@@ -496,7 +497,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                     <div class="vc_column-inner">
                         <div class="wpb_wrapper">
                             <div class="wpb_text_column">
-                                <div class="wpb_wrapper cyc-single-route-tour-operator-wrapper">
+                                <div ondragstart="return false;" class="wpb_wrapper noselect cyc-single-route-tour-operator-wrapper">
                                     <?php
 										echo "<h4><i class='wm-icon-cyc_bici'></i> " .__('Tour operator', 'wm-child-cyclando'). "</h4>" . "<p>" . $touroperator . "</p>";
 										?>
@@ -526,9 +527,9 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                                         </p>
                                     </div>
                                     <div class="cyc-single-route-cta-buttons">
-                                        <div id="cy-contact-in-basso" class="">
+                                        <div id="cy-contact-in-basso" class="cy-contact-in-basso">
                                             <div class="cy-btn-contact">
-                                                <p><?php echo __('Contact us', 'wm-child-cyclando'); ?></p>
+                                                <p><?php echo __('Ask a question', 'wm-child-cyclando'); ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -591,13 +592,28 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
     <!-- END new template END-->
 
     
-    <?php if (current_user_can('administrator') && get_option('webmapp_show_interactive_route_map')) { ?>
-    <div id="wm-wizards-container">
-        <?php
-				echo do_shortcode("[wmWizards conf='']");
-				?>
+    <!-- HTML modal for prices -->
+    <div id="cy-prices-modal" class="cy-prices-modal">
+        <div class="cy-modal-content">
+            <div class="cy-modal-header">
+                <div class="close-button-container"><span class="cy-close">&times;</span></div>
+                <div class="vedi-prezzi">
+                    <h2><?php echo __('See the prices', 'wm-child-cyclando'); ?></h2>
+                </div>
+                <div class="meta-bar wm-activity"><i class="<?php echo $iconimage_activity; ?>"></i></div>
+                <div id="wm-book-quote" class="meta-bar wm-book long-txt">
+                    <p class='meta-bar-txt-bold'><?php echo __('Prices', 'wm-child-cyclando'); ?></p>
+                </div>
+            </div>
+            <div class="cy-modal-body">
+                <?php echo do_shortcode('[route_table_price]'); ?>
+            </div>
+            <!-- <div class="cy-modal-footer">
+                <h3>Modal Footer</h3>
+            </div> -->
+        </div>
     </div>
-    <?php } ?>
+    <!-- END HTML modal for prices -->
 
     <!-- HTML modal for contact in route -->
     <div id="cy-route-contact" class="cy-route-contact">
@@ -663,7 +679,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
     </div>
     <!-- END HTML modal for contact in route -->
     <script>
-        var post_id = <?= $post_id ?>;
+        var post_id = '<?= $post_id ?>';
         var departureArrays = <?php echo json_encode($start_array)?>;
         var start_arraydFY = <?php echo json_encode($start_arraydFY)?>;
         var start_arrayYmd = <?php echo json_encode($start_arrayYmd)?>;
@@ -676,7 +692,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
 
 
         jQuery(document).ready(function() {
-            calculateDepartureDate();
+            calculateDepartureDate(start_arrayYmd);
         });
         function ajaxUpdatePrice(){
             var savedCookie = ocmCheckCookie();
@@ -703,17 +719,20 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                     var savedCookie = ocmCheckCookie();
                     savedCookie['price'] = obj.price;
                     savedCookie['routeName'] = route_title;
-                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                     jQuery( ".deposit-title" ).remove();
                     jQuery( ".depositajax" ).remove();
                     delete savedCookie['deposit'];
-                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                     if (obj.deposit) {
+                        if (parseInt(obj.deposit) >= 100) {
+                            jQuery('.route-active-promo').show();
+                        }
                         jQuery( ".oc-route-mobile-plan-price-container" ).prepend( 
-                            `<div class="deposit-title"><?= __('Deposit', 'wm-child-cyclando') ?></div><div class="depositajax">`+obj.deposit+`€</div>`
+                            `<div class="deposit-title"><a class="tooltips" href="#!"><?= __('Deposit', 'wm-child-cyclando') ?> <sup><i class="fas fa-info-circle"></i></sup><span><?= __('Please check terms and conditions that apply by clicking on "Proceed"', 'wm-child-cyclando') ?></span></a></div><div class="depositajax">`+obj.deposit+`€</div>`
                         );
                         savedCookie['deposit'] = obj.deposit;
-                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                     }
                     if (obj.depositaddtocart) {
                         addtocart = obj.depositaddtocart;
@@ -736,7 +755,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                 if (obj.categoryname == value) {
                     selected = 'selected="selected"';
                     savedCookie['category'] = value;
-                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                 }
                 options += "<option "+selected+" value='"+ value + "'>" + value + "</option>";
             });
@@ -819,6 +838,11 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             yRSummarytxtBikes =  yRSummarytxtRegular + yRSummarytxtRegularComa + yRSummarytxtElectric ;
             jQuery("#oc-route-your-reservation-participants").html(yRSummarytxtParticipants);
             jQuery("#oc-route-your-reservation-bikes").html(yRSummarytxtBikes);
+
+            // Update single room number in your resarvation summary
+            if (savedCookie[post_id]['extra']['single_room_paid']) {
+                jQuery("#oc-route-your-reservation-singleroompaid").html(savedCookie[post_id]['extra']['single_room_paid']);
+            }
         }
 
         function cal_sum_cookies(savedCookie) {
@@ -861,11 +885,10 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
                 success : function( response ) {
                 },
                 complete:function(response){
-                    var obj = JSON.parse(response.responseText);
-                    var res = JSON.parse(obj);
+                    var objDeal = JSON.parse(response.responseText);
                     var savedCookie = ocmCheckCookie();
-                    savedCookie['hsdealid'] = res.id;
-                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    savedCookie['hsdealid'] = objDeal.id;
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                     form.submit();
                 }
             });
@@ -890,7 +913,7 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
             // Get contact elements
             const contactModal = document.querySelector('#cy-route-contact');
             const contactModalBtnAlto = document.querySelectorAll('#cy-contact-in-alto');
-            const contactModalBtnBasso = document.querySelectorAll('#cy-contact-in-basso');
+            const contactModalBtnBasso = document.querySelectorAll('.cy-contact-in-basso');
             const contactModalBtnBassoMobile = document.querySelectorAll('#cy-contact-in-basso-mobile');
             const contactModalBtn = document.querySelectorAll('#cy-contact-modal');
             const closeContactBtn = document.querySelector('.cy-close-contact');
@@ -1015,6 +1038,15 @@ wp_enqueue_script('route-single-post-style-animation', get_stylesheet_directory_
         });
         jQuery(document).ready(function(){
             jQuery('#cyc-single-route-mobile-gallery-button').click(function(){jQuery('.rsFullscreenBtn').trigger('click')})
+
+            // function to disable right click on tour operator section
+            jQuery(".cyc-single-route-tour-operator-wrapper").on("contextmenu",function(e){
+                return false;
+            });
+            // function disables Copy and Paste and drag
+            jQuery(".cyc-single-route-tour-operator-wrapper").bind('cut copy paste', function (e) {
+                e.preventDefault();
+            });
         });
 
             

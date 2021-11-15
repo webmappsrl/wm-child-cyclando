@@ -78,11 +78,15 @@
 
             return $dateTimestamp1 < $dateTimestamp2 ? -1 : 1;
         });
+        $start_arrayYmd = array();
         foreach ($start_array as $date) {
             if (date('Y-m-d', strtotime('+7 day')) <= date('Y-m-d', strtotime($date))) {
                 $first_departure_date = date_i18n('d F', strtotime($date));
                 break;
             }
+        }
+        foreach ($start_array as $date) {
+            $start_arrayYmd[] = date_i18n('Y-n-d', strtotime($date));
         }
 
         // route duration 
@@ -256,7 +260,8 @@
             }
         });
         $(document).on("facetwp-loaded", function () {
-            calculateDepartureDate();
+            var start_arrayYmd = <?php echo json_encode($start_arrayYmd)?>;
+            calculateDepartureDate(start_arrayYmd);
             var savedCookie = ocmCheckCookie();
             console.log(savedCookie);
             var post_id = <?= $post_id ?>;
@@ -264,6 +269,7 @@
                     'action': 'oc_ajax_route_price',
                     'postid':  post_id,
                     'cookies':  savedCookie,
+                    'searchpage' : true
                 };
                 $.ajax({
                     url: '/wp-admin/admin-ajax.php',

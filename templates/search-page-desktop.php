@@ -11,7 +11,7 @@ if ($when) {
         $when_txt = 'agosto';
     }
 }
-($when) ? $when_txt = $when_txt[0] : $when_txt = __('Quando','wm-child-cyclando');
+($when) ? $when_txt = $when_txt[0] : $when_txt = __('When','wm-child-cyclando');
 
 echo do_shortcode('[vc_row height="large" us_bg_image_source="featured" us_bg_repeat="no-repeat" us_bg_overlay_color="rgba(0,0,0,0.30)" el_class="pagina-cerca-descrizione-container search-page-description-mobile" css="%7B%22default%22%3A%7B%22color%22%3A%22%23ffffff%22%7D%7D"][vc_column][/vc_column][vc_column][vc_column_text]<h3>'.__('Plan your bike itinerary and leave immediately for your next vacation', 'wm-child-cyclando').'</h3><p>'.__('With Cyclando, calculating the itinerary of your cycling holiday is very simple. Our cycle itinerary planner will allow you to find the trip that suits you best, based on your choices on:', 'wm-child-cyclando').'</p>[/vc_column_text][/vc_column][us_separator][/vc_row]');
 
@@ -61,7 +61,6 @@ echo do_shortcode('[vc_row height="large" us_bg_image_source="featured" us_bg_re
             $('#searchpage-form-oneclick-mobile').hide();
             $(".cerca-facets-container").removeClass("cerca-facets-container-modal");
             $("#cerca-facets-container-modal-header").show();
-            $("#filterSearchDropdown").hide();
         });
         if ($(window).width() < 768) {
             $('#searchpage-facets-filter-btn').on('click', function() {

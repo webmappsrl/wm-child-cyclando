@@ -1,8 +1,20 @@
 <?php
 
+require ('includes/oc_ajax_route_price.php');
+require ('includes/oc_ajax_variation_price_update.php');
+require ('includes/oc_ajax_variation_delete.php');
+require ('includes/oc_ajax_product_delete.php');
+require ('includes/oc_ajax_variation_add_modal.php');
+require ('includes/oc_ajax_extra_variation_create_modal.php');
+require ('includes/oc_ajax_extra_add_modal.php');
+require ('includes/oc_ajax_product_options_add_modal.php');
+require ('includes/oc_ajax_variation_create_modal.php');
+require ('includes/oc_ajax_product_create_modal.php');
 require ('import_data.php');
 require ('shortcodes/route_table_price.php');
+require ('shortcodes/route_table_price_email.php');
 require ('shortcodes/wm_route_included_not_included.php');
+require ('shortcodes/wm_route_included_not_included_email.php');
 require ('shortcodes/dashboard_wizard_button.php');
 require ('shortcodes/mobile_menu_quote_form.php');
 require ('shortcodes/menu_search_facetwp_wizard.php');
@@ -10,6 +22,7 @@ require ('shortcodes/oneclick_search_form.php');
 require ('shortcodes/oneclick_search_form_participants_bikes.php');
 require ('shortcodes/oneclick_search_form_participants.php');
 require ('shortcodes/oneclick_search_form_bikes.php');
+require ('shortcodes/oneclick_search_form_single.php');
 require ('shortcodes/route-tabs/route-mobile-tab-includes.php');
 require ('shortcodes/route-tabs/route-mobile-tab-plan.php');
 require ('shortcodes/route-tabs/route-mobile-tab-program.php');
@@ -20,13 +33,14 @@ require ('shortcodes/route-oc/oneclick_route_form_purchase.php');
 require ('shortcodes/route-oc/oneclick_route_your_reservation_panel.php');
 require ('api/api-loader.php');
 require ('includes/class_routeProductsOC.php') ;
-require ('includes/oc_ajax_route_price.php');
+
 require ('includes/wm_has_extra_get_label.php');
 require ('includes/wm_has_hotel_get_label.php');
 
 
 if ( class_exists( 'WP_CLI' ) ) {
     require ('wp-cli/cy-index-routes.php');
+    require ('wp-cli/wm-save-routes-cyc.php');
 }
 
 
@@ -47,24 +61,30 @@ add_action('after_setup_theme', 'vn_theme_setup');
 
 
 
-add_action( 'wp_enqueue_scripts', 'Divi_parent_theme_enqueue_styles' );
-function Divi_parent_theme_enqueue_styles() {
+add_action( 'wp_enqueue_scripts', 'impreza_theme_enqueue_styles' );
+function impreza_theme_enqueue_styles() {
+    
     // wp_enqueue_style( 'divi-style', get_template_directory_uri() . '/style.css' );
-    wp_enqueue_style('route-single-post-style', get_stylesheet_directory_uri() . '/single-route-style.css');
     wp_enqueue_style('jqeury-ui-tabs-style', 'https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css');
     wp_enqueue_script('jquery-ui-core');
     wp_enqueue_script('jquery-ui-tabs');
     wp_enqueue_script( 'general_javascript', get_stylesheet_directory_uri() . '/js/general.js', array ('jquery') );
-    wp_enqueue_script( 'hightlight', get_stylesheet_directory_uri() . '/js/home_highlight.js');
+    // wp_enqueue_script( 'hightlight', get_stylesheet_directory_uri() . '/js/home_highlight.js');
     wp_enqueue_script('hubspot_contact_form', '//js.hsforms.net/forms/v2.js', array('jquery'));
-    wp_enqueue_script('datepicker', 'https://code.jquery.com/ui/1.12.1/jquery-ui.js', array('jquery'));
+    // wp_enqueue_script('datepicker', 'https://code.jquery.com/ui/1.12.1/jquery-ui.js', array('jquery'));
+    wp_enqueue_script('datepicker', 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', array('jquery'));
     //add hubspot to Browser IE 8
     wp_register_script('hubspot_contact_form_IE8', '//js.hsforms.net/forms/v2-legacy.js', array('jquery'));
     wp_enqueue_script( 'hubspot_contact_form_IE8');
     wp_script_add_data( 'hubspot_contact_form_IE8', 'conditional', 'lt IE 8' );
     if (is_singular('route')){
+        wp_enqueue_style('route-single-post-style', get_stylesheet_directory_uri() . '/single-route-style.css');
         wp_enqueue_script('jQueryValidate', 'https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.2/jquery.validate.min.js', array('jquery'));
     }
+    if (is_singular('route') && current_user_can('administrator')){
+        wp_enqueue_script( 'dp_javascript', get_stylesheet_directory_uri() . '/js/dp_variation.js', array ('jquery') );
+    }
+
 }
 
 function admin_css_load() {
@@ -141,168 +161,6 @@ function custom_ccchildpage_inner_template($template) {
 }
 add_filter( 'ccchildpages_inner_template' ,'custom_ccchildpage_inner_template' );
 
-
-
-
-// /**
-//  * exclude the test page from search
-//  */
-// // if ( !$query->is_admin ) {
-// //     $query->set('post__not_in', array(49693) ); // id of page or post
-// // }  && $query->is_main_query()
-// function fb_search_filter( $query ) {
-    
-//     if ( is_post_type_archive('route') && $query->is_main_query()) {
-//         if ( isset($_GET['wm_route_code']) ) {
-
-//             global $wpdb;
-//             $get_value = $_GET['wm_route_code'];
-            
-//             $result = $wpdb->get_results("SELECT DISTINCT ID FROM vn_posts AS posts INNER JOIN vn_postmeta AS postmeta ON posts.ID = postmeta.post_id AND ( posts.post_title LIKE '%$get_value%' OR ( postmeta.meta_value = '$get_value' AND postmeta.meta_key = 'n7webmapp_route_cod' ) ) WHERE posts.post_type = 'route'", ARRAY_A);
-            
-//             if ( !empty($result )) {
-//                 $result = array_map( function ($e){
-//                     return isset($e['ID']) ? $e['ID'] : 0 ;
-//                 }, $result);
-//                 $query->set( 'post__in', $result );
-//             }
-    
-//         }
-//         $query->set('order_by', 'meta_value' );
-//         $query->set('meta_key', 'vn_ordine' );
-//         $query->set('order', 'DESC' );
-//     }
-// }
-// add_action( 'pre_get_posts', 'fb_search_filter' );
-
-
-// //change query args of wpfacet template in home page dove vuoi andare adding the route_code 
-// add_filter( 'facetwp_indexer_row_data', function( $rows, $params ) {
-//     if ( 'search_route' == $params['facet']['name'] ) {
-//         $rows = [];
-//         // $term_id = (int) $params['defaults']['term_id'];
-//         // $term = get_term( $term_id, 'where' );
-//         $terms = get_terms( array( 
-//             'taxonomy' => 'where',
-//             'hide_empty' => true
-//         ) );
-//         foreach ( $terms as $term ) {
-//             $name = $term->name;
-//             $new_row = $params['defaults'];
-//             $new_row['facet_value'] = $term->slug; ; // value gets the post id
-//             $new_row['facet_display_value'] = $term->name;; // label
-//             $rows[] = $new_row;
-//         }
-
-//     }
-//     return $rows;
-// }, 10, 2 );
-
-
-// /**
-//  * exclude the taxonomy Bici e barca from tipologia
-//  */
-// add_filter( 'facetwp_index_row', function( $params, $class ) {
-//     if ( 'tipologia' == $params['facet_name'] ) {
-//         print_r($params);
-//         $excluded_terms = array( 'in-bici-e-barca' );
-//         if ( in_array( $params['facet_display_value'], $excluded_terms ) ) {
-//             return false;
-//         }
-//     }
-//     return $params;
-// }, 10, 2 );
-
-
-
-/**
- * Material Icons
- */
-// //add_action( 'wp_head' , 'aggiungi_material_icons' );
-// function aggiungi_material_icons(){
-//     // echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
-//     //load jquery ui theme css
-//     echo '<link href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" rel="stylesheet">';
-//     echo '<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>';
-// }
-
-
-/**
- * Search bar e map search
- */
-
-//  add_action ('et_header_top', 'vn_search_bar');
-// function vn_search_bar() {
-//     $lang = $_GET['lang'];
-//     echo '<div id="vn-search-bar-header"><form id="searchform" action="/route/"  method="get">
-// 	<input type="search" placeholder="' . __( 'Search &hellip;','wm-child-verdenatura' ) . '" value="" name="wm_route_code"><input type="hidden" name="lang" value="'.$lang.'"/>
-// 	<button id="vn-search-lente" type="submit"><i class="fa fa-search"></i></button>
-//     </form></div>';
-
-// }
-
-
-// add_action( 'et_header_top', 'vn_search_map' );
-// function vn_search_map() {
-//     echo '<div id="vn-search-map"><i class="material-icons">language</i></div>';
-// }
-
-
-// function my_search_form( $form ) {
-//     $form = '<form role="search" method="get" id="searchform" class="searchform" action="' . home_url( 'http://vnpreprod.webmapp.it/route/?fwp_search_box' ) . '" >
-//     <div><label class="screen-reader-text" for="s">' . __( 'Cerca:' ) . '</label>
-//     <input type="text" value="' . get_search_query() . '" name="s" id="s" />
-//     <input type="submit" id="searchsubmit" value="'. esc_attr__( 'Cerca' ) .'" />
-//     </div>
-//     </form>';
-
-//     return $form;
-// }
-
-// add_filter( 'get_search_form', 'my_search_form' );
-
-
-
-/**
- * Comments in single route
- */
-
-// add_filter( 'comment_text' , 'filtra_commento' , 10 , 3 );
-
-// function filtra_commento( $comment_text, $comment , $args )
-// {
-//     $date_html = '';
-//     $date = get_field('wm_comment_journey_date', $comment);
-//     if ( $date )
-//     {
-//         $date_html = "<div class='journey-comment'>" . __('Journey from' , 'wm_comment_journey_date' ) . " $date</div>";
-//     }
-
-//     $gallery = '';
-
-//     $vn_gallery = get_field ('wm_comment_gallery' , $comment );
-//     if ( is_array( $vn_gallery) && ! empty( $vn_gallery ) )
-//     {
-//         $vn_gallery_ids =  array_map(
-//             function ($i) {
-//                 return $i ['ID'];
-//             },
-//             $vn_gallery );
-
-//         $gallery = "<div class='wm-comment-images'>";
-//         foreach ( $vn_gallery_ids  as $id)
-//         {
-//             $gallery .= '<span class="wm-comment-image">';
-//             $gallery .= wp_get_attachment_image( $id, 'thumbnail');
-//             $gallery .= '</span>';
-//         }
-//         $gallery = "</div>";
-
-//     }
-
-
-//     return "$date_html<div class='my_comment_text'>$comment_text</div>$gallery";
-// }
 
 // remove comments in Barche custom post type
 add_action( 'init', 'remove_custom_post_comment' );
@@ -552,11 +410,22 @@ add_filter( 'facetwp_index_row', function( $params, $class ) {
 
 /**changes the breadcrumb link of POI and blog in Math rank breadcrumb */
 add_filter( 'rank_math/frontend/breadcrumb/items', function( $crumbs, $class ) {
+    if (defined('ICL_LANGUAGE_CODE')) {
+        $language = ICL_LANGUAGE_CODE;
+    }
     if ( is_singular( 'route' ) ) {
-        $breadcrumb[] = array(
-            '0' => __('Routes', 'wm-child-cyclando'),
-            '1' => site_url( '/cerca/' ),
-        );
+        if ($language == 'it') { 
+            $breadcrumb[] = array(
+                '0' => __('Routes', 'wm-child-cyclando'),
+                '1' => site_url( '/cerca/' ),
+            );
+        } else {
+            $breadcrumb[] = array(
+                '0' => __('Routes', 'wm-child-cyclando'),
+                '1' => site_url( '/en/tours/' ),
+            );
+        }
+        
         array_splice( $crumbs, 1,1, $breadcrumb );
     }
     if ( is_singular( 'post' ) ) {
@@ -642,37 +511,7 @@ add_filter( 'facetwp_facet_render_args', function( $args ) {
     return $args;
 });
 
-// /**
-//  * Filter the upload size limit for non-administrators.
-//  *
-//  * @param string $size Upload size limit (in bytes).
-//  * @return int (maybe) Filtered size limit.
-//  */
-// function filter_site_upload_size_limit( $size ) {
-//     // Set the upload size limit to 60 MB for users lacking the 'manage_options' capability.
-//     // if ( ! current_user_can( 'manage_options' ) ) {
-//         // 60 MB.
-//         $size = 60 * 1024 * 1024;
-//     // }
-//     return $size;
-// }
-// add_filter( 'upload_size_limit', 'filter_site_upload_size_limit', 20 );
 
-
-// validation on codice fiscale for a correct format
-// add_action( 'woocommerce_after_checkout_validation', 'misha_validate_fname_lname', 10, 2);
- 
-// function misha_validate_fname_lname( $fields, $errors ){
- 
-//     // if ( preg_match( '/\\d/', $fields[ 'billing_last_name' ] )  ){
-//     //     $errors->add( 'validation', 'Your first or last name contains a number. Really?' );
-//     // }
-//     // if ($fields['billing_codice_fiscale'] == 'privato') {
-//         if ( preg_match( '/[A-Za-z]{6}[0-9LMNPQRSTUV]{2}[A-Za-z]{1}[0-9LMNPQRSTUV]{2}[A-Za-z]{1}[0-9LMNPQRSTUV]{3}[A-Za-z]{1}/', $fields[ 'billing_codice_fiscale' ] ) !== 1 ){
-//             $errors->add( 'validation', __('Your Tax code is incorrect!','wm-child-verdnatura') );
-//         }
-//     // }
-// }
 
 
 function wm_weekDayToWeekNumber( $days_of_week ){
@@ -934,8 +773,8 @@ add_filter( 'facetwp_indexer_row_data', function( $rows, $params ) {
 }, 10, 2 );
 
 
-add_action( 'save_post' , function( $post_id, $post, $update )
-{
+add_action( 'save_post' , 'sync_route_dates_with_when',10,3);
+function sync_route_dates_with_when( $post_id, $post, $update ){
     if ( $post->post_type != 'route' )
         return;
 
@@ -1023,7 +862,7 @@ add_action( 'save_post' , function( $post_id, $post, $update )
         wp_set_post_terms( $post_id , $toRegister , 'when');
     }
         
-} , 10 , 3);
+};
 
 
 add_filter( "views_edit-route", function($views){
@@ -1103,6 +942,7 @@ function return_route_targets_has_cyclando($post_id){
 
 // Check if url exists / route has geojson
 function URL_exists($url){
+    return false;
     $headers=get_headers($url);
     return stripos($headers[0],"200 OK")?true:false;
 }
@@ -1605,4 +1445,256 @@ add_filter( 'woocommerce_order_button_text', 'wm_checkout_custom_button_text' );
  
 function wm_checkout_custom_button_text( $button_text ) {
    return __('Pay', 'wm-child-cyclando');
+}
+
+// writes logs into a file in upload directory
+function wm_write_log_file($entry, $mode = 'a', $file = 'wm_child_cyclando') {
+    // Get WordPress uploads directory.
+    $upload_dir = wp_upload_dir();
+    $upload_dir = $upload_dir['basedir'];
+
+    // If the entry is array, json_encode.
+    $entry = json_encode( $entry ); 
+    if (!file_exists($upload_dir.'/hubspot')) {
+        mkdir($upload_dir.'/hubspot', 0777, true);
+    }
+    // Write the log file.
+    $file  = $upload_dir . '/hubspot/' . $file . '.log';
+    $file  = fopen( $file, $mode );
+    $bytes = fwrite( $file, current_time( 'mysql' ) . "\n" ); 
+    $bytes = fwrite( $file, $entry . "\n\n" ); 
+    fclose( $file ); 
+
+    return $bytes;
+}
+
+function route_has_single($has_hotel_category) {
+    $has_single = '';
+    if (count($has_hotel_category['modelseasonal']) >= 1) {
+        $product_sample = $has_hotel_category['modelseasonal'][array_key_first($has_hotel_category['modelseasonal'])];
+    } else {
+        $product_sample = $has_hotel_category['model'][array_key_first($has_hotel_category['model'])];
+    }
+    if ($product_sample) {
+        foreach ($product_sample as $key => $value) {
+            // Activate single room select if there is any
+            if ($key == 'adult-single') {
+                $has_single = true;
+            }
+        }
+    }
+    return $has_single;
+}
+
+// function used in ajax route variation and product creation fronend
+function wm_create_hotel_variation_mapping($place,$from,$to){
+    $array = $variations = [
+        'adult' => sprintf(__('Basic price in double %s' ,'wm-child-verdenatura'),$place),
+        'adult-single' => sprintf(__('Supplement for single %s' ,'wm-child-verdenatura'),$place),
+        'single-traveller' => sprintf(__('Supplement for single traveller' ,'wm-child-verdenatura'),$place),
+        'adult-extra' => __('Basic price in 3rd bed adult' ,'wm-child-verdenatura'),
+        'halfboard_adult' => __('Supplement for half board' ,'wm-child-verdenatura'),
+        'nightsBefore_adult' => sprintf(__('Extra night in %s (Double %s)' ,'wm-child-verdenatura'),$from, $place),
+        'nightsBefore_adult-single' => sprintf(__('Supplement for extra night in %s (Single %s)' ,'wm-child-verdenatura'),$from, $place),
+        'nightsBefore_adult-extra' => sprintf(__('Extra night in %s (extra bed)' ,'wm-child-verdenatura'),$from),
+        'nightsAfter_adult' => sprintf(__('Extra night in %s (Double %s)' ,'wm-child-verdenatura'),$to, $place),
+        'nightsAfter_adult-single' => sprintf(__('Supplement for extra night in %s (Single %s)' ,'wm-child-verdenatura'),$to, $place),
+        'nightsAfter_adult-extra' => sprintf(__('Extra night in %s (extra bed)' ,'wm-child-verdenatura'),$to),
+    ];
+    return $array;
+}
+
+// function used in ajax route variations for Extra creation in fronend
+function wm_create_extra_variation_mapping(){
+    $array = $variations = [
+        'bike' => __('Supplement for bike rental' ,'wm-child-verdenatura'),
+        'ebike' => __('Supplement for e-bike rental' ,'wm-child-verdenatura'),
+        'kidbike' => __('Supplement for children bike' ,'wm-child-verdenatura'),
+        'bike_tandem' => __('Supplement for tandem bike' ,'wm-child-verdenatura'),
+        'bike_road' => __('Supplement for road bike rental' ,'wm-child-verdenatura'),
+        'babyseat' => __('Supplement for child back seat rental' ,'wm-child-verdenatura'),
+        'trailer' => __('Supplement for children trailer rental' ,'wm-child-verdenatura'),
+        'trailgator' => __('Supplement for children trailgator' ,'wm-child-verdenatura'),
+        'tagalong' => __('Supplement for follow-me rental' ,'wm-child-verdenatura'),
+        'bikewarranty' => __('Bike Coverage' ,'wm-child-verdenatura'),
+        'ebikewarranty' => __('E-bike Coverage' ,'wm-child-verdenatura'),
+        'bike_tandemwarranty' => __('Tandem bike Coverage' ,'wm-child-verdenatura'),
+        'bike_roadwarranty' => __('Road bike Coverage' ,'wm-child-verdenatura'),
+        'helmet' => __('Supplement for adult helmet rental' ,'wm-child-verdenatura'),
+        'kidhelmet' => __('Supplement for kid helmet rental' ,'wm-child-verdenatura'),
+        'roadbook' => __('Printed road book maps' ,'wm-child-verdenatura'),
+        'cookingclass' => __('Supplement for cooking class' ,'wm-child-verdenatura'),
+        'transferBefore' => __('Supplement for transfer before the trip' ,'wm-child-verdenatura'),
+        'transferAfter' => __('Supplement transfer after the trip' ,'wm-child-verdenatura'),
+        'boardingtax' => __('Port charges (to be paid in advance)' ,'wm-child-verdenatura'),
+        'bike_plus' => __('Supplement for bike rental Premium' ,'wm-child-verdenatura'),
+        'bike_pluswarranty' => __('Supplement for bike coverage Premium' ,'wm-child-verdenatura'),
+        'bike_mtb' => __('Supplement for MTB rental' ,'wm-child-verdenatura'),
+        'bike_mtbwarranty' => __('Supplement for tandem rental' ,'wm-child-verdenatura'),
+        'bike_ebikemtb' => __('Supplemento nolo E-MTB' ,'wm-child-verdenatura'),
+        'bike_ebikemtbwarranty' => __('Supplement for E-MTB coverage' ,'wm-child-verdenatura'),
+        'bike_ebikeroad' => __('Supplement for road e-bike rental' ,'wm-child-verdenatura'),
+        'bike_ecargo' => __('Supplement for ecargo rental' ,'wm-child-verdenatura'),
+        'bike_ecargowarranty' => __('Supplement for ecago Coverage' ,'wm-child-verdenatura'),
+        'bike_own' => __('Supplement for your own bike' ,'wm-child-verdenatura'),
+        'bike_ownwarranty' => __('Supplement for own bike Coverage' ,'wm-child-verdenatura'),
+        'bike_recumbent' => __('Supplement for recumbent bike' ,'wm-child-verdenatura'),
+        'gps' => __('Supplement for GPS' ,'wm-child-verdenatura'),
+        'weehoo' => __('Supplement for Weehoo trailer' ,'wm-child-verdenatura'),
+    ];
+    return $array;
+}
+
+
+function create_variable_product_with_variations( $product_name, $products, $category, $attributeName,$varnames ){
+
+    $product_id = wp_insert_post( array(
+        'post_title' => $product_name,
+        'post_status' => 'publish',
+        'post_type' => "product",
+        ) );
+    wp_set_object_terms( $product_id, 'variable', 'product_type' );
+    
+    $product = new WC_Product_Variable( $product_id );
+
+    // Add category to product
+    wp_set_object_terms( $product_id, $category, 'product_cat' );
+
+    // Visibility ('hidden', 'visible', 'search' or 'catalog')
+    $product->set_catalog_visibility( 'visible' );
+    $product->save();
+    
+    
+    $attr_slug = sanitize_title($attributeName);
+
+    $attributes_array[$attr_slug] = array(
+        'name' => $attributeName,
+        'value' => implode('|',$varnames),
+        'is_visible' => '1',
+        'is_variation' => '1',
+        'is_taxonomy' => '0' // for some reason, this is really important       
+    );
+    update_post_meta( $product_id, '_product_attributes', $attributes_array );
+    $product->save();
+    WC_Product_Variable::sync( $product_id );
+
+    foreach( $products as $variationname => $price) {
+        if ($variationname !== 'attribute_name') {
+            $variation_post = array(
+                'post_title'  => $product->get_name(),
+                'post_name'   => 'product-'.$product_id.'-variation',
+                'post_status' => 'publish',
+                'post_parent' => $product_id,
+                'post_type'   => 'product_variation',
+            );
+        
+            // Creating the product variation
+            $variation_id = wp_insert_post( $variation_post );
+        
+            // Get an instance of the WC_Product_Variation object
+            $variation = new WC_Product_Variation( $variation_id );
+        
+            $variation->set_attributes([$attr_slug => $variationname]);
+            
+            // Prices
+            $variation->set_price( intval($price) );
+            $variation->set_regular_price( intval($price) );
+        
+            // Stock
+            $variation->set_manage_stock(false);
+        
+            WC_Product_Variable::sync( $product_id );
+        
+            $variation->save(); // Save the data
+        }
+    }
+    
+    $product_id = $product->save();
+
+    return $product_id;
+}
+
+
+function sync_route_acf_with_new_product($repeatername,$repeaterrawid,$subfieldkey,$routeid,$product_id) {
+    if ( $repeatername == 'false') {
+        // get current value of acf 
+        $values = get_field($subfieldkey,$routeid, false);
+        $new_values = array();
+        foreach ($values as $val)   {
+            array_push($new_values,intval($val));
+        }
+        // add new id to the array
+        $new_values[] = $product_id;
+
+        return update_field( $subfieldkey, $new_values, $routeid );
+    } else {
+        // get current value of acf 
+        $rows = get_field($repeatername,$routeid, false);
+        $rawid = intval($repeaterrawid) - 1;
+        $values = $rows[$rawid][$subfieldkey];
+        $new_values = array();
+        foreach ($values as $val)   {
+            array_push($new_values,intval($val));
+        }
+        // add new id to the array
+        $new_values[] = $product_id;
+    
+        return update_sub_field( array($repeatername, intval($repeaterrawid), $subfieldkey), $new_values, $routeid );
+    }
+}
+
+// get the json file of promotion detail in root folder
+function getPromoJsonContent(){
+    return json_decode(file_get_contents(get_site_url().'/promo.json'));
+    // $path = get_site_url().'/promo.json';
+    // if (file_exists($path)) {
+    // } else {
+    //     return (object) [
+    //         "price" => 50,
+    //         "start" => "2021-11-01",
+    //         "stop" => "2021-11-04"
+    //     ];
+    // }
+}
+
+// a function that checks if the promo is between the opening and closing dates
+function isPromoActive($promo){
+    $start = date( "d/m/Y",strtotime($promo->start));
+    $stop = date( "d/m/Y",strtotime($promo->stop));
+    $today = date("d/m/Y");
+    if ($today >= $start && $today <= $stop) {
+        return true;
+    }
+    return false;
+}
+
+// Adds the promo banner to header of all pages
+add_action('us_before_canvas','add_cyc_promo_banner_header');
+function add_cyc_promo_banner_header(){
+    $promo = getPromoJsonContent();
+    // switch the month and date for english translation
+    $stop = date( "d/m",strtotime($promo->stop));
+    $stop = explode('/',$stop);
+    $stop_day = $stop[0];
+    $stop_month = $stop[1];
+    if (isPromoActive($promo)) {
+        $output = '<div class="active-promo"><div class="promo-wrapper"><div class="promo-icon"><i class="fas fa-bullhorn"></i></div><div class="promo-text">';
+        $output .= sprintf(__('Block your trip with just %s€ down payment until %3$s/%2$s!' ,'wm-child-cyclando'),$promo->price, $stop_day,$stop_month);
+        $output .= '</div></div></div>';
+        echo $output;
+    }
+}
+
+function promoBannerOnRouteSummary(){
+    $promoacconto = getPromoJsonContent();
+    if (isPromoActive($promoacconto)) {
+        $promoaccontostop = date( "d/m",strtotime($promoacconto->stop));
+        $stop = explode('/',$promoaccontostop);
+        $stop_day = $stop[0];
+        $stop_month = $stop[1];
+        $output = '<div class="route-active-promo"><p>';
+        $output .= sprintf(__('Promo: Trip blocked by deposit until %2$s/%1$s' ,'wm-child-cyclando'),$stop_day,$stop_month);
+        $output .= '</p></div>';
+        echo $output;
+    }
 }

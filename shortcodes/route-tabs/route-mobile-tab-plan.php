@@ -18,6 +18,7 @@ function route_mobile_tab_plan($atts) {
     $min_kid_age = '';
     $has_bike = 0;
     $has_ebike = 0;
+    $has_single = false;
     $has_hotel_category = route_has_hotel_category($post_id,$first_departure);
     $has_extra_category = route_has_extra_category($post_id);
     if (count($has_hotel_category['model']) > 1 || count($has_hotel_category['modelseasonal']) > 1) {
@@ -41,6 +42,10 @@ function route_mobile_tab_plan($atts) {
                     $min_kid_age = $ageSplit[2];
                 }
             }
+            // Activate single room select if there is any
+            if ($key == 'adult-single') {
+                $has_single = true;
+            }
         }
     }
     if (is_array($has_extra_category)){
@@ -52,20 +57,27 @@ function route_mobile_tab_plan($atts) {
         }
     }
     $coming_soon = get_field('not_salable',$post_id);
+
     ob_start();
 
 
     ?>
     <div class="oc-route-mobile-search-form-container">
         <?php if ($coming_soon) :?>
-            <h4><?php echo __('On request','wm-child-cyclando'); ?></h4>
+            <h4 class="form-lable"><?php echo __('On request','wm-child-cyclando'); ?></h4>
         <?php else:?>
+            <h4 class="form-lable"><?php echo __('Calculate your quote', 'wm-child-cyclando'); ?></h4>
+            <p class="oc-route-mobile-search-form-label-p"><?php echo __('Select the departure date', 'wm-child-cyclando'); ?></p>
             <?= do_shortcode("[oneclick_route_form_datepicker]")?>
             <?php if ($has_category) { ?>
                 <?= do_shortcode('[oneclick_route_form_category post_id="'.$post_id.'" first_departure="'.$first_departure.'"]')?>
             <?php } ?>
+            <p class="oc-route-mobile-search-form-label-p"><?php echo __('Select the number of participants and bikes', 'wm-child-cyclando'); ?></p>
             <div class="oc-route-mobile-search-form-asbb-wrapper">
                 <?= do_shortcode("[oneclick_search_form_participants route='true' has_kids='$has_kids' min_kid_age='$min_kid_age']")?>
+            <?php if ($has_single) { ?>
+                <?= do_shortcode("[oneclick_search_form_single route='true']")?>
+            <?php } ?>
             <?php if ($has_bike || $has_ebike) { ?>
                 <?= do_shortcode("[oneclick_search_form_bikes route='true' has_bike='$has_bike' has_ebike='$has_ebike' ]")?>
             <?php } else { ?>
@@ -76,16 +88,27 @@ function route_mobile_tab_plan($atts) {
                 <h4><?= __('Best price for', 'wm-child-cyclando') ?></h4>
                 <div class="oc-route-mobile-plan-summary"></div>
             </div>
+            <?php promoBannerOnRouteSummary();?>
             <div class="oc-route-mobile-plan-price-container">
                 <div class="cifraajax-title"><?= __('Total', 'wm-child-cyclando') ?></div><div class="cifraajax"></div>
+            </div>
+            <div class="oc-route-mobile-plan-exclusive-online">
+                <div class="exclusive-online-title"><?= __('Online Exclusive!', 'wm-child-cyclando') ?></div>
             </div>
             <?= do_shortcode("[oneclick_route_form_purchase route='true' hotel_product_items='$hotel_product_items' first_departure='$first_departure']")?>
         <?php endif;?>
         
-        <div class="cyc-single-route-cta-buttons">
-            <div id="cy-contact-in-basso" class="">
-                <div class="cy-btn-contact">
-                    <p><?php echo __('Contact us', 'wm-child-cyclando'); ?></p>
+        <div class="cyc-single-route-contact-button-container">
+            <p class="label"><?php 
+                if ($coming_soon) {
+                    echo __('Do you want to request a quote for this tour?', 'wm-child-cyclando');
+                } else {
+                    // echo __('Do you have doubts about your quote?', 'wm-child-cyclando');
+                } 
+            ?></p>
+            <div id="cy-contact-in-plan-tab" class="cy-contact-in-basso cy-contact-in-plan-tab">
+                <div class="cy-btn-plan-contact">
+                    <p><?php echo __('Request information', 'wm-child-cyclando'); ?></p>
                 </div>
             </div>
         </div>
@@ -102,7 +125,7 @@ function route_mobile_tab_plan($atts) {
                     var savedCookie = ocmCheckCookie();
                     delete savedCookie['electric'];
                     delete savedCookie['regular'];
-                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 7, path: '/' });
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                 }
             });
         })(jQuery);

@@ -24,7 +24,8 @@ Text Domain:    wm-child-cyclando
     --color-text-strong: #333;
     --color-text-shadow-dark: #212121;
     --color-text-light: rgb(124, 124, 124);
-    --color-discount: #f55442;;
+    --color-discount: #f55442;
+    --color-error: #FF0000;
     --color-promotion: white;
     --font-family-paragraph: "Lato";
     --font-family-primary: "Montserrat";
@@ -63,6 +64,10 @@ ul.w-nav-list.level_1.hover_simple li:nth-child(4) a {
     .menu-language-dropdown-wpml .w-dropdown-item-title {
         vertical-align: text-top;
         font-weight: bold;
+        line-height: initial;
+    }
+    .menu-language-dropdown-wpml .w-dropdown-current .w-dropdown-item:after{
+        line-height: 3rem;
     }
     .l-subheader.at_middle .menu-language-dropdown-wpml .w-dropdown-list {
         background: none;
@@ -731,9 +736,14 @@ body.page-template-default.page.page-parent #page-content,body.page-template-def
 
 .footer-copyright-info p {
     font-family: var(--font-family-primary-alternate);
-    font-size: 18px;
+    font-size: 16px;
 }
-
+@media screen and (min-width: 768px) {
+    ul#menu-menu-secondario li:not(:last-child),#menu-menu-secondario-inglese-2 li:not(:last-child) {
+        border-right: 1px solid white;
+        padding-right: 2rem;
+    }
+}
 /* info footer*/
 
 
@@ -1239,6 +1249,12 @@ table.shop_table.woocommerce-checkout-review-order-table tr:not(.order-total) {
 .woocommerce-checkout #order_review_heading{
     display: none!important;
 }
+.checkout-go-back-btn {
+    padding-top: 20px;
+}
+.checkout-go-back-btn a:hover{
+    text-decoration: underline;
+}
 /* Campi nascosti per per il calcolatore Friendly - end */
 html:lang(en) .fee {
     display: none;
@@ -1350,7 +1366,6 @@ body .checkout-button.button.alt.wc-forward,body .woocommerce .button.alt {
 .newsletter-cta > .vc_column-inner >.wpb_wrapper{
     background: var(--color-primary);
     /* background: linear-gradient(94deg, #9ac250 0%, #749D27 100%)!important; */
-    border-radius: 5px;
     padding: 40px;
     background-image: url(/wp-content/uploads/2021/01/Cyc_newsletter_background.png);
     background-position: left;
@@ -1446,6 +1461,7 @@ header#page-header.sticky {
     margin: 0 auto;
     width: 100%;
     font-size: 13px;
+    font-family: Montserrat;
     padding: 5px 0;
 }
 .covidbanner-container a {
@@ -1823,6 +1839,9 @@ h4.tripSearch {
     border: 1px solid #ccc;
     padding: 0 0 0 13%;
 }
+.facetwp-type-autocomplete .fcomplete-wrap {
+    display: none;
+}
 .general-cerca-facetwp-container .cy-facetwp-cerca-quando .facetwp-autocomplete-update {
     padding: 5px 10px;
     margin-top: 40px;
@@ -1870,12 +1889,16 @@ h4.tripSearch {
 .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .webmapp_post_image {
     height: 300px !important;
     border-radius: 20px 0 0 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .webmapp_post_image .webmapp_post_meta {
     height: 100%;
     display: grid;
     align-items: end;
     background-color: rgb(0 0 0 / 20%);
+    border-radius: 20px 0 0 20px;
 }
 
 .wm_template_advancedsearch .single-post-wm {
@@ -2204,10 +2227,10 @@ span.route_duration_free {
 /* Oneclick form modals */
 
 
-.ocm-participants-container, .ocm-bikes-container {
+.ocm-participants-container, .ocm-bikes-container, .dp_add_variation_container, .dp_add_product_container, .ocm-single-container, .dp_add_extra_container {
     display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 1100;
     left: 0;
     top: 0;
     height: 100%;
@@ -2229,7 +2252,7 @@ span.route_duration_free {
 
 /* popups design in desktop mode */
 @media screen and (max-width: 767px) {
-    .ocm-participants-content, .ocm-bikes-content{
+    .ocm-participants-content, .ocm-bikes-content, .ocm-single-content{
         margin: 0;
         padding: 4%;
         background-color: #fff;
@@ -2247,7 +2270,7 @@ span.route_duration_free {
     }
 }
 @media screen and (min-width: 768px) { 
-    .ocm-participants-content, .ocm-bikes-content{
+    .ocm-participants-content, .ocm-bikes-content, .ocm-single-content{
         position: relative;
         margin: calc( 50vh - 200px) auto;
         background-color: #fff;
@@ -2258,6 +2281,9 @@ span.route_duration_free {
         animation-duration: var(--modal-duration);
         border-radius: 10px;
         padding: 30px 30px;
+    }
+    .dp_add_product_container .ocm-participants-content{
+        margin: calc( 40vh - 200px) auto;
     }
     .search-page-description-mobile p, .search-page-description-mobile h3 {
         text-align: center;
@@ -2366,7 +2392,12 @@ div.selected {
     color: #888;
     cursor: pointer;
 }
-
+.disable {
+    cursor: not-allowed;
+}
+#oc-single i {
+    vertical-align: initial;
+}
 .oc-input-btn:hover{
     background-color: #f5f5f5;
 }
@@ -2374,17 +2405,17 @@ div.selected {
     text-align: center;
     line-height: 36px;
 }
-.ocm-participants-body, .ocm-bikes-body {
+.ocm-participants-body, .ocm-bikes-body, .ocm-single-body {
     display: grid;
     grid-template-columns: 8fr 1fr 1fr 1fr;
     padding: 10px 0;
 }
-.ocm-participants-header, .ocm-bikes-header {
+.ocm-participants-header, .ocm-bikes-header, .ocm-single-header {
     display: flex;
     justify-content: space-between;
     padding: 15px 0;
 }
-.ocm-participants-header h2, .ocm-bikes-header h2{
+.ocm-participants-header h2, .ocm-bikes-header h2, .ocm-single-header h2{
     color: #1a1a1a;
     font-size: 26px;
 }
@@ -2409,7 +2440,7 @@ div#oc-kid-age-container {
     appearance: none;
     background: url(https://cyclando.com/wp-content/uploads/2020/09/down-arrow.png) 94% / 5% no-repeat;
 }
-.oc-participants-done-btn, .oc-bikes-done-btn {
+.oc-participants-done-btn, .oc-bikes-done-btn,.oc-single-done-btn {
     width: 100%;
     text-align: center;
     background-color: var(--color-secondary);
@@ -2420,7 +2451,7 @@ div#oc-kid-age-container {
     margin-top: 30px;
     cursor: pointer;
 }
-.oc-participants-done-btn:hover, .oc-bikes-done-btn:hover {
+.oc-participants-done-btn:hover, .oc-bikes-done-btn:hover, .oc-single-done-btn:hover {
     background-color: var(--color-secondary-hover);
 }
 .oc-proceed-done-btn {
@@ -2437,7 +2468,7 @@ div#oc-kid-age-container {
 .oc-proceed-done-btn:hover {
     background-color: var(--color-secondary-hover);
 }
-.regular-label i, .ebike-label i {
+.regular-label i, .ebike-label i, .single-label i {
     font-size:40px;
 }
 
@@ -2709,4 +2740,58 @@ div#searchpage-form-holder-mobile {
         box-shadow: 0px -1px 7px -1px rgb(50 50 50 / 70%);
         transition: all .3s ease;
     }
+}
+
+.ui-datepicker-calendar td:not(.ui-datepicker-other-month).ui-state-disabled {
+    text-decoration: line-through;
+    text-decoration-color: #555;
+}
+
+/* custom css for cerca page spinner preload */
+.cerca-results-preload-spinner {
+    text-align: center;
+    font-size: 25px;
+    color: var(--color-primary);
+    height: 600px;
+}
+.general-cerca-facetwp-container {
+    display: none;
+}
+
+/* active promo cyclando */
+.active-promo {
+    background-color: #274690;
+    box-shadow: 0px 2px 10px rgb(0 0 0 / 30%);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+.active-promo .promo-wrapper{
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    padding: 10px 0;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    justify-content: center;
+    font-family: var(--font-family-primary);
+}
+.active-promo i{
+    padding: 0 10px;
+}
+.active-promo .promo-icon{
+    align-items: center;
+    display: flex;
+}
+@media (min-width: 900px) {
+    .headerwithpromo.sticky {
+        top: 48px!important;
+    }
+}
+@media (max-width: 899px) {
+    .headerwithpromo.sticky {
+        top: 76px!important;
+    } 
 }
