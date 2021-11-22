@@ -75,14 +75,14 @@ function route_mobile_tab_plan($atts) {
             <?php } ?>
             <p class="oc-route-mobile-search-form-label-p"><?php echo __('Select the number of participants and bikes', 'wm-child-cyclando'); ?></p>
             <div class="oc-route-mobile-search-form-asbb-wrapper">
-                <?= do_shortcode("[oneclick_search_form_participants route='true' has_kids='$has_kids' min_kid_age='$min_kid_age']")?>
-            <?php if ($has_single) { ?>
-                <?= do_shortcode("[oneclick_search_form_single route='true']")?>
-            <?php } ?>
+                <?= do_shortcode("[oneclick_route_search_form_participants route='true' has_kids='$has_kids' min_kid_age='$min_kid_age']")?>
             <?php if ($has_bike || $has_ebike) { ?>
-                <?= do_shortcode("[oneclick_search_form_bikes route='true' has_bike='$has_bike' has_ebike='$has_ebike' ]")?>
+                <?= do_shortcode("[oneclick_route_search_form_bikes route='true' has_bike='$has_bike' has_ebike='$has_ebike' ]")?>
             <?php } else { ?>
                 <div class="oc-input-btn selected bikes-included"><?php echo __('Bikes are included','wm-child-cyclando'); ?></div>
+            <?php } ?>
+            <?php if ($has_single) { ?>
+                <?= do_shortcode("[oneclick_route_search_form_single route='true']")?>
             <?php } ?>
             </div>
             <div class="oc-route-mobile-plan-summary-container">

@@ -2156,10 +2156,6 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
     text-align: right;
 }
 .oc-route-mobile-search-form-asbb-wrapper {
-    display: grid;
-    grid-column-gap: 15px;
-    grid-row-gap: 15px;
-    grid-template-columns:1fr 1fr;
 }
 .w-tabs-section {
     width: 100%;

@@ -2433,6 +2433,12 @@ div#oc-kid-age-container {
     row-gap: 15px;
     margin-top: 20px;
 }
+.oc-route-mobile-search-form-asbb-wrapper div#oc-kid-age-container {
+    margin-top: 0px;
+}
+.oc-route-mobile-search-form-asbb-wrapper div#oc-kid-age-container {
+    grid-template-columns: 1fr 1fr 1fr;
+}
 .oc-kid-age-input-wrapper select{
     background-color: #fff;
     border-radius: 20px;
@@ -2484,7 +2490,10 @@ div#oc-kid-age-container {
 .regular-label i, .ebike-label i, .single-label i {
     font-size:40px;
 }
-
+.ocm-bikes-content .regular-label, .ocm-bikes-content .ebike-label {
+    display: flex;
+    align-items: center;
+}
 /* search page modal popup form */
 #searchpage-form-oneclick-mobile {
     display: none;

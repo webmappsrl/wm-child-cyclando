@@ -35,20 +35,6 @@ function oneclick_route_form_category($atts) {
         }
         ?>
     </div> 
-    <script>
-    (function ($) {
-        $(document).ready(function () {
-            $( function() {
-                $('.category-select-holder input').on('change', function() {
-                    var savedCookie = ocmCheckCookie();
-                    savedCookie['category'] = this.value;
-                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
-                    ajaxUpdatePrice();
-                });
-            });
-        });
-    })(jQuery);
-    </script>
     <?php
 
 

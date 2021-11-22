@@ -727,6 +727,13 @@ get_header();
             });
             jQuery(".category-select-holder").html(options);
             updateYourReservationSummaryTxt(savedCookie);
+
+            jQuery('input[type=radio][name=categoryName]').click(function() {
+                var savedCookie = ocmCheckCookie();
+                savedCookie['category'] = this.value;
+                Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+                ajaxUpdatePrice();
+            });
         }
 
         // old function - not in use - for single room dropdown
