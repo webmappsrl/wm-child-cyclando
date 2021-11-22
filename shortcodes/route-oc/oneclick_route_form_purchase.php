@@ -49,7 +49,7 @@ function oneclick_route_form_purchase($atts) {
         <div class="ocm-proceed-content">
             <?= do_shortcode('[onclick_route_mobile_calculator_header back_btn="back-calculator" scheda_name="extras"]')?>
             <?php if ($has_extra) { ?>
-            <div class="ocm-extras-nocond-title"><?php echo __('Do you want to add more?', 'wm-child-cyclando'); ?></div>
+            <h4 class="form-lable ocm-extras-nocond-title"><?php echo __('Do you want to add more?', 'wm-child-cyclando'); ?></h4>
             <div class="ocm-extras-proceed-detail-container">
 
             </div>
@@ -60,7 +60,7 @@ function oneclick_route_form_purchase($atts) {
             // if ($has_single || $hotel_product_items) { 
             ?>
             <?php if ( false) { ?>
-            <div class="ocm-extras-nocond-title"><?php echo __('Supplements', 'wm-child-cyclando'); ?></div>
+            <h4 class="form-lable ocm-extras-nocond-title"><?php echo __('Supplements', 'wm-child-cyclando'); ?></h4>
             <div class="ocm-extras-cond-disclaimer"><?php echo __('Subject to availability check. We will send you an email with the confirmation of availability and the price of the supplement', 'wm-child-cyclando'); ?></div>
             <div class="ocm-hotel-proceed-detail-container">
                 <?php if ($has_single) {
@@ -70,7 +70,7 @@ function oneclick_route_form_purchase($atts) {
             <?php } ?>
             <div class="ocm-extras-proceed-summary-container">
                 <div class="oc-route-mobile-plan-price-container">
-                    <div class="cifraajax-title"><?= __('Total', 'wm-child-cyclando') ?></div><div class="cifraajax"></div>
+                    <div class="cifraajax-title"><?= __('Extra Total', 'wm-child-cyclando') ?></div><div class="cifraajaxextra"></div>
                 </div>
                 <div class="oc-route-mobile-plan-exclusive-online">
                     <div class="exclusive-online-title"><?= __('Online Exclusive!', 'wm-child-cyclando') ?></div>

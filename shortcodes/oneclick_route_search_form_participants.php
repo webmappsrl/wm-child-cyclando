@@ -76,6 +76,7 @@ function oneclick_route_search_form_participants($atts) {
                     $('#ocm-partecipants-adult-number').text(2 + ' ');
                     $("#oc-participants-adult").addClass('selected');
                     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+                    rooms = calculateSingleRoomNum(savedCookie['adults']);
                 }
                 if (parseInt(savedCookie['kids']) > 0) {
                     $('#kid-participants').text(parseInt(savedCookie['kids']));
@@ -89,6 +90,7 @@ function oneclick_route_search_form_participants($atts) {
                         $('#oc-kid-age-select-'+index).val(value);
                     });
                 }
+                rooms = calculateSingleRoomNum(savedCookie['adults']);
                 var sums = cal_sum_cookies(savedCookie);
                 if (sums['participants'] !== null) {
                     $('#ocm-partecipants-number').html(sums['participants'] + ' ');
@@ -121,6 +123,8 @@ function oneclick_route_search_form_participants($atts) {
                         savedCookie['adults'] = num;
                         $("#ocm-warning-container").empty();
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+                        rooms = calculateSingleRoomNum(savedCookie['adults']);
+                        updatePriceOnEachChange();
                     }
                     if ($(e.target).attr('name') == 'kid-participants') {
 
@@ -155,8 +159,8 @@ function oneclick_route_search_form_participants($atts) {
                                 '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Kids number can not be more than 3 times of adults','wm-child-cyclando'); ?></div>'
                             );
                         }
+                        updatePriceOnEachChange();
                     }
-                    updatePriceOnEachChange();
                 });
             });
             
@@ -178,6 +182,8 @@ function oneclick_route_search_form_participants($atts) {
                             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         }
                         $("#ocm-warning-container").empty();
+                        rooms = calculateSingleRoomNum(savedCookie['adults']);
+                        updatePriceOnEachChange();
                     }
                     if ($(e.target).attr('name') == 'kid-participants') {
                         if (count <= parseInt($('#adult-participants').text()) * 3) {
@@ -196,11 +202,11 @@ function oneclick_route_search_form_participants($atts) {
                                 '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Kids number can not be more than 3 times of adults','wm-child-cyclando'); ?></div>'
                             );
                         }
+                        updatePriceOnEachChange();
                     }
                     if (count < 0 ) {
                         delete savedCookie['kids'];
                     }
-                    updatePriceOnEachChange();
                 });
             });
 

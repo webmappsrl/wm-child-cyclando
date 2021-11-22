@@ -87,12 +87,13 @@ function oneclick_route_search_form_bikes($atts) {
                     if ($(e.target).attr('name') == 'regular-bikes') {
                         savedCookie['regular'] = num;
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+                        updatePriceOnEachBikeSelect();
                     }
                     if ($(e.target).attr('name') == 'electric-bikes') {
                         savedCookie['electric'] = num;
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+                        updatePriceOnEachBikeSelect();
                     }
-                    updatePriceOnEachBikeSelect();
                 });
             });
             //Substract button
@@ -114,6 +115,7 @@ function oneclick_route_search_form_bikes($atts) {
                             delete savedCookie['regular'];
                             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         }
+                        updatePriceOnEachBikeSelect();
                     }
                     if ($(e.target).attr('name') == 'electric-bikes') {
                         if (count > 0 ) {
@@ -123,8 +125,8 @@ function oneclick_route_search_form_bikes($atts) {
                             delete savedCookie['electric'];
                             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         }
+                        updatePriceOnEachBikeSelect();
                     }
-                    updatePriceOnEachBikeSelect();
                 });
             });
             

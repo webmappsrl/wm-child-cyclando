@@ -642,6 +642,7 @@ get_header();
     <!-- END HTML modal for contact in route -->
     <script>
         var post_id = '<?= $post_id ?>';
+        var rooms = [];
         var departureArrays = <?php echo json_encode($start_array)?>;
         var start_arraydFY = <?php echo json_encode($start_arraydFY)?>;
         var start_arrayYmd = <?php echo json_encode($start_arrayYmd)?>;
@@ -669,9 +670,11 @@ get_header();
                 data: data,
                 beforeSend: function(){
                     jQuery(".cifraajax").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
+                    jQuery(".cifraajaxextra").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
                 },
                 success : function( response ) {
                     jQuery(".cifraajax").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
+                    jQuery(".cifraajaxextra").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
                 },
                 complete:function(response){
                     var addtocart = '';
@@ -695,6 +698,9 @@ get_header();
                         );
                         savedCookie['deposit'] = obj.deposit;
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+                    }
+                    if (obj.extratotal) {
+                        jQuery(".cifraajaxextra").html(obj.extratotal["euro"]+',<span class="cents">'+obj.extratotal["cent"]+'</span>'+'€');
                     }
                     if (obj.depositaddtocart) {
                         addtocart = obj.depositaddtocart;

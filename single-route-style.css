@@ -2198,12 +2198,12 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
 .deposit-title {
     font-size: 17px;
 }
-.cifraajax {
+.cifraajax, .cifraajaxextra  {
     text-align: right;
     font-size: 24px;
     font-weight: 600;
 }
-.cifraajax span.cents {
+.cifraajax span.cents, .cifraajaxextra span.cents{
     font-size: 19px;
 }
 .depositajax span.cents {
@@ -2257,10 +2257,6 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
     min-height: 58px;
 }
 .ocm-extras-nocond-title {
-    font-family: var(--font-family-primary);
-    font-size: 24px;
-    font-weight: 500;
-    letter-spacing: 0;
     padding: 15px 15px 0;
 }
 
@@ -2668,7 +2664,7 @@ h4.form-lable {
         background: url(/wp-content/themes/wm-child-cyclando/assets/images/arrow-up.png) 95% / 2% no-repeat #fff!important;
     }
 }
-.cifraajax .w-iconbox-icon i,.submit-loader .w-iconbox-icon i {
+.cifraajax .w-iconbox-icon i,.submit-loader .w-iconbox-icon i,.cifraajaxextra .w-iconbox-icon i {
     padding: 0!important;
     color: var(--color-tab-background);
     font-size: 20px;

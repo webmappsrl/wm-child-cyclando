@@ -143,6 +143,7 @@ class routeProductsOC {
 
         $addToCart = array();
         $deposit = 0;
+        $extratotal = 0;
         $percentToGet = 25;
         $percentInDecimal = $percentToGet / 100;
 
@@ -202,6 +203,7 @@ class routeProductsOC {
                 foreach ($has_extra as $label => $num) {
                     if ($label !== 'single_room_paid') {
                         $this->price += $extra[$label]['price'] * intval($num);
+                        $extratotal += $extra[$label]['price'] * intval($num);
                         $addToCart[] = $extra[$label]['id'] . ':' . $num;
                     }
                 }
@@ -228,6 +230,11 @@ class routeProductsOC {
             $object['deposit']['euro'] = explode(',',$depositToFormat)[0];
             $object['deposit']['cent'] = explode(',',$depositToFormat)[1];
             $object['depositaddtocart'] = $this->createDepositProduct($this->price,$deposit);
+        }
+        if ($extratotal) {
+            $extratotalToFormat = number_format($extratotal, 2, ',', '.');
+            $object['extratotal']['euro'] = explode(',',$extratotalToFormat)[0];
+            $object['extratotal']['cent'] = explode(',',$extratotalToFormat)[1];
         }
         return $object;
     }

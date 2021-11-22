@@ -24,7 +24,7 @@ require ('shortcodes/oneclick_search_form_participants.php');
 require ('shortcodes/oneclick_route_search_form_participants.php');
 require ('shortcodes/oneclick_search_form_bikes.php');
 require ('shortcodes/oneclick_route_search_form_bikes.php');
-require ('shortcodes/oneclick_search_form_single.php');
+// require ('shortcodes/oneclick_search_form_single.php');
 require ('shortcodes/oneclick_route_search_form_single.php');
 require ('shortcodes/route-tabs/route-mobile-tab-includes.php');
 require ('shortcodes/route-tabs/route-mobile-tab-plan.php');
