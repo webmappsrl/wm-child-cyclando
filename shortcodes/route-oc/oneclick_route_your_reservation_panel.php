@@ -20,6 +20,12 @@ function oneclick_route_your_reservation_panel($atts)
     if ($has_extra['ebike']) {
         unset($has_extra['ebike']);
     }
+
+    if ($has_extra) {
+        $back_btn = 'back-extras';
+    } else {
+        $back_btn = 'back-calculator';
+    }
     if (defined('ICL_LANGUAGE_CODE')) {
         $language = ICL_LANGUAGE_CODE;
     } else {
@@ -28,6 +34,7 @@ function oneclick_route_your_reservation_panel($atts)
     ob_start();
 
 ?>
+    <?= do_shortcode('[onclick_route_mobile_calculator_header back_btn="'.$back_btn.'" scheda_name="reservation"]')?>
     <div class="oc-route-your-reservation-row oc-route-your-reservation-header">
         <div class="oc-route-your-reservation-column-title oc-route-your-reservation-title">
             <h4 class="form-lable"><?php echo __('Your reservation', 'wm-child-cyclando'); ?></h4>

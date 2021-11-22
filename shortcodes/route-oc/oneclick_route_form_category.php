@@ -21,24 +21,25 @@ function oneclick_route_form_category($atts) {
 
     ?>
     <div class="category-select-holder oc-route-select-holder">
-        <select>
-            <option selected="selected" disabled="disabled"><?= __('Select a category', 'wm-child-cyclando') ?></option>
+        <p class="oc-route-mobile-search-form-label-p"><?php echo __('Select a category', 'wm-child-cyclando'); ?></p>
         <?php 
         if ($categories) { 
-            foreach ($categories as $hotel) {
-        ?>
-                <option value="<?= $hotel ?>"><?= $hotel ?></option>
-        <?php 
+            foreach ($categories as $name => $hotel) {
+                ?>
+                <div class="category-radio-wrapper">
+                    <input type="radio" id="<?= $name ?>" name="categoryName" value="<?= $name ?>">
+                    <label for="<?= $name ?>"><?= $name ?></label>
+                </div>
+                <?php 
             } 
         }
         ?>
-        </select>
     </div> 
     <script>
     (function ($) {
         $(document).ready(function () {
             $( function() {
-                $('.category-select-holder select').on('change', function() {
+                $('.category-select-holder input').on('change', function() {
                     var savedCookie = ocmCheckCookie();
                     savedCookie['category'] = this.value;
                     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });

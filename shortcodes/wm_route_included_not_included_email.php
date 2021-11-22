@@ -23,7 +23,7 @@ function wm_route_included_not_included_email($post_id) {
     ?>
     <div class="extra-quotes oc-mobile-included-not-included-container">
         <p class="tab-section wm-included-label"> 
-            <i class="wm-icon-checkmark-circled"></i>
+            <i class="fas fa-check-circle"></i>
             <?php
             echo __('Included: ' ,'wm-child-cyclando');?>
         </p>
@@ -71,7 +71,7 @@ function wm_route_included_not_included_email($post_id) {
             </tbody>
         </table>
         <p class="tab-section wm-not-included-label"> 
-            <i class="wm-icon-close-circled"></i>                                
+            <i class="fas fa-times-circle"></i>                               
             <?php
             echo __('Not Included: ' ,'wm-child-cyclando');?>
         </p>

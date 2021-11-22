@@ -1,0 +1,96 @@
+@font-face {
+  font-family: 'webmapp';
+  src:  url('fonts/webmapp.eot?pfpg98');
+  src:  url('fonts/webmapp.eot?pfpg98#iefix') format('embedded-opentype'),
+    url('fonts/webmapp.ttf?pfpg98') format('truetype'),
+    url('fonts/webmapp.woff?pfpg98') format('woff'),
+    url('fonts/webmapp.svg?pfpg98#webmapp') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="wm-icon-"], [class*=" wm-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'webmapp' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wm-icon-cyc_di-gruppo:before {
+  content: "\ea6b";
+}
+.wm-icon-cyc-share:before {
+  content: "\ea69";
+}
+.wm-icon-cyc_cyclando:before {
+  content: "\ea68";
+}
+.wm-icon-cyc_bici-da-corsa:before {
+  content: "\ea54";
+}
+.wm-icon-cyc_bici-e-barca:before {
+  content: "\ea55";
+}
+.wm-icon-cyc_bici:before {
+  content: "\ea56";
+}
+.wm-icon-cyc_city-tours:before {
+  content: "\ea57";
+}
+.wm-icon-cyc_con-guida:before {
+  content: "\ea58";
+}
+.wm-icon-cyc_difficolta1:before {
+  content: "\ea59";
+}
+.wm-icon-cyc_difficolta2:before {
+  content: "\ea5a";
+}
+.wm-icon-cyc_e-bike:before {
+  content: "\ea5b";
+}
+.wm-icon-cyc_gravel:before {
+  content: "\ea5c";
+}
+.wm-icon-cyc_in-famiglia1:before {
+  content: "\ea5d";
+}
+.wm-icon-cyc_in-famiglia2:before {
+  content: "\ea5e";
+}
+.wm-icon-cyc_localita:before {
+  content: "\ea5f";
+}
+.wm-icon-cyc_mtb:before {
+  content: "\ea60";
+}
+.wm-icon-cyc_percorso-a-margherita:before {
+  content: "\ea61";
+}
+.wm-icon-cyc_percorso-ad-anello:before {
+  content: "\ea62";
+}
+.wm-icon-cyc_percorso-lineare:before {
+  content: "\ea63";
+}
+.wm-icon-cyc_self-guided:before {
+  content: "\ea64";
+}
+.wm-icon-cyc_trekking1:before {
+  content: "\ea65";
+}
+.wm-icon-cyc_trekking2:before {
+  content: "\ea66";
+}
+.wm-icon-cyc_weekend:before {
+  content: "\ea67";
+}

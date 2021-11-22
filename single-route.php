@@ -53,6 +53,8 @@ get_header();
 				array_push($gallery_ids, $gallery_item['ID']);
 			}
 		}
+        array_unshift($gallery_ids, get_post_thumbnail_id($post_id));
+
 		//checks if it has promotion and creates a list of dates of promotion period
 		$in_promotion_active = get_field('wm_route_in_promotion');
 		$in_promotion = false;
@@ -250,17 +252,7 @@ get_header();
         $home_site = preg_replace("/https?:\/\//", "", $home_site);
         if ($language == 'en') {
             $home_site = str_replace("/en/", "", $home_site);
-        }
-
-        $route_has_geojson = URL_exists("https://a.webmapp.it/cyclando.com/geojson/$wm_post_id.geojson");
-        $featured_image = get_the_post_thumbnail_url($post_id,'us_600_0');
-        if (! $featured_image) {
-            $featured_image = get_the_post_thumbnail_url($post_id,'large');
-            if (!$featured_image) {
-                $featured_image = wp_get_attachment_image_src($gallery_ids[0],'us_600_0');
-                $featured_image = $featured_image[0];
-            }
-        }
+        }        
 
         // get the extra fields for extra popup 
         $has_extra = route_has_extra_category($wm_post_id);
@@ -296,189 +288,156 @@ get_header();
 	?>
 
     <!-- Start new template -->
-    <!-- Start section introduction and gallery -->
-    <section class="l-section wpb_row height_auto cyc-single-route-introduction-container cyc-route-introduction-mobile" style="background-image:url(<?= $featured_image ?>);">
+    
+    <!-- START section GRID START  -->
+    <section class="l-section wpb_row height_auto cyc-route-main-container">
         <div class="l-section-h i-cf">
             <div class="g-cols vc_row type_default valign_top">
                 <div class="vc_col-sm-12 wpb_column vc_column_container">
-                    <div class="vc_column-inner">
-                        <div class="wpb_wrapper cyc-route-mobile-introduction-wrapper">
-                            <div class="cyc-route-mobile-introduction-days">
-                                <p><?= ($days) ? $days_info : '' ?></p>
-                                <p class="cyc-introduction-days-seperator">-</p>
-                                <p><?= ($distance) ? $distance_info : '' ?></p>
-                            </div>
-                            <div class="cyc-single-route-breadcrumb-wrapper">
-                                <div class="breadcrumb-rankmath">
-                                    <?php echo do_shortcode('[rank_math_breadcrumb]'); ?></div>
-                            </div>
-                            <div class="cyc-route-mobile-introduction-title">
-                                <?php 
-                                    if ($places_to_go_list) {
-                                        foreach ($places_to_go_list as $count => $place) {
-                                            if ($count == 0) {
-                                                echo "<span class='meta-txt-strong'>$place</span>";
-                                            } elseif ($count == 1) {
-                                                echo "<span class='meta-txt-light'>, $place</span>";
-                                            } 
-                                        }
-                                        if (count($places_to_go_list) >= 3) {
-                                            echo "<a class='show-more-places tooltips' href='#!'> ... <span>";
-                                            foreach ($places_to_go_list as $count => $name) {
-                                                if ($count >= 2) {
-                                                    echo $name . '<br>';
+                    <div class="vc_column-inner cyc-route-main-column-inner">
+                        <div class="wpb_wrapper">
+                            <div class="wpb_text_column cyc-route-container">
+                                <div class="wpb_wrapper cyc-route-sidebar">
+                                    <div class="route-calculator-wrapper">
+                                        <?= do_shortcode('[route_mobile_tab_plan post_id="'.$wm_post_id.'" hotel_product_items="'.$json_hotel_product_items.'" has_extra="'.$has_extra.'" first_departure="'.$first_departure_date_ajax_dormatdmY.'"]')?>
+                                    </div>
+                                </div>
+                                <div class="wpb_wrapper cyc-route-grid-wrapper">
+                                    <div class="cyc-single-route-breadcrumb-wrapper">
+                                        <div class="breadcrumb-rankmath">
+                                            <?php echo do_shortcode('[rank_math_breadcrumb]'); ?></div>
+                                    </div>
+                                    <div class="cyc-route-mobile-introduction-title">
+                                        <?php 
+                                            if ($places_to_go_list) {
+                                                foreach ($places_to_go_list as $count => $place) {
+                                                    if ($count == 0) {
+                                                        echo "<span class='meta-txt-strong'>$place</span>";
+                                                    } elseif ($count == 1) {
+                                                        echo "<span class='meta-txt-light'>, $place</span>";
+                                                    } 
+                                                }
+                                                if (count($places_to_go_list) >= 3) {
+                                                    echo "<a class='show-more-places tooltips' href='#!'> ... <span>";
+                                                    foreach ($places_to_go_list as $count => $name) {
+                                                        if ($count >= 2) {
+                                                            echo $name . '<br>';
+                                                        }
+                                                    }
+                                                    echo "</span></a>";
                                                 }
                                             }
-                                            echo "</span></a>";
-                                        }
-                                    }
-                                ?>
-                                <h1 class=""><?php the_title() ?></h1>
-                            </div>
-
-                            <div class="cyc-route-mobile-introduction-icons">
-                                <p id="cyc-single-route-mobile-gallery-button" class="cyc-single-route-monarch-share cyc-single-route-gallery-btn">
-                                    <i class="fal fa-images"></i>
-                                </p>
-                                <p id="cyc-single-route-monarch-share-button" class="cyc-single-route-monarch-share">
-                                    <i class="material-icons">ios_share</i>
-                                </p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- END section introduction andgalery END  -->
-    <div class="cyc-route-taxonomy-tab-row-container">
-        <!-- START section taxonomies and difficulty block START  -->
-        <div class="cyc-route-mobile-taxonomy-container">
-            <!-- START PRICE popup only for administrators -->
-            <?php if ( current_user_can('administrator') ) { ?>
-                <div id="popup-show-prices" class="cy-btn-contact">
-                    <p class="prezzo-container">
-                        <?php echo __('Dates & prices', 'wm-child-cyclando') ?>
-                    </p>
-                </div>
-            <?php } ?>
-            <!-- END PRICE popup only for administrators -->
-            <div class="cyc-route-mobile-taxonomy-container-sticky">
-                <div class="cyc-route-taxonomy-row-wrapper">
-                    <div class="cyc-route-mobile-taxonomy-activity-wrapper">
-                        <p class='meta-bar-txt-strong'>
-                            <?php
-                            echo __('Activity', 'wm-child-cyclando')
-                            ?>
-                        </p>
-                        <?php if ($array_activity) { 
-                            foreach ($array_activity as $activity => $icon) { ?>
-                                <div class="meta-bar-taxonomy-container">
-                                    <p class='meta-bar-txt-light'>
-                                        <?php
-                                        echo $activity;
                                         ?>
-                                    </p>
-                                </div>
-                        <?php }
-                        } ?>
-                    </div>
-                    <div class="cyc-route-mobile-taxonomy-target-wrapper">
-                        <p class='meta-bar-txt-strong'>
-                            <?php
-                            echo __('Tour', 'wm-child-cyclando')
-                            ?>
-                        </p>
-                        <?php if ($array_target) { 
-                            foreach ($array_target as $target => $icon) { ?>
-                                <div class="meta-bar-taxonomy-container">
-                                    <p class='meta-bar-txt-light'>
-                                        <?php
-                                        echo $target;
-                                        ?>
-                                    </p>
-                                </div>
-                        <?php }
-                        } ?>
-                    </div>
-                    <div class="cyc-route-mobile-taxonomy-shape-wrapper">
-                        <p class='meta-bar-txt-strong'>
-                            <?php
-                            echo __('Itinerary', 'wm-child-cyclando')
-                            ?>
-                        </p>
-                        <?php if ($shape) { ?>
-                                <div class="meta-bar-taxonomy-container">
-                                    <p class='meta-bar-txt-light'>
-                                        <?php
-                                        $title_path = $array = [
-                                            'daisy' => 'A margherita',
-                                            'linear' => 'Lineare',
-                                            'roundtrip' => 'Ad anello'
-                                        ];
-                                        if ($language == 'it') {
-                                            echo __($title_path[$shape], "wm-child-cyclando");
-                                        } else {
-                                            echo __($shape, "wm-child-cyclando");
-                                        }
-                                        ?>
-                                    </p>
-                                </div>
-                        <?php 
-                        } ?>
-                    </div>
-                    <div class="cyc-route-mobile-taxonomy-difficulty-wrapper">
-                        <p class='meta-bar-txt-strong'>
-                            <?php
-                            echo __('Difficulty', 'wm-child-cyclando')
-                            ?>
-                        </p>
-                        <?php if ($difficulty) { ?>
-                                <div class="meta-bar-taxonomy-container">
-                                    <p class='meta-bar-txt-light'>
-                                        <?php
-                                        echo $difficulty. ' ' . __('out of 5', 'wm-child-cyclando');
-                                        ?>
-                                    </p>
-                                </div>
-                        <?php
-                        } ?>
-                    </div>
-                </div>
-                <div class="cyc-route-mobile-introduction-gallery">
-                    <div class="cyc-route-mobile-gallery-container">
-                        <?php if ($gallery_ids) {
-                            echo do_shortcode('[us_image_slider ids="' . implode(',', $gallery_ids) . '" fullscreen="1" img_size="large" arrows="hide" nav="dots"]');
-                        } ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END section taxonomies and difficulty block END  -->
-        
-        <!-- START section Second menu Tab START  -->
-        <div class="cyc-route-mobile-tab-container">
-            <?php 
-            echo do_shortcode('[vc_tta_tabs][vc_tta_section active="1" tab_id="1615221700207-6345d186-4e71" el_class="oc-tab-plan" title="'.__('Plan', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_plan post_id="'.$wm_post_id.'" hotel_product_items="'.$json_hotel_product_items.'" has_extra="'.$has_extra.'" first_departure="'.$first_departure_date_ajax_dormatdmY.'"][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221700263-b2f1f133-a833" el_class="oc-tab-program" title="'.__('Program', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_program program="'.$program.'" has_track="'.$has_track_program.'" route_has_geojson="'.$route_has_geojson.'" home_site="'.$home_site.'" post_id="'.$wm_post_id.'" language="'.$language.'"][/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1615221704269-1b7373dd-65c0" el_class="oc-tab-includes" title="'.__('Includes', 'wm-child-cyclando').'"][vc_column_text][route_mobile_tab_includes post_id="'.$post_id.'"][/vc_column_text][/vc_tta_section][/vc_tta_tabs]');
-            ?>
-        </div>
-        <!-- END section Second menu Tab END  -->
-    </div>
-    <!-- START section Description START  -->
-    <section class="l-section wpb_row height_small cyc-single-route-description-container oc-single-route-mobile-description-container">
-        <div class="l-section-h i-cf">
-            <div class="g-cols vc_row type_default valign_top">
-                <div class="vc_col-sm-9 wpb_column vc_column_container">
-                    <div class="vc_column-inner">
-                        <div class="wpb_wrapper">
-                            <div class="wpb_text_column">
-                                <div class="wpb_wrapper cyc-single-route-description-wrapper">
-                                    <?php
-										echo "<p class='route-excerpt'>" . get_the_excerpt() . "</p>";
-										echo get_the_content();
-										?>
+                                        <h1 class=""><?php the_title() ?></h1>
+                                    </div>
+                                    <div class="route-duration-distance-share-wrapper">
+                                        <div class="cyc-route-mobile-introduction-days">
+                                            <p><?= ($days) ? __('Duration', 'wm-child-cyclando').': <strong>'.$days_info.'</strong>' : '' ?></p>
+                                            <?php if ($days && $distance) { ?>
+                                                <p class="cyc-introduction-days-seperator"> </p>
+                                            <?php } ?>
+                                            <p><?= ($distance) ? __('Distance', 'wm-child-cyclando').': <strong>'.$distance_info.'</strong>' : '' ?></p>
+                                        </div>
+                                        <div class="cyc-route-mobile-introduction-icons">
+                                            <p id="cyc-single-route-monarch-share-button" class="cyc-single-route-monarch-share">
+                                                 <i class="fas fa-share-square"></i>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!-- START section taxonomies and difficulty block START  -->
+                                    <div class="cyc-route-taxonomy-tab-row-container">
+                                        <div class="cyc-route-mobile-taxonomy-container">
+                                            <!-- START PRICE popup only for administrators -->
+                                            <?php if ( current_user_can('administrator') ) { ?>
+                                                <div id="popup-show-prices" class="cy-btn-contact">
+                                                    <p class="prezzo-container">
+                                                        <?php echo __('Dates & prices', 'wm-child-cyclando') ?>
+                                                    </p>
+                                                </div>
+                                            <?php } ?>
+                                            <!-- END PRICE popup only for administrators -->
+                                            <div class="cyc-route-taxonomy-container">
+                                                <div class="cyc-route-taxonomy-row-wrapper">
+                                                    <?php if ($array_activity) { 
+                                                        foreach ($array_activity as $activity => $icon) { ?>
+                                                            <div class="meta-bar-taxonomy-container">
+                                                                <i class="<?= $icon ?>"></i>
+                                                                <p class='meta-bar-txt-light'>
+                                                                    <?php
+                                                                    echo $activity;
+                                                                    ?>
+                                                                </p>
+                                                            </div>
+                                                    <?php }
+                                                    } ?>
+                                                    <?php if ($array_target) { 
+                                                        foreach ($array_target as $target => $icon) { ?>
+                                                            <div class="meta-bar-taxonomy-container">
+                                                                <i class="<?= $icon ?>"></i>
+                                                                <p class='meta-bar-txt-light'>
+                                                                    <?php
+                                                                    echo $target;
+                                                                    ?>
+                                                                </p>
+                                                            </div>
+                                                    <?php }
+                                                    } ?>
+                                                    <?php if ($shape) { ?>
+                                                            <div class="meta-bar-taxonomy-container">
+                                                                <i class="<?= $icon ?>"></i>
+                                                                <p class='meta-bar-txt-light'>
+                                                                    <?php
+                                                                    $title_path = $array = [
+                                                                        'daisy' => 'A margherita',
+                                                                        'linear' => 'Lineare',
+                                                                        'roundtrip' => 'Ad anello'
+                                                                    ];
+                                                                    if ($language == 'it') {
+                                                                        echo __($title_path[$shape], "wm-child-cyclando");
+                                                                    } else {
+                                                                        echo __($shape, "wm-child-cyclando");
+                                                                    }
+                                                                    ?>
+                                                                </p>
+                                                            </div>
+                                                    <?php 
+                                                    } ?>
+                                                    <?php if ($difficulty) { ?>
+                                                            <div class="meta-bar-taxonomy-container">
+                                                                <i class="wm-icon-cyc_difficolta1"></i>
+                                                                <p class='meta-bar-txt-light'>
+                                                                    <?php
+                                                                    echo $difficulty. ' ' . __('out of 5', 'wm-child-cyclando');
+                                                                    ?>
+                                                                </p>
+                                                            </div>
+                                                    <?php
+                                                    } ?>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- END section taxonomies and difficulty block END  -->
+                                    <div class="cyc-route-mobile-introduction-gallery">
+                                        <div class="cyc-route-mobile-gallery-container">
+                                            <?php if ($gallery_ids) {
+                                                echo do_shortcode('[us_image_slider ids="' . implode(',', $gallery_ids) . '" fullscreen="1" img_size="large"]');
+                                            } ?>
+                                        </div>
+                                    </div>
+                                    <div class="route-program-wrapper section-divider section-extra-padding section-horizontal-padding" id="program">
+                                        <?= "<h3 class='section-h3-label'>" . __('Program', 'wm-child-cyclando') . "</h3>"; ?>
+                                        <?= "<p class='route-excerpt'>" . get_the_excerpt() . "</p>"; ?>
+                                        <?= do_shortcode('[route_mobile_tab_program program="'.$program.'" has_track="'.$has_track_program.'" home_site="'.$home_site.'" post_id="'.$wm_post_id.'" language="'.$language.'"]')?>
+                                    </div>
+                                    <div class="route-includes-wrapper section-divider section-extra-padding section-horizontal-padding">
+                                        <?= "<h3 class='section-h3-label'>" . __('What it includes', 'wm-child-cyclando') . "</h3>"; ?>
+                                        <?= do_shortcode('[route_mobile_tab_includes post_id="'.$post_id.'"]')?>
+                                    </div>
+                                    <div class="section-extra-padding section-horizontal-padding cyc-single-route-description-wrapper">
+                                        <?php echo get_the_content(); ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -487,7 +446,7 @@ get_header();
             </div>
         </div>
     </section>
-    <!-- END section Description block END  -->
+    <!-- END section GRID block END  -->
     <!-- START section Description START  -->
     <?php if ($touroperator) : ?>
     <section class="l-section wpb_row height_small cyc-single-route-tour-operator-container oc-single-route-mobile-tour-operator-container">
@@ -511,6 +470,51 @@ get_header();
     </section>
     <?php endif; ?>
     <!-- END section Description block END  -->
+    <!-- START section cose da sapere FAQ START  -->
+    <section class="wpb_row height_small cyc-single-route-faq-container oc-single-route-mobile-faq-container">
+        <div class="l-section-h i-cf">
+            <div class="vc_row type_default valign_top">
+                <div class="vc_col-sm-12 wpb_column vc_column_container">
+                    <h3 style="text-align: left" class="section-h3-label"><?php echo __('Things to know', 'wm-child-cyclando') ?></h3>
+                </div>
+                <div class="oc-faq-accordion-column-wrapper">
+                <div class="oc-faq-accordion-column">
+					<div class="oc-faq-accordion-column-inner">
+                        <div class="wpb_wrapper">
+                            <h6 style="text-align: left" class="vc_custom_heading"><?php echo __('Bicycles', 'wm-child-cyclando') ?></h6>
+							<?php 
+							echo do_shortcode('[vc_tta_accordion scrolling=""][vc_tta_section tab_id="1603987578996-293b52a0-7a07" title="'.__('Can I bring my own bike?', 'wm-child-cyclando').'"][vc_column_text]'.__('Of course! You can enjoy each tour on your own bike or you can rent one. However, we do recommend renting a bike, because not all bikes have the same parts, so we can only guarantee the best mechanical assistance when you hire directly from us.
+                            ', 'wm-child-cyclando').'[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987709666-e05915db-c8e0" title="'.__('What kind of assistance will I have during the trip?
+                            ', 'wm-child-cyclando').'"][vc_column_text]'.__('You will always have an emergency phone number you can call. On self-guided trips, you will need to be able to make your own minor repairs, such as replacing an inner tube in the event of a puncture, or fixing a slipped chain, but you can always count on assistance on site for more serious damage.', 'wm-child-cyclando').'[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987706680-2cb9135f-e91b" title="'.__('How can I know if a tour matches my level of ability?', 'wm-child-cyclando').'"][vc_column_text]'.__('We rank our tours on a scale of 1 to 5, based on the length, elevation changes and complexity of the itinerary, but if you have any doubts then please feel free to contact us and we will be happy to help you find the trip that is right for you.', 'wm-child-cyclando').'[/vc_column_text][/vc_tta_section][/vc_tta_accordion]')
+							?>
+						</div>
+                    </div>
+                </div>
+                <div class="oc-faq-accordion-column">
+                    <div class="oc-faq-accordion-column-inner">
+                        <div class="wpb_wrapper">
+                            <h6 style="text-align: left" class="vc_custom_heading"><?php echo __('Booking', 'wm-child-cyclando') ?></h6>
+							<?php 
+							echo do_shortcode('[vc_tta_accordion scrolling=""][vc_tta_section tab_id="1603987578996-293b52a0-7a07" title="'.__('How do I book a tour?', 'wm-child-cyclando').'"][vc_column_text]'.__('To book a tour, simply click on "quote", fill in all the fields, and pay the deposit. We will check the tour’s availability with our partners and provide confirmation within a few hours.', 'wm-child-cyclando').'[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987709666-e05915db-c8e0" title="'.__('Why should I book through Cyclando?', 'wm-child-cyclando').'"][vc_column_text]'.__('Because we guarantee you the lowest price, and in the event that your tour is not available or confirmed, you can always request a refund of your deposit or choose another trip from among the over 800 vacations we offer on our platform.', 'wm-child-cyclando').'[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987706680-2cb9135f-e91b" title="'.__('Should I purchase travel insurance?', 'wm-child-cyclando').'"][vc_column_text]'.__('We offer free medical and baggage insurance for all Italian citizens on all our tours. We also recommend that you take out a cancellation policy; please <a href="https://cyclando.com/assicurazione-covid/">click on this link</a> for more information', 'wm-child-cyclando').'[/vc_column_text][/vc_tta_section][/vc_tta_accordion]')
+							?>
+						</div>
+                    </div>
+                </div>
+                <div class="oc-faq-accordion-column">
+					<div class="oc-faq-accordion-column-inner">
+                        <div class="wpb_wrapper">
+                            <h6 style="text-align: left" class="vc_custom_heading"><?php echo __('Hotel', 'wm-child-cyclando') ?></h6>
+							<?php 
+							echo do_shortcode('[vc_tta_accordion scrolling=""][vc_tta_section tab_id="1603987578996-293b52a0-7a07" title="'.__('Can I find out which hotels I\'ll be staying at in advance?', 'wm-child-cyclando').'"][vc_column_text]'.__('We take choosing hospitality facilities very seriously, and to offer you as much flexibility as possible when booking, we often have a large number of hotels to choose from. For this reason we cannot provide an exact list of hotels before booking.', 'wm-child-cyclando').'[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987709666-e05915db-c8e0" title="'.__('What is included in the tour price?', 'wm-child-cyclando').'"][vc_column_text]'.__('On each trip, you can click on "Dates and Prices" to see what is included, and what is not. Of course, you can always write to us or call us to find out more information or to request clarification.', 'wm-child-cyclando').'[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987706680-2cb9135f-e91b" title="'.__('How do I arrive at/return to the starting point?', 'wm-child-cyclando').'"][vc_column_text]'.__('Round-trip travel to and from your home and the trip’s starting point is not included, but we can always help you find the best available solution.', 'wm-child-cyclando').'[/vc_column_text][/vc_tta_section][/vc_tta_accordion]')
+							?>
+						</div>
+                    </div>
+				</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END section cose da sapere FAQ END  -->
     <!-- START section call to action sei pronto START  -->
     <section class="l-section wpb_row height_small cyc-single-route-cta-container oc-single-route-mobile-cta-container">
         <div class="l-section-h i-cf">
@@ -542,56 +546,14 @@ get_header();
         </div>
     </section>
     <!-- END section call to action sei pronto block END  -->
-    <!-- START section cose da sapere FAQ START  -->
-    <section class="l-section wpb_row height_small cyc-single-route-faq-container oc-single-route-mobile-faq-container">
-        <div class="l-section-h i-cf">
-            <div class="g-cols vc_row type_default valign_top">
-                <div class="vc_col-sm-12 wpb_column vc_column_container">
-                    <div class="vc_column-inner">
-                        <div class="wpb_wrapper">
-                            <h5 style="text-align: left" class="vc_custom_heading oc_faq_heading"><i class="wm-icon-ios7-help"></i><?php echo __('Things to know', 'wm-child-cyclando') ?></h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="vc_col-sm-4 wpb_column vc_column_container oc-faq-accordion-column">
-					<div class="vc_column-inner oc-faq-accordion-column-inner">
-                        <div class="wpb_wrapper">
-                            <h6 style="text-align: left" class="vc_custom_heading"><?php echo __('Bicycles', 'wm-child-cyclando') ?></h6>
-							<?php 
-							echo do_shortcode('[vc_tta_accordion scrolling=""][vc_tta_section tab_id="1603987578996-293b52a0-7a07" title="'.__('Can I bring my own bike?', 'wm-child-cyclando').'"][vc_column_text]'.__('Of course! You can enjoy each tour on your own bike or you can rent one. However, we do recommend renting a bike, because not all bikes have the same parts, so we can only guarantee the best mechanical assistance when you hire directly from us.
-                            ', 'wm-child-cyclando').'[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987709666-e05915db-c8e0" title="'.__('What kind of assistance will I have during the trip?
-                            ', 'wm-child-cyclando').'"][vc_column_text]'.__('You will always have an emergency phone number you can call. On self-guided trips, you will need to be able to make your own minor repairs, such as replacing an inner tube in the event of a puncture, or fixing a slipped chain, but you can always count on assistance on site for more serious damage.', 'wm-child-cyclando').'[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987706680-2cb9135f-e91b" title="'.__('How can I know if a tour matches my level of ability?', 'wm-child-cyclando').'"][vc_column_text]'.__('We rank our tours on a scale of 1 to 5, based on the length, elevation changes and complexity of the itinerary, but if you have any doubts then please feel free to contact us and we will be happy to help you find the trip that is right for you.', 'wm-child-cyclando').'[/vc_column_text][/vc_tta_section][/vc_tta_accordion]')
-							?>
-						</div>
-                    </div>
-                </div>
-                <div class="vc_col-sm-4 wpb_column vc_column_container oc-faq-accordion-column">
-                    <div class="vc_column-inner oc-faq-accordion-column-inner">
-                        <div class="wpb_wrapper">
-                            <h6 style="text-align: left" class="vc_custom_heading"><?php echo __('Booking', 'wm-child-cyclando') ?></h6>
-							<?php 
-							echo do_shortcode('[vc_tta_accordion scrolling=""][vc_tta_section tab_id="1603987578996-293b52a0-7a07" title="'.__('How do I book a tour?', 'wm-child-cyclando').'"][vc_column_text]'.__('To book a tour, simply click on "quote", fill in all the fields, and pay the deposit. We will check the tour’s availability with our partners and provide confirmation within a few hours.', 'wm-child-cyclando').'[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987709666-e05915db-c8e0" title="'.__('Why should I book through Cyclando?', 'wm-child-cyclando').'"][vc_column_text]'.__('Because we guarantee you the lowest price, and in the event that your tour is not available or confirmed, you can always request a refund of your deposit or choose another trip from among the over 800 vacations we offer on our platform.', 'wm-child-cyclando').'[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987706680-2cb9135f-e91b" title="'.__('Should I purchase travel insurance?', 'wm-child-cyclando').'"][vc_column_text]'.__('We offer free medical and baggage insurance for all Italian citizens on all our tours. We also recommend that you take out a cancellation policy; please <a href="https://cyclando.com/assicurazione-covid/">click on this link</a> for more information', 'wm-child-cyclando').'[/vc_column_text][/vc_tta_section][/vc_tta_accordion]')
-							?>
-						</div>
-                    </div>
-                </div>
-                <div class="vc_col-sm-4 wpb_column vc_column_container oc-faq-accordion-column">
-					<div class="vc_column-inner oc-faq-accordion-column-inner">
-                        <div class="wpb_wrapper">
-                            <h6 style="text-align: left" class="vc_custom_heading"><?php echo __('Hotel', 'wm-child-cyclando') ?></h6>
-							<?php 
-							echo do_shortcode('[vc_tta_accordion scrolling=""][vc_tta_section tab_id="1603987578996-293b52a0-7a07" title="'.__('Can I find out which hotels I\'ll be staying at in advance?', 'wm-child-cyclando').'"][vc_column_text]'.__('We take choosing hospitality facilities very seriously, and to offer you as much flexibility as possible when booking, we often have a large number of hotels to choose from. For this reason we cannot provide an exact list of hotels before booking.', 'wm-child-cyclando').'[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987709666-e05915db-c8e0" title="'.__('What is included in the tour price?', 'wm-child-cyclando').'"][vc_column_text]'.__('On each trip, you can click on "Dates and Prices" to see what is included, and what is not. Of course, you can always write to us or call us to find out more information or to request clarification.', 'wm-child-cyclando').'[/vc_column_text][/vc_tta_section][vc_tta_section tab_id="1603987706680-2cb9135f-e91b" title="'.__('How do I arrive at/return to the starting point?', 'wm-child-cyclando').'"][vc_column_text]'.__('Round-trip travel to and from your home and the trip’s starting point is not included, but we can always help you find the best available solution.', 'wm-child-cyclando').'[/vc_column_text][/vc_tta_section][/vc_tta_accordion]')
-							?>
-						</div>
-                    </div>
-				</div>
-            </div>
-        </div>
-    </section>
-    <!-- END section cose da sapere FAQ END  -->
     <!-- END new template END-->
 
-    
+    <!-- Mobile calculator button -->
+    <div class="route-mobile-calculator-btn-container">
+        <div id="mobile-calculator-btn-wrapper" class="mobile-calculator-btn"><?= __('Calculate quote','wm-child-cyclando')?></div>
+    </div>
+    <!-- Mobile calculator button -->
+
     <!-- HTML modal for prices -->
     <div id="cy-prices-modal" class="cy-prices-modal">
         <div class="cy-modal-content">
@@ -747,19 +709,23 @@ get_header();
                 }
             });
         }
+       
         function calcCategorySelectOptions(obj){ 
             var savedCookie = ocmCheckCookie(); 
-            var options = '<option disabled="disabled"><?= __('Select a category', 'wm-child-cyclando') ?></option>';
+            var options = '<p class="oc-route-mobile-search-form-label-p"><?php echo __('Select a category', 'wm-child-cyclando')?></p>';
             jQuery.each(obj.category, function(index, value) {
                 var selected = '';
                 if (obj.categoryname == value) {
-                    selected = 'selected="selected"';
+                    selected = 'checked';
                     savedCookie['category'] = value;
                     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                 }
-                options += "<option "+selected+" value='"+ value + "'>" + value + "</option>";
+                options += "<div class='category-radio-wrapper'>";
+                options += "<input "+selected+" type='radio' id="+ value +" name='categoryName' value="+ value +">";
+                options += "<label for="+ value +">"+ value +"</label>";
+                options += "</div>";
             });
-            jQuery(".category-select-holder select").html(options);
+            jQuery(".category-select-holder").html(options);
             updateYourReservationSummaryTxt(savedCookie);
         }
 
@@ -901,7 +867,7 @@ get_header();
                 jQuery(".cyc-single-route-main-container .rsFullscreenIcn").html(
                     "<span class='gallery-expand-desktop'>Guarda tutte le foto</span><span class='gallery-expand-mobile'><i class='fas fa-expand'></i></span>"
                 );
-            }, 400);
+            }, 500);
 
             // Get DOM Elements
             const modal = document.querySelector('#cy-prices-modal');
@@ -1013,8 +979,8 @@ get_header();
                     'et_social_hidden_sidebar et_social_visible_sidebar');
             });
 
-            // Ajax call for program content in modal
-            jQuery( ".oc-tab-program" ).on( "click", function() {
+            // Ajax call for program content in div
+            jQuery( ".load-more" ).on( "click", function() {
                 ajaxurl = '<?php echo admin_url( 'admin-ajax.php' ) ?>'; // get ajaxurl
                 post_id = <?php echo $post_id; ?>;
                 data = {
@@ -1026,18 +992,48 @@ get_header();
                     type : 'post',
                     data: data,
                     beforeSend: function(){
+                        jQuery(".route-program-body p span").hide();
+                        jQuery(".route-program-body p").addClass('loading');
                     },
                     success : function( response ) {
-                    },
-                    complete:function(response){
-                        obj = JSON.parse(response.responseText);
-                        jQuery(".oc-route-tab-mobile-program-body").html(obj);
+                        obj = JSON.parse(response);
+                        jQuery(".route-program-body").html(obj);
+                        jQuery(".load-more").hide();
+                        jQuery(".read-less").show();
                     }
                 });
             });
-        });
-        jQuery(document).ready(function(){
-            jQuery('#cyc-single-route-mobile-gallery-button').click(function(){jQuery('.rsFullscreenBtn').trigger('click')})
+
+            jQuery('.read-less').on("click", function(){
+                jQuery(".route-program-body").hide();
+                jQuery(".read-less").hide();
+                jQuery(".read-more").show();
+            })
+            jQuery('.read-more').on("click", function(){
+                jQuery(".route-program-body").show();
+                jQuery(".read-less").show();
+                jQuery(".read-more").hide();
+            })
+
+            // mobile calculate quote btn
+            jQuery('#mobile-calculator-btn-wrapper').on('click',function(){
+                jQuery('.cyc-route-sidebar').addClass('open-calculator');
+                jQuery('.mobile-calculator-header-wrapper').show();
+            })
+            // calculator back btn
+            jQuery('#back-extras').on('click',function(){
+                jQuery('.oc-route-mobile-your-reservation-container').hide();
+                jQuery('.oc-route-mobile-search-form-container').show();
+                jQuery('.ocm-proceed-container').show();
+            })
+            jQuery('#back-calculator').on('click',function(){
+                jQuery('.oc-route-mobile-your-reservation-container').hide();
+                jQuery('.oc-route-mobile-search-form-container').show();
+                jQuery('.ocm-proceed-container').hide();
+            })
+            jQuery('#close-calculator').on('click',function(){
+                jQuery('.cyc-route-sidebar').removeClass('open-calculator');
+            })
 
             // function to disable right click on tour operator section
             jQuery(".cyc-single-route-tour-operator-wrapper").on("contextmenu",function(e){

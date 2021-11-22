@@ -64,7 +64,7 @@ ul.w-nav-list.level_1.hover_simple li:nth-child(4) a {
     .menu-language-dropdown-wpml .w-dropdown-item-title {
         vertical-align: text-top;
         font-weight: bold;
-        line-height: initial;
+        line-height: 2;
     }
     .menu-language-dropdown-wpml .w-dropdown-current .w-dropdown-item:after{
         line-height: 3rem;
@@ -2466,6 +2466,19 @@ div#oc-kid-age-container {
     cursor: pointer;
 }
 .oc-proceed-done-btn:hover {
+    background-color: var(--color-secondary-hover);
+}
+.mobile-calculator-btn {
+    width: 100%;
+    text-align: center;
+    background-color: var(--color-secondary);
+    padding: 10px;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.mobile-calculator-btn:hover {
     background-color: var(--color-secondary-hover);
 }
 .regular-label i, .ebike-label i, .single-label i {

@@ -8,22 +8,8 @@ Template:       Impreza
 Version:        0.1.0
 Text Domain: wm-child-verdenatura
 */
-@font-face {
-    font-family: 'cyclando';
-    src: url('fonts/cyclando.eot?ovpb4k');
-    src: url('fonts/cyclando.eot?ovpb4k#iefix') format('embedded-opentype'),
-        url('fonts/cyclando.ttf?ovpb4k') format('truetype'),
-        url('fonts/cyclando.woff?ovpb4k') format('woff'),
-        url('fonts/cyclando.svg?ovpb4k#cyclando') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
-}
 
 /* Start New Style */
-.cyc-single-route-main-container h1 {
-    font-size: 28px;
-}
 .cyc-single-route-intro-info-wrapper {
     font-family: var(--font-family-primary);
     font-size: 20px;
@@ -31,15 +17,12 @@ Text Domain: wm-child-verdenatura
 .cyc-single-route-intro-info-wrapper i{
     font-size: 26px;
 }
-.cyc-single-route-introduction-container .cyc-single-route-breadcrumb-wrapper {
-    padding-top: 2rem;
-}
 .et_social_sidebar_networks {
     display: none;
 }
 .cyc-single-route-main-container .rsFullscreenIcn {
     font-size: 16px;
-    background-color: var(--color-primary-title);
+    background-color: white;
     border-radius: 30px;
     line-height: 2.5rem;
     margin: 20px;
@@ -50,6 +33,8 @@ Text Domain: wm-child-verdenatura
     top: calc(100% - 80px);
     opacity: 1!important;
     font-family: var(--font-family-primary);
+    color: black;
+    text-shadow: none;
 }
 .rsFullscreen .rsFullscreenIcn span{
     display: none;
@@ -57,9 +42,6 @@ Text Domain: wm-child-verdenatura
 
 .cyc-single-route-main-container .rsFullscreenBtn:after {
     display: none;
-}
-.cyc-single-route-main-container .rsSlide,.cyc-single-route-main-container .rsOverflow {
-    border-radius: 15px;
 }
 .cyc-single-route-monarch-share span{
     border-bottom: 1px solid;
@@ -104,11 +86,11 @@ Text Domain: wm-child-verdenatura
 }
 .meta-bar-taxonomy-container{
     display:flex;
-    width: 100%;
 }
 .meta-bar-taxonomy-container i{
     align-self: center;
     font-size: 22px;
+    color: var(--color-secondary);
 }
 .meta-bar-taxonomy-container .meta-bar-txt-light{
     align-self: center;
@@ -275,9 +257,6 @@ Text Domain: wm-child-verdenatura
 .cyc-single-route-cta-container {
     padding-bottom: 4rem!important;
 }
-.cyc-single-route-faq-container {
-    border-top: 2px solid var(--color-border-line);
-}
 .cyc-single-route-faq-container h6{
     margin:0!important;
 }
@@ -419,79 +398,6 @@ Text Domain: wm-child-verdenatura
 }
 /* END new style */
 
-
-
-i.cy-icons {
-    /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: 'cyclando' !important;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-map-marker-alt1:before {
-    content: "\f28b";
-}
-
-.icon-user:before {
-    content: "\eeae";
-}
-
-.icon-users:before {
-    content: "\eec5";
-}
-
-.icon-users:before {
-    content: "\ea57";
-}
-
-.icon-wm-icon-cyc_city-tours:before {
-    content: "\e9cf";
-}
-
-.icon-arrow-from-left:before {
-    content: "\e93b";
-}
-
-.icon-route1:before {
-    content: "\f36b";
-}
-
-.icon-tachometer-slow1:before {
-    content: "\f447";
-}
-
-.icon-plane-departure1:before {
-    content: "\f31e";
-}
-
-.icon-angle-down:before {
-    content: "\e917";
-}
-
-.icon-search1:before {
-    content: "\f391";
-}
-
-.icon-arrow-down1:before {
-    content: "\f042";
-}
-
-.icon-expand-alt1:before {
-    content: "\f11d";
-}
-
-.icon-calendar-alt1:before {
-    content: "\e9d0";
-}
-
-
 /* main menu items */
 body .ush_menu_1.type_desktop .w-nav-list>.menu-item.level_1 {
     font-weight: bold;
@@ -577,6 +483,7 @@ body {
             "meta meta"
             "map map";
     }
+    
     body .webmapp-featured-image {
         grid-area: title;
     }
@@ -656,10 +563,6 @@ body {
     .cy-section-route-buttons {
         display: grid;
         grid-template-columns: 1fr!important;
-    }
-    .cy-route-body-button.cy-route-body-programbutton {
-        padding-right: 0!important;
-
     }
 }
 
@@ -867,9 +770,6 @@ i {
     row-gap: 30px;
     padding-bottom: 30px;
 }
-.cy-route-body-button.cy-route-body-programbutton {
-    padding-right: 1%;
-}
 .webmapp-featured-map .container .route-duration {
     float: right;
     font-weight: bold;
@@ -892,7 +792,7 @@ i {
     width: 100%;
 } */
 
-#cy-route-program .price-header-sticky, #cy-route-contact .price-header-sticky {
+#cy-route-contact .price-header-sticky {
     position: sticky;
     top: 0;
     box-shadow: -2px 2px 7px -5px rgba(0, 0, 0, 0.65);
@@ -900,7 +800,7 @@ i {
     border-top-right-radius: 0px !important;
 }
 
-#cy-prices-modal .cy-modal-header.price-header-sticky, #cy-route-program .cy-modal-header.price-header-sticky, #cy-route-contact .cy-modal-header.price-header-sticky{
+#cy-prices-modal .cy-modal-header.price-header-sticky, #cy-route-contact .cy-modal-header.price-header-sticky{
     position: sticky;
     top: 0;
     box-shadow: -2px 2px 7px -5px rgba(0, 0, 0, 0.65);
@@ -1038,7 +938,7 @@ i {
 .coming-soon-button {
     pointer-events: none;
 }
-.vedi-prezzi, .route-contact, .route-program {
+.vedi-prezzi, .route-contact{
     align-items: center;
     display: flex;
 }
@@ -1097,11 +997,8 @@ div#popup-show-prices>div {
     .wm-book p{
         font-size: 24px!important;
     }
-    .route-program h2 {
-        font-size: 24px!important;
-    }
 }
-#cy-prices-modal .wm-book, #cy-route-program .wm-book, #cy-route-contact .wm-book{
+#cy-prices-modal .wm-book, #cy-route-contact .wm-book{
     padding: 35px;
 }
 .wm-book:hover {
@@ -1311,25 +1208,6 @@ div#popup-show-prices>div {
 .height_600 .rsOverflow {
     height: 600px !important;
 }
-
-#program .l-section-h.i-cf {
-    padding-right: 10px;
-}
-
-#program .vc_column-inner {
-    padding: 0;
-}
-
-#caratteristiche .vc_column-inner {
-    padding: 0;
-}
-#caratteristiche .l-section-h.i-cf {
-    padding: 0;
-}
-
-#touroperator .vc_column-inner {
-    padding: 0;
-}
 .single-route section h2 {
     color: var(--color-text-strong);
     font-size: 2.3em;
@@ -1338,13 +1216,11 @@ div#popup-show-prices>div {
     padding-top: 10px;
     margin-bottom: 10px;
 }
-
 .route-excerpt {
-    color: var(--color-primary-paragraph);
     font-family: var(--font-family-primary);
-    font-size: 24px;
-    line-height: 36px;
-    letter-spacing: 0.17px;
+    font-size: 14px;
+    line-height: 17px;
+    margin: 0;
 }
 .cy-prices-modal .cy-modal-content {
     max-width: 97vw!important;
@@ -1584,15 +1460,6 @@ body #tab-stagioni a:hover {
     color: var(--color-primary-paragraph);
 }
 
-#cy-route-program .cy-modal-content {
-    margin: 0.5vh auto;
-    width: 98%;
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
-    animation-name: modalopen;
-    animation-duration: var(--modal-duration);
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
 .cy-modal-content {
     margin: 30px auto;
     width: 97%;
@@ -1626,7 +1493,7 @@ body #tab-stagioni a:hover {
     line-height: 30px;
 }
 
-#cy-route-program .cy-modal-header, #cy-route-contact .cy-modal-header {
+#cy-route-contact .cy-modal-header {
     background: white;
     padding: 10px 0px;
     color: #fff;
@@ -1639,12 +1506,12 @@ body #tab-stagioni a:hover {
     z-index: 2;
 }
 
-#cy-route-program .close-button-container, #cy-route-contact .close-button-container {
+#cy-route-contact .close-button-container {
     display: flex;
     align-items: center;
 }
 
-#cy-route-program .cy-close-map, #cy-route-contact .cy-close-contact {
+#cy-route-contact .cy-close-contact {
     text-align: right;
     color: #fff;
     background-color: var(--color-primary-paragraph);
@@ -1695,20 +1562,7 @@ body #tab-stagioni a:hover {
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
 }
-.cy-modal-body-program .w-iconbox-icon {
-    width:100%;
-}
-#cy-route-program .cy-modal-body {
-    background: #fff;
-    border: 1px solid var(--color-primary-paragraph);
-    border-top: 0px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-#cy-route-program .cy-modal-body.cy-modal-body-map {
-    height: calc(98vh - 119px);
-    padding: 10px!important;
-}
+
 .cy-modal-footer {
     background: var(--modal-color);
     padding: 10px;
@@ -1877,10 +1731,6 @@ div#cy-prices-modal input::placeholder {
     }
 }
 
-.single .l-section-h.i-cf p {
-    color: var(--color-text-p);
-}
-
 .single .l-section-h.i-cf strong {
     color: var(--color-text-strong);
 }
@@ -1981,84 +1831,10 @@ a:hover.tooltips span {
 
 /* oneclick style mobile verssion */
 /* style introduction section mobile */
-.cyc-single-route-introduction-container.cyc-route-introduction-mobile {
-    background-position: center;
-    background-size: cover;
-    box-shadow: inset 0 0 0 50vw rgb(0 0 0 / 40%);
-}
-.wpb_wrapper.cyc-route-mobile-introduction-wrapper {
-    display: grid;
-    grid-template-rows: 1.6fr 2.4fr 2fr;
-}
-.cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-title {
-    color: white;
-    font-size: 18px;
-    font-family: var(--font-family-primary);
-    letter-spacing: 0;
-}
-.cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-title .meta-txt-strong{
-    font-weight: 600;
-}
-@media screen and (max-width: 767px) {
-    .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-title h1 { 
-        font-size: 14px;
-    }
-    .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-days p {
-        color: white!important;
-    }
-    .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-icons {
-        justify-content: space-between;
-        align-items: center;
-    }
-}
-.cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-title h1 {
-    color: white;
-    font-family: var(--font-family-primary);
-    letter-spacing: 0;
-    font-weight: 600;
-    padding-top: 5px;
-}
-.cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-days p{
-    font-size: 18px;
-    font-family: var(--font-family-primary);
-    font-weight: 600;
-    letter-spacing: 0;
-    margin: 0;
-    text-align: right;
-}
-.cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-icons {
-    display: flex;
-}
-.cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-icons i {
-    color: black;
-    background: white;
-    padding: 5px;
-    border-radius: 20px;
-}
-.cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-icons i.material-icons {
-    padding: 5px 5px;
-}
-.cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-icons p {
-    font-size: 25px;
-    margin: 5px;
-    cursor: pointer;
-}
-.cyc-route-mobile-introduction-wrapper a.tooltips:hover {
-    color: var(--color-text-p);
-}
-.cyc-route-mobile-introduction-wrapper a.tooltips {
-    color: var(--color-text-p);
-}
 
 /* style taxonomy section cyc-route-mobile-taxonomy-activity-wrapper */
 @media screen and (min-width: 768px) { 
-    .cyc-route-taxonomy-tab-row-container {
-        max-width: 1360px;
-        margin: auto;
-        display: grid;
-        grid-template-columns: 40% 60%;
-        padding: 0 0 30px;
-    }
+    
     .cyc-route-taxonomy-tab-row-container .cyc-route-mobile-taxonomy-container {
         display: block!important;
         background: white;
@@ -2088,33 +1864,14 @@ a:hover.tooltips span {
         border-radius: 16px;
         margin: 1.5rem 1.5rem 7px;
     }
-    .cyc-route-taxonomy-tab-row-container .oc-route-tab-mobile-program-body {
-        padding: 25px!important;
-        box-shadow: 0 3px 6px 0 #dadada;
-        border-radius: 16px;
-        margin: 1.5rem 1.5rem 7px;
-    }
     .cyc-route-taxonomy-tab-row-container .oc-route-mobile-your-reservation-container {
         margin: 1.5rem 1.5rem 7px;
         padding: 40px;
-    }
-    .cyc-route-taxonomy-row-wrapper > div {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        padding: 5px 0;
     }
     .cyc-route-taxonomy-row-wrapper > div > div {
         float: left;
         width: auto;
         padding-right: 10px;
-    }
-    .cyc-route-taxonomy-tab-row-container .cyc-route-taxonomy-row-wrapper {
-        top: 100px;
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1.3fr;
-        width: 100%;
     }
     body .cyc-single-route-main-container .cyc-route-mobile-tab-container .w-tabs-list-h {
         background: white!important;
@@ -2127,9 +1884,6 @@ a:hover.tooltips span {
         min-width: 250px;
         width: auto;
     }
-}
-.cyc-route-mobile-taxonomy-container {
-    background: var(--color-secondary-background);
 }
 .prezzo-container {
     border: 1px solid var(--color-primary);
@@ -2150,12 +1904,6 @@ a:hover.tooltips span {
     background-color: var(--color-primary-paragraph);
 }
 @media screen and (max-width: 767px) {
-    .cyc-route-taxonomy-row-wrapper {
-        display: grid;
-        padding: 15px 25px;
-        grid-template-columns: repeat(4,1fr);
-        column-gap: 5px;
-    }
 }
 .cyc-route-mobile-taxonomy-container .meta-bar-txt-strong{
     text-transform: inherit;
@@ -2206,32 +1954,48 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
 .cyc-route-mobile-tab-container .w-tabs-section-content{
     padding: 0px;
 }
-.oc-route-tab-mobile-program-body {
-    padding: 10px 20px;
+/* program section */
+.read-more, .read-less {
+    display: none;
 }
-.oc-route-tab-mobile-program-body .w-iconbox-icon i {
-    padding: 0;
-    color: var(--color-tab-background);
+.btn-program p{
+    color: var(--color-secondary)!important;
+    font-size: 14px;
 }
-.oc-route-tab-mobile-program-body .w-iconbox-icon {
-    width: 100%;
+.include-label{
+    font-family: var(--font-family-primary);
+    font-weight: 500;
+    margin: 0;
 }
-.cyc-route-mobile-tab-container .wm-not-included-label {
-    font-size: 18px;
-    font-weight: 600;
-}
-.cyc-route-mobile-tab-container .wm-not-included-label i{
+.wm-not-included-label i{
     color: var(--color-discount);
 }
-.cyc-route-mobile-tab-container .wm-included-label {
-    font-size: 18px;
-    font-weight: 600;
-}
-.cyc-route-mobile-tab-container .wm-included-label i{
+.wm-included-label i{
     color: var(--color-tab-background);
 }
+@media screen and (max-width: 767px) { 
+    .include-label{
+        font-size: 16px;
+    }
+    .wm-not-included-label i,.wm-included-label i{
+        font-size: 18px;
+    }
+}
+@media screen and (min-width: 768px) { 
+    .include-label{
+        font-size: 18px;
+    }
+    .wm-not-included-label i,.wm-included-label i{
+        font-size: 20px;
+    }
+    .extra-quotes-table {
+        margin-left: 20px;
+    }
+}
+.extra-quotes-table th::marker {
+    font-size: 10px;
+}
 .oc-mobile-included-not-included-container {
-    padding: 25px;
     font-family: var(--font-family-primary);
 }
 .oc-mobile-included-not-included-container th{
@@ -2248,7 +2012,7 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     padding: 15px;
     box-shadow: 0 3px 6px 0 #dadada;
     border-radius: 16px;
-    margin: 1.5rem;
+    margin: 1.5rem 0 1.5rem 1.5rem;
     font-size: 16px;
     display: grid;
     grid-row-gap: 5px;
@@ -2419,15 +2183,8 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
 }
 .oc-route-mobile-plan-summary-container {
     border-top: 1px solid #a7a7a7;
-    padding-top: 15px;
-}
-@media screen and (max-width: 767px) { 
-    .oc-route-mobile-plan-summary-container {
-        margin-top: 15px;
-    }
-    .cy-contact-in-plan-tab {
-        width: auto!important;
-    }
+    padding-top: 20px;
+    margin-top: 20px;
 }
 .oc-route-mobile-plan-price-container {
     display: flex;
@@ -2474,42 +2231,6 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
 }
 .oc-route-mobile-search-form-container .cyc-single-route-cta-buttons .cy-btn-contact:hover {
     background-color: var(--color-secondary-hover);
-}
-.cyc-single-route-contact-button-container .label{
-    margin: 0;
-    font-size: 17px!important;
-    line-height: 16px;
-    padding-bottom: 30px;
-}
-#cy-contact-in-plan-tab p {
-    font-size: 18px!important;
-}
-.cy-contact-in-plan-tab {
-    width: fit-content;
-}
-.cy-contact-in-plan-tab .cy-btn-plan-contact{
-    border: 1px solid #F16E08;
-    border-radius: 25px;
-    padding: 10px 5px;
-    min-width: 250px;
-    cursor: pointer;
-    transition: 300ms all ease;
-}
-.cy-contact-in-plan-tab .cy-btn-plan-contact p{
-    color: var(--color-secondary);
-    font-weight: 600;
-    font-size: 16px;
-    text-align: center;
-}
-.cy-contact-in-plan-tab .cy-btn-plan-contact:hover{
-    background-color: var(--color-secondary-hover);
-}
-.cy-contact-in-plan-tab .cy-btn-plan-contact:hover p{
-    color: white;
-}
-.cyc-single-route-contact-button-container {
-    display: block;
-    margin-top: 10px;
 }
 .ocm-extras-proceed-summary-container {
     position: absolute;
@@ -2563,22 +2284,11 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
     padding-top: 15px;
 }
 /* single route mobile description */
-.oc-single-route-mobile-description-container{
-    padding-top: 0px!important;
-}
-.oc-single-route-mobile-description-container .route-excerpt {
-    color: var(--color-text-p);
-    font-family: var(--font-family-primary);
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 27px;
-    letter-spacing: 0;
-}
-.oc-single-route-mobile-description-container .cyc-single-route-description-wrapper ul {
+.cyc-single-route-description-wrapper ul {
     list-style-type: none;
     margin-left: 0;
 }
-.oc-single-route-mobile-description-container .cyc-single-route-description-wrapper li {
+.cyc-single-route-description-wrapper li {
     margin: 0 0 1rem;
     font-size: 14px;
     list-style-type: none;
@@ -2586,7 +2296,7 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
     position: relative;
     line-height: 23px;
 }
-.oc-single-route-mobile-description-container .cyc-single-route-description-wrapper li::before {
+.cyc-single-route-description-wrapper li::before {
     content: " ";
     display: block;
     border: solid .8em var(--color-tab-background);
@@ -2598,7 +2308,7 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
     top: 24%;
     margin-top: -.5em;
 }
-.oc-single-route-mobile-description-container .cyc-single-route-description-wrapper li::after {
+.cyc-single-route-description-wrapper li::after {
     content: " ";
     display: block;
     width: .3em;
@@ -2647,9 +2357,7 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
     font-weight: 500;
     font-family: var(--font-family-primary);
 }
-.oc-single-route-mobile-tour-operator-container .cyc-single-route-tour-operator-wrapper i{
-    font-size: 35px;
-}
+
 .oc-single-route-mobile-tour-operator-container .cyc-single-route-tour-operator-wrapper p{
     font-size: 18px;
     font-weight: 600;
@@ -2692,13 +2400,32 @@ body .oc-single-route-mobile-cta-container .cy-btn-contact p{
 body .oc-single-route-mobile-cta-container .cy-btn-contact:hover p{
     color: white!important;
 }
-.oc-single-route-mobile-faq-container .oc_faq_heading i {
-    font-size: 34px;
+
+.oc-faq-accordion-column-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(350px ,1fr));
+    column-gap: 20px;
 }
-.oc-single-route-mobile-faq-container .oc_faq_heading  {
-    font-size: 18px;
-    letter-spacing: 0;
-    margin-bottom: 20px;
+@media screen and (max-width: 767px) { 
+    .oc-single-route-mobile-faq-container .section-h3-label  {
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+    .oc-single-route-mobile-tour-operator-container .cyc-single-route-tour-operator-wrapper i{
+        font-size: 44px;
+    }
+}
+@media screen and (min-width: 768px) { 
+    .oc-single-route-mobile-faq-container .section-h3-label  {
+        margin-bottom: 20px;
+    }
+    .oc-single-route-mobile-tour-operator-container .cyc-single-route-tour-operator-wrapper i{
+        font-size: 48px;
+    }
+}
+.oc-single-route-mobile-faq-container {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
 }
 .oc-single-route-mobile-faq-container .oc-faq-accordion-column {
     margin: 0!important;
@@ -2770,10 +2497,9 @@ body .ui-datepicker.ui-widget.ui-widget-content {
     outline: none!important;
     -webkit-appearance: none;
     letter-spacing: 0em;
-    background: #fff;
     box-shadow: 0px 1px 0px 0px rgb(0 0 0 / 8%) inset;
     min-height: 2.8rem;
-    padding: 20px 22px 20px 15px!important;
+    padding: 20px 22px 20px 50px!important;
     transition: all .3s ease;
     border-radius: 30px!important;
     width: 100%!important;
@@ -2784,12 +2510,14 @@ body .ui-datepicker.ui-widget.ui-widget-content {
     font-weight: 400;
     height: 3.4rem;
     cursor: pointer;
+    background: url(/wp-content/themes/wm-child-cyclando/assets/images/calendar.png) 4% / 6.3% no-repeat #fff!important;
 }
 h4.form-lable {
     font-size: 20px;
     margin-bottom: 10px;
     font-weight: 600;
     color: #F16E08;
+    padding-top: 15px;
 }
 .oc-route-mobile-search-form-container .datepicker-holder {
     padding-bottom: 10px;
@@ -2797,6 +2525,8 @@ h4.form-lable {
 .oc-route-mobile-search-form-label-p {
     margin: 0;
     font-size: 14px;
+    font-weight: 600;
+    padding-top: 15px;
 }
 .ui-widget-header {
     border: 0!important;
@@ -2892,9 +2622,6 @@ h4.form-lable {
     .cy-modal-content {
         max-width: 600px;
     }
-    #cy-route-program .cy-modal-header, #cy-route-contact .cy-modal-header {
-        grid-template-columns: 2fr 7fr 2fr!important;
-    }
     .cy-modal-body {
         padding: 2% 6% 4% 6% !important;
     }
@@ -2978,9 +2705,258 @@ h4.form-lable {
     background-size: 11%;
     background-position: 88%;
 }
+.cyc-route-mobile-introduction-title h1 {
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+.cyc-route-mobile-introduction-days p {
+    margin: 0;
+}
+.cyc-introduction-days-seperator {
+    padding: 0 10px;
+}
+.route-duration-distance-share-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.cyc-route-mobile-introduction-title .meta-txt-strong {
+    font-weight: 600;
+}
+.cyc-route-mobile-introduction-days {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
 /* header menu for routes in desktop and mobile */
 @media screen and (min-width: 768px) {  
     
+    /* introduction section on desktop */
+    .cyc-single-route-breadcrumb-wrapper {
+        padding-top: 1.5rem;
+    }
+    .cyc-route-mobile-introduction-title span,.cyc-route-mobile-introduction-title h1 {
+        color: var(--color-text-strong)!important;
+    }
+    .cyc-route-mobile-introduction-title h1 {
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .cyc-route-mobile-introduction-title span {
+        font-size: 18px;
+    }
+    
+    
+    .cyc-route-mobile-introduction-days p {
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .cyc-route-mobile-introduction-title h1 {
+        font-size: 21px;
+        font-weight: bold;
+    }
+    .cyc-route-mobile-introduction-days p {
+        font-size: 12px;
+    }
+    .cyc-route-mobile-introduction-title span {
+        font-size: 12px;
+    }
+    svg#logo-cyclando-route {
+        width: 100%;
+    }
+    .cyc-single-route-breadcrumb-wrapper {
+        display: none;
+    }
+    .cyc-introduction-days-seperator {
+        display: none;
+    }
+    .cyc-route-mobile-tab-container .w-tabs-list .w-tabs-item.active {
+        background: var(--color-secondary-background)!important;
+    }
+}
+@media screen and (max-width: 900px) {
+    .single-route .l-header.bg_transparent:not(.sticky) .at_middle .w-nav>a:hover {
+        color: var(--color-primary)!important;
+    }
+}
+/* route promo text section */
+.route-active-promo {
+    display: none;
+    font-family: var(--font-family-primary);
+    font-style: italic;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--color-secondary-hover);
+    text-align: right;
+}
+/* Class Loading dots ellipsis */
+.loading:after {
+overflow: hidden;
+display: inline-block;
+vertical-align: bottom;
+-webkit-animation: ellipsis steps(4,end) 900ms infinite;      
+animation: ellipsis steps(4,end) 900ms infinite;
+content: "\2026"; /* ascii code for the ellipsis character */
+width: 0px;
+padding-left: 4px;
+}
+
+@keyframes ellipsis {
+to {
+    width: 1.25em;    
+}
+}
+
+@-webkit-keyframes ellipsis {
+to {
+    width: 1.25em;    
+}
+}
+/* main Grid section */
+h3.section-h3-label, .cyc-single-route-description-wrapper h5{
+    font-family: var(--font-family-primary);
+    font-weight: bold;
+    color: var(--color-secondary);
+}
+
+.section-divider {
+    border-bottom: 1px solid #DADADA;
+}
+.route-program-body {
+    margin-top: 10px;
+}
+.cyc-route-taxonomy-row-wrapper > div {
+    display: flex;
+    align-items: center;
+    padding: 5px 30px 0 0;
+}
+.cyc-route-taxonomy-row-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+.cyc-route-mobile-introduction-title {
+    padding-top: 20px;
+}
+/* Main section responsive */
+@media screen and (max-width: 949px) { 
+    .cyc-route-sidebar {
+        display: none;
+    }
+    .route-mobile-calculator-btn-container {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        padding: 1rem;
+        background-color: #ffffffba;
+        z-index: 10;
+    }
+    .cyc-route-main-container > .l-section-h.i-cf {
+        padding-top:0!important;
+    }
+    .cyc-route-grid-wrapper {
+        width: 100%;
+        display: grid;
+    }
+    .cyc-route-mobile-introduction-gallery {
+        grid-row: 1;
+    }
+    .cyc-single-route-grid-container .vc_column-inner{
+        padding: 0!important;
+    }
+    h3.section-h3-label, .cyc-single-route-description-wrapper h5{
+        font-size: 18px;
+    }
+    .section-extra-padding {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .section-horizontal-padding {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+    .cyc-route-main-column-inner {
+        padding: 0!important;
+    }
+    /* logo color responsive */
+    .single-route svg#logo-cyclando-route .st2{
+        fill: white;
+    }
+    .cyc-route-mobile-introduction-title, .route-duration-distance-share-wrapper {
+        background: var(--color-secondary-background);
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+    .cyc-route-taxonomy-tab-row-container {
+        border-bottom: 1px solid #DADADA;
+        padding: 1rem;
+    }
+    .route-duration-distance-share-wrapper {
+        padding-bottom: 20px;
+    }
+    .mobile-calculator-header-wrapper {
+        display: none;
+        background: #F6F7F1;
+        padding: 10px 15px;
+        display: flex;
+    }
+    .go-back-btn {
+        font-size: 20px;
+        padding-right: 15px;
+        padding-left: 10px;
+        border-right: 1px solid #BDBDBD;
+        margin-right: 15px;
+    }
+    .calculator-route-title {
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 16px;
+        align-self: center;
+    }
+    .oc-route-mobile-plan-summary-container {
+        margin-top: 20px;
+    }
+}
+@media screen and (min-width: 950px) { 
+    .mobile-calculator-header-wrapper { 
+        display: none;
+    }
+    .route-mobile-calculator-btn-container {
+        display: none;
+    }
+    .cyc-route-container {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    .cyc-route-sidebar {
+        width: 35%;
+    }
+    .cyc-route-grid-wrapper {
+        width: 65%;
+    }
+    h3.section-h3-label, .cyc-single-route-description-wrapper h5{
+        font-size: 21px;
+    }
+    .section-extra-padding {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .cyc-route-mobile-introduction-gallery img.rsImg.rsMainSlideImage {
+        margin-top: 0!important;
+        margin-left: 0!important;
+        width: 100%!important;
+        height: 100%!important;
+        border-radius: 15px;
+    }
+    .cyc-route-mobile-gallery-container {
+        padding-top: 15px;
+    }
+    .cyc-single-route-main-container .rsSlide,.cyc-single-route-main-container .rsOverflow {
+        border-radius: 15px;
+    }
+    /* Header responsive color */
     .single-route .l-header {
         background: white;
         box-shadow: 0 1px 0 rgb(0 0 0 / 8%)!important;
@@ -3015,96 +2991,38 @@ h4.form-lable {
         margin-top: 32px;
         border: 1px solid #f5f5f5;
     }
-    .cyc-single-route-introduction-container.cyc-route-introduction-mobile {
-        background: white!important;
-        box-shadow: none!important;
-    }
-    .cyc-single-route-gallery-btn {
-        display: none;
-    }
-    /* introduction section on desktop */
-    .wpb_wrapper.cyc-route-mobile-introduction-wrapper {
-        display: grid;
-        grid-template-rows: repeat(3,1fr)!important;
-    }
-    .cyc-single-route-breadcrumb-wrapper {
-        grid-row: 1;
-    }
-    .cyc-route-mobile-introduction-title {
-        grid-row: 2;
-        grid-column: 1 / 4;
-    }
-    .cyc-route-mobile-introduction-icons {
-        grid-row: 2;
-        grid-column: 4 / 5;
-    }
-    .cyc-route-mobile-introduction-title span,.cyc-route-mobile-introduction-title h1 {
-        color: var(--color-text-strong)!important;
-    }
-    .cyc-route-mobile-introduction-days {
-        grid-row: 3;
-        grid-column: 1 / 5;
-        display: flex;
-        gap: 10px;
-        align-items: center;
-    }
-    .cyc-route-mobile-introduction-wrapper .cyc-route-mobile-introduction-icons {
-        justify-content: flex-end;
-        align-items: flex-end;
-    }
-    .cyc-route-mobile-taxonomy-container-sticky {
-        position: sticky;
-        top: 100px;
-    }
-    .cyc-route-mobile-introduction-gallery img.rsImg.rsMainSlideImage {
-        margin-top: 0!important;
-        margin-left: 0!important;
-        width: 100%!important;
-        height: 100%!important;
-        border-radius: 15px;
-    }
-    .cyc-route-mobile-gallery-container {
-        padding-top: 15px;
-    }
+    
 }
-@media screen and (max-width: 767px) {
-    svg#logo-cyclando-route {
-        width: 100%;
-    }
-    .single-route svg#logo-cyclando-route .st2{
-        fill: white;
-    }
-    .cyc-single-route-breadcrumb-wrapper {
-        display: none;
-    }
-    .cyc-route-mobile-introduction-gallery {
-        display: none;
-    }
-    .cyc-introduction-days-seperator {
-        display: none;
-    }
-    .cyc-route-mobile-tab-container .w-tabs-list .w-tabs-item.active {
-        background: var(--color-secondary-background)!important;
-    }
+
+.open-calculator {
+    display: block;
+    position: fixed;
+    z-index: 120;
+    background-color: white;
+    top: 0;
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
 }
-@media screen and (max-width: 900px) {
-    .single-route .l-header.bg_transparent:not(.sticky) .at_middle .w-nav>a:hover {
-        color: var(--color-primary)!important;
-    }
+.open-calculator .ocm-proceed-content{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
 }
-@media screen and (min-width:768px) and (max-width: 1460px) {
-    .cyc-route-taxonomy-tab-row-container {
-        padding: 0 2.5rem 30px!important;
-    }
-}
-/* route promo text section */
-.route-active-promo {
+.open-calculator .oc-route-mobile-your-reservation-container{
     display: none;
-    font-family: var(--font-family-primary);
-    font-style: italic;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 16px;
-    color: var(--color-secondary-hover);
-    text-align: right;
+    border-radius: 0;
+    margin: 0;
+}
+.open-calculator .oc-route-mobile-search-form-container {
+    display: block;
+    margin: 0;
+    height: 100%;
+    box-shadow: none;
+}
+
+.category-radio-wrapper {
+    display: inline-block;
+    padding-right: 20px;
 }

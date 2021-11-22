@@ -31,6 +31,7 @@ require ('shortcodes/route-oc/oneclick_route_form_category.php');
 require ('shortcodes/route-oc/oneclick_route_form_single_room.php');
 require ('shortcodes/route-oc/oneclick_route_form_purchase.php');
 require ('shortcodes/route-oc/oneclick_route_your_reservation_panel.php');
+require ('shortcodes/route-oc/onclick_route_mobile_calculator_header.php');
 require ('api/api-loader.php');
 require ('includes/class_routeProductsOC.php') ;
 
@@ -64,19 +65,18 @@ add_action('after_setup_theme', 'vn_theme_setup');
 add_action( 'wp_enqueue_scripts', 'impreza_theme_enqueue_styles' );
 function impreza_theme_enqueue_styles() {
     
-    // wp_enqueue_style( 'divi-style', get_template_directory_uri() . '/style.css' );
     wp_enqueue_style('jqeury-ui-tabs-style', 'https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css');
     wp_enqueue_script('jquery-ui-core');
     wp_enqueue_script('jquery-ui-tabs');
     wp_enqueue_script( 'general_javascript', get_stylesheet_directory_uri() . '/js/general.js', array ('jquery') );
     // wp_enqueue_script( 'hightlight', get_stylesheet_directory_uri() . '/js/home_highlight.js');
     wp_enqueue_script('hubspot_contact_form', '//js.hsforms.net/forms/v2.js', array('jquery'));
-    // wp_enqueue_script('datepicker', 'https://code.jquery.com/ui/1.12.1/jquery-ui.js', array('jquery'));
     wp_enqueue_script('datepicker', 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', array('jquery'));
     //add hubspot to Browser IE 8
     wp_register_script('hubspot_contact_form_IE8', '//js.hsforms.net/forms/v2-legacy.js', array('jquery'));
     wp_enqueue_script( 'hubspot_contact_form_IE8');
     wp_script_add_data( 'hubspot_contact_form_IE8', 'conditional', 'lt IE 8' );
+    wp_enqueue_style('cyclando-icons', get_stylesheet_directory_uri() . '/fonts/cyclando-icons/style.css');
     if (is_singular('route')){
         wp_enqueue_style('route-single-post-style', get_stylesheet_directory_uri() . '/single-route-style.css');
         wp_enqueue_script('jQueryValidate', 'https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.2/jquery.validate.min.js', array('jquery'));

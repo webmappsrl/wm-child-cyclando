@@ -66,6 +66,7 @@ function route_mobile_tab_plan($atts) {
         <?php if ($coming_soon) :?>
             <h4 class="form-lable"><?php echo __('On request','wm-child-cyclando'); ?></h4>
         <?php else:?>
+            <?= do_shortcode('[onclick_route_mobile_calculator_header back_btn="close-calculator" scheda_name="calculator"]')?>
             <h4 class="form-lable"><?php echo __('Calculate your quote', 'wm-child-cyclando'); ?></h4>
             <p class="oc-route-mobile-search-form-label-p"><?php echo __('Select the departure date', 'wm-child-cyclando'); ?></p>
             <?= do_shortcode("[oneclick_route_form_datepicker]")?>
@@ -98,20 +99,6 @@ function route_mobile_tab_plan($atts) {
             <?= do_shortcode("[oneclick_route_form_purchase route='true' hotel_product_items='$hotel_product_items' first_departure='$first_departure']")?>
         <?php endif;?>
         
-        <div class="cyc-single-route-contact-button-container">
-            <p class="label"><?php 
-                if ($coming_soon) {
-                    echo __('Do you want to request a quote for this tour?', 'wm-child-cyclando');
-                } else {
-                    // echo __('Do you have doubts about your quote?', 'wm-child-cyclando');
-                } 
-            ?></p>
-            <div id="cy-contact-in-plan-tab" class="cy-contact-in-basso cy-contact-in-plan-tab">
-                <div class="cy-btn-plan-contact">
-                    <p><?php echo __('Request information', 'wm-child-cyclando'); ?></p>
-                </div>
-            </div>
-        </div>
 	</div>
     <div class="oc-route-mobile-your-reservation-container">
         <?= do_shortcode("[oneclick_route_your_reservation_panel route='true' hotel_product_items='$hotel_product_items']")?>

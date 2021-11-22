@@ -47,11 +47,13 @@ function wmScrollTop() {
   }
 
 jQuery(window).on('load', function() {
-  FWP.fetch_data();
-  setTimeout(function(){
-    jQuery('.cerca-results-preload-spinner').hide();
-    jQuery('.general-cerca-facetwp-container').show();
-  }, 3000);
+  if (typeof FWP !== 'undefined'){
+    FWP.fetch_data();
+    setTimeout(function(){
+      jQuery('.cerca-results-preload-spinner').hide();
+      jQuery('.general-cerca-facetwp-container').show();
+    }, 3000);
+  }
 
 	var facetwpPaged = document.querySelectorAll('.facetwp-page');
 	facetwpPagedScrollTop(facetwpPaged);
@@ -335,18 +337,6 @@ jQuery(document).ready(function () {
       );
     } else {
       jQuery("#cy-prices-modal .cy-modal-header").removeClass(
-        "price-header-sticky"
-      );
-    }
-  });
-
-  jQuery("#cy-route-program").on("scroll", function () {
-    if (jQuery("#cy-route-program").scrollTop() > 100) {
-      jQuery("#cy-route-program .cy-modal-header").addClass(
-        "price-header-sticky"
-      );
-    } else {
-      jQuery("#cy-route-program .cy-modal-header").removeClass(
         "price-header-sticky"
       );
     }
