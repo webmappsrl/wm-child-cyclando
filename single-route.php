@@ -677,7 +677,7 @@ get_header();
                     var addtocart = '';
                     obj = JSON.parse(response.responseText);
                     console.log(obj);
-                    jQuery(".cifraajax").html(obj.price+'€');
+                    jQuery(".cifraajax").html(obj.price["euro"]+',<span class="cents">'+obj.price["cent"]+'</span>'+'€');
                     var savedCookie = ocmCheckCookie();
                     savedCookie['price'] = obj.price;
                     savedCookie['routeName'] = route_title;
@@ -691,7 +691,7 @@ get_header();
                             jQuery('.route-active-promo').show();
                         }
                         jQuery( ".oc-route-mobile-plan-price-container" ).prepend( 
-                            `<div class="deposit-title"><a class="tooltips" href="#!"><?= __('Deposit', 'wm-child-cyclando') ?> <sup><i class="fas fa-info-circle"></i></sup><span><?= __('Please check terms and conditions that apply by clicking on "Proceed"', 'wm-child-cyclando') ?></span></a></div><div class="depositajax">`+obj.deposit+`€</div>`
+                            `<div class="deposit-title"><a class="tooltips" href="#!"><?= __('Deposit', 'wm-child-cyclando') ?> <sup><i class="fas fa-info-circle"></i></sup><span><?= __('Please check terms and conditions that apply by clicking on "Proceed"', 'wm-child-cyclando') ?></span></a></div><div class="depositajax">`+obj.deposit["euro"]+',<span class="cents">'+obj.deposit["cent"]+'</span>'+`€</div>`
                         );
                         savedCookie['deposit'] = obj.deposit;
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });

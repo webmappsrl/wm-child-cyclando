@@ -17,31 +17,31 @@ function oneclick_route_search_form_bikes($atts) {
                 <?php if ($has_bike): ?>
                 <div class="ocm-bikes-body">
                     <div class="regular-label"><?php echo __('Regular','wm-child-cyclando'); ?></div>
-                    <button  class="modal-btn oc-substract-btn" name="regular-bikes"><i class="fas fa-minus"></i></button>
+                    <button  class="modal-btn oc-substract-btn" name="regular-bikes"><i class="fal fa-minus"></i></button>
                     <div id="regular-bikes" class="oc-number-input">0</div>
-                    <button  class="modal-btn oc-add-btn" name="regular-bikes"><i class="fas fa-plus"></i></button>
+                    <button  class="modal-btn oc-add-btn" name="regular-bikes"><i class="fal fa-plus"></i></button>
                 </div>
                 <?php endif; ?>
                 <?php if ($has_ebike): ?>
                 <div class="ocm-bikes-body">
                     <div class="ebike-label"><?php echo __('Ebike','wm-child-cyclando'); ?></div>
-                    <button  class="modal-btn oc-substract-btn" name="electric-bikes"><i class="fas fa-minus"></i></button>
+                    <button  class="modal-btn oc-substract-btn" name="electric-bikes"><i class="fal fa-minus"></i></button>
                     <div id="electric-bikes" class="oc-number-input">0</div>
-                    <button class="modal-btn oc-add-btn" name="electric-bikes"><i class="fas fa-plus"></i></button>
+                    <button class="modal-btn oc-add-btn" name="electric-bikes"><i class="fal fa-plus"></i></button>
                 </div>
                 <?php endif; ?>
             <?php else: ?>
                 <div class="ocm-bikes-body">
                     <div class="regular-label"><?php echo __('Regular','wm-child-cyclando'); ?></div>
-                    <button  class="modal-btn oc-substract-btn" name="regular-bikes"><i class="fas fa-minus"></i></button>
+                    <button  class="modal-btn oc-substract-btn" name="regular-bikes"><i class="fal fa-minus"></i></button>
                     <div id="regular-bikes" class="oc-number-input">0</div>
-                    <button  class="modal-btn oc-add-btn" name="regular-bikes"><i class="fas fa-plus"></i></button>
+                    <button  class="modal-btn oc-add-btn" name="regular-bikes"><i class="fal fa-plus"></i></button>
                 </div>
                 <div class="ocm-bikes-body">
                     <div class="ebike-label"><?php echo __('Ebike','wm-child-cyclando'); ?></div>
-                    <button  class="modal-btn oc-substract-btn" name="electric-bikes"><i class="fas fa-minus"></i></button>
+                    <button  class="modal-btn oc-substract-btn" name="electric-bikes"><i class="fal fa-minus"></i></button>
                     <div id="electric-bikes" class="oc-number-input">0</div>
-                    <button class="modal-btn oc-add-btn" name="electric-bikes"><i class="fas fa-plus"></i></button>
+                    <button class="modal-btn oc-add-btn" name="electric-bikes"><i class="fal fa-plus"></i></button>
                 </div>
             <?php endif; ?>
     <?php endif; ?>

@@ -35,25 +35,25 @@ function oneclick_search_form_participants($atts) {
             </div>
             <div class="ocm-participants-body">
                 <div class="adult-label"><?php echo __('Adults','wm-child-cyclando'); ?></div>
-                <button  class="modal-btn oc-substract-btn" name="adult-participants"><i class="fas fa-minus"></i></button>
+                <button  class="modal-btn oc-substract-btn" name="adult-participants"><i class="fal fa-minus"></i></button>
                 <div id="adult-participants" class="oc-number-input">0</div>
-                <button  class="modal-btn oc-add-btn" name="adult-participants"><i class="fas fa-plus"></i></button>
+                <button  class="modal-btn oc-add-btn" name="adult-participants"><i class="fal fa-plus"></i></button>
             </div>
             <?php if ($route): ?>
                 <?php if ($has_kids ) { ?>
                 <div class="ocm-participants-body">
                     <div class="kid-label"><?php echo __('Kids','wm-child-cyclando'); ?></div>
-                    <button  class="modal-btn oc-substract-btn" name="kid-participants"><i class="fas fa-minus"></i></button>
+                    <button  class="modal-btn oc-substract-btn" name="kid-participants"><i class="fal fa-minus"></i></button>
                     <div id="kid-participants" class="oc-number-input">0</div>
-                    <button class="modal-btn oc-add-btn" name="kid-participants"><i class="fas fa-plus"></i></button>
+                    <button class="modal-btn oc-add-btn" name="kid-participants"><i class="fal fa-plus"></i></button>
                 </div>
                 <?php } ?>
             <?php else: ?>
                 <div class="ocm-participants-body">
                     <div class="kid-label"><?php echo __('Kids','wm-child-cyclando'); ?></div>
-                    <button  class="modal-btn oc-substract-btn" name="kid-participants"><i class="fas fa-minus"></i></button>
+                    <button  class="modal-btn oc-substract-btn" name="kid-participants"><i class="fal fa-minus"></i></button>
                     <div id="kid-participants" class="oc-number-input">0</div>
-                    <button class="modal-btn oc-add-btn" name="kid-participants"><i class="fas fa-plus"></i></button>
+                    <button class="modal-btn oc-add-btn" name="kid-participants"><i class="fal fa-plus"></i></button>
                 </div>
             <?php endif; ?>
             <div id="ocm-warning-container" class="ocm-warning-container"></div>

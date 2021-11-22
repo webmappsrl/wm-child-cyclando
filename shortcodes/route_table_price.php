@@ -368,10 +368,10 @@ if( $products ){
                                 }
                                 ?>
                                 <div class="addVariant_button_wrapper">
-                                    <div class="addVariant addVariantbtn" data-productarray='<?= json_encode($attributes_name_hotel_seasonal_modal) ?>' data-routeid="<?= $post_id ?>" data-place="<?= $place ?>" data-from="<?= $from ?>" data-to="<?= $to ?>" data-seasonname="<?= $season_name_id ?>"><?= __('Add raw' ,'wm-child-cyclando'); ?> <i class="fas fa-plus"></i></div>
+                                    <div class="addVariant addVariantbtn" data-productarray='<?= json_encode($attributes_name_hotel_seasonal_modal) ?>' data-routeid="<?= $post_id ?>" data-place="<?= $place ?>" data-from="<?= $from ?>" data-to="<?= $to ?>" data-seasonname="<?= $season_name_id ?>"><?= __('Add raw' ,'wm-child-cyclando'); ?> <i class="fal fa-plus"></i></div>
                                 </div>
                                 <div class="addVariant_button_wrapper">
-                                    <div class="addProduct addVariantbtn" data-productarray='<?= json_encode($variations_name_price_seasonal) ?>' data-routeid="<?= $post_id ?>" data-place="<?= $place ?>" data-from="<?= $from ?>" data-to="<?= $to ?>" data-seasonnameid="<?= $season_name_id ?>" data-seasonname="<?= $season_name ?>" data-repeaterrawid="<?= $model_season_raw_i ?>" data-subfieldkey="wm_route_quote_model_season_product" data-repeatername="model_season"><?= __('Add category' ,'wm-child-cyclando'); ?> <i class="fas fa-plus"></i></div>
+                                    <div class="addProduct addVariantbtn" data-productarray='<?= json_encode($variations_name_price_seasonal) ?>' data-routeid="<?= $post_id ?>" data-place="<?= $place ?>" data-from="<?= $from ?>" data-to="<?= $to ?>" data-seasonnameid="<?= $season_name_id ?>" data-seasonname="<?= $season_name ?>" data-repeaterrawid="<?= $model_season_raw_i ?>" data-subfieldkey="wm_route_quote_model_season_product" data-repeatername="model_season"><?= __('Add category' ,'wm-child-cyclando'); ?> <i class="fal fa-plus"></i></div>
                                 </div>
                                 <?php
                             }
@@ -424,10 +424,10 @@ if( $products ){
                 ?>
                 <div id="tab-monoSeason" class="quotes-preventivo simple"><!------------ quote ---------------------->
                     <div class="addVariant_button_wrapper">
-                        <div class="addVariant addVariantbtn" data-productarray='<?= json_encode($attributes_name_hotel_modal) ?>' data-routeid="<?= $post_id ?>" data-place="<?= $place ?>" data-from="<?= $from ?>" data-to="<?= $to ?>" data-seasonname="monoSeason"><?= __('Add raw' ,'wm-child-cyclando'); ?> <i class="fas fa-plus"></i></div>
+                        <div class="addVariant addVariantbtn" data-productarray='<?= json_encode($attributes_name_hotel_modal) ?>' data-routeid="<?= $post_id ?>" data-place="<?= $place ?>" data-from="<?= $from ?>" data-to="<?= $to ?>" data-seasonname="monoSeason"><?= __('Add raw' ,'wm-child-cyclando'); ?> <i class="fal fa-plus"></i></div>
                     </div>
                     <div class="addVariant_button_wrapper">
-                        <div class="addProduct addVariantbtn" data-productarray='<?= json_encode($variations_name_price) ?>' data-routeid="<?= $post_id ?>" data-place="<?= $place ?>" data-from="<?= $from ?>" data-to="<?= $to ?>" data-seasonnameid="false" data-seasonname="false" data-repeaterrawid="false" data-subfieldkey="wm_route_quote_product" data-repeatername="false"><?= __('Add category' ,'wm-child-cyclando'); ?> <i class="fas fa-plus"></i></div>
+                        <div class="addProduct addVariantbtn" data-productarray='<?= json_encode($variations_name_price) ?>' data-routeid="<?= $post_id ?>" data-place="<?= $place ?>" data-from="<?= $from ?>" data-to="<?= $to ?>" data-seasonnameid="false" data-seasonname="false" data-repeaterrawid="false" data-subfieldkey="wm_route_quote_product" data-repeatername="false"><?= __('Add category' ,'wm-child-cyclando'); ?> <i class="fal fa-plus"></i></div>
                     </div>
                     <table class="departures-quotes">
                         <thead>
@@ -465,7 +465,7 @@ if( $products ){
 
         <div class="extra-quotes"> <!------------ quote extra ---------------------->
             <div class="addExtra_button_wrapper">
-                <div class="addExtra addVariantbtn" data-productextra='<?= $product_extra_id ?>' data-routeid="<?= $post_id ?>" data-place="<?= $place ?>" data-from="<?= $from ?>" data-to="<?= $to ?>"><?= __('Add Extra' ,'wm-child-cyclando'); ?> <i class="fas fa-plus"></i></div>
+                <div class="addExtra addVariantbtn" data-productextra='<?= $product_extra_id ?>' data-routeid="<?= $post_id ?>" data-place="<?= $place ?>" data-from="<?= $from ?>" data-to="<?= $to ?>"><?= __('Add Extra' ,'wm-child-cyclando'); ?> <i class="fal fa-plus"></i></div>
             </div>
             <?php
                 if( $has_extra ){ //have_rows('product') ?>

@@ -217,12 +217,16 @@ class routeProductsOC {
 
         $object['departureDateFormated'] = $departureDateFormated;
         $object['todayPlus30'] = $todayPlus30;
-        $object['price'] = number_format($this->price, 2, ',', '.');
+        $priceToFormat = number_format($this->price, 2, ',', '.');
+        $object['price']['euro'] = explode(',',$priceToFormat)[0];
+        $object['price']['cent'] = explode(',',$priceToFormat)[1];
         $object['category'] = array_keys($hotel);
         $object['categoryname'] = $category;
         $object['addtocart'] = implode(',',$addToCart);
         if ($deposit) {
-            $object['deposit'] = number_format($deposit, 2, ',', '.');
+            $depositToFormat = number_format($deposit, 2, ',', '.');
+            $object['deposit']['euro'] = explode(',',$depositToFormat)[0];
+            $object['deposit']['cent'] = explode(',',$depositToFormat)[1];
             $object['depositaddtocart'] = $this->createDepositProduct($this->price,$deposit);
         }
         return $object;

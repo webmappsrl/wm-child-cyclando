@@ -25,9 +25,9 @@ function oneclick_search_form_single($atts) {
             <?php if ($route): ?>
                 <div class="ocm-single-body">
                     <div class="single-label"><?php echo __('Single','wm-child-cyclando'); ?></div>
-                    <button  class="modal-btn oc-substract-btn" name="single_room_paid"><i class="fas fa-minus"></i></button>
+                    <button  class="modal-btn oc-substract-btn" name="single_room_paid"><i class="fal fa-minus"></i></button>
                     <div id="single_room_paid" class="oc-number-input">0</div>
-                    <button  class="modal-btn oc-add-btn" name="single_room_paid"><i class="fas fa-plus"></i></button>
+                    <button  class="modal-btn oc-add-btn" name="single_room_paid"><i class="fal fa-plus"></i></button>
                 </div>
             <?php endif; ?>
             <div id="ocm-warning-single-container" class="ocm-warning-single-container"></div>

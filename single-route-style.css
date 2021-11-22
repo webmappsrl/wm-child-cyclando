@@ -2172,6 +2172,7 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
 .oc-route-mobile-plan-summary-container h4 {
     font-size: 18px;
     margin: 0;
+    font-weight: 600;
 }
 .oc-route-mobile-plan-summary {
     font-size: 14px;
@@ -2202,8 +2203,15 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
     font-size: 24px;
     font-weight: 600;
 }
+.cifraajax span.cents {
+    font-size: 19px;
+}
+.depositajax span.cents {
+    font-size: 17px;
+}
 .cifraajax-title {
     font-size: 18px;
+    font-weight: 600;
 }
 .oc-route-mobile-search-form-container .oc-acquista-route.cyc-single-route-cta-buttons .cy-btn-contact {
     border: 1px solid var(--color-secondary);
@@ -2494,7 +2502,7 @@ body .ui-datepicker.ui-widget.ui-widget-content {
     -webkit-appearance: none;
     letter-spacing: 0em;
     box-shadow: 0px 1px 0px 0px rgb(0 0 0 / 8%) inset;
-    min-height: 2.8rem;
+    min-height: 49px;
     padding: 20px 22px 20px 50px!important;
     transition: all .3s ease;
     border-radius: 30px!important;
@@ -2504,7 +2512,7 @@ body .ui-datepicker.ui-widget.ui-widget-content {
     color: #000;
     border: 1px solid #000000;
     font-weight: 400;
-    height: 3.4rem;
+    height: 49px;
     cursor: pointer;
     background: url(/wp-content/themes/wm-child-cyclando/assets/images/calendar.png) 4% / 6.3% no-repeat #fff!important;
 }
@@ -2523,6 +2531,11 @@ h4.form-lable {
     font-size: 14px;
     font-weight: 600;
     padding-top: 15px;
+}
+.oc-age-text-wrapper {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
 }
 .ui-widget-header {
     border: 0!important;
@@ -2987,7 +3000,9 @@ h3.section-h3-label, .cyc-single-route-description-wrapper h5{
         margin-top: 32px;
         border: 1px solid #f5f5f5;
     }
-    
+    .oc-route-mobile-search-form-container .datepicker-holder input {
+        background: url(/wp-content/themes/wm-child-cyclando/assets/images/calendar.png) 4% / 5.8% no-repeat #fff!important;
+    }
 }
 
 .open-calculator {
@@ -3021,4 +3036,16 @@ h3.section-h3-label, .cyc-single-route-description-wrapper h5{
 .category-radio-wrapper {
     display: inline-block;
     padding-right: 20px;
+}
+.category-radio-wrapper input[type="radio"]:checked {
+    background-color: var(--color-primary);
+}
+.category-radio-wrapper input[type="radio"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #cccccc;
+    border-radius: 50%;
+    background-clip: content-box;
+    padding: 2px!important;
 }
