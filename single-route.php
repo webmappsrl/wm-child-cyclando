@@ -549,9 +549,15 @@ get_header();
     <!-- END new template END-->
 
     <!-- Mobile calculator button -->
-    <div class="route-mobile-calculator-btn-container">
-        <div id="mobile-calculator-btn-wrapper" class="mobile-calculator-btn"><?= __('Calculate quote','wm-child-cyclando')?></div>
-    </div>
+    <?php if ($coming_soon) :?>
+        <div class="route-mobile-calculator-btn-container">
+            <div class="mobile-calculator-btn cy-contact-in-alto"><?= __('On request','wm-child-cyclando')?></div>
+        </div>
+    <?php else:?>
+        <div class="route-mobile-calculator-btn-container">
+            <div id="mobile-calculator-btn-wrapper" class="mobile-calculator-btn"><?= __('Calculate quote','wm-child-cyclando')?></div>
+        </div>
+    <?php endif;?>
     <!-- Mobile calculator button -->
 
     <!-- HTML modal for prices -->
