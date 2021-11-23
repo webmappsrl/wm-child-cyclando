@@ -1041,10 +1041,12 @@ get_header();
                 jQuery('.oc-route-mobile-search-form-container').show();
                 jQuery('.ocm-proceed-container').show();
             })
-            jQuery('#back-calculator').on('click',function(){
-                jQuery('.oc-route-mobile-your-reservation-container').hide();
-                jQuery('.oc-route-mobile-search-form-container').show();
-                jQuery('.ocm-proceed-container').hide();
+            jQuery('#back-calculator').each(function(index,element) {
+                jQuery(element).click( function(e){ 
+                    jQuery('.oc-route-mobile-your-reservation-container').hide();
+                    jQuery('.ocm-proceed-container').hide();
+                    jQuery('.oc-route-mobile-search-form-container').show();
+                })
             })
             jQuery('#close-calculator').on('click',function(){
                 jQuery('.cyc-route-sidebar').removeClass('open-calculator');

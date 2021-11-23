@@ -285,7 +285,7 @@
                         obj = JSON.parse(response.responseText);
                         console.log(response.responseText);
                         console.log(obj);
-                        $(".cifra-"+post_id).html(obj.price+'€');
+                        $(".cifra-"+post_id).html(obj.price["euro"]+',<span class="cents">'+obj.price["cent"]+'</span>'+'€');
                     }
                 });
         });

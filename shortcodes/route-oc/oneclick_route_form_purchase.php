@@ -47,8 +47,8 @@ function oneclick_route_form_purchase($atts) {
     <!-- HTML modal for extras, proceed btn -->
     <div id="oc-extras-modal" class="ocm-proceed-container">
         <div class="ocm-proceed-content">
-            <?= do_shortcode('[onclick_route_mobile_calculator_header back_btn="back-calculator" scheda_name="extras"]')?>
             <?php if ($has_extra) { ?>
+            <?= do_shortcode('[onclick_route_mobile_calculator_header back_btn="back-calculator" scheda_name="extras"]')?>
             <h4 class="form-lable ocm-extras-nocond-title"><?php echo __('Do you want to add more?', 'wm-child-cyclando'); ?></h4>
             <div class="ocm-extras-proceed-detail-container">
 

@@ -2360,6 +2360,8 @@ span.route_duration_free {
     border: 1px #000 solid;
     height: 30px;
     width: 30px;
+    align-self: center;
+    justify-self: center;
 }
 .modal-btn > * {
     pointer-events: none;
@@ -2409,7 +2411,7 @@ div.selected {
 .ocm-participants-body, .ocm-bikes-body, .ocm-single-body {
     display: grid;
     grid-template-columns: 8fr 1fr 1fr 1fr;
-    padding: 10px 0;
+    padding: 50px 0;
 }
 .ocm-participants-header, .ocm-bikes-header, .ocm-single-header {
     display: flex;
