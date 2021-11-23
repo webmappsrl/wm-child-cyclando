@@ -3056,7 +3056,7 @@ h3.section-h3-label, .cyc-single-route-description-wrapper h5{
     padding: 0 0 10px;
 }
 .oc-route-extra-header .w-tabs-section-content {
-    padding: 0px;
+    padding: 0px!important;
 }
 .oc-route-extra-header .w-tabs.iconpos_right .w-tabs-section-control {
     right: 0em;
