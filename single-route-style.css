@@ -2240,6 +2240,9 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
     padding: 4%;
     width: 100%;
 }
+.ocm-extras-proceed-summary-container .deposit-title, .ocm-extras-proceed-summary-container .depositajax {
+    display: none;
+}
 .ocm-extras-proceed-detail-container {
     padding: 4%;
     width: 100%;
