@@ -551,7 +551,7 @@ get_header();
     <!-- Mobile calculator button -->
     <?php if ($coming_soon) :?>
         <div class="route-mobile-calculator-btn-container">
-            <div class="mobile-calculator-btn cy-contact-in-alto"><?= __('On request','wm-child-cyclando')?></div>
+            <div id="cy-contact-in-alto" class="mobile-calculator-btn"><?= __('On request','wm-child-cyclando')?></div>
         </div>
     <?php else:?>
         <div class="route-mobile-calculator-btn-container">

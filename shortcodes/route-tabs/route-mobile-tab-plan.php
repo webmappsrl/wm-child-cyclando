@@ -65,6 +65,20 @@ function route_mobile_tab_plan($atts) {
     <div class="oc-route-mobile-search-form-container">
         <?php if ($coming_soon) :?>
             <h4 class="form-lable"><?php echo __('On request','wm-child-cyclando'); ?></h4>
+            <div class="cyc-single-route-contact-button-container">
+                <p class="label"><?php 
+                    if ($coming_soon) {
+                        echo __('Do you want to request a quote for this tour?', 'wm-child-cyclando');
+                    } else {
+                        // echo __('Do you have doubts about your quote?', 'wm-child-cyclando');
+                    } 
+                ?></p>
+                <div id="cy-contact-in-plan-tab" class="cy-contact-in-basso cy-contact-in-plan-tab">
+                    <div class="cy-btn-plan-contact">
+                        <p><?php echo __('Request information', 'wm-child-cyclando'); ?></p>
+                    </div>
+                </div>
+            </div>
         <?php else:?>
             <?= do_shortcode('[onclick_route_mobile_calculator_header back_btn="close-calculator" scheda_name="calculator"]')?>
             <h4 class="form-lable"><?php echo __('Calculate your quote', 'wm-child-cyclando'); ?></h4>

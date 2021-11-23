@@ -149,6 +149,38 @@ Text Domain: wm-child-verdenatura
     cursor: pointer;
     transition: 300ms all ease;
 }
+.cyc-single-route-contact-button-container .label {
+    margin: 0;
+    font-size: 17px!important;
+    line-height: 16px;
+    padding-bottom: 30px;
+}
+#cy-contact-in-plan-tab p {
+    font-size: 18px!important;
+}
+.cy-contact-in-plan-tab .cy-btn-plan-contact p {
+    color: var(--color-secondary);
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+}
+.cy-contact-in-plan-tab {
+    width: fit-content;
+}
+.cy-contact-in-plan-tab .cy-btn-plan-contact:hover {
+    background-color: var(--color-secondary-hover);
+}
+.cy-contact-in-plan-tab .cy-btn-plan-contact:hover p {
+    color: white;
+}
+.cy-contact-in-plan-tab .cy-btn-plan-contact {
+    border: 1px solid #F16E08;
+    border-radius: 25px;
+    padding: 10px 5px;
+    min-width: 250px;
+    cursor: pointer;
+    transition: 300ms all ease;
+}
 .cyc-single-route-info-button-wrapper .cy-btn-contact p {
     color: var(--color-text-p);
     font-size: 15px;
