@@ -2562,7 +2562,7 @@ h4.form-lable {
     position: relative;
 }
 .ui-datepicker-prev:hover {
-    color: #fff;
+    color: rgb(0, 0, 0);
 }
 .ui-datepicker-next span.ui-icon {
     width: 13px;
@@ -2579,7 +2579,7 @@ h4.form-lable {
     position: relative;
 }
 .ui-datepicker-next:hover {
-    color: #fff;
+    color: rgb(0, 0, 0);
 }
 .ui-datepicker table {
     min-height: 278px;
