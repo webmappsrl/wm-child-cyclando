@@ -84,15 +84,10 @@ function oneclick_route_your_reservation_panel($atts)
     <?php if ($hotel_product_items || $has_extra) : ?>
         <div class="oc-route-extra-row oc-route-extra-header">
             <div class="oc-route-your-reservation-column-title oc-route-your-reservation-title">
-                <h4><?php echo __('Extra', 'wm-child-cyclando'); ?></h4>
-            </div>
-            <div class="oc-route-extra-column-info oc-route-your-reservation-modify">
-                <p id="oc-route-extra-modify"><span><?php echo __('Modify', 'wm-child-cyclando'); ?></span></p>
+                <?= do_shortcode('[vc_tta_accordion][vc_tta_section tab_id="1637657869979-2d889b75-c48e" title="Extra"][vc_column_text]<div class="oc-route-extra-row oc-route-extra-details"></div>[/vc_column_text][/vc_tta_section][/vc_tta_accordion]');?> 
             </div>
         </div>
     <?php endif; ?>
-    <div class="oc-route-extra-row oc-route-extra-details">
-    </div>
 
     <div class="oc-route-mobile-plan-summary-container">
         <h4><?= __('Best price for', 'wm-child-cyclando') ?></h4>
@@ -105,6 +100,10 @@ function oneclick_route_your_reservation_panel($atts)
     </div>
     <div class="oc-route-mobile-plan-exclusive-online">
         <div class="exclusive-online-title"><?= __('Online Exclusive!', 'wm-child-cyclando') ?></div>
+    </div>
+    
+    <div class="oc-route-plan-stripe-banner">
+        <img src="<?= get_stylesheet_directory_uri() ?>/assets/images/stripe-payments.png" alt="stripe-payments" >
     </div>
     
 
@@ -235,12 +234,6 @@ function oneclick_route_your_reservation_panel($atts)
                 $('#oc-route-your-reservation-modify').on('click', function() {
                     $('.oc-route-mobile-your-reservation-container').hide();
                     $('.oc-route-mobile-search-form-container').show();
-                });
-                // hide and show extra popup
-                $('#oc-route-extra-modify').on('click', function() {
-                    $('.oc-route-mobile-your-reservation-container').hide();
-                    $('.oc-route-mobile-search-form-container').show();
-                    $('.ocm-proceed-container').show();
                 });
             });
         })(jQuery);

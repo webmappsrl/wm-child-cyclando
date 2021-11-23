@@ -47,14 +47,7 @@ function oneclick_route_search_form_single($atts) {
             } else {
                 enableSinglebtn();
             }
-            // $('#oc-single').on('click',()=>{
-            //     var savedCookie = ocmCheckCookie(); 
-            //     if (!savedCookie['kids']) { 
-            //         $('.ocm-single-container').show();
-            //         rooms = [];
-            //         rooms = calculateSingleRoomNum(savedCookie['adults']);
-            //     }
-            // });
+            
 
             $('.ocm-single-close').on('click',function(){
                 $('.ocm-single-container').hide();

@@ -2035,10 +2035,14 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     flex-grow: 1;
     width: 50%;
 }
-.oc-route-your-reservation-title h4 {
+.oc-route-your-reservation-title h4, .oc-route-extra-header .w-tabs-section-title {
     font-weight: 600;
+    font-size: 18px;
 }
 .oc-route-your-reservation-column-info p {
+    text-align: right;
+}
+.oc-route-extra-column-info.oc-route-your-reservation-modify p{
     text-align: right;
 }
 .oc-route-your-reservation-modify p {
@@ -2101,7 +2105,7 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
     font-size: 14px;
 }
 .oc-route-your-reservation-purchase-form-container {
-    padding-top: 20px;
+    padding-top: 10px;
 }
 .oc-route-your-reservation-purchase-form-container h3{
     margin-bottom: 15px;
@@ -2126,9 +2130,6 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
 .oc-route-your-reservation-purchase-form-container .required {
     text-decoration: none;
 }
-.oc-route-your-reservation-title h4 {
-    font-size: 18px;
-}
 .oc-route-extra-row.oc-route-extra-header,
 .oc-route-extra-row.oc-route-extra-details {
     display: none;
@@ -2145,15 +2146,12 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
     width: 50%;
 }
 .oc-route-extra-row.oc-route-extra-details .oc-route-your-reservation-column-title {
-    width: 50%;
+    width: 70%;
     line-height: 20px;
 }
 .oc-route-extra-row.oc-route-extra-details .oc-route-your-reservation-column-info {
-    width: 50%;
+    width: 30%;
     line-height: 20px;
-}
-.oc-route-extra-column-info.oc-route-your-reservation-modify p{
-    text-align: right;
 }
 .oc-route-mobile-search-form-asbb-wrapper {
 }
@@ -2161,7 +2159,7 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
     width: 100%;
 }
 .oc-route-mobile-plan-exclusive-online {
-    padding-bottom: 30px;
+    padding-bottom: 20px;
 }
 .oc-route-mobile-plan-exclusive-online .exclusive-online-title{
     text-align: right;
@@ -2923,6 +2921,9 @@ h3.section-h3-label, .cyc-single-route-description-wrapper h5{
     .oc-route-mobile-plan-summary-container {
         margin-top: 20px;
     }
+    .oc-route-your-reservation-modify {
+        display: none;
+    }
 }
 @media screen and (min-width: 950px) { 
     .mobile-calculator-header-wrapper { 
@@ -3044,4 +3045,22 @@ h3.section-h3-label, .cyc-single-route-description-wrapper h5{
     border-radius: 50%;
     background-clip: content-box;
     padding: 2px!important;
+}
+.oc-route-extra-header .w-tabs-section {
+    border: 0px!important;
+}
+.oc-route-extra-header .w-tabs-section-header {
+    padding: 0 0 10px;
+}
+.oc-route-extra-header .w-tabs-section-content {
+    padding: 0px;
+}
+.oc-route-extra-header .w-tabs.iconpos_right .w-tabs-section-control {
+    right: 0em;
+}
+.oc-route-extra-header .w-tabs-section-header:hover,.oc-route-extra-header .w-tabs-section-header:focus {
+    background: rgba(0,0,0,0)!important;
+}
+.oc-route-plan-stripe-banner {
+    text-align: right;
 }

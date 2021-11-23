@@ -563,6 +563,7 @@ jQuery(document).ready(function () {
     jQuery('#oc-single').off('click');
     jQuery('#ocm-single-number').text('');
     jQuery('#oc-single').removeClass("selected");
+    jQuery('.ocm-single-body').hide();
     var savedCookie = ocmCheckCookie();
     try{
       if (!!savedCookie[post_id]['extra']['single_room_paid']) {
@@ -588,6 +589,7 @@ jQuery(document).ready(function () {
     var savedCookie = ocmCheckCookie();
 
     // Enable single btn in plan interface
+    jQuery('.ocm-single-body').show();
     jQuery('#oc-single i').remove();
     jQuery('#oc-single').removeClass('disable');
     jQuery('#oc-single').on('click',function(){

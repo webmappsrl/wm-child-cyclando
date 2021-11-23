@@ -701,6 +701,8 @@ get_header();
                     }
                     if (obj.extratotal) {
                         jQuery(".cifraajaxextra").html(obj.extratotal["euro"]+',<span class="cents">'+obj.extratotal["cent"]+'</span>'+'€');
+                    } else {
+                        jQuery(".cifraajaxextra").html('0'+'€');
                     }
                     if (obj.depositaddtocart) {
                         addtocart = obj.depositaddtocart;

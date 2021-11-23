@@ -151,6 +151,7 @@ function oneclick_route_search_form_participants($atts) {
                                 savedCookie = ocmCheckCookie(); 
                                 savedCookie['ages'][e.target.id.split('-').pop()] = parseInt(this.value);
                                 Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+                                updatePriceOnEachChange();
                             });
                             $("#ocm-warning-container").empty();
                         } else {
