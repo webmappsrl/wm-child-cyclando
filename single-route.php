@@ -384,7 +384,7 @@ get_header();
                                                     } ?>
                                                     <?php if ($shape) { ?>
                                                             <div class="meta-bar-taxonomy-container">
-                                                                <i class="<?= $icon ?>"></i>
+                                                            <i class="<?php echo the_shape_icon($shape); ?>"></i>
                                                                 <p class='meta-bar-txt-light'>
                                                                     <?php
                                                                     $title_path = $array = [
