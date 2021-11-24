@@ -701,43 +701,48 @@ get_header();
                 type : 'post',
                 data: data,
                 complete:function(response){
-                    var addtocart = '';
-                    obj = JSON.parse(response.responseText);
-                    console.log(obj);
-                    jQuery(".cifraajax").html(obj.price["euro"]+',<span class="cents">'+obj.price["cent"]+'</span>'+'€');
-                    var savedCookie = ocmCheckCookie();
-                    savedCookie['price'] = obj.price;
-                    savedCookie['routeName'] = route_title;
-                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
-                    jQuery( ".deposit-title" ).remove();
-                    jQuery( ".depositajax" ).remove();
-                    delete savedCookie['deposit'];
-                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
-                    if (obj.deposit) {
-                        if (parseInt(obj.deposit) >= 100) {
-                            jQuery('.route-active-promo').show();
-                        }
-                        jQuery( ".oc-route-mobile-plan-price-container" ).prepend( 
-                            `<div class="deposit-title"><a class="tooltips" href="#!"><?= __('Deposit', 'wm-child-cyclando') ?> <sup><i class="fas fa-info-circle"></i></sup><span><?= __('Please check terms and conditions that apply by clicking on "Proceed"', 'wm-child-cyclando') ?></span></a></div><div class="depositajax">`+obj.deposit["euro"]+',<span class="cents">'+obj.deposit["cent"]+'</span>'+`€</div>`
-                        );
-                        savedCookie['deposit'] = obj.deposit;
+                    jQuery(".cifraajax").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
+                    jQuery(".cifraajaxextra").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
+                    setTimeout(()=>{
+                        console.log('wating ..')
+                        var addtocart = '';
+                        obj = JSON.parse(response.responseText);
+                        console.log(obj);
+                        jQuery(".cifraajax").html(obj.price["euro"]+',<span class="cents">'+obj.price["cent"]+'</span>'+'€');
+                        var savedCookie = ocmCheckCookie();
+                        savedCookie['price'] = obj.price;
+                        savedCookie['routeName'] = route_title;
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
-                    }
-                    if (obj.extratotal) {
-                        jQuery(".cifraajaxextra").html(obj.extratotal["euro"]+',<span class="cents">'+obj.extratotal["cent"]+'</span>'+'€');
-                    } else {
-                        jQuery(".cifraajaxextra").html('0'+'€');
-                    }
-                    if (obj.depositaddtocart) {
-                        addtocart = obj.depositaddtocart;
-                    } else {
-                        addtocart = obj.addtocart;
-                    }
-                    calcCategorySelectOptions(obj);
-                    updatePlanSummaryTxt(savedCookie);
-                    updateYourReservationSummaryTxt(savedCookie,obj);
-                    jQuery( "#quotewcaddtocart" ).remove();
-                    jQuery('#yourReservationPurchaseFrom').prepend('<input type="hidden" id="quotewcaddtocart" name="add-to-cart" value="'+addtocart+'" />');
+                        jQuery( ".deposit-title" ).remove();
+                        jQuery( ".depositajax" ).remove();
+                        delete savedCookie['deposit'];
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+                        if (obj.deposit) {
+                            if (parseInt(obj.deposit) >= 100) {
+                                jQuery('.route-active-promo').show();
+                            }
+                            jQuery( ".oc-route-mobile-plan-price-container" ).prepend( 
+                                `<div class="deposit-title"><a class="tooltips" href="#!"><?= __('Deposit', 'wm-child-cyclando') ?> <sup><i class="fas fa-info-circle"></i></sup><span><?= __('Please check terms and conditions that apply by clicking on "Proceed"', 'wm-child-cyclando') ?></span></a></div><div class="depositajax">`+obj.deposit["euro"]+',<span class="cents">'+obj.deposit["cent"]+'</span>'+`€</div>`
+                            );
+                            savedCookie['deposit'] = obj.deposit;
+                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+                        }
+                        if (obj.extratotal) {
+                            jQuery(".cifraajaxextra").html(obj.extratotal["euro"]+',<span class="cents">'+obj.extratotal["cent"]+'</span>'+'€');
+                        } else {
+                            jQuery(".cifraajaxextra").html('0'+'€');
+                        }
+                        if (obj.depositaddtocart) {
+                            addtocart = obj.depositaddtocart;
+                        } else {
+                            addtocart = obj.addtocart;
+                        }
+                        calcCategorySelectOptions(obj);
+                        updatePlanSummaryTxt(savedCookie);
+                        updateYourReservationSummaryTxt(savedCookie,obj);
+                        jQuery( "#quotewcaddtocart" ).remove();
+                        jQuery('#yourReservationPurchaseFrom').prepend('<input type="hidden" id="quotewcaddtocart" name="add-to-cart" value="'+addtocart+'" />');
+                    }, 500);
                 }
             });
         }
