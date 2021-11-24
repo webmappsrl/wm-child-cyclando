@@ -101,6 +101,7 @@ function oneclick_route_search_form_bikes($atts) {
                 $(element).click( function(e){
                     savedCookie = ocmCheckCookie(); 
                     if ($(e.target).attr('name') == 'regular-bikes' || $(e.target).attr('name') == 'electric-bikes') {
+                        $("#ocm-warning-container").empty();
                         var counter = $('#'+$(e.target).attr('name'));
                         var count = parseInt(counter.text());
                         count = count - 1;
