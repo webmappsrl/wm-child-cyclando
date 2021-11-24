@@ -155,23 +155,12 @@ function oneclick_route_search_form_bikes($atts) {
                     );
                     console.log('savedCookie'+JSON.stringify(savedCookie));
                 }
-                else if  (savedCookie) {
+                else {
                     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                     $("#ocm-warning-bikes-container").empty();
                     $('.ocm-bikes-container').hide();
                     $('#ocm-bikes-number').text(sum);
-                    <?php if ($route) { ?>
                     ajaxUpdatePrice();
-                    <?php } ?>
-                } else {
-                    $("#ocm-warning-bikes-container").empty();
-                    $('.ocm-bikes-container').hide();
-                    $('#ocm-bikes-number').text(sum);
-                }
-                if (sum) {
-                    $("#oc-bikes").addClass('selected');
-                } else {
-                    $("#oc-bikes").removeClass('selected');
                 }
             };
         });

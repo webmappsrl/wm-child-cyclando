@@ -663,7 +663,33 @@ get_header();
         jQuery(document).ready(function() {
             calculateDepartureDate(start_arrayYmd);
         });
+
+        if (!Date.now) {
+            Date.now = function() { return new Date().getTime(); }
+        }
+
+        let doAjax;
+        let lastClickTime = 0;
+        const xTime = 1000;
+
         function ajaxUpdatePrice(){
+            if ( (Date.now() - lastClickTime) <= xTime )//nth click, before xTime
+            {
+                clearTimeout(doAjax)
+            }
+            lastClickTime = Date.now()
+            setTimeoutClick();
+            jQuery(".cifraajax").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
+            jQuery(".cifraajaxextra").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
+        }
+
+        function setTimeoutClick() {
+            doAjax = setTimeout(()=>{
+                actualAjaxUpdatePrice()
+            }, xTime);
+        }
+
+        function actualAjaxUpdatePrice(){
             var savedCookie = ocmCheckCookie();
             var data = {
                 'action': 'oc_ajax_route_price',
@@ -674,14 +700,6 @@ get_header();
                 url: '/wp-admin/admin-ajax.php',
                 type : 'post',
                 data: data,
-                beforeSend: function(){
-                    jQuery(".cifraajax").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
-                    jQuery(".cifraajaxextra").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
-                },
-                success : function( response ) {
-                    jQuery(".cifraajax").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
-                    jQuery(".cifraajaxextra").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
-                },
                 complete:function(response){
                     var addtocart = '';
                     obj = JSON.parse(response.responseText);
