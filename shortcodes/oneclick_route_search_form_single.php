@@ -60,22 +60,15 @@ function oneclick_route_search_form_single($atts) {
                     savedCookie = ocmCheckCookie(); 
                     if ($(e.target).attr('name') == 'single_room_paid') {
                         var counter = $('#'+$(e.target).attr('name'));
-                        console.log(counter);
                         var count = counter.text();
-                        console.log('count ' + count);
                         var nextIndex = $.inArray(count, rooms) + 1;
-                        console.log('nextIndex ' + nextIndex);
-                        console.log('rooms.length ' + rooms.length);
                         if (nextIndex < rooms.length) {
                             val = rooms[nextIndex];
-                            console.log('val ' + val);
                             counter.text(val);
                             num = parseInt(val);
                         }
                         else {
                         }
-                        console.log('più' + num);
-                        
 
                         if (num != 0 ) {
                             savedCookie[post_id]['extra']['single_room_paid'] = num;
@@ -93,7 +86,6 @@ function oneclick_route_search_form_single($atts) {
                 $(element).click( function(e){
                     savedCookie = ocmCheckCookie(); 
                     if ($(e.target).attr('name') == 'single_room_paid') {
-                        console.log(rooms);
                         var counter = $('#'+$(e.target).attr('name'));
                         var count = counter.text();
 
@@ -105,7 +97,6 @@ function oneclick_route_search_form_single($atts) {
                         }
                         else {
                         }
-                        console.log('meno' + num);
                         if (num != 0 ) {
                             savedCookie[post_id]['extra']['single_room_paid'] = num;
                             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });

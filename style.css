@@ -2398,6 +2398,8 @@ div.selected {
 }
 .disable {
     cursor: not-allowed;
+    color: #ccc;
+    border: 1px solid #ccc;
 }
 #oc-single i {
     vertical-align: initial;

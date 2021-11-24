@@ -125,6 +125,9 @@ function oneclick_route_search_form_participants($atts) {
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         rooms = calculateSingleRoomNum(savedCookie['adults']);
                         updatePriceOnEachChange();
+                        $('.oc-add-btn[name="regular-bikes"]').removeClass('disable');
+                        $('.oc-add-btn[name="electric-bikes"]').removeClass('disable');
+                        $("#ocm-warning-bikes-container").empty();
                     }
                     if ($(e.target).attr('name') == 'kid-participants') {
 
@@ -154,6 +157,9 @@ function oneclick_route_search_form_participants($atts) {
                                 updatePriceOnEachChange();
                             });
                             $("#ocm-warning-container").empty();
+                            $('.oc-add-btn[name="regular-bikes"]').removeClass('disable');
+                            $('.oc-add-btn[name="electric-bikes"]').removeClass('disable');
+                            $("#ocm-warning-bikes-container").empty();
                         } else {
                             $("#ocm-warning-container").empty();
                             $("#ocm-warning-container").append(

@@ -704,7 +704,6 @@ get_header();
                     jQuery(".cifraajax").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
                     jQuery(".cifraajaxextra").html('<div class="w-iconbox-icon"><i class="fas fa-spinner fa-spin"></i></div>');
                     setTimeout(()=>{
-                        console.log('wating ..')
                         var addtocart = '';
                         obj = JSON.parse(response.responseText);
                         console.log(obj);

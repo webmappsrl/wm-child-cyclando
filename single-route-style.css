@@ -3050,6 +3050,7 @@ h3.section-h3-label, .cyc-single-route-description-wrapper h5{
     background-color: white;
     top: 0;
     overflow-y: auto;
+    overflow-x: hidden;
     width: 100%;
     height: 100%;
 }

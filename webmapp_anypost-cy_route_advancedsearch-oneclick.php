@@ -263,7 +263,6 @@
             var start_arrayYmd = <?php echo json_encode($start_arrayYmd)?>;
             calculateDepartureDate(start_arrayYmd);
             var savedCookie = ocmCheckCookie();
-            console.log(savedCookie);
             var post_id = <?= $post_id ?>;
                 var data = {
                     'action': 'oc_ajax_route_price',
@@ -283,7 +282,6 @@
                     },
                     complete:function(response){
                         obj = JSON.parse(response.responseText);
-                        console.log(response.responseText);
                         console.log(obj);
                         $(".cifra-"+post_id).html(obj.price["euro"]+',<span class="cents">'+obj.price["cent"]+'</span>'+'€');
                     }

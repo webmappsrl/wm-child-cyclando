@@ -44,9 +44,10 @@ function oneclick_route_search_form_bikes($atts) {
                     <button class="modal-btn oc-add-btn" name="electric-bikes"><i class="fal fa-plus"></i></button>
                 </div>
             <?php endif; ?>
+        <div id="ocm-warning-bikes-container" class="ocm-warning-bike-container"></div>
     <?php endif; ?>
     <?php if (!$has_bike && !$has_ebike): ?>
-        <div class="oc-input-btn"><?= __('Bikes included','wm-child-cyclando'); ?></div>
+        <div class=""><?= __('Bikes included','wm-child-cyclando'); ?></div>
     <?php endif; ?>
 
     <script>
@@ -81,18 +82,17 @@ function oneclick_route_search_form_bikes($atts) {
                     if ($(e.target).attr('name') == 'regular-bikes' || $(e.target).attr('name') == 'electric-bikes') {
                         var counter = $('#'+$(e.target).attr('name'));
                         var count = parseInt(counter.text());
-                        counter.text(count +1);
                         num = count + 1;
                     }
                     if ($(e.target).attr('name') == 'regular-bikes') {
                         savedCookie['regular'] = num;
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
-                        updatePriceOnEachBikeSelect();
+                        updatePriceOnEachBikeSelect(counter,num);
                     }
                     if ($(e.target).attr('name') == 'electric-bikes') {
                         savedCookie['electric'] = num;
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
-                        updatePriceOnEachBikeSelect();
+                        updatePriceOnEachBikeSelect(counter,num);
                     }
                 });
             });
@@ -104,8 +104,6 @@ function oneclick_route_search_form_bikes($atts) {
                         var counter = $('#'+$(e.target).attr('name'));
                         var count = parseInt(counter.text());
                         count = count - 1;
-                        count < 0 ? counter.text(0) : counter.text(count);
-                        console.log(count);
                     }
                     if ($(e.target).attr('name') == 'regular-bikes') {
                         if (count > 0 ) {
@@ -115,7 +113,7 @@ function oneclick_route_search_form_bikes($atts) {
                             delete savedCookie['regular'];
                             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         }
-                        updatePriceOnEachBikeSelect();
+                        updatePriceOnEachBikeSelect(counter,count);
                     }
                     if ($(e.target).attr('name') == 'electric-bikes') {
                         if (count > 0 ) {
@@ -125,20 +123,12 @@ function oneclick_route_search_form_bikes($atts) {
                             delete savedCookie['electric'];
                             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         }
-                        updatePriceOnEachBikeSelect();
+                        updatePriceOnEachBikeSelect(counter,count);
                     }
                 });
             });
-            
 
-            $('#oc-bikes').on('click',function(){
-                $('.ocm-bikes-container').show();
-            });
-            $('.ocm-bikes-close').on('click',function(){
-                $('.ocm-bikes-container').hide();
-            });
-
-            function updatePriceOnEachBikeSelect(){
+            function updatePriceOnEachBikeSelect(counter,num){
                 savedCookie = ocmCheckCookie(); 
                 parseInt(savedCookie['regular']) ? r = parseInt(savedCookie['regular']) : r = 0;
                 parseInt(savedCookie['electric']) ? e = parseInt(savedCookie['electric']) : e = 0;
@@ -153,13 +143,22 @@ function oneclick_route_search_form_bikes($atts) {
                     $("#ocm-warning-bikes-container").append(
                         '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Bikes number can not be more than participants number','wm-child-cyclando'); ?></div>'
                     );
-                    console.log('savedCookie'+JSON.stringify(savedCookie));
+                    $('.oc-add-btn[name="regular-bikes"]').addClass('disable');
+                    $('.oc-add-btn[name="electric-bikes"]').addClass('disable');
+                    savedCookie[type] = num - 1;
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                 }
                 else {
                     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                     $("#ocm-warning-bikes-container").empty();
-                    $('.ocm-bikes-container').hide();
-                    $('#ocm-bikes-number').text(sum);
+                    if (sums['participants'] <= sum) { 
+                        $('.oc-add-btn[name="regular-bikes"]').addClass('disable');
+                        $('.oc-add-btn[name="electric-bikes"]').addClass('disable');
+                    } else {
+                        $('.oc-add-btn[name="regular-bikes"]').removeClass('disable');
+                        $('.oc-add-btn[name="electric-bikes"]').removeClass('disable');
+                    }
+                    num < 0 ? counter.text(0) : counter.text(num);
                     ajaxUpdatePrice();
                 }
             };

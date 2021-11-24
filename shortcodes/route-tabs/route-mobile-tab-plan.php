@@ -93,7 +93,7 @@ function route_mobile_tab_plan($atts) {
             <?php if ($has_bike || $has_ebike) { ?>
                 <?= do_shortcode("[oneclick_route_search_form_bikes route='true' has_bike='$has_bike' has_ebike='$has_ebike' ]")?>
             <?php } else { ?>
-                <div class="oc-input-btn selected bikes-included"><?php echo __('Bikes are included','wm-child-cyclando'); ?></div>
+                <div class="selected bikes-included"><?php echo __('Bikes are included','wm-child-cyclando'); ?></div>
             <?php } ?>
             <?php if ($has_single) { ?>
                 <?= do_shortcode("[oneclick_route_search_form_single route='true']")?>
