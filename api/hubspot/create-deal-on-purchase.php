@@ -23,8 +23,8 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   // Get the deposit
   $deposit_amount = "0";
   if ($cookies['deposit']) {
-    $deposit_amount = str_replace('.', '', $cookies['deposit']['euro']);
-    $deposit_amount = $deposit_amount.'.'.$cookies['deposit']['cent'];
+    $deposit_amount = str_replace('.', '', $cookies['deposit']);
+    $deposit_amount = str_replace(',', '.', $cookies['deposit']);
   }
   $single_room = '';
   $hotel_category = '';

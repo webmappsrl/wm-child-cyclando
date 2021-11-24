@@ -717,13 +717,13 @@ get_header();
                         delete savedCookie['deposit'];
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         if (obj.deposit) {
-                            if (parseInt(obj.deposit) >= 100) {
+                            if (parseInt(obj.deposit['euro']) >= 100) {
                                 jQuery('.route-active-promo').show();
                             }
                             jQuery( ".oc-route-mobile-plan-price-container" ).prepend( 
                                 `<div class="deposit-title"><a class="tooltips" href="#!"><?= __('Deposit', 'wm-child-cyclando') ?> <sup><i class="fas fa-info-circle"></i></sup><span><?= __('Please check terms and conditions that apply by clicking on "Proceed"', 'wm-child-cyclando') ?></span></a></div><div class="depositajax">`+obj.deposit["euro"]+',<span class="cents">'+obj.deposit["cent"]+'</span>'+`€</div>`
                             );
-                            savedCookie['deposit'] = obj.deposit;
+                            savedCookie['deposit'] = obj.deposit['euro']+','+obj.deposit["cent"];
                             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         }
                         if (obj.extratotal) {
@@ -1060,6 +1060,7 @@ get_header();
 
             // mobile calculate quote btn
             jQuery('#mobile-calculator-btn-wrapper').on('click',function(){
+                jQuery('.active-promo').hide();
                 jQuery('.cyc-route-sidebar').addClass('open-calculator');
                 jQuery('.mobile-calculator-header-wrapper').show();
             })
@@ -1078,6 +1079,7 @@ get_header();
             })
             jQuery('#close-calculator').on('click',function(){
                 jQuery('.cyc-route-sidebar').removeClass('open-calculator');
+                jQuery('.active-promo').show();
             })
 
             // function to disable right click on tour operator section
