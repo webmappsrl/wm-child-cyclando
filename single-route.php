@@ -670,7 +670,7 @@ get_header();
 
         let doAjax;
         let lastClickTime = 0;
-        const xTime = 1000;
+        const xTime = 2000;
 
         function ajaxUpdatePrice(){
             if ( (Date.now() - lastClickTime) <= xTime )//nth click, before xTime
