@@ -548,7 +548,7 @@ jQuery(document).ready(function () {
             var monthNames = {'1':'01','2':'02','3':'03','4':'04','5':'05','6':'06','7':'07','8':'08','9':'09','10':'10','11':'11','12':'12'};
 
             finaleYear = finalDate[0];
-            general_first_departure_date_ajax = finaleDay + '-' + monthNames[finaleMonth] + '-' + finaleYear;
+            general_first_departure_date_ajax = finaleDay + '-' + finaleMonth + '-' + finaleYear;
             savedCookie['departureDate'] = general_first_departure_date_ajax;
             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
         } 
