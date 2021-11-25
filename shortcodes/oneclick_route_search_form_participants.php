@@ -160,13 +160,13 @@ function oneclick_route_search_form_participants($atts) {
                             $('.oc-add-btn[name="regular-bikes"]').removeClass('disable');
                             $('.oc-add-btn[name="electric-bikes"]').removeClass('disable');
                             $("#ocm-warning-bikes-container").empty();
+                            updatePriceOnEachChange();
                         } else {
                             $("#ocm-warning-container").empty();
                             $("#ocm-warning-container").append(
                                 '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Kids number can not be more than 3 times of adults','wm-child-cyclando'); ?></div>'
                             );
                         }
-                        updatePriceOnEachChange();
                     }
                 });
             });
@@ -261,10 +261,16 @@ function oneclick_route_search_form_participants($atts) {
                     $("#ocm-warning-container").append(
                         '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Kids number can not be more than 3 times of adults','wm-child-cyclando'); ?></div>'
                     );
+                    $('#oc-acquista-route .cy-btn-contact').unbind('click', ocProceedToExtraHandler);
+                    $('#oc-acquista-route .cy-btn-contact').unbind('click', ocProceedToReservationHandler);
+                    $('#oc-acquista-route .cy-btn-contact').addClass('noporoceed');
                 } else if (parseInt(sums['bikes']) > parseInt(sums['participants'])) {
                     $("#ocm-warning-container").append(
                         '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Bikes number can not be more than participants','wm-child-cyclando'); ?></div>'
                     );
+                    $('#oc-acquista-route .cy-btn-contact').unbind('click', ocProceedToExtraHandler);
+                    $('#oc-acquista-route .cy-btn-contact').unbind('click', ocProceedToReservationHandler);
+                    $('#oc-acquista-route .cy-btn-contact').addClass('noporoceed');
                 } else if (savedCookie) {
                     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                     console.log('savedcookie'+JSON.stringify(savedCookie));
@@ -280,6 +286,9 @@ function oneclick_route_search_form_participants($atts) {
                         $("#oc-participants-kid").removeClass('selected');
                     }
                     $("#ocm-warning-container").empty();
+                    $('#oc-acquista-route .cy-btn-contact').bind('click', ocProceedToExtraHandler);
+                    $('#oc-acquista-route .cy-btn-contact').bind('click', ocProceedToReservationHandler);
+                    $('#oc-acquista-route .cy-btn-contact').removeClass('noporoceed');
                     <?php if ($route) { ?>
                     ajaxUpdatePrice();
                     <?php } ?>

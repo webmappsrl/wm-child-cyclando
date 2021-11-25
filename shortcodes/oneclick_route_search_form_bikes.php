@@ -87,12 +87,12 @@ function oneclick_route_search_form_bikes($atts) {
                     if ($(e.target).attr('name') == 'regular-bikes') {
                         savedCookie['regular'] = num;
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
-                        updatePriceOnEachBikeSelect(counter,num);
+                        updatePriceOnEachBikeSelect(counter,num,'regular');
                     }
                     if ($(e.target).attr('name') == 'electric-bikes') {
                         savedCookie['electric'] = num;
                         Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
-                        updatePriceOnEachBikeSelect(counter,num);
+                        updatePriceOnEachBikeSelect(counter,num,'electric');
                     }
                 });
             });
@@ -114,7 +114,7 @@ function oneclick_route_search_form_bikes($atts) {
                             delete savedCookie['regular'];
                             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         }
-                        updatePriceOnEachBikeSelect(counter,count);
+                        updatePriceOnEachBikeSelect(counter,count,'regular');
                     }
                     if ($(e.target).attr('name') == 'electric-bikes') {
                         if (count > 0 ) {
@@ -124,12 +124,12 @@ function oneclick_route_search_form_bikes($atts) {
                             delete savedCookie['electric'];
                             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                         }
-                        updatePriceOnEachBikeSelect(counter,count);
+                        updatePriceOnEachBikeSelect(counter,count,'electric');
                     }
                 });
             });
 
-            function updatePriceOnEachBikeSelect(counter,num){
+            function updatePriceOnEachBikeSelect(counter,num,type){
                 savedCookie = ocmCheckCookie(); 
                 parseInt(savedCookie['regular']) ? r = parseInt(savedCookie['regular']) : r = 0;
                 parseInt(savedCookie['electric']) ? e = parseInt(savedCookie['electric']) : e = 0;
@@ -159,6 +159,9 @@ function oneclick_route_search_form_bikes($atts) {
                         $('.oc-add-btn[name="regular-bikes"]').removeClass('disable');
                         $('.oc-add-btn[name="electric-bikes"]').removeClass('disable');
                     }
+                    $('#oc-acquista-route .cy-btn-contact').bind('click', ocProceedToExtraHandler);
+                    $('#oc-acquista-route .cy-btn-contact').bind('click', ocProceedToReservationHandler);
+                    $('#oc-acquista-route .cy-btn-contact').removeClass('noporoceed');
                     num < 0 ? counter.text(0) : counter.text(num);
                     ajaxUpdatePrice();
                 }

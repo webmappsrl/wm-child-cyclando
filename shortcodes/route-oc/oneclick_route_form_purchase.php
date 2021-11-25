@@ -82,49 +82,10 @@ function oneclick_route_form_purchase($atts) {
     <script>
         (function ($) {
             $(document).ready(function () {
-                $('#oc-acquista-route .cy-btn-contact').on('click',function(){
-                    $('.ocm-proceed-container').show();
-                    $( ".facetwp-checkbox" ).each(function(index,element) {
-                        var savedCookie = ocmCheckCookie();
-                        if ( !!savedCookie[post_id] && !!savedCookie[post_id]['extra'] && savedCookie[post_id]['extra'][$(this).attr('name')] > 0) {
-                            var sums = cal_sum_cookies(savedCookie);
-                            if (savedCookie[post_id]['extra'][$(this).attr('name')] < sums['participants']) {
-                                $('.oc-modal-button-container-'+$(this).attr('name')+' .oc-extra-add-btn').prop("disabled", false);
-                            }
-                        }
-                    });
-                });
-                $('.oc-proceed-done-btn').on('click',function(){
-                    // populate extra section in your reservation if any extra is selected
-                    var savedCookie = ocmCheckCookie();
-                    try{
-                        if (!!savedCookie[post_id]['extra']['single_room_paid']) {
-                        jQuery('.oc-route-your-reservation-singleroompaid-title').show();
-                        jQuery('.oc-route-your-reservation-singleroompaid-info').show();
-                        jQuery('.oc-route-your-reservation-singleroompaid-info p').html(savedCookie[post_id]['extra']['single_room_paid']);
-                    }
-                    } catch(e) {
-                        jQuery('.oc-route-your-reservation-singleroompaid-title').hide();
-                        jQuery('.oc-route-your-reservation-singleroompaid-info').hide();
-                        jQuery('.oc-route-your-reservation-singleroompaid-info p').html('');
-                    }
-                    if ( !!savedCookie[post_id] && !!savedCookie[post_id]['extra'] && !!savedCookie[post_id]['supplement'] ) {
-                        $('.oc-route-extra-row.oc-route-extra-details').empty();
-                        if (Object.keys(savedCookie[post_id]['extra']).length > 0) {
-                            updateYourReservationExtraSummaryTxt(savedCookie,has_extra);
-                        } else {
-                            $('.oc-route-extra-row.oc-route-extra-header').removeClass("display-flex");
-                            $('.oc-route-extra-row.oc-route-extra-details').removeClass("display-flex");
-                            $('.oc-route-extra-row.oc-route-extra-details').empty();
-                        }
-                        if (!!savedCookie[post_id]['supplement']) {
-                            updateYourReservationHotelSummaryTxt(savedCookie,hotel_product_items);
-                        }
-                    } 
-                    $('.ocm-proceed-container').hide();
-                    $('.oc-route-mobile-search-form-container').hide();
-                    $('.oc-route-mobile-your-reservation-container').show();
-                });
+                
+                $('#oc-acquista-route .cy-btn-contact').on('click', ocProceedToExtraHandler);
+                $('.oc-proceed-done-btn').on('click', ocProceedToReservationHandler);
+
                 window.addEventListener('click', outsideClick);
                 // Close If Outside Click
                 function outsideClick(e) {

@@ -522,8 +522,10 @@ jQuery(document).ready(function () {
             }
         } else {
             var index = 0;
-            selectedMonthNumber++;
-            sevenDaysFromToday = yearTodayPlusSevenDays+'-'+selectedMonthNumber+'-'+monthStartDay;
+            monthTodayPlusSevenDays++;
+            dayTodayPlusSevenDays = '0'+dayTodayPlusSevenDays;
+            dayTodayPlusSevenDays = dayTodayPlusSevenDays.slice(-2);
+            sevenDaysFromToday = yearTodayPlusSevenDays+'-'+monthTodayPlusSevenDays+'-'+dayTodayPlusSevenDays;
             if (typeof start_arrayYmd !== 'undefined' ) {
               while (index < start_arrayYmd.length && !finalDate) {
                   if (!finalDate) {
@@ -550,7 +552,6 @@ jQuery(document).ready(function () {
             savedCookie['departureDate'] = general_first_departure_date_ajax;
             Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
         } 
-        
     }
   }
 

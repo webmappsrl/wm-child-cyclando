@@ -2054,7 +2054,7 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
     padding: 15px;
     box-shadow: 0 3px 6px 0 #dadada;
     border-radius: 16px;
-    margin: 1.5rem;
+    margin: 1.5rem 0 1.5rem 1.5rem;
     font-size: 14px;
     grid-row-gap: 15px;
 }
@@ -2191,7 +2191,7 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
     width: 100%;
 }
 .oc-route-mobile-plan-exclusive-online {
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 .oc-route-mobile-plan-exclusive-online .exclusive-online-title{
     text-align: right;
@@ -3107,4 +3107,12 @@ h3.section-h3-label, .cyc-single-route-description-wrapper h5{
 }
 .oc-route-plan-stripe-banner {
     text-align: right;
+}
+.noporoceed {
+    border: 1px solid #edba76!important;
+    background-color: #edba76!important;
+}
+.noporoceed:hover {
+    border: 1px solid #edba76!important;
+    background-color: #edba76!important;
 }

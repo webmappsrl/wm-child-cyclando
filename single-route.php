@@ -218,7 +218,7 @@ get_header();
         $start_arrayYmd = array();
 		foreach ($start_array as $date) { 
             $start_arraydFY[] = date_i18n('d F Y', strtotime($date));
-            $start_arrayYmd[] = date_i18n('Y-n-d', strtotime($date));
+            $start_arrayYmd[] = date_i18n('Y-m-d', strtotime($date));
         }
 		foreach ($start_array as $date) {
 			if (date('Y-m-d', strtotime('+7 day')) <= date('Y-m-d', strtotime($date))) {
@@ -659,9 +659,72 @@ get_header();
         var route_title = <?php echo json_encode($route_title) ?>;
         var planSummarytxt = '';
 
+        var ocProceedToExtraHandler = function(){
+            jQuery('.ocm-proceed-container').show();
+            jQuery( ".facetwp-checkbox" ).each(function(index,element) {
+                var savedCookie = ocmCheckCookie();
+                if ( !!savedCookie[post_id] && !!savedCookie[post_id]['extra'] && savedCookie[post_id]['extra'][jQuery(this).attr('name')] > 0) {
+                    var sums = cal_sum_cookies(savedCookie);
+                    if (savedCookie[post_id]['extra'][jQuery(this).attr('name')] < sums['participants']) {
+                        jQuery('.oc-modal-button-container-'+jQuery(this).attr('name')+' .oc-extra-add-btn').prop("disabled", false);
+                    }
+                }
+            });
+        };
+
+        var ocProceedToReservationHandler = function(){
+            // populate extra section in your reservation if any extra is selected
+            var savedCookie = ocmCheckCookie();
+            try{
+                if (!!savedCookie[post_id]['extra']['single_room_paid']) {
+                jQuery('.oc-route-your-reservation-singleroompaid-title').show();
+                jQuery('.oc-route-your-reservation-singleroompaid-info').show();
+                jQuery('.oc-route-your-reservation-singleroompaid-info p').html(savedCookie[post_id]['extra']['single_room_paid']);
+            }
+            } catch(e) {
+                jQuery('.oc-route-your-reservation-singleroompaid-title').hide();
+                jQuery('.oc-route-your-reservation-singleroompaid-info').hide();
+                jQuery('.oc-route-your-reservation-singleroompaid-info p').html('');
+            }
+            if ( !!savedCookie[post_id] && !!savedCookie[post_id]['extra'] && !!savedCookie[post_id]['supplement'] ) {
+                jQuery('.oc-route-extra-row.oc-route-extra-details').empty();
+                if (Object.keys(savedCookie[post_id]['extra']).length > 0) {
+                    updateYourReservationExtraSummaryTxt(savedCookie,has_extra);
+                } else {
+                    jQuery('.oc-route-extra-row.oc-route-extra-header').removeClass("display-flex");
+                    jQuery('.oc-route-extra-row.oc-route-extra-details').removeClass("display-flex");
+                    jQuery('.oc-route-extra-row.oc-route-extra-details').empty();
+                }
+                if (!!savedCookie[post_id]['supplement']) {
+                    updateYourReservationHotelSummaryTxt(savedCookie,hotel_product_items);
+                }
+            } 
+            jQuery('.ocm-proceed-container').hide();
+            jQuery('.oc-route-mobile-search-form-container').hide();
+            jQuery('.oc-route-mobile-your-reservation-container').show();
+        };
+
+        function controllIfPossibleToProceed() {
+            savedCookie = ocmCheckCookie(); 
+            var sums = cal_sum_cookies(savedCookie);
+            if (parseInt(sums['bikes']) > parseInt(sums['participants'])) {
+                jQuery("#ocm-warning-container").append(
+                    '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Bikes number can not be more than participants','wm-child-cyclando'); ?></div>'
+                );
+                jQuery('#oc-acquista-route .cy-btn-contact').unbind('click', ocProceedToExtraHandler);
+                jQuery('#oc-acquista-route .cy-btn-contact').unbind('click', ocProceedToReservationHandler);
+                jQuery('#oc-acquista-route .cy-btn-contact').addClass('noporoceed');
+            } else {
+                jQuery("#ocm-warning-container").empty();
+                jQuery('#oc-acquista-route .cy-btn-contact').bind('click', ocProceedToExtraHandler);
+                jQuery('#oc-acquista-route .cy-btn-contact').bind('click', ocProceedToReservationHandler);
+                jQuery('#oc-acquista-route .cy-btn-contact').removeClass('noporoceed');
+            }
+        }
 
         jQuery(document).ready(function() {
             calculateDepartureDate(start_arrayYmd);
+            controllIfPossibleToProceed() 
         });
 
         if (!Date.now) {
