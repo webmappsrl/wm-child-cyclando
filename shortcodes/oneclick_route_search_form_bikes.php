@@ -160,8 +160,9 @@ function oneclick_route_search_form_bikes($atts) {
                         $('.oc-add-btn[name="electric-bikes"]').removeClass('disable');
                     }
                     $('#oc-acquista-route .cy-btn-contact').bind('click', ocProceedToExtraHandler);
-                    $('#oc-acquista-route .cy-btn-contact').bind('click', ocProceedToReservationHandler);
+                    $('#oc-proceed-done-btn').bind('click', ocProceedToReservationHandler);
                     $('#oc-acquista-route .cy-btn-contact').removeClass('noporoceed');
+                    $('#oc-proceed-done-btn').removeClass('noporoceed');
                     num < 0 ? counter.text(0) : counter.text(num);
                     ajaxUpdatePrice();
                 }

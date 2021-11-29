@@ -33,7 +33,7 @@ function oneclick_route_form_purchase($atts) {
     // if ($hotel_product_items || $has_extra || $has_single): 
     ?>
     <?php if ($has_extra): ?>
-        <div id="oc-acquista-route" class="">
+        <div id="oc-acquista-route">
             <div class="cy-btn-contact">
                 <p><?php echo __('Proceed', 'wm-child-cyclando'); ?></p>
             </div>
@@ -257,42 +257,6 @@ function oneclick_route_form_purchase($atts) {
                         }
                     });
                 });
-                function updateYourReservationExtraSummaryTxt (savedCookie,has_extra) {
-                    $('.oc-route-extra-row.oc-route-extra-header').addClass("display-flex");
-                    $('.oc-route-extra-row.oc-route-extra-details').addClass("display-flex");
-                    $.each(savedCookie[post_id]['extra'],function(index,value){
-                        var extra = has_extra[index];
-                        if (extra) {
-                            var label = extra.label;
-                            $('.oc-route-extra-row.oc-route-extra-details').append(
-                                '<div class="oc-route-your-reservation-column-title"><p>'+label+'</p></div><div class="oc-route-your-reservation-column-info"><p>'+value+'</p></div>'
-                            )
-                        } else {
-                            if ( index !== 'single_room_paid') {
-                                delete savedCookie[post_id]['extra'][index];
-                                Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
-                            }
-                        }
-                    });
-                }
-                function updateYourReservationHotelSummaryTxt (savedCookie,has_extra) {
-                    var has_single = '<?= $has_single ?>';
-                    $.each(savedCookie[post_id]['supplement'],function(index,value){
-                        var extra = has_extra[index];
-                        if (index == 'single_room' && has_single) {
-                            var label = '<?php echo __('Single room', 'wm-child-cyclando'); ?>'
-                            $('.oc-route-extra-row.oc-route-extra-details').append(
-                            '<div class="oc-route-your-reservation-column-title"><p>'+label+'</p></div><div class="oc-route-your-reservation-column-info"><p>'+value+'</p></div>')
-                        } else if (extra) {
-                            var label = extra.label;
-                            $('.oc-route-extra-row.oc-route-extra-details').append(
-                            '<div class="oc-route-your-reservation-column-title"><p>'+label+'</p></div><div class="oc-route-your-reservation-column-info"><p>'+value+'</p></div>')
-                        } else {
-                            delete savedCookie[post_id]['supplement'][index];
-                            Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
-                        }
-                    });
-                }
             });
         })(jQuery);
     </script>

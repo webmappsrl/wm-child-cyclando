@@ -264,6 +264,7 @@ get_header();
         }
         $hotel_product_items = array();
         $has_hotel_category = route_has_hotel_category($post_id,$first_departure_date_ajax_dormatdmY);
+        $has_single = route_has_single($has_hotel_category);
         if (count($has_hotel_category['modelseasonal']) >= 1) {
             $hotel_product_items = $has_hotel_category['modelseasonal'][array_key_first($has_hotel_category['modelseasonal'])];
         } else {
@@ -659,6 +660,44 @@ get_header();
         var route_title = <?php echo json_encode($route_title) ?>;
         var planSummarytxt = '';
 
+
+        function updateYourReservationExtraSummaryTxt (savedCookie,has_extra) {
+            jQuery('.oc-route-extra-row.oc-route-extra-header').addClass("display-flex");
+            jQuery('.oc-route-extra-row.oc-route-extra-details').addClass("display-flex");
+            jQuery.each(savedCookie[post_id]['extra'],function(index,value){
+                var extra = has_extra[index];
+                if (extra) {
+                    var label = extra.label;
+                    jQuery('.oc-route-extra-row.oc-route-extra-details').append(
+                        '<div class="oc-route-your-reservation-column-title"><p>'+label+'</p></div><div class="oc-route-your-reservation-column-info"><p>'+value+'</p></div>'
+                    )
+                } else {
+                    if ( index !== 'single_room_paid') {
+                        delete savedCookie[post_id]['extra'][index];
+                        Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+                    }
+                }
+            });
+        }
+        function updateYourReservationHotelSummaryTxt (savedCookie,has_extra) {
+            var has_single = '<?= $has_single ?>';
+            jQuery.each(savedCookie[post_id]['supplement'],function(index,value){
+                var extra = has_extra[index];
+                if (index == 'single_room' && has_single) {
+                    var label = '<?php echo __('Single room', 'wm-child-cyclando'); ?>'
+                    jQuery('.oc-route-extra-row.oc-route-extra-details').append(
+                    '<div class="oc-route-your-reservation-column-title"><p>'+label+'</p></div><div class="oc-route-your-reservation-column-info"><p>'+value+'</p></div>')
+                } else if (extra) {
+                    var label = extra.label;
+                    jQuery('.oc-route-extra-row.oc-route-extra-details').append(
+                    '<div class="oc-route-your-reservation-column-title"><p>'+label+'</p></div><div class="oc-route-your-reservation-column-info"><p>'+value+'</p></div>')
+                } else {
+                    delete savedCookie[post_id]['supplement'][index];
+                    Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
+                }
+            });
+        }
+
         var ocProceedToExtraHandler = function(){
             jQuery('.ocm-proceed-container').show();
             jQuery( ".facetwp-checkbox" ).each(function(index,element) {
@@ -719,13 +758,15 @@ get_header();
                     '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('Bikes number can not be more than participants','wm-child-cyclando'); ?></div>'
                 );
                 jQuery('#oc-acquista-route .cy-btn-contact').unbind('click', ocProceedToExtraHandler);
-                jQuery('#oc-acquista-route .cy-btn-contact').unbind('click', ocProceedToReservationHandler);
+                jQuery('#oc-proceed-done-btn').unbind('click', ocProceedToReservationHandler);
                 jQuery('#oc-acquista-route .cy-btn-contact').addClass('noporoceed');
+                jQuery('#oc-proceed-done-btn').addClass('noporoceed');
             } else {
                 jQuery("#ocm-warning-container").empty();
                 jQuery('#oc-acquista-route .cy-btn-contact').bind('click', ocProceedToExtraHandler);
-                jQuery('#oc-acquista-route .cy-btn-contact').bind('click', ocProceedToReservationHandler);
+                jQuery('#oc-proceed-done-btn').bind('click', ocProceedToReservationHandler);
                 jQuery('#oc-acquista-route .cy-btn-contact').removeClass('noporoceed');
+                jQuery('#oc-proceed-done-btn').removeClass('noporoceed');
             }
         }
 
