@@ -699,9 +699,24 @@ get_header();
         }
 
         var ocProceedToExtraHandler = function(){
+            var savedCookie = ocmCheckCookie();
+            try{
+                if (!!savedCookie[post_id]['extra']['single_room_paid']) {
+                    jQuery('.oc-route-your-reservation-singleroompaid-title').show();
+                    jQuery('.oc-route-your-reservation-singleroompaid-info').show();
+                    jQuery('.oc-route-your-reservation-singleroompaid-info p').html(savedCookie[post_id]['extra']['single_room_paid']);
+                } else {
+                    {
+                    jQuery('.oc-route-your-reservation-singleroompaid-title').hide();
+                    jQuery('.oc-route-your-reservation-singleroompaid-info').hide();
+                    jQuery('.oc-route-your-reservation-singleroompaid-info p').html('');
+                }
+                }
+            } catch(e) {
+                
+            }
             jQuery('.ocm-proceed-container').show();
             jQuery( ".facetwp-checkbox" ).each(function(index,element) {
-                var savedCookie = ocmCheckCookie();
                 if ( !!savedCookie[post_id] && !!savedCookie[post_id]['extra'] && savedCookie[post_id]['extra'][jQuery(this).attr('name')] > 0) {
                     var sums = cal_sum_cookies(savedCookie);
                     if (savedCookie[post_id]['extra'][jQuery(this).attr('name')] < sums['participants']) {
@@ -716,14 +731,18 @@ get_header();
             var savedCookie = ocmCheckCookie();
             try{
                 if (!!savedCookie[post_id]['extra']['single_room_paid']) {
-                jQuery('.oc-route-your-reservation-singleroompaid-title').show();
-                jQuery('.oc-route-your-reservation-singleroompaid-info').show();
-                jQuery('.oc-route-your-reservation-singleroompaid-info p').html(savedCookie[post_id]['extra']['single_room_paid']);
-            }
+                    jQuery('.oc-route-your-reservation-singleroompaid-title').show();
+                    jQuery('.oc-route-your-reservation-singleroompaid-info').show();
+                    jQuery('.oc-route-your-reservation-singleroompaid-info p').html(savedCookie[post_id]['extra']['single_room_paid']);
+                } else {
+                    {
+                    jQuery('.oc-route-your-reservation-singleroompaid-title').hide();
+                    jQuery('.oc-route-your-reservation-singleroompaid-info').hide();
+                    jQuery('.oc-route-your-reservation-singleroompaid-info p').html('');
+                }
+                }
             } catch(e) {
-                jQuery('.oc-route-your-reservation-singleroompaid-title').hide();
-                jQuery('.oc-route-your-reservation-singleroompaid-info').hide();
-                jQuery('.oc-route-your-reservation-singleroompaid-info p').html('');
+                
             }
             if ( !!savedCookie[post_id] && !!savedCookie[post_id]['extra'] && !!savedCookie[post_id]['supplement'] ) {
                 jQuery('.oc-route-extra-row.oc-route-extra-details').empty();
