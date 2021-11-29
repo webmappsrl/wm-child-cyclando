@@ -706,6 +706,13 @@ get_header();
 
         function controllIfPossibleToProceed() {
             savedCookie = ocmCheckCookie(); 
+            // hide single option if there is onlhy one adult 
+            if (savedCookie['adults'] == '1') {
+                jQuery('.ocm-single-body').hide();
+            } else {
+                jQuery('.ocm-single-body').show();
+            }
+
             var sums = cal_sum_cookies(savedCookie);
             if (parseInt(sums['bikes']) > parseInt(sums['participants'])) {
                 jQuery("#ocm-warning-container").append(

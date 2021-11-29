@@ -1145,9 +1145,6 @@ div#popup-show-prices>div {
 .single-rout .l-canvas {
     position: relative;
 }
-.single-route #page-content {
-    padding-bottom: 40px;
-}
 
 /* body .l-header.pos_fixed~.l-main>.l-section:first-of-type {
     padding-top: 0;

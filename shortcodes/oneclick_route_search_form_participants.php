@@ -253,6 +253,12 @@ function oneclick_route_search_form_participants($atts) {
                 }
                 savedCookie = ocmCheckCookie(); 
                 var sums = cal_sum_cookies(savedCookie);
+                // hide single option if there is onlhy one adult 
+                if (savedCookie['adults'] == '1') {
+                    jQuery('.ocm-single-body').hide();
+                } else {
+                    jQuery('.ocm-single-body').show();
+                }
                 if (!("adults" in savedCookie)) {
                     $("#ocm-warning-container").append(
                         '<div class="oc-age-text-wrapper" style="color:red;"><?php echo __('There should be at least one adult','wm-child-cyclando'); ?></div>'

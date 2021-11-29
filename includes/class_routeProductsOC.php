@@ -174,16 +174,25 @@ class routeProductsOC {
             $category = $categoryName;
         }
 
-        if ($single_rooms) {
-            // Calculate how many in single
-            $this->price += $hotel[$category]['adult-single']['price'] * intval($single_rooms);
-            $addToCart[] = $hotel[$category]['adult-single']['id'] . ':' . intval($single_rooms);
+        // adding single room fee to one adult
+        if ($adults == 1) {
+            $this->price += $hotel[$category]['adult-single']['price'];
+            $addToCart[] = $hotel[$category]['adult-single']['id'] . ':' . 1;
 
             $this->price += $hotel[$category]['adult']['price'] * intval($adults);
             $addToCart[] = $hotel[$category]['adult']['id'] . ':' . intval($adults);
         } else {
-            $this->price += $hotel[$category]['adult']['price'] * intval($adults);
-            $addToCart[] = $hotel[$category]['adult']['id'] . ':' . intval($adults);
+            if ($single_rooms) {
+                // Calculate how many in single
+                $this->price += $hotel[$category]['adult-single']['price'] * intval($single_rooms);
+                $addToCart[] = $hotel[$category]['adult-single']['id'] . ':' . intval($single_rooms);
+
+                $this->price += $hotel[$category]['adult']['price'] * intval($adults);
+                $addToCart[] = $hotel[$category]['adult']['id'] . ':' . intval($adults);
+            } else {
+                $this->price += $hotel[$category]['adult']['price'] * intval($adults);
+                $addToCart[] = $hotel[$category]['adult']['id'] . ':' . intval($adults);
+            }
         }
         if ($kids) {
             $calculateKidsPriceResult = $this->calculateKidsPrice($hotel[$category],$kids,$ages);
