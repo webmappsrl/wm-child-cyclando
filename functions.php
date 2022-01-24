@@ -1041,9 +1041,8 @@ function wm_toggle_route_price( $route_id, $post, $update )
                 foreach( $products as $p ){ // variables of each product
                 $product = wc_get_product($p); 
                     if($product->is_type('variable')){
-                        $product_with_variables = wc_get_product( $p );
-                        $category = $product_with_variables->get_categories();
-                        $attributes_list = $product_with_variables->get_variation_attributes();
+                        $category = get_the_term_list( $p, 'product_cat');
+                        $attributes_list = $product->get_variation_attributes();
                         foreach ($attributes_list as $value => $key ) {
                             $product_attribute_name = $value;
                         }
@@ -1085,9 +1084,8 @@ function wm_toggle_route_price( $route_id, $post, $update )
                     foreach( $season_products as $p ){ // variables of each product
                     $product = wc_get_product($p); 
                         if($product->is_type('variable')){
-                            $product_with_variables = wc_get_product( $p );
-                            $category = $product_with_variables->get_categories();
-                            $attributes_list = $product_with_variables->get_variation_attributes();
+                            $category = get_the_term_list( $p, 'product_cat');
+                            $attributes_list = $product->get_variation_attributes();
                             foreach ($attributes_list as $value => $key ) {
                                 $product_attribute_name = $value;
                             }
@@ -1275,8 +1273,7 @@ function route_has_extra_category($route_id) {
         foreach( $products as $p ){ // variables of each product
         $product = wc_get_product($p); 
             if($product->is_type('variable')){
-                $product_with_variables = wc_get_product( $p );
-                $category = $product_with_variables->get_categories();
+                $category = get_the_term_list( $p, 'product_cat');
                 if(strip_tags($category) == 'extra'){
                     foreach($product->get_available_variations() as $variation ){
                         // Extra Name
@@ -1329,9 +1326,8 @@ function route_has_hotel_category($route_id,$first_departure) {
         foreach( $products as $p ){ // variables of each product
         $product = wc_get_product($p); 
             if($product->is_type('variable')){
-                $product_with_variables = wc_get_product( $p );
-                $category = $product_with_variables->get_categories();
-                $attributes_list = $product_with_variables->get_variation_attributes();
+                $category = get_the_term_list( $p, 'product_cat');
+                $attributes_list = $product->get_variation_attributes();
                 foreach ($attributes_list as $value => $key ) {
                     $product_attribute_name = $value;
                 }
@@ -1381,9 +1377,8 @@ function route_has_hotel_category($route_id,$first_departure) {
                             foreach( $season_products as $p ){ // variables of each product
                             $product = wc_get_product($p); 
                                 if($product->is_type('variable')){
-                                    $product_with_variables = wc_get_product( $p );
-                                    $category = $product_with_variables->get_categories();
-                                    $attributes_list = $product_with_variables->get_variation_attributes();
+                                    $category = get_the_term_list( $p, 'product_cat');
+                                    $attributes_list = $product->get_variation_attributes();
                                     foreach ($attributes_list as $value => $key ) {
                                         $product_attribute_name = $value;
                                     }

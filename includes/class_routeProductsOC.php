@@ -40,7 +40,7 @@ class routeProductsOC {
                 foreach( $products as $p ){ // variables of each product
                 $product = wc_get_product($p); 
                     if($product->is_type('variable')){
-                        $category = $product->get_categories();
+                        $category = get_the_term_list( $p, 'product_cat');
                         if(strip_tags($category) == 'extra'){
                             foreach($product->get_available_variations() as $variation ){
                                 // Extra Name
@@ -77,7 +77,7 @@ class routeProductsOC {
                 foreach( $products as $p ){ // variables of each product
                 $product = wc_get_product($p); 
                     if($product->is_type('variable')){
-                        $category = $product->get_categories();
+                        $category = get_the_term_list( $p, 'product_cat');
                         $attributes_list = $product->get_variation_attributes();
                         foreach ($attributes_list as $value => $key ) {
                             $product_attribute_name = $value;
@@ -156,8 +156,8 @@ class routeProductsOC {
         $todayPlus30 = date('Y-m-d', strtotime('+30 day', strtotime($datetime)));
         
 
-        if (array_key_exists($this->cookies['category'],$hotel)) {
-            $category = $this->cookies['category'];
+        if (array_key_exists(str_replace('_',' ',$this->cookies['category']),$hotel)) {
+            $category = str_replace('_',' ',$this->cookies['category']);
         } else {
             // Choose the less expensive category if the category name is not specified
             $keyAdultPrice = 0;
@@ -231,7 +231,9 @@ class routeProductsOC {
         $priceToFormat = number_format($this->price, 2, ',', '.');
         $object['price']['euro'] = explode(',',$priceToFormat)[0];
         $object['price']['cent'] = explode(',',$priceToFormat)[1];
-        $object['category'] = array_keys($hotel);
+        $object['category'] = array_map(function($h){ 
+            return str_replace(' ','_',$h);
+        },array_keys($hotel));
         $object['categoryname'] = $category;
         $object['addtocart'] = implode(',',$addToCart);
         if ($deposit) {

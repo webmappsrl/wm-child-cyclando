@@ -881,14 +881,15 @@ get_header();
             var options = '<p class="oc-route-mobile-search-form-label-p"><?php echo __('Select a category', 'wm-child-cyclando')?></p>';
             jQuery.each(obj.category, function(index, value) {
                 var selected = '';
-                if (obj.categoryname == value) {
+                var categoryName = value.replaceAll('_',' ');
+                if (obj.categoryname == categoryName) {
                     selected = 'checked';
                     savedCookie['category'] = value;
                     Cookies.set('oc_participants_cookie', JSON.stringify(savedCookie), { expires: 1, path: '/' });
                 }
                 options += "<div class='category-radio-wrapper'>";
                 options += "<input "+selected+" type='radio' id="+ value +" name='categoryName' value="+ value +">";
-                options += "<label for="+ value +">"+ value +"</label>";
+                options += "<label for="+ value +">"+ categoryName +"</label>";
                 options += "</div>";
             });
             jQuery(".category-select-holder").html(options);

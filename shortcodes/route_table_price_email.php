@@ -48,9 +48,8 @@ if( $products ){
     foreach( $products as $p ){ // variables of each product
     $product = wc_get_product($p); 
         if($product->is_type('variable')){
-            $product_with_variables = wc_get_product( $p );
-            $category = $product_with_variables->get_categories();
-            $attributes_list = $product_with_variables->get_variation_attributes();
+            $category = get_the_term_list( $p, 'product_cat');
+            $attributes_list = $product->get_variation_attributes();
             foreach ($attributes_list as $value => $key ) {
                 $product_attribute_name = $value;
             }
@@ -321,7 +320,7 @@ foreach ( $variations_name_price as $var ) {
                                 $product = wc_get_product($p); 
                                     if($product->is_type('variable')){
                                         $product = wc_get_product( $p );
-                                        $category = $product->get_categories();
+                                        $category = get_the_term_list( $p, 'product_cat');
                                         $attributes_list = $product->get_variation_attributes();
                                         foreach ($attributes_list as $value => $key ) {
                                             $product_attribute_name = $value;
