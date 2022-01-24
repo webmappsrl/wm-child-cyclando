@@ -499,8 +499,10 @@ jQuery(document).ready(function () {
         var yearTodayPlusSevenDays = d.getFullYear();
 
         if (monthTodayPlusSevenDays == selectedMonthNumber  ) {
-            monthTodayPlusSevenDays++;
-            dayTodayPlusSevenDays = '0'+dayTodayPlusSevenDays;
+            monthTodayPlusSevenDays++; 
+            monthTodayPlusSevenDays = '0' + monthTodayPlusSevenDays; 
+            monthTodayPlusSevenDays = monthTodayPlusSevenDays.slice(-2);
+            dayTodayPlusSevenDays = '0'  +dayTodayPlusSevenDays;
             dayTodayPlusSevenDays = dayTodayPlusSevenDays.slice(-2);
             sevenDaysFromToday = yearTodayPlusSevenDays+'-'+monthTodayPlusSevenDays+'-'+dayTodayPlusSevenDays;
 

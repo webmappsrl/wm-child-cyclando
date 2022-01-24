@@ -1695,3 +1695,13 @@ function promoBannerOnRouteSummary(){
         echo $output;
     }
 }
+
+// pre-select duration to min 2 days if the current URI is /cerca and the facet isn’t already in use.
+// add_filter( 'facetwp_preload_url_vars', function( $url_vars ) {
+//     if ( 'cerca' == FWP()->helper->get_uri() || 'en/tours' == FWP()->helper->get_uri()) {
+//         if ( empty( $url_vars['quanto_vuoi_che_duri_la_tua_vacanza'] ) ) {
+//             $url_vars['quanto_vuoi_che_duri_la_tua_vacanza'] = [ '2.00', '19.00' ];
+//         }
+//     }
+//     return $url_vars;
+// } );
