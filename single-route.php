@@ -968,7 +968,7 @@ get_header();
             if (savedCookie['category']) {
                 jQuery('.oc-route-your-reservation-category-title').show();
                 jQuery('.oc-route-your-reservation-category-info').show();
-                jQuery("#oc-route-your-reservation-category").html(savedCookie['category']);
+                jQuery("#oc-route-your-reservation-category").html(savedCookie['category'].replaceAll('_',' '));
             } else {
                 jQuery('.oc-route-your-reservation-category-title').hide();
                 jQuery('.oc-route-your-reservation-category-info').hide();
