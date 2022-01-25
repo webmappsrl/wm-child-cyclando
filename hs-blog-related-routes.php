@@ -1,6 +1,11 @@
 <?php /* Template Name: hs-blog-related-routes */
 $route_ids = $_GET['id'];
-
+if ($_GET['lang']) {
+    $lang = $_GET['lang'];
+    if($lang && $lang == 'en') {
+        do_action( 'wpml_switch_language', "en" );
+    }
+}
 ?>
 
 <head>
@@ -63,6 +68,7 @@ $route_ids = $_GET['id'];
             <div class="wpb_raw_code wpb_content_element wpb_raw_html">
                 <div class="wpb_wrapper">
                     <!-- 79197,63262,43870 -->
+                    <!-- 249069,225179,225037  EN -->
                     <?php echo do_shortcode('[webmapp_anypost post_type="route" template="cy_route" posts_count=3 rows=1 posts_per_page=3 post_ids="'.$route_ids.'"]');?>
 
                 </div>
