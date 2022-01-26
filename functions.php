@@ -580,7 +580,7 @@ class DaysOfWeek
         $w_n = $start->format('w');
         $i = $start ;
 
-        while( $i < $end )
+        while( $i <= $end )
         {
             if ( ! isset( $this->d_by_weekday[$w_n] ) )
                 $this->d_by_weekday[$w_n] = array();
