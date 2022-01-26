@@ -9,7 +9,7 @@ if ($_GET['lang']) {
 ?>
 
 <head>
-    <style>.webmapp_anypost_shortcode { padding:0 20px!important; } .webmapp_post_image { height:200px!important; } .webmapp-pagination {display: none;}</style>
+    <style>.webmapp_anypost_shortcode { padding:0 20px!important; } .webmapp_post_image { height:200px!important; } .webmapp-pagination {display: none !important;}</style>
     <link rel="stylesheet" id="route-single-post-style-css"
         href="https://cyclando.com/wp-content/themes/wm-child-cyclando/single-route-style.css?ver=5.4.2" type="text/css"
         media="all">
