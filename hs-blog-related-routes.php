@@ -9,7 +9,7 @@ if ($_GET['lang']) {
 ?>
 
 <head>
-    <style>.webmapp_anypost_shortcode { padding:0 20px!important; } .webmapp_post_image { height:200px!important; }</style>
+    <style>.webmapp_anypost_shortcode { padding:0 20px!important; } .webmapp_post_image { height:200px!important; } .webmapp-pagination {display: none;}</style>
     <link rel="stylesheet" id="route-single-post-style-css"
         href="https://cyclando.com/wp-content/themes/wm-child-cyclando/single-route-style.css?ver=5.4.2" type="text/css"
         media="all">
@@ -69,7 +69,7 @@ if ($_GET['lang']) {
                 <div class="wpb_wrapper">
                     <!-- 79197,63262,43870 -->
                     <!-- 249069,225179,225037  EN -->
-                    <?php echo do_shortcode('[webmapp_anypost post_type="route" template="cy_route" posts_count=3 rows=1 posts_per_page=3 post_ids="'.$route_ids.'"]');?>
+                    <?php echo do_shortcode('[webmapp_anypost post_type="route" template="cy_route" posts_count=1 rows=1 posts_per_page=1 post_ids="'.$route_ids.'"]');?>
 
                 </div>
             </div>
