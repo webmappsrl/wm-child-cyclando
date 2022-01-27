@@ -9,7 +9,7 @@ if ($_GET['lang']) {
 ?>
 
 <head>
-    <style>.webmapp_anypost_shortcode { padding:0 20px!important; } .webmapp_post_image { height:200px!important; } .webmapp-pagination {display: none !important;}</style>
+    <style>.webmapp_anypost_shortcode { padding:0 20px!important; } .webmapp_post_image { height:300px!important; } .webmapp-pagination {display: none !important;}</style>
     <link rel="stylesheet" id="route-single-post-style-css"
         href="https://cyclando.com/wp-content/themes/wm-child-cyclando/single-route-style.css?ver=5.4.2" type="text/css"
         media="all">
@@ -65,7 +65,7 @@ if ($_GET['lang']) {
     <div class="vc_column-inner">
         <div class="wpb_wrapper">
             <div class="w-separator size_medium"></div>
-            <div class="wpb_raw_code wpb_content_element wpb_raw_html">
+            <div class="wpb_raw_code wpb_content_element wpb_raw_html" style="max-width: 400px;margin: auto;">
                 <div class="wpb_wrapper">
                     <!-- 79197,63262,43870 -->
                     <!-- 249069,225179,225037  EN -->
