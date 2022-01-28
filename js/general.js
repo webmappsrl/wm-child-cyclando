@@ -525,6 +525,8 @@ jQuery(document).ready(function () {
         } else {
             var index = 0;
             monthTodayPlusSevenDays++;
+            monthTodayPlusSevenDays = '0' + monthTodayPlusSevenDays; 
+            monthTodayPlusSevenDays = monthTodayPlusSevenDays.slice(-2);
             dayTodayPlusSevenDays = '0'+dayTodayPlusSevenDays;
             dayTodayPlusSevenDays = dayTodayPlusSevenDays.slice(-2);
             sevenDaysFromToday = yearTodayPlusSevenDays+'-'+monthTodayPlusSevenDays+'-'+dayTodayPlusSevenDays;

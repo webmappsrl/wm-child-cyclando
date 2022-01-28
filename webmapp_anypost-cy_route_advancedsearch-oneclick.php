@@ -86,7 +86,7 @@
             }
         }
         foreach ($start_array as $date) {
-            $start_arrayYmd[] = date_i18n('Y-n-d', strtotime($date));
+            $start_arrayYmd[] = date_i18n('Y-m-d', strtotime($date));
         }
 
         // route duration 
