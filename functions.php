@@ -453,6 +453,9 @@ add_filter( 'facetwp_facet_orderby', function( $orderby, $facet ) {
         if ($language == 'it') {
             $orderby = 'FIELD(f.facet_display_value, "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre")';
         } 
+        if ($language == 'en') {
+            $orderby = 'FIELD(f.facet_display_value, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")';
+        } 
     }
     return $orderby;
 }, 10, 2 );
@@ -467,10 +470,6 @@ add_filter( 'facetwp_i18n', function( $string ) {
 
         $translations = array();
         $translations['en']['Cerca'] = 'Apply';
-        $translations['en']['Agosto'] = 'August';
-        $translations['it']['August'] = 'Agosto';
-        $translations['en']['Aprile'] = 'April';
-        $translations['en']['Aprile'] = 'April';
         $translations['en']['Giorni'] = 'Days';
         $translations['en']['Percorso ad anello'] = 'Roundtrip';
         $translations['en']['Percorso a margherita'] = 'Daisy';
@@ -484,34 +483,34 @@ add_filter( 'facetwp_i18n', function( $string ) {
     return $string;
 });
 
-add_filter( 'facetwp_facet_render_args', function( $args ) {
-    if ( 'quando_vuoi_partire' == $args['facet']['name'] ) {
-        $translations = [
-            'Gennaio' => __( 'January', 'wm-child-cyclando' ),
-            'Febbraio' => __( 'February', 'wm-child-cyclando' ),
-            'Marzo' => __( 'March', 'wm-child-cyclando' ),
-            'Aprile' => __( 'April', 'wm-child-cyclando' ),
-            'Maggio' => __( 'May', 'wm-child-cyclando' ),
-            'Giugno' => __( 'June', 'wm-child-cyclando' ),
-            'Luglio' => __( 'July', 'wm-child-cyclando' ),
-            'Agosto' => __( 'August', 'wm-child-cyclando' ),
-            'Settembre' => __( 'September', 'wm-child-cyclando' ),
-            'Ottobre' => __( 'October', 'wm-child-cyclando' ),
-            'Novembre' => __( 'November', 'wm-child-cyclando' ),
-            'Dicembre' => __( 'December', 'wm-child-cyclando' ),
-        ];
+// add_filter( 'facetwp_facet_render_args', function( $args ) {
+//     if ( 'quando_vuoi_partire' == $args['facet']['name'] ) {
+//         $translations = [
+//             'Gennaio' => __( 'January', 'wm-child-cyclando' ),
+//             'Febbraio' => __( 'February', 'wm-child-cyclando' ),
+//             'Marzo' => __( 'March', 'wm-child-cyclando' ),
+//             'Aprile' => __( 'April', 'wm-child-cyclando' ),
+//             'Maggio' => __( 'May', 'wm-child-cyclando' ),
+//             'Giugno' => __( 'June', 'wm-child-cyclando' ),
+//             'Luglio' => __( 'July', 'wm-child-cyclando' ),
+//             'Agosto' => __( 'August', 'wm-child-cyclando' ),
+//             'Settembre' => __( 'September', 'wm-child-cyclando' ),
+//             'Ottobre' => __( 'October', 'wm-child-cyclando' ),
+//             'Novembre' => __( 'November', 'wm-child-cyclando' ),
+//             'Dicembre' => __( 'December', 'wm-child-cyclando' ),
+//         ];
 
-        if ( ! empty( $args['values'] ) ) {
-            foreach ( $args['values'] as $key => $val ) {
-                $display_value = $val['facet_display_value'];
-                if ( isset( $translations[ $display_value ] ) ) {
-                    $args['values'][ $key ]['facet_display_value'] = $translations[ $display_value ];
-                }
-            }
-        }
-    }
-    return $args;
-});
+//         if ( ! empty( $args['values'] ) ) {
+//             foreach ( $args['values'] as $key => $val ) {
+//                 $display_value = $val['facet_display_value'];
+//                 if ( isset( $translations[ $display_value ] ) ) {
+//                     $args['values'][ $key ]['facet_display_value'] = $translations[ $display_value ];
+//                 }
+//             }
+//         }
+//     }
+//     return $args;
+// });
 
 
 
