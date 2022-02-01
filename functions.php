@@ -453,6 +453,9 @@ add_filter( 'facetwp_facet_orderby', function( $orderby, $facet ) {
         if ($language == 'it') {
             $orderby = 'FIELD(f.facet_display_value, "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre")';
         } 
+        if ($language == 'en') {
+            $orderby = 'FIELD(f.facet_display_value, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")';
+        } 
     }
     return $orderby;
 }, 10, 2 );
@@ -467,10 +470,6 @@ add_filter( 'facetwp_i18n', function( $string ) {
 
         $translations = array();
         $translations['en']['Cerca'] = 'Apply';
-        $translations['en']['Agosto'] = 'August';
-        $translations['it']['August'] = 'Agosto';
-        $translations['en']['Aprile'] = 'April';
-        $translations['en']['Aprile'] = 'April';
         $translations['en']['Giorni'] = 'Days';
         $translations['en']['Percorso ad anello'] = 'Roundtrip';
         $translations['en']['Percorso a margherita'] = 'Daisy';
@@ -484,34 +483,34 @@ add_filter( 'facetwp_i18n', function( $string ) {
     return $string;
 });
 
-add_filter( 'facetwp_facet_render_args', function( $args ) {
-    if ( 'quando_vuoi_partire' == $args['facet']['name'] ) {
-        $translations = [
-            'Gennaio' => __( 'January', 'wm-child-cyclando' ),
-            'Febbraio' => __( 'February', 'wm-child-cyclando' ),
-            'Marzo' => __( 'March', 'wm-child-cyclando' ),
-            'Aprile' => __( 'April', 'wm-child-cyclando' ),
-            'Maggio' => __( 'May', 'wm-child-cyclando' ),
-            'Giugno' => __( 'June', 'wm-child-cyclando' ),
-            'Luglio' => __( 'July', 'wm-child-cyclando' ),
-            'Agosto' => __( 'August', 'wm-child-cyclando' ),
-            'Settembre' => __( 'September', 'wm-child-cyclando' ),
-            'Ottobre' => __( 'October', 'wm-child-cyclando' ),
-            'Novembre' => __( 'November', 'wm-child-cyclando' ),
-            'Dicembre' => __( 'December', 'wm-child-cyclando' ),
-        ];
+// add_filter( 'facetwp_facet_render_args', function( $args ) {
+//     if ( 'quando_vuoi_partire' == $args['facet']['name'] ) {
+//         $translations = [
+//             'Gennaio' => __( 'January', 'wm-child-cyclando' ),
+//             'Febbraio' => __( 'February', 'wm-child-cyclando' ),
+//             'Marzo' => __( 'March', 'wm-child-cyclando' ),
+//             'Aprile' => __( 'April', 'wm-child-cyclando' ),
+//             'Maggio' => __( 'May', 'wm-child-cyclando' ),
+//             'Giugno' => __( 'June', 'wm-child-cyclando' ),
+//             'Luglio' => __( 'July', 'wm-child-cyclando' ),
+//             'Agosto' => __( 'August', 'wm-child-cyclando' ),
+//             'Settembre' => __( 'September', 'wm-child-cyclando' ),
+//             'Ottobre' => __( 'October', 'wm-child-cyclando' ),
+//             'Novembre' => __( 'November', 'wm-child-cyclando' ),
+//             'Dicembre' => __( 'December', 'wm-child-cyclando' ),
+//         ];
 
-        if ( ! empty( $args['values'] ) ) {
-            foreach ( $args['values'] as $key => $val ) {
-                $display_value = $val['facet_display_value'];
-                if ( isset( $translations[ $display_value ] ) ) {
-                    $args['values'][ $key ]['facet_display_value'] = $translations[ $display_value ];
-                }
-            }
-        }
-    }
-    return $args;
-});
+//         if ( ! empty( $args['values'] ) ) {
+//             foreach ( $args['values'] as $key => $val ) {
+//                 $display_value = $val['facet_display_value'];
+//                 if ( isset( $translations[ $display_value ] ) ) {
+//                     $args['values'][ $key ]['facet_display_value'] = $translations[ $display_value ];
+//                 }
+//             }
+//         }
+//     }
+//     return $args;
+// });
 
 
 
@@ -580,7 +579,7 @@ class DaysOfWeek
         $w_n = $start->format('w');
         $i = $start ;
 
-        while( $i <= $end )
+        while( $i < $end )
         {
             if ( ! isset( $this->d_by_weekday[$w_n] ) )
                 $this->d_by_weekday[$w_n] = array();
@@ -1041,8 +1040,9 @@ function wm_toggle_route_price( $route_id, $post, $update )
                 foreach( $products as $p ){ // variables of each product
                 $product = wc_get_product($p); 
                     if($product->is_type('variable')){
-                        $category = get_the_term_list( $p, 'product_cat');
-                        $attributes_list = $product->get_variation_attributes();
+                        $product_with_variables = wc_get_product( $p );
+                        $category = $product_with_variables->get_categories();
+                        $attributes_list = $product_with_variables->get_variation_attributes();
                         foreach ($attributes_list as $value => $key ) {
                             $product_attribute_name = $value;
                         }
@@ -1084,8 +1084,9 @@ function wm_toggle_route_price( $route_id, $post, $update )
                     foreach( $season_products as $p ){ // variables of each product
                     $product = wc_get_product($p); 
                         if($product->is_type('variable')){
-                            $category = get_the_term_list( $p, 'product_cat');
-                            $attributes_list = $product->get_variation_attributes();
+                            $product_with_variables = wc_get_product( $p );
+                            $category = $product_with_variables->get_categories();
+                            $attributes_list = $product_with_variables->get_variation_attributes();
                             foreach ($attributes_list as $value => $key ) {
                                 $product_attribute_name = $value;
                             }
@@ -1167,7 +1168,8 @@ add_filter( 'facetwp_facet_filter_posts', function( $return, $params ) {
             // 
             // magic regex string
             // explained here -> https://regex101.com/r/T1TN8y/3
-            $regexString = "(?=.*((?:[^a-z]|^)(%s)(?:[^a-z]|$)).*)";
+            // $regexString = "(?=.*((?:[^a-z]|^)(%s)(?:[^a-z]|$)).*)";
+            $regexString = "(?=.*\b%s\b.*)";
 
             // get single words from search phrase (a word has a space after or before) -> insert them in array
             $wordsToSearch = explode( ' ' , $selected_values );
@@ -1273,7 +1275,8 @@ function route_has_extra_category($route_id) {
         foreach( $products as $p ){ // variables of each product
         $product = wc_get_product($p); 
             if($product->is_type('variable')){
-                $category = get_the_term_list( $p, 'product_cat');
+                $product_with_variables = wc_get_product( $p );
+                $category = $product_with_variables->get_categories();
                 if(strip_tags($category) == 'extra'){
                     foreach($product->get_available_variations() as $variation ){
                         // Extra Name
@@ -1326,8 +1329,9 @@ function route_has_hotel_category($route_id,$first_departure) {
         foreach( $products as $p ){ // variables of each product
         $product = wc_get_product($p); 
             if($product->is_type('variable')){
-                $category = get_the_term_list( $p, 'product_cat');
-                $attributes_list = $product->get_variation_attributes();
+                $product_with_variables = wc_get_product( $p );
+                $category = $product_with_variables->get_categories();
+                $attributes_list = $product_with_variables->get_variation_attributes();
                 foreach ($attributes_list as $value => $key ) {
                     $product_attribute_name = $value;
                 }
@@ -1377,8 +1381,9 @@ function route_has_hotel_category($route_id,$first_departure) {
                             foreach( $season_products as $p ){ // variables of each product
                             $product = wc_get_product($p); 
                                 if($product->is_type('variable')){
-                                    $category = get_the_term_list( $p, 'product_cat');
-                                    $attributes_list = $product->get_variation_attributes();
+                                    $product_with_variables = wc_get_product( $p );
+                                    $category = $product_with_variables->get_categories();
+                                    $attributes_list = $product_with_variables->get_variation_attributes();
                                     foreach ($attributes_list as $value => $key ) {
                                         $product_attribute_name = $value;
                                     }
@@ -1656,9 +1661,9 @@ function getPromoJsonContent(){
 
 // a function that checks if the promo is between the opening and closing dates
 function isPromoActive($promo){
-    $start = date( "Y/m/d",strtotime($promo->start));
-    $stop = date( "Y/m/d",strtotime($promo->stop));
-    $today = date("Y/m/d");
+    $start = date( "d/m/Y",strtotime($promo->start));
+    $stop = date( "d/m/Y",strtotime($promo->stop));
+    $today = date("d/m/Y");
     if ($today >= $start && $today <= $stop) {
         return true;
     }
@@ -1696,12 +1701,12 @@ function promoBannerOnRouteSummary(){
     }
 }
 
-// pre-select duration to min 2 days if the current URI is /cerca and the facet isn’t already in use.
-// add_filter( 'facetwp_preload_url_vars', function( $url_vars ) {
-//     if ( 'cerca' == FWP()->helper->get_uri() || 'en/tours' == FWP()->helper->get_uri()) {
-//         if ( empty( $url_vars['quanto_vuoi_che_duri_la_tua_vacanza'] ) ) {
-//             $url_vars['quanto_vuoi_che_duri_la_tua_vacanza'] = [ '2.00', '19.00' ];
-//         }
-//     }
-//     return $url_vars;
-// } );
+
+add_filter( 'facetwp_preload_url_vars', function( $url_vars ) {
+    if ( 'cerca' == FWP()->helper->get_uri() || 'search' == FWP()->helper->get_uri() ) {
+        if ( empty( $url_vars['quanto_vuoi_che_duri_la_tua_vacanza'] ) ) {
+            $url_vars['quanto_vuoi_che_duri_la_tua_vacanza'] = [ '2.00','19.00' ];
+        }
+    }
+    return $url_vars;
+} );

@@ -2782,9 +2782,9 @@ div#searchpage-form-holder-mobile {
     color: var(--color-primary);
     height: 600px;
 }
-.general-cerca-facetwp-container {
+/* .general-cerca-facetwp-container {
     display: none;
-}
+} */
 
 /* active promo cyclando */
 .active-promo {
