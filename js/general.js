@@ -653,3 +653,9 @@ jQuery(document).ready(function () {
       return rooms
     }
   }
+
+  function reloadSearch() {
+    FWP.parseFacets();
+    FWP.setHash();
+    location.reload();
+  }
