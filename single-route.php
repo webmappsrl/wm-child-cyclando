@@ -868,7 +868,7 @@ get_header();
                         }
                         calcCategorySelectOptions(obj);
                         updatePlanSummaryTxt(savedCookie);
-                        updateYourReservationSummaryTxt(savedCookie,obj);
+                        updateYourReservationSummaryTxt(savedCookie);
                         jQuery( "#quotewcaddtocart" ).remove();
                         jQuery('#yourReservationPurchaseFrom').prepend('<input type="hidden" id="quotewcaddtocart" name="add-to-cart" value="'+addtocart+'" />');
                     }, 500);
@@ -982,7 +982,7 @@ get_header();
             // Update single room number in your resarvation summary
             if (savedCookie[post_id]['extra']['single_room_paid']) {
                 jQuery("#oc-route-your-reservation-singleroompaid").html(savedCookie[post_id]['extra']['single_room_paid']);
-            }
+            }            
         }
 
         function cal_sum_cookies(savedCookie) {

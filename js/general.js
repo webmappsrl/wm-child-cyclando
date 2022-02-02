@@ -47,13 +47,13 @@ function wmScrollTop() {
   }
 
 jQuery(window).on('load', function() {
-  if (typeof FWP !== 'undefined'){
-    FWP.fetch_data();
-    setTimeout(function(){
-      jQuery('.cerca-results-preload-spinner').hide();
-      jQuery('.general-cerca-facetwp-container').show();
-    }, 3000);
-  }
+  // if (typeof FWP !== 'undefined'){
+  //   FWP.fetchData();
+  //   setTimeout(function(){
+  //     jQuery('.cerca-results-preload-spinner').hide();
+  //     jQuery('.general-cerca-facetwp-container').show();
+  //   }, 3000);
+  // }
 
 	var facetwpPaged = document.querySelectorAll('.facetwp-page');
 	facetwpPagedScrollTop(facetwpPaged);
@@ -150,8 +150,8 @@ jQuery(document).ready(function () {
     }
     jQuery(".facetwp-facet-quando_vuoi_partire .facetwp-dropdown").on('change',function(e){
       var val = this.value;
-      FWP.parse_facets();
-      FWP.set_hash();
+      FWP.parseFacets();
+      FWP.setHash();
       savedCookie = ocmCheckCookie(); 
       var split = val.split('-');
       savedCookie['departureMonth'] = split[0];
@@ -217,15 +217,15 @@ jQuery(document).ready(function () {
       // Retrieve the input field text
       filter = jQuery(this).val();
       jQuery(this).val(jQuery(this).val().replace(/[’]/g, "'"));
-      FWP.parse_facets();
-      FWP.set_hash();
+      FWP.parseFacets();
+      FWP.setHash();
     });
 
     jQuery("input").keydown(function (event) {
       var keycode = event.key ? event.key : event.which;
       if (keycode == "Enter") {
-        FWP.parse_facets();
-        FWP.set_hash();
+        FWP.parseFacets();
+        FWP.setHash();
         lenteBanner.trigger("click");
       }
     });
@@ -499,10 +499,10 @@ jQuery(document).ready(function () {
         var yearTodayPlusSevenDays = d.getFullYear();
 
         if (monthTodayPlusSevenDays == selectedMonthNumber  ) {
-            monthTodayPlusSevenDays++; 
+            monthTodayPlusSevenDays++;
             monthTodayPlusSevenDays = '0' + monthTodayPlusSevenDays; 
             monthTodayPlusSevenDays = monthTodayPlusSevenDays.slice(-2);
-            dayTodayPlusSevenDays = '0'  +dayTodayPlusSevenDays;
+            dayTodayPlusSevenDays = '0'+dayTodayPlusSevenDays;
             dayTodayPlusSevenDays = dayTodayPlusSevenDays.slice(-2);
             sevenDaysFromToday = yearTodayPlusSevenDays+'-'+monthTodayPlusSevenDays+'-'+dayTodayPlusSevenDays;
 
@@ -652,4 +652,10 @@ jQuery(document).ready(function () {
       }
       return rooms
     }
+  }
+
+  function reloadSearch() {
+    FWP.parseFacets();
+    FWP.setHash();
+    location.reload();
   }
