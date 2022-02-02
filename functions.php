@@ -1661,9 +1661,9 @@ function getPromoJsonContent(){
 
 // a function that checks if the promo is between the opening and closing dates
 function isPromoActive($promo){
-    $start = date( "d/m/Y",strtotime($promo->start));
-    $stop = date( "d/m/Y",strtotime($promo->stop));
-    $today = date("d/m/Y");
+    $start = date( "Y-m-d",strtotime($promo->start));
+    $stop = date( "Y-m-d",strtotime($promo->stop));
+    $today = date("Y-m-d");
     if ($today >= $start && $today <= $stop) {
         return true;
     }
