@@ -22,7 +22,11 @@ function output_hotel_price_input($name,$value,$catname,$seasonname) {
 }
 
 
-function cyclando_render_route_tabs_shortcode() {
+function cyclando_render_route_tabs_shortcode($atts) {
+extract( shortcode_atts( array(
+    'shape' => '',
+    'activity' => '',
+), $atts ) );
 
 ob_start();
 
@@ -698,7 +702,7 @@ if( $products ){
         </div><!---- END  -------- quote extra -->
         <!-- IF Included and Not Included is activated show the options -->
         <?php if ( $ini_activated ) : ?>
-            <?php echo wm_route_included_not_included($post_id); ?>
+            <?php echo wm_route_included_not_included($post_id,$shape,$activity); ?>
         <?php endif; ?>
         <!-- END ------ Included and Not Included is activated show the options -->
             <div class="prezzi-description">

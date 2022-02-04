@@ -174,12 +174,14 @@ get_header();
         $places_to_go_list = array_unique($places_to_go_list);
 
         $tax_activities = get_the_terms($post_id, $activity);
+        $array_activities_slug = [];
         foreach ($tax_activities as $tax_activity) {
+            array_push($array_activities_slug,$tax_activity->slug); 
             $get_term_activity = get_term_by('slug', $tax_activity->slug, $activity);
             $term_activity = 'term_' . $get_term_activity->term_id;
             $array_activity[$tax_activity->name] = get_field('wm_taxonomy_icon', $term_activity);
         }
-
+        $array_activities_slug = implode(',',$array_activities_slug);
 		//get the first departure date
 		$start_array = array();
 		if (have_rows('departures_periods', get_the_ID())) {
@@ -434,7 +436,7 @@ get_header();
                                     </div>
                                     <div class="route-includes-wrapper section-divider section-extra-padding section-horizontal-padding">
                                         <?= "<h3 class='section-h3-label'>" . __('What it includes', 'wm-child-cyclando') . "</h3>"; ?>
-                                        <?= do_shortcode('[route_mobile_tab_includes post_id="'.$post_id.'"]')?>
+                                        <?= do_shortcode('[route_mobile_tab_includes post_id="'.$post_id.'" shape="'.$shape.'" activity="'.$array_activities_slug.'"]')?>
                                     </div>
                                     <div class="section-extra-padding section-horizontal-padding cyc-single-route-description-wrapper">
                                         <?php echo get_the_content(); ?>
@@ -575,7 +577,7 @@ get_header();
                 </div>
             </div>
             <div class="cy-modal-body">
-                <?php echo do_shortcode('[route_table_price]'); ?>
+                <?php echo do_shortcode('[route_table_price shape="'.$shape.'" activity="'.$array_activities_slug.'"]'); ?>
             </div>
             <!-- <div class="cy-modal-footer">
                 <h3>Modal Footer</h3>

@@ -5,9 +5,9 @@ include ('vn_route_tabs_td_email.php');
 add_shortcode( 'route_table_price_email', 'cyclando_render_route_tabs_shortcode_email' );
 // [bartag foo="foo-value"]
 function cyclando_render_route_tabs_shortcode_email($atts) {
-    extract( shortcode_atts( array(
-        'post_id' => ''
-    ), $atts ) );
+extract( shortcode_atts( array(
+    'post_id' => ''
+), $atts ) );
 ob_start();
 
 global $sitepress;
@@ -30,6 +30,13 @@ if ($boat_trip) {
 // get the name of the cities From e To
 $from = get_field('from',$post_id);
 $to = get_field('to',$post_id);
+
+$shape = get_field('shape');
+$array_activities_slug = [];
+$tax_activities = get_the_terms($post_id, 'activity');
+foreach ($tax_activities as $tax_activity) {
+    array_push($array_activities_slug,$tax_activity->slug); 
+}
 
 //var
 // $post_id = get_the_ID();
@@ -1170,7 +1177,7 @@ foreach ( $variations_name_price as $var ) {
         </div><!---- END  -------- quote extra -->
         <!-- IF Included and Not Included is activated show the options -->
         <?php if ( $ini_activated ) : ?>
-            <?php echo wm_route_included_not_included_email($post_id); ?>
+            <?php echo wm_route_included_not_included_email($post_id,$shape,$activity); ?>
         <?php endif; ?>
         <!-- END ------ Included and Not Included is activated show the options -->
             <div class="prezzi-description">

@@ -1,6 +1,6 @@
 <?php
 
-function wm_route_included_not_included_email($post_id) {
+function wm_route_included_not_included_email($post_id,$shape,$activity) {
 
 
 
@@ -82,20 +82,27 @@ function wm_route_included_not_included_email($post_id) {
                 if( $fields ): ?>
                     <?php foreach( $fields as $field_key => $value ): ?>
                         <?php if (strpos($field_key,'ini_') !== false && $value == false && strpos($field_key,'_repeater') === false) : ?>
-                            <tr>  
-                                <th>
-                                    <?php
-                                        if ($current_lang && $current_lang == 'it') {
-                                            $field_object = get_field_object($field_key,$post_id); 
-                                            echo $field_object['label'];
-                                        }
-                                        if ($current_lang && $current_lang == 'en') {
-                                            $field_object = get_field_object($field_key,$post_id); 
-                                            echo $field_object['label_eng'];
-                                        }
+                            <?php 
+                                $field_object = get_field_object($field_key,$post_id); 
+                                if (($shape == 'daisy' || in_array('bici-e-barca',$activity ) ) && $field_object['label'] == 'Trasporto bagagli da hotel a hotel durante il tour') {
+
+                                } else {
                                     ?>
-                                </th>
-                            </tr>
+                                    <tr>  
+                                        <th>
+                                            <?php
+                                                if ($current_lang && $current_lang == 'it') {
+                                                    echo $field_object['label'];
+                                                }
+                                                if ($current_lang && $current_lang == 'en') {
+                                                    echo $field_object['label_eng'];
+                                                }
+                                            ?>
+                                        </th>
+                                    </tr>
+                                    <?php
+                                }
+                            ?>
                         <?php endif; ?>
                     <?php endforeach; ?>
                     <?php if (have_rows('ini_not_included_aditional_repeater')) : ?>
