@@ -3091,16 +3091,151 @@ tour italia
     }
     /* page 404 */
     
-    .pagina404 {
-        background-image: url(img/gif.gif);
-        align-items: center;
-        background-size: 30%;
-        background-color: grey;
-        background-repeat: no-repeat;
-    }
-    
     h1,
-    p {
+    p,
+    h4 {
         margin: auto;
         text-align: center;
+        font-family: var(--font-family-primary-alternate)
+    }
+    
+    svg {
+        background-color: #F18E08;
+        border-radius: 25%;
+    }
+    
+    div.svg {
+        text-align: center;
+    }
+    
+    .bottone {
+        padding: 20px;
+        text-align: center;
+        margin-top: 2rem;
+    }
+    
+    .buttons {
+        margin-top: 50px;
+        text-align: center;
+    }
+    
+    .button {
+        z-index: 1;
+        position: relative;
+        padding: 20px 40px;
+        text-align: center;
+        text-transform: uppercase;
+        color: #222;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: transparent;
+        outline: none;
+        border: none;
+        transition: color 0.5s;
+        cursor: pointer;
+    }
+    
+    .button:before {
+        content: "";
+        z-index: 1;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border: 6px solid #9AC250;
+    }
+    
+    .button:after {
+        content: "";
+        z-index: -2;
+        position: absolute;
+        left: 9px;
+        top: 9px;
+        width: 100%;
+        height: 100%;
+        border: 6px solid #222;
+        transition: all 0.3s 0.2s;
+    }
+    
+    .button:hover {
+        color: #222;
+    }
+    
+    a .button:hover:after {
+        transition: all 0.3s;
+        left: 0;
+        top: 0;
+    }
+    
+    .button__inner {
+        z-index: -1;
+        overflow: hidden;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .button__blobs {
+        position: relative;
+        display: block;
+        height: 100%;
+        filter: url("#goo");
+    }
+    
+    .button__blob {
+        position: absolute;
+        top: 6px;
+        width: 25%;
+        height: 100%;
+        background: #F18E08;
+        border-radius: 100%;
+        transform: translate3d(0, 150%, 0) scale(1.7);
+        transition: transform 0.45s;
+    }
+    
+    @supports (filter: url("#goo")) {
+        .button__blob {
+            transform: translate3d(0, 150%, 0) scale(1.4);
+        }
+    }
+    
+    .button__blob:nth-child(1) {
+        left: 0%;
+        transition-delay: 0s;
+    }
+    
+    .button__blob:nth-child(2) {
+        left: 30%;
+        transition-delay: 0.08s;
+    }
+    
+    .button__blob:nth-child(3) {
+        left: 60%;
+        transition-delay: 0.16s;
+    }
+    
+    .button__blob:nth-child(4) {
+        left: 90%;
+        transition-delay: 0.24s;
+    }
+    
+    .button:hover .button__blob {
+        transform: translateZ(0) scale(1.7);
+    }
+    
+    @supports (filter: url("#goo")) {
+        .button:hover .button__blob {
+            transform: translateZ(0) scale(1.4);
+        }
+    }
+    
+    @media screen and (max-width:900px) {
+        svg {
+            width: 100%;
+            border-radius: 15%;
+            display: block;
+        }
     }
