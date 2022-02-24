@@ -3090,15 +3090,10 @@ tour italia
         }
     }
     /* page 404 */
-    
-    #page-content {
-        padding: 10px;
-    }
-    
-    h1,
-    p,
-    h4,
-    h2 {
+    .error404 h1,
+    .error404 p,
+    .error404 h4,
+    .error404 h2 {
         margin: auto;
         text-align: center;
         font-family: var(--font-family-primary-alternate)
@@ -3110,7 +3105,7 @@ tour italia
         margin-top: 50px;
     }
     
-    li {
+    .error404 li {
         font-size: 20px;
     }
     
