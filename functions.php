@@ -296,19 +296,24 @@ add_filter( 'facetwp_facet_html', function( $output, $params ) {
     }
 
     if ( 'come_vuoi_viaggiare' == $params['facet']['name'] ) {
+        $exclude = ['city-tours-en','weekend-en','private','guided','with-family','self-guided-en'];
         $output = '';
         $values = (array) $params['values'];
         $selected_values = (array) $params['selected_values'];
         foreach ( $values as $result ){
-            $get_term_activity = get_term_by('slug', esc_attr( $result['facet_value'] ), 'who');
-            $term_activity = 'term_' . $get_term_activity->term_id;
-            $iconimage_activity = get_field('wm_taxonomy_icon', $term_activity);
+            if ($language == 'it' && in_array($result['facet_value'],$exclude)) {
 
-            $selected = in_array( $result['facet_value'], $selected_values ) ? ' checked' : '';
-            $selected .= ( 0 == $result['counter'] && '' == $selected ) ? ' disabled' : '';
-            $output .= '<div class="facetwp-checkbox' . $selected . '" data-value="' . esc_attr( $result['facet_value'] ) . '">';
-            $output .= '<i class="'.$iconimage_activity.'"></i>'. esc_html( $result['facet_display_value'] ) . ' (' .$result['counter'].')';
-            $output .= '</div>';
+            } else {
+                $get_term_activity = get_term_by('slug', esc_attr( $result['facet_value'] ), 'who');
+                $term_activity = 'term_' . $get_term_activity->term_id;
+                $iconimage_activity = get_field('wm_taxonomy_icon', $term_activity);
+    
+                $selected = in_array( $result['facet_value'], $selected_values ) ? ' checked' : '';
+                $selected .= ( 0 == $result['counter'] && '' == $selected ) ? ' disabled' : '';
+                $output .= '<div class="facetwp-checkbox' . $selected . '" data-value="' . esc_attr( $result['facet_value'] ) . '">';
+                $output .= '<i class="'.$iconimage_activity.'"></i>'. esc_html( $result['facet_display_value'] ) . ' (' .$result['counter'].')';
+                $output .= '</div>';
+            }
         }
     }
 
