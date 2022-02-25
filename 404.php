@@ -33,24 +33,21 @@ get_header();
             <div class="lista404">
 
                <?php echo '<h3>' . __('In the meantime you can: ', 'wm-child-cyclando') . '</h3>'; ?>
-            
-                  <ul>
-                     <li>
-                        <?= __('Looking for a trip', 'wm-child-cyclando'); ?>
-                        <?php include_once('templates/search-page-desktop.php'); ?>
-                     </li>
-              
 
-               <?php
+               <ul>
 
 
 
+                  <?php
 
-               echo  '<li>' . __('Go to <a href="/">Homepage</a> to search for your ideal trip; ', 'wm-child-cyclando') . '</li>';
 
-               echo  '<li>' . __('<a href="/contatti"> Contact us </a> for more information', 'wm-child-cyclando') . '</li>';
+                  echo  '<li>' . __('Looking for a <a href="/tours"> trip </a>;', 'wm-child-cyclando');
 
-               ?>
+                  echo  '<li>' . __('Go to <a href="/en">Homepage</a> to search for your ideal trip ;', 'wm-child-cyclando') . '</li>';
+
+                  echo  '<li>' . __('<a href="/contacts"> Contact us </a> for more information', 'wm-child-cyclando') . '</li>';
+
+                  ?>
                </ul>
             </div>
          </div>

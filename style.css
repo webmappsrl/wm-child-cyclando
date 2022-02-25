@@ -3090,6 +3090,7 @@ tour italia
         }
     }
     /* page 404 */
+    
     .error404 h1,
     .error404 p,
     .error404 h4,
@@ -3099,14 +3100,11 @@ tour italia
         font-family: var(--font-family-primary-alternate)
     }
     
-    div.descrizione404 {
+    .descrizione404 {
         width: 100%;
-        display: flex;
         margin-top: 50px;
-    }
-    
-    .error404 li {
-        font-size: 20px;
+        justify-content: center;
+        display: flex;
     }
     
     h1.ops,
@@ -3115,74 +3113,32 @@ tour italia
         color: #F18E08
     }
     
-    .error404 .pagina-cerca-descrizione-container {
-        display: none;
-    }
-    
-    .error404 #searchpage-form-holder-mobile {
-        border: 2px solid;
-    }
-    
     img.img404 {
         width: 40%;
+        max-width: 100%;
         border-radius: 15%;
-        padding-right: 10px;
-    }
-    
-    .descrizione404 {
-        line-height: 50px;
-    }
-    
-    .descrizione404 div#searchpage-form-holder-mobile {
-        margin-left: 35%;
-        position: relative;
-        top: 1px;
+        height: auto;
+        image-rendering: optimizeSpeed;
+        padding: 20px;
     }
     
     .lista404 {
-        margin-left: 30px;
+        padding: 30px;
+        margin-top: 10px;
     }
     
-    @media only screen and (max-width: 600px) {
-        img.img404 {
-            width: 20%;
-            border-radius: 15%;
-            padding-right: 10px;
-        }
+    .lista404 li {
+        line-height: 35px;
+        font-size: 20px;
     }
     
-    @media only screen and (min-device-width: 200px) and (max-device-width: 740px) and (-webkit-min-device-pixel-ratio: 2) {
+    @media only screen and (min-device-width: 200px) and (max-device-width: 740px) {
         div.descrizione404 {
             display: grid;
             margin: auto;
         }
-        .descrizione404 div#searchpage-form-holder-mobile {
-            margin-left: -15%;
-            position: relative;
-            top: 1px;
-        }
-        .img404 {
-            display: none;
-        }
-    }
-    
-    @media only screen and (min-device-width: 768px) and (max-device-width: 920px) and (-webkit-min-device-pixel-ratio: 2) {
-        .descrizione404 div#searchpage-form-holder-mobile {
-            margin-left: 90%;
-            position: relative;
-            top: 1px;
-        }
-        .img404 {
-            height: 20%;
-        }
-    }
-    
-    @media only screen and (min-device-width: 920px) and (max-device-width: 10240px) and (-webkit-min-device-pixel-ratio: 2) {
-        .img404 {
-            height: 40%;
-            width: 40%;
-        }
-        .descrizione404 div#searchpage-form-holder-mobile {
-            margin-left: 35%;
+        img.img404 {
+            width: 50%;
+            margin: auto;
         }
     }
