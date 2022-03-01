@@ -41,7 +41,7 @@ get_header();
                   <?php
 
 
-                  echo  '<li>' . __('Looking for a <a href="/en/tours"> trip </a>;', 'wm-child-cyclando');
+                  echo  '<li>' . __('Looking for a <a href="/en/tours"> trip </a> ;', 'wm-child-cyclando');
 
                   echo  '<li>' . __('Go to <a href="/en">Homepage</a> to search for your ideal trip ;', 'wm-child-cyclando') . '</li>';
 
