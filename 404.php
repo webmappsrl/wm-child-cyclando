@@ -4,7 +4,7 @@
  * The template for displaying the 404 page
  *
  * Do not overload this file directly. Instead have a look at templates/404.php file in us-core plugin folder:
- * you should find all the needed hooks there.
+ * you should find all the needed hooks there. 404
  */
 
 
