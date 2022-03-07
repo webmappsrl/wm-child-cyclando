@@ -66,7 +66,7 @@ add_action('after_setup_theme', 'vn_theme_setup');
 
 add_action( 'wp_enqueue_scripts', 'impreza_theme_enqueue_styles' );
 function impreza_theme_enqueue_styles() {
-    
+
     wp_enqueue_style('jqeury-ui-tabs-style', 'https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css');
     wp_enqueue_script('jquery-ui-core');
     wp_enqueue_script('jquery-ui-tabs');
@@ -175,7 +175,7 @@ function remove_custom_post_comment() {
 // add labels for each facet
 function fwp_add_facet_labels() {
     ?>
-    <script> 
+    <script>
         (function($) {
             $(document).on('facetwp-loaded', function() {
                 $('.facetwp-facet').each(function() {
@@ -226,9 +226,9 @@ add_action( 'wp_head', 'fwp_add_facet_labels', 100 );
 
 // remove drop down show counts from wpfacet
 add_filter( 'facetwp_facet_dropdown_show_counts', function( $return, $params ) {
-    
+
     $return = false;
-    
+
     return $return;
 }, 10, 2 );
 
@@ -257,13 +257,13 @@ function the_shape_icon( $shape )
             return 'wm-icon-cyc_percorso-a-margherita';
             break;
     }
-    
+
 }
 
 // change the output of facetwp Counter
 add_filter( 'facetwp_result_count', function( $output, $params ) {
     ($params['total'] == 1) ? $result_string = __('result', 'wm-child-cyclando') : $result_string = __('results', 'wm-child-cyclando');
-    if ($params['total'] > 10) {  
+    if ($params['total'] > 10) {
         $output = $params['lower'] . '-' . $params['upper'] . ' ' .  __('of', 'wm-child-cyclando'). ' ' . $params['total'] . ' ' . $result_string ;
     } else {
         $output = $params['total'] . ' ' . $result_string ;
@@ -307,7 +307,7 @@ add_filter( 'facetwp_facet_html', function( $output, $params ) {
                 $get_term_activity = get_term_by('slug', esc_attr( $result['facet_value'] ), 'who');
                 $term_activity = 'term_' . $get_term_activity->term_id;
                 $iconimage_activity = get_field('wm_taxonomy_icon', $term_activity);
-    
+
                 $selected = in_array( $result['facet_value'], $selected_values ) ? ' checked' : '';
                 $selected .= ( 0 == $result['counter'] && '' == $selected ) ? ' disabled' : '';
                 $output .= '<div class="facetwp-checkbox' . $selected . '" data-value="' . esc_attr( $result['facet_value'] ) . '">';
@@ -393,7 +393,7 @@ add_filter( 'facetwp_index_row', function( $params, $class ) {
 // /**changes the breadcrumb link of POI in yoast */
 // add_filter( 'wpseo_breadcrumb_links', 'yoast_seo_breadcrumb_append_link' );
 // function yoast_seo_breadcrumb_append_link( $links ) {
-	
+
 //     if ( is_singular( 'route' ) ) {
 //         $breadcrumb[] = array(
 //             'url' => site_url( '/cerca/' ),
@@ -401,7 +401,7 @@ add_filter( 'facetwp_index_row', function( $params, $class ) {
 //         );
 //         array_splice( $links, 1,1, $breadcrumb );
 //     }
-    
+
 //     if ( is_singular( 'post' ) ) {
 //         $breadcrumb[] = array(
 //             'url' => site_url( '/blog/' ),
@@ -409,10 +409,10 @@ add_filter( 'facetwp_index_row', function( $params, $class ) {
 //         );
 //         array_splice( $links, 1,0, $breadcrumb );
 // 	}
-	
+
 
 //     return $links;
-	
+
 // }
 
 /**changes the breadcrumb link of POI and blog in Math rank breadcrumb */
@@ -421,7 +421,7 @@ add_filter( 'rank_math/frontend/breadcrumb/items', function( $crumbs, $class ) {
         $language = ICL_LANGUAGE_CODE;
     }
     if ( is_singular( 'route' ) ) {
-        if ($language == 'it') { 
+        if ($language == 'it') {
             $breadcrumb[] = array(
                 '0' => __('Routes', 'wm-child-cyclando'),
                 '1' => site_url( '/cerca/' ),
@@ -432,7 +432,7 @@ add_filter( 'rank_math/frontend/breadcrumb/items', function( $crumbs, $class ) {
                 '1' => site_url( '/en/tours/' ),
             );
         }
-        
+
         array_splice( $crumbs, 1,1, $breadcrumb );
     }
     if ( is_singular( 'post' ) ) {
@@ -449,18 +449,9 @@ add_filter( 'rank_math/frontend/breadcrumb/items', function( $crumbs, $class ) {
 
 // //  order wpfacet Duration and Seasosn months in archive route page
 add_filter( 'facetwp_facet_orderby', function( $orderby, $facet ) {
-    if (defined('ICL_LANGUAGE_CODE')) {
-        $language = ICL_LANGUAGE_CODE;
-    } else {
-        $language = 'it';
-    }
+
     if ( 'quando_vuoi_partire' == $facet['name'] ) {
-        if ($language == 'it') {
-            $orderby = 'FIELD(f.facet_display_value, "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre")';
-        } 
-        if ($language == 'en') {
-            $orderby = 'FIELD(f.facet_display_value, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")';
-        } 
+        $orderby = 'FIELD(f.facet_display_value, "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre")';
     }
     return $orderby;
 }, 10, 2 );
@@ -694,7 +685,7 @@ class DaysOfWeek
 add_action( 'wp', 'update_route_not_salable' );
 function update_route_not_salable()
 {
-    
+
     if ( 'route' === get_post_type() AND is_singular() ) {
         //get the first departure date
         $start_array = array();
@@ -714,7 +705,7 @@ function update_route_not_salable()
                 array_push($start_array, $d);
             }
         }
-        
+
         if (have_rows('departure_dates',get_the_ID())) {
             $dates = get_field('departure_dates');
             foreach ($dates as $date) {
@@ -730,11 +721,11 @@ function update_route_not_salable()
 
             return $dateTimestamp1 < $dateTimestamp2 ? -1 : 1;
         });
-        
+
         $count = 0;
         foreach ($start_array as $date) {
             if ( date('Y-m-d', strtotime('+7 day')) <= date('Y-m-d', strtotime($date)) ){
-                // update_field('not_salable',false,get_the_ID()); 
+                // update_field('not_salable',false,get_the_ID());
                 break;
             } else {
                 $count += 1;
@@ -743,13 +734,13 @@ function update_route_not_salable()
         if ($count == count($start_array)){
             update_field('not_salable',true,get_the_ID());
         }
-    } 
+    }
 
 }
 
 add_filter( 'facetwp_indexer_row_data', function( $rows, $params ) {
     if ( 'dove_vuoi_andare' == $params['facet']['name'] ) {
-        $post_id = $params['defaults']['post_id'];   
+        $post_id = $params['defaults']['post_id'];
         $post = get_post( $post_id );
         //TITLE
         $new_row = $params['defaults'];
@@ -772,7 +763,7 @@ add_filter( 'facetwp_indexer_row_data', function( $rows, $params ) {
             $new_row['facet_display_value'] = $term->name;
             $rows = [ $new_row ];
         }
-           
+
     }
 
     return $rows;
@@ -785,7 +776,7 @@ function sync_route_dates_with_when( $post_id, $post, $update ){
         return;
 
     require_once __DIR__ . '/includes/class_cyDaysOfWeek.php' ;
-    
+
     $departure_dates = get_field( 'departure_dates' , $post_id);
     $departure_periods = get_field( 'departures_periods' , $post_id);
 
@@ -800,7 +791,7 @@ function sync_route_dates_with_when( $post_id, $post, $update ){
             $dateTimes[] = $dateTime;
         }
     }
-   
+
 
     if ( is_array( $departure_periods ) )
     {
@@ -813,18 +804,18 @@ function sync_route_dates_with_when( $post_id, $post, $update ){
             if ( $week_days )
                 $days = $dayOfWeek->query_byDayOfWeek($week_days);
             else
-                $days = $dayOfWeek->get_allDays();  
+                $days = $dayOfWeek->get_allDays();
 
             foreach ( $days as $daysOfWeekDay )
             {
-                if ( is_array($daysOfWeekDay) ) 
+                if ( is_array($daysOfWeekDay) )
                 {
                     $merge = array_merge( $dateTimes , $daysOfWeekDay );
                     if ( is_array( $merge ) )
                         $dateTimes = $merge;
                 }
             }
-                
+
         }
     }
 
@@ -858,16 +849,16 @@ function sync_route_dates_with_when( $post_id, $post, $update ){
                     if ( $term instanceof WP_Term )
                         $toRegister[] = $term->term_id;
                 // }
-            }   
+            }
         }
     }
-    
+
 
     if ( count( $toRegister ) > 0 )
     {
         wp_set_post_terms( $post_id , $toRegister , 'when');
     }
-        
+
 };
 
 
@@ -900,7 +891,7 @@ function custom_button_example($wp_admin_bar){
     /** add custom button on admin bar for taxonomy page edit */
     require_once(ABSPATH . 'wp-admin/includes/screen.php');
     $screen = get_current_screen();
-    // adds a modifica content button on the page edit of a taxonomy in backend 
+    // adds a modifica content button on the page edit of a taxonomy in backend
     $post_type = get_post_type();
     if (! is_admin() && $post_type == 'route'){
         $page_id = get_the_ID();
@@ -912,7 +903,7 @@ function custom_button_example($wp_admin_bar){
             )
             );
             $wp_admin_bar->add_node($args);
-    } 
+    }
 }
 
 add_action('admin_bar_menu', 'custom_button_example', 90);
@@ -921,7 +912,7 @@ add_action('admin_bar_menu', 'custom_button_example', 90);
 function return_route_targets_array($post_id){
     $target = 'who';
     $tax_targets = get_the_terms($post_id, $target);
-    
+
     $tax_targets_slug = array();
     foreach ($tax_targets as $tax_target) {
         array_push($tax_targets_slug, $tax_target->slug );
@@ -997,30 +988,30 @@ add_action( 'init', 'wm_editor_can_edit_user' );
 add_action( 'wp_ajax_wm_ajax_program_content', 'wm_ajax_program_content' );
 add_action( 'wp_ajax_nopriv_wm_ajax_program_content', 'wm_ajax_program_content' );
 function wm_ajax_program_content(){
-    $post_id = $_POST['postid'];          
+    $post_id = $_POST['postid'];
     $program = get_field('vn_prog', $post_id);
     echo json_encode($program);
     wp_die();
 }
 
 
-// Adds a function to routes update/save that sets lowest price selected from product or 3.999 if 
+// Adds a function to routes update/save that sets lowest price selected from product or 3.999 if
 // the route is not_salable (coming soon)
 add_action( 'save_post' , 'wm_toggle_route_price',15,3);
 function wm_toggle_route_price( $route_id, $post, $update )
 {
     if ( $post->post_type != 'route' )
         return;
-    
+
     //get post language
     $post_lang = apply_filters( 'wpml_post_language_details', NULL, $route_id );
     //WP_CLI::line( 'Route language is: '.$post_lang['language_code'].'');
-    
+
     if ( $post_lang['language_code'] == 'it') {
 
         //check if route is coming soon
         $coming_soon = get_field('not_salable',$route_id);
-        
+
         if ($coming_soon) {
             // get the route price
             $price = get_field('wm_route_price',$route_id);
@@ -1039,11 +1030,11 @@ function wm_toggle_route_price( $route_id, $post, $update )
             $lowest_price_list = array();
 
             $products = get_field('product',$route_id);
-            
+
 
             if( $products ){
                 foreach( $products as $p ){ // variables of each product
-                $product = wc_get_product($p); 
+                $product = wc_get_product($p);
                     if($product->is_type('variable')){
                         $product_with_variables = wc_get_product( $p );
                         $category = $product_with_variables->get_categories();
@@ -1065,7 +1056,7 @@ function wm_toggle_route_price( $route_id, $post, $update )
                                 // Prices
                                 if ($variation['display_price'] == 0){
                                     $price = __('Free' ,'wm-child-verdenatura');
-                                } 
+                                }
                                 elseif (!empty($variation['price_html'])){
                                     $price = $variation['price_html'];
                                 } else {
@@ -1081,13 +1072,13 @@ function wm_toggle_route_price( $route_id, $post, $update )
                 }
             }
             while( have_rows('model_season',$route_id) ): the_row();
-                $season_products = get_sub_field('wm_route_quote_model_season_product',$route_id); 
+                $season_products = get_sub_field('wm_route_quote_model_season_product',$route_id);
                 if ($season_products){  //----------- start hotel product table
                     $attributes_name_hotel_seasonal = array();
                     $variations_name_price_seasonal = array();
                     $list_all_variations_name_seasonal = array();
                     foreach( $season_products as $p ){ // variables of each product
-                    $product = wc_get_product($p); 
+                    $product = wc_get_product($p);
                         if($product->is_type('variable')){
                             $product_with_variables = wc_get_product( $p );
                             $category = $product_with_variables->get_categories();
@@ -1131,7 +1122,7 @@ function wm_toggle_route_price( $route_id, $post, $update )
                 }
             endwhile;
 
-            //  add the lowest price to vn_prezzp ACF : price from... 
+            //  add the lowest price to vn_prezzp ACF : price from...
             foreach ( $variations_name_price as $var ) {
                 $price = preg_replace('/&.*?;/', '', $var['adult']);
                 $price = strip_tags($price);
@@ -1152,7 +1143,7 @@ function wm_toggle_route_price( $route_id, $post, $update )
 /** filter to return post_ids from a dove_vuoi_andare facet, narrow results facet **/
 add_filter( 'facetwp_facet_filter_posts', function( $return, $params ) {
 	if ( 'dove_vuoi_andare' == $params['facet']['name'] ) {
-	    
+
 		global $wpdb;
 
 		$return          = array();
@@ -1169,8 +1160,8 @@ add_filter( 'facetwp_facet_filter_posts', function( $return, $params ) {
 		// Match ALL values
 		if ( $selected_values ) {
 
-            
-            // 
+
+            //
             // magic regex string
             // explained here -> https://regex101.com/r/T1TN8y/3
             // $regexString = "(?=.*((?:[^a-z]|^)(%s)(?:[^a-z]|$)).*)";
@@ -1248,37 +1239,37 @@ function fwp_disable_auto_refresh() {
 }
 add_action( 'wp_head', 'fwp_disable_auto_refresh', 100 );
 
-// Function to get all the dates in given range 
-function getDatesFromRange($start, $end, $format = 'd-m-Y') { 
-      
-    // Declare an empty array 
-    $array = array(); 
-      
-    // Variable that store the date interval 
-    // of period 1 day 
-    $interval = new DateInterval('P1D'); 
-  
-    $realEnd = new DateTime($end); 
-    $realEnd->add($interval); 
-  
-    $period = new DatePeriod(new DateTime($start), $interval, $realEnd); 
-  
-    // Use loop to store date into array 
-    foreach($period as $date) {                  
-        $array[] = $date->format($format);  
-    } 
-  
-    // Return the array elements 
-    return $array; 
-} 
+// Function to get all the dates in given range
+function getDatesFromRange($start, $end, $format = 'd-m-Y') {
 
-function route_has_extra_category($route_id) { 
+    // Declare an empty array
+    $array = array();
+
+    // Variable that store the date interval
+    // of period 1 day
+    $interval = new DateInterval('P1D');
+
+    $realEnd = new DateTime($end);
+    $realEnd->add($interval);
+
+    $period = new DatePeriod(new DateTime($start), $interval, $realEnd);
+
+    // Use loop to store date into array
+    foreach($period as $date) {
+        $array[] = $date->format($format);
+    }
+
+    // Return the array elements
+    return $array;
+}
+
+function route_has_extra_category($route_id) {
 
     $products = get_field('product',$route_id);
     $object = array();
     if( $products ){
         foreach( $products as $p ){ // variables of each product
-        $product = wc_get_product($p); 
+        $product = wc_get_product($p);
             if($product->is_type('variable')){
                 $product_with_variables = wc_get_product( $p );
                 $category = $product_with_variables->get_categories();
@@ -1314,7 +1305,7 @@ function route_has_hotel_category($route_id,$first_departure) {
     $list_all_variations_name_seasonal = array();
 
     $products = get_field('product',$route_id);
-    
+
     //check if the route is in boat or not
     $place = '';
     $from = '';
@@ -1332,7 +1323,7 @@ function route_has_hotel_category($route_id,$first_departure) {
 
     if( $products ){
         foreach( $products as $p ){ // variables of each product
-        $product = wc_get_product($p); 
+        $product = wc_get_product($p);
             if($product->is_type('variable')){
                 $product_with_variables = wc_get_product( $p );
                 $category = $product_with_variables->get_categories();
@@ -1366,7 +1357,7 @@ function route_has_hotel_category($route_id,$first_departure) {
         }
     }
     while( have_rows('model_season',$route_id) ): the_row();
-        $season_products = get_sub_field('wm_route_quote_model_season_product'); 
+        $season_products = get_sub_field('wm_route_quote_model_season_product');
         $variation_disacitve = get_sub_field('wm_route_quote_model_season_disactive');
         if (!$variation_disacitve) {
             if (have_rows('wm_route_quote_model_season_dates_periods_repeater')) {
@@ -1377,14 +1368,14 @@ function route_has_hotel_category($route_id,$first_departure) {
                 $stop = DateTime::createFromFormat('d/m/Y', $stop);
                 $start = $start->format('m/d/Y');
                 $stop = $stop->format('m/d/Y');
-                $days = getDatesFromRange($start, $stop); 
+                $days = getDatesFromRange($start, $stop);
                 foreach ( $days as $day )
                 {
-                    if ( $day == $first_departure ) 
+                    if ( $day == $first_departure )
                     {
                         if ($season_products){  //----------- start hotel product table
                             foreach( $season_products as $p ){ // variables of each product
-                            $product = wc_get_product($p); 
+                            $product = wc_get_product($p);
                                 if($product->is_type('variable')){
                                     $product_with_variables = wc_get_product( $p );
                                     $category = $product_with_variables->get_categories();
@@ -1396,7 +1387,7 @@ function route_has_hotel_category($route_id,$first_departure) {
                                         array_push($attributes_name_hotel_seasonal,$product_attribute_name);
                                         $product_variation_name_price = array();
                                         foreach($product->get_available_variations() as $variation ){
-            
+
                                             // hotel Name
                                             $attributes = $variation['attributes'];
                                             $variation_name = '';
@@ -1416,13 +1407,13 @@ function route_has_hotel_category($route_id,$first_departure) {
                                     }
                                 }
                             }
-                            
+
                         }
                     }
                 }
                 endwhile;
             }
-            
+
         }
     endwhile;
     $object['model'] = $variations_name_price;
@@ -1431,7 +1422,7 @@ function route_has_hotel_category($route_id,$first_departure) {
 }
 
 // add custom text in checkout page for payment with bank transfer pagamento con bonifico
-function wm_wc_review_order_before_payment(  ) { 
+function wm_wc_review_order_before_payment(  ) {
     ob_start();
 
     ?>
@@ -1444,12 +1435,12 @@ function wm_wc_review_order_before_payment(  ) {
     <?php
 
     echo ob_get_clean();
-}; 
+};
 add_action( 'woocommerce_review_order_before_payment', 'wm_wc_review_order_before_payment', 10, 0 );
 
 // change checkout place order button text
 add_filter( 'woocommerce_order_button_text', 'wm_checkout_custom_button_text' );
- 
+
 function wm_checkout_custom_button_text( $button_text ) {
    return __('Pay', 'wm-child-cyclando');
 }
@@ -1461,16 +1452,16 @@ function wm_write_log_file($entry, $mode = 'a', $file = 'wm_child_cyclando') {
     $upload_dir = $upload_dir['basedir'];
 
     // If the entry is array, json_encode.
-    $entry = json_encode( $entry ); 
+    $entry = json_encode( $entry );
     if (!file_exists($upload_dir.'/hubspot')) {
         mkdir($upload_dir.'/hubspot', 0777, true);
     }
     // Write the log file.
     $file  = $upload_dir . '/hubspot/' . $file . '.log';
     $file  = fopen( $file, $mode );
-    $bytes = fwrite( $file, current_time( 'mysql' ) . "\n" ); 
-    $bytes = fwrite( $file, $entry . "\n\n" ); 
-    fclose( $file ); 
+    $bytes = fwrite( $file, current_time( 'mysql' ) . "\n" );
+    $bytes = fwrite( $file, $entry . "\n\n" );
+    fclose( $file );
 
     return $bytes;
 }
@@ -1561,7 +1552,7 @@ function create_variable_product_with_variations( $product_name, $products, $cat
         'post_type' => "product",
         ) );
     wp_set_object_terms( $product_id, 'variable', 'product_type' );
-    
+
     $product = new WC_Product_Variable( $product_id );
 
     // Add category to product
@@ -1570,8 +1561,8 @@ function create_variable_product_with_variations( $product_name, $products, $cat
     // Visibility ('hidden', 'visible', 'search' or 'catalog')
     $product->set_catalog_visibility( 'visible' );
     $product->save();
-    
-    
+
+
     $attr_slug = sanitize_title($attributeName);
 
     $attributes_array[$attr_slug] = array(
@@ -1579,7 +1570,7 @@ function create_variable_product_with_variations( $product_name, $products, $cat
         'value' => implode('|',$varnames),
         'is_visible' => '1',
         'is_variation' => '1',
-        'is_taxonomy' => '0' // for some reason, this is really important       
+        'is_taxonomy' => '0' // for some reason, this is really important
     );
     update_post_meta( $product_id, '_product_attributes', $attributes_array );
     $product->save();
@@ -1594,28 +1585,28 @@ function create_variable_product_with_variations( $product_name, $products, $cat
                 'post_parent' => $product_id,
                 'post_type'   => 'product_variation',
             );
-        
+
             // Creating the product variation
             $variation_id = wp_insert_post( $variation_post );
-        
+
             // Get an instance of the WC_Product_Variation object
             $variation = new WC_Product_Variation( $variation_id );
-        
+
             $variation->set_attributes([$attr_slug => $variationname]);
-            
+
             // Prices
             $variation->set_price( intval($price) );
             $variation->set_regular_price( intval($price) );
-        
+
             // Stock
             $variation->set_manage_stock(false);
-        
+
             WC_Product_Variable::sync( $product_id );
-        
+
             $variation->save(); // Save the data
         }
     }
-    
+
     $product_id = $product->save();
 
     return $product_id;
@@ -1624,7 +1615,7 @@ function create_variable_product_with_variations( $product_name, $products, $cat
 
 function sync_route_acf_with_new_product($repeatername,$repeaterrawid,$subfieldkey,$routeid,$product_id) {
     if ( $repeatername == 'false') {
-        // get current value of acf 
+        // get current value of acf
         $values = get_field($subfieldkey,$routeid, false);
         $new_values = array();
         foreach ($values as $val)   {
@@ -1635,7 +1626,7 @@ function sync_route_acf_with_new_product($repeatername,$repeaterrawid,$subfieldk
 
         return update_field( $subfieldkey, $new_values, $routeid );
     } else {
-        // get current value of acf 
+        // get current value of acf
         $rows = get_field($repeatername,$routeid, false);
         $rawid = intval($repeaterrawid) - 1;
         $values = $rows[$rawid][$subfieldkey];
@@ -1645,7 +1636,7 @@ function sync_route_acf_with_new_product($repeatername,$repeaterrawid,$subfieldk
         }
         // add new id to the array
         $new_values[] = $product_id;
-    
+
         return update_sub_field( array($repeatername, intval($repeaterrawid), $subfieldkey), $new_values, $routeid );
     }
 }
