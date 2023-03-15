@@ -38,7 +38,7 @@ defined( 'ABSPATH' ) || exit;
 
         <?php else : ?>
 
-            <p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received"><?php echo apply_filters( 'woocommerce_thankyou_order_received_text', esc_html__( 'Thanks for choosing us. Your request was successfully received. You will be contacted by our team as soon as possible.', 'wm-child-cyclando' ), $order ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+            <p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received"><?php echo apply_filters( 'woocommerce_thankyou_order_received_text', esc_html__( 'Thanks for choosing us! Your request has been successfully received. The Cyclando team will check availability and confirm your reservation as soon as possibile.', 'wm-child-cyclando' ), $order ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
             
             <?php
                 echo '<div class="tour-general-info" style="display: inline-block;"><p><strong>';

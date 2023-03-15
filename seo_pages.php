@@ -50,7 +50,7 @@ get_header();
 			echo '<section class="l-section"><div class="l-section-h i-cf">' ;
 			echo do_shortcode('[webmapp_anypost post_type="route" template="cy_route" term_id="'.$taxonomy_where[0].'" posts_count=9 rows=3 posts_per_page=9 orderby="rand"]');
 			echo '</div></section>';
-			echo do_shortcode ('[child_pages thumbs="small" link_thumbs="true" link_titles="true" hide_excerpt="false" words="18" truncate_excerpt="true" thumbs="category_thumbs"]');
+			echo do_shortcode ('[child_pages cols="4" thumbs="small" link_thumbs="true" link_titles="true" hide_excerpt="false" words="18" truncate_excerpt="true" thumbs="category_thumbs"]');
 
 			// Post comments
 			if ( comments_open() OR get_comments_number() != '0' ) {

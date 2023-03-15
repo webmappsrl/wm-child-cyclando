@@ -460,7 +460,7 @@ body {
     body .first-departure {
         padding: 0 16px 0 0;
     }
-    
+
     body .first-departure .meta-bar-txt-light{
         font-size: 14px;
     }
@@ -484,7 +484,7 @@ body {
     }
 }
 
-@media screen and (max-width: 1024px) { 
+@media screen and (max-width: 1024px) {
     .w-toplink.pos_left.active {
         display: none;
     }
@@ -515,7 +515,7 @@ body {
             "meta meta"
             "map map";
     }
-    
+
     body .webmapp-featured-image {
         grid-area: title;
     }
@@ -559,7 +559,7 @@ body {
     body #cy-prices-modal .cy-modal-header {
         grid-template-columns: 1fr 5fr 2fr 3fr;
     }
-    
+
     .single-route .l-subheader.at_bottom {
             line-height: 60px;
     }
@@ -889,7 +889,7 @@ i {
     padding: 7px;
     border: 2px solid;
     font-size: 22px;
-    border-radius: 50px; 
+    border-radius: 50px;
     animation-name: pulse;
     animation-duration: 3s;
     animation-iteration-count: infinite;
@@ -1236,14 +1236,6 @@ div#popup-show-prices>div {
 .height_600 .royalSlider,
 .height_600 .rsOverflow {
     height: 600px !important;
-}
-.single-route section h2 {
-    color: var(--color-text-strong);
-    font-size: 2.3em;
-    font-weight: 700;
-    font-family: var(--font-family-primary);
-    padding-top: 10px;
-    margin-bottom: 10px;
 }
 .route-excerpt {
     font-family: var(--font-family-primary);
@@ -1862,8 +1854,8 @@ a:hover.tooltips span {
 /* style introduction section mobile */
 
 /* style taxonomy section cyc-route-mobile-taxonomy-activity-wrapper */
-@media screen and (min-width: 768px) { 
-    
+@media screen and (min-width: 768px) {
+
     .cyc-route-taxonomy-tab-row-container .cyc-route-mobile-taxonomy-container {
         display: block!important;
         background: white;
@@ -2002,7 +1994,7 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
 .wm-included-label i{
     color: var(--color-tab-background);
 }
-@media screen and (max-width: 767px) { 
+@media screen and (max-width: 767px) {
     .include-label{
         font-size: 16px;
     }
@@ -2010,7 +2002,7 @@ body .cyc-route-mobile-tab-container .w-tabs-item .w-tabs-item-title{
         font-size: 18px;
     }
 }
-@media screen and (min-width: 768px) { 
+@media screen and (min-width: 768px) {
     .include-label{
         font-size: 18px;
     }
@@ -2375,8 +2367,8 @@ body .oc-route-your-reservation-purchase-form-container .form-submit:hover,body 
     border-top: 0;
     border-bottom: 0;
 }
-@media screen and (min-width: 768px) { 
-    .oc-single-route-mobile-tour-operator-container .cyc-single-route-tour-operator-wrapper { 
+@media screen and (min-width: 768px) {
+    .oc-single-route-mobile-tour-operator-container .cyc-single-route-tour-operator-wrapper {
         justify-content: initial!important;
         column-gap: 50px;
     }
@@ -2436,7 +2428,7 @@ body .oc-single-route-mobile-cta-container .cy-btn-contact:hover p{
     grid-template-columns: repeat(auto-fit,minmax(350px ,1fr));
     column-gap: 20px;
 }
-@media screen and (max-width: 767px) { 
+@media screen and (max-width: 767px) {
     .oc-single-route-mobile-faq-container .section-h3-label  {
         margin-left: 20px;
         margin-bottom: 20px;
@@ -2445,7 +2437,7 @@ body .oc-single-route-mobile-cta-container .cy-btn-contact:hover p{
         font-size: 44px;
     }
 }
-@media screen and (min-width: 768px) { 
+@media screen and (min-width: 768px) {
     .oc-single-route-mobile-faq-container .section-h3-label  {
         margin-bottom: 20px;
     }
@@ -2461,7 +2453,7 @@ body .oc-single-route-mobile-cta-container .cy-btn-contact:hover p{
     margin: 0!important;
 }
 .oc-single-route-mobile-faq-container .oc-faq-accordion-column-inner {
-    padding: 0!important;   
+    padding: 0!important;
 }
 .oc-single-route-mobile-faq-container .oc-faq-accordion-column-inner h6{
     padding: 15px 25px;
@@ -2649,7 +2641,7 @@ h4.form-lable {
         margin-bottom: 10px;
     }
 }
-@media screen and (min-width: 768px) { 
+@media screen and (min-width: 768px) {
     /* popups design in desktop mode */
     .ocm-proceed-content {
         max-width: 600px;
@@ -2763,8 +2755,8 @@ h4.form-lable {
     align-items: center;
 }
 /* header menu for routes in desktop and mobile */
-@media screen and (min-width: 768px) {  
-    
+@media screen and (min-width: 768px) {
+
     /* introduction section on desktop */
     .cyc-single-route-breadcrumb-wrapper {
         padding-top: 1.5rem;
@@ -2779,8 +2771,8 @@ h4.form-lable {
     .cyc-route-mobile-introduction-title span {
         font-size: 18px;
     }
-    
-    
+
+
     .cyc-route-mobile-introduction-days p {
         font-size: 14px;
     }
@@ -2830,7 +2822,7 @@ h4.form-lable {
 overflow: hidden;
 display: inline-block;
 vertical-align: bottom;
--webkit-animation: ellipsis steps(4,end) 900ms infinite;      
+-webkit-animation: ellipsis steps(4,end) 900ms infinite;
 animation: ellipsis steps(4,end) 900ms infinite;
 content: "\2026"; /* ascii code for the ellipsis character */
 width: 0px;
@@ -2839,13 +2831,13 @@ padding-left: 4px;
 
 @keyframes ellipsis {
 to {
-    width: 1.25em;    
+    width: 1.25em;
 }
 }
 
 @-webkit-keyframes ellipsis {
 to {
-    width: 1.25em;    
+    width: 1.25em;
 }
 }
 /* main Grid section */
@@ -2874,7 +2866,7 @@ h3.section-h3-label, .cyc-single-route-description-wrapper h5{
     padding-top: 20px;
 }
 /* Main section responsive */
-@media screen and (max-width: 949px) { 
+@media screen and (max-width: 949px) {
     .cyc-route-sidebar {
         display: none;
     }
@@ -2963,8 +2955,8 @@ h3.section-h3-label, .cyc-single-route-description-wrapper h5{
         height: 100%!important;
     }
 }
-@media screen and (min-width: 950px) { 
-    .mobile-calculator-header-wrapper { 
+@media screen and (min-width: 950px) {
+    .mobile-calculator-header-wrapper {
         display: none;
     }
     .route-mobile-calculator-btn-container {

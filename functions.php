@@ -72,10 +72,10 @@ function impreza_theme_enqueue_styles() {
     wp_enqueue_script('jquery-ui-tabs');
     wp_enqueue_script( 'general_javascript', get_stylesheet_directory_uri() . '/js/general.js', array ('jquery') );
     // wp_enqueue_script( 'hightlight', get_stylesheet_directory_uri() . '/js/home_highlight.js');
-    wp_enqueue_script('hubspot_contact_form', '//js.hsforms.net/forms/v2.js', array('jquery'));
+    wp_enqueue_script('hubspot_contact_form', '//js.hsforms.net/forms/v2.js', array('jquery'), false, true);
     wp_enqueue_script('datepicker', 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', array('jquery'));
     //add hubspot to Browser IE 8
-    wp_register_script('hubspot_contact_form_IE8', '//js.hsforms.net/forms/v2-legacy.js', array('jquery'));
+    wp_register_script('hubspot_contact_form_IE8', '//js.hsforms.net/forms/v2-legacy.js', array('jquery'), false, true);
     wp_enqueue_script( 'hubspot_contact_form_IE8');
     wp_script_add_data( 'hubspot_contact_form_IE8', 'conditional', 'lt IE 8' );
     wp_enqueue_style('cyclando-icons', get_stylesheet_directory_uri() . '/fonts/cyclando-icons/style.css');
@@ -100,6 +100,13 @@ function wm_add_seo_script(){
     if ($_SERVER['SERVER_NAME'] == 'cyclando.com') {
         echo '<meta name="google-site-verification" content="WuvVk6Oe2JdEzjKoI8vXlWjz20YFgwj32vSEoZMF9mU" />';
         echo '<meta name="facebook-domain-verification" content="2lvld3fv2q0bm9uasx5n0mr0njgbp8" />';
+        //echo '<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/6554435.js"></script>';
+    }
+}
+
+add_action('wp_footer' , 'wm_add_seo_footer_script' );
+function wm_add_seo_footer_script(){
+    if ($_SERVER['SERVER_NAME'] == 'cyclando.com') {
         echo '<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/6554435.js"></script>';
     }
 }
@@ -967,12 +974,12 @@ function URL_exists($url){
 
 // code to grant all additional WPML capabilities to administrators
 // Trun this code off after using it
-function wpmlsupp_1706_reset_wpml_capabilities() {
-    if ( function_exists( 'icl_enable_capabilities' ) ) {
-        icl_enable_capabilities();
-    }
-}
-add_action( 'shutdown', 'wpmlsupp_1706_reset_wpml_capabilities' );
+// function wpmlsupp_1706_reset_wpml_capabilities() {
+//     if ( function_exists( 'icl_enable_capabilities' ) ) {
+//         icl_enable_capabilities();
+//     }
+// }
+// add_action( 'shutdown', 'wpmlsupp_1706_reset_wpml_capabilities' );
 
 
 // Gives Editor role possibility to modify users
@@ -1706,3 +1713,44 @@ add_filter( 'facetwp_preload_url_vars', function( $url_vars ) {
     }
     return $url_vars;
 } );
+
+
+add_action("updated_user_meta", "cyclandologChangeUserRole", 10, 4);
+
+/**
+ * Undocumented function
+ *
+ * @param int $meta_id
+ * @param int $object_id - user id
+ * @param string $meta_key
+ * @param mixed $_meta_value
+ * @return void
+ */
+function cyclandologChangeUserRole($meta_id, $object_id, $meta_key, $_meta_value)
+{
+  if ($meta_key !== 'vn_capabilities')
+    return;
+
+  //check the current user logged in
+  $user = 'anonymous';
+  $current_user = wp_get_current_user();
+  if ($current_user instanceof WP_User) {
+    $user = esc_html($current_user->user_email);
+  }
+
+  //get the user of role change
+  $userObj = get_user_by('id', $object_id);
+
+  //create an exception with error message
+  $e = new \Exception("ROLE CHANGE: User \"" . $user . "\" is changing the role of user id: " . $userObj->user_email . " (" .  $object_id . ")");
+
+  ob_start();
+  echo $e->getMessage();
+  var_dump($_meta_value);
+  echo $e->getTraceAsString();
+  $value = ob_get_clean();
+
+  //log it
+  error_log($value);
+}
+

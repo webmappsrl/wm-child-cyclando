@@ -9,8 +9,8 @@ Version:        1.0.0
 Text Domain:    wm-child-cyclando
 */
     /* CSS   pedr*/
-    
-     :root {
+
+    :root {
         --color-primary: #9AC250;
         --color-primary-title: #749d27;
         --color-primary-paragraph: #4D6E0E;
@@ -35,52 +35,57 @@ Text Domain:    wm-child-cyclando
         --modal-color: #428bca;
         --color-border-line: #d4d4d4;
     }
-    
+
     html {
         scroll-behavior: smooth;
     }
+
     /* main menu */
-    
+
     ul.w-nav-list.level_1.hover_simple li a {
         padding-left: 0 !important;
     }
-    
+
     ul.w-nav-list.level_1.hover_simple li:nth-child(4) a {
         padding-right: 0 !important;
     }
-    
+
     .l-subheader-cell .w-nav-list.level_2 {
         padding: 0 15px;
     }
-    
+
     .l-subheader-sticky-mobile .w-nav-list.level_2 {
-        background-color: var(--color-primary)!important;
+        background-color: var(--color-primary) !important;
         color: white;
     }
-    
+
     .l-subheader-sticky-mobile .w-nav-list.level_2 a:hover,
     .l-subheader-sticky-mobile .w-nav-list.level_2 a:visited,
     .l-subheader-sticky-mobile .w-nav-list.level_2 a:focus {
         color: white;
     }
-    
+
     @media screen and (min-width: 768px) {
         .menu-language-dropdown-wpml .w-dropdown-h {
             line-height: 3;
         }
+
         .menu-language-dropdown-wpml .w-dropdown-item-title {
             vertical-align: text-top;
             font-weight: bold;
             line-height: 2;
         }
+
         .menu-language-dropdown-wpml .w-dropdown-current .w-dropdown-item:after {
             line-height: 3rem;
         }
+
         .l-subheader.at_middle .menu-language-dropdown-wpml .w-dropdown-list {
             background: none;
             color: white;
             box-shadow: 0 0 0;
         }
+
         .l-subheader.at_middle .menu-language-dropdown-wpml .w-dropdown-list a {
             background: white;
             line-height: 30px;
@@ -88,236 +93,275 @@ Text Domain:    wm-child-cyclando
             color: #333;
             border: 1px solid #f5f5f5;
         }
+
         .sticky .l-subheader.at_middle .menu-language-dropdown-wpml .w-dropdown-list {
             background: white;
         }
+
         .sticky .l-subheader.at_middle .menu-language-dropdown-wpml.opened .w-dropdown-list {
             color: #70706E;
         }
+
         svg#logo-cyclando-route {
             width: 350px;
         }
     }
-    
+
     @media screen and (max-width: 767px) {
+
         .l-subheader.at_middle .menu-language-dropdown-wpml.opened .w-dropdown-list,
         .l-subheader.at_middle .menu-language-dropdown-wpml.opened .w-dropdown-item {
             color: #70706E;
         }
     }
+
     /* CSS homepage Cyclando */
-    
+
     body {
         -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
     }
+
     /* CSS homepage banner intro  */
-    
+
     .Home-intro-banner {
         /* display: grid;
     grid-template-rows: 1fr; */
         justify-items: center;
         align-items: center;
     }
-    
+
     body.home .Home-intro-banner .home-banner-content {
         padding: 5rem 0 0rem;
     }
-    
+
     .Home-intro-banner .l-section-h.i-cf {
         padding: 4rem 0 4rem;
     }
-    
+
     body.home .Home-intro-banner .home-banner-content h2:first-child {
         font-weight: 600;
         font-size: 49px;
         margin: 0;
     }
-    
+
     body.home .Home-intro-banner .home-banner-content h2:last-child {
         font-size: 60px;
         padding: 0;
         font-weight: bold;
     }
-    
+
     .home-banner-content-p p {
         font-size: 18px;
         text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.71);
     }
-    
+
     .home-banner-content-p {
         margin-bottom: 100px;
     }
-    
+
     .home-banner-content-h h2 {
         font-size: 34px;
         /* text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.71); */
     }
-    
+
     body.page-template-default.page.page-parent #page-content,
     body.page-template-default.page.page-child #page-content {
         padding: 2rem 0;
     }
-    
+
     .wm-cyclando-page-divider-horizontal {
         border-color: #fff;
     }
-    
+
     @media screen and (min-width: 1137px) and (max-width: 1350px) {
         body .webmapp-anypost-template-cy_route .webmapp_post_meta .prezzo-tab p {
             font-size: 26px;
         }
+
         body .w-person-name {
             font-size: 22px;
         }
+
         .l-subheader-cell.at_center {
             justify-content: center;
             display: none;
         }
     }
-    
+
     @media screen and (min-width: 993px) and (max-width: 1305px) {
         .webmapp_post_meta .new-price {
             float: left;
         }
+
         .webmapp_post_meta .old-price {
             float: left;
             font-size: 19px;
         }
     }
-    
+
     @media screen and (min-width: 991px) and (max-width: 1136px) {
         body .webmapp-anypost-template-cy_route .webmapp_post_meta .prezzo-tab p {
             font-size: 22px;
         }
+
         body .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info {
             min-height: 85px;
         }
+
         .l-subheader-cell.at_center {
             justify-content: center;
             display: none;
         }
     }
-    
+
     @media screen and (max-width: 1200px) {
         .advancedsearch-container .facetwp-template {
-            grid-template-columns: 1fr!important;
+            grid-template-columns: 1fr !important;
         }
     }
-    
+
     @media screen and (max-width: 900px) {
         .advancedsearch-container .vc_column-inner {
-            padding: 0!important;
+            padding: 0 !important;
         }
+
         .home-banner-content-h h2 {
             font-size: 34px;
-            text-align: left!important;
+            text-align: left !important;
             width: 90%;
             margin: auto;
         }
+
         .Home-intro-banner .l-section-h.i-cf {
             padding: 0;
         }
+
         body div#ccchildpages-1 {
             grid-template-columns: 1fr;
         }
+
         .l-subheader-sticky-mobile .menu-item:hover .w-nav-anchor,
         .l-subheader-sticky-mobile .menu-item:focus .w-nav-anchor,
         .l-subheader-sticky-mobile .menu-item:active .w-nav-anchor {
-            color: #fff!important;
+            color: #fff !important;
         }
+
         /* .no-touch .menu-item.level_1.opened>.w-nav-anchor {
         color: #fff!important;
     } */
         .cy-modal-content {
             width: 100%;
         }
+
         #cy-search-element-container {
             flex-direction: column;
-            width: 100%!important;
+            width: 100% !important;
             height: 300px;
             justify-content: space-between;
-            border-radius: 25px!important;
+            border-radius: 25px !important;
             transition: all .3s ease;
+            z-index: 1;
+            position: relative;
         }
+
         .separator-homepage-search-form {
-            height: 250px!important;
+            height: 250px !important;
             z-index: -1;
         }
+
         #cy-search-element-container .facetwp-autocomplete {
-            padding: 20px 22px 20px 15px!important;
+            padding: 20px 22px 20px 15px !important;
             transition: all .3s ease;
-            border-radius: 30px!important;
-            width: 100%!important;
+            border-radius: 30px !important;
+            width: 100% !important;
         }
+
         #cy-search-element-container select.facetwp-dropdown {
             /* transition: all .3s ease; */
-            border-radius: 30px!important;
-            width: 100%!important;
+            border-radius: 30px !important;
+            width: 100% !important;
             padding: 0 0 0 1rem;
         }
+
         .webmapp_posts_controller.webmapp-grid-system .webmapp-container-fluid {
-            padding-left: 15px!important;
-            padding-right: 15px!important;
+            padding-left: 15px !important;
+            padding-right: 15px !important;
         }
+
         #cy-search-element-container #cy-search-lente {
             transition: all .3s ease;
             border-radius: 30px;
         }
+
         #cy-search-lente {
             /* display: none; */
-            width: 100%!important;
+            width: 100% !important;
         }
+
         .cerca-grid-container {
             grid-template-rows: 1fr;
-            grid-template-areas: "search" "result";
+            grid-template-areas: "search""result";
             display: grid;
         }
+
         .cerca-grid-container .result {
             grid-area: result;
         }
+
         .cerca-grid-container .search {
             grid-area: search;
         }
+
         .cerca-result-container .facetwp-template {
-            grid-template-columns: 1fr!important;
+            grid-template-columns: 1fr !important;
         }
+
         #page-footer {
             padding-bottom: 60px;
         }
+
         .l-subheader-sticky-mobile .sticky-mobile-menu-phone a,
         .l-subheader-sticky-mobile .menu-item.level_1.current-menu-item>.w-nav-anchor {
             color: white;
         }
+
         .l-subheader-sticky-mobile .sticky-mobile-menu-phone a:hover {
             color: white;
         }
+
         .l-subheader-sticky-mobile .l-subheader-cell.at_left .w-nav-icon {
             color: white;
         }
+
         .l-subheader-sticky-mobile .l-subheader-cell.at_left a:hover {
             color: white;
         }
+
         .sticky-mobile-menu-phone .l-subheader-cell.at_left .w-nav-icon {
             color: white;
         }
+
         .sticky-mobile-menu-phone .l-subheader-cell.at_left a:hover {
             color: white;
         }
+
         .single-route .l-subheader.at_bottom.width_full {
             display: none;
         }
+
         .l-subheader-sticky-mobile {
-            display: block!important;
+            display: block !important;
             position: fixed;
             bottom: 0;
             width: 100%;
-            background-color: var(--color-primary)!important;
+            background-color: var(--color-primary) !important;
             /* animation */
             -webkit-animation: slideup 1s 1;
             -moz-animation: slideup 1s 1;
             -o-animation: slideup 1s 1;
             animation: slideup 1s 1
         }
+
         .l-subheader.at_bottom.width_full {
             /* //transition */
             -webkit-transition: height 1s;
@@ -326,6 +370,7 @@ Text Domain:    wm-child-cyclando
             transition: height 1s;
             display: none;
         }
+
         .l-subheader-sticky-mobile .sticky-mobile-menu-phone {
             background: var(--color-secondary);
             position: relative;
@@ -337,9 +382,11 @@ Text Domain:    wm-child-cyclando
             height: 100%;
             left: 16px;
         }
+
         .l-subheader-sticky-mobile .sticky-mobile-menu-phone a {
             padding: 18px 5px;
         }
+
         .l-subheader-sticky-mobile .sticky-mobile-menu-phone:after,
         .l-subheader-sticky-mobile .sticky-mobile-menu-phone:before {
             content: "";
@@ -348,50 +395,61 @@ Text Domain:    wm-child-cyclando
             height: 50%;
             right: 100%;
         }
+
         .l-subheader-sticky-mobile .sticky-mobile-menu-phone:after {
             bottom: 0;
             background: linear-gradient(to left top, #F18E08 50%, transparent 50%);
         }
+
         .l-subheader-sticky-mobile .sticky-mobile-menu-phone:before {
             top: 0;
             background: linear-gradient(to left bottom, #F18E08 50%, transparent 50%);
         }
+
         .l-subheader-sticky-mobile .w-nav-list.level_1.hover_simple {
-            bottom: 100%!important;
-            background-color: var(--color-primary)!important;
-            color: white!important;
-            top: auto!important;
-            box-shadow: 0 -3px 8px rgba(0, 0, 0, 0.1)!important;
+            bottom: 100% !important;
+            background-color: var(--color-primary) !important;
+            color: white !important;
+            top: auto !important;
+            box-shadow: 0 -3px 8px rgba(0, 0, 0, 0.1) !important;
         }
+
         .wm_difficulty_number {
-            display: block!important;
+            display: block !important;
             float: left;
             padding-right: 5px;
         }
+
         .wm_difficulty_icon_holder:before {
             display: none;
         }
+
         .wm_template_advancedsearch span.textIcon {
             line-height: 2;
         }
+
         .wm_template_advancedsearch .post_meta_with_icons .icon_holder i:before {
             display: none;
         }
+
         span.textIcon {
             font-size: 16px;
             color: #3a3a3a;
         }
+
         span.wm_difficulty_suffix {
             font-size: 16px;
             color: #3a3a3a;
             line-height: 2;
         }
+
         .wm_template_advancedsearch .icon_holder {
             color: black;
             margin: 0% 0 0 0%;
             float: left;
-            width: auto!important;
+            width: auto !important;
         }
+
         .wm_template_advancedsearch .post_meta_with_icons .icon_holder:not(:last-child) span.textIcon:after {
             text-align: center;
             font-size: 10px;
@@ -400,106 +458,120 @@ Text Domain:    wm-child-cyclando
             padding-left: 5px;
             vertical-align: middle;
         }
+
         /* .wm_template_advancedsearch .webmapp_post-featured-img {
         grid-template-columns: 3fr 1fr !important;
         grid-template-rows: none!important;
     } */
         .covidbanner-container {
-            padding: 5px 10px!important;
+            padding: 5px 10px !important;
         }
+
         #page-header .ush_menu_1 .w-nav-icon {
             font-size: 35px;
         }
+
         #page-header .ush_menu_1 .w-nav-icon i {
             border-width: 6px;
             border-radius: 8px;
         }
+
         #page-header .ush_menu_1 .w-nav-icon i::after {
             border-radius: 8px;
         }
+
         #page-header .ush_menu_1 .w-nav-icon i::before {
             border-radius: 8px;
         }
     }
-    
+
     @media screen and (max-width: 768px) {
         .home-banner-content-h h2 {
             font-size: 24px;
-            text-align: left!important;
+            text-align: left !important;
             width: 90%;
             margin: auto;
         }
+
         h2 {
-            font-size: 26px!important;
+            font-size: 26px !important;
         }
     }
-    
+
     @media screen and (min-width: 768px) {
         .general-cerca-facetwp-container .g-cols.vc_row {
             display: grid;
-            grid-template-areas: "c e e e e" "c b b b b" "c b b b b";
+            grid-template-areas: "c e e e e""c b b b b""c b b b b";
             grid-template-rows: 131px 100%;
             grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr;
         }
+
         .cerca-facets-container {
             grid-area: c;
         }
+
         .advancedsearch-container {
             grid-area: b;
         }
+
         .cerca-facet-count-container {
             grid-area: e;
         }
     }
+
     /* Begin animation */
-    
+
     @-o-keyframes slideup {
         from {
             bottom: -60px;
         }
+
         to {
             bottom: 0;
         }
     }
-    
+
     @-moz-keyframes slideup {
         from {
             bottom: -60px;
         }
+
         to {
             bottom: 0;
         }
     }
-    
+
     @-webkit-keyframes slideup {
         from {
             bottom: -60px;
         }
+
         to {
             bottom: 0;
         }
     }
-    
+
     @keyframes slideup {
         from {
             bottom: -60px;
         }
+
         to {
             bottom: 0;
         }
     }
-    
+
     .home-anypost-section h2 {
         color: var(--color-primary-title);
         font-family: var(--font-family-primary-alternate);
     }
-    
+
     .home-anypost-section h1 span {
         /*
     color: var(--color-primary-title);*/
         font-family: var(--font-family-primary-alternate);
     }
-    
+
     .webmapp-anypost-template-cy_route .webmapp_post_image .post_meta_info_container {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -507,7 +579,7 @@ Text Domain:    wm-child-cyclando
         background-color: rgb(21 21 21 / 10%);
         height: 100%;
     }
-    
+
     .webmapp-anypost-template-cy_route .webmapp_post-title h3 {
         font-family: var(--font-family-primary-alternate);
         font-size: 21px;
@@ -517,14 +589,14 @@ Text Domain:    wm-child-cyclando
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
-    
+
     .webmapp-anypost-template-cy_route .webmapp_post_image {
         border-radius: 20px;
     }
-    
+
     .webmapp-anypost-template-cy_route a.download-app-link {
-        position: relative!important;
-        color: white!important;
+        position: relative !important;
+        color: white !important;
         text-align: center;
         min-width: 150px;
         justify-self: flex-end;
@@ -533,7 +605,7 @@ Text Domain:    wm-child-cyclando
         border-radius: 5px;
         margin: 0 20px 10px 0px;
     }
-    
+
     .webmapp-anypost-template-cy_route .webmapp_post_meta {
         font-family: var(--font-family-primary);
         color: white;
@@ -546,24 +618,24 @@ Text Domain:    wm-child-cyclando
         grid-column-start: 1;
         grid-column-end: 3;
     }
-    
+
     .webmapp-anypost-template-cy_route .webmapp_post_meta p {
         font-size: 18px;
         font-weight: 400;
         /* text-shadow: 1px 1px var(--color-text-shadow-dark); */
     }
-    
+
     .webmapp-anypost-template-cy_route .webmapp_post_meta .webmapp_post-title p {
         font-size: 15px;
         /* text-shadow: 1px 1px var(--color-text-shadow-dark); */
     }
-    
+
     .wm_template_advancedsearch .webmapp-anypost-template-cy_route .webmapp_post_meta {
         display: grid;
         grid-template-rows: 1fr 1fr;
         height: 100%;
     }
-    
+
     .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .webmapp_post_meta .post_meta_info {
         font-family: var(--font-family-primary);
         position: absolute;
@@ -571,12 +643,12 @@ Text Domain:    wm-child-cyclando
         right: 30px;
         min-width: 90px;
     }
-    
+
     .webmapp-anypost-template-cy_route_advancedsearch .webmapp_post_meta .post_title_info {
         padding: 5px 15px;
         color: white;
     }
-    
+
     .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info {
         font-family: var(--font-family-primary);
         color: black;
@@ -591,11 +663,11 @@ Text Domain:    wm-child-cyclando
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
     }
-    
+
     .webmapp-anypost-template-cy_route .post_meta_info p.route_first_date {
         min-width: 130px;
     }
-    
+
     .webmapp-anypost-template-cy_route .post_meta_info .post_meta_info p {
         margin: 0;
         font-size: 14px;
@@ -603,15 +675,15 @@ Text Domain:    wm-child-cyclando
         min-height: 19px;
         background: white;
     }
-    
+
     .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info .meta_info_data {
         font-weight: 700;
     }
-    
+
     .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info .meta-bar-txt-light {
         font-weight: 700;
     }
-    
+
     .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .webmapp_post_meta .prezzo-tab {
         background-color: var(--color-primary);
         text-align: center;
@@ -623,7 +695,7 @@ Text Domain:    wm-child-cyclando
         border-radius: 5px;
         margin: 0 10px 10px 0px;
     }
-    
+
     .webmapp-anypost-template-cy_route .webmapp_post_meta .prezzo-tab {
         background-color: var(--color-primary);
         text-align: center;
@@ -634,51 +706,52 @@ Text Domain:    wm-child-cyclando
         padding: 15px 10px;
         display: grid;
     }
-    
+
     .webmapp-anypost-template-cy_route_advancedsearch .webmapp_post_meta .prezzo-tab.coming-soon-button {
         background-color: var(--color-secondary);
     }
-    
+
     .webmapp-anypost-template-cy_route_advancedsearch .webmapp_post_meta .prezzo-tab.coming-soon-button p {
         font-size: 20px;
         max-width: 130px;
     }
-    
+
     .webmapp-anypost-template-cy_route .prezzo-tab.coming-soon-button {
         background-color: var(--color-secondary);
     }
-    
+
     .webmapp-anypost-template-cy_route .prezzo-tab p {
         font-size: 32px;
     }
-    
+
     .webmapp-anypost-template-cy_route .prezzo-tab.coming-soon-button p {
         font-size: 15px;
     }
-    
+
     .webmapp-anypost-template-cy_route .row {
         margin-bottom: 30px;
     }
-    
+
     .newsletter-cta p {
         font-size: 24px;
     }
+
     /* archive taxonomy */
-    
+
     .archive-taxonomy {
         padding: 3rem 2rem;
     }
-    
+
     .archive-taxonomy h2 {
         font-family: var(--font-family-primary-alternate);
         color: var(--color-primary-paragraph);
     }
-    
+
     .archive-taxonomy h3 {
         color: var(--color-primary-paragraph);
         font-family: var(--font-family-primary-alternate);
     }
-    
+
     .archive-taxonomy-featured-image .webmapp-featured-image-img .container {
         display: grid;
         grid-template-rows: 1fr;
@@ -686,7 +759,7 @@ Text Domain:    wm-child-cyclando
         align-items: center;
         height: 100%;
     }
-    
+
     .archive-taxonomy-featured-image .webmapp-featured-image-img .container span {
         background-color: #f0f8ff00;
         font-family: var(--font-family-primary-alternate);
@@ -694,8 +767,9 @@ Text Domain:    wm-child-cyclando
         font-weight: 900;
         font-size: 46px;
     }
+
     /* taxonomy page */
-    
+
     .archive #webmapp-layer-1 .container {
         display: grid;
         grid-template-rows: 1fr;
@@ -703,7 +777,7 @@ Text Domain:    wm-child-cyclando
         align-items: center;
         height: 100%;
     }
-    
+
     .archive #webmapp-layer-1 .webmapp-featured-image-img .container span {
         background-color: #f0f8ff00;
         font-family: var(--font-family-primary-alternate);
@@ -711,7 +785,7 @@ Text Domain:    wm-child-cyclando
         font-weight: 900;
         font-size: 46px;
     }
-    
+
     .archive #webmapp-layer-2 .webmapp-featured-image-img .container span {
         background-color: #f0f8ff00;
         font-family: var(--font-family-primary-alternate);
@@ -719,87 +793,91 @@ Text Domain:    wm-child-cyclando
         font-weight: 900;
         font-size: 46px;
     }
-    
+
     .archive #main-content>.container {
         padding: 0 20px 50px;
     }
-    
+
     .archive #webmapp-layer-1 .webmapp-featured-image-img .container i {
         display: none;
     }
+
     /* CSS footer */
     /* menu footer */
-    
+
     .wm-menu-footer-left ul li a {
         color: var(--color-secondary);
     }
-    
+
     .wm-menu-footer-left ul li a:hover {
         color: var(--color-secondary-hover);
     }
-    
+
     .footer-menu-cyclando ul li:before {
         display: none;
     }
-    
+
     .footer-menu-cyclando ul li a {
         font-family: var(--font-family-primary);
         font-size: 18px;
         font-weight: 600;
         line-height: 30px;
     }
-    
+
     .footer-copyright-address p {
         font-family: var(--font-family-primary-alternate);
         font-size: 18px;
         font-weight: 600;
     }
-    
+
     .footer-copyright-info p {
         font-family: var(--font-family-primary-alternate);
         font-size: 16px;
     }
-    
+
     @media screen and (min-width: 768px) {
+
         ul#menu-menu-secondario li:not(:last-child),
         #menu-menu-secondario-inglese-2 li:not(:last-child) {
             border-right: 1px solid white;
             padding-right: 2rem;
         }
     }
+
     /* info footer*/
     /* Privacy page CSS */
-    
+
     body #iubenda_policy .iub_container.iub_base_container {
         margin-top: 0;
     }
-    
+
     body #iubenda_policy .iub_content.legal_pp {
         padding-top: 0;
     }
-    
+
     body #iubenda_policy .iub_content.legal_pp h1 {
         font-family: var(--font-family-primary-alternate);
         font-size: 28px;
         margin-bottom: 20px;
     }
-    
+
     body #iubenda_policy .iub_content.legal_pp h2 {
         font-family: var(--font-family-primary-alternate);
         font-size: 22px;
     }
-    
+
     body #iubenda_policy .iub_content.legal_pp h3 {
         font-family: var(--font-family-primary-alternate);
         font-size: 15px;
     }
-    
+
     body #iubenda_policy .iub_content.legal_pp p {
         font-family: var(--font-family-primary);
         font-size: 14px;
     }
+
     /* contact form button */
-    
+
     #page-content .contact-page-button,
     #page-footer .contact-page-button {
         font-size: 18px;
@@ -814,7 +892,7 @@ Text Domain:    wm-child-cyclando
         border-color: var(--color-primary);
         color: var(--color-primary) !important;
     }
-    
+
     #page-content .contact-page-button:hover,
     #page-footer .contact-page-button:hover {
         font-size: 18px;
@@ -829,31 +907,33 @@ Text Domain:    wm-child-cyclando
         border-color: var(--color-primary);
         color: white !important;
     }
+
     /* general contact form modal */
-    
+
     #cy-general-contact {
         display: none;
     }
-    
+
     .generalContactForm:hover {
         color: var(--color-primary);
         cursor: pointer;
         transition-property: background, box-shadow, border, color, opacity, transform;
         transition-duration: 0.3s
     }
-    
+
     .generalContactForm {
         transition-property: background, box-shadow, border, color, opacity, transform;
         transition-duration: 0.3s
     }
+
     /* cerca page search page */
-    
+
     .advancedsearch-container .facetwp-template {
         display: grid;
         grid-template-columns: 1fr;
         grid-row-gap: 40px;
     }
-    
+
     .advancedsearch-container .facetwp-template .post_meta_info p {
         font-size: 16px;
         line-height: 24px;
@@ -863,26 +943,26 @@ Text Domain:    wm-child-cyclando
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
     }
-    
+
     .advancedsearch-container .post_meta_where_duration {
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
-    
+
     .advancedsearch-container .post_meta_where_duration p {
         margin-bottom: 0;
         color: white;
     }
-    
+
     .advancedsearch-container .webmapp_post-title {
         display: grid;
         grid-template-columns: 1fr;
     }
-    
+
     .post_meta_with_icons span {
         font-size: 16px;
     }
-    
+
     .advancedsearch-container .post_meta_with_icons {
         font-size: 22px;
         color: white;
@@ -891,11 +971,11 @@ Text Domain:    wm-child-cyclando
         justify-content: space-between;
         flex-wrap: wrap;
     }
-    
+
     .advancedsearch-container .icons_separator:last-child {
         display: none;
     }
-    
+
     .advancedsearch-container .title-holder h3 {
         color: white;
         font-family: var(--font-family-primary-alternate);
@@ -906,25 +986,25 @@ Text Domain:    wm-child-cyclando
         -webkit-box-orient: vertical;
         padding-top: 8px;
     }
-    
+
     .advancedsearch-container .webmapp_post_meta .prezzo-tab {
         padding: 8px 10px;
     }
-    
+
     .advancedsearch-container .webmapp-grid-system .col-sm-12,
     .advancedsearch-container .webmapp-grid-system .col-md-12 {
         padding-left: 0;
         padding-right: 0;
     }
-    
+
     .advancedsearch-container .facetwp-pager {
         margin: 2% 0 0 3%;
     }
-    
+
     #cy-search-element-container .facetwp-autocomplete-update {
         display: none;
     }
-    
+
     .cy-facetwp-cerca-quando .facetwp-autocomplete-update {
         padding: 5px 10px;
         margin-top: 10px;
@@ -932,27 +1012,27 @@ Text Domain:    wm-child-cyclando
         border-radius: 0.3rem;
         box-shadow: 0 0 0 2px transparent, 0 1px 0 rgba(0, 0, 0, 0.08);
     }
-    
+
     .cy-facetwp-cerca-quando .facetwp-autocomplete-update:hover {
         box-shadow: 0 0 0 2px transparent, 0 2px 0 rgba(0, 0, 0, 0.08);
     }
-    
+
     .cerca-facet-where-container .l-section-h.i-cf {
         padding-bottom: 0px;
     }
-    
+
     .cerca-facet-count-container .facetwp-selections {
         padding: 10px 0;
     }
-    
+
     .cerca-facet-count-container .facetwp-selections ul {
         margin-left: 0;
     }
-    
+
     .cerca-facet-count-container span.facetwp-selection-label {
         display: none;
     }
-    
+
     .cerca-facet-count-container .facetwp-selections .facetwp-selection-value {
         display: inline-block;
         margin-right: 10px;
@@ -968,22 +1048,22 @@ Text Domain:    wm-child-cyclando
         border-radius: 22px;
         font-size: 12px;
     }
-    
+
     .cerca-facet-count-container .facetwp-selections .facetwp-selection-value:hover {
         box-shadow: 0 0 0 2px transparent, 0 2px 5px rgba(0, 0, 0, 0.11);
         transition: 200ms all ease;
     }
-    
+
     .cerca-facets-container i {
         font-size: 22px;
-        padding-right: 10px!important;
+        padding-right: 10px !important;
         display: none;
     }
-    
+
     .facetwp-facet-come_deve_essere_la_forma_del_viaggio .facetwp-checkbox.checkbox-eng {
-        text-transform: capitalize!important;
+        text-transform: capitalize !important;
     }
-    
+
     .facetwp-slider-icon-container {
         padding-top: 10px;
         display: flex;
@@ -991,59 +1071,63 @@ Text Domain:    wm-child-cyclando
         justify-content: space-between;
         flex-wrap: wrap;
     }
-    
+
     .facetwp-slider-icon-container i {
         padding: 0;
     }
-    
+
     .cerca-result-container .facetwp-template {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-column-gap: 3%;
     }
-    
+
     .facetwp-facet.facetwp-facet-search_route.facetwp-type-fselect {
         color: #333;
     }
-    
+
     #cy-search-element-container h3 {
         display: none;
     }
-    
+
     .cy-search-form-container {
         position: absolute;
         width: 100%;
         top: -80px;
     }
-    
+
     @media screen and (min-width: 768px) {
         #cy-search-element-container {
-            width: 900px!important;
-            column-gap: 15px!important;
+            width: 900px !important;
+            column-gap: 15px !important;
         }
+
         #cy-search-element-container .facetwp-autocomplete {
-            width: 180px!important;
+            width: 180px !important;
         }
+
         .oc-participants-bici-container .oc-input-btn {
             min-width: 265px;
-            padding: 10px 17px!important;
+            padding: 10px 17px !important;
         }
+
         .oc-participants-bici-container {
             justify-content: space-between;
             display: flex;
             min-width: 290px;
         }
+
         div#cy-search-lente {
-            padding: 18px!important;
-            width: 100%!important;
+            padding: 18px !important;
+            width: 100% !important;
         }
     }
-    
+
     .oc_search_adv_detail_container {
         display: flex;
         justify-content: space-between;
     }
-    
+
     #cy-search-element-container {
         display: flex;
         width: 860px;
@@ -1055,7 +1139,7 @@ Text Domain:    wm-child-cyclando
         border-radius: 16px;
         transition: all .3s ease;
     }
-    
+
     #cy-search-element-container .facetwp-autocomplete {
         padding: 20px 22px 20px 16px;
         font-size: 16px;
@@ -1068,11 +1152,11 @@ Text Domain:    wm-child-cyclando
         height: 49px;
         cursor: pointer;
     }
-    
+
     #cy-search-element-container .facetwp-autocomplete::placeholder {
         color: #888;
     }
-    
+
     select.facetwp-dropdown {
         font-size: 16px;
         color: #000;
@@ -1083,11 +1167,11 @@ Text Domain:    wm-child-cyclando
         background-color: white;
         cursor: pointer;
     }
-    
+
     select.facetwp-dropdown:first-child {
         color: #888;
     }
-    
+
     div#cy-search-lente {
         padding: 20px 22px 20px 8px;
         font-size: 20px;
@@ -1097,34 +1181,35 @@ Text Domain:    wm-child-cyclando
         height: 49px;
         border-radius: 30px;
     }
+
     /* #cy-search-element-container input.facetwp-search::-moz-placeholder,
 #cy-search-element-container input.facetwp-search:-ms-input-placeholder,
 #cy-search-element-container input.facetwp-search::-webkit-input-placeholder */
-    
+
     #cy-search-element-container input.facetwp-autocomplete::placeholder {
         opacity: 1;
     }
-    
+
     #cy-search-element-container i.facetwp-btn {
         display: none;
     }
-    
+
     #cy-search-element-container .facetwp-facet {
         margin-bottom: 0px;
         line-height: 14px;
     }
-    
+
     #cy-search-element-container .fs-label-wrap .fs-label {
         padding: 20px 22px 20px 8px;
         font-size: 18px;
         font-weight: 700;
     }
-    
+
     #cy-search-element-container .facetwp-type-fselect .fs-wrap,
     #cy-search-element-container .facetwp-type-fselect .fs-dropdown {
         width: 250px;
     }
-    
+
     #cy-search-element-container #cy-search-lente {
         width: 240px;
         background-color: var(--color-secondary);
@@ -1134,76 +1219,77 @@ Text Domain:    wm-child-cyclando
         transition: all .3s ease;
         color: white;
     }
-    
+
     #cy-search-element-container #cy-search-lente:hover {
-        background-color: var(--color-secondary-hover)!important;
+        background-color: var(--color-secondary-hover) !important;
         transition: all .3s ease;
     }
-    
+
     #cy-search-element-container #cy-search-lente i {
         font-size: 24px;
         font-weight: 700;
     }
-    
+
     #cy-search-element-container .fs-arrow {
         display: none;
     }
-    
+
     #cy-search-element-container .fs-label-wrap {
         background-color: #fffc;
     }
-    
+
     #cy-search-template-container {
         display: none;
     }
-    
+
     .highlight {
         background-color: var(--color-primary);
         color: white;
     }
-    
+
     .arrow-down-container {
         display: flex;
         justify-content: center;
         padding: 40px;
     }
-    
+
     .arrow-down-container a:hover i {
         color: white;
     }
-    
+
     .icon-arrow-down1 {
         animation: MoveUpDown 2s infinite alternate;
         position: absolute;
         font-size: 27px;
         font-weight: bold;
     }
-    
+
     @keyframes MoveUpDown {
         0% {
             transform: translateY(0);
         }
+
         100% {
             transform: translateY(-10px);
         }
     }
-    
+
     .wpcf7 input[type="checkbox"] {
         margin-top: 6px;
     }
-    
+
     .wpcf7 input[type="checkbox"]:focus {
         box-shadow: 0 0 0 0px !important;
     }
-    
+
     .grecaptcha-badge {
         z-index: 1001;
     }
-    
+
     .advancedsearch-container .single-post-wm .scarica-app {
-        height: 64px!important;
+        height: 64px !important;
     }
-    
+
     .webmapp-anypost-template-cy_route .single-post-wm .scarica-app {
         background-color: var(--color-secondary);
         height: 68px;
@@ -1211,17 +1297,19 @@ Text Domain:    wm-child-cyclando
         display: grid;
         border-radius: 5px;
     }
+
     /* Template seo pages css */
-    
+
     .page-template-seo_pages h2 {
         font-size: 34px;
     }
-    
+
     .page-template-seo_pages .l-section-h {
         padding: 0 0;
     }
+
     /* Child pages CSS */
-    
+
     .ccchildpagethumbs {
         width: 100%;
         height: 400px;
@@ -1232,20 +1320,20 @@ Text Domain:    wm-child-cyclando
         align-items: flex-end;
         position: relative;
     }
-    
+
     div#ccchildpages-1 {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         column-gap: 30px;
         row-gap: 30px;
     }
-    
+
     a.ccpage_title_link {
-        color: white!important;
+        color: white !important;
         font-size: 29px;
         font-weight: 900;
     }
-    
+
     .ccpages_excerpt {
         font-size: 15px;
         color: white;
@@ -1255,17 +1343,17 @@ Text Domain:    wm-child-cyclando
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
     }
-    
+
     .ccchildpageinfo {
         width: 100%;
         padding: 10px;
         background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
     }
-    
+
     .ccchildpage-wm {
         position: relative;
     }
-    
+
     .child-page-link {
         position: absolute;
         top: 0;
@@ -1274,142 +1362,145 @@ Text Domain:    wm-child-cyclando
         right: 0;
         z-index: 999;
     }
+
     /* hide recaptcha v3 of google */
-    
+
     .grecaptcha-badge {
         visibility: hidden;
     }
+
     /* woocommerce css */
     /* Campi nascosti per per il calcolatore Friendly - start */
-    
+
     .woocommerce-billing-fields__field-wrapper {
         display: none;
     }
-    
+
     #newsletter_acceptance_field,
     #privacy_policy_field,
     #terms_conditions_field {
         display: none;
     }
-    
+
     .wc-proceed-to-checkout a:last-child {
-        display: none!important;
+        display: none !important;
     }
-    
+
     .woocommerce-order-overview__payment-method.method {
-        display: none!important;
+        display: none !important;
     }
-    
+
     .woocommerce-checkout .wc_payment_method.payment_method_bacs {
-        display: none!important;
+        display: none !important;
     }
-    
+
     .woocommerce-order-received .woocommerce-table.woocommerce-table--custom-fields.shop_table.custom-fields {
         display: none;
     }
-    
+
     .woocommerce-order-received .woocommerce-customer-details {
         display: none;
     }
-    
+
     .woocommerce-order-received .woocommerce-order-details {
         display: none;
     }
-    
+
     table.shop_table.woocommerce-checkout-review-order-table tr:not(.order-total) {
         display: none;
     }
-    
+
     .woocommerce-checkout #order_review_heading {
-        display: none!important;
+        display: none !important;
     }
-    
+
     .checkout-go-back-btn {
         padding-top: 20px;
     }
-    
+
     .checkout-go-back-btn a:hover {
         text-decoration: underline;
     }
+
     /* Campi nascosti per per il calcolatore Friendly - end */
-    
+
     html:lang(en) .fee {
         display: none;
     }
-    
+
     .woocommerce table th.product-remove,
     .woocommerce table th.product-thumbnail {
         display: none;
     }
-    
+
     .woocommerce table td.product-remove,
     .woocommerce table td.product-thumbnail {
         display: none;
     }
-    
+
     .woocommerce-cart .cart-collaterals .cart_totals table th {
         width: 50%;
     }
-    
+
     #deposit-help-tip {
         display: none;
     }
-    
+
     #wc-deposits-options-form .deposit-options {
         display: none;
     }
-    
+
     #billing_birthday_field label {
         display: inline-block;
     }
-    
+
     #billing_gender_field .woocommerce-input-wrapper {
         display: grid;
         grid-template-columns: 1fr 10fr 1fr 10fr;
         justify-content: center;
         align-items: center;
     }
-    
+
     #billing_gender_field .woocommerce-input-wrapper input {
         justify-self: center;
         margin-bottom: 3px;
     }
-    
+
     body .woocommerce .return-to-shop {
         padding-bottom: 2em;
         display: none;
     }
-    
+
     .tour-general-info p {
         padding-bottom: 5px;
         float: left;
         margin-right: 25px;
     }
-    
+
     .woocommerce table.cart td.actions {
         display: none;
     }
-    
+
     .woocommerce-page .quantity input.qty {
         pointer-events: none;
         /* height: 49px; */
-        color: #666!important;
-        background-color: rgba(255, 255, 255, 0)!important;
-        -webkit-box-shadow: none!important;
-        -moz-box-shadow: none!important;
-        box-shadow: none!important;
-        font-size: 16px!important;
-        font-weight: 500!important;
+        color: #666 !important;
+        background-color: rgba(255, 255, 255, 0) !important;
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+        box-shadow: none !important;
+        font-size: 16px !important;
+        font-weight: 500 !important;
     }
-    
+
     .woocommerce-page .l-section-h.i-cf {
         padding: 40px 0;
     }
-    
+
     #pay-full-amount-label {
         display: none;
     }
-    
+
     .switch-candy {
         background-color: #2d303500;
         border-radius: 0px;
@@ -1419,25 +1510,25 @@ Text Domain:    wm-child-cyclando
         text-shadow: none;
         box-shadow: none;
     }
-    
+
     .us-woo-cart_compact .woocommerce .cart-collaterals {
         width: 40%;
     }
-    
+
     body .checkout-button.button.alt.wc-forward,
     body .woocommerce .button.alt {
-        color: var(--color-primary)!important;
+        color: var(--color-primary) !important;
     }
-    
+
     .us-woo-cart_compact .woocommerce .shop_table.cart {
-        float: none!important;
-        width: 100%!important;
+        float: none !important;
+        width: 100% !important;
     }
-    
+
     .shop_table_responsive th::first-letter {
         text-transform: capitalize;
     }
-    
+
     .woocommerce .button.alt:before,
     .woocommerce .button.checkout:before,
     .woocommerce .button.add_to_cart_button:before,
@@ -1446,36 +1537,36 @@ Text Domain:    wm-child-cyclando
         border-radius: 4px;
         border-color: var(--color-primary);
     }
-    
+
     .woocommerce-checkout .woocommerce .cart-detail {
         display: none;
     }
-    
+
     .no-touch .woocommerce .button.alt:hover,
     .no-touch .woocommerce .button.checkout:hover,
     .no-touch .woocommerce .button.add_to_cart_button:hover,
     .no-touch .us-btn-style_1:hover {
-        background: var(--color-primary)!important;
-        color: white!important;
+        background: var(--color-primary) !important;
+        color: white !important;
         border-radius: 4px;
     }
-    
+
     .us-woo-cart_compact .woocommerce .shop_table.cart td,
     .us-woo-cart_compact .woocommerce .shop_table.cart th {
         padding: 8px 0;
     }
-    
+
     .woocommerce_custom_payment_info {
         background-color: white;
         padding: 4%;
         margin-bottom: 20px;
     }
-    
+
     .woocommerce_custom_payment_info p {
         font-size: 14px;
         margin-bottom: 0;
     }
-    
+
     .newsletter-cta>.vc_column-inner>.wpb_wrapper {
         background: var(--color-primary);
         /* background: linear-gradient(94deg, #9ac250 0%, #749D27 100%)!important; */
@@ -1485,57 +1576,64 @@ Text Domain:    wm-child-cyclando
         background-repeat: no-repeat;
         background-size: contain;
     }
-    
+
     .newsletter-cta h2 {
-        color: white!important;
+        color: white !important;
     }
+
     /* blog page css */
-    
+
     body .blog-grid #us_grid_1 .usg_hwrapper_1 {
         margin-left: 10%;
         padding-top: 0;
         padding-bottom: 0;
     }
-    
+
     @media (max-width: 479px) {
         body .blog-grid #us_grid_1 .usg_post_image_1 {
             display: block !important;
             margin-left: 0;
         }
+
         body .blog-grid #us_grid_1 .usg_hwrapper_1 {
             margin-left: 0;
             padding-top: 0;
             padding-bottom: 0;
             display: grid;
         }
+
         .blog-grid #us_grid_1 .usg_post_image_1 {
             width: 100%;
         }
+
         .blog-grid #us_grid_1 .usg_vwrapper_1 {
             width: 90%;
         }
+
         .webmapp_post_meta .new-price {
             float: left;
         }
+
         .webmapp_post_meta .old-price {
             float: left;
             font-size: 19px;
         }
     }
+
     /* old and new price on promotions css */
-    
+
     .single .l-section-h.i-cf .webmapp_post_meta p {
         color: white;
     }
-    
+
     .single .l-section-h.i-cf .webmapp_post_meta strong {
         color: white;
     }
-    
+
     .new-price {
         font-size: 24px;
     }
-    
+
     .old-price {
         padding-right: 5px;
         color: white;
@@ -1544,7 +1642,7 @@ Text Domain:    wm-child-cyclando
         font-size: 17px;
         vertical-align: super;
     }
-    
+
     .old-price::before {
         content: " ";
         display: block;
@@ -1556,30 +1654,31 @@ Text Domain:    wm-child-cyclando
         left: 0;
         transform: rotate(-27deg);
     }
+
     /* CODIV-19 CSS banner */
-    
+
     header#page-header.sticky {
         top: 0;
     }
-    
+
     .covidbanner {
         background-color: var(--color-secondary-background);
     }
-    
+
     .covidbanner.with-wp-admin-bar {
         position: fixed;
         top: 32px;
         width: 100%;
         z-index: 10;
     }
-    
+
     .covidbanner.without-wp-admin-bar {
         position: fixed;
         top: 0px;
         width: 100%;
         z-index: 10;
     }
-    
+
     .covidbanner-container {
         display: flex;
         justify-content: space-between;
@@ -1590,92 +1689,95 @@ Text Domain:    wm-child-cyclando
         font-family: Montserrat;
         padding: 5px 0;
     }
-    
+
     .covidbanner-container a {
         color: black;
     }
-    
+
     .covidbanner-container a:hover {
         text-decoration: underline;
     }
-    
+
     span.cy-close-covidbanner {
         font-size: 24px;
         cursor: pointer;
     }
+
     /* menu search element */
-    
+
     #page-header .l-subheader-cell.at_center {
         display: none;
     }
-    
+
     #vn-search-element-container .facet-label {
         display: none;
     }
-    
+
     #vn-search-element-container .facetwp-template {
         display: none;
     }
-    
+
     #vn-search-element-container .facetwp-type-search {
         width: 43px;
         margin-bottom: 0px;
     }
-    
+
     #vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-search:hover,
     #vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-search:focus,
     #vn-search-bar-header .facetwp-facet.facetwp-facet-dove_vuoi_andare.facetwp-type-search:focus-within {
         width: 200px;
         transition: all .3s ease;
     }
-    
+
     .menu-searchbox-expandable {
-        background: #f5f5f5!important;
-        box-shadow: 0 0 0 2px transparent, 0 1px 0 rgba(0, 0, 0, 0.08) inset!important;
+        background: #f5f5f5 !important;
+        box-shadow: 0 0 0 2px transparent, 0 1px 0 rgba(0, 0, 0, 0.08) inset !important;
         transition: all .3s ease;
     }
+
     /* .menu-searchbox-expandable::placeholder{
     opacity: 0.5!important;
     transition: all .3s ease;
 } */
-    
+
     #vn-search-element-container .facetwp-type-search {
         width: 43px;
         pointer-events: none;
         margin-bottom: 0px;
         transition: all .3s ease;
     }
-    
+
     #vn-search-element-container .facetwp-search-wrap {
         position: relative;
         pointer-events: auto;
     }
-    
+
     #vn-search-element-container .facetwp-btn {
         pointer-events: auto;
         top: 5px;
     }
-    
+
     #vn-search-element-container .facetwp-search {
         vertical-align: bottom;
     }
-    
+
     #vn-search-element-container .facetwp-search {
         background-color: white;
         box-shadow: 0 0 0 2px transparent, 0 0px 0 rgba(0, 0, 0, 0.0) inset;
         transition: all .3s ease;
     }
-    
+
     #vn-search-element-container .facetwp-search::placeholder {
         opacity: 0;
         transition: all .3s ease;
     }
+
     /* new */
-    
+
     .cerca-facet-where-container .facetwp-btn {
         top: 8px;
     }
-    
+
     #page-header .w-html.ush_html_2,
     #page-header .w-html.ush_html_3 {
         margin-left: 0px;
@@ -1683,7 +1785,7 @@ Text Domain:    wm-child-cyclando
         height: 2rem;
         line-height: 2;
     }
-    
+
     #cy-search-bar-header #searchform {
         background-color: #f5f5f5;
         padding: 0;
@@ -1694,7 +1796,7 @@ Text Domain:    wm-child-cyclando
         transition: all 0.3s;
         line-height: 2;
     }
-    
+
     #cy-search-bar-header #searchform input {
         padding: 0;
         padding-top: 8px;
@@ -1705,19 +1807,20 @@ Text Domain:    wm-child-cyclando
         background-color: rgba(255, 255, 255, 0);
         box-shadow: 0 0 0 2px transparent, 0 0px 0 rgba(0, 0, 0, 0) inset;
     }
-    
+
     #cy-search-bar-header #searchform button {
-        color: rgb(112, 112, 110)!important;
+        color: rgb(112, 112, 110) !important;
         vertical-align: bottom;
         font-size: 19px;
         line-height: 2;
     }
-    
+
     .menu-input-expandable {
-        width: 160px!important;
+        width: 160px !important;
     }
+
     /*  code after impreza update 7.4.2 fix  */
-    
+
     input[type="text"],
     input[type="password"],
     input[type="email"],
@@ -1731,7 +1834,7 @@ Text Domain:    wm-child-cyclando
         line-height: 2.8rem;
         height: 2.8rem;
     }
-    
+
     input[type="text"],
     input[type="password"],
     input[type="email"],
@@ -1749,7 +1852,7 @@ Text Domain:    wm-child-cyclando
         box-shadow: 0 0 0 2px transparent, 0 1px 0 rgba(0, 0, 0, 0.08) inset;
         transition: all 0.3s;
     }
-    
+
     input:focus,
     input:focus+.w-form-checkbox,
     textarea:focus,
@@ -1757,10 +1860,11 @@ Text Domain:    wm-child-cyclando
     .select2-container--focus .select2-selection {
         box-shadow: 0 0 0 2px;
     }
+
     /*
-tour italia 
+tour italia
 */
-    
+
     .webmapp-anypost-template-cy_route span.route_duration {
         padding: 3% 7% 3% 7%;
         color: white;
@@ -1771,7 +1875,7 @@ tour italia
         margin: 10% 0% 0% 4%;
         /* text-shadow: 1px 1px var(--color-text-shadow-dark); */
     }
-    
+
     .webmapp-anypost-template-cy_route .post_meta_info {
         font-family: var(--font-family-primary);
         color: black;
@@ -1786,7 +1890,7 @@ tour italia
         width: fit-content;
         min-width: 130px;
     }
-    
+
     .webmapp-anypost-template-cy_route .prezzo-tab {
         color: white;
         font-size: 14px;
@@ -1804,19 +1908,19 @@ tour italia
         right: 25px;
         box-shadow: 1px 1px 5px #999;
     }
-    
+
     .wm_template_advancedsearch .cifra,
     .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch span.cifraPromo {
         color: var(--color-primary);
         font-size: 15px;
     }
-    
+
     .webmapp-anypost-template-cy_route .cifra,
     span.cifraPromo {
         color: white;
         font-size: 15px;
     }
-    
+
     .webmapp_post-distance-ascent {
         font-size: 10px;
         color: gray;
@@ -1825,92 +1929,99 @@ tour italia
         left: 20px;
         bottom: 10px;
     }
-    
+
     .single-post-wm {
         box-shadow: 2px 2px 5px #dedede, -2px -2px 5px #dedede, 2px -2px 5px #dedede, -2px 2px 5px #dedede;
         border-radius: 20px 20px 20px 20px;
         transition: 500ms;
     }
-    
+
     .single-post-wm:hover {
-        box-shadow: 3px 3px 11px #dedede, -3px -3px 11px #dedede, 3px -3px 10px #dedede, -3px 3px 10px #dedede!important;
+        box-shadow: 3px 3px 11px #dedede, -3px -3px 11px #dedede, 3px -3px 10px #dedede, -3px 3px 10px #dedede !important;
         transition: 500ms;
     }
-    
+
     @media screen and (min-width: 900px) and (max-width: 1137px) {
         .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info {
             width: 80%;
         }
     }
-    
+
     @media screen and (min-width: 1137px) and (max-width: 1350px) {
         .webmapp-anypost-template-cy_route .webmapp_post_meta .post_meta_info {
             width: 80%;
         }
     }
-    
+
     i.cy-icons.icon-search1 {
         display: none;
     }
-    
+
     @media screen and (max-width: 600px) {
         .arrow-down-container {
             display: none;
         }
+
         .webmapp_shortcode_any_post.post_type_route {
-            padding: 0 0!important;
+            padding: 0 0 !important;
         }
+
         .webmapp-anypost-template-cy_route .webmapp_post_image {
             margin-top: 10%;
         }
     }
+
     /*comportamento Quando*/
-    
+
     .facetwp-dropdown {
         -webkit-appearance: none;
         appearance: none;
     }
+
     /*comportamento Quando*/
-    
+
     .facetwp-dropdown:active,
     .facetwp-dropdown:hover {
         background: url(https://cyclando.com/wp-content/uploads/2020/09/down-arrow.png) 95% / 3% no-repeat #f5f5f5;
         transition: background-color 0.1ms linear;
     }
-    
+
     .webmapp_posts_controller.webmapp-grid-system .webmapp-container-fluid {
         padding-left: 0;
         padding-right: 0;
         margin: 0 0 0 0;
     }
+
     /* .l-section.height_medium {
-     padding-top: 0% !important; 
+     padding-top: 0% !important;
 } */
-    
+
     .page-id-62001 .l-subheader-h,
     .page-id-62001 .l-section-h,
     .page-id-62001 .l-main .aligncenter,
     .page-id-62001 .w-tabs-section-content-h {
         max-width: 1800px !important;
     }
-    
+
     .postid-99085 .l-subheader-h,
     .postid-99085 .l-section-h,
     .postid-99085 .l-main .aligncenter,
     .postid-99085 .w-tabs-section-content-h {
         max-width: 1800px !important;
     }
-    
+
     @media (min-width: 1200px) {
         .pagina-cerca-descrizione-container {
-            padding-top: 220px!important;
+            padding-top: 220px !important;
         }
+
         .pagina-cerca-descrizione-container .l-section-h.i-cf {
             padding-top: 0 !important;
         }
     }
+
     /*stili pagina di ricerca*/
-    
+
     .facetwp-page.active {
         font-weight: bold;
         cursor: default;
@@ -1919,24 +2030,24 @@ tour italia
         border-radius: 50%;
         padding: 0 10px;
     }
-    
+
     a.facetwp-page.active:hover {
         color: white;
     }
-    
+
     .wm_difficulty_number {
         display: none;
     }
-    
+
     .webmapp_post-featured-img {
         font-family: var(--font-family-primary);
     }
-    
+
     .oc_search_adv_info_text_container {
         color: #1a1a1a;
         font-size: 13px;
     }
-    
+
     .wm_template_advancedsearch .webmapp_post-featured-img {
         position: relative;
         display: grid;
@@ -1944,17 +2055,17 @@ tour italia
         align-items: center;
         padding: 15px 12px;
     }
-    
+
     .cy-facetwp-cerca-quando,
     .cy-facetwp-cerca-where {
         position: relative;
     }
-    
+
     .cy-facetwp-cerca-where h3,
     .cy-facetwp-cerca-quando h3 {
         display: none;
     }
-    
+
     .cy-facetwp-cerca-where h4,
     .cy-facetwp-cerca-quando h4 {
         font-size: 20px;
@@ -1962,24 +2073,24 @@ tour italia
         margin-top: 25px;
         margin-bottom: 10px;
     }
-    
+
     .cy-facetwp-cerca-where i {
         position: absolute;
         top: 51px;
         left: 15px;
     }
-    
+
     .cy-facetwp-cerca-quando i {
         position: absolute;
         top: 54px;
         left: 15px;
     }
-    
+
     .divFilterSearchDrop {
         margin-top: 20px;
         margin-bottom: 10px;
     }
-    
+
     .cerca-facet-where-container>.vc_column-inner>.wpb_wrapper {
         box-shadow: 2px 2px 5px #dedede, -2px -2px 5px #dedede, 2px -2px 5px #dedede, -2px 2px 5px #dedede;
         border-radius: 20px;
@@ -1987,37 +2098,37 @@ tour italia
         border: 1px solid #ccc;
         padding: 20px;
     }
-    
+
     .cerca-facet-where-container {
         margin-bottom: 40px;
     }
-    
+
     .cerca-facet-where-container h3 {
         transition: all .3s ease;
     }
-    
+
     .cy-facetwp-cerca-quando .facetwp-autocomplete {
         z-index: 1;
     }
-    
+
     .whenSearch {
         /* display: none; */
         position: relative;
     }
-    
+
     h4.tripSearch {
         font-family: 'Montserrat Alternates', sans-serif;
         color: gray;
         font-size: 20px;
     }
-    
+
     .whenSearch h3.facet-label {
         font-size: 15px;
         font-family: 'Montserrat', sans-serif;
         position: relative;
         padding: 0 0 1% 1%;
     }
-    
+
     .cy-facetwp-cerca-quando h3 {
         font-family: 'Montserrat Alternates', sans-serif;
         font-weight: 500;
@@ -2027,7 +2138,7 @@ tour italia
         letter-spacing: 0em;
         margin-bottom: 1.5rem;
     }
-    
+
     .general-cerca-facetwp-container input.facetwp-autocomplete.ready {
         padding: 0 0 0 1.2rem;
         border-radius: 20px;
@@ -2037,11 +2148,11 @@ tour italia
         border: 1px solid #ccc;
         padding: 0 0 0 13%;
     }
-    
+
     .facetwp-type-autocomplete .fcomplete-wrap {
         display: none;
     }
-    
+
     .general-cerca-facetwp-container .cy-facetwp-cerca-quando .facetwp-autocomplete-update {
         padding: 5px 10px;
         margin-top: 40px;
@@ -2053,16 +2164,16 @@ tour italia
         background: var(--color-secondary);
         color: white;
     }
-    
+
     .facetwp-facet-dove_vuoi_andare .facetwp-autocomplete-update {
         display: none;
     }
-    
+
     .cy-facetwp-cerca-where .facetwp-facet-dove_vuoi_andare,
     .cy-facetwp-cerca-quando .facetwp-facet-quando_vuoi_partire {
         margin: 0;
     }
-    
+
     .general-cerca-facetwp-container select.facetwp-dropdown {
         font-size: 16px;
         height: 3.4rem;
@@ -2074,9 +2185,9 @@ tour italia
         background: white !important;
         padding: 0 0 0 16%;
         opacity: 0.7;
-        width: 100%!important;
+        width: 100% !important;
     }
-    
+
     .wm_template_advancedsearch .post_meta_info p {
         font-size: 30px;
         line-height: 24px;
@@ -2086,11 +2197,11 @@ tour italia
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
     }
-    
+
     .general-cerca-facetwp-container .facetwp-facet input {
         background: white;
     }
-    
+
     .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .webmapp_post_image {
         height: 300px !important;
         border-radius: 20px 0 0 20px;
@@ -2098,7 +2209,7 @@ tour italia
         background-repeat: no-repeat;
         background-size: cover;
     }
-    
+
     .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .webmapp_post_image .webmapp_post_meta {
         height: 100%;
         display: grid;
@@ -2106,7 +2217,7 @@ tour italia
         background-color: rgb(0 0 0 / 20%);
         border-radius: 20px 0 0 20px;
     }
-    
+
     .wm_template_advancedsearch .single-post-wm {
         box-shadow: 2px 2px 5px #dedede, -2px -2px 5px #dedede, 2px -2px 5px #dedede, -2px 2px 5px #dedede;
         border-radius: 20px 20px 20px 20px;
@@ -2115,15 +2226,15 @@ tour italia
         display: grid;
         grid-template-columns: 2fr 3fr;
     }
-    
+
     .wm_template_advancedsearch span.textIcon {
         text-transform: initial;
     }
-    
+
     .wm_template_advancedsearch span.wm-advanced-search-shape-text-eng {
         text-transform: capitalize;
     }
-    
+
     .wm_template_advancedsearch .post_meta_with_icons {
         color: black;
         margin: 0% 0 0 0%;
@@ -2131,25 +2242,25 @@ tour italia
         grid-template-columns: 1fr 1fr;
         height: 100%;
     }
-    
+
     .advancedsearch-container i>span {
         font-family: var(--font-family-primary-alternate);
         padding-left: 10px;
     }
-    
+
     .wm_template_advancedsearch .icon_holder {
         width: 100%;
         font-family: var(--font-family-primary-alternate);
     }
-    
+
     .countsSearch {
         font-size: 21px;
     }
-    
+
     .selectionsSearch {
         /* margin: 0 0 0 calc(3% + 1px); */
     }
-    
+
     .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .single-post-wm .scarica-app {
         background-color: var(--color-secondary);
         height: 68px;
@@ -2162,7 +2273,7 @@ tour italia
         bottom: 0;
         font-family: var(--font-family-primary);
     }
-    
+
     .wm_template_advancedsearch .cifra,
     span.cifraPromo {
         width: 100%;
@@ -2170,7 +2281,7 @@ tour italia
         text-align: right;
         display: block;
     }
-    
+
     .wm_template_advancedsearch span.route_duration {
         padding: 8px 20px;
         background: var(--color-primary);
@@ -2178,7 +2289,7 @@ tour italia
         font-size: 16px;
         border-radius: 30px;
     }
-    
+
     .wm_template_advancedsearch .meta-bar-txt-light {
         margin: 0;
         position: absolute;
@@ -2189,7 +2300,7 @@ tour italia
         font-size: 13px;
         font-weight: 500;
     }
-    
+
     span.route_duration_free {
         color: white;
         background: var(--color-secondary);
@@ -2198,12 +2309,12 @@ tour italia
         border-radius: 5px;
         text-transform: uppercase;
     }
-    
+
     .meta-bar-txt-title {
         color: white;
         font-size: 18px;
     }
-    
+
     .wm_template_advancedsearch span.partireDa {
         color: white;
         text-transform: uppercase;
@@ -2213,7 +2324,7 @@ tour italia
         border-radius: 7px;
         display: block;
     }
-    
+
     .webmapp-anypost-template-cy_route span.partireDa {
         color: white;
         text-transform: uppercase;
@@ -2223,7 +2334,7 @@ tour italia
         margin: 0% 0 0% 0;
         border-radius: 7px;
     }
-    
+
     .icon_holder_b span {
         margin: 0% 0% 0% 2%;
         position: relative;
@@ -2232,7 +2343,7 @@ tour italia
         font-size: 20px;
         font-family: var(--font-family-primary-alternate);
     }
-    
+
     .icon_holder_d span {
         margin: 0% 0% 0% 2%;
         position: relative;
@@ -2241,7 +2352,7 @@ tour italia
         font-size: 20px;
         font-family: var(--font-family-primary-alternate);
     }
-    
+
     .icon_holder_a span {
         margin: 0% 0% 0% 2%;
         position: relative;
@@ -2250,7 +2361,7 @@ tour italia
         font-size: 20px;
         font-family: var(--font-family-primary-alternate);
     }
-    
+
     .icon_holder_c span {
         margin: 0% 0% 0% 2%;
         position: relative;
@@ -2259,23 +2370,28 @@ tour italia
         font-size: 20px;
         font-family: var(--font-family-primary-alternate);
     }
-    
+
     @media screen and (max-width: 600px) {
         .general-cerca-facetwp-container select.facetwp-dropdown {
             border-radius: 10px;
         }
+
         .wm_template_advancedsearch .title-holder {
             left: 10px;
         }
+
         .general-cerca-facetwp-container .g-cols.vc_row.type_default.valign_top {
             margin: 6% 0 0 0;
         }
+
         .wm_template_advancedsearch .title-holder h3 {
             font-size: 16px;
         }
+
         .general-cerca-facetwp-container .facetwp-counts {
             font-size: 18px;
         }
+
         h4.tripSearch {
             font-family: 'Montserrat Alternates', sans-serif;
             color: gray;
@@ -2285,37 +2401,46 @@ tour italia
             left: 9%;
             top: 8%;
         }
+
         .general-cerca-facetwp-container .cy-facetwp-cerca-quando .facetwp-autocomplete-update {
             height: 55px;
             border-radius: 10px;
         }
+
         .general-cerca-facetwp-container input.facetwp-autocomplete.ready {
             border-radius: 10px;
             font-size: 16px;
             padding: 0 0 2% 15%;
         }
+
         .icon_holder_a span {
             font-size: 13px;
             display: grid;
             grid-row-gap: auto;
             grid-column: 2;
         }
+
         .icon_holder_b span {
             font-size: 13px;
         }
+
         .icon_holder_c span {
             font-size: 13px;
         }
+
         .icon_holder_d span {
             font-size: 13px;
         }
+
         .wm_template_advancedsearch .single-post-wm {
             margin: 0;
         }
+
         #buttonFilterSearch {
             cursor: pointer;
             text-align: right;
         }
+
         .route_duration_freespan.route_duration_free {
             color: white;
             background: var(--color-secondary);
@@ -2328,6 +2453,7 @@ tour italia
             left: 10px;
             /* width: 105%; */
         }
+
         select.facetwp-sort-select {
             background: white !important;
             box-shadow: none;
@@ -2335,67 +2461,75 @@ tour italia
             /* border-style: none; */
         }
     }
-    
+
     @media screen and (min-width: 764px) and (max-width: 1000px) {
         .wm_template_advancedsearch .post_meta_with_icons {
             margin: 3% 0 0 0;
         }
+
         .wm_template_advancedsearch .post_meta_with_icons {
             font-size: 15px;
         }
     }
-    
+
     @media screen and (min-width: 768px) and (max-width: 1620px) {
         .cerca-facet-where-container h3 {
             font-size: 20px;
             transition: all .3s ease;
         }
+
         input.facetwp-autocomplete.ready::placeholder {
             font-size: 13px;
         }
     }
-    
+
     @media screen and (min-width: 601px) and (max-width: 990px) {
         .webmapp-anypost-template-cy_route .webmapp_shortcode_any_post.post_type_route:not(:last-child) {
             padding-bottom: 30px;
         }
     }
-    
+
     @media screen and (max-width: 1100px) {
         .wm_template_advancedsearch .single-post-wm {
             height: auto;
             grid-template-columns: 1fr;
         }
+
         .webmapp-anypost-template-cy_route_advancedsearch.wm_template_advancedsearch .webmapp_post_image {
             border-radius: 20px 20px 0 0px;
             height: 200px !important;
         }
+
         .wm_template_advancedsearch .post_meta_with_icons {
-            display: none!important;
+            display: none !important;
         }
     }
+
     /* ibenda icon style */
-    
+
     @media screen and (min-width:900px) {
+
         body .iubenda-tp-btn[data-tp-float][data-tp-float=bottom-right],
         .iubenda-tp-btn[data-tp-float][data-tp-float=top-right] {
-            left: 60px!important;
-            right: auto!important;
-            display: none!important;
+            left: 60px !important;
+            right: auto !important;
+            display: none !important;
         }
     }
-    
+
     @media screen and (max-width:899px) {
+
         body .iubenda-tp-btn[data-tp-float][data-tp-float=bottom-right],
         .iubenda-tp-btn[data-tp-float][data-tp-float=top-right] {
-            left: 0px!important;
-            right: auto!important;
-            bottom: 60px!important;
-            display: none!important;
+            left: 0px !important;
+            right: auto !important;
+            bottom: 60px !important;
+            display: none !important;
         }
     }
+
     /* Oneclick form modals */
-    
+
     .ocm-participants-container,
     .ocm-bikes-container,
     .dp_add_variation_container,
@@ -2412,7 +2546,7 @@ tour italia
         overflow: hidden;
         background-color: rgba(0, 0, 0, 0.5);
     }
-    
+
     .ocm-proceed-container {
         display: none;
         position: fixed;
@@ -2424,9 +2558,11 @@ tour italia
         overflow: auto;
         background-color: rgba(0, 0, 0, 0.5);
     }
+
     /* popups design in desktop mode */
-    
+
     @media screen and (max-width: 767px) {
+
         .ocm-participants-content,
         .ocm-bikes-content,
         .ocm-single-content {
@@ -2442,17 +2578,19 @@ tour italia
             border-top-left-radius: 10px;
             bottom: 0;
         }
+
         .oc-input-btn.bikes-included {
             padding: 10px 6px;
         }
     }
-    
+
     @media screen and (min-width: 768px) {
+
         .ocm-participants-content,
         .ocm-bikes-content,
         .ocm-single-content {
             position: relative;
-            margin: calc( 50vh - 200px) auto;
+            margin: calc(50vh - 200px) auto;
             background-color: #fff;
             max-width: 600px;
             min-height: 370px;
@@ -2462,69 +2600,86 @@ tour italia
             border-radius: 10px;
             padding: 30px 30px;
         }
+
         .dp_add_product_container .ocm-participants-content {
-            margin: calc( 40vh - 200px) auto;
+            margin: calc(40vh - 200px) auto;
         }
+
         .search-page-description-mobile p,
         .search-page-description-mobile h3 {
             text-align: center;
             color: white;
             margin: auto;
         }
+
         .search-page-description-mobile p {
             font-size: 18px;
             max-width: 720px;
         }
+
         .search-page-description-mobile h3 {
             font-size: 1.6em;
             padding-bottom: 20px;
             max-width: 630px;
         }
+
         div#searchpage-form-holder-mobile {
-            left: calc( 50% - 450px)!important;
+            left: calc(50% - 450px) !important;
             max-width: 900px;
             cursor: pointer;
         }
+
         .searchpage-form-oneclick-mobile-container {
             max-width: 600px;
         }
+
         .searchpage-form-oneclick-header {
-            padding: 20px 25px 0!important;
+            padding: 20px 25px 0 !important;
         }
+
         .searchpage-form-oneclick-body {
-            padding: 15px 25px 20px!important;
+            padding: 15px 25px 20px !important;
         }
+
         div#searchpage-form-holder-mobile div {
-            font-size: 16px!important;
+            font-size: 16px !important;
         }
+
         div#searchpage-form-holder-mobile i {
             font-size: 19px;
         }
+
         .search-form-holder-mobile-bikes i {
-            font-size: 26px!important;
+            font-size: 26px !important;
         }
+
         .search-form-holder-mobile-when i {
-            font-size: 25px!important;
+            font-size: 25px !important;
         }
+
         .cerca-facets-container h3 {
-            font-size: 1.2em!important;
+            font-size: 1.2em !important;
             font-weight: bold;
         }
+
         .wm_template_advancedsearch .cifra,
         span.cifraPromo {
-            font-size: 26px!important;
+            font-size: 26px !important;
         }
+
         .oc_search_adv_info_text_container {
             font-size: 16px;
         }
+
         .cy-search-form-container select.facetwp-dropdown {
             width: 180px;
         }
+
         .cy-search-form-container .oc-input-btn {
             min-width: 138px;
         }
     }
-    
+
     .ocm-proceed-content {
         position: relative;
         margin: 5.7vh auto;
@@ -2537,7 +2692,7 @@ tour italia
         border-radius: 10px;
         padding-bottom: 190px;
     }
-    
+
     .modal-btn {
         background-color: #fff;
         border-radius: 30px;
@@ -2548,16 +2703,16 @@ tour italia
         justify-self: center;
         padding: 0;
     }
-    
+
     .modal-btn>* {
         pointer-events: none;
     }
-    
+
     .modal-btn i {
         vertical-align: baseline;
         padding: 0;
     }
-    
+
     @media screen and (max-width: 900px) {
         .oc-participants-bici-container {
             display: grid;
@@ -2565,18 +2720,20 @@ tour italia
             column-gap: 10px;
             font-size: 16px;
         }
+
         .filterSearchDropdownBtn {
             display: none;
         }
+
         .cerca-facets-container-modal .filterSearchDropdownBtn {
             display: block;
         }
     }
-    
+
     div.selected {
         color: black;
     }
-    
+
     .oc-input-btn {
         border: 1px #000 solid;
         border-radius: 35px;
@@ -2584,26 +2741,26 @@ tour italia
         color: #888;
         cursor: pointer;
     }
-    
+
     .disable {
         cursor: not-allowed;
         color: #ccc;
         border: 1px solid #ccc;
     }
-    
+
     #oc-single i {
         vertical-align: initial;
     }
-    
+
     .oc-input-btn:hover {
         background-color: #f5f5f5;
     }
-    
+
     .oc-number-input {
         text-align: center;
         line-height: 36px;
     }
-    
+
     .ocm-participants-body,
     .ocm-bikes-body,
     .ocm-single-body {
@@ -2611,7 +2768,7 @@ tour italia
         grid-template-columns: 8fr 1fr 1fr 1fr;
         padding: 5px 0;
     }
-    
+
     .ocm-participants-header,
     .ocm-bikes-header,
     .ocm-single-header {
@@ -2619,23 +2776,23 @@ tour italia
         justify-content: space-between;
         padding: 15px 0;
     }
-    
+
     .ocm-participants-header h2,
     .ocm-bikes-header h2,
     .ocm-single-header h2 {
         color: #1a1a1a;
         font-size: 26px;
     }
-    
+
     .ocm-close-button-container {
         color: #1a1a1a;
         font-size: 26px;
     }
-    
+
     .ocm-close-button-container:hover {
         cursor: pointer;
     }
-    
+
     div#oc-kid-age-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -2643,15 +2800,15 @@ tour italia
         row-gap: 15px;
         margin-top: 20px;
     }
-    
+
     .oc-route-mobile-search-form-asbb-wrapper div#oc-kid-age-container {
         margin-top: 0px;
     }
-    
+
     .oc-route-mobile-search-form-asbb-wrapper div#oc-kid-age-container {
         grid-template-columns: 1fr 1fr 1fr;
     }
-    
+
     .oc-kid-age-input-wrapper select {
         background-color: #fff;
         border-radius: 20px;
@@ -2659,7 +2816,7 @@ tour italia
         appearance: none;
         background: url(https://cyclando.com/wp-content/uploads/2020/09/down-arrow.png) 90% / 8% no-repeat;
     }
-    
+
     .oc-participants-done-btn,
     .oc-bikes-done-btn,
     .oc-single-done-btn {
@@ -2673,13 +2830,13 @@ tour italia
         margin-top: 30px;
         cursor: pointer;
     }
-    
+
     .oc-participants-done-btn:hover,
     .oc-bikes-done-btn:hover,
     .oc-single-done-btn:hover {
         background-color: var(--color-secondary-hover);
     }
-    
+
     .oc-proceed-done-btn {
         width: 100%;
         text-align: center;
@@ -2691,11 +2848,11 @@ tour italia
         margin-top: 30px;
         cursor: pointer;
     }
-    
+
     .oc-proceed-done-btn:hover {
         background-color: var(--color-secondary-hover);
     }
-    
+
     .mobile-calculator-btn {
         width: 100%;
         text-align: center;
@@ -2706,24 +2863,25 @@ tour italia
         border-radius: 30px;
         cursor: pointer;
     }
-    
+
     .mobile-calculator-btn:hover {
         background-color: var(--color-secondary-hover);
     }
-    
+
     .regular-label i,
     .ebike-label i,
     .single-label i {
         font-size: 40px;
     }
-    
+
     .ocm-bikes-content .regular-label,
     .ocm-bikes-content .ebike-label {
         display: flex;
         align-items: center;
     }
+
     /* search page modal popup form */
-    
+
     #searchpage-form-oneclick-mobile {
         display: none;
         position: fixed;
@@ -2735,30 +2893,30 @@ tour italia
         overflow: auto;
         background-color: rgba(0, 0, 0, 0.5);
     }
-    
+
     #searchpage-form-oneclick-mobile .cy-search-form-container {
         position: inherit;
         top: unset;
     }
-    
+
     .searchpage-form-oneclick-mobile-container {
-        margin: calc( 50vh - 200px) auto;
+        margin: calc(50vh - 200px) auto;
         width: 90%;
         box-shadow: 0 5px 8px 0 rgb(0 0 0 / 20%), 0 7px 20px 0 rgb(0 0 0 / 17%);
         animation-name: modalopen;
     }
-    
+
     .searchpage-form-oneclick-body {
         background-color: white;
         padding: 15px;
         border-bottom-right-radius: 15px;
         border-bottom-left-radius: 15px;
     }
-    
+
     .searchpage-form-oneclick-body select.facetwp-dropdown {
         width: 100%;
     }
-    
+
     .searchpage-form-oneclick-body .facetwp-autocomplete {
         font-size: 16px;
         color: inherit;
@@ -2769,15 +2927,15 @@ tour italia
         width: 100%;
         background-color: white;
     }
-    
+
     .searchpage-form-oneclick-body .facetwp-facet {
         margin-bottom: 15px;
     }
-    
+
     .searchpage-form-oneclick-body .facet-label {
         display: none;
     }
-    
+
     .searchpage-form-oneclick-body #cy-search-lente {
         width: 240px;
         background-color: var(--color-secondary);
@@ -2788,7 +2946,7 @@ tour italia
         color: white;
         margin-top: 15px;
     }
-    
+
     .searchpage-form-oneclick-header {
         background-color: white;
         padding: 15px 15px 0 15px;
@@ -2797,21 +2955,21 @@ tour italia
         display: flex;
         justify-content: space-between;
     }
-    
+
     span.searchpage-form-close {
         font-size: 26px;
         cursor: pointer;
     }
-    
+
     .search-form-holder-mobile-bikes i {
         font-size: 24px;
     }
-    
+
     .search-page-description-mobile p,
     .search-page-description-mobile h3 {
         color: white;
     }
-    
+
     div#searchpage-form-holder-mobile {
         position: absolute;
         left: 0;
@@ -2824,45 +2982,45 @@ tour italia
         padding: 10px 10px;
         background-color: white;
     }
-    
+
     .search-form-holder-mobile-where {
         float: left;
         display: grid;
         grid-template-columns: 1fr 15fr;
         align-items: center;
     }
-    
+
     .search-form-holder-mobile-where {
         grid-column: 1 / -1;
         border-bottom: 1px solid #ccc;
         padding-bottom: 8px;
         margin-bottom: 4px;
     }
-    
+
     .search-form-holder-mobile-where i {
         padding-left: 5px;
     }
-    
+
     .searchpage-form-mobile-where-text {
         text-transform: capitalize;
         font-size: 12px;
     }
-    
+
     .search-form-holder-mobile-when {
         float: left;
         display: grid;
         grid-template-columns: 1fr 4fr;
         align-items: center;
     }
-    
+
     .search-form-holder-mobile-when i {
         font-size: 22px;
     }
-    
+
     .searchpage-form-mobile-when-text {
         text-transform: capitalize;
     }
-    
+
     .search-form-holder-mobile-when div {
         font-size: 12px;
         width: auto;
@@ -2870,14 +3028,14 @@ tour italia
         border-right: 1px solid #ccc;
         margin-right: 10px;
     }
-    
+
     .search-form-holder-mobile-participants {
         float: left;
         display: grid;
         grid-template-columns: 1fr 4fr;
         align-items: center;
     }
-    
+
     .search-form-holder-mobile-participants div {
         font-size: 12px;
         width: auto;
@@ -2886,22 +3044,23 @@ tour italia
         margin-right: 10px;
         text-transform: capitalize;
     }
-    
+
     .search-form-holder-mobile-bikes div {
         font-size: 12px;
         width: auto;
         line-height: 20px;
         text-transform: capitalize;
     }
-    
+
     .search-form-holder-mobile-bikes {
         float: left;
         display: grid;
         grid-template-columns: 1fr 4fr;
         align-items: center;
     }
+
     /* facets filters modal search page */
-    
+
     .cerca-facets-container-modal {
         position: fixed;
         z-index: 500;
@@ -2912,17 +3071,17 @@ tour italia
         overflow: auto;
         background-color: rgba(0, 0, 0, 0.5);
     }
-    
+
     .cerca-facets-container-modal>.vc_column-inner {
         margin-top: 120px;
     }
-    
+
     .cerca-facets-container-modal h3 {
         font-size: 20px;
         margin-bottom: 5px;
         font-weight: 500;
     }
-    
+
     #cerca-facets-container-modal-header {
         display: none;
         background-color: white;
@@ -2932,27 +3091,27 @@ tour italia
         justify-content: space-between;
         padding-bottom: 20px;
     }
-    
+
     .cerca-facets-container .facetwp-checkbox {
         padding-left: 27px;
     }
-    
+
     #filterSearchDropdown {
         background: white;
         padding-top: 20px;
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
     }
-    
+
     .facetwp-checkbox.checked {
-        background-image: url(assets/images/checkbox-on.png)!important;
+        background-image: url(assets/images/checkbox-on.png) !important;
     }
-    
+
     .facetwp-checkbox {
-        background: url(assets/images/checkbox.png) 0 50% no-repeat!important;
+        background: url(assets/images/checkbox.png) 0 50% no-repeat !important;
         align-self: center;
     }
-    
+
     .searchpage-facets-filter-btn {
         background-color: var(--color-secondary);
         font-size: 17px;
@@ -2962,92 +3121,104 @@ tour italia
         color: white;
         margin-bottom: 30px;
         padding: 20px 22px 20px 8px;
-        width: 100%!important;
+        width: 100% !important;
         line-height: 15px;
         text-align: center;
         height: 3.4rem;
         border-radius: 30px;
     }
-    
+
     .oc_search_adv_price_container {
         font-size: 16px;
         color: var(--color-secondary);
     }
-    
+
     .oc_search_adv_price_container .w-iconbox-icon i {
-        padding: 0!important;
+        padding: 0 !important;
     }
-    
+
     .oc_search_adv_price_container .w-iconbox-icon {
-        font-size: 1rem!important;
-        width: 50%!important;
+        font-size: 1rem !important;
+        width: 50% !important;
     }
-    
+
     @media screen and (max-width:900px) {
         .cerca-facet-count-container>div>.wpb_wrapper {
             display: grid;
             grid-template-columns: 2fr 1fr;
             align-items: center;
         }
+
         .searchpage-facets-selections-wrapper {
             grid-column: 1 / -1;
         }
+
         .divFilterSearchDrop {
             margin-top: 0px;
             margin-bottom: 0px;
         }
+
         .filter-button-search-img {
             background: #FFFFFF;
             box-shadow: 0px 3px 6px 0px #dadada;
             border-radius: 50%;
             vertical-align: middle;
         }
+
         .filter-button-search-img:hover {
             box-shadow: 0px 3px 6px 1px #dadada;
         }
+
         .cerca-facet-count-container>.vc_column-inner {
-            padding: 0!important;
+            padding: 0 !important;
         }
+
         .general-cerca-facetwp-container {
-            padding-top: 0!important;
+            padding-top: 0 !important;
         }
+
         .cerca-facets-container-modal #filterSearchDropdown>div>div:first-child>div {
             padding-bottom: 100px;
         }
+
         .cerca-facets-container-modal #filterSearchDropdown .filterSearchDropdownBtn {
             position: fixed;
             bottom: 0px;
             width: 100%;
         }
+
         .filterSearchDropdownBtn {
             padding: 1.5rem 1.5rem 0;
             z-index: 100;
             background: white;
             transition: all .3s ease;
         }
+
         .filterSearchDropdownBtn-shadow {
             box-shadow: 0px -1px 7px -1px rgb(50 50 50 / 70%);
             transition: all .3s ease;
         }
     }
-    
+
     .ui-datepicker-calendar td:not(.ui-datepicker-other-month).ui-state-disabled {
         text-decoration: line-through;
         text-decoration-color: #555;
     }
+
     /* custom css for cerca page spinner preload */
-    
+
     .cerca-results-preload-spinner {
         text-align: center;
         font-size: 25px;
         color: var(--color-primary);
         height: 600px;
     }
+
     /* .general-cerca-facetwp-container {
     display: none;
 } */
     /* active promo cyclando */
-    
+
     .active-promo {
         background-color: #274690;
         box-shadow: 0px 2px 10px rgb(0 0 0 / 30%);
@@ -3056,7 +3227,7 @@ tour italia
         z-index: 1000;
         width: 100%;
     }
-    
+
     .active-promo .promo-wrapper {
         display: flex;
         margin: 0 auto;
@@ -3068,29 +3239,30 @@ tour italia
         justify-content: center;
         font-family: var(--font-family-primary);
     }
-    
+
     .active-promo i {
         padding: 0 10px;
     }
-    
+
     .active-promo .promo-icon {
         align-items: center;
         display: flex;
     }
-    
+
     @media (min-width: 900px) {
         .headerwithpromo.sticky {
-            top: 48px!important;
+            top: 48px !important;
         }
     }
-    
+
     @media (max-width: 899px) {
         .headerwithpromo.sticky {
-            top: 76px!important;
+            top: 76px !important;
         }
     }
+
     /* page 404 */
-    
+
     .error404 h1,
     .error404 p,
     .error404 h4,
@@ -3099,20 +3271,20 @@ tour italia
         text-align: center;
         font-family: var(--font-family-primary-alternate)
     }
-    
+
     .descrizione404 {
         width: 100%;
         margin-top: 50px;
         justify-content: center;
         display: flex;
     }
-    
+
     h1.ops,
     .descrizione404 h3 {
         font-weight: bold;
         color: #F18E08
     }
-    
+
     img.img404 {
         width: 40%;
         max-width: 100%;
@@ -3121,22 +3293,23 @@ tour italia
         image-rendering: optimizeSpeed;
         padding: 20px;
     }
-    
+
     .lista404 {
         padding: 30px;
         margin-top: 10px;
     }
-    
+
     .lista404 li {
         line-height: 35px;
         font-size: 20px;
     }
-    
+
     @media only screen and (min-device-width: 200px) and (max-device-width: 740px) {
         div.descrizione404 {
             display: grid;
             margin: auto;
         }
+
         img.img404 {
             width: 50%;
             margin: auto;
