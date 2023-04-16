@@ -6,19 +6,17 @@ add_action( 'wp_ajax_nopriv_oc_ajax_create_hs_deal', 'oc_ajax_create_hs_deal' );
 add_action( 'wp_ajax_oc_ajax_create_hs_deal', 'oc_ajax_create_hs_deal' );
 function oc_ajax_create_hs_deal(){
     $cookies = $_POST['cookies'];
-    $post_id = $_POST['postid']; 
-    $result =  wm_sync_create_deal_hubspot($cookies,$post_id);    
-    
+    $post_id = $_POST['postid'];
+    $result =  wm_sync_create_deal_hubspot($cookies,$post_id);
+
     echo json_encode($result);
     wp_die();
 }
 
 
 
-function wm_sync_create_deal_hubspot( $cookies,$post_id ) { 
+function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   //Hubspot APIKEY location => wp-config.php
-  $hapikey = HUBSPOTAPIKEY;
-
 
   // Get the deposit
   $deposit_amount = "0";
@@ -61,7 +59,7 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   $departure_date = $departure_date[2].'-'.$departure_date[1].'-'.$departure_date[0];
 
   $order_issued_date = date('Y-m-d');
-  
+
   // Get the order total amount and billing name
   $order_total = str_replace('.', '', $cookies['price']['euro']);
   $order_total = $order_total.'.'.$cookies['price']['cent'];
@@ -141,7 +139,7 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
 
   // search if contact exists
   curl_setopt_array($curl_contact_search, array(
-    CURLOPT_URL => "https://api.hubapi.com/crm/v3/objects/contacts/search?hapikey=$hapikey",
+    CURLOPT_URL => "https://api.hubapi.com/crm/v3/objects/contacts/search",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
@@ -161,15 +159,12 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
           }
       ]
   }",
-    CURLOPT_HTTPHEADER => array(
-      "accept: application/json",
-      "content-type: application/json"
-    ),
+    CURLOPT_HTTPHEADER => cyclando_get_hubspot_api_request_headers()
   ));
 
   $response_search = curl_exec($curl_contact_search);
   $response_search = json_decode($response_search);
-  $response_total = $response_search->total; 
+  $response_total = $response_search->total;
   $err_contact_search = curl_error($curl_contact_search);
 
   curl_close($curl_contact_search);
@@ -186,16 +181,14 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
 
       $curl_get_contact = curl_init();
       curl_setopt_array($curl_get_contact, array(
-        CURLOPT_URL => "https://api.hubapi.com/crm/v3/objects/contacts/$res_contact_id?properties=target%2Cactivities%2Cplace_to_go&archived=false&hapikey=$hapikey",
+        CURLOPT_URL => "https://api.hubapi.com/crm/v3/objects/contacts/$res_contact_id?properties=target%2Cactivities%2Cplace_to_go&archived=false",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
         CURLOPT_MAXREDIRS => 10,
         CURLOPT_TIMEOUT => 30,
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => "GET",
-        CURLOPT_HTTPHEADER => array(
-          "accept: application/json"
-        ),
+        CURLOPT_HTTPHEADER => cyclando_get_hubspot_api_request_headers()
       ));
       $response_get_contact = curl_exec($curl_get_contact);
       $response_get_contact = json_decode($response_get_contact);
@@ -204,7 +197,7 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
         array_push($tax_targets_slug,$target);
       }
       $contact_targets =  array_unique($tax_targets_slug);
-      
+
       $explode_activities = explode(";",$response_get_contact->properties->activities);
       foreach ($explode_activities as $activities) {
         array_push($tax_activities_slug,$activities);
@@ -237,7 +230,7 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
       $curl_contact_update = curl_init();
       //Start updating contact info with taxonomies and excetra
       curl_setopt_array($curl_contact_update, array(
-      CURLOPT_URL => "https://api.hubapi.com/crm/v3/objects/contacts/$res_contact_id?hapikey=$hapikey",
+      CURLOPT_URL => "https://api.hubapi.com/crm/v3/objects/contacts/$res_contact_id",
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => "",
       CURLOPT_MAXREDIRS => 10,
@@ -245,10 +238,7 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => "PATCH",
       CURLOPT_POSTFIELDS => $CURLOPT_POSTFIELDS,
-      CURLOPT_HTTPHEADER => array(
-          "accept: application/json",
-          "content-type: application/json"
-      ),
+      CURLOPT_HTTPHEADER => cyclando_get_hubspot_api_request_headers(),
       ));
       $response_contact_update = curl_exec($curl_contact_update);
       $response_contact_update = json_decode($response_contact_update);
@@ -277,7 +267,7 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
         $curl_contact = curl_init();
         //Start creating contact
         curl_setopt_array($curl_contact, array(
-        CURLOPT_URL => "https://api.hubapi.com/crm/v3/objects/contacts?hapikey=$hapikey",
+        CURLOPT_URL => "https://api.hubapi.com/crm/v3/objects/contacts",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
         CURLOPT_MAXREDIRS => 10,
@@ -285,10 +275,7 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => "POST",
         CURLOPT_POSTFIELDS => $CURLOPT_POSTFIELDS,
-        CURLOPT_HTTPHEADER => array(
-            "accept: application/json",
-            "content-type: application/json"
-        ),
+        CURLOPT_HTTPHEADER => cyclando_get_hubspot_api_request_headers(),
         ));
         $response_contact = curl_exec($curl_contact);
         $response_contact = json_decode($response_contact);
@@ -309,7 +296,7 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   $curl_deal = curl_init();
 
   curl_setopt_array($curl_deal, array(
-    CURLOPT_URL => "https://api.hubapi.com/crm/v3/objects/deals?hapikey=$hapikey",
+    CURLOPT_URL => "https://api.hubapi.com/crm/v3/objects/deals",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
@@ -317,10 +304,7 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "POST",
     CURLOPT_POSTFIELDS => $CURLOPT_POSTFIELDS_ARRAY,
-    CURLOPT_HTTPHEADER => array(
-      "accept: application/json",
-      "content-type: application/json"
-    ),
+    CURLOPT_HTTPHEADER => cyclando_get_hubspot_api_request_headers(),
   ));
 
   $response = curl_exec($curl_deal);
@@ -335,14 +319,14 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   } else {
     wm_write_log_file($response,'a+','dealHS_success_create');
   }
-  
+
   // END creating Deal on hubspot
 
-  // start Assosiation between contact and deal 
+  // start Assosiation between contact and deal
   $curl_assoc = curl_init();
 
   curl_setopt_array($curl_assoc, array(
-    CURLOPT_URL => "https://api.hubapi.com/crm/v3/associations/deal/contact/batch/create?hapikey=$hapikey",
+    CURLOPT_URL => "https://api.hubapi.com/crm/v3/associations/deal/contact/batch/create",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
@@ -350,15 +334,12 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "POST",
     CURLOPT_POSTFIELDS => "{\"inputs\":[{\"from\":{\"id\":\"$res_deal_id\"},\"to\":{\"id\":\"$res_contact_id\"},\"type\":\"deal_to_contact\"}]}",
-    CURLOPT_HTTPHEADER => array(
-      "accept: application/json",
-      "content-type: application/json"
-    ),
+    CURLOPT_HTTPHEADER => cyclando_get_hubspot_api_request_headers(),
   ));
 
   $response_assoc = curl_exec($curl_assoc);
   $err_create_assoc = curl_error($curl_assoc);
-  curl_close($curl_assoc); 
+  curl_close($curl_assoc);
 
   if ($err_create_assoc) {
     wm_write_log_file($err_create_assoc,'a+','associationHS_error_create');
@@ -366,12 +347,12 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   } else {
     wm_write_log_file($response_assoc,'a+','associationHS_success_create');
   }
-  // start Assosiation between contact and deal  
+  // start Assosiation between contact and deal
 
   if ($err_create_deal) {
     return "cURL Error #:" . $err_create_deal;
   } else {
     return $response;
   }
-}; 
+};
 

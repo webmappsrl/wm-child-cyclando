@@ -1754,3 +1754,41 @@ function cyclandologChangeUserRole($meta_id, $object_id, $meta_key, $_meta_value
   error_log($value);
 }
 
+add_filter('rank_math/frontend/robots', function ($robots) {
+
+    $post = get_post();
+
+    //return default robots meta if we aren't in a WP_Post page
+    if (!$post instanceof WP_Post)
+        return $robots;
+
+    //return default robots meta if the post type is different than "route"
+    if ($post->post_type != 'route')
+        return $robots;
+
+    $targets = get_the_terms($post, 'who');
+
+    //return default robots if something goes wrong during targets retrieve
+    if (!is_array($targets))
+        return $robots;
+
+    //iterate over targets
+    $hasCyclandoTarget = false;
+    $i = 0;
+    while ($i < count($targets) && !$hasCyclandoTarget) {
+        if ($targets[$i]->slug == 'cyclando') {
+            $hasCyclandoTarget = true; //this is an app route (that has target "cyclando")
+        }
+        $i++;
+    }
+
+    //return default robots if this route doesn't have the cyclando target(who taxonomy)
+    if (!$hasCyclandoTarget)
+        return $robots;
+
+    return [
+        'noindex' => 'noindex',
+        'nofollow' => 'nofollow'
+    ];
+}, 10, 1);
+

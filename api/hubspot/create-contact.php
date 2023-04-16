@@ -5,7 +5,6 @@ add_action( 'user_register', 'wm_hs_api_create_contact', 10, 1 );
 function wm_hs_api_create_contact( $user_id ) {
 
     //Hubspot APIKEY location => wp-config.php
-    $hapikey = HUBSPOTAPIKEY;
 
     $user_obj = get_userdata($user_id);
     $username = ucfirst($user_obj->user_login);
@@ -27,7 +26,7 @@ function wm_hs_api_create_contact( $user_id ) {
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://api.hubapi.com/crm/v3/objects/contacts?hapikey=$hapikey",
+    CURLOPT_URL => "https://api.hubapi.com/crm/v3/objects/contacts",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
@@ -35,10 +34,7 @@ function wm_hs_api_create_contact( $user_id ) {
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "POST",
     CURLOPT_POSTFIELDS => $CURLOPT_POSTFIELDS,
-    CURLOPT_HTTPHEADER => array(
-        "accept: application/json",
-        "content-type: application/json"
-    ),
+    CURLOPT_HTTPHEADER => cyclando_get_hubspot_api_request_headers()
     ));
 
     $response = curl_exec($curl);
@@ -52,7 +48,6 @@ add_action( 'updated_user_meta', 'wm_hs_api_update_contact', 10, 4 );
 function wm_hs_api_update_contact($meta_id, $object_id, $meta_key, $_meta_value) {
     if ($meta_key == 'newsletter') {
         //Hubspot APIKEY location => wp-config.php
-        $hapikey = HUBSPOTAPIKEY;
 
         $user_obj = get_userdata($object_id);
         $userfname = ucfirst($user_obj->first_name);
@@ -73,7 +68,7 @@ function wm_hs_api_update_contact($meta_id, $object_id, $meta_key, $_meta_value)
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => "https://api.hubapi.com/contacts/v1/contact/email/$useremail/profile?hapikey=$hapikey",
+        CURLOPT_URL => "https://api.hubapi.com/contacts/v1/contact/email/$useremail/profile",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
         CURLOPT_MAXREDIRS => 10,
@@ -81,10 +76,7 @@ function wm_hs_api_update_contact($meta_id, $object_id, $meta_key, $_meta_value)
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => "POST",
         CURLOPT_POSTFIELDS => $CURLOPT_POSTFIELDS,
-        CURLOPT_HTTPHEADER => array(
-            "accept: application/json",
-            "content-type: application/json"
-        ),
+        CURLOPT_HTTPHEADER => cyclando_get_hubspot_api_request_headers()
         ));
 
         $response = curl_exec($curl);
@@ -97,7 +89,6 @@ function wm_hs_api_update_contact($meta_id, $object_id, $meta_key, $_meta_value)
 add_action( 'profile_update', 'wm_hs_api_update_profile', 10, 2 );
 function wm_hs_api_update_profile($user_id, $old_user_data) {
         //Hubspot APIKEY location => wp-config.php
-        $hapikey = HUBSPOTAPIKEY;
 
         $user_obj = get_userdata($user_id);
         $userfname = ucfirst($user_obj->first_name);
@@ -118,7 +109,7 @@ function wm_hs_api_update_profile($user_id, $old_user_data) {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => "https://api.hubapi.com/contacts/v1/contact/email/$useremail/profile?hapikey=$hapikey",
+        CURLOPT_URL => "https://api.hubapi.com/contacts/v1/contact/email/$useremail/profile",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
         CURLOPT_MAXREDIRS => 10,
@@ -126,10 +117,7 @@ function wm_hs_api_update_profile($user_id, $old_user_data) {
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => "POST",
         CURLOPT_POSTFIELDS => $CURLOPT_POSTFIELDS,
-        CURLOPT_HTTPHEADER => array(
-            "accept: application/json",
-            "content-type: application/json"
-        ),
+        CURLOPT_HTTPHEADER => cyclando_get_hubspot_api_request_headers()
         ));
 
         $response = curl_exec($curl);
