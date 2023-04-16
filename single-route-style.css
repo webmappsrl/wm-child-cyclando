@@ -228,6 +228,10 @@ Text Domain: wm-child-verdenatura
 .cyc-single-route-cta-text {
     padding-bottom: 20px;
 }
+.cyc-single-route-cta-wrapper .cyc-single-route-cta-text h2{
+    color: white !important;
+}
+
 .cyc-single-route-cta-text p{
     color: var(--color-text-p);
     font-size: 24px;
@@ -286,8 +290,13 @@ Text Domain: wm-child-verdenatura
     text-align: center;
     transition: 300ms all ease;
 }
-.cyc-single-route-cta-container {
+.cyc-route-sidebar .cyc-single-route-cta-container {
     padding-bottom: 4rem!important;
+    padding: 15px;
+    box-shadow: 0 3px 6px 0 #dadada;
+    border-radius: 16px;
+    margin: 1.5rem 0 1.5rem 1.5rem;
+    font-size: 16px;
 }
 .cyc-single-route-faq-container h6{
     margin:0!important;

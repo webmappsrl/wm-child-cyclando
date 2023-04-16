@@ -304,6 +304,37 @@ get_header();
                                         <div class="route-calculator-wrapper">
                                             <?= do_shortcode('[route_mobile_tab_plan post_id="' . $wm_post_id . '" hotel_product_items="' . $json_hotel_product_items . '" has_extra="' . $has_extra . '" first_departure="' . $first_departure_date_ajax_dormatdmY . '"]') ?>
                                         </div>
+                                        <!-- START section call to action sei pronto START  -->
+                                        <section class="l-section wpb_row height_small cyc-single-route-cta-container oc-single-route-mobile-cta-container">
+                                            <div class="l-section-h i-cf">
+                                                <div class="g-cols vc_row type_default valign_top">
+                                                    <div class="vc_col-sm-9 wpb_column vc_column_container">
+                                                        <div class="vc_column-inner">
+                                                            <div class="wpb_wrapper">
+                                                                <div class="wpb_text_column">
+                                                                    <div class="wpb_wrapper cyc-single-route-cta-wrapper">
+                                                                        <div class="cyc-single-route-cta-text">
+                                                                            <h2><?php echo __('Are you ready to leave for your next vacation?', 'wm-child-cyclando'); ?>
+                                                                            </h2>
+                                                                            <p><?php echo __('Personalize your vacation or just ask us any question.', 'wm-child-cyclando'); ?>
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="cyc-single-route-cta-buttons">
+                                                                            <div id="cy-contact-in-basso" class="cy-contact-in-basso">
+                                                                                <div class="cy-btn-contact">
+                                                                                    <p><?php echo __('Ask a question', 'wm-child-cyclando'); ?></p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <!-- END section call to action sei pronto block END  -->
                                     </div>
                                     <div class="wpb_wrapper cyc-route-grid-wrapper">
                                         <div class="cyc-single-route-breadcrumb-wrapper">
@@ -516,37 +547,7 @@ get_header();
             </div>
         </section>
         <!-- END section cose da sapere FAQ END  -->
-        <!-- START section call to action sei pronto START  -->
-        <section class="l-section wpb_row height_small cyc-single-route-cta-container oc-single-route-mobile-cta-container">
-            <div class="l-section-h i-cf">
-                <div class="g-cols vc_row type_default valign_top">
-                    <div class="vc_col-sm-9 wpb_column vc_column_container">
-                        <div class="vc_column-inner">
-                            <div class="wpb_wrapper">
-                                <div class="wpb_text_column">
-                                    <div class="wpb_wrapper cyc-single-route-cta-wrapper">
-                                        <div class="cyc-single-route-cta-text">
-                                            <h2><?php echo __('Are you ready to leave for your next vacation?', 'wm-child-cyclando'); ?>
-                                            </h2>
-                                            <p><?php echo __('Personalize your vacation or just ask us any question.', 'wm-child-cyclando'); ?>
-                                            </p>
-                                        </div>
-                                        <div class="cyc-single-route-cta-buttons">
-                                            <div id="cy-contact-in-basso" class="cy-contact-in-basso">
-                                                <div class="cy-btn-contact">
-                                                    <p><?php echo __('Ask a question', 'wm-child-cyclando'); ?></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- END section call to action sei pronto block END  -->
+
         <!-- END new template END-->
 
         <!-- Mobile calculator button -->
