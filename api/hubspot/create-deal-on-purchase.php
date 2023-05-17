@@ -2,20 +2,22 @@
 
 
 // action that process ajax call : webmapp_anypost-cy_route_advancedsearch-oneclick.php to update route price
-add_action( 'wp_ajax_nopriv_oc_ajax_create_hs_deal', 'oc_ajax_create_hs_deal' );
-add_action( 'wp_ajax_oc_ajax_create_hs_deal', 'oc_ajax_create_hs_deal' );
-function oc_ajax_create_hs_deal(){
-    $cookies = $_POST['cookies'];
-    $post_id = $_POST['postid'];
-    $result =  wm_sync_create_deal_hubspot($cookies,$post_id);
+add_action('wp_ajax_nopriv_oc_ajax_create_hs_deal', 'oc_ajax_create_hs_deal');
+add_action('wp_ajax_oc_ajax_create_hs_deal', 'oc_ajax_create_hs_deal');
+function oc_ajax_create_hs_deal()
+{
+  $cookies = $_POST['cookies'];
+  $post_id = $_POST['postid'];
+  $result =  wm_sync_create_deal_hubspot($cookies, $post_id);
 
-    echo json_encode($result);
-    wp_die();
+  echo json_encode($result);
+  wp_die();
 }
 
 
 
-function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
+function wm_sync_create_deal_hubspot($cookies, $post_id)
+{
   //Hubspot APIKEY location => wp-config.php
 
   // Get the deposit
@@ -30,7 +32,7 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   $supplement = array();
   if ($cookies[$post_id]['supplement']) {
     foreach ($cookies[$post_id]['supplement'] as $supp => $num) {
-        $supplement += array($supp => $num);
+      $supplement += array($supp => $num);
     }
   }
   if ($cookies[$post_id]['extra']) {
@@ -51,26 +53,26 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   if ($cookies['category']) {
     $hotel_category = $cookies['category'];
   }
-  $extra = http_build_query($extra,'',',');
-  $supplement = http_build_query($supplement,'',',');
+  $extra = http_build_query($extra, '', ',');
+  $supplement = http_build_query($supplement, '', ',');
 
   // Get the issued date
-  $departure_date = explode('-',$cookies['departureDate']);
-  $departure_date = $departure_date[2].'-'.$departure_date[1].'-'.$departure_date[0];
+  $departure_date = explode('-', $cookies['departureDate']);
+  $departure_date = $departure_date[2] . '-' . $departure_date[1] . '-' . $departure_date[0];
 
   $order_issued_date = date('Y-m-d');
 
   // Get the order total amount and billing name
   $order_total = str_replace('.', '', $cookies['price']['euro']);
-  $order_total = $order_total.'.'.$cookies['price']['cent'];
+  $order_total = $order_total . '.' . $cookies['price']['cent'];
   $billing_first_name = $cookies['billingname'];
   $billing_last_name = $cookies['billingsurname'];
   $billing_email = $cookies['billingemail'];
   $billing_newsletter = $cookies['billingnewsletter'];
-  if ($billing_newsletter == 'on' ){
+  if ($billing_newsletter == 'on') {
     $newsletter = "true";
   } else {
-      $newsletter = "false";
+    $newsletter = "false";
   }
   // Get route info
   $routePermalink = $cookies['routePermalink'];
@@ -78,7 +80,7 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
 
   $adults_number = $cookies['adults'];
   $kids_number = $cookies['kids'];
-  $kids_age = http_build_query($cookies['ages'],'',',');
+  $kids_age = http_build_query($cookies['ages'], '', ',');
 
   //Calculate routes taxonomies for contact creation
   $target = 'who';
@@ -113,25 +115,29 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   $st_places = implode(";", $tax_places_to_go_slug);
 
 
-  $CURLOPT_POSTFIELDS_ARRAY = "{\"properties\":{
-    \"dealname\": \"$billing_first_name $billing_last_name - $routeName\",
-    \"dealstage\": \"presentationscheduled\",
-    \"dealtype\": \"newbusiness\",
-    \"hubspot_owner_id\": \"40292283\",
-    \"amount\": \"$order_total\",
-    \"createdate\": \"$order_issued_date\",
-    \"data_di_partenza\": \"$departure_date\",
-    \"descrizione\": \"Route ID: $post_id\",
-    \"nr_adulti\": \"$adults_number\",
-    \"nr_bambini\": \"$kids_number\",
-    \"amount_acconto\": \"$deposit_amount\",
-    \"url_route\": \"$routePermalink\",
-    \"camere_singole\": \"$single_room\",
-    \"extra\": \"$extra\",
-    \"supplemento\": \"$supplement\",
-    \"eta_bambini\": \"$kids_age\",
-    \"categoria_hotel\": \"$hotel_category\"
-  }}";
+
+  $dealOptionsPhpArr = [
+    "properties" => [
+      "dealname" => "$billing_first_name $billing_last_name - $routeName",
+      "dealstage" => "presentationscheduled",
+      "dealtype" => "newbusiness",
+      "hubspot_owner_id" => "40292283",
+      "amount" => "$order_total",
+      "createdate" => "$order_issued_date",
+      "data_di_partenza" => "$departure_date",
+      "descrizione" => "Route ID: $post_id",
+      "nr_adulti" => "$adults_number",
+      "nr_bambini" => "$kids_number",
+      "amount_acconto" => "$deposit_amount",
+      "url_route" => "$routePermalink",
+      "camere_singole" => "$single_room",
+      "extra" => "$extra",
+      "supplemento" => "$supplement",
+      "eta_bambini" => "$kids_age",
+      "categoria_hotel" => "$hotel_category"
+    ]
+  ];
+  $CURLOPT_POSTFIELDS_ARRAY = json_encode($dealOptionsPhpArr);
 
   // Start creating contact on hub spot
 
@@ -170,13 +176,13 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   curl_close($curl_contact_search);
 
   if ($err_contact_search) {
-    wm_write_log_file($err_contact_search,'a+','contactHS_error_search');
+    wm_write_log_file($err_contact_search, 'a+', 'contactHS_error_search');
     echo "cURL Error #:" . $err_contact_search;
   } else {
-    wm_write_log_file($response_search,'a+','contactHS_success_search');
+    wm_write_log_file($response_search, 'a+', 'contactHS_success_search');
     $search_log = $billing_email . '->' . $CURLOPT_POSTFIELDS_ARRAY;
-    wm_write_log_file($search_log,'a+','contactHS_success_search_email_with_properties');
-    if ($response_total && $response_total !== 0 ) {
+    wm_write_log_file($search_log, 'a+', 'contactHS_success_search_email_with_properties');
+    if ($response_total && $response_total !== 0) {
       $res_contact_id = $response_search->results[0]->id;
 
       $curl_get_contact = curl_init();
@@ -192,21 +198,21 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
       ));
       $response_get_contact = curl_exec($curl_get_contact);
       $response_get_contact = json_decode($response_get_contact);
-      $explode_targe = explode(";",$response_get_contact->properties->target);
+      $explode_targe = explode(";", $response_get_contact->properties->target);
       foreach ($explode_targe as $target) {
-        array_push($tax_targets_slug,$target);
+        array_push($tax_targets_slug, $target);
       }
       $contact_targets =  array_unique($tax_targets_slug);
 
-      $explode_activities = explode(";",$response_get_contact->properties->activities);
+      $explode_activities = explode(";", $response_get_contact->properties->activities);
       foreach ($explode_activities as $activities) {
-        array_push($tax_activities_slug,$activities);
+        array_push($tax_activities_slug, $activities);
       }
       $contact_activities =  array_unique($tax_activities_slug);
 
-      $explode_places_to_go = explode(";",$response_get_contact->properties->place_to_go);
+      $explode_places_to_go = explode(";", $response_get_contact->properties->place_to_go);
       foreach ($explode_places_to_go as $places_to_go) {
-        array_push($tax_places_to_go_slug,$places_to_go);
+        array_push($tax_places_to_go_slug, $places_to_go);
       }
       $contact_tax_places_to_go_slug =  array_unique($tax_places_to_go_slug);
 
@@ -217,56 +223,58 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
       $st_targets_update = implode(";", $contact_targets);
 
       // ------- updating parameters
-      $CURLOPT_POSTFIELDS = "{\"properties\":{
-        \"firstname\":\"$billing_first_name\",
-        \"lastname\":\"$billing_last_name\",
-        \"app_user_iscritto_newsletter\":\"$newsletter\",
-        \"tour_operator\":\"Privati\",
-        \"target\":\"$st_targets_update\",
-        \"activities\":\"$st_activities_update\",
-        \"place_to_go\":\"$st_places_update\"
-      }}";
+      $curlOptionsPhpFields = ["properties" => [
+        "firstname" => "$billing_first_name",
+        "lastname" => "$billing_last_name",
+        "app_user_iscritto_newsletter" => "$newsletter",
+        "tour_operator" => "Privati",
+        "target" => "$st_targets_update",
+        "activities" => "$st_activities_update",
+        "place_to_go" => "$st_places_update"
+      ]];
+      $CURLOPT_POSTFIELDS = json_encode($curlOptionsPhpFields);
 
       $curl_contact_update = curl_init();
       //Start updating contact info with taxonomies and excetra
       curl_setopt_array($curl_contact_update, array(
-      CURLOPT_URL => "https://api.hubapi.com/crm/v3/objects/contacts/$res_contact_id",
-      CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_ENCODING => "",
-      CURLOPT_MAXREDIRS => 10,
-      CURLOPT_TIMEOUT => 30,
-      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-      CURLOPT_CUSTOMREQUEST => "PATCH",
-      CURLOPT_POSTFIELDS => $CURLOPT_POSTFIELDS,
-      CURLOPT_HTTPHEADER => cyclando_get_hubspot_api_request_headers(),
+        CURLOPT_URL => "https://api.hubapi.com/crm/v3/objects/contacts/$res_contact_id",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "PATCH",
+        CURLOPT_POSTFIELDS => $CURLOPT_POSTFIELDS,
+        CURLOPT_HTTPHEADER => cyclando_get_hubspot_api_request_headers(),
       ));
       $response_contact_update = curl_exec($curl_contact_update);
       $response_contact_update = json_decode($response_contact_update);
       $err_contact_update = curl_error($curl_contact_update);
       curl_close($curl_contact_update);
       if ($err_contact_update) {
-        wm_write_log_file($err_contact_update,'a+','contactHS_error_update');
+        wm_write_log_file($err_contact_update, 'a+', 'contactHS_error_update');
         echo "cURL Error #:" . $err_contact_update;
       } else {
-        wm_write_log_file($response_contact_update,'a+','contactHS_success_update');
+        wm_write_log_file($response_contact_update, 'a+', 'contactHS_success_update');
       }
     } else {
-        // -------
-        $CURLOPT_POSTFIELDS = "{\"properties\":{
-          \"email\":\"$billing_email\",
-          \"firstname\":\"$billing_first_name\",
-          \"lastname\":\"$billing_last_name\",
-          \"app_user_iscritto_newsletter\":\"$newsletter\",
-          \"lifecyclestage\":\"opportunity\",
-          \"tour_operator\":\"Privati\",
-          \"target\":\"$st_targets\",
-          \"activities\":\"$st_activities\",
-          \"place_to_go\":\"$st_places\"
-        }}";
+      // -------
+      $curlOptionsPhpFields = ["properties" => [
+        "email" => "$billing_email",
+        "firstname" => "$billing_first_name",
+        "lastname" => "$billing_last_name",
+        "app_user_iscritto_newsletter" => "$newsletter",
+        "lifecyclestage" => "opportunity",
+        "tour_operator" => "Privati",
+        "target" => "$st_targets",
+        "activities" => "$st_activities",
+        "place_to_go" => "$st_places"
+      ]];
+      $CURLOPT_POSTFIELDS = json_encode($curlOptionsPhpFields);
 
-        $curl_contact = curl_init();
-        //Start creating contact
-        curl_setopt_array($curl_contact, array(
+      $curl_contact = curl_init();
+      //Start creating contact
+      curl_setopt_array($curl_contact, array(
         CURLOPT_URL => "https://api.hubapi.com/crm/v3/objects/contacts",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
@@ -276,18 +284,18 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
         CURLOPT_CUSTOMREQUEST => "POST",
         CURLOPT_POSTFIELDS => $CURLOPT_POSTFIELDS,
         CURLOPT_HTTPHEADER => cyclando_get_hubspot_api_request_headers(),
-        ));
-        $response_contact = curl_exec($curl_contact);
-        $response_contact = json_decode($response_contact);
-        $res_contact_id = $response_contact->id;
-        $err_contact_create = curl_error($curl_contact);
-        curl_close($curl_contact);
-        if ($err_contact_create) {
-          wm_write_log_file($err_contact_create,'a+','contactHS_error_create');
-          echo "cURL Error #:" . $err_contact_create;
-        } else {
-          wm_write_log_file($response_contact,'a+','contactHS_success_create');
-        }
+      ));
+      $response_contact = curl_exec($curl_contact);
+      $response_contact = json_decode($response_contact);
+      $res_contact_id = $response_contact->id;
+      $err_contact_create = curl_error($curl_contact);
+      curl_close($curl_contact);
+      if ($err_contact_create) {
+        wm_write_log_file($err_contact_create, 'a+', 'contactHS_error_create');
+        echo "cURL Error #:" . $err_contact_create;
+      } else {
+        wm_write_log_file($response_contact, 'a+', 'contactHS_success_create');
+      }
     }
   }
   // END creating contact on hub spot
@@ -314,10 +322,10 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
 
   curl_close($curl_deal);
   if ($err_create_deal) {
-    wm_write_log_file($err_create_deal,'a+','dealHS_error_create');
+    wm_write_log_file($err_create_deal, 'a+', 'dealHS_error_create');
     echo "cURL Error #:" . $err_create_deal;
   } else {
-    wm_write_log_file($response,'a+','dealHS_success_create');
+    wm_write_log_file($response, 'a+', 'dealHS_success_create');
   }
 
   // END creating Deal on hubspot
@@ -342,10 +350,10 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
   curl_close($curl_assoc);
 
   if ($err_create_assoc) {
-    wm_write_log_file($err_create_assoc,'a+','associationHS_error_create');
+    wm_write_log_file($err_create_assoc, 'a+', 'associationHS_error_create');
     echo "cURL Error #:" . $err_create_assoc;
   } else {
-    wm_write_log_file($response_assoc,'a+','associationHS_success_create');
+    wm_write_log_file($response_assoc, 'a+', 'associationHS_success_create');
   }
   // start Assosiation between contact and deal
 
@@ -355,4 +363,3 @@ function wm_sync_create_deal_hubspot( $cookies,$post_id ) {
     return $response;
   }
 };
-
